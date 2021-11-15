@@ -1,0 +1,20 @@
+<footer id="footer">
+  <% if (theme.sidebar === 'bottom'){ %>
+    <%- partial('_partial/sidebar') %>
+  <% } %>
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <font size="2">
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">
+          <img alt="" style="border-width:0;margin: 0px" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" />
+        </a><br>
+        本站內容除了特別標註者外，皆採用<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">創用CC 姓名標示-非商業性-禁止改作 4.0 國際 授權條款</a>授權。<br>
+        轉載分享時禁止修改內容，禁止用於商業目的，並且註明來自<a href="https://ziteh.github.io/" target="_blank">ZiTe 本物誌</a>作者<a href="https://ziteh.github.io/pages/about.html" target="_blank">ZiTe</a>與附上原文連結。<br>
+        詳細轉載分享注意事項請參考<a href="/pages/howtoshare.html" title="了解如何轉載並分享文章">如何分享</a>。<br>
+        <br>
+        <%= date(new Date(), 'YYYY') %> <a href="/pages/about.html"><%= config.author || config.title %></a> ╱
+        <%= __('powered_by') %> <a href="http://hexo.io/" target="_blank">Hexo</a>
+      </font>
+    </div>
+  </div>
+</footer>
