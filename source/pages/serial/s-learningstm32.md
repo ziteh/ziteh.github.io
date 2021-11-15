@@ -6,3 +6,4 @@ date: 2020-04-05 16:03:13
 * [\[STM32學習記錄-3\] 基本輸入與輸出教學-GPIO相關程式寫法](/2018/09/learningstm32-03/)
 * [\[STM32學習記錄-4\] 免費好用的STM32 IDE——TrueSTUDIO](/2020/03/learningstm32-04/)
 * [\[STM32學習記錄-5\] 優化STM32 GPIO設定函式](/2020/04/learningstm32-05/)
+- [\[STM32學習記錄-6\] 在VS Code與PlatformIO上開發STM32](/2021/11/learningstm32-platformio/)
