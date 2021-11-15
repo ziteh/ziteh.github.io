@@ -7,7 +7,7 @@
     "clean": "hexo clean",
     "deploy": "hexo deploy",
     "server": "hexo server",
-    "backup": "git checkout backup && git add . && git commit -m \"$npm_config_msg\" && git push origin backup"
+    "backup": "git checkout backup && git add . && git commit -m \"Backup\" && git push origin backup"
   },
   "hexo": {
     "version": "5.4.0"
