@@ -1,7 +1,7 @@
 title: '[STM32學習記錄-5] 優化STM32 GPIO設定函式'
 author: ZiTe
 tags:
-  - ARM-STM32F10x
+  - STM32
   - 電子電路
   - 教學
 categories: []

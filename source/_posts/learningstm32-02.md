@@ -3,7 +3,7 @@ author: ZiTe
 tags:
   - 教學
   - 電子電路
-  - ARM-STM32F10x
+  - STM32
 categories: []
 date: 2018-08-26 10:47:00
 ---

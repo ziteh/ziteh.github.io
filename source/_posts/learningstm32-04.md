@@ -1,7 +1,7 @@
 title: '[STM32學習記錄-4] 免費好用的STM32 IDE——TrueSTUDIO'
 author: ZiTe
 tags:
-  - ARM-STM32F10x
+  - STM32
   - 電子電路
   - 教學
 categories: []

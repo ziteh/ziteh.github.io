@@ -1,7 +1,7 @@
 title: '[STM32學習記錄-6] 在VS Code與PlatformIO上開發STM32'
 author: ZiTe
 tags:
-  - ARM-STM32F1xx
+  - STM32
   - 電子電路
   - 教學
 categories: []

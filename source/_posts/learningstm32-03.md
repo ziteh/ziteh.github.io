@@ -2,7 +2,7 @@ title: '[STM32學習記錄-3] 基本輸入與輸出教學-GPIO相關程式寫法
 author: ZiTe
 tags:
   - 教學
-  - ARM-STM32F10x
+  - STM32
   - 電子電路
 categories: []
 date: 2018-09-08 14:24:00
