@@ -1,8 +1,6 @@
 title: '[Firefox/Chrome擴充套件] Google Shortcuts 快捷清單'
 author: ZiTe
 tags:
-  - Chrome擴充套件
-  - Firefox擴充套件
   - ''
 categories: []
 date: 2018-02-06 00:01:00
