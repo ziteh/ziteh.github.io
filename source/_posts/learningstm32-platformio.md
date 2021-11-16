@@ -1,9 +1,9 @@
 title: '[STM32學習記錄-6] 在VS Code與PlatformIO上開發STM32'
 author: ZiTe
 tags:
-  - STM32
   - 電子電路
   - 教學
+  - STM32
 categories: []
 date: 2021-11-15 22:15:00
 ---

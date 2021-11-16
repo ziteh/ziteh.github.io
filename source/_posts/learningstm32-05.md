@@ -1,9 +1,9 @@
 title: '[STM32學習記錄-5] 優化STM32 GPIO設定函式'
 author: ZiTe
 tags:
-  - STM32
   - 電子電路
   - 教學
+  - STM32
 categories: []
 date: 2020-04-02 15:40:00
 ---
