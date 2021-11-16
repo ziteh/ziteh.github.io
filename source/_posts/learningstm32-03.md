@@ -1,10 +1,11 @@
 title: '[STM32學習記錄-3] 基本輸入與輸出教學-GPIO相關程式寫法'
 author: ZiTe
 tags:
+  - 電子電路
   - 教學
   - STM32
-  - 電子電路
-categories: []
+categories:
+  - STM32學習記錄
 date: 2018-09-08 14:24:00
 ---
 先前已經介紹過[GPIO相關暫存器](/2018/08/learningstm32-02/)的用法了，現在我來介紹幾個最基本的輸出入程式寫法。

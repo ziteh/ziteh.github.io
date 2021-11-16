@@ -1,10 +1,11 @@
 title: '[STM32學習記錄-1] 建立工程環境教學'
 author: ZiTe
 tags:
-  - 教學
   - 電子電路
+  - 教學
   - STM32
-categories: []
+categories:
+  - STM32學習記錄
 date: 2018-08-04 15:05:00
 ---
 ![](https://1.bp.blogspot.com/-lN8BAf_D-F0/Xoh7te-zqZI/AAAAAAAACAs/ff1cV3v-KAMA_kYaM8sPZXr6xg4EhYDvACKgBGAsYHg/s480/MOV_0032.mp4_20180823_233924.884.png)

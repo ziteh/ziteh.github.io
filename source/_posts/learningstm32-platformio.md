@@ -4,7 +4,8 @@ tags:
   - 電子電路
   - 教學
   - STM32
-categories: []
+categories:
+  - STM32學習記錄
 date: 2021-11-15 22:15:00
 ---
 ![](https://blogger.googleusercontent.com/img/a/AVvXsEitW-RvmJa7RDSr_52UGweZc-G7pHkN0GECSLKrNoD0olnhbHNcsn0ogqQtQo1iBYTdPskq7LNuMicgjj_PQj_JQAMtZc5uKaiq-kIqjZHO36tTTcIcLKR7DL_jqpZENUUZTbuAsey8m4klKbUhXVoxQ4yTiy872IhnfLmTQ6Tmdysq2dFZQ6czBWwd=s1920)

@@ -1,10 +1,11 @@
 title: '[STM32學習記錄-4] 免費好用的STM32 IDE——TrueSTUDIO'
 author: ZiTe
 tags:
-  - STM32
   - 電子電路
   - 教學
-categories: []
+  - STM32
+categories:
+  - STM32學習記錄
 date: 2020-03-31 15:18:00
 ---
 ![](https://1.bp.blogspot.com/-jpislKTRwlY/XomHrzCsbVI/AAAAAAAACCk/ambFVA1uD4guODQ_Zurcc9CNpkfhFiiQwCKgBGAsYHg/s640/Screenshot%2B%252811%2529.png)

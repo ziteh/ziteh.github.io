@@ -1,10 +1,11 @@
 title: '[STM32學習記錄-2] 基本輸入與輸出教學-GPIO相關暫存器簡介'
 author: ZiTe
 tags:
-  - 教學
   - 電子電路
+  - 教學
   - STM32
-categories: []
+categories:
+  - STM32學習記錄
 date: 2018-08-26 10:47:00
 ---
 # 前言

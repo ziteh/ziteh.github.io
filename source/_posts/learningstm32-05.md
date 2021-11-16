@@ -4,7 +4,8 @@ tags:
   - 電子電路
   - 教學
   - STM32
-categories: []
+categories:
+  - STM32學習記錄
 date: 2020-04-02 15:40:00
 ---
 # 前言
