@@ -3,7 +3,7 @@ author: ZiTe
 tags:
   - 教學
   - DIY
-  - 軟體
+  
   - 3C
 categories: []
 date: 2020-06-21 10:27:00

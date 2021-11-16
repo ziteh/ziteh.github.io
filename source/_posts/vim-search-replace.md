@@ -2,7 +2,7 @@ title: 在Vim中搜尋並取代文字
 author: ZiTe
 tags:
   - 教學
-  - 軟體
+  
 categories: []
 date: 2020-09-05 23:37:00
 ---

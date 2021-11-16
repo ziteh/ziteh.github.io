@@ -1,7 +1,7 @@
 title: 免費開源的VNote如何取代Evernote
 author: ZiTe
 tags:
-  - 軟體
+  
 categories: []
 date: 2019-03-31 22:57:00
 ---

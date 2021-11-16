@@ -2,7 +2,7 @@ title: 小狼豪輸入法 模糊拼音設置
 author: ZiTe
 tags:
   - 教學
-  - 軟體
+  
 categories: []
 date: 2020-09-14 12:54:00
 ---
