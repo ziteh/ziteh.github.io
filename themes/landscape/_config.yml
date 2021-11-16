@@ -1,6 +1,7 @@
 # Header
 menu:
   Home: /
+  # Serial: /pages/serial
   Archives: /archives
   About: /pages/about.html
 # rss: /atom.xml # Unuse RSS.
