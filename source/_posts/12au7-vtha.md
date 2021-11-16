@@ -1,7 +1,6 @@
 title: 自製12AU7(ECC82) 真空管耳機擴大機
 author: ZiTe
 tags:
-  - 耳機
   - 電子電路
   - DIY
 categories: []
