@@ -17,7 +17,7 @@ widgets:
 - tag
 #- category
 - archive
-- questionnaire
+# - questionnaire
 #- license
 
 # display widgets at the bottom of index pages (pagination == 2)
