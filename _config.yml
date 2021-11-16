@@ -64,7 +64,9 @@ index_generator:
 # Category & Tag
 default_category: uncategorized
 category_map:
+  # name: path
 tag_map:
+  # name: path
 
 # Metadata elements
 ## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
