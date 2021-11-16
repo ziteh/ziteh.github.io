@@ -3,7 +3,7 @@ menu:
   Home: /
   Archives: /archives
   About: /pages/about.html
-rss: /atom.xml
+# rss: /atom.xml # Unuse RSS.
 
 # Content
 excerpt_link: 繼續閱讀
