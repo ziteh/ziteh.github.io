@@ -28,7 +28,7 @@
       {### PAGE BODY ###}
       {#################}
       <div class="post-body{%- if page.direction and page.direction.toLowerCase() === 'rtl' %} rtl{%- endif %}">
-        {%- if page.type === 'tags' %}
+        {%- if page.type === 'tagcloud' %}
           <div class="tag-cloud">
             <div class="tag-cloud-title">
               {{ _p('counter.tag_cloud', site.tags.length) }}
@@ -42,6 +42,15 @@
                 start_color: theme.tagcloud.start,
                 end_color  : theme.tagcloud.end})
               }}
+            </div>
+          </div>
+        {%- elif page.type === 'tags' %}
+          <div class="tag-cloud">
+            <div class="tag-cloud-title">
+              {{ _p('counter.tag_cloud', site.tags.length) }}
+            </div>
+            <div class="tag-cloud-tags">
+            {{ list_tags() }}
             </div>
           </div>
         {% elif page.type === 'categories' %}
