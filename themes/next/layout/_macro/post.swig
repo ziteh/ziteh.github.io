@@ -158,6 +158,24 @@
             <div class="post-description">{{ post.description }}</div>
           {%- endif %}
 
+        {%- if post.tags and post.tags.length %}
+          {%- if theme.tag_icon %}
+            {%- set tag_indicate = '<i class="fa fa-tag"></i>' %}
+          {% else %}
+            {%- set tag_indicate = '#' %}
+          {%- endif %}
+          <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-tags"></i>
+              </span>
+              <span>
+            {%- for tag in post.tags.toArray() %}
+              <a href="{{ url_for(tag.path) }}" rel="tag">{{ tag_indicate }} {{ tag.name }}</a>
+            {%- endfor %}
+          </span>
+          </span>
+        {%- endif %}
+
         </div>
       </header>
     {%- endif %}
@@ -231,18 +249,6 @@
       {%- endif %}
 
       <footer class="post-footer">
-        {%- if post.tags and post.tags.length %}
-          {%- if theme.tag_icon %}
-            {%- set tag_indicate = '<i class="fa fa-tag"></i>' %}
-          {% else %}
-            {%- set tag_indicate = '#' %}
-          {%- endif %}
-          <div class="post-tags">
-            {%- for tag in post.tags.toArray() %}
-              <a href="{{ url_for(tag.path) }}" rel="tag">{{ tag_indicate }} {{ tag.name }}</a>
-            {%- endfor %}
-          </div>
-        {%- endif %}
 
         {{ partial('_partials/post/post-footer.swig', {}, {cache: theme.cache.enable}) }}
 
