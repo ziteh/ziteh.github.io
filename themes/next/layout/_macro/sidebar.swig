@@ -38,7 +38,7 @@
       </div>
 
       {%- if theme.back2top.enable and theme.back2top.sidebar %}
-        <div class="back-to-top motion-element">
+        <div class="back-to-top motion-element" style="width:24px">
           <i class="fa fa-arrow-up"></i>
           <span>0%</span>
         </div>
