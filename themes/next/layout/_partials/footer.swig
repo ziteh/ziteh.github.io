@@ -12,7 +12,8 @@
 
 <div class="copyright">
   {% set copyright_year = date(null, 'YYYY') %}
-  &copy; {% if theme.footer.since and theme.footer.since != copyright_year %}{{ theme.footer.since }} – {% endif %}
+  <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" style="border-bottom: none" title="本網站所有內容除特別聲明外，均採用創用CC 姓名標示-非商業性-禁止改作授權。&#10;分享時請註明作者及出處。">
+  <img src="https://i.creativecommons.org/l/by-nc-nd/3.0/80x15.png" style="display: inline" /></a> {% if theme.footer.since and theme.footer.since != copyright_year %}{{ theme.footer.since }} – {% endif %}
   <span itemprop="copyrightYear">{{ copyright_year }}</span>
   <span class="with-love">
     <i class="fa fa-{{ theme.footer.icon.name }}"></i>
