@@ -21,15 +21,14 @@
   box-sizing: border-box;
   color: var(--text-color);
   width: $sidebar-desktop;
-  position: fixed;
 
   if (hexo-config('motion.enable') && hexo-config('motion.transition.sidebar')) {
     opacity: 0;
   }
 
   &.affix {
-    //position: fixed;
-    //top: $sidebar-offset;
+    position: fixed;
+    top: $sidebar-offset;
   }
 
   &.affix-bottom {
