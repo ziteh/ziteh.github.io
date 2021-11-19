@@ -38,6 +38,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@4.1.6
         with:
           branch: master
-          commit-message: "GitHub Actions auto builded."
+          commit-message: "GitHub Actions auto deploy"
           folder: ./public
+          git-config-email: honmonoh@gmail.com
           token: ${{ secrets.ACCESS_TOKEN }}
