@@ -1,6 +1,7 @@
 {% import 'menu-item.swig' as menu_item with context %}
 
 <nav class="site-nav">
+<div class="site-description" itemprop="description">{{ description }}</div>
 {%- if theme.menu %}
   <ul id="menu" class="menu">
     {%- for name, path in theme.menu %}
