@@ -30,13 +30,6 @@ date: 2021-11-15 22:15:00
 
 # 正文
 
-- [安裝 PlatformIO](#安裝-PlatformIO)
-- [安裝 ST STM32 平臺](#安裝-ST-STM32-平臺)
-- [建立專案](#建立專案)
-- [專案結構](#專案結構)
-- [編寫程式](#編寫程式)
-- [建置&燒錄程式](#建置-amp-燒錄程式)
-
 ## 安裝 PlatformIO
 
 最一開始當然就是安裝相關軟體了，而 PlatformIO 其實並不綁定 VS Code，它可以和許多不同的 IDE 或文字編輯器整合，甚至獨立運作。本篇就以 VS Code 為主，其它種類的安裝方式請參考[官方文件](https://docs.platformio.org/en/latest/integration/ide/index.html)。
