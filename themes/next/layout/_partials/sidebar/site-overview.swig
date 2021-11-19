@@ -3,7 +3,9 @@
     <img class="site-author-image" itemprop="image" alt="{{ author }}"
       src="{{ url_for(theme.avatar.url) }}">
   {%- endif %}
-  <p class="site-author-name" itemprop="name">{{ author }}</p>
+  <p class="site-author-name" itemprop="name">{{ author }} /
+    <a href="mailto:honmonoh@gmail.com" style="font-size: small">honmonoh@gmail.com</a>
+  </p>
 </div>
 
 {%- if theme.site_state %}
