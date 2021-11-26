@@ -1,6 +1,6 @@
 # ziteh.github.io
 
-This branch "backup" was stored the source files of my blog.
+This branch "source" was stored the source files of my blog.
 
 ## Basic HEXO Usage
 
@@ -16,8 +16,8 @@ git remote add origin https://github.com/ziteh/ziteh.github.io.git
 ```
 
 ```cmd
-git checkout -b backup
+git checkout source
 git add .
-git commit -m "Backup"
-git push origin backup
+git commit -m "Backup source files"
+git push origin source
 ```
