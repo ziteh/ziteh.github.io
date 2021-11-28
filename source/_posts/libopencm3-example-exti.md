@@ -1,4 +1,4 @@
-title: '[LibOpenCM3 × STM32教學-1] 按鈕觸發外部中斷 EXTI'
+title: '[LibOpenCM3 × STM32教學-2] 按鈕觸發外部中斷 EXTI'
 author: ZiTe
 tags:
   - 'STM32'
