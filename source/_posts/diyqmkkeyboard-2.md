@@ -25,15 +25,15 @@ date: 2020-06-21 10:28:00
 
 我的rules.mk長這樣：
 
-<script src="https://gist.github.com/ZiTe-H/1a6945bf7b2cd35280cdcebd15a9fb51.js?file=(source)rules.mk"></script>
+<script src="https://gist.github.com/ziteh/1a6945bf7b2cd35280cdcebd15a9fb51.js?file=(source)rules.mk"></script>
 
 ## 晶片型號
 
-首先確認`MCU = atmega32u4`這行（我的[第2行](https://gist.github.com/ZiTe-H/1a6945bf7b2cd35280cdcebd15a9fb51#file-source-rules-mk-L2)），如果你的晶片是ATmega32U4（如Pro Micro）的話那`MCU = atmega32u4`是正確的，如果不是的話請改成你的晶片型號。QNK支援的晶片型號可以參考[這裡](https://docs.qmk.fm/#/compatible_microcontrollers)。
+首先確認`MCU = atmega32u4`這行（我的[第2行](https://gist.github.com/ziteh/1a6945bf7b2cd35280cdcebd15a9fb51#file-source-rules-mk-L2)），如果你的晶片是ATmega32U4（如Pro Micro）的話那`MCU = atmega32u4`是正確的，如果不是的話請改成你的晶片型號。QNK支援的晶片型號可以參考[這裡](https://docs.qmk.fm/#/compatible_microcontrollers)。
 
 ## 晶片頻率
 
-再來是`F_CPU = 16000000`這行（我的[第15行](https://gist.github.com/ZiTe-H/1a6945bf7b2cd35280cdcebd15a9fb51#file-source-rules-mk-L15)），請確認你的晶片的操作頻率是多少。如果是Pro Micro的話主要有16MHz和8MHz兩種型號，要分清楚。
+再來是`F_CPU = 16000000`這行（我的[第15行](https://gist.github.com/ziteh/1a6945bf7b2cd35280cdcebd15a9fb51#file-source-rules-mk-L15)），請確認你的晶片的操作頻率是多少。如果是Pro Micro的話主要有16MHz和8MHz兩種型號，要分清楚。
 
 我的Pro Micro是8MHz的，所以要將原本代表16MHz的`F_CPU = 16000000`改成8MHz：`F_CPU = 8000000`。
 
@@ -59,7 +59,7 @@ QMK的相關說明可以看[這裡](https://docs.qmk.fm/#/flashing?id=caterina)�
 
 ## rules.mk修改完成
 
-修改rules.mk的部分大概就是這些，裡面還有更多的設定可以調整，這裡就不細講了。可以參考我[修改完的rules.mk](https://gist.github.com/ZiTe-H/1a6945bf7b2cd35280cdcebd15a9fb51#file-edited-rules-mk)
+修改rules.mk的部分大概就是這些，裡面還有更多的設定可以調整，這裡就不細講了。可以參考我[修改完的rules.mk](https://gist.github.com/ziteh/1a6945bf7b2cd35280cdcebd15a9fb51#file-edited-rules-mk)
 
 # 修改config.h（改腳位）
 
@@ -97,7 +97,7 @@ QMK的相關說明可以看[這裡](https://docs.qmk.fm/#/flashing?id=caterina)�
 
 ## 刪除even
 
-首先找到`keyevent_t event = record->event;`這一行（例如我的在[這裡](https://gist.github.com/ZiTe-H/1a6945bf7b2cd35280cdcebd15a9fb51#file-source-keymap-c-L120)），在它前面加上2個「/」，也就是把該區塊變成：
+首先找到`keyevent_t event = record->event;`這一行（例如我的在[這裡](https://gist.github.com/ziteh/1a6945bf7b2cd35280cdcebd15a9fb51#file-source-keymap-c-L120)），在它前面加上2個「/」，也就是把該區塊變成：
 ```c
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
 //	keyevent_t event = record->event;
