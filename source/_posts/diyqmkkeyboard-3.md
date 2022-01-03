@@ -23,7 +23,7 @@ date: 2020-06-21 16:33:00
 首先要建構環境（Environment），這部分可以參考 [QMK 的官方文件](https://docs.qmk.fm/#/newbs_getting_started)。以下就以最簡單的方式示範。
 
 1. 下載並執行 [QMK MSYS](https://msys.qmk.fm/) 工具。
-2. 在 QMK MSYS 中輸出並執行指令 `qmk setup` 指令。
+2. 在 QMK MSYS 中輸入並執行指令 `qmk setup` 指令。
 
 ## 開始編譯
 
