@@ -4,7 +4,8 @@ tags:
   - 3C
   - DIY
   - 教學
-categories: []
+categories:
+  - 自製QMK鍵盤
 date: 2020-11-21 17:39:00
 ---
 ![](https://1.bp.blogspot.com/--DVn7BXoSVM/X7jhXa4wzwI/AAAAAAAACrk/5-7dhQnH1kgKadvIJFRDvJypUmhe44QUACPcBGAsYHg/w640-h480/DSC_0020.JPG)
@@ -19,23 +20,21 @@ date: 2020-11-21 17:39:00
 
 <!--more-->
 
-
 # 修改程式碼
 
 以下個步驟將示範爲 QMK 加入編碼器的程式。詳細可以參考 [QMK 官方文件-Encoder](https://docs.qmk.fm/#/feature_encoders)。
 
 ## 修改 rules.mk
 
-首先要在「rules.mk」檔案中啓用編碼器。在該檔案中加入以下之程式碼:
+首先要在 `rules.mk` 檔案中啓用編碼器。在該檔案中加入以下之程式碼:
 
-```cmake
-# 致能編碼器
-ENCODER_ENABLE = yes
+```mk
+ENCODER_ENABLE = yes  # 致能編碼器
 ```
 
 ## 修改 config.h
 
-接著要定義腳位。每個編碼器都有 2 隻腳（通常分別稱爲 A 腳與 B 腳）需要接到你的微控制器（開發板）上。在「config.h」中加入以下之程式碼：
+接著要定義腳位。每個編碼器都有 2 隻腳（通常分別稱爲 A 腳與 B 腳）需要接到你的微控制器（開發板）上。在 `config.h` 中加入以下之程式碼：
 
 ```c
 // 編碼器接腳定義
@@ -67,7 +66,7 @@ ENCODER_ENABLE = yes
 
 ## 修改 keymap.c
 
-最後要來設定觸發編碼器時要按下的按鍵，需要在「keymap.c」中加入該程式碼。下面程式中的「KC_PGDN」、「KC_PGUP」就分別是編碼器在順/逆時鐘轉動時會按下的按鍵，請自行修改成自己想要的按鍵，至於 QMK 的按鍵代碼（Keycodes）請參考[ QMK 官方文件-Keycodes](https://docs.qmk.fm/#/keycodes)。
+最後要來設定觸發編碼器時要按下的按鍵，需要在 `keymap.c` 中加入該程式碼。下面程式中的 `KC_PGDN`、`KC_PGUP` 就分別是編碼器在順/逆時鐘轉動時會按下的按鍵，請自行修改成自己想要的按鍵，至於 QMK 的按鍵代碼（Keycodes）請參考[ QMK 官方文件-Keycodes](https://docs.qmk.fm/#/keycodes)。
 
 ```c
 // 編碼器程式
@@ -107,13 +106,11 @@ void encoder_update_user(uint8_t index, bool clockwise) {
 
 完成修改後就可以將程式編譯、燒錄。其方法請參考[\[自製QMK鍵盤-3\] 編譯並燒錄QMK ](/2020/06/diyqmkkeyboard-3/)。
 
-完成修改的程式可以參考我的 [GitHub: SNM-Keyboard](https://github.com/ziteh/snm-keyboard/tree/master/tests/encoder)。修改完成的各程式碼及編譯完成的「kb_default.hex」都在這裡。 
-
 # 硬體
 
-硬體的部分就只有接線。編碼器通常有 3 個接腳，照順序分別是 A、Gnd、B。將編碼器 Gnd 與微控制器的 Gnd 接起來，而 A、B 就接到上面在「config.h」中設定的腳位。這樣就完成硬體的部分了。
+硬體的部分就只有接線。編碼器通常有 3 個接腳，照順序分別是 A、Gnd、B。將編碼器 Gnd 與微控制器的 Gnd 接起來，而 A、B 就接到上面在 `config.h` 中設定的腳位。這樣就完成硬體的部分了。
 
-值得注意的是有些編碼器會整合一個按鈕，所以可能會有 5 個接腳，使用時還請查清楚。
+值得注意的是有些編碼器會整合一個按鈕，所以可能會有 5 個接腳，使用時還請確認清楚。
 
 # 結語
 
@@ -121,7 +118,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
 
 # 相關文章與資源
 
-* [\[系列文章\] 自製 QMK 鍵盤](/pages/serial/s-diysnmkeyboard.html)
+* [\[系列文章\] 自製QMK鍵盤](/categories/自製QMK鍵盤/)
 * QMK 相關
 	* [QMK 官方網站](https://qmk.fm/)
 	* [QMK 官方說明文件](https://docs.qmk.fm/#/)
