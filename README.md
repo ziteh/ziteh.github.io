@@ -12,7 +12,7 @@ tags:
   - <TAG-2>
 categories:
   - '<CAT-1>'
-date: <YYYY-MM-DD hh:mm:ss>
+date: YYYY-MM-DD hh:mm:ss
 ---
 
 # 前言
