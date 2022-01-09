@@ -14,7 +14,7 @@ date: 2022-01-09 22:11:00
 
 本文將會概略性地分析並介紹 Mitosis 是如何做到無線的。
 
-<!-more-->
+<!--more-->
 
 # 硬體與基本架構
 
@@ -27,20 +27,20 @@ Mitosis 的架構中，主要擁有這些硬體：
 	- 第 2、3 個 nRF51822 分別在左右兩鍵盤上，負責讀取鍵盤上的按鍵狀態，並將其透過 BLE 傳給接收器的 nRF51822。
 
 ```
-            PC
-             |
-			     <USB>
-             |
-		     Pro Micro(QMK)
-			       |
-		       <UART>
-		         |
-		     nRF51822(#1)
-	 	     /        \
-	  	<BLE>        <BLE>
-	     /              \
+             PC
+              |
+            <USB>
+              |
+        Pro Micro(QMK)
+              |
+           <UART>
+              |
+         nRF51822(#1)
+          /        \
+       <BLE>        <BLE>
+        /              \
   nRF51822(#2)        nRF51822(#3)
-	    |                   |
+      |                   |
  Left Keyboard      Right Keyboard
 ```
 
