@@ -1,7 +1,9 @@
 name: Build and deploy Hexo blog
 on:
   workflow_dispatch:
-
+  push:
+    branches: [ source ]
+    
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
