@@ -87,7 +87,7 @@ CONNECTED LED (Blue)|P0.19|--|--
 
 > 要注意「nRF51822」本身的 IO 都是 3.3V 的，不是 5V。「Adafruit Bluefruit LE SPI Friend」上已經有邏輯電平轉換電路。
 
-![▲ 接好線後的樣子。](https://blogger.googleusercontent.com/img/a/AVvXsEhgLHc-lVHPdbLy5rDceawCTrN1vwoXrG0F3hq_ehM4NgMdhS4A3rk7LeyTRPaMjLFdmoJ6myYu_gpEjdShhGqvg55U7RPeTM3mbjHNdN4dTA7_5xx3wm_VhbAGS3CB2seRigYHhQXBmxOg4ldi7MvakKEqMI3gqA1dn5tVkJqy0ggWZBySCdMdXA57=w400-h300)
+![▲ 接好線後的樣子。](https://blogger.googleusercontent.com/img/a/AVvXsEhgLHc-lVHPdbLy5rDceawCTrN1vwoXrG0F3hq_ehM4NgMdhS4A3rk7LeyTRPaMjLFdmoJ6myYu_gpEjdShhGqvg55U7RPeTM3mbjHNdN4dTA7_5xx3wm_VhbAGS3CB2seRigYHhQXBmxOg4ldi7MvakKEqMI3gqA1dn5tVkJqy0ggWZBySCdMdXA57=w640-h480)
 
 只有把線接好後上電，它就有藍牙的功能了。在 Windows 10 的「裝置」裡可以搜尋並配對到此藍牙裝置。
 
