@@ -18,9 +18,9 @@ date: 2022-02-22 18:42:00
 
 # 硬體選擇
 
-先講結論，基本上選用擁有 32 KB SRAM 的「[MDBT40-256V3](https://www.raytac.com/product/ins.php?index_id=63)」就可以了，這就是「Adafruit Bluefruit LE SPI Friend」所使用的模組。
+先講結論，基本上選用擁有 32 KB SRAM 的「[MDBT40-256**R**V3](https://www.raytac.com/product/ins.php?index_id=74)」就可以了，這就是「Adafruit Bluefruit LE SPI Friend」所使用的模組。
 
-本文接下來也將使用 MDBT40-256RV3（[MDBT40-DB](https://www.raytac.com/product/ins.php?index_id=84)）作爲示範。
+本文接下來也將使用 MDBT40-256**R**V3（[MDBT40-DB](https://www.raytac.com/product/ins.php?index_id=84)）作爲示範。
 
 另外，爲了燒錄，還需要準備一個 Segger J-Link 或 STLink/V2 燒錄器，雖然也可以使用 Raspberry Pi 作爲燒錄器，但這比較麻煩。
 
@@ -38,7 +38,7 @@ date: 2022-02-22 18:42:00
 
 MDBT40 是搭載了 nRF51822 的模組，並且整合了天線。上面有提到 nRF51822 有一些不同的版本，MDBT40 也有其相對應的細部型號。
 
-若要的是搭載擁有 32 KB SRAM / 256 KB Flash 的 nRF51822-xxAC 的話，要選用 MDBT40-256RV3 或 MDBT40-P256RV3（這兩個的差異是前者爲陶瓷天線，後者爲 PCB 天線）。實際上「Adafruit Bluefruit LE」系列所使用的基本上就是 MDBT40-256RV3。
+若要的是搭載擁有 32 KB SRAM / 256 KB Flash 的 nRF51822-xxAC 的話，要選用 MDBT40-256**R**V3 或 MDBT40-**P**256**R**V3（這兩個的差異是前者爲陶瓷天線，後者爲 PCB 天線）。實際上「Adafruit Bluefruit LE」系列所使用的基本上就是 MDBT40-256**R**V3。
 
 # 燒錄工具
 
