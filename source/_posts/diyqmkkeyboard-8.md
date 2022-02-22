@@ -30,7 +30,7 @@ date: 2022-02-21 13:31:00
 
 因爲「Adafruit Bluefruit LE SPI Friend」的韌體已經有實作藍牙 HID 的相關 [AT 指令](https://learn.adafruit.com/introducing-the-adafruit-bluefruit-spi-breakout/at-commands)，所以 QMK 其實只是依照按下的按鍵，再透過 AT 指令讓「Adafruit Bluefruit LE SPI Friend」完成與電腦間的通訊。
 
-「Adafruit Bluefruit LE SPI Friend」模組的價位有點高，但因爲它的韌體有放在 [GitHub](https://github.com/adafruit/Adafruit_BluefruitLE_Firmware) 上，所以也可以自己買「MDBT40」或甚至「nRF51822」來進行燒錄。我使用的就是自行燒錄的。
+「Adafruit Bluefruit LE SPI Friend」模組的價位有點高，但因爲它的韌體有放在 [GitHub](https://github.com/adafruit/Adafruit_BluefruitLE_Firmware) 上，所以也可以自己買「MDBT40」或甚至「nRF51822」來進行燒錄。我使用的就是自行燒錄的，教學在[這裡](https://ziteh.github.io/2022/02/diyqmkkeyboard-9/)。
 
 不過要注意的是，「MDBT40」和「nRF51822」有不同的版本規格，要選用 32 KB RAM、256 KB Flash Memory 的版本才行，也就是「MDBT40-256RV3」或「MDBT40-P256RV3」及「nRF51822-xxAC」。
 
