@@ -88,7 +88,7 @@ git submodule update --init --recursive
 python flash.py --jtag=jlink --board=blespifriend --softdevice=8.0.0 --bootloader=2 --firmware=0.8.1
 ```
 
-燒錄完成後爲顯示：
+燒錄完成後會顯示：
 ```cmd
 Flash OK
 ```
