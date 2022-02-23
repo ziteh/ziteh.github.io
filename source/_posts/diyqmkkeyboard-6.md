@@ -22,9 +22,9 @@ date: 2022-01-09 22:11:00
 
 Mitosis 的架構中，主要擁有這些硬體：
 - 1 個 Pro Micro（ATmega32U4）。接收器的一部分，QMK 實際上只在 Pro Micro 上運作，以 USB 線連接電腦。
-- 3 個 nRF51822。這是一個整合了 BLE（Bluetooth Low Energy，藍牙低功耗）功能的 SoC（System On Chip）。
+- 3 個 nRF51822。這是一個整合了 BLE（Bluetooth Low Energy，藍牙低功耗）等無線功能的 SoC（System On Chip）。
 	- 第 1 個 nRF51822 作爲接收器的一部分，負責接收來自左右兩部分鍵盤的訊號，並將其透過 UART 傳給 Pro Micro。
-	- 第 2、3 個 nRF51822 分別在左右兩鍵盤上，負責讀取鍵盤上的按鍵狀態，並將其透過 BLE 傳給接收器的 nRF51822。
+	- 第 2、3 個 nRF51822 分別在左右兩鍵盤上，負責讀取鍵盤上的按鍵狀態，並將其透過 Gazell 傳給接收器的 nRF51822。
 
 ```
              PC
@@ -37,7 +37,7 @@ Mitosis 的架構中，主要擁有這些硬體：
               |
          nRF51822(#1)
           /        \
-       <BLE>        <BLE>
+     <Gazell>      <Gazell>
         /              \
   nRF51822(#2)        nRF51822(#3)
       |                   |
@@ -46,7 +46,7 @@ Mitosis 的架構中，主要擁有這些硬體：
 
 可以看出，Mitosis 的架構其實很簡單。雖然這樣的架構要用上更多的 IC，以導致它感覺起來不夠精簡，但這也其容易達成、理解或修改。
 
-總的來說，左右鍵盤上的 nRF51822 會處理各自的按鍵狀態，並各自將其透過 BLE 傳輸給接收器上的 nRF51822，接收器受到新的按鍵狀態後，會將左右部分的按鍵狀態組合在一起，並透過 UART 傳給 Pro Micro，Pro Micro 收到來自 UART 的封包後就解析按鍵狀態，並交由 QMK 處理。
+總的來說，左右鍵盤上的 nRF51822 會處理各自的按鍵狀態，並各自將其透過 Gazell 傳輸給接收器上的 nRF51822，接收器受到新的按鍵狀態後，會將左右部分的按鍵狀態組合在一起，並透過 UART 傳給 Pro Micro，Pro Micro 收到來自 UART 的封包後就解析按鍵狀態，並交由 QMK 處理。
 
 # 程式
 
@@ -58,7 +58,7 @@ Mitosis 的架構中，主要擁有這些硬體：
 - `main.c` 是主程式。
 - `config/mitosis.h` 是包含了腳位設定的標頭檔。
 
-左右手鍵盤上 nRF51822 的程式是同一個，僅透過 `#define COMPILE_RIGHT` 或 `#define COMPILE_LEFT` 來切換不同的腳位設定和 BLE 通道編號（Pipe number）而已。
+左右手鍵盤上 nRF51822 的程式是同一個，僅透過 `#define COMPILE_RIGHT` 或 `#define COMPILE_LEFT` 來切換不同的腳位設定和通道編號（Pipe number）而已。
 
 在這裡有幾個重要的函數（僅列出函數名稱）：
 - `read_keys()`
@@ -334,7 +334,7 @@ int main(void)
 }
 ```
 
-這裡就是來負責將 BLE 接收到的左右鍵盤按鍵狀態重新打包，只要確認了來自 QMK 的輪詢請求（`s`），就透過 UART 傳送出去。
+這裡就是來負責將 Gazell 接收到的左右鍵盤按鍵狀態重新打包，只要確認了來自 QMK 的輪詢請求（`s`），就透過 UART 傳送出去。
 
 傳給 QMK 的封包除了按鍵狀態外，還有一個 `0xE0` 作爲結束封包。
 
@@ -449,6 +449,8 @@ uint8_t matrix_scan(void)
 - [qmk/qmk_firmware](https://github.com/qmk/qmk_firmware/tree/master/keyboards/mitosis)
 	- QMK 程式
 	- commit：[`f718a10889e6adf33f3fc2f41b61cad7fe9e0c2e`](https://github.com/qmk/qmk_firmware/commit/f718a10889e6adf33f3fc2f41b61cad7fe9e0c2e)
+
+> 文章修改記錄 2022/02/23：原本寫的各個 nRF51822 之間的通訊方式是 BLE，但應該是 Gazell，故更新內容。 
 
 # 相關文章
 
