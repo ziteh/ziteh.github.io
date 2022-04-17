@@ -69,6 +69,8 @@ Bit | Name | 描述
 14|R/W|`0` 代表要寫入。`1` 代表要讀取。
 13:0|ADDR| 要讀寫的暫存器位置。
 
+> 讀取「NOP (`0x0000`)」暫存器等同一個 `nop`（no operation，無操作）指令。
+
 ## Read Data Frame
 
 Bit | Name | 描述
@@ -78,8 +80,6 @@ Bit | Name | 描述
 13:0|DATA| 資料。
 
 要讀取資料時，先使用「Command Frame」傳輸要讀取的位置，AS5047P 會在 CS 上拉並重新下拉後的下一個讀取指令時，在 MISO 上傳輸「Read Data Frame」。
-
-> 讀取「NOP（`0x0000`）」暫存器等同一個 `nop`（no operation，無操作）指令。
 
 ## Write Data Frame
 
