@@ -77,7 +77,9 @@ Bit | Name | 描述
 14|EF|`0` 代表沒有錯誤發生。`1` 代表有錯誤發生。
 13:0|DATA| 資料。
 
-要讀取資料時，先使用「Command Frame」傳輸要讀取的位置，AS5047P 會在下一個讀取指令時，在 MISO 上傳輸「Read Data Frame」。
+要讀取資料時，先使用「Command Frame」傳輸要讀取的位置，AS5047P 會在 CS 上拉並重新下拉後的下一個讀取指令時，在 MISO 上傳輸「Read Data Frame」。
+
+> 讀取「NOP（`0x0000`）」暫存器等同一個 `nop`（no operation，無操作）指令。
 
 ## Write Data Frame
 
@@ -170,7 +172,7 @@ int as5047p_get_angle(bool with_daec, float *angle_degree)
   uint16_t data = as5047p_read_data(address);
   if (BIT_READ(data, 14) == 0)
   {
-    *angle_degree = (data & 0x3FFF) * (360.0 / 0x3FFF);
+    *angle_degree = (data & 0x3FFF) * (360.0 / 0x4000);
     return 0; /* No error occurred. */
   }
   return -1; /* Error occurred. */
@@ -195,6 +197,7 @@ bool is_even_parity(uint16_t data)
 ```c
 void as5047p_spi_transmit(uint16_t data)
 {
+  delay(T_CSN_DELAY);
   as5047p_spi_select();
   as5047p_spi_send(data);
   as5047p_spi_deselect();
@@ -202,10 +205,19 @@ void as5047p_spi_transmit(uint16_t data)
 
 uint16_t as5047p_spi_receive(void)
 {
+  delay(T_CSN_DELAY);
   as5047p_spi_select();
   uint16_t data = as5047p_spi_read();
   as5047p_spi_deselect();
   return data;
+}
+
+void delay(volatile uint16_t t)
+{
+  while (t--)
+  {
+    __asm__("nop"); /* Do nothing. */
+  }
 }
 
 void as5047p_spi_send(uint16_t data)
@@ -235,10 +247,11 @@ void as5047p_spi_deselect(void)
 
 # 後記
 
-最近在做馬達的閉迴路位置控制，因此買了這個 AS5047P 來用，就順便寫了本篇文章做記錄。
+最近在做馬達的閉迴路位置控制，因此買了這個 AS5047P 來用，就順便寫了本篇文章做記錄。而此程式我也有放在 GitHub 上：[ziteh/as5047p_driver](https://github.com/ziteh/as5047p_driver)
 
 若有問題或內容有誤還請告知，謝謝！
 
-# 參考資料
+# 相關連結
 
+- [\[STM32學習記錄\]系列文章列表](https://ziteh.github.io/categories/STM32%E5%AD%B8%E7%BF%92%E8%A8%98%E9%8C%84/)
 - [AS5047P Datasheet](https://ams.com/documents/20143/36005/AS5047P_DS000324_3-00.pdf)
