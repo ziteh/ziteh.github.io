@@ -89,7 +89,9 @@ Bit | Name | 描述
 14|0|永遠為 `0`。
 13:0|DATA| 資料。
 
-要寫入資料時，先使用「Command Frame」傳輸要寫入的位置，再使用「Write Data Frame」傳輸要寫入的資料。當「Write Data Frame」在 MOSI 上傳輸時，AS5047P 會在 MISO 上傳輸該暫存器目前的值（舊的值），並在下一次的「Command Frame」在 MOSI 上傳輸時，AS5047P 會在 MISO 上傳輸該暫存器實際的值。
+要寫入資料時，先使用「Command Frame」傳輸要寫入的位置，再使用「Write Data Frame」傳輸要寫入的資料。
+
+當「Write Data Frame」在 MOSI 上傳輸時，AS5047P 會在 MISO 上傳輸該暫存器目前的值（舊的值），並在下一次的「Command Frame」在 MOSI 上傳輸時，AS5047P 會在 MISO 上傳輸該暫存器實際的值。
 
 # 程式
 
