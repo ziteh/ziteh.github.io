@@ -12,10 +12,11 @@ date: 2022-09-14 13:00:00
 在開發 STM32 等 ARM 架構的 MCU 時，[Keil MDK](https://www2.keil.com/mdk5) 是很多人會使用的 IDE。筆者我最一開始學 STM32 時也是照著書上的教學，從用 Keil MDK 建工作環境開始學起，但是一段時間後我總用不習慣 Keil MDK，後來我就轉而使用 [Eclipse](https://www.eclipse.org/downloads/)，再之後發現了 ST 版本的 [TrueSTUDO](https://www.st.com/en/development-tools/truestudio.html)。  
   
 到了 2020 年，我突然得知 [Visual Studio Code](https://code.visualstudio.com/)（往後簡稱爲 VS Code）這個文字編輯器，並開始慢慢地將各種程式的開發都轉到 VS Code 上。這時我也在嘗試在 VS Code 上開發 STM32，但實際建立環境的過程對我來說有點麻煩，最後就放棄了。  
-
-<!--more-->
   
 再之後，我無意間得知 [PlatformIO](https://platformio.org/)（往後簡稱爲 PIO），嘗試過後發現它使用起來相當簡單方便，但該有的功能也都沒少，從此我終於可以在 VS Code 上輕鬆地開發 STM32 了。  
+
+<!--more-->
+
 # PlatformIO
 對我來說，PIO 集結了眾多優點：  
 * 跨平臺
@@ -33,8 +34,8 @@ date: 2022-09-14 13:00:00
 安裝完後就可以從 VS Code 左側點擊 PIO 的圖示，進入 PIO 的 Home 畫面。  
   
 ![PIO-HOME](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsPILuVMSSfTGeLZKcLlexOWo5kV491wwGFlAJhR_zNHX3p7Nsm108mC_yzORPK6V1ZbzoFRJMBut08AFOlq54t959lCq5WdP0583eupyUt7a22hOYbG_MLVdbUQf3zZqI75j8ZxaORz8EzDPR_Wi6nPAiUR7wXP0yu51GB7TzWl2aKqse2pY9gLgW/s16000/PIO-Home_1_1661182189141_0.png)  
-
 ▲ PIO 的 Home 畫面。  
+
 ## 爲 PlatformIO 安裝 STM32 平臺
 PIO 支援許多不同的平臺（Platforms），如 Atmel AVR、ESP、nRF5 等，而我們要安裝 [ST STM32 平臺](https://registry.platformio.org/platforms/platformio/ststm32)。  
   
