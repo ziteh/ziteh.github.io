@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Checkout codes
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v1
@@ -34,7 +34,7 @@ jobs:
           hexo generate
 
       - name: Deploy Hexo blog
-        uses: JamesIves/github-pages-deploy-action@4
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: master
           commit-message: "GitHub Actions auto deploy"
