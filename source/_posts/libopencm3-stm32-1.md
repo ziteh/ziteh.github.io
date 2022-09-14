@@ -33,4 +33,4 @@ LibOpenCM3 是一個開源（LGPL-3.0 or GPL-3.0）的 ARM Cortex-M 微控制器
 	    
 另外，如果真的有人是看著這系列的文章才開始學習 STM32，且不知道要買什麼開發板的話，我很推薦使用 ST 官方的 [Nucleo 系列開發板](https://www.st.com/en/evaluation-tools/stm32-nucleo-boards.html)（例如上面那兩片），主要是因爲它們都自帶 ST-Link，在燒錄與除錯程式時很方便。而且根據需求有 Nucleo-32/64/144 這三種不同大小和 GPIO 數量的系列可以選擇，就算是最小巧的 Nucleo-32 系列也都有自帶 ST-Link。
 
-> 本文同步發表於 [iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/users/20151756/articles)。
+> 本文同步發表於 [iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10290505)。
