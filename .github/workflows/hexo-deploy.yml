@@ -34,7 +34,7 @@ jobs:
           hexo generate
 
       - name: Deploy Hexo blog
-        uses: JamesIves/github-pages-deploy-action@4.1.6
+        uses: JamesIves/github-pages-deploy-action@4
         with:
           branch: master
           commit-message: "GitHub Actions auto deploy"
