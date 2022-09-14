@@ -25,6 +25,7 @@ jobs:
 
       - name: Install npm dependencies
         run: |
+          npm install hexo-cli -g
           npm ci
 
       - name: Clean Hexo files
