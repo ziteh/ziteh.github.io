@@ -1,4 +1,4 @@
-title: '簡單入門 LibOpenCM3 STM32 嵌入式系統開發 - 前言'
+title: '簡單入門 LibOpenCM3 STM32 嵌入式系統開發 - 前言與基本介紹'
 author: ZiTe
 tags:
   - STM32
