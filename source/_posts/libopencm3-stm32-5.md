@@ -203,7 +203,7 @@ int main(void)
 
 ## 成果
   
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJgtNZ1OAUDzWV-6opgIXYXKbB2V4NEmDFh1UCC2bzTQ55h-jDx4YoB0uSZqduDWZXjUEOgec3wuTvf8WMg5plKgaWEOA_SclRUy_KnMsy1iakdoNDIJvi1ZoaKK0i1UHs6UbsDfpZbT93bONnceWQa1phumS6ainbGw0oapwPfy4RnCfwiFcfhkLd/s16000/gpio_input.gif)  
+![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJgtNZ1OAUDzWV-6opgIXYXKbB2V4NEmDFh1UCC2bzTQ55h-jDx4YoB0uSZqduDWZXjUEOgec3wuTvf8WMg5plKgaWEOA_SclRUy_KnMsy1iakdoNDIJvi1ZoaKK0i1UHs6UbsDfpZbT93bONnceWQa1phumS6ainbGw0oapwPfy4RnCfwiFcfhkLd/w225-h400/gpio_input.gif)
 
 # 小結
 這次介紹了最簡單的 GPIO 輸入寫法。說實話，這種用法比較少會實際應用到，因爲大多數情況輪詢是一件很沒效率也不夠聰明的方法。通常要使用按鈕輸入時，我都會優先考慮使用外部中斷（EXTI）的方式達成，因此下一篇要介紹的就是外部中斷。  
