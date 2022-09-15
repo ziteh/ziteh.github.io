@@ -5,7 +5,7 @@ tags:
   - 教學
 categories:
   - '簡單入門 LibOpenCM3 STM32 嵌入式系統開發'
-date: 2022-09-14 11:04:00
+date: 2022-09-15 11:04:00
 ---
 
 # IDE 的尋覓過程
