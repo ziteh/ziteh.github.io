@@ -192,7 +192,7 @@ int main(void)
 
 # 結語
 
-本次文章內介紹的程式我也有放在 [GitHub](https://github.com/ziteh/libopencm3-stm32-examples/tree/main/exti_button) 上，可以直接載下來並使用 PlatformIO 開始專案。
+本次文章內介紹的程式我也有放在 [GitHub](https://github.com/ziteh/stm32-examples) 上，可以直接載下來並使用 PlatformIO 開始專案。
 
 # 相關文章
 

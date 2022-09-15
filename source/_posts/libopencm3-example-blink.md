@@ -13,7 +13,7 @@ date: 2021-11-26 21:17:00
 
 [LibOpenCM3](https://libopencm3.org/) 是一個 Open-Source（LGPL） 的 ARM Cortex-M3 微控制器底層硬體函式庫，支援包含 STM32、NXP LPC1000、Atmel SAM3U 等各種微控制器。
 
-本篇文章將會示範如何以 LibOpenCM3 寫出可以在 STM32 上執行的 LED 閃爍程式。本文的程式也有一併放在 GitHub 上：[ziteh/libopencm3-stm32-examples](https://github.com/ziteh/libopencm3-stm32-examples)。
+本篇文章將會示範如何以 LibOpenCM3 寫出可以在 STM32 上執行的 LED 閃爍程式。本文的程式也有一併放在 GitHub 上：[ziteh/stm32-examples](https://github.com/ziteh/stm32-examples)。
 
 <!--more-->
 
@@ -152,7 +152,7 @@ int main(void)
 
 # 結語
 
-本次文章內介紹的程式我也有放在 [GitHub](https://github.com/ziteh/libopencm3-stm32-examples/tree/main/blink) 上，可以直接載下來並使用 PlatformIO 開始專案。
+本次文章內介紹的程式我也有放在 [GitHub](https://github.com/ziteh/stm32-examples) 上，可以直接載下來並使用 PlatformIO 開始專案。
 
 各位也可以參考 [PlatformIO 所提供的範例](https://github.com/platformio/platform-ststm32/blob/develop/examples/libopencm3-blink/src/main.c)。
 
