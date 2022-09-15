@@ -75,7 +75,7 @@ void pwm_setup(void)
   timer_set_oc_mode(TIM3, TIM_OC2, TIM_OCM_PWM1);
   timer_set_oc_value(TIM3,
                      TIM_OC2,
-                     PWM_TIMER_PERIOD * (PWM_DUTY_CYCLE / 100.0));
+                     (PWM_TIMER_PERIOD + 1) * (PWM_DUTY_CYCLE / 100.0));
 
   timer_enable_oc_output(TIM3, TIM_OC2);
   timer_enable_counter(TIM3);
@@ -183,7 +183,7 @@ void pwm_setup(void)
   timer_set_oc_mode(TIM3, TIM_OC2, TIM_OCM_PWM1);
   timer_set_oc_value(TIM3,
                      TIM_OC2,
-                     PWM_TIMER_PERIOD * (PWM_DUTY_CYCLE / 100.0));
+                     (PWM_TIMER_PERIOD + 1) * (PWM_DUTY_CYCLE / 100.0));
 
   timer_enable_oc_output(TIM3, TIM_OC2);
   timer_enable_counter(TIM3);
@@ -194,7 +194,7 @@ void pwm_setup(void)
 
 `timer_set_oc_value()` 就是改變 CCR 的值，以調整 Duty Cycle。因為我們使用的是「Channel 2」，所以 Output channel 是`TIM_OC2`。
 
-在 `TIM_OCM_PWM1` 模式下，想要輸出 `X`% Duty Cycle 的 PWM，只要把 CCR 的數值也設定成 Timer 週期的 `x`% 就可以了，也就是 `CCR_Value = PWM_TIMER_PERIOD * (PWM_DUTY_CYCLE / 100.0)`。
+在 `TIM_OCM_PWM1` 模式下，想要輸出 `X`% Duty Cycle 的 PWM，只要把 CCR 的數值也設定成 Timer 週期的 `x`% 就可以了，也就是 `CCR_Value = (PWM_TIMER_PERIOD + 1) * (PWM_DUTY_CYCLE / 100.0)`。
 
 最後以 `timer_enable_oc_output()` 啟動 PWM 的輸出，`timer_enable_counter()` 啟動整個 Timer。 
 
@@ -227,7 +227,7 @@ int main(void)
 可以看到輸出的波形誤差很小（設定值爲：Duty Cycle 72.5%，頻率 1 kHz）。
 
 # 結語
-本次的程式我一樣有放在 [GitHub](https://github.com/ziteh/libopencm3-stm32-examples/tree/main/pwm) 上，可以使用 PlatformIO 開始專案。
+本次的程式我一樣有放在 [GitHub](https://github.com/ziteh/stm32-examples) 上，可以使用 PlatformIO 開始專案。
 
 若有什麼問題或錯誤歡迎留言討論。
 
