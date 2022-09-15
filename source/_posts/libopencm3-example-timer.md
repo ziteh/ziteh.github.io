@@ -21,7 +21,7 @@ date: 2022-04-26 12:53:00
 
 計時器可以用來精確的計時，或設定每過一段時間就觸發中斷，以執行特定的中斷服務程序。
 
-本次的程式範例功能是每個一段時間將切換 LED On/Off，使其閃爍。這個程式也有放在 [GitHub](https://github.com/ziteh/libopencm3-stm32-examples/tree/main/timer) 上。
+本次的程式範例功能是每個一段時間將切換 LED On/Off，使其閃爍。這個程式也有放在 [GitHub](https://github.com/ziteh/stm32-examples) 上。
 
 ## 程式全文
 
@@ -276,7 +276,7 @@ int main(void)
 
 # 結語
 
-本次文章內介紹的程式我也有放在 [GitHub](https://github.com/ziteh/libopencm3-stm32-examples/tree/main/timer) 上，可以直接載下來並使用 PlatformIO 開始專案。
+本次文章內介紹的程式我也有放在 [GitHub](https://github.com/ziteh/stm32-examples) 上，可以直接載下來並使用 PlatformIO 開始專案。
 
 # 相關連結
 
