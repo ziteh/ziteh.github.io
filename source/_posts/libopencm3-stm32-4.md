@@ -309,8 +309,6 @@ build_flags = -D NUCLEO_F446RE
 # 小結
 這次簡單介紹了 LibOpenCM3 的 GPIO 輸出用法，這部分只要有搞懂 STM32 的 GPIO 模式應該不會太難。  
 
-本文的程式也都放在 [GitHub](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/blink) 上。
-
 # 參考資料
 * [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
 * [platformio/platform-ststm32](https://github.com/platformio/platform-ststm32)
@@ -318,4 +316,5 @@ build_flags = -D NUCLEO_F446RE
 * [STM32F103RB datasheet (DS5319)](https://www.st.com/resource/en/datasheet/stm32f103rb.pdf)
 * [STM32 Nucleo-64 board user manual (UM1724)](https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf)
 
+> 本文的程式也都放在 [GitHub](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/blink) 上。  
 > 本文同步發表於 [iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/users/20151756/ironman/5382)。
