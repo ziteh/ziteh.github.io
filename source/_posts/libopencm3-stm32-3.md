@@ -20,7 +20,9 @@ GPIO（General Purpose Input/Output）可以說是微控制器最基本的功能
 相比與 Arduino，STM32 在使用 GPIO 時，要設定和注意的地方有很多，因此我先簡單介紹一下 STM32 的 GPIO。  
   
 首先最基本的，在設定 GPIO 時除了可以指定這個 Pin 腳是要是「General Purpose」的 Input 還是 Output 外，還有所謂的「Alternate Function（AF，復用功能）」，也可以設定是否啓用 STM32 內建的 上/下拉電阻（Pull-Up/Down Resistor）。  
+
 若選擇的是 Output 的話，還要設定輸出電路組態是「Push-Pull（PP，推挽）」或「Open-Drain（OD，汲極開路）」，和設定 IO 的速度（如 2MHz）。
+
 如果是 Input 的話則有「類比（Analog）」與「浮接（Floating）」輸入，使用浮接輸入時也常常搭配 STM32 內建的上/下拉電阻使用。
   
 功能模式：  
@@ -65,4 +67,4 @@ GPIO（General Purpose Input/Output）可以說是微控制器最基本的功能
 * [推輓輸出 - 維基百科，自由的百科全書](https://zh.wikipedia.org/zh-tw/%E6%8E%A8%E6%8C%BD%E8%BE%93%E5%87%BA)
 * [集電極開路 - 維基百科，自由的百科全書](https://zh.wikipedia.org/wiki/%E9%9B%86%E7%94%B5%E6%9E%81%E5%BC%80%E8%B7%AF)
 
-> 本文同步發表於 [iT 邦幫忙-2022 iThome 鐵人賽]()
+> 本文同步發表於 [iT 邦幫忙-2022 iThome 鐵人賽]()。
