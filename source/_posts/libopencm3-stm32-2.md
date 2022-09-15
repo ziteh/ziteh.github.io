@@ -33,16 +33,14 @@ date: 2022-09-14 11:04:00
   
 安裝完後就可以從 VS Code 左側點擊 PIO 的圖示，進入 PIO 的 Home 畫面。  
   
-![PIO-HOME](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsPILuVMSSfTGeLZKcLlexOWo5kV491wwGFlAJhR_zNHX3p7Nsm108mC_yzORPK6V1ZbzoFRJMBut08AFOlq54t959lCq5WdP0583eupyUt7a22hOYbG_MLVdbUQf3zZqI75j8ZxaORz8EzDPR_Wi6nPAiUR7wXP0yu51GB7TzWl2aKqse2pY9gLgW/s16000/PIO-Home_1_1661182189141_0.png)  
-▲ PIO 的 Home 畫面。  
+![▲ PIO 的 Home 畫面。 ](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsPILuVMSSfTGeLZKcLlexOWo5kV491wwGFlAJhR_zNHX3p7Nsm108mC_yzORPK6V1ZbzoFRJMBut08AFOlq54t959lCq5WdP0583eupyUt7a22hOYbG_MLVdbUQf3zZqI75j8ZxaORz8EzDPR_Wi6nPAiUR7wXP0yu51GB7TzWl2aKqse2pY9gLgW/s16000/PIO-Home_1_1661182189141_0.png)  
 
 ## 爲 PlatformIO 安裝 STM32 平臺
 PIO 支援許多不同的平臺（Platforms），如 Atmel AVR、ESP、nRF5 等，而我們要安裝 [ST STM32 平臺](https://registry.platformio.org/platforms/platformio/ststm32)。  
   
 在 PIO Home 的左側點擊「Platforms」，在上方的標籤頁選擇「Embedded」並搜尋「ST STM32」，然後就可以點擊「Install」進行安裝。安裝過程可能會需要一段時間。完成後就可以在「Installed」標籤頁中看到「ST STM32」。  
   
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgm1Aibdq_4pIYptNTNwDHGaG6nW_uIo8wT5-tEKcOkY-mSmtBvK0Y9zuH4Gpz0lWtkA4tgYKLNq1hv8eXISiAvJoFMAzmPcyqt17-VqNt7bngj1pE34_GwNtIKwJfajhqS1QSJJ8EVxTd6iX50iRjs7XNE4o-t8W9eRg3VgwVBU5TckBQYjwwjjjIW/s16000/image_1661182872363_0.png)  
-▲ ST STM32 平臺頁面。  
+![▲ ST STM32 平臺頁面。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgm1Aibdq_4pIYptNTNwDHGaG6nW_uIo8wT5-tEKcOkY-mSmtBvK0Y9zuH4Gpz0lWtkA4tgYKLNq1hv8eXISiAvJoFMAzmPcyqt17-VqNt7bngj1pE34_GwNtIKwJfajhqS1QSJJ8EVxTd6iX50iRjs7XNE4o-t8W9eRg3VgwVBU5TckBQYjwwjjjIW/s16000/image_1661182872363_0.png)  
 
 ## 建立專案
 你可以點擊 PIO Home 右上的 Quick Access，或 Projects 頁面的「+ New Project」按鈕建立新專案。  
@@ -55,8 +53,7 @@ PIO 支援許多不同的平臺（Platforms），如 Atmel AVR、ESP、nRF5 等�
   
 填寫完後按下「Finish」就可以了。有時候（通常只有第一次）建立專案會需要花比較久的時間。  
   
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEimjNmFRhw3LB3aGcGeuyTSV8cKebcs9UxO2WCvazKEP2c8cFQ56SkabYFsEPyJHpruQaudoWnqAj_2oV0c9FbKZjSB_FmWeCccm9IurPRdHEWkjS8g0ZGYR3f_X3Y89jmfFDp7h_TM4AgPecgO1B-MxZVAgZU7AsK4Hxee5cD1Hh9yHD2mIZ7zVYhf/s16000/image_1661183230586_0.png)  
-▲ 專案建立頁面。
+![▲ 專案建立頁面。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEimjNmFRhw3LB3aGcGeuyTSV8cKebcs9UxO2WCvazKEP2c8cFQ56SkabYFsEPyJHpruQaudoWnqAj_2oV0c9FbKZjSB_FmWeCccm9IurPRdHEWkjS8g0ZGYR3f_X3Y89jmfFDp7h_TM4AgPecgO1B-MxZVAgZU7AsK4Hxee5cD1Hh9yHD2mIZ7zVYhf/s16000/image_1661183230586_0.png)  
 
 ## 專案結構
 PIO 新建立的專案結構大概如下：  
