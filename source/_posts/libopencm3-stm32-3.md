@@ -67,4 +67,4 @@ GPIO（General Purpose Input/Output）可以說是微控制器最基本的功能
 * [推輓輸出 - 維基百科，自由的百科全書](https://zh.wikipedia.org/zh-tw/%E6%8E%A8%E6%8C%BD%E8%BE%93%E5%87%BA)
 * [集電極開路 - 維基百科，自由的百科全書](https://zh.wikipedia.org/wiki/%E9%9B%86%E7%94%B5%E6%9E%81%E5%BC%80%E8%B7%AF)
 
-> 本文同步發表於 [iT 邦幫忙-2022 iThome 鐵人賽]()。
+> 本文同步發表於 [iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10290881)。
