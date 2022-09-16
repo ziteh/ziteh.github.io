@@ -40,6 +40,9 @@ date: 2022-MM-DD hh:00:00
 # 小結
 這次介紹了STM32 的 EXTI。一開始用 STM32 的 EXTI 時因爲分配與共用的關係，可能會有點搞混，但我想把 EXTI Line 的分配圖多一下應該就可以瞭解了。  
 
+
+下一篇文章將會正式介紹要如何寫程式。
+
 # 參考資料
 * [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
 * [platformio/platform-ststm32](https://github.com/platformio/platform-ststm32)
