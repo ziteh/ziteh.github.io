@@ -53,7 +53,7 @@ GPIO（General Purpose Input/Output）可以說是微控制器最基本的功能
   
 例如要把 PA2 及 PA3 腳當成 USART2 的 Tx 與 Rx 使用的話，要設定這兩腳要啓用的 AF 爲「AF7」。   
 
-![▲ GPIO 與 AF 功能的對應表。取自 [DS10693](https://www.st.com/resource/en/datasheet/stm32f446re.pdf) Rev10 P.57。  ](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj72ewJ_VwsOl1dP04dVnK3d0_gQgeee_F--bjtTCwmkcl6OZTakXSoeTtcYou17UQgHYwZvFe-Mf6jKQCVp_L5apdSxokQz2_58K3fSawxfjjMyu0s0ydjxmkxJ0EyR1dQ5a4lZeAMUEM0KfBjuQsl9FLQC07cwiLG_xfm9BtumOkWG-AIKIqZDxSL/s16000/Screenshot_2022-09-15_115823_1663214323550_0.png)  
+![▲ GPIO 與 AF 功能的對應表。取自 DS10693 Rev10 P.57。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj72ewJ_VwsOl1dP04dVnK3d0_gQgeee_F--bjtTCwmkcl6OZTakXSoeTtcYou17UQgHYwZvFe-Mf6jKQCVp_L5apdSxokQz2_58K3fSawxfjjMyu0s0ydjxmkxJ0EyR1dQ5a4lZeAMUEM0KfBjuQsl9FLQC07cwiLG_xfm9BtumOkWG-AIKIqZDxSL/s16000/Screenshot_2022-09-15_115823_1663214323550_0.png)  
 
 # 小結
 今天簡單說明了 STM32 GPIO 的模式，這些算是基本中的基本，只要弄清楚，未來在使用時就會輕鬆很多，明天終於要正式寫程式了。  
