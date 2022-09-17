@@ -95,7 +95,7 @@ int main(void)
   
 因爲每個 STM32 Nucleo 開發板的 LED 腳位可能不同，因此使用 `#define` 來定義腳位比較方便程式的撰寫與修改。  
   
-根據 [Datasheet](https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf)，Nucleo-F446RE 的板載 LED（LD2）所在的腳位是 PA5（對應 Arduino 的 D13 腳位），也就是 GPIO Port-A 的 5 號腳，因此我們定義 `GPIO_LED_PORT` 爲 `GPIOA`，`GPIO_LED_PIN` 爲 `GPIO5`。此外 RCC 也會需要依照 GPIO Port 進行設定，所以也定義一個 `RCC_LED_PORT` 爲 `RCC_GPIOA`。  
+根據資料手冊 [UM1724](https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf)，Nucleo-F446RE 的板載 LED（LD2）所在的腳位是 PA5（對應 Arduino 的 D13 腳位），也就是 GPIO Port-A 的 5 號腳，因此我們定義 `GPIO_LED_PORT` 爲 `GPIOA`，`GPIO_LED_PIN` 爲 `GPIO5`。此外 RCC 也會需要依照 GPIO Port 進行設定，所以也定義一個 `RCC_LED_PORT` 爲 `RCC_GPIOA`。  
 
 ### Delay 函式
   
@@ -317,4 +317,4 @@ build_flags = -D NUCLEO_F446RE
 * [STM32 Nucleo-64 board user manual (UM1724)](https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf)
 
 > 本文的程式也都放在 [GitHub](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/blink) 上。  
-> 本文同步發表於 [iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/users/20151756/ironman/5382)。
+> 本文同步發表於 [iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10291071)。
