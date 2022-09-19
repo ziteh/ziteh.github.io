@@ -6,7 +6,6 @@ tags:
   - 教學
 categories:
   - '簡單入門 LibOpenCM3 STM32 嵌入式系統開發'
-date: 2022-MM-DD hh:00:00
 ---
 
 # 前言
@@ -58,4 +57,4 @@ STM32 還可以以 NVIC Priority Group 設定搶佔優先級與副優先級的�
 # 參考資料
 * [STM32F446xx reference manual (RM0390)](https://www.st.com/resource/en/reference_manual/rm0390-stm32f446xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)
 
-> 本文同步發表於 [iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/users/20151756/ironman/5382)。
+> 本文同步發表於 [iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10291747)。
