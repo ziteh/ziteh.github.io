@@ -228,8 +228,8 @@ static void timer_setup(void)
   timer_disable_preload(TIM2);
   timer_continuous_mode(TIM2);
 
-  timer_set_prescaler(TIM2, TIMER_PRESCALER); /* Setup TIMx_PSC value. */
-  timer_set_period(TIM2, TIMER_PERIOD);       /* Setup TIMx_ARR value. */
+  timer_set_prescaler(TIM2, TIMER_PRESCALER); /* Setup TIMx_PSC register. */
+  timer_set_period(TIM2, TIMER_PERIOD);       /* Setup TIMx_ARR register. */
 
   timer_enable_counter(TIM2);
 }
@@ -242,7 +242,7 @@ static void timer_setup(void)
 
 `timer_continuous_mode()` 會將 TIMx_CR1 的 OPM（One-pulse mode）設爲 `0`，令 Counter 在 Update event 之後也不會停止，可以一直計數。  
   
-> TIMx_CR1 的詳細說明可以查看 RM0390。  
+> 有關 F446RE 的 TIMx_CR1 的詳細說明可以查看 [RM0390](https://www.st.com/resource/en/reference_manual/rm0390-stm32f446xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)。  
 
 ### Timer ISR
 ``` c
