@@ -77,4 +77,9 @@ Timer 是一個稍微比較複雜的功能，它有很多細節的設定，也�
 
 但 Timer 是一個很重要的功能，我想至少設定 PSC 與 ARR 的部分要看懂，而我也盡力寫得清楚些，並將官方文件的說明都附上。
 
+# 參考資料
+* [STM32F446RE datasheet (DS10693)](https://www.st.com/resource/en/datasheet/stm32f446re.pdf)
+* [STM32F446xx reference manual (RM0390)](https://www.st.com/resource/en/reference_manual/rm0390-stm32f446xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)
+* [STM32F103RB datasheet (DS5319)](https://www.st.com/resource/en/datasheet/stm32f103rb.pdf)
+
 > 本文同步發表於[ iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/users/20151756/ironman/5382)。
