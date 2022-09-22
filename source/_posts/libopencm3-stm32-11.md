@@ -20,6 +20,7 @@ Timer 計時器是各個 MCU 中都會有的基本功能。正如其名，當需
 
 # Timer 頻率
 每個 STM32 中都有許多不同的 Timer，各個 Timer 的規格及功能都不同。我們這次用的是 TIM2，這是一個通用功能計時器（General-purpose timer），爲一個 32 位元的上/下數 Counter，擁有自動裝載（Auto-reload）功能，還有一個 16 位元的可程式預除頻器。
+
 根據 DS10693 的 Figure 3 可以知道 TIM2 在 APB1 （Advanced Peripheral Bus 1）底下。
 
 ![▲ STM32F446xC/E 的功能方塊圖。取自 DS10693 Figure 3。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj8XEh5OYupQ-3-JVsxY4sW1tWx8ZqJUhO1oenC2Yh6RuooigxKdbAmZ7wwniZZgfKVMmSj5dz492cbANOnoml1fUYGek7Qs-9rCtCERqPk3LjtxuzinSoXWc1BbQJoh2yxtVHaaXsM-ZPfhd8V7tL_u_9NIHf_FCRXBXq5JcQywR5Mbc-Sq74RE2Jf/s16000/1.png) 
