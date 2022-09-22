@@ -6,6 +6,7 @@ tags:
   - 教學
 categories:
   - '簡單入門 LibOpenCM3 STM32 嵌入式系統開發'
+date: 2022-09-22 10:35:00
 ---
 
 # 前言
@@ -249,4 +250,4 @@ static void usart_setup(void)
 * [STM32 Nucleo-64 board user manual (UM1724)](https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf)
 
 > 本文的程式也有放在 [GitHub](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/usart_printf) 上。  
-> 本文同步發表於[ iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/users/20151756/ironman/5382)。
+> 本文同步發表於[ iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10292467)。
