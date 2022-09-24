@@ -61,7 +61,7 @@ PSC 是 Prescaler 的意思，它用來設定各 Timer 自己的預除頻值。
 `Timer 頻率 --[Timer 預除頻器]--> Counter 頻率 --[ARR]--> Overflow 頻率`  
 
 寫成公式：  
-![image.png](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6tOm8rGApz9SgH1ruhwO4JK_q2qoWaD1oXlHwpZLz0_sJH309rcAbSVSaHvWWfI_7Sneh-DQ63Yd0-r0OuGYWVzYcxKb6UFbOjN3CoYodhQRV6BeWOvJBjJTB2IW_b1YPcW_HADLoc2g7aDVP-F8WD3K38Gk0yeRV7LBjIXGwADGUmxu28CY83SmW/s16000/5.png) 
+![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6tOm8rGApz9SgH1ruhwO4JK_q2qoWaD1oXlHwpZLz0_sJH309rcAbSVSaHvWWfI_7Sneh-DQ63Yd0-r0OuGYWVzYcxKb6UFbOjN3CoYodhQRV6BeWOvJBjJTB2IW_b1YPcW_HADLoc2g7aDVP-F8WD3K38Gk0yeRV7LBjIXGwADGUmxu28CY83SmW/s16000/5.png) 
 
 * `f_overflow`：Overflow 的發生頻率，也就是我們的目標頻率。
 * `f_counter`：Counter 的計數頻率，也就是上面的 `CK_CNT`。
