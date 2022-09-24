@@ -6,7 +6,7 @@ tags:
   - 教學
 categories:
   - '簡單入門 LibOpenCM3 STM32 嵌入式系統開發'
-date: 2022-09-DD 12:00:00
+date: 2022-09-24 09:00:00
 ---
 
 # 前言
