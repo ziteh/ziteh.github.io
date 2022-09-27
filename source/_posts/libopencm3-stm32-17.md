@@ -9,12 +9,12 @@ categories:
 date: 2022-09-30 12:00:00
 ---
 
-<!--more-->
-
 # 前言
 在[上一篇](https://ziteh.github.io/2022/09/libopencm3-stm32-16/)中已經介紹了 WDG 看門狗計時器的用途以及 IWDG 與 WWDG 的差別，也示範了 IWDG 的基本用法。
 
 這一篇要接著介紹 WWDG 窗口看門狗的基本概念。  
+
+<!--more-->
 
 # 基本概念
 在啓用 WWDG 時有兩種情況會造成它觸發 System Reset：  
@@ -65,8 +65,6 @@ date: 2022-09-30 12:00:00
 
 # 參考資料
 * [STM32 Window Watchdog (WWDG) - Hackster.io](https://www.hackster.io/vasam2230/stm32-window-watchdog-wwdg-dda290)
-* [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
-* [platformio/platform-ststm32](https://github.com/platformio/platform-ststm32)
 * [STM32F446RE datasheet (DS10693)](https://www.st.com/resource/en/datasheet/stm32f446re.pdf)
 * [STM32F446xx reference manual (RM0390)](https://www.st.com/resource/en/reference_manual/rm0390-stm32f446xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)
 * [STM32F103RB datasheet (DS5319)](https://www.st.com/resource/en/datasheet/stm32f103rb.pdf)
