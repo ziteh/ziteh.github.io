@@ -172,7 +172,7 @@ TIMER_PRESCALER = TIMER_CLOCK / COUNTER_CLOCK - 1
                 = 83  // 83 < 2^16 (TIM2_PSC)
                 
 TIMER_PERIOD = (TIMER_CLOCK / ((TIMER_PRESCALER + 1) * GOAL_FREQUENCY)) - 1
-             = (84M / 84 * 5) - 1
+             = (84M / (84 * 5)) - 1
              = (84M / 420) - 1
              = 199999  // 199,999 < 2^32 (TIM2_ARR)
 ```
