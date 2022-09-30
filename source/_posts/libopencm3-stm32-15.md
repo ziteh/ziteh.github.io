@@ -136,7 +136,7 @@ SysTick（System tick timer）是 ARM Cortex M3 系列內建的功能，這是�
   
 最後只要套用上面的公式，並用 `systick_set_reload()` 設定 RVR 的值就好。因爲這裡預計要實現 ms 等級的 delay，所以我希望 SysTick 可以每 1 ms 就中斷一次，也就是中斷頻率爲 1 kHz，故設定 RVR 的值爲 `rcc_ahb_frequency / 8 / 1000 - 1`。  
   
-> RVR 是一個 24 位元的暫存器，它的容許範圍爲 `0x000001`~`0xFFFFFF`，實際在設定時要注意一下。[官方說明](https://developer.arm.com/documentation/dui0552/a/cortex-m3-peripherals/system-timer--systick/systick-reload-value-register)  
+> RVR 是一個 24 位元的暫存器，它的容許範圍爲 `0x000001` \~ `0xFFFFFF`，實際在設定時要注意一下。[官方說明](https://developer.arm.com/documentation/dui0552/a/cortex-m3-peripherals/system-timer--systick/systick-reload-value-register)  
 
 ### Delay 與 SysTick ISR
 ``` c
