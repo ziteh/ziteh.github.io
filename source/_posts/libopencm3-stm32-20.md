@@ -188,7 +188,7 @@ static void delay(uint32_t value);
 ```
 除了基本的 `rcc.h` 和 `gpio.h` 及 必要的 `adc.h` 外，因爲我要使用 USART 和 `printf()`，所以還會需要 `usart.h`、`stdio.h` 與 `errno.h`。  
   
-> USART 和 `printf()` 的詳細用法請看[之前的文章](https://ziteh.github.io/2022/09/libopencm3-stm32-10/)。  
+> USART 和 `printf()` 的詳細用法請看[之前的文章](https://ziteh.github.io/2022/09/libopencm3-stm32-9/)。  
 
 ### 設定 ADC
 ``` c
