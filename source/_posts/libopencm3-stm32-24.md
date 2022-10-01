@@ -22,7 +22,7 @@ SPI（Serial Peripheral Interface）是一種常見的同步序列通訊協定�
 * MISO：Master input, slave output
 * SS：Slave select，或 CS(Chip select)  
 
-關於 SPI 本身我並不打算詳細介紹，若讀者還不熟悉 SPI 的基本概念的話，建議先另外查詢相關文章。我覺得「[Day 13：SPI (Part 1) - 原來是 Shift Register 啊！我還以為是 SPI 呢！](https://ithelp.ithome.com.tw/articles/10245910)」這篇寫得不錯。
+關於 SPI 本身我並不打算詳細介紹，若讀者還不熟悉 SPI 的基本概念的話，建議先另外查詢相關文章。我覺得「[Day 13：SPI (Part 1) - 原來是 Shift Register 啊！我還以為是 SPI 呢！](https://ithelp.ithome.com.tw/articles/10245910)」與「[SPI (Serial Peripheral Interface) 串列 (序列) 週邊介面](https://magicjackting.pixnet.net/blog/post/164725144)」這兩篇寫得就很不錯。
 
 # 正文
 首先一樣以 Nucleo-F446RE 做示範。  
@@ -61,12 +61,12 @@ int main(void)
 
 static void spi_select(void)
 {
-  gpio_clear(GPIO_SPI_CS_PORT, GPIO_SPI_CS_PIN);
+  gpio_clear(GPIO_SPI_PORT, GPIO_SPI_CS_PIN);
 }
 
 static void spi_deselect(void)
 {
-  gpio_set(GPIO_SPI_CS_PORT, GPIO_SPI_CS_PIN);
+  gpio_set(GPIO_SPI_PORT, GPIO_SPI_CS_PIN);
 }
 
 static void rcc_setup(void)
@@ -75,7 +75,6 @@ static void rcc_setup(void)
 
   rcc_periph_clock_enable(RCC_SYSCFG); /* For EXTI. */
   rcc_periph_clock_enable(RCC_GPIOA);
-  rcc_periph_clock_enable(RCC_GPIOB);
   rcc_periph_clock_enable(RCC_GPIOC);
   rcc_periph_clock_enable(RCC_USART2);
   rcc_periph_clock_enable(RCC_SPI1);
@@ -85,25 +84,27 @@ static void spi_setup(void)
 {
   /*
    * Set SPI-SCK & MISO & MOSI pin to alternate function.
-   * Set SPI-CS pin to output push-pull (control CS by manual instead of AF).
+   * Set SPI-CS pin to output push-pull (control CS by manual).
    */
-  gpio_mode_setup(GPIO_SPI_SCK_MISO_MOSI_PORT,
+  gpio_mode_setup(GPIO_SPI_PORT,
                   GPIO_MODE_AF,
                   GPIO_PUPD_NONE,
                   GPIO_SPI_SCK_PIN | GPIO_SPI_MISO_PIN | GPIO_SPI_MOSI_PIN);
 
-  gpio_set_output_options(GPIO_SPI_SCK_MISO_MOSI_PORT,
+  gpio_set_output_options(GPIO_SPI_PORT,
                           GPIO_OTYPE_PP,
                           GPIO_OSPEED_50MHZ,
-                          GPIO_SPI_SCK_PIN | GPIO_SPI_MISO_PIN | GPIO_SPI_MOSI_PIN);
+                          GPIO_SPI_SCK_PIN | GPIO_SPI_MOSI_PIN);
 
-  gpio_set_af(GPIO_SPI_SCK_MISO_MOSI_PORT,
+  gpio_set_af(GPIO_SPI_PORT,
               GPIO_SPI_AF,
               GPIO_SPI_SCK_PIN | GPIO_SPI_MISO_PIN | GPIO_SPI_MOSI_PIN);
 
-  gpio_mode_setup(GPIO_SPI_CS_PORT, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO_SPI_CS_PIN);
-  gpio_set_output_options(GPIO_SPI_CS_PORT, GPIO_OTYPE_PP, GPIO_OSPEED_25MHZ, GPIO_SPI_CS_PIN);
+  /* In master mode, control CS by user instead of AF. */
+  gpio_mode_setup(GPIO_SPI_PORT, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO_SPI_CS_PIN);
+  gpio_set_output_options(GPIO_SPI_PORT, GPIO_OTYPE_PP, GPIO_OSPEED_25MHZ, GPIO_SPI_CS_PIN);
 
+  spi_disable(SPI1);
   spi_reset(SPI1);
 
   /* Set up in master mode. */
@@ -115,11 +116,15 @@ static void spi_setup(void)
                   SPI_CR1_MSBFIRST);               /* Data frame bit order. */
   spi_set_full_duplex_mode(SPI1);
 
-  /* Set to hardware NSS management and enable NSS output. */
-  spi_disable_software_slave_management(SPI1); /* SSM = 0. */
-  spi_enable_ss_output(SPI1);                  /* SSOE = 1. */
-  spi_deselect();
+  /*
+   * CS pin is not used on master side at standard multi-slave config.
+   * It has to be managed internally (SSM=1, SSI=1)
+   * to prevent any MODF error.
+   */
+  spi_enable_software_slave_management(SPI1); /* SSM = 1. */
+  spi_set_nss_high(SPI1);                     /* SSI = 1. */
 
+  spi_deselect();
   spi_enable(SPI1);
 }
 
@@ -167,23 +172,20 @@ static void usart_setup(void)
  */
 void usart2_isr(void)
 {
-  uint8_t indata = usart_recv(USART2);
+  uint8_t indata = usart_recv(USART2); /* Read received data. */
 
   spi_select();
   spi_send(SPI1, indata);
 
-  /*
-   * Wait for SPI transmit complete.
-   * Ref: https://controllerstech.com/spi-using-registers-in-stm32/.
-   */
-  while (!(SPI_SR(SPI1) & SPI_SR_TXE))
+  /* Wait for SPI transmit complete. */
+  while (!(SPI_SR(SPI1) & SPI_SR_TXE)) /* Wait for 'Transmit buffer empty' flag to set. */
   { }
-  while ((SPI_SR(SPI1) & SPI_SR_BSY))
+  while ((SPI_SR(SPI1) & SPI_SR_BSY)) /* Wait for 'Busy' flag to reset. */
   { }
 
   spi_deselect();
 
-  /* Clear RXNE(Read data register not empty) flag at SR(Status register). */
+  /* Clear 'Read data register not empty' flag. */
   USART_SR(USART2) &= ~USART_SR_RXNE;
 }
 
@@ -195,13 +197,12 @@ void exti9_5_isr(void)
   exti_reset_request(EXTI_SPI_RQ);
 
   spi_select();
-  while ((SPI_SR(SPI1) & SPI_SR_BSY))
+  spi_send(SPI1, 0x00);               /* Just for beget clock signal. */
+  while ((SPI_SR(SPI1) & SPI_SR_BSY)) /* Wait for 'Busy' flag to reset. */
   { }
-  
-  spi_send(SPI1, 0x00); /* Just for beget clock signal. */
   uint8_t indata = spi_read(SPI1);
-  
-  while ((SPI_SR(SPI1) & SPI_SR_BSY))
+
+  while ((SPI_SR(SPI1) & SPI_SR_BSY)) /* Wait for 'Busy' flag to reset. */
   { }
   spi_deselect();
 
@@ -226,13 +227,12 @@ void exti9_5_isr(void)
 
 #define USART_BAUDRATE (9600)
 
-#define GPIO_SPI_SCK_MISO_MOSI_PORT (GPIOA)
+#define GPIO_SPI_PORT (GPIOA)
 #define GPIO_SPI_SCK_PIN (GPIO5)  /* D13. */
 #define GPIO_SPI_MISO_PIN (GPIO6) /* D12. */
 #define GPIO_SPI_MOSI_PIN (GPIO7) /* D11. */
-#define GPIO_SPI_CS_PORT (GPIOB)
-#define GPIO_SPI_CS_PIN (GPIO6) /* D10. */
-#define GPIO_SPI_AF (GPIO_AF5)  /* Ref: Table-11 in DS10693. */
+#define GPIO_SPI_CS_PIN (GPIO4)   /* A2. */
+#define GPIO_SPI_AF (GPIO_AF5)    /* Ref: Table-11 in DS10693. */
 
 #define GPIO_SPI_RQ_PORT (GPIOC)
 #define GPIO_SPI_RQ_PIN (GPIO7) /* D9. */
@@ -240,16 +240,17 @@ void exti9_5_isr(void)
 #define NVIC_SPI_RQ_IRQ (NVIC_EXTI9_5_IRQ)
 
 #define GPIO_USART_TXRX_PORT (GPIOA)
-#define GPIO_USART_TX_PIN (GPIO2) /* D1. */
-#define GPIO_USART_RX_PIN (GPIO3) /* D0. */
+#define GPIO_USART_TX_PIN (GPIO2) /* ST-Link (D1). */
+#define GPIO_USART_RX_PIN (GPIO3) /* ST-Link (D0). */
 #define GPIO_USART_AF (GPIO_AF7)  /* Ref: Table-11 in DS10693. */
 
-static void spi_select(void);
-static void spi_deselect(void);
 static void usart_setup(void);
 static void spi_rq_setup(void);
 static void spi_setup(void);
 static void rcc_setup(void);
+
+static void spi_select(void);
+static void spi_deselect(void);
 
 #endif /* MAIN_H. */
 ```
@@ -268,29 +269,32 @@ static void rcc_setup(void);
 
 ### 設定 SPI
 ``` c
+
 static void spi_setup(void)
 {
   /*
    * Set SPI-SCK & MISO & MOSI pin to alternate function.
-   * Set SPI-CS pin to output push-pull (control CS by manual instead of AF).
+   * Set SPI-CS pin to output push-pull (control CS by manual).
    */
-  gpio_mode_setup(GPIO_SPI_SCK_MISO_MOSI_PORT,
+  gpio_mode_setup(GPIO_SPI_PORT,
                   GPIO_MODE_AF,
                   GPIO_PUPD_NONE,
                   GPIO_SPI_SCK_PIN | GPIO_SPI_MISO_PIN | GPIO_SPI_MOSI_PIN);
 
-  gpio_set_output_options(GPIO_SPI_SCK_MISO_MOSI_PORT,
+  gpio_set_output_options(GPIO_SPI_PORT,
                           GPIO_OTYPE_PP,
                           GPIO_OSPEED_50MHZ,
-                          GPIO_SPI_SCK_PIN | GPIO_SPI_MISO_PIN | GPIO_SPI_MOSI_PIN);
+                          GPIO_SPI_SCK_PIN | GPIO_SPI_MOSI_PIN);
 
-  gpio_set_af(GPIO_SPI_SCK_MISO_MOSI_PORT,
+  gpio_set_af(GPIO_SPI_PORT,
               GPIO_SPI_AF,
               GPIO_SPI_SCK_PIN | GPIO_SPI_MISO_PIN | GPIO_SPI_MOSI_PIN);
 
-  gpio_mode_setup(GPIO_SPI_CS_PORT, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO_SPI_CS_PIN);
-  gpio_set_output_options(GPIO_SPI_CS_PORT, GPIO_OTYPE_PP, GPIO_OSPEED_25MHZ, GPIO_SPI_CS_PIN);
+  /* In master mode, control CS by user instead of AF. */
+  gpio_mode_setup(GPIO_SPI_PORT, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO_SPI_CS_PIN);
+  gpio_set_output_options(GPIO_SPI_PORT, GPIO_OTYPE_PP, GPIO_OSPEED_25MHZ, GPIO_SPI_CS_PIN);
 
+  spi_disable(SPI1);
   spi_reset(SPI1);
 
   /* Set up in master mode. */
@@ -302,11 +306,15 @@ static void spi_setup(void)
                   SPI_CR1_MSBFIRST);               /* Data frame bit order. */
   spi_set_full_duplex_mode(SPI1);
 
-  /* Set to hardware NSS management and enable NSS output. */
-  spi_disable_software_slave_management(SPI1); /* SSM = 0. */
-  spi_enable_ss_output(SPI1);                  /* SSOE = 1. */
-  spi_deselect();
+  /*
+   * CS pin is not used on master side at standard multi-slave config.
+   * It has to be managed internally (SSM=1, SSI=1)
+   * to prevent any MODF error.
+   */
+  spi_enable_software_slave_management(SPI1); /* SSM = 1. */
+  spi_set_nss_high(SPI1);                     /* SSI = 1. */
 
+  spi_deselect();
   spi_enable(SPI1);
 }
 ```
@@ -324,7 +332,15 @@ CPOL 決定了 SPI 閒置時 SCK 要爲 `Low`（CPOL = `0`） 還是 `High`（CP
 | 3 | 1 | 1 |
   
 這裡我使用 CPOL = `0`（`SPI_CR1_CPOL_CLK_TO_0_WHEN_IDLE`）與 CPHA = `1`（`SPI_CR1_CPHA_CLK_TRANSITION_2`），也就是 Mode 1。根據此設定，因爲閒置時 SCK 是 `Low`，而 SPI 在第 2 個邊緣進行資料取樣，也就是在 SCK 的負緣採樣。  
-  
+
+另外使用 `spi_set_full_duplex_mode()` 將 SPI 設爲全雙工模式。
+
+要注意的是，若是使用一般的 SPI 配置（一個 Master，多個 Slave）的話，Master device 的 CS（NSS）腳是沒特殊作用的（即 AF 不會控制它，要使用者自己手動控制），且要啓用「Software NSS management（SSM=`1`）」和將 SSI（Internal slave select）設爲 `1`，以避免出錯。因此呼叫 `spi_enable_software_slave_management()` 及 `spi_set_nss_high()`。
+
+> NSS pin is not used on master side at this configuration. It has to be managed internally (SSM=1, SSI=1) to prevent any MODF error. 參考自 RM0390 Rev6 P.852。
+
+![▲ Standard multi-slave communication 的 SPI 接線圖。取自 RM0390 Rev6 P.852](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg3q5zGTwKUgtoHk9VA_u2Zudc2cCPIHnlo76N3BOs5V6gK_uZOmrFNWMR2xH_hSWokrT2OpEiSCGisnUedcldrwULizln5y2gf4r1M_PBNVAtlzcbXNrRFxlELkI8JOh2oGSL_tqdV-RxRLoQDcRLbz5cPmcmG0Kd0GUeiq65dENCr8U1cSk6BASrz/s16000/1.png)
+
 ### SPI CS 選擇/反選擇
 ``` c
 static void spi_select(void)
@@ -346,23 +362,20 @@ CS 的控制就是一般的 GPIO 輸出，將其寫成函式以方便操作。
  */
 void usart2_isr(void)
 {
-  uint8_t indata = usart_recv(USART2);
+  uint8_t indata = usart_recv(USART2); /* Read received data. */
 
   spi_select();
   spi_send(SPI1, indata);
 
-  /*
-   * Wait for SPI transmit complete.
-   * Ref: https://controllerstech.com/spi-using-registers-in-stm32/.
-   */
-  while (!(SPI_SR(SPI1) & SPI_SR_TXE))
+  /* Wait for SPI transmit complete. */
+  while (!(SPI_SR(SPI1) & SPI_SR_TXE)) /* Wait for 'Transmit buffer empty' flag to set. */
   { }
-  while ((SPI_SR(SPI1) & SPI_SR_BSY))
+  while ((SPI_SR(SPI1) & SPI_SR_BSY)) /* Wait for 'Busy' flag to reset. */
   { }
 
   spi_deselect();
 
-  /* Clear RXNE(Read data register not empty) flag at SR(Status register). */
+  /* Clear 'Read data register not empty' flag. */
   USART_SR(USART2) &= ~USART_SR_RXNE;
 }
 ```
@@ -384,22 +397,21 @@ void exti9_5_isr(void)
   exti_reset_request(EXTI_SPI_RQ);
 
   spi_select();
-  while ((SPI_SR(SPI1) & SPI_SR_BSY))
+  spi_send(SPI1, 0x00);               /* Just for beget clock signal. */
+  while ((SPI_SR(SPI1) & SPI_SR_BSY)) /* Wait for 'Busy' flag to reset. */
   { }
-  
-  spi_send(SPI1, 0x00); /* Just for beget clock signal. */
   uint8_t indata = spi_read(SPI1);
-  
-  while ((SPI_SR(SPI1) & SPI_SR_BSY))
+
+  while ((SPI_SR(SPI1) & SPI_SR_BSY)) /* Wait for 'Busy' flag to reset. */
   { }
   spi_deselect();
 
   usart_send_blocking(USART2, indata);
 }
 ```
-當 EXTI 請求腳被觸發（`Low` 觸發）時，代表 Slave device 想發起通訊，因此 Master device 會在此時讀取 MISO 的資料。  
+當 RQ 請求腳被觸發（`Low` 觸發）時，代表 Slave device 想發起通訊，因此 Master device 要拉低 CS 腳以選擇 Slave device，並讀取 MISO 的資料。  
   
-要注意的是基本上 SPI slave device 不會自己產生 SCK 訊號，SCK 是由 Master device 產生的，而在這裡單純呼叫 `spi_read()` 也不會讓 Master device 產生 SCK 訊號，因此要呼叫 `spi_send()` 並傳送一個假資料（這裡爲 `0x00`）讓 SCK 產生。  
+要注意的是 SPI slave device 不會自己產生 SCK 時脈訊號，SCK 是由 Master device 產生的，而在這裡單純呼叫 `spi_read()` 也不會讓 Master device 產生 SCK 訊號，因此要呼叫 `spi_send()` 並傳送一個假資料（這裡爲 `0x00`）讓 SCK 產生。  
 
 ## 多環境程式（F446RE + F103RB）
 由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。  
@@ -419,6 +431,9 @@ void exti9_5_isr(void)
 SPI 是許多感測器及模組在使用的通訊介面，會使用 SPI 才能使用這些外部元件，因此 SPI 也是很重要的功能。這次介紹了最基本的 SPI 用法，應該已經足夠應付基本的使用了。  
   
 # 參考資料
+* [Day 13：SPI (Part 1) - 原來是 Shift Register 啊！我還以為是 SPI 呢！](https://ithelp.ithome.com.tw/articles/10245910)
+* [SPI (Serial Peripheral Interface) 串列 (序列) 週邊介面](https://magicjackting.pixnet.net/blog/post/164725144)
+* [SPI using Registers in STM32](https://controllerstech.com/spi-using-registers-in-stm32/)
 * [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
 * [platformio/platform-ststm32](https://github.com/platformio/platform-ststm32)
 * [STM32F446RE datasheet (DS10693)](https://www.st.com/resource/en/datasheet/stm32f446re.pdf)
