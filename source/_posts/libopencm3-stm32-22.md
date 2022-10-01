@@ -238,7 +238,7 @@ static void adc_setup(void)
 * `adc_set_sample_time_on_all_channels()` 設定所有通道的取樣時間，這裡使用 56 個 Cycle。
 * `adc_enable_eoc_interrupt()` 啓用 ADC 的轉換完成（EOC）中斷。
 * `nvic_enable_irq()` 啓用 NVIC 的 ADC IRQ。
-* `adc_set_regular_sequence()` 設定 Regular 的通道序列。這裡只有 Ch1。
+* `adc_set_regular_sequence()` 設定 Regular 的通道序列。這裡只有 Ch0。
 
 ### ADC ISQ
 ```c
