@@ -29,7 +29,9 @@ date: 2022-09-26 11:48:00
 ![▲ PWM 的波形範例，上數 PWM mode 1 模式。取自 RM0390。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIKVkj3NgvUUj5ZZvegkFmet7d3aC_Y8CQg8Uo010RhlIKGCVW0qNN_yQuE8rGa9J9dUcdU-7Ij8QHcHJCCGVHgUJ3S596Lktihw0tdbHqE7kbJ6qkloKggNSj4bXMcwElSwNw6gGNzd1qnHjPX-zR6MuMXG0fgOjlB-HD7MjaPJ0wKasLpJTZmy7p/s16000/image_1662216176986_0.png)
 
 若 ARR = 9，CCR = 5，在 CNT = 0\~4（共 5 次計數） 時會是 `High`，CNT = 5\~9（共 5 次計數） 時會是 `Low`，此時的 Duty Cycle 是 50%。  
+
 假設 ARR = 99，CCR = 30，在 CNT = 0\~29（共 30 次計數）時會是 `High`，CNT = 30\~99（共 70 次計數）時會是 `Low`，此時的 Duty Cycle 是 30%。  
+
 再假設 ARR = 499，CCR = 350，在 CNT = 0\~349（共 350 次計數）時會是 `High`，CNT = 350\~499（共 150 次計數）時會是 `Low`，此時的 Duty Cycle 是 70%。  
 
 由此可以得知其關係爲：  
