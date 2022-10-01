@@ -300,43 +300,7 @@ int main(void)
 ## 多環境程式（F446RE + F103RB）
 由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。  
   
-以下列出主要的差異部分。完整的程式請看 [GitHub repo](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/adc_multi_channel_injected)。  
-
-要注意的是除了以往的 RCC 與 GPIO 的設定不同外，ADC 也有部分不同，要特別注意。
-
-``` c
-static void adc_setup(void)
-{
-  /* 省略部分程式. */
-
-  /* We want to start the injected conversion in sofrware. */
-#if defined(STM32F1)
-  adc_enable_external_trigger_injected(ADC1,
-                                       ADC_CR2_JSWSTART);
-#else
-  adc_enable_external_trigger_injected(ADC1,
-                                       ADC_CR2_JSWSTART,
-                                       ADC_CR2_JEXTEN_DISABLED);
-#endif
-
-  adc_set_right_aligned(ADC1);
-  adc_set_sample_time_on_all_channels(ADC1, ADC_SIMPLE_TIME);
-
-  uint8_t channels[4];
-  channels[0] = 0;
-  channels[1] = 1;
-  channels[2] = 4;
-  adc_set_injected_sequence(ADC1, 3, channels);
-
-  adc_power_on(ADC1);
-  delay(800000); /* Wait a bit. */
-
-#if defined(STM32F1)
-  adc_reset_calibration(ADC1);
-  adc_calibrate(ADC1);
-#endif
-}
-```
+不過這次的程式我還沒完成 F103RB 的部分，目前不會動作，未來有時間會再看是哪邊有問題。我還是把完整的程式的連接放上來：[GitHub repo](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/adc_multi_channel_injected)。  
 
 # 小結
 這次延續了上一篇的內容，介紹多通道的 Injected 用法。
