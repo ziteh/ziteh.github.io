@@ -51,7 +51,7 @@ PSC 是 Prescaler 的意思，它用來設定各 Timer 自己的預除頻值。
 ![▲ 上數模式下的 TIM2 行爲範例，ARR=0x36。取自 RM0390。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhF3xphTAy7Ilwm-lYcI-j8WBflXxeNHNIIZ36-O11JIsNGPAfxB0kznVcvEpNicphzRFXKrNrSnUHW9GP6MGojyA_95GMTaM6A84V4SyDcql6m_HtzWcq-KDPVtWCe7xH2ZIu-2BUnV1m7xwiIxejgRbCMc1j0TcepXS0eafuBpf7_OoZdAdL_zz0L/s16000/4.png) 
   
 
-所以如果 ARR = `0` 的話，每次 Counter 計數後都會發生 Overflow，此時 Overflow 的發生頻率和 Counter 的計數頻率一樣；當 ARR = `2` 時，Counter 會數：
+所以如果 ARR = `0` 的話，每次 Counter 計數後都會發生 Overflow 及 Update 事件，此時 Overflow 的發生頻率和 Counter 的計數頻率一樣；當 ARR = `2` 時，Counter 會數：
 `0, 1, 2(Overflow), 0, 1, 2(Overflow), 0... ...`  
 
 我們可以把 ARR 再當成一個除頻器，輸入爲 Counter 計數頻率，除頻值爲 ARR+1，輸出爲 Overflow 發生的頻率。
