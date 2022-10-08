@@ -64,10 +64,6 @@ static void led_setup(void)
 
 static void timer_setup(void)
 {
-  /* Setup interrupt. */
-  nvic_enable_irq(NVIC_TIM2_IRQ);
-  timer_enable_irq(TIM2, TIM_DIER_CC1IE);
-
   timer_set_mode(TIM2,
                  TIM_CR1_CKD_CK_INT,
                  TIM_CR1_CMS_EDGE,
@@ -77,7 +73,11 @@ static void timer_setup(void)
 
   timer_set_prescaler(TIM2, TIMER_PRESCALER); /* Setup TIMx_PSC register. */
   timer_set_period(TIM2, TIMER_PERIOD);       /* Setup TIMx_ARR register. */
-
+  
+  /* Setup interrupt. */
+  timer_enable_irq(TIM2, TIM_DIER_UIE);
+  nvic_enable_irq(NVIC_TIM2_IRQ);
+  
   timer_enable_counter(TIM2);
 }
 
@@ -217,10 +217,6 @@ static void rcc_setup(void)
 ``` c
 static void timer_setup(void)
 {
-  /* Setup interrupt. */
-  nvic_enable_irq(NVIC_TIM2_IRQ);
-  timer_enable_irq(TIM2, TIM_DIER_CC1IE);
-
   timer_set_mode(TIM2,
                  TIM_CR1_CKD_CK_INT,
                  TIM_CR1_CMS_EDGE,
@@ -230,7 +226,11 @@ static void timer_setup(void)
 
   timer_set_prescaler(TIM2, TIMER_PRESCALER); /* Setup TIMx_PSC register. */
   timer_set_period(TIM2, TIMER_PERIOD);       /* Setup TIMx_ARR register. */
-
+  
+  /* Setup interrupt. */
+  timer_enable_irq(TIM2, TIM_DIER_UIE);
+  nvic_enable_irq(NVIC_TIM2_IRQ);
+  
   timer_enable_counter(TIM2);
 }
 ```
