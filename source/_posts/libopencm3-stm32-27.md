@@ -19,7 +19,7 @@ CRC（Cyclic redundancy check）即循環冗餘校驗是一種雜湊函式，通
 # 正文
 首先一樣以 Nucleo-F446RE 做示範。  
 
-首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 爲「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h`。  
+首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 爲「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c`。  
 
 ## 完整程式
 ``` c
@@ -205,8 +205,7 @@ static void usart_setup(void)
 
 ![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTB1JUYk01LWrq9SkXyDnTWBqR2Y13DoYuRtasxiWT0hecVBqLGljUTx3wOp4CO-xHuj-lybXSbU8V6kgUMRtbfjq40ds1I7UnQ_X2DfTSouKfWTS6CFpWiOcxSXIvcuTjOvV-FqV2LUexwB--Nwul7-zgGF64mQVPbIDrq4Bt_-RfrbGX8nNL3XIm/s16000/CRC.png)
 
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgSpgzxyQogU3pWHzk8Wv82Vie6PPeTy0dNVVSlkATIqoEjjzTOCfQCw7gZtN2rAOlJksQnSytiBwFRHbxVWWNRBO9HlKAq9hDnuC5Ca3ycFpZRyEKKjcXDEGKFsN9yyQP61A8KOCd5hEdSp9pjwNcSo9gFIBQvEs-MwgQg-5cLXKCSDj_YmAhLa6Tb/s16000/crc%E2%80%94%E2%80%942.png)
-▲ STM32 各系列的 CRC 單元功能比較。取自 AN4187 Rev1 P.13。
+![▲ STM32 各系列的 CRC 單元功能比較。取自 AN4187 Rev1 P.13。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgSpgzxyQogU3pWHzk8Wv82Vie6PPeTy0dNVVSlkATIqoEjjzTOCfQCw7gZtN2rAOlJksQnSytiBwFRHbxVWWNRBO9HlKAq9hDnuC5Ca3ycFpZRyEKKjcXDEGKFsN9yyQP61A8KOCd5hEdSp9pjwNcSo9gFIBQvEs-MwgQg-5cLXKCSDj_YmAhLa6Tb/s16000/crc%E2%80%94%E2%80%942.png)
 
 # 小結
 CRC 的使用還是滿單純的，就只要致能 RCC 後呼叫計算函式，將要計算的資料傳入後就可以得到結果了。
