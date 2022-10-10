@@ -220,7 +220,7 @@ typedef uint8_t (*spiTransfer_t)(uint8_t data);
 typedef void (*delay_t)(uint32_t ms);
 ```
 
-這些就是在定義一個抽象的介面。它只定義這些函式的「長相」（參數及回傳值），並沒有定實際的義實作（Implementation）。而現在高/低模組都依賴於它們。
+這些就是在定義一個抽象的介面。它只定義這些函式的「長相」（參數及回傳值），並沒有定實際的實作（Implementation）。而現在高/低模組都依賴於它們。
 
 現在，無論低層模組長怎麼樣，我都可以在此 Library 以外處理，然後再透過建構子傳入就好。
 
