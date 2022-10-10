@@ -10,7 +10,7 @@ date: 2022-10-11 12:00:00
 ---
 
 # 前言
-在使用 STM32 的過程中，一定會搭配許多不同的模組使用，像是各種感測器或額外的通訊模組等，但是實際搜尋 GitHub 就會發現很難找到基於 LibOpenCM3 寫的 Library。若是很簡單的模組可以大不了自己看一下 Datasheet 就自己寫函式庫算了，但只要稍微複雜一點的模組，自己重寫一個 Library 的效率實在是太低了。
+在使用 STM32 的過程中，一定會搭配許多不同的模組使用，像是各種感測器或額外的通訊模組等，但是實際搜尋 GitHub 就會發現很難找到基於 LibOpenCM3 寫的 Library。若是很簡單的模組大不了可以看一下 Datasheet 就自己寫函式庫算了，但只要稍微複雜一點的模組，自己重寫一個 Library 的效率實在是太低了。
 
 在 GitHub 搜尋「XXX模組 library」或「XXX模組 driver」就會發現找到最多的通常是專門寫給 Arduino 的，再來可能會有一些是 STM32 HAL 的。很明顯這些 Library 都沒辦法直接搭配 LibOpenCM3 使用。但是我們可以透過修改這些現成的 Library，將它們移植到 LibOpenCM3 上，甚至將其改成平臺無關（Platform Independent）的通用 Library。
 
@@ -23,7 +23,7 @@ date: 2022-10-11 12:00:00
 # 挑選 Library
 首先要選擇要以哪個 Library 會基礎進行修改。
 
-如前言所述，GitHub 上最多的搜尋結果通常是 Arduino 的。Arduino 的 Library 基本上就是用 C++ 寫的，而且種會有幾個 repo 星星很多，代表這個 Library 可能很多人在用，所以它的 API 或功能應該比較完成，Bug 也比較少。這種就很適合拿來修改。
+如前言所述，GitHub 上最多的搜尋結果通常是 Arduino 的。Arduino 的 Library 基本上就是用 C++ 寫的，而且總會有幾個 repo 星星很多，代表這個 Library 可能很多人在用，所以它的 API 或功能應該比較完整，Bug 也比較少。這種就很適合拿來修改。
 
 再來還有一個很重要的是要確認該 Library 的授權許可（License），Open-Source License 有很多種，每一種的限制都不同，這部分一定要看清楚該 License 對於修改或再發佈等行爲的限制和要求是什麼。
 
@@ -200,11 +200,11 @@ void mcp2515Init(void)
 完整的範例程式可以看[這裡](https://github.com/ziteh/mcp2515-driver/blob/main/examples/stm32_main.cpp)。
 
 # 依賴反轉 DIP
-我這次修改的主要是將 SPI 即 delay 的操作函式移出 Library，這是一種「依賴反轉」的概念。
+我這次修改的主要是將 SPI 及 delay 的操作函式移出 Library，這是一種「依賴反轉」的概念。
 
 依賴反轉原則（Dependency Inversion Principle，DIP）是 SOLID 原則中的其中一個，其概念是：
 > 高層模組不應該依賴於低層模組，兩者都該依賴抽象。  
-> 抽象不應該依賴於具體實作方式，具體實作方式則應該依賴抽象。
+> 抽象不應該依賴於具體實作，具體實作則應該依賴抽象。
 
 對於不熟悉 OOP  的人，這兩句話應該很難理解。
 
@@ -220,7 +220,7 @@ typedef uint8_t (*spiTransfer_t)(uint8_t data);
 typedef void (*delay_t)(uint32_t ms);
 ```
 
-這些就是在定義一個抽象的介面（Interface）。它只定義這些函式的「長相」（參數及回傳值），並沒有定實際的義實作（Implementation）。而現在高/低模組都依賴於它們。
+這些就是在定義一個抽象的介面。它只定義這些函式的「長相」（參數及回傳值），並沒有定實際的義實作（Implementation）。而現在高/低模組都依賴於它們。
 
 現在，無論低層模組長怎麼樣，我都可以在此 Library 以外處理，然後再透過建構子傳入就好。
 
