@@ -6,7 +6,7 @@ tags:
   - 教學
 categories:
   - '簡單入門 LibOpenCM3 STM32 嵌入式系統開發'
-date: 2022-10-11 12:00:00
+date: 2022-10-11 09:46:00
 ---
 
 # 前言
@@ -237,4 +237,4 @@ typedef void (*delay_t)(uint32_t ms);
 - [autowp/arduino-mcp2515: Arduino MCP2515 CAN interface library](https://github.com/autowp/arduino-mcp2515)
 
 > 本文的程式也有放在 [GitHub](https://github.com/ziteh/mcp2515-driver) 上。  
-> 本文同步發表於[ iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/users/20151756/ironman/5382)。
+> 本文同步發表於[ iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10306596)。
