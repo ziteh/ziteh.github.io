@@ -6,7 +6,7 @@ tags:
   - 教學
 categories:
   - '簡單入門 LibOpenCM3 STM32 嵌入式系統開發'
-date: 2022-10-12 12:00:00
+date: 2022-10-12 09:10:00
 ---
 
 # 前言
@@ -41,4 +41,4 @@ Rust 也致力於發展嵌入式系統，因此 STM32 也不例外，像是 [stm
 
 雖然我自己也還沒寫過 Rust，但我想這是一個可以關注的語言。
 
-> 本文同步發表於[ iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/users/20151756/ironman/5382)。
+> 本文同步發表於[ iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10306880)。
