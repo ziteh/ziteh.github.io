@@ -17,7 +17,7 @@ date: 2022-10-12 09:10:00
 # Mbed
 [Mbed](https://os.mbed.com/) 是 ARM 官方主導的開源 IoT OS，目的是讓開發人員可以更快速且方便的爲 ARM 架構的裝置進行開發。
 
-最大的特色應該是支援 Mbed 的裝置（如多數的 STM32 Nucleo 開發板）透過 USB 連接上電腦時會模擬成隨身碟，只有將編譯好的 Mbed 韌體用複製貼上的方式就可以完成燒錄。
+最大的特色應該是支援 Mbed 的裝置（如多數的 STM32 Nucleo 開發板）透過 USB 連接上電腦時會模擬成隨身碟，只要將編譯好的 Mbed 韌體用複製貼上的方式就可以完成燒錄。
 
 # Zephyr
 [Zephyr](https://zephyrproject.org/) 是一個開源的 RTOS，目前由 Linux 基金會維護。
