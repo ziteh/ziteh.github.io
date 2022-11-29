@@ -35,7 +35,9 @@ date: 2022-11-30 07:15:00
 - `TLE5012B`、`MT6816` 及 `MT6701` 有 SOP-8 封裝，就算只有電烙鐵手工焊接也可以輕鬆完成；TSSOP-14、SSOP-16 只用電烙鐵的話稍微需要一點技術與經驗；QFN-16 只用電烙鐵的話需要有很好的技術，通常會用熱風槍、加熱台或回流焊。
 - `AS5x47` 系列與 `MA730` 滿多人用的，採購方便。
 
-# 相關文章
-參考資料：
+# 參考資料
 - [各厂商磁编码器对比，AS5047、AS5048、AS5600、TLE5012、MA730_Mark_md的博客-CSDN博客_tle5120](https://blog.csdn.net/Mark_md/article/details/100181701)
 - [[STM32學習記錄-7] AS5047P 旋轉位置感測器/磁性編碼器使用教學 | ZiTe 本物誌](https://ziteh.github.io/2022/04/learningstm32-as5047p/)
+- [ams OSRAM 的角度感測器列表](https://ams.com/en/angle-position-on-axis)
+
+
