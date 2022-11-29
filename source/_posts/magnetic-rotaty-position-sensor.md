@@ -21,7 +21,7 @@ date: 2022-11-30 07:15:00
 | [AS5147U](https://ams.com/en/as5147u)                                                                                                     | 14           | 28k        | SPI (10MHz) | ✔           | ✔        | ✔          | 3.3 or 5.0       | TSSOP-14              |
 | [AS5045B](https://ams.com/en/AS5045B)                                                                                                     | 12           | 30k        | SSI         | ✔           | ❌       | ✔          | 3.3 or 5.0       | SSOP-16               |
 | [AS5040](https://ams.com/en/AS5040)                                                                                                       | 10           | 30k        | SSI         | ✔           | ✔        | ✔          | 3.3 or 5.0       | SSOP-16               |
-| [AS5601](https://ams.com/en/AS5601)                                                                                                       | 12           | ?          | I2C         | ✔ (AB only) | ❌       | ❌         | 3\~3.6 or 4.5\~5.5 | SOIC-8                |
+| [AS5601](https://ams.com/en/AS5601)                                                                                                       | 12           | ?          | I2C         | ✔ (AB only) | ❌       | ❌         | 3.0\~3.6 or 4.5\~5.5 | SOIC-8                |
 | [TLE5012B E1000](https://www.infineon.com/cms/en/product/sensor/magnetic-sensors/magnetic-position-sensors/angle-sensors/tle5012b-e1000/) | 15           | ?          | SSC         | ✔ (IIF)     | ❌       | ❌         | 3.0~5.5          | SOP-8                 |
 | [MA730](https://www.monolithicpower.com/en/ma730.html)                                                                                    | 14           | 60k        | SPI         | ✔ (12 bit)  | ❌       | ✔ (14 bit) | 3.3              | QFN-16 (3x3mm)        |
 | [MT6816](https://www.magntek.com.cn/en/list/177/517.htm)                                                                                  | 14           | 25k        | SPI (16MHz) | ✔           | ✔        | ✔ (12 bit) | 3.3~5.0          | SOP-8                 |
@@ -30,7 +30,7 @@ date: 2022-11-30 07:15:00
 
 - `TLE5012B` 是一個系列，其中 `TLE5012B E1000` 是有 Encoder ABI (IIF) 輸出的版本，不同版本有不同的輸出方式。
 - `TLE5012B` 系列所使用的 SSC 通訊很類似 SPI，只是把 MOSI 及 MISO 合併，可以看作是半雙工版本的 SPI。
-- 各種感測器說使用的技術可能不同，例如 `MT6816` 使用 Anisotropic Magneto Resistance (AMR)，`TLE5012B` 使用 Giant Magneto Resistance (GMR)。
+- 各種感測器所使用的技術可能不同，例如 `MT6816` 使用 Anisotropic Magneto Resistance (AMR)，`TLE5012B` 使用 Giant Magneto Resistance (GMR)。
 - `AS5x47` 系列有 [DAEC (Dynamic Angle Error Compensation)](https://ams.com/en/daec)，可以改善高轉速下的輸出延遲。
 - `TLE5012B` 在高轉速下的延遲表現不如擁有 DAEC 的 `AS5x47`，但是便宜。
 - `TLE5012B`、`MT6816` 及 `MT6701` 有 SOP-8 封裝，就算只有電烙鐵手工焊接也可以輕鬆完成；TSSOP-14、SSOP-16 只用電烙鐵的話稍微需要一點技術與經驗；QFN-16 只用電烙鐵的話需要有很好的技術，通常會用熱風槍、加熱台或回流焊。
