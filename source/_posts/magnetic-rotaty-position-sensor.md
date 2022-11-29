@@ -28,6 +28,7 @@ date: 2022-11-30 07:15:00
 | [MT6701](https://www.magntek.com.cn/en/list/177/559.htm)                                                                                  | 14           | 55k        | SSI or I2C  | ✔           | ✔        | ✔ (12 bit) | 3.3~5.0          | SOP-8, QFN-16 (3x3mm) |
 > 上表僅供參考，請以官方資料爲準。
 
+- `TLE5012B` 是一個系列，其中 `TLE5012B E1000` 是有 Encoder ABI (IIF) 輸出的版本，不同版本有不同的輸出方式。
 - `TLE5012B` 系列所使用的 SSC 通訊很類似 SPI，只是把 MOSI 及 MISO 合併，可以看作是半雙工版本的 SPI。
 - 各種感測器說使用的技術可能不同，例如 `MT6816` 使用 Anisotropic Magneto Resistance (AMR)，`TLE5012B` 使用 Giant Magneto Resistance (GMR)。
 - `AS5x47` 系列有 [DAEC (Dynamic Angle Error Compensation)](https://ams.com/en/daec)，可以改善高轉速下的輸出延遲。
