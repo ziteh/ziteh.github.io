@@ -42,3 +42,5 @@ PCB 基本上一下就畫好了。以往比較麻煩的是要把按鍵和二極�
 - ASDF、JKL: 鍵融合修飾鍵（Home row mods）。
 - XCV、M<> 鍵套用 ARTSEY 空白鍵的概念（原本是 4 鍵）。
 - 我一直覺得 Enter 和 Backspace 放在小拇指很糟糕，故改到大拇指。擺在中央讓左右手可以單獨按到。
+
+> 我把 Calcite52 的設計檔案放在 GitHub 上：[ziteh/calcite](https://github.com/ziteh/calcite)
