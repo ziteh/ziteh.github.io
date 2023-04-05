@@ -1,0 +1,107 @@
+baseURL = 'https://ziteh.github.io/'
+languageCode = 'zh-TW'
+title = 'ZiTe 本物誌'
+theme = 'puppet' 
+
+copyright = ""
+paginate = 8
+defaultContentLanguage = "zh"
+
+hasCJKLanguage = true
+enableInlineShortcodes = true
+enableEmoji = true
+# prevent build failures when using Hugo's Instagram shortcode due to deprecated Instagram API.
+# See https://github.com/gohugoio/hugo/issues/7228#issuecomment-714490456
+ignoreErrors = ["error-remote-getjson"]
+
+disqusShortname = "zite-honmonoh" # Disqus
+googleAnalytics = ""
+
+[outputs]
+home = ["HTML", "JSON", "RSS"]
+
+# prevent build failures when using Hugo's template _internal/opengraph.html 
+[taxonomies]
+category = "categories"
+tag = "tags"
+series = "series"
+
+[markup]
+[markup.highlight]
+noClasses = true
+codeFences = true
+guessSyntax = true
+lineNos = true
+lineNumbersInTable = false
+style = "dracula"
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[menu]
+# [[menu.main]]
+# identifier = "home"
+# name = "Home"
+# url = "/"
+# weight = -100
+[[menu.main]]
+identifier = "archive"
+name = "Archive"
+url = "/archive/"
+weight = 10
+# [[menu.main]]
+# identifier = "guide"
+# name = "Guide"
+# url = "/series/themes-guide/"
+# weight = 20
+[[menu.main]]
+identifier = "series"
+name = "Series"
+url = "/series/"
+weight = 30
+[[menu.main]]
+identifier = "about"
+name = "About"
+url = "/about/"
+weight = 50
+# [[menu.main]]
+# identifier = "github"
+# name = "Github"
+# url = "https://github.com/ziteh"
+# weight = 100
+
+
+[params]
+author = "ZiTe"
+description = "一位慢步於程式、電路與文學之人的學習記錄與分享"
+keywords = "blog,developer,personal,electronic,software,firmware,hardware,open-source"
+img_home = ""
+img_404 = ""
+
+useFaviconGenerator = true
+
+custom_js = []
+custom_css = [] # ["css/custom.css"]  Add your file to assets folder  [assets/css/custom.css]
+
+[params.sidebar]
+enable = true
+gravatarEmail = ""
+# Overwritten by your gravatar image if `gravatarEmail` is filled
+avatar = "img/avatar.png"
+bio = ""
+
+[params.social]
+github = "ziteh"
+youtubechannel = "UCXWsvQh7a31jZ6h74Tf8AtA" 
+email = "honmonoh@gmail.com"
+
+# See https://giscus.app/
+# [params.giscus]
+# enable = true
+# repo = "roninro/hugo-theme-puppet"
+# repo_id = "R_kgDOHuvyhw"
+# category = "General"
+# category_id = "DIC_kwDOHuvyh84CQjDo"
+# input_position = "top"
+# theme = "light_tritanopia"
+# lang = "en"
