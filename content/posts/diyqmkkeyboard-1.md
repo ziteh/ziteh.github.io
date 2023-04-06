@@ -204,7 +204,6 @@ QMK 可以設定的按鍵請看說明文件：[Keycodes Overview](https://docs.q
 
 # 相關文章與資源
 
-* [\[系列文章\] 自製QMK鍵盤](/categories/自製QMK鍵盤/)
 * 線上工具
     * [Keyboard Layout Editor](http://www.keyboard-layout-editor.com/)
     * [Keyboard Firmware Builder](https://kbfirmware.com/)
