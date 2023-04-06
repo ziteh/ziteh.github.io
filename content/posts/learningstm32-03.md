@@ -243,7 +243,3 @@ GPIO_Mode_Out_OD|汲極開路通用輸出
 GPIO_Mode_Out_PP|推挽通用輸出
 GPIO_Mode_AF_OD|汲極開路复用輸出
 GPIO_Mode_AF_PP|推挽复用輸出
-
-# 相關文章
-
-* [\[系列文章\] STM32學習記錄](/pages/serial/s-learningstm32.html)
