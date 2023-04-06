@@ -122,7 +122,6 @@ void encoder_update_user(uint8_t index, bool clockwise) {
 
 # 相關文章與資源
 
-* [\[系列文章\] 自製QMK鍵盤](/categories/自製QMK鍵盤/)
 * QMK 相關
 	* [QMK 官方網站](https://qmk.fm/)
 	* [QMK 官方說明文件](https://docs.qmk.fm/#/)

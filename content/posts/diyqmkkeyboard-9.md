@@ -136,7 +136,7 @@ SWCLK|SWCLK
 若上述內容有錯誤還請指正。謝謝。
 
 # 相關資料
-- 本文的系列列表：[自製QMK鍵盤](https://ziteh.github.io/categories/%E8%87%AA%E8%A3%BDQMK%E9%8D%B5%E7%9B%A4/)
+
 - [Introducing the Adafruit Bluefruit LE SPI Friend | Adafruit Learning System](https://learn.adafruit.com/introducing-the-adafruit-bluefruit-spi-breakout/downloads)
 - [Adafruit_BluefruitLE_Firmware](https://github.com/adafruit/Adafruit_BluefruitLE_Firmware)
 - [Adafruit_Adalink](https://github.com/adafruit/Adafruit_Adalink)

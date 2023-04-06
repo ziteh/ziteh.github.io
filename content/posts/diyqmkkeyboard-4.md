@@ -268,7 +268,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 # 相關文章與資源
 
-* [\[系列文章\] 自製QMK鍵盤](/categories/自製QMK鍵盤/)
 * [【C/C++】define用法整理|macro巨集小技巧](http://catforcode.com/define-and-macro/)
 * QMK相關
 	* [QMK官方網站](https://qmk.fm/)

@@ -458,6 +458,5 @@ uint8_t matrix_scan(void)
 
 # 相關文章
 
-- 本文的系列：[自製QMK鍵盤](https://ziteh.github.io/categories/%E8%87%AA%E8%A3%BDQMK%E9%8D%B5%E7%9B%A4/)
 - [Mitosis 原作者的文章](https://imgur.com/a/mwTFj)
 - [QMK 官方文件](https://docs.qmk.fm/#/)

@@ -319,7 +319,6 @@ KEYMAP(
 
 # 相關文章與資源
 
-* [\[系列文章\] 自製QMK鍵盤](/categories/自製QMK鍵盤/)
 * 參考資料
 	* [RESET key not working with pro micro #3091](https://github.com/qmk/qmk_firmware/issues/3091)
 	* [QMK issue - error: unused variable 'event' \[-Werror=unused-variable\]](https://www.reddit.com/r/olkb/comments/72f66p/qmk_issue_error_unused_variable_event/)

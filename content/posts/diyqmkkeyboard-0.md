@@ -80,7 +80,6 @@ SNM 鍵盤，或稱 SNM-Keyboard（"Say No to Mouse" Keyboard）是一個開源�
 
 # 相關文章與資源
 
-* [\[系列文章\] 自製QMK鍵盤](/categories/自製QMK鍵盤/)
 * 參考資料
 	* [TEX Yoda 2 = HHKB + 小紅點 + 機械軸 + 方向鍵](https://tsai.it/archives/2017/11/tex-yoda-2-hhkb-%E5%B0%8F%E7%B4%85%E9%BB%9E-%E6%A9%9F%E6%A2%B0%E8%BB%B8-%E6%96%B9%E5%90%91%E9%8D%B5/)
 	* [TEX YODA II - DIY kit (Special Edition)](https://geekhack.org/index.php?topic=92681.0)
