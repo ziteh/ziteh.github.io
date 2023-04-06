@@ -118,5 +118,4 @@ CONNECTED LED (Blue)|P0.19|--|--
 
 # 相關文章
 
-- 本文的系列文清單：[自製QMK鍵盤](https://ziteh.github.io/categories/%E8%87%AA%E8%A3%BDQMK%E9%8D%B5%E7%9B%A4/)
 - [QMK 官方文件](https://docs.qmk.fm/#/)
