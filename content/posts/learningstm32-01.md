@@ -177,7 +177,3 @@ aliases: ["/2018/08/learningstm32-01/"]
 撰寫此文章使用的軟體版本資訊：MDK-Lite uVision Ver 5.25.2.0
 
 ![](https://1.bp.blogspot.com/-DYAfcXY47TI/Xoh7tURI6FI/AAAAAAAACAs/tmXpKpxrYVwNOM1nJKsfesEEWK6iB9cQACKgBGAsYHg/s640/%25E8%25BB%259F%25E9%25AB%2594%25E7%2589%2588%25E6%259C%25AC%25E8%25B3%2587%25E8%25A8%258A.png)
-
-# 相關文章
-
-* [\[系列文章\] STM32學習記錄](/pages/serial/s-learningstm32.html)
