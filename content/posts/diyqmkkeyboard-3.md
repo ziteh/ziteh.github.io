@@ -117,7 +117,6 @@ aliases: ["/2020/06/diyqmkkeyboard-3/"]
 
 # 相關文章與資源
 
-* [\[系列文章\] 自製QMK鍵盤](/categories/自製QMK鍵盤/)
 * 參考資料
 	* [\[2020\] 新版 QMK 教學](https://ergotaiwan.tw/install-qmk-tutorials-2020/)
 	* [SparkFun Pro Micro: Reset to Bootloader](https://learn.sparkfun.com/tutorials/pro-micro--fio-v3-hookup-guide/troubleshooting-and-faq#ts-reset)
