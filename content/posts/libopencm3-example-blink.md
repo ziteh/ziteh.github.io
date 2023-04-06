@@ -13,6 +13,10 @@ draft: false
 aliases: ["/2021/11/libopencm3-example-blink/"]
 ---
 
+我在 2022 年 9 月重新寫了與本文內容相近的文章，建議可以觀看新文章：
+- [STM32 GPIO 簡介](https://ziteh.github.io/posts/libopencm3-stm32-3/)
+- [STM32 LibOpenCM3：GPIO 輸出](https://ziteh.github.io/posts/libopencm3-stm32-4/)
+
 # 前言
 
 [LibOpenCM3](https://libopencm3.org/) 是一個 Open-Source（LGPL） 的 ARM Cortex-M3 微控制器底層硬體函式庫，支援包含 STM32、NXP LPC1000、Atmel SAM3U 等各種微控制器。
@@ -162,4 +166,5 @@ int main(void)
 
 # 相關文章
 
-- [STM32學習記錄](https://ziteh.github.io/categories/STM32%E5%AD%B8%E7%BF%92%E8%A8%98%E9%8C%84/)
+- [STM32 GPIO 簡介](https://ziteh.github.io/posts/libopencm3-stm32-3/)
+- [STM32 LibOpenCM3：GPIO 輸出](https://ziteh.github.io/posts/libopencm3-stm32-4/)
