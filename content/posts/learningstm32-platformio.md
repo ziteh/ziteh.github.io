@@ -155,10 +155,6 @@ PlatformIO 的 GitHub 上也有一些範例程式可以看：[platformio/platfor
 
 就在幾個禮拜前，我無意間得知 PlatformIO，並且看到它也可以用來開發 STM32，而有支援 VS Code，我就馬上進行測試，而結果令我相當滿意，也就誕生了這篇文章，希望大家也可以試著透過 PlatformIO 與 VS Code 開發 STM32。
 
-# 相關文章
-
-- [\[系列文章\] STM32學習記錄](/pages/serial/s-learningstm32.html)
-
 # 參考資料
 
 - [PlatformIO 訣竅 - 快速切換不同開發板進行測試-黑暗執行緒](https://blog.darkthread.net/blog/platformio-multi-env/)

@@ -155,7 +155,3 @@ RCC->APB2ENR = RCC->APB2ENR | 0x0004;   // 開啟Port A的時鐘
 RCC->APB2ENR |= 0x0004;                 // 同上行
 RCC->APB2ENR |= (1<<2);                 // 同上行
 ```
-
-# 相關文章
-
-* [\[系列文章\] STM32學習記錄](/pages/serial/s-learningstm32.html)
