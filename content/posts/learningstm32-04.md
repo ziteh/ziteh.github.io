@@ -57,8 +57,3 @@ TrueSTUDIO是一套由意法半導體（STMicroelectronics）公司專門為STM3
 TrueSTUDIO有很高的可擴展性、插件可以使用，我自己也有裝一些，未來有機會再來介紹。  
 
 ![▲ 本文使用之TrueSTUDIO為Version：9.3.0；Build id：20190212-0734。](https://1.bp.blogspot.com/-XRXvwadDtVs/XomHrwMB8wI/AAAAAAAACCk/4qRVLrqHApYbyNlYXsg_ks_ZMPqKOtGRACKgBGAsYHg/s1600/Screenshot%2B%252813%2529.png)
-
-
-# 相關文章
-
-* [\[系列文章\] STM32學習記錄](/pages/serial/s-learningstm32.html)
