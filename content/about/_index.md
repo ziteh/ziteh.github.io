@@ -1,12 +1,21 @@
 ---
 title: "About"
 description: "關於我"
-date: "2023-04-04"
+date: "2023-04-06"
 aliases: ["about-us", "about-hugo", "contact"]
 # author: "Hugo Authors"
 comment: false
 ---
-不太喜歡純硬體，也不太喜歡純軟體。
+
+純硬體不太擅長  
+純軟體不太熟悉  
+韌體似乎可以取得平衡  
+
+純文學還難以理解  
+喜歡平凡且白話的字句  
+寫作還太顯尷尬  
+
+---
 
 把 Blog 當成筆記寫。  
 若內容有誤，還請指正。若覺得有趣，歡迎留言或聯絡。
