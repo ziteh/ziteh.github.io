@@ -24,6 +24,10 @@
           </div>
           <h1>{{ .Title }}</h1>
           <h2 class="subheading">{{ $.Params.subtitle }}</h2>
+          {{ range (.GetTerms "series") }}
+          系列：<a href="{{ .Page.RelPermalink }}" title="{{ .LinkTitle }}">{{ .LinkTitle }}</a>
+          {{ else }}
+          {{ end }}
           <span class="meta">
             Posted 
             <!-- by {{ with $.Params.author }} {{ $.Params.author }} {{ else }} {{ .Site.Params.author }} {{ end }} -->
