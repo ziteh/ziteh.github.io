@@ -2,6 +2,7 @@
 title: '[自製QMK鍵盤-0] 如何DIY一把鍵盤？'
 author: ZiTe
 tags:
+  - 教學
   - DIY
   - 3C
   - QMK
