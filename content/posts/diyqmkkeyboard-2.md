@@ -393,10 +393,7 @@ RGBLIGHT_ENABLE ?= no
 
 但新版的 QMK 已經不使用 `PREVENT_STUCK_MODIFIERS`，請將該行刪除。詳見 [Issue #2518 · qmk/qmk_firmware](https://github.com/qmk/qmk_firmware/issues/2518)。
 
-另外，原本的 `config.h`（及其它 `.h` 檔案） 的 Include Guard 是使用傳統的預處理器寫法，你可以將其改成較先進的 `#pragma once`。
-
-例如：
-
+另外，原本的 `config.h`（及其它 `.h` 檔案） 的 Include Guard 是使用傳統的預處理器寫法，你可以將其改成較先進的 `#pragma once`。例如：
 ```c
 /* 舊 */
 #ifndef CONFIG_H
@@ -406,6 +403,7 @@ RGBLIGHT_ENABLE ?= no
 
 #endif
 ```
+
 改成以下
 ```c
 /* 新 */
