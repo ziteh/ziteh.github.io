@@ -1,9 +1,11 @@
 ---
-title: '[自製QMK鍵盤-9] Adafruit Bluefruit LE SPI Friend 韌體燒錄教學'
+title: '[自製QMK鍵盤-番外] Adafruit Bluefruit LE SPI Friend 韌體燒錄教學'
 author: ZiTe
 tags:
   - DIY
   - 3C
+  - QMK
+  - 教學
 series: ["自製QMK鍵盤"]
 date: 2022-02-22 18:42:00
 comment: true
@@ -12,37 +14,35 @@ draft: false
 aliases: ["/2022/02/diyqmkkeyboard-9/"]
 ---
 
-# 前言
+在[上一篇文章中](/posts/diyqmkkeyboard-ble/)，我們使用 [Adafruit Bluefruit LE SPI Friend](https://www.adafruit.com/product/2633)（以下簡稱 Adafruit BLE）藍牙模組爲 QMK 添加了藍牙的功能。
 
-在[上一篇文章中](https://ziteh.github.io/2022/02/diyqmkkeyboard-8/)，我們使用「Adafruit Bluefruit LE SPI Friend」藍牙模組爲 QMK 添加了藍牙的功能。
-
-不過這個模組的價格有點高，但是 Adafruit 有提供其韌體及燒錄工具，所以只要有 MDBT40 或 nRF51822 的話也可以自己燒錄。
+不過這個模組的價格有點高，還好 Adafruit 有提供其韌體及燒錄工具，所以只要有 MDBT40 或 nRF51822 的話也可以自製 Adafruit Bluefruit LE SPI Friend 藍牙模組。
 
 <!--more-->
 
 # 硬體選擇
 
-先講結論，基本上選用擁有 32 KB SRAM 的「[MDBT40-256**R**V3](https://www.raytac.com/product/ins.php?index_id=74)」就可以了，這就是「Adafruit Bluefruit LE SPI Friend」所使用的模組。
-
-本文接下來也將使用 MDBT40-256**R**V3（[MDBT40-DB](https://www.raytac.com/product/ins.php?index_id=84)）作爲示範。
+先講結論，**一定要**選用 32KB SRAM 版本的 nRF51822-**xxAC**，例如 [MDBT40-256**R**V3](https://www.raytac.com/product/ins.php?index_id=74) 。本文接下來也將使用 MDBT40-256**R**V3（[MDBT40-DB](https://www.raytac.com/product/ins.php?index_id=84)）作爲示範。
 
 另外，爲了燒錄，還需要準備一個 Segger J-Link 或 STLink/V2 燒錄器，雖然也可以使用 Raspberry Pi 作爲燒錄器，但這比較麻煩。
 
 ## nRF51822
-首先，「Adafruit Bluefruit LE」其實是一系列的產品，「Adafruit Bluefruit LE SPI Friend」只是該系列中的一個 SPI 介面的模組。而這個系列的核心 SoC 就是 Nordic Semiconductor 的 [nRF51822](https://www.nordicsemi.com/products/nrf51822)。
+首先，Adafruit Bluefruit LE 是一系列的產品，Adafruit Bluefruit LE SPI Friend 只是該系列中的一個 SPI 介面的模組。其核心 SoC 就是 Nordic Semi 的 [nRF51822](https://www.nordicsemi.com/products/nrf51822)。
 
-在 [Adafruit Bluefruit LE Firmware 的 GitHub repo](https://github.com/adafruit/Adafruit_BluefruitLE_Firmware) 中的說明有提到，`0.6.0` 及之後的韌體版本只適用於 32 KB SRAM 的 nRF51822，16 KB SRAM 的 nRF51822 只能使用 `0.5.0` 及之前的韌體版本。
+在 Adafruit Bluefruit LE Firmware 的 [GitHub repo](https://github.com/adafruit/Adafruit_BluefruitLE_Firmware#firmwareboard-compatibility-chart) 中的說明有提到，`0.6.0` 及之後的韌體版本只適用於 32KB SRAM 的 nRF51822，而 16KB SRAM 的 nRF51822 只能使用 `0.5.0` 及之前的韌體版本。
 
-所以，在購買 nRF51822 及其模組時，記得確認這是哪個規格的。依照命名規則看，只有 nRF51822-`xxAC` 是 32 KB SRAM \ 256 KB Flash 的版本，後綴爲 `xxAA` 或 `xxAB` 的 SRAM 大小都是 16 KB（`xxAA` 與 `xxAB` 的差異是前者的 Flash 是 128 KB，而後者是 256 KB）。
+但是 Adafruit Bluefruit LE SPI Friend 所屬的 **BLESPIFRIEND** 沒有 `0.5.0` 及之前的版本。
 
-簡單來說，若想要使用較新版本的韌體，要選用 32 KB SRAM 的 nRF51822-xxAC。
+所以在購買 nRF51822 及其模組時，記得要選用 32KB SRAM 版本的 nRF51822-***xxAC***。
+
+> 依照命名規則看，只有 nRF51822-***xxAC*** 是 32KB SRAM \ 256KB Flash 的版本，後綴爲 ***xxAA*** 或 ***xxAB*** 的 SRAM 大小都是 16KB（xxAA 與 xxAB 的差異是前者的 Flash 是128 KB，而後者是256 KB）。
 
 ## MDBT40
-雖然「Adafruit Bluefruit LE」系列搭載的是 nRF51822 SoC，但它們並不是直接搭載該晶片，而是搭載了勁達 Raytac 的 [MDBT40](https://www.raytac.com/product/index.php?index_m1_id=74) 模組。
+雖然 Adafruit BLE 使用的是 nRF51822 SoC，但它並不是直接搭載該晶片，而是搭載了勁達 Raytac 的 [MDBT40](https://www.raytac.com/product/index.php?index_m1_id=74) 模組。
 
-MDBT40 是搭載了 nRF51822 的模組，並且整合了天線。上面有提到 nRF51822 有一些不同的版本，MDBT40 也有其相對應的細部型號。
+MDBT40 是搭載了 nRF51822 的模組，並且整合了天線及一些週邊元件。上面有提到 nRF51822 有一些不同的版本，MDBT40 也有其相對應的細部型號。
 
-若要的是搭載擁有 32 KB SRAM / 256 KB Flash 的 nRF51822-xxAC 的話，要選用 MDBT40-256**R**V3 或 MDBT40-**P**256**R**V3（這兩個的差異是前者爲陶瓷天線，後者爲 PCB 天線）。實際上「Adafruit Bluefruit LE」系列所使用的基本上就是 MDBT40-256**R**V3。
+我們要的是 32KB SRAM / 256KB Flash 的 nRF51822-xxAC，所以要選用 MDBT40-256**R**V3 或 MDBT40-**P**256**R**V3（這兩個的差異是前者爲陶瓷天線，後者爲 PCB 天線）。實際上 Adafruit Bluefruit LE 系列所使用的基本上就是 MDBT40-256**R**V3。
 
 # 燒錄工具
 
@@ -99,6 +99,8 @@ Flash OK
 
 另外，還可以使用 `python flash.py --help` 查看說明。
 
+> 如果燒錄的過程中出現「SyntaxError: Missing parentheses in call to 'print'.」錯誤訊息的話，請將 `flash.py` 檔中的所有 `print ""` 改成 `print("")`，也就是加上括號。這只是單純的 Python 版本問題，可以參考 [What does "SyntaxError: Missing parentheses in call to 'print'" mean in Python?](https://stackoverflow.com/questions/25445439/what-does-syntaxerror-missing-parentheses-in-call-to-print-mean-in-python)。
+
 # 燒錄後重置
 
 根據 [Adafruit 的說明](https://learn.adafruit.com/introducing-the-adafruit-bluefruit-spi-breakout/device-recovery)，燒錄完韌體後，還要進行一次 Factory Reset，其步驟如下：
@@ -129,15 +131,15 @@ SWCLK|SWCLK
 
 # 結語
 
-這次介紹了要如何執行燒錄「Adafruit Bluefruit LE SPI Friend」的韌體。
+這次介紹了要如何執行燒錄 Adafruit Bluefruit LE SPI Friend 的韌體。
 
-基本上比較要注意的就是 nRF51822 要選擇 32 KB 的版本才能使用新版本的韌體，我有試著使用 16 KB 的 nRF51822-xxAA 燒錄新版本的韌體，但它確實無法正常運作。
+基本上比較要注意的就是 nRF51822 要選擇 32KB SRAM 的版本才能用，我有試著使用 16KB 的 nRF51822-xxAA，但它確實無法正常運作。
 
 若上述內容有錯誤還請指正。謝謝。
 
 # 相關資料
 
 - [Introducing the Adafruit Bluefruit LE SPI Friend | Adafruit Learning System](https://learn.adafruit.com/introducing-the-adafruit-bluefruit-spi-breakout/downloads)
-- [Adafruit_BluefruitLE_Firmware](https://github.com/adafruit/Adafruit_BluefruitLE_Firmware)
-- [Adafruit_Adalink](https://github.com/adafruit/Adafruit_Adalink)
-- [Adafruit_nRF51822_Flasher](https://github.com/adafruit/Adafruit_nRF51822_Flasher)
+- [Adafruit BluefruitLE Firmware](https://github.com/adafruit/Adafruit_BluefruitLE_Firmware)
+- [Adafruit Adalink](https://github.com/adafruit/Adafruit_Adalink)
+- [Adafruit nRF51822 Flasher](https://github.com/adafruit/Adafruit_nRF51822_Flasher)

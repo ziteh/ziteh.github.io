@@ -1,9 +1,11 @@
 ---
-title: '[自製QMK鍵盤-7] 在Custom Matrix中使用UART與控制滑鼠遊標，並加上無線模組'
+title: '[自製QMK鍵盤-番外] 在Custom Matrix中使用UART與控制滑鼠遊標，並加上無線模組'
 author: ZiTe
 tags:
   - DIY
   - 3C
+  - 教學
+  - QMK
 series: ["自製QMK鍵盤"]
 date: 2022-02-05 21:40:00
 comment: true
@@ -12,9 +14,7 @@ draft: false
 aliases: ["/2022/02/diyqmkkeyboard-7/"]
 ---
 
-# 前言
-
-在[上一篇文章](https://ziteh.github.io/2022/01/diyqmkkeyboard-6/)中我簡單地介紹了 Mitosis 這個基於 QMK 的無線分離式人體工學鍵盤，而在這篇文章中，我將參考其架構來做出一個我自己的無線分離式鍵盤的雛形。
+在[這篇文章](/posts/mitosis-keyboard-intro)中我簡單地介紹了 Mitosis 這個基於 QMK 的無線分離式人體工學鍵盤，而在這篇文章中，我將參考其架構來做出一個我自己的無線分離式鍵盤的雛形。
 
 要達成這樣的功能，會需要用到 QMK 的 [Custom Matrix](https://docs.qmk.fm/#/custom_matrix) 和 UART 功能，並且使用 LoRa 無線通訊模組 HC-12 來暫時替代藍牙作爲無線通訊。
 
@@ -466,4 +466,5 @@ state = 0;
 
 # 相關文章
 
+- [Mitosis 無線分離式鍵盤介紹](/posts/mitosis-keyboard-intro)
 - [QMK 官方文件](https://docs.qmk.fm/#/)

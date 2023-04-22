@@ -1,10 +1,11 @@
 ---
-title: '[自製QMK鍵盤-4] 瞭解QMK的基本架構與運作'
+title: '[自製QMK鍵盤-番外] QMK的基本架構與運作方式'
 author: ZiTe
 tags:
   - 3C
   - DIY
   - 教學
+  - QMK
 series: ["自製QMK鍵盤"]
 date: 2020-06-23 23:53:00
 comment: true
@@ -12,15 +13,15 @@ toc: true
 draft: false
 aliases: ["/2020/06/diyqmkkeyboard-4/"]
 ---
-# 前言
-在使用QMK的進階功能前，我們必須先瞭解一些QMK的基本架構與運作。這可能會有點無聊，但擁有足夠的知識總是可以讓我們少走一點冤枉路。
 
-以下內容皆譯自[QMK官方說明文件](https://docs.qmk.fm/#/)。我並沒有完全翻譯，只有翻譯其中比較重要的部分內容。如有翻譯錯誤還請指教，並以QMK官方文件為準。
+如果要深入修改 QMK 的話，最好還是要瞭解一下 QMK 的架構及其運作方式。這可能會有點無聊，但擁有足夠的知識總是可以讓我們少走一點冤枉路。
+
+以下內容皆譯自[ QMK 官方說明文件](https://docs.qmk.fm/#/)。我並沒有完全翻譯，只有翻譯其中比較重要的部分內容。如有翻譯錯誤還請指教，並以 QMK 官方文件為準。
 
 <!--more-->
 
 # 鍵盤的運作
-本節內容譯自QMK官方說明文件：[How Keys Are Registered, and Interpreted by Computers](https://docs.qmk.fm/#/how_keyboards_work)。
+本節內容譯自 QMK 官方說明文件：[How Keys Are Registered, and Interpreted by Computers](https://docs.qmk.fm/#/how_keyboards_work)。
 
 ## 1.按下按鍵
 當使用者按下一個按鍵時，鍵盤的韌體就會登記一個事件。該事件可以在按下（pressed）、按住（held）或釋放（released）時被登記。
@@ -260,11 +261,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 透過比對鍵盤映射，我們知道按下的按鍵是`KC_NLCK`。這裡我們調用`process_record`函數集。
 
 #### Process Record
-`process_record()`函數看起來很簡單，但隱藏在其中的是通往QMK各個層級功能的入口（gateway）。[這裡](https://docs.qmk.fm/#/understanding_qmk?id=process-record)列出了一系列的事件與詳細的介紹。
-
-# 結語
-
-這次介紹了QMK的基本運作原理，這可以幫助我們更好地控制QMK的各種功能和行為。
+`process_record()` 是通往 QMK 各個層級功能的入口（gateway）。[這裡](https://docs.qmk.fm/#/understanding_qmk?id=process-record)列出了一系列的事件與詳細的介紹。
 
 # 相關文章與資源
 

@@ -1,10 +1,11 @@
 ---
-title: '[自製QMK鍵盤-5] 旋轉編碼器 (Encoder)'
+title: '[自製QMK鍵盤-番外] 旋轉編碼器 (Encoder)'
 author: ZiTe
 tags:
   - 3C
   - DIY
   - 教學
+  - QMK
 series: ["自製QMK鍵盤"]
 date: 2020-11-21 17:39:00
 comment: true
@@ -12,13 +13,12 @@ toc: true
 draft: false
 aliases: ["/2020/11/diyqmkkeyboard-5/"]
 ---
+
 ![](https://1.bp.blogspot.com/--DVn7BXoSVM/X7jhXa4wzwI/AAAAAAAACrk/5-7dhQnH1kgKadvIJFRDvJypUmhe44QUACPcBGAsYHg/w640-h480/DSC_0020.JPG)
 
-# 前言
+在之前的文章中我們已經完成了 QMK 的基本操作，已經可以作出一個基本鍵盤。
 
-在這之前的文章中我們已經完成了 QMK 的基本操作，已經可以作出一個基本鍵盤。
-
-不過我想做的鍵盤並不是普通的鍵盤，畢竟若是如此也不用自己研究 QMK 了。因此我的鍵盤會在加上許多不同的功能，而第一個功能，也是很多鍵盤上可以看到的功能——旋轉編碼器（Encoder，以下簡稱編碼器）。編碼器最常見的地方就是滑鼠的滾輪，它可以朝兩個不同的方向無限地一直旋轉下去，用在音量調整或選單控制會非常方便。
+在某些鍵盤上可以看到旋轉編碼器（Encoder，以下簡稱編碼器）。編碼器最常見的地方就是滑鼠的滾輪，它可以朝兩個不同的方向無限地一直旋轉下去，用在音量調整或選單控制會非常方便。
 
 在 QMK 中加入編碼器的功能是非常簡單的，只需要多加幾行程式碼就可以。
 
@@ -108,7 +108,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
 
 ## 完成程式修改
 
-完成修改後就可以將程式編譯、燒錄。其方法請參考[\[自製QMK鍵盤-3\] 編譯並燒錄QMK ](/2020/06/diyqmkkeyboard-3/)。
+完成修改後就可以將程式編譯、燒錄。其方法請參考[\[自製QMK鍵盤-3\] 編譯並燒錄](/2020/06/diyqmkkeyboard-3/)。
 
 # 硬體
 
