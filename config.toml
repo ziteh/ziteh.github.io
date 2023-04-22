@@ -33,7 +33,7 @@ codeFences = true
 guessSyntax = true
 lineNos = true
 lineNumbersInTable = false
-style = "dracula"
+style = "dracula" #"onedark"
 
 [markup.goldmark.renderer]
 unsafe = true
