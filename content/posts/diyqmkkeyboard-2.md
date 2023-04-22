@@ -416,6 +416,13 @@ RGBLIGHT_ENABLE ?= no
 
 > 如果你沒有改用 `#pragma once`，且你有更改鍵盤的名稱（不是 `#define PRODUCT` 的名稱，是預設爲 kb 的[資料夾與檔案名稱](/posts/diyqmkkeyboard-2/#修改-rulesmk)），那原本的 `kb.h` 被修改成 `my_new_keyboard.h` 後，其內的 `KB_H` 要修改成 `MY_NEW_KEYBOARD_H`，即這裡也要改成你鍵盤的名稱且習慣全大寫。當然，如果你熟悉 C 的話可以用你喜歡的方式。
 
+如果你使用的是 RP2040 的話，可以在 `config.h` 中加入：
+```c
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
+```
+
+這樣就可以啓用 [Double-tap Reset](https://docs.qmk.fm/#/platformdev_rp2040?id=double-tap) 功能，未來燒錄時會比較方便。
+
 ### 修改完成
 
 修改完成的 `config.h` 範例：
