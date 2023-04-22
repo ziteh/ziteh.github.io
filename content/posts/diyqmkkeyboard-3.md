@@ -10,7 +10,7 @@ series: ["自製QMK鍵盤"]
 date: 2023-04-22 13:13:00+08:00
 comment: true
 toc: true
-draft: true
+draft: false
 aliases: ["/2020/06/diyqmkkeyboard-3/"]
 ---
 
