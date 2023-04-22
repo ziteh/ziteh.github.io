@@ -63,9 +63,9 @@ QMK 韌體的功能眾多、使用簡單、擴展方便，相關的工具及文�
 既然知道了一把鍵盤有哪些要件，那接下來就可以按步驟一一完成了。我自己習慣的製作步驟爲：
 
 1. **整體設計**：這把鍵盤要有幾鍵？標準佈局還是要 Ortho？或是要做成 Alice Layout 甚至分離式的？需要 Bluetooth 嗎？等等。
-2. **編輯佈局**：使用 [Keyboard Layout Editor](http://www.keyboard-layout-editor.com/) 實際編排鍵盤佈局（Layout）。
-3. **生成韌體**：使用 [Keyboard Firmware Builder](https://kbfirmware.com/) 自動生成基礎韌體，如果有額外的功能需要啓用也一併設定。
-4. **韌體測試**：使用現成的開發板（如 [Pro Micro](https://www.sparkfun.com/products/12640) 或 [RP2040-Plus](https://www.waveshare.com/rp2040-plus.htm)）進行韌體功能初步驗證。在此步確認要使用的 MCU。
+2. [**編輯佈局**](/posts/diyqmkkeyboard-1/)：使用 [Keyboard Layout Editor](http://www.keyboard-layout-editor.com/) 實際編排鍵盤佈局（Layout）。
+3. [**生成韌體**](/posts/diyqmkkeyboard-2/)：使用 [Keyboard Firmware Builder](https://kbfirmware.com/) 自動生成基礎韌體，如果有額外的功能需要啓用也一併設定。
+4. [**韌體測試**](/posts/diyqmkkeyboard-3/)：使用現成的開發板（如 [Pro Micro](https://www.sparkfun.com/products/12640) 或 [RP2040-Plus](https://www.waveshare.com/rp2040-plus.htm)）進行韌體功能初步驗證。在此步確認要使用的 MCU。
 5. **繪製 PCB**：根據完成的鍵盤佈局要使用的 MCU 進行 PCB Layout。
 6. **生成定位板**：使用工具（如 [Keebio Plate Generator](https://plate.keeb.io/)）自動生成定位板。
 7. **設計外殼**：使用 3D 建模工具設計外殼。
