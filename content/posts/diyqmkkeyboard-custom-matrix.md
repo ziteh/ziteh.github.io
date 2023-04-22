@@ -11,7 +11,7 @@ date: 2022-02-05 21:40:00
 comment: true
 toc: true
 draft: false
-aliases: ["/2022/02/diyqmkkeyboard-7/"]
+aliases: ["/2022/02/diyqmkkeyboard-7/", "/posts/diyqmkkeyboard-7/"]
 ---
 
 在[這篇文章](/posts/mitosis-keyboard-intro)中我簡單地介紹了 Mitosis 這個基於 QMK 的無線分離式人體工學鍵盤，而在這篇文章中，我將參考其架構來做出一個我自己的無線分離式鍵盤的雛形。

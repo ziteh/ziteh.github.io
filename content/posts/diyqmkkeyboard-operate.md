@@ -11,7 +11,7 @@ date: 2020-06-23 23:53:00
 comment: true
 toc: true
 draft: false
-aliases: ["/2020/06/diyqmkkeyboard-4/"]
+aliases: ["/2020/06/diyqmkkeyboard-4/", "/posts/diyqmkkeyboard-4/"]
 ---
 
 如果要深入修改 QMK 的話，最好還是要瞭解一下 QMK 的架構及其運作方式。這可能會有點無聊，但擁有足夠的知識總是可以讓我們少走一點冤枉路。
