@@ -55,26 +55,26 @@
     .h1_nav {
       margin-left: 0;
       font-size: 13px;
-      // font-weight: bold;
+      font-weight: bold;
     }
     .h2_nav {
-      margin-left: 4px;
+      margin-left: 6px;
       font-size: 13px;
     }
     .h3_nav {
-      margin-left: 12px;
-      font-size: 12px;
-      // font-style: italic;
+      margin-left: 16px;
+      font-size: 11.5px;
     }
     .h4_nav {
-      margin-left: 15px;
+      margin-left: 24px;
       font-size: 11px;
+      font-style: italic;
       a {
         max-width: 170px;
       }
     }
     .h5_nav .h6_nav {
-      margin-left: 18px;
+      margin-left: 26px;
       font-size: 12px;
       a {
         max-width: 170px;
