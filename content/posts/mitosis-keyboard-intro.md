@@ -1,10 +1,11 @@
 ---
-title: '[自製QMK鍵盤-6] 無線分離式人體工學鍵盤Mitosis的分析與介紹'
+title: '無線分離式人體工學鍵盤Mitosis的介紹與分析'
 author: ZiTe
 tags:
   - DIY
   - 3C
-series: ["自製QMK鍵盤"]
+  - QMK
+series: []
 date: 2022-01-09 22:11:00
 comment: true
 toc: true
@@ -12,11 +13,9 @@ draft: false
 aliases: ["/2022/01/diyqmkkeyboard-6/"]
 ---
 
-# 前言
-
 [Mitosis](https://github.com/qmk/qmk_firmware/tree/master/keyboards/mitosis) 是一款使用 [QMK](https://qmk.fm/) 作爲韌體所開發的無線分離式鍵盤，它不僅僅是與電腦之間無線，它的左右兩部分之間也沒有實體連線，可謂是「真 • 無線」。就我所知，有許多基於 QMK 的無線分離式鍵盤都是受到 Mitosis 的啓發。
 
-本文將會概略性地分析並介紹 Mitosis 是如何做到無線的。
+本文將會概略性地介紹 Mitosis 是如何做到無線的。
 
 <!--more-->
 
