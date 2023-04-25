@@ -2,7 +2,10 @@
 
 My blog.
 
-new post:
+---
+
+## New Post
+
 ```md
 ---
 title: "TITLE"
@@ -20,3 +23,16 @@ draft: true # false
 
 
 ```
+
+or command:
+```
+hugo new posts/<FILENAME>.md
+```
+
+## Run
+
+```
+hugo server -D
+```
+
+`-D`: Include draft
