@@ -91,6 +91,7 @@ QMK 韌體的功能眾多、使用簡單、擴展方便，相關的工具及文�
 
 ## 進階內容
 
+- [QMK 啓用 Vial 教學](/posts/diyqmkkeyboard-vial/)
 - [爲 QMK 鍵盤加上 Bluetooth 藍牙無線功能](/posts/diyqmkkeyboard-ble/)
 - [Adafruit Bluefruit LE SPI Friend 韌體燒錄教學](/posts/diyqmkkeyboard-ble-module/)
 - [旋轉編碼器 (Encoder)](/posts/diyqmkkeyboard-encoder/)
