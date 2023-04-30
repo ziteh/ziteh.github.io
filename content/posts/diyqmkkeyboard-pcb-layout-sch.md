@@ -377,6 +377,7 @@ keyautoplace.log
 
 # 相關網頁
 
+- [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - [Keyboard PCB Builder](https://kb.xyz.is/)
 - [KiCad 官方文件](https://docs.kicad.org/7.0/zh/getting_started_in_kicad/getting_started_in_kicad.html)
 - [KiCAD – Create a new Symbol](https://www.studiopieters.nl/kicad-create-a-new-symbol/)

@@ -100,6 +100,7 @@ aliases: ["/2020/06/diyqmkkeyboard-1/"]
 
 # 相關網站
 
+- [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - [ijprest/keyboard-layout-editor](https://github.com/ijprest/keyboard-layout-editor)：KLE 的 GitHub repo。
 
 > 本文最早發佈於 2020-06-21，於 2023 重新編排並更新內容。

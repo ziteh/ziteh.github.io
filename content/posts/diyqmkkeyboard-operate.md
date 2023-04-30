@@ -265,11 +265,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 # 相關文章與資源
 
-* [【C/C++】define用法整理|macro巨集小技巧](http://catforcode.com/define-and-macro/)
-* QMK相關
-	* [QMK官方網站](https://qmk.fm/)
-	* [QMK官方說明文件](https://docs.qmk.fm/#/)
-		* [How Keys Are Registered, and Interpreted by Computers](https://docs.qmk.fm/#/how_keyboards_work)
-		* [Introduction](https://docs.qmk.fm/#/getting_started_introduction)
-		* [Understanding QMK’s Code](https://docs.qmk.fm/#/understanding_qmk?id=process-record)
-	* [QMK的GitHub](https://github.com/qmk/qmk_firmware)
+- [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
+- [【C/C++】define用法整理|macro巨集小技巧](http://catforcode.com/define-and-macro/)
+- QMK相關
+	- [QMK官方網站](https://qmk.fm/)
+	- [QMK官方說明文件](https://docs.qmk.fm/#/)
+		- [How Keys Are Registered, and Interpreted by Computers](https://docs.qmk.fm/#/how_keyboards_work)
+		- [Introduction](https://docs.qmk.fm/#/getting_started_introduction)
+		- [Understanding QMK’s Code](https://docs.qmk.fm/#/understanding_qmk?id=process-record)
+	- [QMK的GitHub](https://github.com/qmk/qmk_firmware)

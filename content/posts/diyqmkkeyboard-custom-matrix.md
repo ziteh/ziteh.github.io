@@ -466,5 +466,6 @@ state = 0;
 
 # 相關文章
 
+- [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - [Mitosis 無線分離式鍵盤介紹](/posts/mitosis-keyboard-intro)
 - [QMK 官方文件](https://docs.qmk.fm/#/)

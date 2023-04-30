@@ -525,6 +525,7 @@ KEYMAP(
 
 # 相關網站及參考資料
 
+- [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - [Keyboard Firmware Builder](https://kbfirmware.com/)
 - [Qwiic Pro Micro USB-C (ATmega32U4) Hookup Guide - SparkFun Learn](https://learn.sparkfun.com/tutorials/qwiic-pro-micro-usb-c-atmega32u4-hookup-guide/all)
 - [QMK Breaking Changes - 2022 August 27 Changelog : olkb](https://www.reddit.com/r/olkb/comments/wznmtn/qmk_breaking_changes_2022_august_27_changelog/)

@@ -172,6 +172,7 @@ RP2040 可以透過以下任一種方式燒錄韌體：
 
 # 相關網頁
 
+- [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - 參考資料
 	- [\[2020\] 新版 QMK 教學](https://ergotaiwan.tw/install-qmk-tutorials-2020/)
 	- [SparkFun Pro Micro: Reset to Bootloader](https://learn.sparkfun.com/tutorials/pro-micro--fio-v3-hookup-guide/troubleshooting-and-faq#ts-reset)

@@ -139,6 +139,7 @@ SWCLK|SWCLK
 
 # 相關資料
 
+- [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - [Introducing the Adafruit Bluefruit LE SPI Friend | Adafruit Learning System](https://learn.adafruit.com/introducing-the-adafruit-bluefruit-spi-breakout/downloads)
 - [Adafruit BluefruitLE Firmware](https://github.com/adafruit/Adafruit_BluefruitLE_Firmware)
 - [Adafruit Adalink](https://github.com/adafruit/Adafruit_Adalink)

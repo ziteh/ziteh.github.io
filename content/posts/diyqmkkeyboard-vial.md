@@ -264,6 +264,7 @@ make zite/calcite52:vial
 
 # 相關網站
 
+- [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - [Vial](https://get.vial.today/)
 - [vial-kb/vial-qmk](https://github.com/vial-kb/vial-qmk) GitHub repo
 - [vial 官方範例](https://github.com/vial-kb/vial-qmk/tree/vial/keyboards/vial_example)
