@@ -88,6 +88,7 @@ QMK 韌體的功能眾多、使用簡單、擴展方便，相關的工具及文�
 2. [產生並編輯 QMK 韌體](/posts/diyqmkkeyboard-2/)
 3. [編譯與燒錄](/posts/diyqmkkeyboard-3/)
 4. [KiCAD 鍵盤 PCB 繪製教學 (上)](/posts/diyqmkkeyboard-pcb-layout-sch/)
+5. [KiCAD 鍵盤 PCB 繪製教學 (下)](/posts/diyqmkkeyboard-pcb-layout-layers/)
 
 ## 進階內容
 

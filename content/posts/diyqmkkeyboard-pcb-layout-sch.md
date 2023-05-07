@@ -1,6 +1,6 @@
 ---
 title: '[自製QMK鍵盤-4] KiCAD鍵盤PCB繪製教學 (上)'
-subtitle: 'KiCAD PCB 電路板 Layout 基礎教學'
+subtitle: 'KiCAD PCB 電路板 Schematic 基礎教學'
 author: ZiTe
 tags:
   - 教學
@@ -17,7 +17,9 @@ draft: false
 
 到[上一篇文章](/posts/diyqmkkeyboard-3/)爲止我們已經完成了鍵盤的韌體部分，接下來要進行硬體的部分。本篇要介紹的是[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 5 步——繪製 PCB。
 
-我將示範以 KiCad 進行機械式鍵盤的 PCB Layout，包含基本的 KiCad 使用教學。要畫 PCB 可能多少需要一些基本電學或基礎電路學知識，但是如果你真的沒學過的話也沒關係，仔細照著本文應該也不會出錯。
+我將示範以 KiCad 7 進行機械式鍵盤的 PCB Layout，包含基本的 KiCad 使用教學。要畫 PCB 可能多少需要一些基本電學或基礎電路學知識，但是如果你真的沒學過的話也沒關係，仔細照著本文應該也不會出錯。
+
+> 以下內容以 KiCad `v7.0.2` 作爲示範。
 
 <!--more-->
 
@@ -323,6 +325,8 @@ USB 差分訊號「D+」與「D-」各 2 腳，將相同的接在一起，然後
 ## 完成
 
 當所有部分的元件符號及接線都完成後，編輯並再次檢查各個元件的 [Footprint](/posts/diyqmkkeyboard-pcb-layout-sch/#更新元件代號)，然後[更新一下代號](/posts/diyqmkkeyboard-pcb-layout-sch/#更新元件代號)，Schematic 就算完成了。
+
+接下來請繼續查看[下一篇](/posts/diyqmkkeyboard-pcb-layout-layers/)以完成 PCB Layou 的部分。
 
 # Git
 
