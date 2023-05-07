@@ -328,6 +328,9 @@ USB 差分訊號「D+」與「D-」各 2 腳，將相同的接在一起，然後
 
 接下來請繼續查看[下一篇](/posts/diyqmkkeyboard-pcb-layout-layers/)以完成 PCB Layou 的部分。
 
+> 如果你想參考完整的檔案的話，可以到 GitHub 上找一些別人的 repo，例如我的 [Calcite52](https://github.com/ziteh/calcite)。  
+> 你或許可以用 [KiCanvas](https://kicanvas.org/) 來線上查看 KiCad 的 Schematic 檔案，例如[這樣](https://kicanvas.org/?github=https%3A%2F%2Fgithub.com%2Fziteh%2Fcalcite%2Ftree%2Fmain%2FCalcite52)。我的另一篇文章有介紹：[KiCanvas——線上預覽KiCAD電路圖](/posts/kicanvas-intro/)
+
 # Git
 
 如果你想爲 KiCad 用 Git 的話，可以參考以下的 `.gitignore`。
