@@ -241,6 +241,14 @@ Schematic 頁面右下角有一些資訊可以填寫。
 
 ![將開關的代號「SW」改成「KEY」](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh_asgQ8nY5OPGCRKeyPjCosZ7TD-j20AkAmPebXzqSrJSs2yWGiltSe5EJEeUaj_GDJwoC0PaPeDdaGIvhWy69ndGpsWu8Mpj2b4kuTVvATgXPlEeQqBMzNAp_OSzGawbuOSwXxTP3b3D6LvAJTisidbvK-ff7mUjEa-fxxix4vX8lHyI6YuhgSegU/s16000/sch-key.jpg)
 
+另外，也可以在這一步選擇鍵軸的 Footprint。滑鼠移到「Footprint」的「Value」欄位右側，會出現三本書的圖案，點擊後可以[修改 Footprint](/posts/diyqmkkeyboard-pcb-layout-sch/#footprint)。
+
+鍵軸的 Footprint 決定了最後這把鍵盤**可以使用什麼樣的機械軸**，Cherry MX、Alps、Kailh Choc 等各種機械軸的 Footprint 都不同，要選擇正確的 Footprint 才行。而如果要鍵盤可以熱插拔的話，也就必須選用有支援熱插拔座的 Footprint（不同軸體的熱插拔座也不同）。當然也有些 Footprint 同時整合並兼容了多種不同的軸體。請自行確認你所[安裝的鍵軸 Footprint 庫](/posts/diyqmkkeyboard-pcb-layout-sch/#安裝-footprint-庫)有哪些種類可以用。
+
+以[我自己的 Footprint 庫](https://github.com/ziteh/key-switches.pretty)爲例：`MX_switch_THT_hotswap_A` 是同時兼容 Cherry MX 軸體熱插拔與直接焊接的 Footprint；而 `MX_switch_PTH_hotswap_A` 只有 Cherry MX 熱插拔座的焊盤，沒有直接焊接的 PTH 焊盤；`MX_switch_hotswap_double_sided_A` 是雙面都有 Cherry MX 軸的熱插拔焊盤；`Kailh_Choc_PG1350_THT_A` 則是 Kailh Choc 矮軸直接焊接用的 Footprint。
+
+![我自己的 Footprint 庫中有多種不同的 Footprint](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh_ueLaVTGPaUM-MKQO7hDPP1pHJGXQ1mhv5XlmA8MBuWomK9TiAegrZqPXoeXnTjUgN20u7JVl8py9jgnJKyMlDxrFR_eTemduMBZesMK7hPURS9nQKfvcTRcDkWgFTBBHTaFHN5u1CYJ4etpJNOOSU_ue9EjbvftfKFGVRwPNf1vZypMso1tCJkbZ/s16000/Screenshot%202023-05-08%20at%2023-49-58%20ziteh_key-switches.pretty%20Mechanical%20keyboard%20switches%20KiCad%20footprint%20library.png)
+
 先將開關與二極體這樣擺放，一端相連接（注意方向，二極體有方向性），再根據你的鍵盤按鍵數量複製它們。然後將其接成鍵矩陣的樣子。
 
 ![先將一組開關與二極體擺好，再複製需要的數量](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi1nX3B16ELDFBNmCfU-nhakYzWRgHuNfjPL47O7jNpxfDgYQF35S6H06sZuaJFUb9qnvt344otZXIK0knjz3bsPPm95YVzR5V6GHvffNSCfedHokXP7vbNDVxXEfW9wga7cv3dJoNf1VePxWZNjEPn0A88UDzcYvbXiaiE7JVglxpcJJX25v3KM7aW/s16000/sch-sw-diode-pair.jpg)
