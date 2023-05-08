@@ -242,7 +242,7 @@ Schematic 有更新的話記得要再「Update PCB from Schematic」一次。打
 
 ## 邊緣與鋪銅
 
-等走線都完成後就可以畫 PCB 的外框不邊緣。在右側的層列表中切換到「Edge.Cuts」層，然後使用右側工具列的「Draw a line」或「Draw a Rectangle」來繪製外框。請注意畫完的外框一定要是封閉的才行。
+等走線都完成後就可以畫 PCB 的外框邊緣。在右側的層列表中切換到「Edge.Cuts」層，然後使用右側工具列的「Draw a line」或「Draw a Rectangle」來繪製外框。請注意畫完的外框一定要是封閉的才行。
 
 ![畫外框](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvxkkxpMq31OfuUUQOUX1pHdKsvAnC5IrwCtlVN6YtgxzZI8aUiVF1qcXGlSyKKSRRhC7LKbB1A_uua05MS1xRf4TvcKywndA29ii7Ygs8Sgpm5jGxtr7RzNlh0t4lF3Q2hglyWoLyXrF7bBxqR-zRvXCKUnfw-yNOJAqfGBrvkiuEX4pKngGZenub/s16000/cut.jpg)
 
