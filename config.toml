@@ -15,7 +15,7 @@ enableEmoji = true
 ignoreErrors = ["error-remote-getjson"]
 
 disqusShortname = "zite-honmonoh" # Disqus
-googleAnalytics = "G-J1MYLYHKHR"
+googleAnalytics = ""
 
 [outputs]
 home = ["HTML", "JSON", "RSS"]
