@@ -8,7 +8,7 @@
 
   {{ $title := .Title }}
   {{- if not .IsHome }}
-    {{ $title = printf "%s | %s" .Title .Site.Title }}
+  {{ $title = printf "%s | %s" .Title .Site.Title }}
   {{ end -}}
 
   <title>{{ $title }}</title>
@@ -21,9 +21,10 @@
 
   {{ template "_internal/twitter_cards.html" . }}
   {{ template "_internal/opengraph.html" . }}
-  <link rel="stylesheet" href="{{ "css/bootstrap.min.css" | relURL }}"  crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ " css/bootstrap.min.css" | relURL }}" crossorigin="anonymous">
   <!-- font-awesome -->
-  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" rel="stylesheet"
+    type="text/css">
 
   {{ $options := (dict "outputStyle" "compressed" "enableSourceMap" (not hugo.IsProduction) "includePaths" (slice
   "sass")) }}
@@ -41,7 +42,12 @@
   {{ end }}
   {{- end -}}
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans TC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&amp;display=swap&amp;subset=latin,latin-ext">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Noto Sans TC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&amp;display=swap&amp;subset=latin,latin-ext">
+
+  {{ if not .Site.IsServer }}
+  {{ template "_internal/google_analytics.html" . }}
+  {{ end }}
 
   <script src={{ "js/lazysizes.min.js" | relURL }}></script>
 
@@ -55,20 +61,21 @@
   {{ end -}}
 
   {{ range .AlternativeOutputFormats -}}
-  {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
+  {{ printf `
+  <link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
   {{ end -}}
 
   {{ if .Site.Params.useFaviconGenerator }}
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | relURL }}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon-16x16.png" | relURL }}">
-  <link rel="manifest" href="{{ "site.webmanifest" | relURL }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ " apple-touch-icon.png" | relURL }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ " favicon-32x32.png" | relURL }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ " favicon-16x16.png" | relURL }}">
+  <link rel="manifest" href="{{ " site.webmanifest" | relURL }}">
   {{ else }}
-  <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
-  <link rel="shortcut icon" href="{{ "favicon.png" | relURL }}" type="image/x-icon">
-  <link rel="shortcut icon" href="{{ "favicon.ico" | relURL }}" type="image/x-icon">
-  <link rel="icon" href="{{ "logo.svg" | relURL }}" sizes="any" type="image/svg+xml" />
-{{ end }}
+  <link rel="apple-touch-icon" href="{{ " apple-touch-icon.png" | relURL }}">
+  <link rel="shortcut icon" href="{{ " favicon.png" | relURL }}" type="image/x-icon">
+  <link rel="shortcut icon" href="{{ " favicon.ico" | relURL }}" type="image/x-icon">
+  <link rel="icon" href="{{ " logo.svg" | relURL }}" sizes="any" type="image/svg+xml" />
+  {{ end }}
 
 </head>
 
