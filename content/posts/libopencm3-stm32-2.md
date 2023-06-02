@@ -33,7 +33,7 @@ aliases: ["/2022/09/libopencm3-stm32-2/"]
 
 ## 在 VS Code 上安裝 PlatformIO
   
-要在 VS Code 上安裝並使用 PIO 相當簡單，只有在 VS Code 的擴充功能（Extensions）頁面搜尋並安裝 [PlatformIO IDE](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide) 就可以了。由於 PIO 的[核心](https://github.com/platformio/platformio-core)是由 Python 寫成，因此安裝過程中可能會需要再安裝 Python。此外，PIO 不只可以在 VS Code 上使用，其它平臺的安裝方式可以參考[這份官方文件](https://docs.platformio.org/en/latest/integration/ide/index.html)。  
+要在 VS Code 上安裝並使用 PIO 相當簡單，只要在 VS Code 的擴充功能（Extensions）頁面搜尋並安裝 [PlatformIO IDE](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide) 就可以了。由於 PIO 的[核心](https://github.com/platformio/platformio-core)是由 Python 寫成，因此安裝過程中可能會需要再安裝 Python。此外，PIO 不只可以在 VS Code 上使用，其它平臺的安裝方式可以參考[這份官方文件](https://docs.platformio.org/en/latest/integration/ide/index.html)。  
   
 安裝完後就可以從 VS Code 左側點擊 PIO 的圖示，進入 PIO 的 Home 畫面。  
   
