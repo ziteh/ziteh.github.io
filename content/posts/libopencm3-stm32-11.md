@@ -22,6 +22,27 @@ Timer 計時器是各個 MCU 中都會有的基本功能。正如其名，當需
 
 <!--more-->
 
+# 時鐘樹
+時鐘樹（Clock tree）是學習並使用 STM32 及各微控制器時很重要的事，因為各個功能都有自己的運作頻率，在使用 Timer 前最好有一定的認識。
+
+![▲ STM32F446xx 的 Clock tree。取自 RM0390 Figure 14。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijleZb6WVH51OOoRINJGebKISLgDroPJWmEwctdUpZofGFjJli0o0ZHns7XbxlGgGg3xqbRL3l9MeX9oMCz6b60m0kkgFPCrASFtKo8EAiDCG6ku0kV7LE38vbLNarerzwIxRTwaMqpkIbPm_7nxCL-YWpZSDmjNWXyaiUdRhGntJT5dcOq6G6n1Rq/s16000/ct.jpg)
+
+上圖即為 STM32F446xx 的時鐘樹。時鐘樹的看法基本上是由左至右——左為輸入、右為輸出（到各個 Peripheral）。時鐘訊號會從原始的時鐘源開始，經過一系列的多工器、倍頻器或分頻器變成系統時鐘（SYSCLK），之後再透過 AHB 或 APB 等分頻器輸出給各各外圍設備。
+
+最原始的時鐘源有四種：
+|名稱|英文全名|中文全名|說明|
+|----|-------|-------|----|
+|HSE|High-speed external|外部高速|接 4\~25 MHz 的震盪器（Oscillator）或石英震盪器（Crystal）|
+|LSE|Low-speed external|外部低速|接 32.768 kHz 的振盪器或石英振盪器|
+|HSI|High-speed internal|內部高速|為一個 16 MHz 的 RC 振盪器|
+|LSI|Low-speed internal|內部低速|為一個 32 kHz 的 RC 振盪器|
+
+觀察時鐘樹你會發現 LSE 和 LSI 其實和 SYSCLK 無關，它們會跑去獨立看門狗計時器（IWDG）和 RTC/AWU。真正可以作為 SYSCLK 來源的只有 HSE、HSI 或經過 PLL（Phase-locked loop，鎖相環）的這兩者。
+
+而 RC 震盪器難以比石英振盪器還精準，所以除非該應用對時鐘頻率不敏感，不然通常還是會使用外部的 HSE 和 LSE。
+
+> 如果你好奇為什麼 LSE 是 32.768 k 這個奇怪的數字，因為 32786 是 2^15，在二進制的微控制器中使用二的冪次方為頻率在分頻與計數上比較方便。
+
 # Timer 頻率
 每個 STM32 中都有許多不同的 Timer，各個 Timer 的規格及功能都不同。我們這次用的是 TIM2，這是一個通用功能計時器（General-purpose timer），爲一個 32 位元的上/下數 Counter，擁有自動裝載（Auto-reload）功能，還有一個 16 位元的可程式預除頻器。
 
@@ -32,7 +53,7 @@ Timer 計時器是各個 MCU 中都會有的基本功能。正如其名，當需
 
 從 STM32F446RE 的 Clock tree 還可以知道，當 APB1 的預除頻器設定爲 `/1` 時，APB1 timer  clock = APB1 clock，而 APB1 的預除頻器設定爲 `/1` 以外時，APB1 timer clock = 2* APB1 clock。
 
-![▲ STM32F446xx 的 Clock tree。取自 RM0390 Figure 14。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhQMwCBOiY0kUEnYnyx-j6eZy9dEzhdc7Qqpa-cJF_d66O3lFPX7svRDGe7evlGih2Mx5Sv6OQr1r5bN7jRJUhncOvoDwMCHitRsOBhtjhexXiL6d0Ii5jcX5cTBgDMMBbFH3_niSvyIuvx8Vsfh-pkEyvV0BjmqV_thSEfOy0quqwUdvt07K2d5SKi/s16000/2.png)
+![▲ STM32F446xx 的部分 Clock tree。取自 RM0390 Figure 14。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhQMwCBOiY0kUEnYnyx-j6eZy9dEzhdc7Qqpa-cJF_d66O3lFPX7svRDGe7evlGih2Mx5Sv6OQr1r5bN7jRJUhncOvoDwMCHitRsOBhtjhexXiL6d0Ii5jcX5cTBgDMMBbFH3_niSvyIuvx8Vsfh-pkEyvV0BjmqV_thSEfOy0quqwUdvt07K2d5SKi/s16000/2.png)
 
 
 # PSC 暫存器
