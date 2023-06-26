@@ -37,7 +37,7 @@ Calcite52 是基於 [Home row mods](https://precondition.github.io/home-row-mods
 
 # 外殼
 
-![樹脂 STL 3D 列印的外殼](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmfE0mPVh55yl-CaZKAJ-orO5lwxG2PWed4JhCUuRFSKT7cfikM8_eithVTcj8_s0xvmi4A-vDeDQmETqat_DvpdOQ8LHxr9PBkUj-o3Y0PwG_6UJOAQKPSqBGIMTKo1tZBVbWTa4QRovr8wCgdDGxC9UVRbZ3mYQ5X3_ISIOO2u2e4BglNodC4FPB/s16000/PXL_20230323_024932747.jpg)
+![樹脂 SLA 3D 列印的外殼](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmfE0mPVh55yl-CaZKAJ-orO5lwxG2PWed4JhCUuRFSKT7cfikM8_eithVTcj8_s0xvmi4A-vDeDQmETqat_DvpdOQ8LHxr9PBkUj-o3Y0PwG_6UJOAQKPSqBGIMTKo1tZBVbWTa4QRovr8wCgdDGxC9UVRbZ3mYQ5X3_ISIOO2u2e4BglNodC4FPB/s16000/PXL_20230323_024932747.jpg)
 
 ![組裝起來的樣子](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKrX4InG0CDi9J4rxBfj1XvoBp39i0X6CXaR_wyasREFn4BxrTexYuP0vROMtQIGfLt_6gkNh0lb6M7TYZLwriSnQ5JP9V52IgqrJiJpjT8gTMj5tax3iX0biZTjZiDzAjpzmLIdEStf45gbJtT6WZyjd6xAjK2sIlUPeIRzbR_tMsJRhPgC14oT80/s16000/PXL_20230323_025401968.jpg)
 
@@ -51,7 +51,7 @@ Calcite52 是基於 [Home row mods](https://precondition.github.io/home-row-mods
 
 # 腳架
 
-雖然修正後的外殼畫好了，但我暫時懶得再次訂 STL 列印件，所以就簡單地再設計一對腳架，用 FDM 3D 列印。
+雖然修正後的外殼畫好了，但我暫時懶得再次訂 SLA 列印件，所以就簡單地再設計一對腳架，用 FDM 3D 列印。
 
 ![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgy79q2UstUWryWLyk3ffX1WBqTew_vnVN13rVSsr5RLpfUTdkW7WYf61b6lRouUqZqK7Bp5_nQfBu6OGmFe__L7HP6HSuUtk7OGM0vrvYYXyHbz_9UY-Y71Ma41Y5A-hZfk1X4TNOGORNAomGEwASzSlIhM5Nd_pev0LAZAH__HbkhUSXIbmFMmFDC/s16000/PXL_20230411_103348679.jpg)
 
