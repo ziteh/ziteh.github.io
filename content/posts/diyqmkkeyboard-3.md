@@ -1,5 +1,6 @@
 ---
 title: '[自製QMK鍵盤-3] 編譯與燒錄'
+subtitle: '2023 QMK 韌體編譯及燒錄教學'
 author: ZiTe
 tags:
   - 教學
@@ -7,7 +8,7 @@ tags:
   - 3C
   - QMK
 series: ["自製QMK鍵盤"]
-date: 2023-04-22 13:13:00+08:00
+date: 2023-07-02 10:50:00+08:00
 comment: true
 toc: true
 draft: false
@@ -25,49 +26,15 @@ aliases: ["/2020/06/diyqmkkeyboard-3/"]
 
 # 編譯
 
-## 準備環境
-
-首先要[準備環境](https://docs.qmk.fm/#/newbs_getting_started?id=set-up-your-environment)，現在這一步已經相當簡單。請執行以下步驟：
-
-1. 下載並執行 [QMK MSYS](https://msys.qmk.fm/) 工具。
-2. 在 QMK MSYS 中輸入並執行指令 `qmk setup` 指令。
-3. 過程中它可能會請你確認一些問題，多數情況只要回答 `y` 既可。
-
-## 測試環境
-
-準備好環境後，在正式編譯自己的鍵盤前，可以先編譯其它鍵盤作爲測試。
-
-在 QMK MSYS 中執行：
+在上一篇我們已經準備好 QMK MSYS 的環境了，可以直接進行編譯，在 QMK MSYS 中執行：
 ```cmd
-qmk compile -kb clueboard/66/rev3 -km default
-```
-
-若環境沒問題的話，稍微等待後你應該會看到一排 `[OK]`，及類似這樣的結尾：
-```cmd
-Linking: .build/clueboard_66_rev3_default.elf                          [OK]
-Creating load file for flashing: .build/clueboard_66_rev3_default.hex  [OK]
-Copying clueboard_66_rev3_default.hex to qmk_firmware folder           [OK]
-Checking file size of clueboard_66_rev3_default.hex                    [OK]
- * The firmware size is fine - 26356/28672 (2316 bytes free)
-```
-
-## 進行編譯
-
-當你準備並測試好 QMK 的環境後，就可以正式開始編譯了。
-
-首先，複製在上一篇文章中的 QMK 韌體原始檔 `kb\` 資料夾，並把整個資料夾貼到環境底下的 `keyboards\` 資料夾中（參考路徑： `C:\Users\<USERNAME>\qmk_firmware\keyboards\`）。
-
-![▲ 複製自己的鍵盤資料夾到環境內](https://1.bp.blogspot.com/-R-JnAk6dbbc/Xu8SJ6OKXeI/AAAAAAAAChE/KAmscT04GTE5o9w_K9TQgx1eQid8Tt94gCK4BGAsYHg/s850/kb%25E8%25B3%2587%25E6%2596%2599%25E5%25A4%25BE.jpg)
-
-接著在 QMK MSYS 中執行：
-```cmd
-qmk compile -kb kb -km default
+qmk compile -kb mytetstkb -km default
 ```
 
 > `qmk compile -kb <keyboard> -km <keymap>` 是 QMK 的編譯指令。  
 > `<keyboard>` 代表了你要編譯的鍵盤，這裡的是 `kb`。`<keymap>` 是要編譯的鍵映射（Keymap），這裡是 `default`。
 
-如果有問題的話會顯示問題出在哪裡。如果都沒問題的話，應該會看到一整排的 `[OK]`，並且會告訴你編譯好的 `.hex` 檔儲存的路徑（Creating load file for flashing: .build/kb_default.hex，參考路徑：`C:\Users\<USERNAME>\qmk_firmware\.build\kb_default.hex`）。
+如果有問題的話會顯示問題出在哪裡。如果都沒問題的話，應該會看到一整排的 `[OK]`，並且會告訴你編譯好的 `.hex` 檔儲存的路徑（Creating load file for flashing: .build/mytestkb_default.hex，參考路徑：`C:\Users\<USERNAME>\qmk_firmware\.build\mytestkb_default.hex`）。
 
 ![▲ 編譯完成並顯示編譯好的檔案](https://1.bp.blogspot.com/-hENkr6oUTL4/Xu8SKl2cmPI/AAAAAAAAChM/o6l8dhizAMIrAk5i4xCmnjFTJ_iXLlPQQCK4BGAsYHg/s754/MSYS2-02.png)
 
@@ -83,7 +50,7 @@ qmk compile -kb kb -km default
 
 燒錄韌體前要先安裝好用來燒錄的軟體。
 
-QMK 有個官方的燒錄工具——[QMK Toolbox](https://github.com/qmk/qmk_toolbox/releases)，也可以透過 QMK MSYS 執行 `qmk flash -kb <keyboard> -km <keymap>` 指令來燒錄。一般情況下你可以先試試這兩種方式，但是對於 Pro Micro 我自己更喜歡使用 [AVRDUDESS](https://blog.zakkemble.net/avrdudess-a-gui-for-avrdude/) 來進行燒錄。
+QMK 有個官方的燒錄工具——[QMK Toolbox](https://github.com/qmk/qmk_toolbox/releases/latest)，也可以透過 QMK MSYS 執行 `qmk flash -kb <keyboard> -km <keymap>` 指令來燒錄。一般情況下你可以先試試這兩種方式，對於 Pro Micro 也可以使用 [AVRDUDESS](https://blog.zakkemble.net/avrdudess-a-gui-for-avrdude/) 來進行燒錄。
 
 以下為將示範使用 AVRDUDESS 進行燒錄，如果想要使用 QMK Toolbox 或 CLI 的話可以參考 QMK 的官方文件 [Flashing Firmwate](https://docs.qmk.fm/#/newbs_flashing)。
 
@@ -104,7 +71,7 @@ QMK 有個官方的燒錄工具——[QMK Toolbox](https://github.com/qmk/qmk_to
 打開 AVRDUDESS，並跟隨以下步驟：
 
 1. 在上方的「Programmer」選單中選擇「Ateml AppNote AVR109 BootLoader」。
-2. 在下面的「Flash」中選擇點擊文字框右邊的「...」按鈕來選擇剛剛編譯好的 `.hex` 檔案（如示範為 `kb_defaulf.hex`）。
+2. 在下面的「Flash」中選擇點擊文字框右邊的「...」按鈕來選擇剛剛編譯好的 `.hex` 檔案（如示範為 `mytestkb_defaulf.hex`）。
 3. 在右上方的「MCU」選單中選擇「ATmega32U4」（或者你的晶片型號，Pro Micro 爲 ATmega32U4）。
 4. 將你的開發板透過 USB 線接上電腦。這時「裝置管理員」可能會有反應。
 5. 讓你的開發板進入 DFU 模式（Pro Micro 就是快速短接 RST 和 GND 腳 2 次）。
