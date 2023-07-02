@@ -105,7 +105,7 @@ And build with qmk compile -kb mytestkb -km default.
 
 ## 修改 `info.json`
 
-`info.json` 是最主要的設定檔，大部分的設定都在這裡調整。有個它的詳細說明請參考 [info.json Format](https://docs.qmk.fm/#/reference_info_json)。
+`info.json` 是最主要的設定檔，大部分的設定都在這裡調整。有關它的詳細說明請參考 [info.json Format](https://docs.qmk.fm/#/reference_info_json) 及 [Data Driven Configuration](https://docs.qmk.fm/#/data_driven_config)。
 
 > [舊版 QMK](/posts/diyqmkkeyboard-firmware-0-18/) 在 `rules.mk` 和 `config.h` 中的設定現在多數都移到 `info.json` 中了。
 
