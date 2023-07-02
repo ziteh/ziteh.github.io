@@ -427,13 +427,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ## 修改 `rules.mk`
 
 如果你使用的是 Pro Micro 的話，Pro Micro 一般會分 16MHz/5V 和 8MHz/3.3V 這兩種版本，若你使用的是後者，那請在 `rules.mk` 中加入：
-```
+```mk
 # Processor frequency
 F_CPU = 8000000
 ```
 
 另外如果 MCU 是 Atmel AVR 的話（包含 ATmega32U4 和 Pro Micro），還可以再加一行設定來降低韌體的大小，避免發生韌體太大無法燒錄的情況：
-```
+```mk
 # Link time optimization, enable to reduce the compiled size of firmware
 LTO_ENABLE = yes
 ```
