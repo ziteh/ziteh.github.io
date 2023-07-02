@@ -118,7 +118,7 @@ And build with qmk compile -kb mytestkb -km default.
 
 ### MCU 與 Bootloader
 
-MCU 與 Botloader 的設定是要互相配合的，要依照你使用的 MCU 來選擇正確的 Bootloader。
+MCU 與 Bootloader 的設定是要互相配合的，要依照你使用的 MCU 來選擇正確的 Bootloader。
 
 首先看到 `processor` 的部分，這裡要選擇使用的 MCU。由於我們剛剛選擇的是 Pro Micro，所以這裡目前是 `atmega32u4` 沒錯，如果你使用的是別的 MCU 就請修改。QMK 支援的 MCU 可以參考 [Compatible Microcontrollers](https://docs.qmk.fm/#/compatible_microcontrollers)。
 
@@ -428,7 +428,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 如果你使用的是 Pro Micro 的話，Pro Micro 一般會分 16MHz/5V 和 8MHz/3.3V 這兩種版本，若你使用的是後者，那請在 `rules.mk` 中加入一行：
 ```
-F_CPU = 8000000
+F_CPU = 8000000  # Processor frequency.
+```
+
+另外如果 MCU 是 Atmel AVR 的話（包含 ATmega32U4 和 Pro Micro），還可以再加一行設定來降低韌體的大小，避免發生韌體太大無法燒錄的情況：
+```
+LTO_ENABLE = yes  # Link time optimization, enable to reduce the compiled size of firmware.
 ```
 
 ## 完成修改
