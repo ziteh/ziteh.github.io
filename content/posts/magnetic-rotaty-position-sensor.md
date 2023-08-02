@@ -3,6 +3,7 @@ title: '常見磁性旋轉位置感測器/旋轉編碼器比較'
 author: ZiTe
 tags:
   - 電子電路
+  - 馬達
 date: 2022-11-30 07:15:00
 comment: true
 toc: true
