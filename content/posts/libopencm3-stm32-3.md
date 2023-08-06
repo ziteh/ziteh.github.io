@@ -21,7 +21,7 @@ GPIO（General Purpose Input/Output）可以說是微控制器最基本的功能
 <!--more-->
 
 # STM32 的 GPIO 簡介
-相比與 Arduino，STM32 在使用 GPIO 時，要設定和注意的地方有很多，因此我先簡單介紹一下 STM32 的 GPIO。  
+相比於 Arduino，STM32 在使用 GPIO 時，要設定和注意的地方有很多，因此我先簡單介紹一下 STM32 的 GPIO。  
   
 首先最基本的，在設定 GPIO 時除了可以指定這個 Pin 腳是要是「General Purpose」的 Input 還是 Output 外，還有所謂的「Alternate Function（AF，復用功能）」，也可以設定是否啓用 STM32 內建的 上/下拉電阻（Pull-Up/Down Resistor）。  
 
