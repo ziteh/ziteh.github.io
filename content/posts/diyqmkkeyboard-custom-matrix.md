@@ -284,7 +284,7 @@ uint8_t matrix_key_count(void) {
 
 因爲我要做的無線分離式鍵盤上預計裝有軌跡球，所以我也一併測試了 QMK 要如何控制滑鼠遊標。
 
-首先，在 `rules.mk` 中增加 `MOUSEKEY_ENABLE = yes` 和 `POINTING_DEVICE_ENABLE = yes` 就可以啓用滑鼠與遊標的相關功能。
+首先，在 `rules.mk` 中增加 `MOUSEKEY_ENABLE = yes`、`POINTING_DEVICE_ENABLE = yes` 和 `POINTING_DEVICE_DRIVER = custom` 就可以啓用滑鼠與遊標的相關功能。
 
 在 `matrix.c` 中加入 `#include "quantum.h"`，並將剛剛的 `matrix_scan()` 的程式改成：
 
@@ -293,9 +293,9 @@ uint8_t matrix_key_count(void) {
 
 uint8_t matrix_scan(void) {
     if (uart_available()) {
-            uint8_t        indata = uart_read();
+            uint8_t indata = uart_read();
             report_mouse_t report = {};
-            report.x              = indata;
+            report.x = (int8_t)indata;
             pointing_device_set_report(report);
             pointing_device_send();
         }
