@@ -1,6 +1,6 @@
 ---
 title: '雜七雜八有趣專案分享-1'
-subtitle: 'KiCAD PCB 電路板 Layout 基礎教學'
+subtitle: '邏輯分析儀、致動器、步進馬達驅動器、FOC韌體庫、按鍵可視化'
 author: ZiTe
 tags:
   - DIY
