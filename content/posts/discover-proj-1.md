@@ -1,13 +1,12 @@
 ---
-title: '雜七雜八有趣專案分享-1'
-subtitle: '邏輯分析儀、致動器、步進馬達驅動器、FOC韌體庫、按鍵可視化'
+title: "雜七雜八有趣專案分享-1"
+subtitle: "邏輯分析儀、致動器、步進馬達驅動器、FOC韌體庫、按鍵可視化"
 author: ZiTe
 tags:
   - DIY
   - 電子電路
-series: ["雜七雜八有趣專案分享"]
-# categories: []
-date: 2023-10-29 11:50:00
+series: ["雜七雜八專案分享"]
+date: 2023-10-29 11:50:00+08:00
 comment: true
 toc: true
 draft: false
