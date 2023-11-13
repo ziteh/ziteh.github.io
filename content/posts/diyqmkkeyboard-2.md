@@ -46,6 +46,13 @@ Checking file size of clueboard_66_rev3_default.hex                    [OK]
  * The firmware size is fine - 26356/28672 (2316 bytes free)
 ```
 
+如果你因爲某些原因需要使用不同版本的 QMK，可以使用下面的方法來切換 QMK 版本。你可以在[這裡](https://github.com/qmk/qmk_firmware/tags)查看所有 QMK 的版本（Tag）。可能需要另外安裝 Git。
+
+1. 打開 QMK MSYS
+2. 導航到 QMK 的工作路徑，執行 `qmk cd`
+3. 更新 Tag，執行 `git fetch --all --tags --prune`
+4. 切換到指定的版本 Tag（以`0.21.3`爲例），執行 `git checkout tags/0.21.3`
+
 # 創建新鍵盤
 
 在 QMK MSYS 中執行：

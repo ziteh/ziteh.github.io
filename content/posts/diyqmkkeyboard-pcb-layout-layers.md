@@ -92,7 +92,7 @@ HASL 比較便宜，但是其平整度較差，且放太久後會不易吃錫焊
 
 ## PCB 設計參數
 
-PCB 設計參數是用來規範設計的。每一家 PCB 工廠的製作能力都不同，容許的生產規格也不同，甚至不同種類的 PCB 允許的規格也不同。爲了避免畫出工廠做不出來的 PCB，所以要設定一些參數限制。這些參數也會作爲 DRC 的檢查依據。
+PCB 設計參數是用來規範設計的。每一家 PCB 工廠的製作能力都不同，容許的生產規格也不同，甚至不同種類的 PCB 允許的規格也不同。爲了避免畫出工廠做不出來的 PCB，所以要設定一些參數限制。這些參數也會作爲 DRC（Design rule check） 的檢查依據。
 
 在 KiCad 的專案頁面雙擊 `<Project_Name.kicad_pcb>` 以開啓 PCB 編輯器。點擊上方工具列「File > Board Setup > Design Rules > Constraints」，這裡可以調整基本的設計約束。就像上面說的一樣，每個工廠的製造能力都不同，所以請參考你預計使用的生產商所提供的資訊調整這裡的數值（[JLCPCB 製作能力](https://jlcpcb.com/capabilities/pcb-capabilities)、[PCBWay 製造能力](https://www.pcbway.com/capabilities.html)）。通常最重要的有：
 - Copper
@@ -110,9 +110,15 @@ PCB 設計參數是用來規範設計的。每一家 PCB 工廠的製作能力�
 
 ![PCB 設計參數參考](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiL7Eq_4aJDXbqMFusCc1_beWQzhuPcHhr1pn3LZugE9WOqu2bdoyjbtaXoaQ50AKiuQtUZJkCrUyricQG4Ya9K-q1QWrSWvTmtnXE0DCFShO6WIGGWnJP_db93m_uOACSDqt0PLfJDrnQGmvXspc8DDFePb-1TNLH4nNOMEiMIOX9AnX4phqY2274M/s16000/drc-0.jpg)
 
-另外，你可能會想爲特定的走線設定特殊的規格，這時可以到「File > Board Setup > Design Rules > Net Classes」中設定。最常見的是把電源單獨設定得走線粗一點、via 大一點；或設定 USB D+/- 差分訊號走線以符合阻抗匹配。
+另外，你可能會想爲特定的走線設定特殊的規格，這時可以到「File > Board Setup > Design Rules > Net Classes」中設定。最常見的是把電源單獨設定得走線粗一點、Via 大一點；或設定 USB D+/- 差分訊號走線以符合阻抗匹配。
 
-![爲不同走線網路單獨設定樣式](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg9kHopa46xv2ubJLItrz3dNd3P3ly2HfHU5iERvHBT9hMZNBZ4OHPCEF6wLhS2j58l0P1vxaSCrdSFxyCYE1u35whUZUk_SPwcJLlPfOafTVsHLSmPvlMmijFPaBR5bdEiq1dx68rHzm19og_RUbe9koEA3Y4Ns9_qHVKLnOfv7IWWEaip0oY8ujNx/s16000/class.jpg)
+我通常使用的設定爲：
+- 一般：走線 0.2mm 寬/間距；Via Size 0.8mm，Via Hole 0.4mm。
+- 電源：走線 0.35mm 寬/間距；Via Size 0.8mm，Via Hole 0.4mm。
+- 細線：走線 0.15mm 寬/間距；Via Size 0.56mm，Via Hole 0.3mm。
+- USB 訊號差動對（1.6mm 厚 PCB）：DP Width 0.6mm；DP Gap 0.13mm。
+
+![爲不同走線網路單獨設定樣式](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgBBNxtF2Uqj4HZI1mYOX4elD70hwwXt4ylmb1nUYcbzIY2QJQ-VCjAqsjpLD-s11x46BMb561utNxK6BLV_Fl0VHji4Eh2-po0LnLnfjlmr_YP9rg5gBInAheQTqoQi0nCE2FbA1QinukWBm3wFkMKtqoJv2UUYYuKXQtbxvfRVjP7U-J0Ld618dHKkD8/s2326/Screenshot%202023-11-13%20190714.png)
 
 如果你想要更詳細地設定 DRC 的話，可以到「File > Board Setup > Design Rules > Custom Rules」中設定。這裡是比較進階的用法，我自己也不是完全熟悉這邊的設定，但是可以大概參考一下我之前使用的設定：[KiCad custom rules for JLCPCB](https://gist.github.com/ziteh/0d88f3ad4d2d7f4b38755af364208a6e)
 
@@ -143,9 +149,11 @@ PCB 設計參數是用來規範設計的。每一家 PCB 工廠的製作能力�
 
 > PCB 通常會分別使用公制單位毫米 mm 與英制單位密耳 mil。1mil 爲千分之一英寸，也就是約 0.0254mm。
 
-***請注意***，PCB 分爲上下兩面：Front/Top Side 和 Back/Bottom Side，在擺放所有零件的時候都要注意這個 Footprint 應該在 Front 還是 Back？以鍵盤爲例，一般來說鍵軸本體會在 Front Side 上，但是它的 Pin 腳或穿過焊盤孔（PTH），所以其焊點其實是在 Back Side。而如果你要用鍵軸熱插拔座的話，它也是焊在 Back Side。所以在使用鍵軸的 Footprint 時一定要確認清楚它要擺在那一面？這個 Footprint 是否已經預先翻面了？如果你還不是很熟悉的話，最好找個照片多檢查幾遍。
+***請注意***，PCB 分爲上下兩面：Front/Top Side 和 Back/Bottom Side，在擺放所有零件的時候都要注意這個 Footprint 應該在 Front 還是 Back？以鍵盤爲例，一般來說鍵軸本體會在 Front Side 上，但是它的 Pin 腳或穿過焊盤孔（PTH），所以其焊點其實是在 Back Side。而如果你要用鍵軸熱插拔座的話，它也是焊在 Back Side。所以在使用鍵軸的 Footprint 時一定要確認清楚它要擺在那一面？這個 Footprint 是否已經預先翻面了？如果你還不是很熟悉的話，最好找個照片或拿出實際的鍵軸多檢查幾遍。
 
 ![注意 Footprint 所在的面](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh4rT8ZJqbm-jiHbB5s8FvM-w6WiE5B7caStKiNfGvrlgTn8lbsy7qNBujw5oryVDo7ZU2SIEOp7mX9OveRFb-8A-6-jCZiaMTtOaJwOhf42TkgxHQvJzbXf3_xUrJDMXnj4loSEUQZ4CbMdqT8N5rfT8EHeWlFpNQ8Fkd34of7_4m8umkUnh0HJ2v_/s16000/TfNX8Wn.jpg)
+
+![你能分辨 A 和 B 哪一個的 Footprint 放錯面了嗎？答案在文末](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhbtpE2ugNnmwa0aycP7dtN8O0WJVu5k5EiubmTbdM_SCBan4GliQmcR5SCycH-_G59JKZseHW7N_w-se5SvRMuw2Hyg5eOMmhk7RQFwxs2W0jLmZQMrHMAtIM6v56IJDJ-WAnRo0mIelL9_mNvKEK0uv8_YHoqgYJKXWYWitUkHsMaIKzDhNxp20AF7cM/s2693/Screenshot%202023-11-13%20193453.png)
 
 在擺放零件時要注意各個零件的「Courtyard」不要重疊了。這個代表零件的實體大小，雖然它通常會畫得比真實的零件還大上一圈，但是擺得太近也不方便焊接。
 
@@ -218,7 +226,7 @@ Schematic 有更新的話記得要再「Update PCB from Schematic」一次。打
 
 ![各接腳會有預拉線連接](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2ghwE-kmv5Uhsf1d1I6lco4DWdtfZmnELysmD8r3fNeapXbhFKuEruOYu3HqrVHUpQuIqKL-Se-e2kavo7PGma3UZLdznU57irlouOTdYMOn2_qlcb78sRfAZy7b2A7BXY0tC9YvgFls0G__OOyM2PHIerVLQQZDqJE1FRbtQk7yjqvWRTBDXK36Z/s16000/Screenshot%202023-05-07%20192334.jpg)
 
-要進行走線的話，可以按 `X` 來開始進行走線。我通常會先將遊標移到焊盤上，再按 `X` 開始走線。爲了避免尖端輻射與避免銅箔脫離等問題，PCB 的走線轉角通常爲 135°，而不是 90°。如果要刪除一條走線的話，可以在選取後右鍵按「Unround Selected」。電源的走線可以設定得粗一點。
+要進行走線的話，可以按 `X` 來開始進行走線。我通常會先將遊標移到焊盤上，再按 `X` 開始走線。爲了避免尖端輻射與避免銅箔脫離等問題，PCB 的走線轉角通常爲 135°，而不是 90°。如果要刪除一條走線的話，可以在選取後右鍵按「Unround Selected」。電源的走線可以設定得粗一點。也可以善用在點選一個走線後按 `U` 來選擇。
 
 > 如果你想要走線有圓弧的轉角的話，可以選擇兩條線後按右鍵「Fillet Teacks」並輸入半徑。
 
@@ -317,6 +325,21 @@ PCB 全部完成後就可以輸出工廠生產用的 Gerber 檔了。
 
 > 有時候這些 Gerber 檔檢視器也會顯示錯誤，可以多用幾個不同的檢視器確認。如果你無法確定你的 Gerber 是否正確，或許可以聯絡 PCB 工廠尋求協助。
 
+# 快捷鍵參考
+
+一些基本的快捷鍵
+
+|     按鍵     | 功能                                    |
+| :----------: | :-------------------------------------- |
+|      R       | 旋轉所選的項目                          |
+|      F       | 將所選的項目換面                        |
+|      E       | 編輯所選的項目                          |
+|      X       | 開始繪製走線                            |
+|      V       | 在繪製走線狀態下新增一個 Via 並自動換面 |
+|      U       | 點選一條走線後，分段選取                |
+| ` (ESC 下方) | 高亮顯示同一條走線網路                  |
+
+
 # 相關網頁
 
 - [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
@@ -337,3 +360,7 @@ PCB 全部完成後就可以輸出工廠生產用的 Gerber 檔了。
 - PCBWay
   - [PCB Capabilities - Custom PCB Prototype the Easy Way - PCBWay](https://www.pcbway.com/capabilities.html)
   - [Generate Gerber file from Kicad 5.1.6 - Help Center - PCBway](https://www.pcbway.com/blog/help_center/Generate_Gerber_file_from_Kicad_5_1_6.html)
+
+---
+
+Footprint 問題：A 的 Footprint 是正確的；B是錯的。

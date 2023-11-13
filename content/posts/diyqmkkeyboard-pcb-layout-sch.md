@@ -19,6 +19,10 @@ draft: false
 
 我將示範以 KiCad 7 進行機械式鍵盤的 PCB Layout，包含基本的 KiCad 使用教學。要畫 PCB 可能多少需要一些基本電學或基礎電路學知識，但是如果你真的沒學過的話也沒關係，仔細照著本文應該也不會出錯。
 
+另有影片教學可以供參考：
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DOluUYmqIs4?si=y68SmS6Z4g1ycMCW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 > 以下內容以 KiCad `v7.0.2` 作爲示範。
 
 <!--more-->
