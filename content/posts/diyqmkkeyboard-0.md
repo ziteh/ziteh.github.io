@@ -17,7 +17,7 @@ aliases: ["/2020/06/diyqmkkeyboard-0/"]
 
 # 教學文列表
 
-[本系列文](/series/自製qmk鍵盤/)預計會根據上述的步驟分別介紹各自的詳細內容。除了基本步驟外，我還會額外介紹其它的進階功能。
+[本系列文](/series/自製qmk鍵盤/)預計會根據[製作步驟](#製作步驟)分別介紹各自的詳細內容。除了基本步驟外，我還會額外介紹其它的進階功能。
 
 > 不定期緩慢更新中。
 
@@ -69,7 +69,7 @@ aliases: ["/2020/06/diyqmkkeyboard-0/"]
 - [STM32 系列](https://www.st.com/en/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus.html)
 - [nRF52840](https://www.nordicsemi.com/products/nrf52840)
 
-至於這些 MCU 有何差異、要如何挑選，以及 PCB 要如何繪製詳細內容等，待未來再另做介紹。
+至於這些 MCU 有何差異、要如何挑選，以及 PCB 要如何繪製詳細內容等，請看[教學文](#教學文列表)。
 
 ## 韌體
 

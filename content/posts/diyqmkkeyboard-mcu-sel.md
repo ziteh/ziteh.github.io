@@ -171,3 +171,7 @@ QMK 的藍牙是透過模組支援的，且原則上僅限 AVR MCU。可以參�
 [rp]: https://www.raspberrypi.com/documentation/microcontrollers/rp2040.html
 [303]: https://www.st.com/en/microcontrollers-microprocessors/stm32f303cc.html
 [401]: https://www.st.com/en/microcontrollers-microprocessors/stm32f401cc.html
+
+# 相關文章
+
+- [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
