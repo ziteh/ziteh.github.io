@@ -1,5 +1,5 @@
 ---
-title: '[自製QMK鍵盤-5] KiCAD鍵盤PCB繪製教學 (下)'
+title: '[自製QMK鍵盤-6] KiCAD鍵盤PCB繪製教學 (下)'
 subtitle: 'KiCAD PCB 電路板 Layout 基礎教學'
 author: ZiTe
 tags:
