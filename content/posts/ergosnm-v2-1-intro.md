@@ -17,7 +17,7 @@ draft: false
 
 ![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjomPEzS9-CAg0tckSdbuGhUKEqEwi7Fitbm7g664xAt6KUuiUpvG1thjNKNARCq9x_JNFkMLit46aYbtpui2eG1qMtvZgZPY9pD0hYhS7pthagfeJOBqcq84bG-SalQydnXrthixqqQYHqsHpj9homTtRZagHPFzFkvRSv5XxGDucJpWoCF-if3Ohk/s16000/ovP1uKJ.jpg)
 
-[ErgoSNM](https://github.com/ziteh/ergo-snm-keyboard) 是我自己設計並製作的分離式人體工學機械式鍵盤（Split ergonomic keyboard），並且有可以取代滑鼠功能的軌跡球，其韌體使用 QMK。
+[ErgoSNM](https://github.com/siderakb/ergo-snm-keyboard) 是我自己設計並製作的分離式人體工學機械式鍵盤（Split ergonomic keyboard），並且有可以取代滑鼠功能的軌跡球，其韌體使用 QMK。
 
 這把鍵盤的目標就是讓人們（尤其是常需要敲鍵盤寫程式的工程師，甚至是 Vim 的使用者）在使用電腦時，右手可以不用在鍵盤與滑鼠之間來回移動。長時間使用電腦的話，這僅僅幾公分的移動都會讓效率下降，最糟糕的是造成手部的負擔。就算 ErgoSNM 可能難以完全 100% 地取代滑鼠，但希望至少可以勝任簡單的遊標操作。
 
@@ -168,8 +168,8 @@ Rev 2.0 其實和最後的 Rev 2.1 已經幾乎沒有差別了，幾乎只差在
 
 # 相關網站
 
-- [ErgoSNM GitHub repo](https://github.com/ziteh/ergo-snm-keyboard)
-- [ErgoSNM 文件](https://github.com/ziteh/ergo-snm-keyboard/wiki)
+- [ErgoSNM GitHub repo](https://github.com/siderakb/ergo-snm-keyboard)
+- [ErgoSNM 文件](https://siderakb.github.io/docs/category/ergosnm)
 - [ErgoSNM YouTube 播放清單](https://youtube.com/playlist?list=PL1kBTdTo-vGbdUH9_YovZvkGXuNMB03fa)
 - [我的 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - [QMK 官網](https://qmk.fm/)
