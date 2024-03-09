@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>DIY on ZiTe 本物誌</title><link>https://ziteh.github.io/tags/diy/</link><description>Recent content in DIY on ZiTe 本物誌</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><lastBuildDate>Sat, 30 Dec 2023 12:55:00 +0800</lastBuildDate><atom:link href="https://ziteh.github.io/tags/diy/index.xml" rel="self" type="application/rss+xml"/><item><title>ErgoSNM v3.0 帶軌跡球的無線分離式人體工學QMK鍵盤</title><link>https://ziteh.github.io/posts/ergosnm-v3-0-1/</link><pubDate>Sat, 30 Dec 2023 12:55:00 +0800</pubDate><guid>https://ziteh.github.io/posts/ergosnm-v3-0-1/</guid><description>ErgoSNM 是我自己設計並製作的分離式人體工學機械式鍵盤，並且有可以取代滑鼠功能的軌跡球。 之前我已經完成有線版本了，現在是要把它改成無線的。 更多資訊請</description></item><item><title>[自製QMK鍵盤-2] 如何選擇微控制器 MCU？</title><link>https://ziteh.github.io/posts/diyqmkkeyboard-mcu-sel/</link><pubDate>Thu, 21 Dec 2023 20:04:00 +0800</pubDate><guid>https://ziteh.github.io/posts/diyqmkkeyboard-mcu-sel/</guid><description>在正式編寫 QMK 韌體前，我們還需要先決定要使用什麼微控制器（Microcontroller，MCU）。這篇文章會介紹幾個比較常見的 MCU 並且說明它們</description></item><item><title>雜七雜八有趣專案分享-1</title><link>https://ziteh.github.io/posts/discover-proj-1/</link><pubDate>Sun, 29 Oct 2023 11:50:00 +0800</pubDate><guid>https://ziteh.github.io/posts/discover-proj-1/</guid><description>分享一些我最近在各處看到的有趣專案。 μLA 邏輯分析儀dotcypress/ula: μLA: Micro Logic Analyzer for RP2040 使用 RP2040 所做的簡易 16 通道 100MHz 邏輯分析儀。搭配</description></item><item><title>MS60：60%左移熱插拔鍵盤開發-構想</title><link>https://ziteh.github.io/posts/ms60-keyboard-idea/</link><pubDate>Mon, 10 Jul 2023 22:30:00 +0800</pubDate><guid>https://ziteh.github.io/posts/ms60-keyboard-idea/</guid><description>我最近開始製作一個名爲 MS60 的鍵盤，它的主要特色及設計目標是 60% 尺寸、左移佈局（2U Shift）、Cherry MX 軸熱插拔、分離 USB 子板。 左移佈局是爲</description></item><item><title>[自製QMK鍵盤-4] 編譯與燒錄</title><link>https://ziteh.github.io/posts/diyqmkkeyboard-build-flash-qmk/</link><pubDate>Sun, 02 Jul 2023 10:50:00 +0800</pubDate><guid>https://ziteh.github.io/posts/diyqmkkeyboard-build-flash-qmk/</guid><description>&lt;p>在&lt;a href="https://ziteh.github.io/posts/diyqmkkeyboard-2/">上一篇文章&lt;/a>中我們已經有了 QMK 韌體原始檔，接下來就可以進行編譯和燒錄，也就是&lt;a href="https://ziteh.github.io/posts/diyqmkkeyboard-0/#%e8%a3%bd%e4%bd%9c%e6%ad%a5%e9%a9%9f">製作步驟&lt;/a>的第 4 步。&lt;/p>
+&lt;p>編譯和燒錄的步驟對於不熟悉程式和開發板的人可能會覺得複雜，但是其實沒有這麼困難，只要仔細地遵循步驟應該是不會出什麼問題。&lt;/p></description></item><item><title>[自製QMK鍵盤-3] 產生並編輯QMK韌體</title><link>https://ziteh.github.io/posts/diyqmkkeyboard-edit-qmk/</link><pubDate>Sun, 02 Jul 2023 10:48:00 +0800</pubDate><guid>https://ziteh.github.io/posts/diyqmkkeyboard-edit-qmk/</guid><description>&lt;p>在&lt;a href="https://ziteh.github.io/posts/diyqmkkeyboard-1/">上一篇文章&lt;/a>中已經完成鍵盤的 Layout，這篇文章將會接續&lt;a href="https://ziteh.github.io/posts/diyqmkkeyboard-0/#%e8%a3%bd%e4%bd%9c%e6%ad%a5%e9%a9%9f">製作步驟&lt;/a>的第 3 步——生成並編輯 QMK 韌體。&lt;/p>
+&lt;blockquote>
+&lt;p>本篇是以發文當時最新的 &lt;a href="https://github.com/qmk/qmk_firmware/releases/tag/0.21.3" target="_blank">&lt;code>0.21.3&lt;/code>&lt;/a> 版本的 QMK 作爲示範。&lt;br>
+本文的&lt;a href="https://ziteh.github.io/posts/diyqmkkeyboard-firmware-0-18/">前一個版本&lt;/a>是針對 &lt;code>0.18.3&lt;/code> 版所撰寫的，已經不適合最新版的 QMK，故更新本文內容，舊版教學文僅作爲參考保留。&lt;/p>
+&lt;/blockquote></description></item><item><title>[自製QMK鍵盤-6] KiCAD鍵盤PCB繪製教學 (下)</title><link>https://ziteh.github.io/posts/diyqmkkeyboard-pcb-layout-layers/</link><pubDate>Sun, 07 May 2023 19:35:00 +0800</pubDate><guid>https://ziteh.github.io/posts/diyqmkkeyboard-pcb-layout-layers/</guid><description>在上一篇中已經介紹了 PCB 的設計步驟及 KiCad Schematic 的基本用法，接下來要以 KiCad 7 作爲示範，繼續介紹製作步驟的第 5 步的 PCB Layout 的部分。 以下內容以 KiCad v7.0.2 作爲示範。 PCB 基</description></item><item><title>ErgoSNM——有軌跡球的分離式人體工學QMK鍵盤 (v2.1)</title><link>https://ziteh.github.io/posts/ergosnm-v2-1-intro/</link><pubDate>Sun, 30 Apr 2023 17:10:00 +0800</pubDate><guid>https://ziteh.github.io/posts/ergosnm-v2-1-intro/</guid><description>ErgoSNM 是我自己設計並製作的分離式人體工學機械式鍵盤（Split ergonomic keyboard），並且有可以取代滑鼠功能的軌跡球，其韌體使用 QMK。 這把鍵盤的</description></item><item><title>[自製QMK鍵盤-番外] QMK啓用Vial教學</title><link>https://ziteh.github.io/posts/diyqmkkeyboard-vial/</link><pubDate>Fri, 28 Apr 2023 23:26:49 +0800</pubDate><guid>https://ziteh.github.io/posts/diyqmkkeyboard-vial/</guid><description>Vial 是一個可以讓你隨時修改 QMK 鍵盤的各種設定的軟體，其中就包含可以即時編輯 Keymap（也就是改鍵位）。如果要自製 QMK 鍵盤的話，加入 Vial 絕對會方便很</description></item><item><title>[自製QMK鍵盤-5] KiCAD鍵盤PCB繪製教學 (上)</title><link>https://ziteh.github.io/posts/diyqmkkeyboard-pcb-layout-sch/</link><pubDate>Thu, 27 Apr 2023 22:17:00 +0800</pubDate><guid>https://ziteh.github.io/posts/diyqmkkeyboard-pcb-layout-sch/</guid><description>&lt;p>到&lt;a href="https://ziteh.github.io/posts/diyqmkkeyboard-3/">上一篇文章&lt;/a>爲止我們已經完成了鍵盤的韌體部分，接下來要進行硬體的部分。本篇要介紹的是&lt;a href="https://ziteh.github.io/posts/diyqmkkeyboard-0/#%e8%a3%bd%e4%bd%9c%e6%ad%a5%e9%a9%9f">製作步驟&lt;/a>的第 5 步——繪製 PCB。&lt;/p>
+&lt;p>我將示範以 KiCad 7 進行機械式鍵盤的 PCB Layout，包含基本的 KiCad 使用教學。要畫 PCB 可能多少需要一些基本電學或基礎電路學知識，但是如果你真的沒學過的話也沒關係，仔細照著本文應該也不會出錯。&lt;/p>
+&lt;p>另有影片教學可以供參考：&lt;/p>
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/DOluUYmqIs4?si=y68SmS6Z4g1ycMCW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>&lt;/iframe>
+&lt;blockquote>
+&lt;p>以下內容以 KiCad &lt;code>v7.0.2&lt;/code> 作爲示範。&lt;/p>
+&lt;/blockquote></description></item><item><title>[自製QMK鍵盤-番外] 0.18.3版QMK韌體教學</title><link>https://ziteh.github.io/posts/diyqmkkeyboard-firmware-0-18/</link><pubDate>Fri, 21 Apr 2023 22:48:00 +0800</pubDate><guid>https://ziteh.github.io/posts/diyqmkkeyboard-firmware-0-18/</guid><description>&lt;p>⚠ 由於最新的 &lt;a href="https://github.com/qmk/qmk_firmware/releases/tag/0.21.3" target="_blank">&lt;code>0.21.3&lt;/code>&lt;/a> 版本的 QMK 在使用上的差異滿大的，這篇是針對舊版 &lt;a href="https://github.com/qmk/qmk_firmware/releases/tag/0.18.3" target="_blank">&lt;code>0.18.3&lt;/code>&lt;/a> 的 QMK 教學，僅作爲參考保留。&lt;/p>
+&lt;p>&lt;a href="https://ziteh.github.io/posts/diyqmkkeyboard-2/">最新版的 QMK 教學&lt;/a>。&lt;/p>
+&lt;p>如果你因爲某些原因需要使用舊版 QMK 的話，可以使用下面的方法來切換 QMK 版本（需要先安裝好 QMK MSYS 環境）。&lt;/p>
+&lt;ol>
+&lt;li>打開 QMK MSYS&lt;/li>
+&lt;li>執行 &lt;code>qmk cd&lt;/code>&lt;/li>
+&lt;li>執行 &lt;code>git fetch --all --tags --prune&lt;/code>&lt;/li>
+&lt;li>執行 &lt;code>git checkout tags/0.18.3&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;p>在&lt;a href="https://ziteh.github.io/posts/diyqmkkeyboard-1/">上一篇文章&lt;/a>中已經完成鍵盤的 Layout，這篇文章將會接續&lt;a href="https://ziteh.github.io/posts/diyqmkkeyboard-0/#%e8%a3%bd%e4%bd%9c%e6%ad%a5%e9%a9%9f">製作步驟&lt;/a>的第 3 步——生成並編輯 QMK 韌體。&lt;/p></description></item><item><title>[自製QMK鍵盤-1] 編輯鍵盤佈局 (Layout)</title><link>https://ziteh.github.io/posts/diyqmkkeyboard-kle/</link><pubDate>Tue, 18 Apr 2023 21:14:00 +0800</pubDate><guid>https://ziteh.github.io/posts/diyqmkkeyboard-kle/</guid><description>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh6xYCyGGGes8740UwynZ1-7vRgL-NiAbQG_wQ-84Qwpp0VnqNnTvhTym-9_GQemo3IWD31zfsRhwnsCjjuo6FY9YA1Uvzw6ewqC5ZQZuifOvxs-4imiPxjeBuYCJ_Y9Wc5nkBQqNQHFN03e8RHUQi6apUVahqwfScuck0SVJ-W_c6uGn1oYKgOFfgd/s16000/Screenshot%202023-04-18%20at%2020-31-36%20Keyboard%20Layout%20Editor.png" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;p>根據第一篇所提的&lt;a href="https://ziteh.github.io/posts/diyqmkkeyboard-0/#%e8%a3%bd%e4%bd%9c%e6%ad%a5%e9%a9%9f">製作步驟&lt;/a>，當你確定完鍵盤的整體設計（要多少按鍵？標準、Ortho 或 Alice 佈局？等）後，就可以開始編輯鍵盤佈局（Layout）了。&lt;/p></description></item><item><title>[自製QMK鍵盤-0] 開始 DIY 一把機械鍵盤</title><link>https://ziteh.github.io/posts/diyqmkkeyboard-0/</link><pubDate>Mon, 17 Apr 2023 20:17:00 +0800</pubDate><guid>https://ziteh.github.io/posts/diyqmkkeyboard-0/</guid><description>&lt;h1 id="教學文列表">教學文列表&lt;a class="anchorjs-link" href="#%e6%95%99%e5%ad%b8%e6%96%87%e5%88%97%e8%a1%a8">&lt;/a>&lt;/h1>&lt;p>&lt;a href="https://ziteh.github.io/series/%e8%87%aa%e8%a3%bdqmk%e9%8d%b5%e7%9b%a4/">本系列文&lt;/a>預計會根據&lt;a href="https://ziteh.github.io/#%e8%a3%bd%e4%bd%9c%e6%ad%a5%e9%a9%9f">製作步驟&lt;/a>分別介紹各自的詳細內容。除了基本步驟外，我還會額外介紹其它的進階功能。文章不定期緩慢更新中。&lt;/p>
+&lt;h2 id="基礎內容">基礎內容&lt;a class="anchorjs-link" href="#%e5%9f%ba%e7%a4%8e%e5%85%a7%e5%ae%b9">&lt;/a>&lt;/h2>&lt;ol>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/diyqmkkeyboard-kle/">編輯鍵盤佈局 (Layout)&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/diyqmkkeyboard-mcu-sel/">如何選擇微控制器 MCU？&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/diyqmkkeyboard-edit-qmk/">產生並編輯 QMK 韌體&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/diyqmkkeyboard-build-flash-qmk/">編譯與燒錄&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/diyqmkkeyboard-pcb-layout-sch/">KiCAD 鍵盤 PCB 繪製教學 (上)&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/diyqmkkeyboard-pcb-layout-layers/">KiCAD 鍵盤 PCB 繪製教學 (下)&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;h2 id="進階內容">進階內容&lt;a class="anchorjs-link" href="#%e9%80%b2%e9%9a%8e%e5%85%a7%e5%ae%b9">&lt;/a>&lt;/h2>&lt;ul>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/diyqmkkeyboard-vial/">QMK 啓用 Vial 教學&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/diyqmkkeyboard-ble/">爲 QMK 鍵盤加上 Bluetooth 藍牙無線功能&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/diyqmkkeyboard-ble-module/">Adafruit Bluefruit LE SPI Friend 韌體燒錄教學&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/diyqmkkeyboard-encoder/">旋轉編碼器 (Encoder)&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/diyqmkkeyboard-operate/">QMK 的基本架構與運作方式&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/diyqmkkeyboard-custom-matrix/">在 Custom Matrix 中使用 UART 與控制滑鼠遊標，並加上無線模組&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="封存">封存&lt;a class="anchorjs-link" href="#%e5%b0%81%e5%ad%98">&lt;/a>&lt;/h2>&lt;ul>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/diyqmkkeyboard-firmware-0-18/">0.18.3 版 QMK 韌體教學&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;p>自從購買了第一把機械式鍵盤後，就發現我總是少一把鍵盤，也萌生出「自己做鍵盤」的想法。經歷了近 3 年斷斷續續、三天打魚兩天曬網的查資料、學習及實作後，總算是有了點成果。多虧自製鍵盤的社群龐大且活躍，現在要 DIY 出一把鍵盤其實真的不難，我自己就曾在 2 天內就完成一把鍵盤。&lt;/p>
+&lt;p>但是我在學習的過程中走了不少冤枉路，故想要針對 QMK 鍵盤韌體寫一系列較完整的教學，幫助那些也想自己做鍵盤的人。希望看完這一系列的文章，大家也可以從零開始做成屬於自己的鍵盤。&lt;/p>
+&lt;p>而這篇作爲開頭，會先介紹製作一把鍵盤所需的要件及步驟。&lt;/p></description></item><item><title>Calcite52 - 52鍵正交Choc矮軸QMK鍵盤</title><link>https://ziteh.github.io/posts/calcite52-keyboard-2/</link><pubDate>Sun, 16 Apr 2023 15:00:00 +0800</pubDate><guid>https://ziteh.github.io/posts/calcite52-keyboard-2/</guid><description>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKrX4InG0CDi9J4rxBfj1XvoBp39i0X6CXaR_wyasREFn4BxrTexYuP0vROMtQIGfLt_6gkNh0lb6M7TYZLwriSnQ5JP9V52IgqrJiJpjT8gTMj5tax3iX0biZTjZiDzAjpzmLIdEStf45gbJtT6WZyjd6xAjK2sIlUPeIRzbR_tMsJRhPgC14oT80/s16000/PXL_20230323_025401968.jpg" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;p>&lt;a href="https://ziteh.github.io/posts/calcite52-keyboard-1/">上一篇&lt;/a>中介紹了 Calcite52 的設計理念，現在 Rev 1.0 成品已經完成了，所以來介紹一下。&lt;/p></description></item><item><title>Calcite52 - 一種52鍵QMK正交鍵盤的初步設計</title><link>https://ziteh.github.io/posts/calcite52-keyboard-1/</link><pubDate>Fri, 10 Feb 2023 23:10:00 +0000</pubDate><guid>https://ziteh.github.io/posts/calcite52-keyboard-1/</guid><description>&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://blogger.googleusercontent.com/img/a/AVvXsEiDjgnopDdC_Tneeb-yHz95lpySZi5OC5dVayCmAD7d_-lyDiigpjfZfSSV_76folSZweujFPW_Ztq6I6dEe1BKyDylzPKqbLpAKbdLXvzKhxGvcaooOmnpEGWu9ipsWpGljXghNlBDZGQUXNaSGLQpYyLbE5w1C3y3NGJPXjThavvuCR-_BiEwp2u9=s16000" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;p>前陣子無意間得知 &lt;a href="https://precondition.github.io/home-row-mods" target="_blank">Home row mods&lt;/a> 和 &lt;a href="https://artsey.io/" target="_blank">ARTSEY&lt;/a> 這兩個鍵盤操作系統。&lt;/p>
+&lt;p>Home row mods 主要是將修飾鍵（Modifiers，如 Shift、Ctrl、Alt 和 Windows）改到 Home row，也就是 ASDF 這一排上，以更方便使用這些按鍵，減輕小拇指的負擔。&lt;/p>
+&lt;p>而 ARTSEY 則是將一把鍵盤的大部分按鍵透過僅 8 個按鍵的排列組合來達成，即可以只用單手 8 個按鍵就達到一把鍵盤所需要的最基本功能。&lt;/p>
+&lt;p>因此我就產生一種將它們兩個稍微結合起來，做一把小鍵盤的想法。&lt;/p></description></item><item><title>[自製QMK鍵盤-番外] Adafruit Bluefruit LE SPI Friend 韌體燒錄教學</title><link>https://ziteh.github.io/posts/diyqmkkeyboard-ble-module/</link><pubDate>Tue, 22 Feb 2022 18:42:00 +0000</pubDate><guid>https://ziteh.github.io/posts/diyqmkkeyboard-ble-module/</guid><description>&lt;p>在&lt;a href="https://ziteh.github.io/posts/diyqmkkeyboard-ble/">上一篇文章中&lt;/a>，我們使用 &lt;a href="https://www.adafruit.com/product/2633" target="_blank">Adafruit Bluefruit LE SPI Friend&lt;/a>（以下簡稱 Adafruit BLE）藍牙模組爲 QMK 添加了藍牙的功能。&lt;/p>
+&lt;p>不過這個模組的價格有點高，還好 Adafruit 有提供其韌體及燒錄工具，所以只要有 MDBT40 或 nRF51822 的話也可以自製 Adafruit Bluefruit LE SPI Friend 藍牙模組。&lt;/p></description></item><item><title>[自製QMK鍵盤-番外] 爲QMK鍵盤加上Bluetooth藍牙無線功能</title><link>https://ziteh.github.io/posts/diyqmkkeyboard-ble/</link><pubDate>Mon, 21 Feb 2022 13:31:00 +0000</pubDate><guid>https://ziteh.github.io/posts/diyqmkkeyboard-ble/</guid><description>&lt;p>現在的無線技術愈來愈發達，許多人更加喜歡無線的鍵盤與滑鼠，而我也是。QMK 已經有對部分藍牙（Bluetooth 或 BLE）模組的支援，只需要啓用就可以將 QMK 變成藍牙無線鍵盤。&lt;/p>
+&lt;p>本文將介紹如何啓用 QMK 的藍牙功能。&lt;/p>
+&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://blogger.googleusercontent.com/img/a/AVvXsEgESsB0l38nOIjaw6wggilS9U_AjhzI82CzsDPwwsyBw_h_QdYwre_HWDzdNGZO8BW9JgFbf6KNXE8XwMKOVzlQAsnj9E2FIzB1I5NLbNBFBBQca6HLu_zFaCx1Pawflti5q0mkoTGxfVAPMA1BDQb9wD-Io8tjEpr4Zz9HPkCnXv_49Kgdn5WDMt4u=s16000" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p></description></item><item><title>[自製QMK鍵盤-番外] 在Custom Matrix中使用UART與控制滑鼠遊標，並加上無線模組</title><link>https://ziteh.github.io/posts/diyqmkkeyboard-custom-matrix/</link><pubDate>Sat, 05 Feb 2022 21:40:00 +0000</pubDate><guid>https://ziteh.github.io/posts/diyqmkkeyboard-custom-matrix/</guid><description>&lt;p>在&lt;a href="https://ziteh.github.io/posts/mitosis-keyboard-intro">這篇文章&lt;/a>中我簡單地介紹了 Mitosis 這個基於 QMK 的無線分離式人體工學鍵盤，而在這篇文章中，我將參考其架構來做出一個我自己的無線分離式鍵盤的雛形。&lt;/p>
+&lt;p>要達成這樣的功能，會需要用到 QMK 的 &lt;a href="https://docs.qmk.fm/#/custom_matrix" target="_blank">Custom Matrix&lt;/a> 和 UART 功能，並且使用 LoRa 無線通訊模組 HC-12 來暫時替代藍牙作爲無線通訊。&lt;/p>
+&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://blogger.googleusercontent.com/img/a/AVvXsEh23-UqK5AQeWB-A4o5h_LPG0SIaIlC-GztC4eKfsTX8H2FMCodib8pZtAbyoWirD0ZXoQBExe1vncnQf1nYHZTyfLCW4fDuxhrmR8I608NxoxttwwQi9YyPmhMMvBXkEwbsuYppXw5H61Smc1ApNGVr6Lu-h5Lpu6qFU_DDWL-9Ha0zI1R6pLUSmUw=s16000" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p></description></item><item><title>無線分離式人體工學鍵盤Mitosis的介紹與分析</title><link>https://ziteh.github.io/posts/mitosis-keyboard-intro/</link><pubDate>Sun, 09 Jan 2022 22:11:00 +0000</pubDate><guid>https://ziteh.github.io/posts/mitosis-keyboard-intro/</guid><description>&lt;p>&lt;a href="https://github.com/qmk/qmk_firmware/tree/master/keyboards/mitosis" target="_blank">Mitosis&lt;/a> 是一款使用 &lt;a href="https://qmk.fm/" target="_blank">QMK&lt;/a> 作爲韌體所開發的無線分離式鍵盤，它不僅僅是與電腦之間無線，它的左右兩部分之間也沒有實體連線，可謂是「真 • 無線」。就我所知，有許多基於 QMK 的無線分離式鍵盤都是受到 Mitosis 的啓發。&lt;/p>
+&lt;p>本文將會概略性地介紹 Mitosis 是如何做到無線的。&lt;/p></description></item><item><title>自組 FreeNAS</title><link>https://ziteh.github.io/posts/freenas-build/</link><pubDate>Thu, 03 Dec 2020 16:19:00 +0000</pubDate><guid>https://ziteh.github.io/posts/freenas-build/</guid><description>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://1.bp.blogspot.com/-gu_QKiKQcY8/X8ieYisKAXI/AAAAAAAACtM/oibWqubpBFocWo7czgWtGE7ai6VAk2i0wCPcBGAsYHg/s4544/IMG_20201103_225204.jpg" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>隨著 Google 宣佈 Google Photos 在 2021 年 6 月 後不會有無限儲存高畫質相片的服務後，大家也紛紛開始擔心再未來連學術帳號的雲端無限空間也會被影響。&lt;/p>
+&lt;p>而且在現代，數位資料的安全性是非常重要的，有許多重要的照片或文件都只會以電子檔案的方式保存，一旦儲存這些檔案的硬碟出現問題，往往都是非常麻煩的事情，就算資料救援有成功，但其花費也是不少。&lt;/p>
+&lt;p>因此越來越多人開始使用 NAS。對於一般人，買有現成的品牌 NAS 其實就非常好用了，但是如果對於電腦方面比較在行的話，也是有自己組裝一臺 NAS 的選擇，這樣做的話雖然會比較麻煩，但可以讓自己擁有更大的選擇彈性。&lt;/p>
+&lt;p>而本文要介紹的就是現在在自組 NAS 中非常多人使用的作業系統——&lt;a href="https://www.freenas.org/" target="_blank">FreeNAS&lt;/a>。&lt;/p>
+&lt;p>FreeNAS 是基於 FreeBSD 的開源 NAS 系統，作爲開源軟體，它也是免費的，因此世界上有非常多人在使用它，使用者社群可以說是非常完善，官方文件也很豐富。&lt;/p></description></item><item><title>[自製QMK鍵盤-番外] 旋轉編碼器 (Encoder)</title><link>https://ziteh.github.io/posts/diyqmkkeyboard-encoder/</link><pubDate>Sat, 21 Nov 2020 17:39:00 +0000</pubDate><guid>https://ziteh.github.io/posts/diyqmkkeyboard-encoder/</guid><description>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://1.bp.blogspot.com/--DVn7BXoSVM/X7jhXa4wzwI/AAAAAAAACrk/5-7dhQnH1kgKadvIJFRDvJypUmhe44QUACPcBGAsYHg/w640-h480/DSC_0020.JPG" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;p>在之前的文章中我們已經完成了 QMK 的基本操作，已經可以作出一個基本鍵盤。&lt;/p>
+&lt;p>在某些鍵盤上可以看到旋轉編碼器（Encoder，以下簡稱編碼器）。編碼器最常見的地方就是滑鼠的滾輪，它可以朝兩個不同的方向無限地一直旋轉下去，用在音量調整或選單控制會非常方便。&lt;/p>
+&lt;p>在 QMK 中加入編碼器的功能是非常簡單的，只需要多加幾行程式碼就可以。&lt;/p></description></item><item><title>ELECOM Deft Pro 軌跡球更換微動開關</title><link>https://ziteh.github.io/posts/deft-pro-switch/</link><pubDate>Fri, 09 Oct 2020 18:23:00 +0000</pubDate><guid>https://ziteh.github.io/posts/deft-pro-switch/</guid><description>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://1.bp.blogspot.com/-9817x0a1I90/X4A3oD4XlBI/AAAAAAAACpk/-420KmjCgEUmxf9xFTtO-YukexeJoBpEACPcBGAsYHg/s4315/DSC_0077.jpg" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>我在 2019 年底買了這款 ELECOM 的 Deft Pro (M-DPT1MR) 軌跡球，雖然它有特別說明使用的微動開關爲 OMRON (歐姆龍) 公司的產品，實際上也確實如此，只不過它使用的是 OMRON 在中國製造的 「D2FC-F-7N(10M)」。使用這款微動開關的滑鼠非常多，然而評價多爲不太耐用，而我在使用了半年後左鍵也發生「連點」的狀況，於是乎我就想說來換個微動開關。&lt;/p></description></item><item><title>[自製QMK鍵盤-番外] QMK的基本架構與運作方式</title><link>https://ziteh.github.io/posts/diyqmkkeyboard-operate/</link><pubDate>Tue, 23 Jun 2020 23:53:00 +0000</pubDate><guid>https://ziteh.github.io/posts/diyqmkkeyboard-operate/</guid><description>&lt;p>如果要深入修改 QMK 的話，最好還是要瞭解一下 QMK 的架構及其運作方式。這可能會有點無聊，但擁有足夠的知識總是可以讓我們少走一點冤枉路。&lt;/p>
+&lt;p>以下內容皆譯自&lt;a href="https://docs.qmk.fm/#/" target="_blank"> QMK 官方說明文件&lt;/a>。我並沒有完全翻譯，只有翻譯其中比較重要的部分內容。如有翻譯錯誤還請指教，並以 QMK 官方文件為準。&lt;/p></description></item><item><title>自組60%藍牙機械鍵盤-Just60 後續改軸</title><link>https://ziteh.github.io/posts/just60-replaceswitches/</link><pubDate>Tue, 31 Mar 2020 16:59:00 +0000</pubDate><guid>https://ziteh.github.io/posts/just60-replaceswitches/</guid><description>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://1.bp.blogspot.com/-MJaz0ArUBZE/XomfS_eOL2I/AAAAAAAACC8/Ho-R4rr6xTQu2M5y5ticJV4EHoG0_qlDgCKgBGAsYHg/s1600/ZPH_0116.jpg" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>之前在&lt;a href="https://ziteh.github.io/2020/03/unbox-just60/">[開箱]自組60%藍牙機械鍵盤-Just60&lt;/a>一文中介紹了我組裝Just60的過程，在我使用到目前為止的3個多月下來都沒有什麼太大的問題。不過因為我的鍵位配列方案相當緊湊，尤其是左Shift從正常的2.25U變成只有1U的長度，使用起來還是多少有些不習慣，經常誤觸，甚至連帶著左Ctrl也變得容易按錯。&lt;/p></description></item><item><title>[開箱]自組60%藍牙機械鍵盤-Just60</title><link>https://ziteh.github.io/posts/unbox-just60/</link><pubDate>Sun, 08 Mar 2020 17:38:00 +0000</pubDate><guid>https://ziteh.github.io/posts/unbox-just60/</guid><description>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://1.bp.blogspot.com/-w0fao2bdCd0/XomqiW0jgWI/AAAAAAAACDY/1wlDE8Qf2L0khbeXGFc3ntvnL9kEorsvACKgBGAsYHg/s640/cover.JPG" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>一直以來我用的都是100%鍵盤（標準104鍵），但是因為右側的控制鍵區（方向鍵、Home和PageUp等）還有數字鍵區讓右手從鍵盤到滑鼠的移動距離非常遠，長時間使用或頻繁移動的話對右手來說非常累。雖然我個人認為最好的方式就是好筆電一樣，在空白鍵下放一個觸控板，這樣指標的動作就交給左右大拇指就可以了，但是觸控板產品實在不多，而就算用手機裝相關App其操作手感也還是比不上一般的筆電，故此想法目前還無法實現。&lt;/p></description></item><item><title>自製電腦PSU模組線 (手殘沒有極限)</title><link>https://ziteh.github.io/posts/psucustomcables/</link><pubDate>Fri, 22 Feb 2019 09:26:00 +0000</pubDate><guid>https://ziteh.github.io/posts/psucustomcables/</guid><description>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://1.bp.blogspot.com/-DWIH30NOyDI/XppYajhsUdI/AAAAAAAACFg/wPQROsxK1J0R6B1fgoHXJOisvhhVRSJDwCPcBGAsYHg/s640/ZPH_0309.JPG" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>上次買了&lt;a href="https://ziteh.github.io/2019/02/unbox-zsa4itx/">新的電腦機殼ZS-A4&lt;/a>，也順便換了些零件，但由於新機殼實在是太小了，原本PSU附的線有點太長，比較嚴重的是3個2.5寸硬碟的電源線因爲距離太近，所以只能插到2個硬碟。基於以上的原因，我就想説來試試看自己做電源供應器的模組線，所以就上網買了些材料，開始了手殘之旅。&lt;/p></description></item><item><title>自製遊戲方向盤-Maker Faire Taipei 2018 (臺北華山創客嘉年華)</title><link>https://ziteh.github.io/posts/makerfairetaipei2018/</link><pubDate>Thu, 21 Feb 2019 09:37:00 +0000</pubDate><guid>https://ziteh.github.io/posts/makerfairetaipei2018/</guid><description>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://1.bp.blogspot.com/-O55tzWNKOOM/XppbGfjNjhI/AAAAAAAACFw/5mg4H7oP5tobmbB7je5IJwFDpC0YsisRACPcBGAsYHg/s320/20181011_%25E9%2581%258A%25E6%2588%25B2%25E6%2596%25B9%25E5%2590%2591%25E7%259B%25A4%25E5%25AE%25A3%25E5%2582%25B3%25E7%2585%25A7-0046.jpg" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>在2018年的11月(期中考前&amp;hellip;)我和我們學校的同伴一起去參加Maker Faire Taipei 2018 (臺北華山創客嘉年華)。這是我第一次參加Maker Faire，因爲我們有攤位，需要一些作品來展示，所以我從暑假時就開始規劃要做些什麽作品，最後在學長的提議下選擇了這個游戲方向盤。而這件作品是參考以下的影片（目前原影片似乎已遺失了）。&lt;/p></description></item><item><title>自製12AU7(ECC82) 真空管耳機擴大機</title><link>https://ziteh.github.io/posts/12au7-vtha/</link><pubDate>Mon, 18 Feb 2019 09:59:00 +0000</pubDate><guid>https://ziteh.github.io/posts/12au7-vtha/</guid><description>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://1.bp.blogspot.com/-lbg-gEN1IxM/XppfskTS_xI/AAAAAAAACGg/pkHxv9yG9tQX-e7VCSXuP-Wmu1jx6LmTwCPcBGAsYHg/s640/360%25E7%259C%259F%25E7%25A9%25BA%25E7%25AE%25A1%25E8%2580%25B3%25E6%2593%25B4.gif" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>這學期因爲有一門電子學實習的課程，而實習的期末作業就是要自己找一個電路來做，然後自己佈線、手洗電路板最後在焊接。由於我之前一直都是使用PCB電路板雕刻機，所以這次的實習作業讓我非常的期待，而這個題目也必定要好好思考，得做些特別的才有趣，於是我就想起了我國中時的夢想：真空管擴大機。&lt;/p></description></item><item><title>把Seagate Personal Cloud改裝成USB外接硬碟</title><link>https://ziteh.github.io/posts/seagatepersonalcloud/</link><pubDate>Sat, 10 Nov 2018 10:33:00 +0000</pubDate><guid>https://ziteh.github.io/posts/seagatepersonalcloud/</guid><description>&lt;p>前幾天我的Seagate Personal Cloud 3TB壞掉了，拆開來測試後發現是主機板掛了，而我就想說反正它也過保了，我也懶得送修，所以就想把它改成一般的USB外接硬碟，於是這篇文章就產生了。&lt;/p></description></item><item><title>[專案:電腦風扇控制器-2] OLED-SSD1306零件簡單介紹</title><link>https://ziteh.github.io/posts/fenctrl-2/</link><pubDate>Wed, 27 Dec 2017 14:56:00 +0000</pubDate><guid>https://ziteh.github.io/posts/fenctrl-2/</guid><description>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://1.bp.blogspot.com/-HdFGyfRgpCI/XqUx46khu6I/AAAAAAAACIE/ODfjLdGcWiATpEiAIsihhjISX9eLH2eiQCPcBGAsYHg/s320/DSC_0357.JPG" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>我第一次接觸OLED-SSD1306是因為高中技藝競賽的題目有用到，當時我覺得這是一個很難的零件，當然我到現在也沒完全了解這個零件，但我覺得網路上可以參考的中文資源太少了，所以我藉著這次製作風扇控制器的關係，還是打了這個文章，還請各位讀者見笑了，內容如果有錯還請各位指導。(本文都是以128*64解析度的單色OLED來做示範)&lt;/p></description></item><item><title>[專案:電腦風扇控制器-1] 構想與零件選用</title><link>https://ziteh.github.io/posts/fenctrl-1/</link><pubDate>Sat, 25 Nov 2017 15:30:00 +0000</pubDate><guid>https://ziteh.github.io/posts/fenctrl-1/</guid><description>&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>2017年10月初，我在虎尾科大裡加入了一個我也不知道算不算社團的社團，叫做Dream Maker築夢者，不難看出和自造者有很大的關係。我加入他們並成為所謂的第二屆黃豆學習生，而成為黃豆學習生有一個重要的任務就是要在12月底前完成並發表一個專案，所以我就開始執行這個電腦風扇控制器的製作計劃。&lt;/p></description></item></channel></rss>

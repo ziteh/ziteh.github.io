@@ -1,0 +1,91 @@
+<!doctype html><html lang=zh><head><script async src="https://www.googletagmanager.com/gtag/js?id=G-J1MYLYHKHR"></script><script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-J1MYLYHKHR",{anonymize_ip:!1})}</script><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>[自製QMK鍵盤-0] 開始 DIY 一把機械鍵盤 | ZiTe 本物誌</title>
+<meta name=author content="ZiTe"><meta name=description content="教學文列表本系列文預計會根據製作步驟分別介紹各自的詳細內容。除了基本步驟外，我還會額外介紹其它的進階功能。文章不定期緩慢更新中。
+基礎內容
+編輯鍵盤佈局 (Layout)
+如何選擇微控制器 MCU？
+產生並編輯 QMK 韌體
+編譯與燒錄
+KiCAD 鍵盤 PCB 繪製教學 (上)
+KiCAD 鍵盤 PCB 繪製教學 (下)
+
+進階內容
+QMK 啓用 Vial 教學
+爲 QMK 鍵盤加上 Bluetooth 藍牙無線功能
+Adafruit Bluefruit LE SPI Friend 韌體燒錄教學
+旋轉編碼器 (Encoder)
+QMK 的基本架構與運作方式
+在 Custom Matrix 中使用 UART 與控制滑鼠遊標，並加上無線模組
+
+封存
+0.18.3 版 QMK 韌體教學
+
+
+自從購買了第一把機械式鍵盤後，就發現我總是少一把鍵盤，也萌生出「自己做鍵盤」的想法。經歷了近 3 年斷斷續續、三天打魚兩天曬網的查資料、學習及實作後，總算是有了點成果。多虧自製鍵盤的社群龐大且活躍，現在要 DIY 出一把鍵盤其實真的不難，我自己就曾在 2 天內就完成一把鍵盤。
+但是我在學習的過程中走了不少冤枉路，故想要針對 QMK 鍵盤韌體寫一系列較完整的教學，幫助那些也想自己做鍵盤的人。希望看完這一系列的文章，大家也可以從零開始做成屬於自己的鍵盤。
+而這篇作爲開頭，會先介紹製作一把鍵盤所需的要件及步驟。"><meta name=keywords content="blog,developer,personal,electronic,software,firmware,hardware,open-source"><meta name=twitter:card content="summary"><meta name=twitter:title content="[自製QMK鍵盤-0] 開始 DIY 一把機械鍵盤"><meta name=twitter:description content="教學文列表本系列文預計會根據製作步驟分別介紹各自的詳細內容。除了基本步驟外，我還會額外介紹其它的進階功能。文章不定期緩慢更新中。
+基礎內容
+編輯鍵盤佈局 (Layout)
+如何選擇微控制器 MCU？
+產生並編輯 QMK 韌體
+編譯與燒錄
+KiCAD 鍵盤 PCB 繪製教學 (上)
+KiCAD 鍵盤 PCB 繪製教學 (下)
+
+進階內容
+QMK 啓用 Vial 教學
+爲 QMK 鍵盤加上 Bluetooth 藍牙無線功能
+Adafruit Bluefruit LE SPI Friend 韌體燒錄教學
+旋轉編碼器 (Encoder)
+QMK 的基本架構與運作方式
+在 Custom Matrix 中使用 UART 與控制滑鼠遊標，並加上無線模組
+
+封存
+0.18.3 版 QMK 韌體教學
+
+
+自從購買了第一把機械式鍵盤後，就發現我總是少一把鍵盤，也萌生出「自己做鍵盤」的想法。經歷了近 3 年斷斷續續、三天打魚兩天曬網的查資料、學習及實作後，總算是有了點成果。多虧自製鍵盤的社群龐大且活躍，現在要 DIY 出一把鍵盤其實真的不難，我自己就曾在 2 天內就完成一把鍵盤。
+但是我在學習的過程中走了不少冤枉路，故想要針對 QMK 鍵盤韌體寫一系列較完整的教學，幫助那些也想自己做鍵盤的人。希望看完這一系列的文章，大家也可以從零開始做成屬於自己的鍵盤。
+而這篇作爲開頭，會先介紹製作一把鍵盤所需的要件及步驟。"><meta property="og:title" content="[自製QMK鍵盤-0] 開始 DIY 一把機械鍵盤"><meta property="og:description" content="教學文列表本系列文預計會根據製作步驟分別介紹各自的詳細內容。除了基本步驟外，我還會額外介紹其它的進階功能。文章不定期緩慢更新中。
+基礎內容
+編輯鍵盤佈局 (Layout)
+如何選擇微控制器 MCU？
+產生並編輯 QMK 韌體
+編譯與燒錄
+KiCAD 鍵盤 PCB 繪製教學 (上)
+KiCAD 鍵盤 PCB 繪製教學 (下)
+
+進階內容
+QMK 啓用 Vial 教學
+爲 QMK 鍵盤加上 Bluetooth 藍牙無線功能
+Adafruit Bluefruit LE SPI Friend 韌體燒錄教學
+旋轉編碼器 (Encoder)
+QMK 的基本架構與運作方式
+在 Custom Matrix 中使用 UART 與控制滑鼠遊標，並加上無線模組
+
+封存
+0.18.3 版 QMK 韌體教學
+
+
+自從購買了第一把機械式鍵盤後，就發現我總是少一把鍵盤，也萌生出「自己做鍵盤」的想法。經歷了近 3 年斷斷續續、三天打魚兩天曬網的查資料、學習及實作後，總算是有了點成果。多虧自製鍵盤的社群龐大且活躍，現在要 DIY 出一把鍵盤其實真的不難，我自己就曾在 2 天內就完成一把鍵盤。
+但是我在學習的過程中走了不少冤枉路，故想要針對 QMK 鍵盤韌體寫一系列較完整的教學，幫助那些也想自己做鍵盤的人。希望看完這一系列的文章，大家也可以從零開始做成屬於自己的鍵盤。
+而這篇作爲開頭，會先介紹製作一把鍵盤所需的要件及步驟。"><meta property="og:type" content="article"><meta property="og:url" content="https://ziteh.github.io/posts/diyqmkkeyboard-0/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-04-17T20:17:00+08:00"><meta property="article:modified_time" content="2023-04-17T20:17:00+08:00"><link rel=stylesheet href=/css/bootstrap.min.css crossorigin=anonymous><link href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css rel=stylesheet type=text/css><link rel=stylesheet href=/sass/main.css><link rel=stylesheet href=/zoomjs/zoom.min.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Noto Sans TC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&amp;display=swap&amp;subset=latin,latin-ext"><script src=/js/lazysizes.min.js></script><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest></head><body><nav class="navbar navbar-default navbar-custom navbar-fixed-top invert"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+</button>
+<a class=navbar-brand href=https://ziteh.github.io/>ZiTe 本物誌</a></div><div id=huxblog_navbar><div class=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=/archive/ title=Archive>Archive</a></li><li><a href=/series/ title=Series>Series</a></li><li><a href=/about/ title=About>About</a></li><li class=search-icon><a href=javascript:void(0)><i class="fa fa-search"></i></a></li></ul></div></div></div></nav><script>var $body=document.body,$toggle=document.querySelector(".navbar-toggle"),$navbar=document.querySelector("#huxblog_navbar"),$collapse=document.querySelector(".navbar-collapse"),__HuxNav__={close:function(){$navbar.className=" ",setTimeout(function(){$navbar.className.indexOf("in")<0&&($collapse.style.height="0px")},400)},open:function(){$collapse.style.height="auto",$navbar.className+=" in"}};$toggle.addEventListener("click",function(){$navbar.className.indexOf("in")>0?__HuxNav__.close():__HuxNav__.open()}),document.addEventListener("click",function(e){if(e.target==$toggle)return;if(e.target.className=="icon-bar")return;__HuxNav__.close()})</script><div class=search-page><div class=search-icon-close-container><span class=search-icon-close><i class="fa fa-chevron-down"></i></span></div><div class="search-main container"><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><form></form><input type=text id=search-input placeholder="$ grep..."></form><div id=search-results class=mini-post-list></div></div></div></div></div><style type=text/css>header.intro-header{position:relative;background-image:url('')}</style><header class="intro-header style-text"><div class=header-mask></div><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><div class=post-heading><div class=tags><a class=tag href=/tags/%E6%95%99%E5%AD%B8/ title=教學>教學</a>
+<a class=tag href=/tags/diy/ title=DIY>DIY</a>
+<a class=tag href=/tags/3c/ title=3C>3C</a>
+<a class=tag href=/tags/qmk/ title=QMK>QMK</a></div><h1>[自製QMK鍵盤-0] 開始 DIY 一把機械鍵盤</h1><h2 class=subheading>自己做一把 QMK 鍵盤教學</h2>系列：<a href=/series/%E8%87%AA%E8%A3%BDqmk%E9%8D%B5%E7%9B%A4/ title=自製QMK鍵盤>自製QMK鍵盤</a>
+<span class=meta>Posted
+on 2023-04-17</span></div></div></div></div></header><article><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2
+col-md-10 col-md-offset-1
+post-container"><h1 id=教學文列表>教學文列表<a class=anchorjs-link href=#%e6%95%99%e5%ad%b8%e6%96%87%e5%88%97%e8%a1%a8></a></h1><p><a href=/series/%e8%87%aa%e8%a3%bdqmk%e9%8d%b5%e7%9b%a4/>本系列文</a>預計會根據<a href=/#%e8%a3%bd%e4%bd%9c%e6%ad%a5%e9%a9%9f>製作步驟</a>分別介紹各自的詳細內容。除了基本步驟外，我還會額外介紹其它的進階功能。文章不定期緩慢更新中。</p><h2 id=基礎內容>基礎內容<a class=anchorjs-link href=#%e5%9f%ba%e7%a4%8e%e5%85%a7%e5%ae%b9></a></h2><ol><li><a href=/posts/diyqmkkeyboard-kle/>編輯鍵盤佈局 (Layout)</a></li><li><a href=/posts/diyqmkkeyboard-mcu-sel/>如何選擇微控制器 MCU？</a></li><li><a href=/posts/diyqmkkeyboard-edit-qmk/>產生並編輯 QMK 韌體</a></li><li><a href=/posts/diyqmkkeyboard-build-flash-qmk/>編譯與燒錄</a></li><li><a href=/posts/diyqmkkeyboard-pcb-layout-sch/>KiCAD 鍵盤 PCB 繪製教學 (上)</a></li><li><a href=/posts/diyqmkkeyboard-pcb-layout-layers/>KiCAD 鍵盤 PCB 繪製教學 (下)</a></li></ol><h2 id=進階內容>進階內容<a class=anchorjs-link href=#%e9%80%b2%e9%9a%8e%e5%85%a7%e5%ae%b9></a></h2><ul><li><a href=/posts/diyqmkkeyboard-vial/>QMK 啓用 Vial 教學</a></li><li><a href=/posts/diyqmkkeyboard-ble/>爲 QMK 鍵盤加上 Bluetooth 藍牙無線功能</a></li><li><a href=/posts/diyqmkkeyboard-ble-module/>Adafruit Bluefruit LE SPI Friend 韌體燒錄教學</a></li><li><a href=/posts/diyqmkkeyboard-encoder/>旋轉編碼器 (Encoder)</a></li><li><a href=/posts/diyqmkkeyboard-operate/>QMK 的基本架構與運作方式</a></li><li><a href=/posts/diyqmkkeyboard-custom-matrix/>在 Custom Matrix 中使用 UART 與控制滑鼠遊標，並加上無線模組</a></li></ul><h2 id=封存>封存<a class=anchorjs-link href=#%e5%b0%81%e5%ad%98></a></h2><ul><li><a href=/posts/diyqmkkeyboard-firmware-0-18/>0.18.3 版 QMK 韌體教學</a></li></ul><hr><p>自從購買了第一把機械式鍵盤後，就發現我總是少一把鍵盤，也萌生出「自己做鍵盤」的想法。經歷了近 3 年斷斷續續、三天打魚兩天曬網的查資料、學習及實作後，總算是有了點成果。多虧自製鍵盤的社群龐大且活躍，現在要 DIY 出一把鍵盤其實真的不難，我自己就曾在 2 天內就完成一把鍵盤。</p><p>但是我在學習的過程中走了不少冤枉路，故想要針對 QMK 鍵盤韌體寫一系列較完整的教學，幫助那些也想自己做鍵盤的人。希望看完這一系列的文章，大家也可以從零開始做成屬於自己的鍵盤。</p><p>而這篇作爲開頭，會先介紹製作一把鍵盤所需的要件及步驟。</p><h1 id=鍵盤的組成>鍵盤的組成<a class=anchorjs-link href=#%e9%8d%b5%e7%9b%a4%e7%9a%84%e7%b5%84%e6%88%90></a></h1><p>一把鍵盤主要有兩大部分：硬體和韌體。</p><h2 id=硬體>硬體<a class=anchorjs-link href=#%e7%a1%ac%e9%ab%94></a></h2><p>硬體（Hardware）大家應該都知道，就是 PCB 電路板、鍵軸和微控制器等，甚至外殼、定位板和鍵帽也可以算在內。</p><p>其中微控制器（MCU）是比較重要的部分，它是鍵盤的運作核心，鍵盤能有多豐富的功能幾乎通通取決或受限於它。</p><p>現在常見用於鍵盤的微控制器有：</p><ul><li><a href=https://www.microchip.com/en-us/product/ATmega32U4 target=_blank>ATmega32U4</a></li><li><a href=https://www.raspberrypi.com/products/rp2040/ target=_blank>RP2040</a></li><li><a href=https://www.st.com/en/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus.html target=_blank>STM32 系列</a></li><li><a href=https://www.nordicsemi.com/products/nrf52840 target=_blank>nRF52840</a></li></ul><p>至於這些 MCU 有何差異、要如何挑選，以及 PCB 要如何繪製詳細內容等，請看<a href=/#%e6%95%99%e5%ad%b8%e6%96%87%e5%88%97%e8%a1%a8>教學文</a>。</p><h2 id=韌體>韌體<a class=anchorjs-link href=#%e9%9f%8c%e9%ab%94></a></h2><p>韌體（Firmware）可能就不是每個人都聽過了。簡單來說，韌體就是燒錄在晶片（如微控制器）裡的程式，也就是程式碼的部分。</p><p>當前較主流的開源鍵盤韌體有：</p><ul><li><a href=https://github.com/qmk/qmk_firmware target=_blank>QMK</a> / <a href=https://github.com/vial-kb/vial-qmk target=_blank>Vial QMK</a></li><li><a href=https://github.com/zmkfirmware/zmk target=_blank>ZMK</a></li><li><a href=https://github.com/KMKfw/kmk_firmware target=_blank>KMK</a></li><li><a href=https://github.com/tmk/tmk_keyboard target=_blank>TMK</a></li><li><a href=https://github.com/jpconstantineau/BlueMicro_BLE target=_blank>BlueMicro</a></li></ul><p>而本系列文的重點會放在 QMK（及 Vial QMK）上。</p><p>QMK（Quantum Mechanical Keyboard）是由 TMK 衍生而來的，在其基礎上增加了許多功能，也可以說是目前最主流的開源鍵盤韌體，許多玩家及工作室製作的鍵盤都是用 QMK。</p><p>QMK 韌體的功能眾多、使用簡單、擴展方便，相關的工具及文件也是非常的豐富，最重要的是社群相當龐大且活躍。</p><h1 id=製作步驟>製作步驟<a class=anchorjs-link href=#%e8%a3%bd%e4%bd%9c%e6%ad%a5%e9%a9%9f></a></h1><p>既然知道了一把鍵盤有哪些要件，那接下來就可以按步驟一一完成了。我自己習慣的製作步驟爲：</p><ol><li><strong>整體設計</strong>：這把鍵盤要有幾鍵？標準佈局還是要 Ortho？或是要做成 Alice Layout 甚至分離式的？需要 Bluetooth 嗎？等等。</li><li><strong>編輯佈局</strong>：使用 <a href=http://www.keyboard-layout-editor.com/ target=_blank>Keyboard Layout Editor</a> 實際編排鍵盤佈局（Layout）。</li><li><strong>生成韌體</strong>：使用 <a href=https://kbfirmware.com/ target=_blank>Keyboard Firmware Builder</a> 自動生成基礎韌體，如果有額外的功能需要啓用也一併設定。</li><li><strong>韌體測試</strong>：使用現成的開發板（如 <a href=https://www.sparkfun.com/products/12640 target=_blank>Pro Micro</a> 或 <a href=https://www.waveshare.com/rp2040-plus.htm target=_blank>RP2040-Plus</a>）進行韌體功能初步驗證。在此步確認要使用的 MCU。</li><li><strong>繪製 PCB</strong>：根據完成的鍵盤佈局要使用的 MCU 進行 PCB Layout。</li><li><strong>生成定位板</strong>：使用工具（如 <a href=https://plate.keeb.io/ target=_blank>Keebio Plate Generator</a>）自動生成定位板。</li><li><strong>設計外殼</strong>：使用 3D 建模工具設計外殼。</li><li><strong>訂購</strong>：向工廠訂購 PCB、3D 列印外殼、採購電子零件&mldr;等等</li><li><strong>組裝</strong>：焊接電子零件焊接、燒錄韌體、組合定位板及外殼等，完成鍵盤。</li></ol><p>步驟看起來不少，但因爲許多步驟都有自動工具可以幫忙，所以只要滑鼠點幾下就可以完成了。其中 PCB Layout 和設計外殼應該是過程中比較花時間的。</p><p>根據我自己製作 <a href=https://github.com/ziteh/calcite target=_blank>Calcite52</a> 的經驗，如果此鍵盤沒有什麼特別的功能且先不論美觀的話，步驟 2~7 甚至可以在一個週末——兩天內——完成（當然我是對整個流程和工具都有一定的經驗才有辦法）。</p><h1 id=相關網站>相關網站<a class=anchorjs-link href=#%e7%9b%b8%e9%97%9c%e7%b6%b2%e7%ab%99></a></h1><p>這裡順便附上一些製作鍵盤時可能會用到的網站。</p><ul><li>工具<ul><li><a href=http://www.keyboard-layout-editor.com/ target=_blank>Keyboard Layout Editor (KLE)</a>：鍵盤佈局編輯器</li><li><a href=https://kbfirmware.com/ target=_blank>Keyboard Firmware Builder</a>：鍵盤韌體產生器</li><li><a href=https://kb.xyz.is/ target=_blank>Keyboard PCB Builder</a>：鍵盤 PCB 產生器</li><li>鍵盤定位板產生器<ul><li><a href=https://kbplate.ai03.com/ target=_blank>ai03 Plate Generator</a></li><li><a href=https://plate.keeb.io/ target=_blank>Keebio Plate Generator</a></li><li><a href=http://builder.swillkb.com/ target=_blank>Plate & Case Builder</a></li><li><a href=https://eswai.github.io/plategen/plategen.html target=_blank>Keyboard Plate Generator</a></li></ul></li><li><a href=https://qmk.fm/converter/ target=_blank>Convert KLE to QMK info.json</a>：將鍵盤佈局編輯器的資料轉換成 QMK <code>info.json</code></li><li><a href=https://github.com/zykrah/kicad-kle-placer target=_blank>KiCAD KLE Placer</a>：根據鍵盤佈局編輯器的資料自動擺放鍵軸的 KiCAD 插件</li></ul></li><li>其它<ul><li>QMK 相關<ul><li><a href=https://qmk.fm/ target=_blank>QMK 官方網站</a></li><li><a href=https://docs.qmk.fm/#/ target=_blank>QMK 官方文件</a></li><li><a href=https://github.com/qmk/qmk_firmware target=_blank>QMK 的 GitHub repo</a></li></ul></li><li>鍵盤清單<ul><li><a href=https://mechkey.org/ target=_blank>MechKey.Org - All about keyboard</a></li><li><a href=https://keebfolio.netlify.app/en/staggered/ target=_blank>Staggered Keyboards - Keebfolio</a></li><li><a href=https://keymapdb.com/ target=_blank>KeymapDB - Database of keymaps for programmable keyboards</a></li></ul></li><li><a href=https://guide.zykrah.me/ target=_blank>Zykrah&rsquo;s PCB Guide</a>：Zykrah 的 PCB 設計指南。</li></ul></li></ul><blockquote><p>本文最早發佈於 2020-06-21，於 2023 重新編排並更新內容。</p></blockquote><hr style=visibility:hidden><ul class=pager><li class=previous><a href=/posts/calcite52-keyboard-2/ data-toggle=tooltip data-placement=top title="Calcite52 - 52鍵正交Choc矮軸QMK鍵盤">Previous<br><span>Calcite52 - 52鍵正交Choc矮軸QMK鍵盤</span></a></li><li class=next><a href=/posts/diyqmkkeyboard-kle/ data-toggle=tooltip data-placement=top title="[自製QMK鍵盤-1] 編輯鍵盤佈局 (Layout)">Next<br><span>[自製QMK鍵盤-1] 編輯鍵盤佈局 (Layout)</span></a></li></ul><hr style=visibility:hidden><p style=text-align:center;color:#a3a3a3;font-size:14px>留言可能不會立即顯示。若過了幾天仍未出現，請 <a href=mailto:honmonoh@gmail.com>Email</a> 聯繫：）</p><div id=disqus_thread></div><script type=text/javascript>(function(){if(window.location.hostname=="localhost")return;var t,e=document.createElement("script");e.type="text/javascript",e.async=!0,t="zite-honmonoh",e.src="//"+t+".disqus.com/embed.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e)})()</script><noscript>Please enable JavaScript to view the <a href=http://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=http://disqus.com/ class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></div><div class="col-lg-2 col-lg-offset-0
+visible-lg-block
+sidebar-container
+catalog-container"><div class=side-catalog><hr class="hidden-sm hidden-xs"><ul class=catalog-body></ul></div></div><div class="col-lg-8 col-lg-offset-2
+col-md-10 col-md-offset-1
+sidebar-container"></div></div></div></article><footer><div class=container><div class=row><div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><p class="copyright text-muted"><a href=https://creativecommons.org/licenses/by-nc-nd/4.0/ title="本網站所有內容除特別聲明外，均採用創用CC 姓名標示-非商業性-禁止改作授權。
+分享時請註明作者及出處。"><img src=https://i.creativecommons.org/l/by-nc-nd/3.0/80x15.png></a>
+Copyright &copy; ZiTe 2024<br>Powered by <a href=https://gohugo.io>Hugo</a></p></div></div></div></footer><script src=/js/jquery.min.js></script><script src=/js/bootstrap.min.js crossorigin=anonymous></script><script src=/js/hux-blog.min.c4ea77041cd3edbfc8b2622cd887a9a5d8760a4162d14489e36d2a3fa4c90172.js></script><script src=/js/simple-jekyll-search.min.js></script><script src=/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js></script><script type=text/javascript>function generateCatalog(e){_containerSelector="div.post-container";var t,n,s,o,i,a=$(_containerSelector),r=a.find("h1,h2,h3,h4");return $(e).html(""),r.each(function(){t=$(this).prop("tagName").toLowerCase(),o="#"+$(this).prop("id"),n=$(this).text(),i=$('<a href="'+o+'" rel="nofollow">'+n+"</a>"),s=$('<li class="'+t+'_nav"></li>').append(i),$(e).append(s)}),!0}generateCatalog(".catalog-body"),$(".catalog-toggle").click(function(e){e.preventDefault(),$(".side-catalog").toggleClass("fold")})</script><script type=text/javascript src=/js/jquery.nav.min.ade6bde8f9fcc6a4b40852cb892e9f5912340ab8fe1305149d917fdd16fffd8d.js></script><script>$(document).ready(function(){$(".catalog-body").onePageNav({currentClass:"active",changeHash:!1,easing:"swing",filter:"",scrollSpeed:700,scrollOffset:0,scrollThreshold:.2,begin:null,end:null,scrollChange:null,padding:80})})</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-J1MYLYHKHR"></script><script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-J1MYLYHKHR",{anonymize_ip:!1})}</script><script src=/zoomjs/zoom.min.js></script></body></html>

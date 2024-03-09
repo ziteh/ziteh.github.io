@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>STM32學習記錄 on ZiTe 本物誌</title><link>https://ziteh.github.io/series/stm32%E5%AD%B8%E7%BF%92%E8%A8%98%E9%8C%84/</link><description>Recent content in STM32學習記錄 on ZiTe 本物誌</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><lastBuildDate>Sat, 16 Apr 2022 00:09:00 +0000</lastBuildDate><atom:link href="https://ziteh.github.io/series/stm32%E5%AD%B8%E7%BF%92%E8%A8%98%E9%8C%84/index.xml" rel="self" type="application/rss+xml"/><item><title>[STM32學習記錄-7] AS5047P 旋轉位置感測器/磁性編碼器使用教學</title><link>https://ziteh.github.io/posts/learningstm32-as5047p/</link><pubDate>Sat, 16 Apr 2022 00:09:00 +0000</pubDate><guid>https://ziteh.github.io/posts/learningstm32-as5047p/</guid><description>前言AMS AS5047P 是一款旋轉位置感測器/磁性編碼器。 它擁有包含 SPI、ABI、UVW 及 PWM 的多種使用模式，及 14 位元的高解析度，和 28krpm 的高反應速度，還擁</description></item><item><title>[STM32學習記錄-6] 在VS Code與PlatformIO上開發STM32</title><link>https://ziteh.github.io/posts/learningstm32-platformio/</link><pubDate>Mon, 15 Nov 2021 22:15:00 +0000</pubDate><guid>https://ziteh.github.io/posts/learningstm32-platformio/</guid><description>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://blogger.googleusercontent.com/img/a/AVvXsEitW-RvmJa7RDSr_52UGweZc-G7pHkN0GECSLKrNoD0olnhbHNcsn0ogqQtQo1iBYTdPskq7LNuMicgjj_PQj_JQAMtZc5uKaiq-kIqjZHO36tTTcIcLKR7DL_jqpZENUUZTbuAsey8m4klKbUhXVoxQ4yTiy872IhnfLmTQ6Tmdysq2dFZQ6czBWwd=s1920" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>&lt;a href="https://platformio.org/" target="_blank">PlatformIO&lt;/a> 是一個開源的嵌入式系統整合開發平臺，你可以在上面使用各式各樣的開發板進行開發，包括 Arduino、ESP8266 與今天的主角 STM32。我認為它的重點特色為：&lt;/p>
+&lt;ul>
+&lt;li>跨平臺。&lt;/li>
+&lt;li>可以搭配 VS Code（Visual Studio Code） 使用。&lt;/li>
+&lt;li>安裝方便，設定簡單。&lt;/li>
+&lt;li>整合了眾多開發板、平臺、函式庫及框架。&lt;/li>
+&lt;li>可以設定多種開發環境，並隨時切換。&lt;/li>
+&lt;li>擁有 Debugging 功能。&lt;/li>
+&lt;li>擁有單元測試（Unit test）的功能。&lt;/li>
+&lt;li>靜態程式碼分析。&lt;/li>
+&lt;li>遠端開發。&lt;/li>
+&lt;/ul>
+&lt;p>本篇文章將會介紹並示範如何在 VS Code 上使用 PlatformIO 開發 STM32。&lt;/p></description></item><item><title>[STM32學習記錄-5] 優化STM32 GPIO設定函式</title><link>https://ziteh.github.io/posts/learningstm32-05/</link><pubDate>Thu, 02 Apr 2020 15:40:00 +0000</pubDate><guid>https://ziteh.github.io/posts/learningstm32-05/</guid><description>&lt;p>&lt;em>&lt;strong>注意&lt;/strong>&lt;/em>，本文的內容過於老舊，不建議實際使用，僅保留以作爲參考用。&lt;/p>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>在先前的&lt;a href="https://ziteh.github.io/2018/09/learningstm32-03/">[STM32學習記錄-3] 基本輸入與輸出教學-GPIO相關程式寫法&lt;/a>中已經介紹過STM32設定GPIO的相關函式，但如果是常用Arduion的人一定不太習慣這種設定方式，畢竟每設定一個GPIO就要打4行程式，雖然可以複製貼上，但程式一多難免看起來混亂複雜，所以我自己寫了一些GPIO相關的函式，方便自己未來使用。&lt;/p></description></item><item><title>[STM32學習記錄-4] 免費好用的STM32 IDE——TrueSTUDIO</title><link>https://ziteh.github.io/posts/learningstm32-04/</link><pubDate>Tue, 31 Mar 2020 15:18:00 +0000</pubDate><guid>https://ziteh.github.io/posts/learningstm32-04/</guid><description>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://1.bp.blogspot.com/-jpislKTRwlY/XomHrzCsbVI/AAAAAAAACCk/ambFVA1uD4guODQ_Zurcc9CNpkfhFiiQwCKgBGAsYHg/s640/Screenshot%2B%252811%2529.png" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>我之前搭配STM32使用的IDE為Keil uVision 5，但用了一段時間後實在是無法習慣它的操作。後來又上網找了許多不同的IDE來用，最後我就找到了今天的主角——&lt;a href="https://atollic.com/truestudio/" target="_blank">Atollic TrueSTUDIO for STM32&lt;/a>。&lt;/p></description></item><item><title>[STM32學習記錄-3] 基本輸入與輸出教學-GPIO相關程式寫法</title><link>https://ziteh.github.io/posts/learningstm32-03/</link><pubDate>Sat, 08 Sep 2018 14:24:00 +0000</pubDate><guid>https://ziteh.github.io/posts/learningstm32-03/</guid><description>&lt;p>先前已經介紹過&lt;a href="https://ziteh.github.io/2018/08/learningstm32-02/">GPIO相關暫存器&lt;/a>的用法了，現在我來介紹幾個最基本的輸出入程式寫法。&lt;/p>
+&lt;p>由於我使用的開發板NUCLEO-F103RB上有内建LED燈（PA5）和按鈕（PC13），所以以下的程式我就直接使用這兩隻腳位。&lt;/p></description></item><item><title>[STM32學習記錄-2] 基本輸入與輸出教學-GPIO相關暫存器簡介</title><link>https://ziteh.github.io/posts/learningstm32-02/</link><pubDate>Sun, 26 Aug 2018 10:47:00 +0000</pubDate><guid>https://ziteh.github.io/posts/learningstm32-02/</guid><description>&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>MCU控制最基本的就是輸入與輸出，此篇就來簡單介紹最基本的輸出入相關暫存器。&lt;/p>
+&lt;p>首先我們要來認識STM32F10x和輸出入有關的暫存器。每個GPIO有：(以下x為Port名稱，也就是A，B，C，D或E)&lt;/p>
+&lt;ol>
+&lt;li>兩個32位元的設置暫存器（GPIOx_CRH、GPIOx_CRL）&lt;/li>
+&lt;li>兩個32位元的資料暫存器（GPIOx_IDR、GPIOx_ODR）&lt;/li>
+&lt;li>一個32位元的位元設定/重置暫存器（GPIOx_BSRR）&lt;/li>
+&lt;li>一個16位元的位元重置暫存器（GPIOx_BRR）&lt;/li>
+&lt;li>一個32位元的設置鎖定暫存器（GPIOx_LCKR）&lt;/li>
+&lt;/ol></description></item><item><title>[STM32學習記錄-1] 建立工程環境教學</title><link>https://ziteh.github.io/posts/learningstm32-01/</link><pubDate>Sat, 04 Aug 2018 15:05:00 +0000</pubDate><guid>https://ziteh.github.io/posts/learningstm32-01/</guid><description>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://1.bp.blogspot.com/-lN8BAf_D-F0/Xoh7te-zqZI/AAAAAAAACAs/ff1cV3v-KAMA_kYaM8sPZXr6xg4EhYDvACKgBGAsYHg/s480/MOV_0032.mp4_20180823_233924.884.png" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>由於最近在接觸ARM，而我選擇STM32系列的微控制器，它們和FPGA/CPLD的用法有著不少的差別，讓我一時之間無法很好理解用法，而台灣相關的資源也不是很豐富，所以我想來寫有關STM32系列微控制器的文章。&lt;/p></description></item></channel></rss>

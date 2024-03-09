@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LibOpenCM3 × STM32教學 on ZiTe 本物誌</title><link>https://ziteh.github.io/series/libopencm3-stm32%E6%95%99%E5%AD%B8/</link><description>Recent content in LibOpenCM3 × STM32教學 on ZiTe 本物誌</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><lastBuildDate>Tue, 26 Apr 2022 12:55:00 +0000</lastBuildDate><atom:link href="https://ziteh.github.io/series/libopencm3-stm32%E6%95%99%E5%AD%B8/index.xml" rel="self" type="application/rss+xml"/><item><title>[LibOpenCM3 × STM32教學-4] 輸出PWM並控制Duty Cycle及頻率</title><link>https://ziteh.github.io/posts/libopencm3-example-pwm/</link><pubDate>Tue, 26 Apr 2022 12:55:00 +0000</pubDate><guid>https://ziteh.github.io/posts/libopencm3-example-pwm/</guid><description>&lt;p>我在 2022 年 9 月重新寫了與本文內容相近的文章，建議可以觀看新文章：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/libopencm3-stm32-13/" target="_blank">STM32 PWM 脈波寬度調變&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/libopencm3-stm32-14/" target="_blank">STM32 LibOpenCM3：PWM 脈波寬度調變&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>&lt;a href="https://libopencm3.org/" target="_blank">LibOpenCM3&lt;/a> 是一個 Open-Source 的 ARM Cortex-M3 微控制器底層硬體函式庫，支援包含 STM32 在內的多種微控制器。&lt;/p>
+&lt;p>本文將以 STM32F103RB（Nucleo F103RB）作為示範，介紹如何使用 LibOpenCM3 寫出 STM32 的 PWM（Pulse-Width Modulation） 功能，並且可以控制頻率與 Duty Cycle（佔空比）。&lt;/p></description></item><item><title>[LibOpenCM3 × STM32教學-3] Timer計時器中斷</title><link>https://ziteh.github.io/posts/libopencm3-example-timer/</link><pubDate>Tue, 26 Apr 2022 12:53:00 +0000</pubDate><guid>https://ziteh.github.io/posts/libopencm3-example-timer/</guid><description>&lt;p>我在 2022 年 9 月重新寫了與本文內容相近的文章，建議可以觀看新文章：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/libopencm3-stm32-11/" target="_blank">STM32 Timer 計時器&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/libopencm3-stm32-12/" target="_blank">STM32 LibOpenCM3：Timer 計時器&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>&lt;a href="https://libopencm3.org/" target="_blank">LibOpenCM3&lt;/a> 是一個 Open-Source 的 ARM Cortex-M3 微控制器底層硬體函式庫，支援包含 STM32 在內的多種微控制器。&lt;/p>
+&lt;p>本文將以 STM32F103RB（Nucleo F103RB）作為示範，介紹如何使用 LibOpenCM3 寫出 STM32 的計時器（Timer）中斷功能。&lt;/p></description></item><item><title>[LibOpenCM3 × STM32教學-2] 按鈕觸發外部中斷 EXTI</title><link>https://ziteh.github.io/posts/libopencm3-example-exti/</link><pubDate>Sun, 28 Nov 2021 22:00:00 +0000</pubDate><guid>https://ziteh.github.io/posts/libopencm3-example-exti/</guid><description>&lt;p>我在 2022 年 9 月重新寫了與本文內容相近的文章，建議可以觀看新文章：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/libopencm3-stm32-7/" target="_blank">STM32 EXTI 外部中斷&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/libopencm3-stm32-8/" target="_blank">STM32 LibOpenCM3：EXTI 外部中斷&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>&lt;a href="https://libopencm3.org/" target="_blank">LibOpenCM3&lt;/a> 是一個 Open-Source 的 ARM Cortex-M3 微控制器底層硬體函式庫，支援包含 STM32 在內的多種微控制器。&lt;/p>
+&lt;p>本文將以 STM32F103RB（Nucleo F103RB）作為示範，介紹如何使用 LibOpenCM3 寫出 STM32 的外部中斷（External interrupt，EXTI）。&lt;/p></description></item><item><title>[LibOpenCM3 × STM32教學-1] 用LibOpenCM3來開發STM32-LED閃爍範例</title><link>https://ziteh.github.io/posts/libopencm3-example-blink/</link><pubDate>Fri, 26 Nov 2021 21:17:00 +0000</pubDate><guid>https://ziteh.github.io/posts/libopencm3-example-blink/</guid><description>&lt;p>我在 2022 年 9 月重新寫了與本文內容相近的文章，建議可以觀看新文章：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/libopencm3-stm32-3/" target="_blank">STM32 GPIO 簡介&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/libopencm3-stm32-4/" target="_blank">STM32 LibOpenCM3：GPIO 輸出&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>&lt;a href="https://libopencm3.org/" target="_blank">LibOpenCM3&lt;/a> 是一個 Open-Source（LGPL） 的 ARM Cortex-M3 微控制器底層硬體函式庫，支援包含 STM32、NXP LPC1000、Atmel SAM3U 等各種微控制器。&lt;/p>
+&lt;p>本篇文章將會示範如何以 LibOpenCM3 寫出可以在 STM32 上執行的 LED 閃爍程式。本文的程式也有一併放在 GitHub 上：&lt;a href="https://github.com/ziteh/stm32-examples" target="_blank">ziteh/stm32-examples&lt;/a>。&lt;/p></description></item></channel></rss>

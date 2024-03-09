@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>3D列印 on ZiTe 本物誌</title><link>https://ziteh.github.io/tags/3d%E5%88%97%E5%8D%B0/</link><description>Recent content in 3D列印 on ZiTe 本物誌</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><lastBuildDate>Wed, 02 Aug 2017 12:30:00 +0000</lastBuildDate><atom:link href="https://ziteh.github.io/tags/3d%E5%88%97%E5%8D%B0/index.xml" rel="self" type="application/rss+xml"/><item><title>[心得:機械手專題-1] 製作過程</title><link>https://ziteh.github.io/posts/macarm-1/</link><pubDate>Wed, 02 Aug 2017 12:30:00 +0000</pubDate><guid>https://ziteh.github.io/posts/macarm-1/</guid><description>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://3.bp.blogspot.com/-a1H0Poj7P-E/XqY2wqNljhI/AAAAAAAACJk/VVi0FlUmY1s8Cn8DFY7u0RTMGbuZe-v2wCPcBGAsYHg/s400/DSC_0421.JPG" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;h1 id="起源">起源&lt;a class="anchorjs-link" href="#%e8%b5%b7%e6%ba%90">&lt;/a>&lt;/h1>&lt;p>電子機械手義肢是我讀高職資訊科的畢業專題，雖然說是三年級的畢業專題，但我在一升二年級的暑假時就已經對此專題進行一些初步的構想，也在二年級的寒假時正式開始了這項專題。當時我就開始將我所有的想法都整理起來，包括列出要加入的功能、要買的零件、要做的實驗和可以參考的資料等。&lt;/p></description></item><item><title>[教學:3D列印-3] 常用G-code指令解讀</title><link>https://ziteh.github.io/posts/3dp-3-gcode/</link><pubDate>Thu, 25 May 2017 12:43:00 +0000</pubDate><guid>https://ziteh.github.io/posts/3dp-3-gcode/</guid><description>&lt;p>學會G-code是更深入使用3D列印機的基礎，只要看懂一些常見的G-code指令，就可以更自由且細微的調整3D列印機的動作。&lt;/p>
+&lt;p>本篇文章不會把所有的G-code都列出來，只會列出一些我覺得常用的指令，以下就是一些常見的G-code指令。&lt;/p></description></item><item><title>[教學:3D列印-2] Slic3r 切片軟體教學</title><link>https://ziteh.github.io/posts/3dp-2-slic3r/</link><pubDate>Mon, 22 May 2017 12:48:00 +0000</pubDate><guid>https://ziteh.github.io/posts/3dp-2-slic3r/</guid><description>&lt;p>要把東西印得又好又快，除了一台設計良好的3D列印機外，調整恰當的切片參數也是非常重要的，只要慢慢的嘗試，就可以找出最適合的列印參數。&lt;/p>
+&lt;p>&lt;a href="http://slic3r.org/" target="_blank">Slic3r&lt;/a>是我第一個使用的切片軟體，所以也是我研究最深入也最熟悉的軟體，基本上使用容易，要進行更細緻的調整也可以。&lt;/p></description></item><item><title>[教學:3D列印-1] 使用3D列印機的步驟</title><link>https://ziteh.github.io/posts/3dp-1-step/</link><pubDate>Sat, 25 Mar 2017 13:04:00 +0000</pubDate><guid>https://ziteh.github.io/posts/3dp-1-step/</guid><description>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://1.bp.blogspot.com/-yLX9tUKZ2EI/Xq0AMyYj-wI/AAAAAAAACKk/0y5YFIsiqIIhFeFGAvNYhZKxCM8P1Hv-QCPcBGAsYHg/s400/DSC_0084.JPG" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;p>使用3D列印機的步驟主要有3項:&lt;/p>
+&lt;ol>
+&lt;li>取得3D模型&lt;/li>
+&lt;li>將3D模型進行切片&lt;/li>
+&lt;li>開始列印&lt;/li>
+&lt;/ol>
+&lt;p>看起來很簡單,也確實很簡單.但要如何完成以上的3個步驟呢?&lt;/p></description></item><item><title>用Raspberry Pi架設Repetier-Server</title><link>https://ziteh.github.io/posts/repetierserver/</link><pubDate>Thu, 17 Mar 2016 13:10:00 +0000</pubDate><guid>https://ziteh.github.io/posts/repetierserver/</guid><description>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://1.bp.blogspot.com/-WSWJJKMLNUY/Xq0B2YDEbtI/AAAAAAAACKw/qQ71E0EYP186q4UbzQ4uBCUvtG9yHKzDACPcBGAsYHg/s400/_DSC0320.jpg" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;p>以Raspberry Pi-樹莓派來用區域網路控制遠處的3D列印機進行列印工作&lt;/p></description></item></channel></rss>

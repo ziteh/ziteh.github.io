@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>電子電路 on ZiTe 本物誌</title><link>https://ziteh.github.io/tags/%E9%9B%BB%E5%AD%90%E9%9B%BB%E8%B7%AF/</link><description>Recent content in 電子電路 on ZiTe 本物誌</description><generator>Hugo -- gohugo.io</generator><language>zh-TW</language><lastBuildDate>Sun, 29 Oct 2023 11:50:00 +0800</lastBuildDate><atom:link href="https://ziteh.github.io/tags/%E9%9B%BB%E5%AD%90%E9%9B%BB%E8%B7%AF/index.xml" rel="self" type="application/rss+xml"/><item><title>雜七雜八有趣專案分享-1</title><link>https://ziteh.github.io/posts/discover-proj-1/</link><pubDate>Sun, 29 Oct 2023 11:50:00 +0800</pubDate><guid>https://ziteh.github.io/posts/discover-proj-1/</guid><description>分享一些我最近在各處看到的有趣專案。 μLA 邏輯分析儀dotcypress/ula: μLA: Micro Logic Analyzer for RP2040 使用 RP2040 所做的簡易 16 通道 100MHz 邏輯分析儀。搭配</description></item><item><title>BLDC無刷直流馬達控制/驅動器研究</title><link>https://ziteh.github.io/posts/bldc-driver/</link><pubDate>Wed, 02 Aug 2023 11:59:00 +0800</pubDate><guid>https://ziteh.github.io/posts/bldc-driver/</guid><description>最近在研究 BLDC 驅動電路，稍微整理一下可以參考的各種零件或成品。 完整電路板這些是我找到的馬達驅動電路，有一半是在 GitHub 上找到的。 名稱 尺寸 (mm) 電壓 連續電</description></item><item><title>KiCanvas——線上預覽KiCAD電路圖</title><link>https://ziteh.github.io/posts/kicanvas-intro/</link><pubDate>Tue, 25 Apr 2023 23:23:49 +0800</pubDate><guid>https://ziteh.github.io/posts/kicanvas-intro/</guid><description>KiCanvas 是一個基於瀏覽器的開源 KiCAD Schematic、PCB 電路板檢視器。可以透過直接貼上 GitHub 連結或開啓本機檔案來查看 KiCAD 電路圖。 以往如果我想要查看 GitHub 上</description></item><item><title>Calcite52 - 52鍵正交Choc矮軸QMK鍵盤</title><link>https://ziteh.github.io/posts/calcite52-keyboard-2/</link><pubDate>Sun, 16 Apr 2023 15:00:00 +0800</pubDate><guid>https://ziteh.github.io/posts/calcite52-keyboard-2/</guid><description>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKrX4InG0CDi9J4rxBfj1XvoBp39i0X6CXaR_wyasREFn4BxrTexYuP0vROMtQIGfLt_6gkNh0lb6M7TYZLwriSnQ5JP9V52IgqrJiJpjT8gTMj5tax3iX0biZTjZiDzAjpzmLIdEStf45gbJtT6WZyjd6xAjK2sIlUPeIRzbR_tMsJRhPgC14oT80/s16000/PXL_20230323_025401968.jpg" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;p>&lt;a href="https://ziteh.github.io/posts/calcite52-keyboard-1/">上一篇&lt;/a>中介紹了 Calcite52 的設計理念，現在 Rev 1.0 成品已經完成了，所以來介紹一下。&lt;/p></description></item><item><title>Calcite52 - 一種52鍵QMK正交鍵盤的初步設計</title><link>https://ziteh.github.io/posts/calcite52-keyboard-1/</link><pubDate>Fri, 10 Feb 2023 23:10:00 +0000</pubDate><guid>https://ziteh.github.io/posts/calcite52-keyboard-1/</guid><description>&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://blogger.googleusercontent.com/img/a/AVvXsEiDjgnopDdC_Tneeb-yHz95lpySZi5OC5dVayCmAD7d_-lyDiigpjfZfSSV_76folSZweujFPW_Ztq6I6dEe1BKyDylzPKqbLpAKbdLXvzKhxGvcaooOmnpEGWu9ipsWpGljXghNlBDZGQUXNaSGLQpYyLbE5w1C3y3NGJPXjThavvuCR-_BiEwp2u9=s16000" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;p>前陣子無意間得知 &lt;a href="https://precondition.github.io/home-row-mods" target="_blank">Home row mods&lt;/a> 和 &lt;a href="https://artsey.io/" target="_blank">ARTSEY&lt;/a> 這兩個鍵盤操作系統。&lt;/p>
+&lt;p>Home row mods 主要是將修飾鍵（Modifiers，如 Shift、Ctrl、Alt 和 Windows）改到 Home row，也就是 ASDF 這一排上，以更方便使用這些按鍵，減輕小拇指的負擔。&lt;/p>
+&lt;p>而 ARTSEY 則是將一把鍵盤的大部分按鍵透過僅 8 個按鍵的排列組合來達成，即可以只用單手 8 個按鍵就達到一把鍵盤所需要的最基本功能。&lt;/p>
+&lt;p>因此我就產生一種將它們兩個稍微結合起來，做一把小鍵盤的想法。&lt;/p></description></item><item><title>常見磁性旋轉位置感測器/旋轉編碼器比較</title><link>https://ziteh.github.io/posts/magnetic-rotaty-position-sensor/</link><pubDate>Wed, 30 Nov 2022 07:15:00 +0000</pubDate><guid>https://ziteh.github.io/posts/magnetic-rotaty-position-sensor/</guid><description>&lt;h1 id="正文">正文&lt;a class="anchorjs-link" href="#%e6%ad%a3%e6%96%87">&lt;/a>&lt;/h1>&lt;p>最近在研究馬達控制板，並且考慮整合一個位置 sensor，因此稍微整理了一些比較常見的磁性旋轉位置感測器。&lt;/p></description></item><item><title>[LibOpenCM3 × STM32教學-4] 輸出PWM並控制Duty Cycle及頻率</title><link>https://ziteh.github.io/posts/libopencm3-example-pwm/</link><pubDate>Tue, 26 Apr 2022 12:55:00 +0000</pubDate><guid>https://ziteh.github.io/posts/libopencm3-example-pwm/</guid><description>&lt;p>我在 2022 年 9 月重新寫了與本文內容相近的文章，建議可以觀看新文章：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/libopencm3-stm32-13/" target="_blank">STM32 PWM 脈波寬度調變&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/libopencm3-stm32-14/" target="_blank">STM32 LibOpenCM3：PWM 脈波寬度調變&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>&lt;a href="https://libopencm3.org/" target="_blank">LibOpenCM3&lt;/a> 是一個 Open-Source 的 ARM Cortex-M3 微控制器底層硬體函式庫，支援包含 STM32 在內的多種微控制器。&lt;/p>
+&lt;p>本文將以 STM32F103RB（Nucleo F103RB）作為示範，介紹如何使用 LibOpenCM3 寫出 STM32 的 PWM（Pulse-Width Modulation） 功能，並且可以控制頻率與 Duty Cycle（佔空比）。&lt;/p></description></item><item><title>[LibOpenCM3 × STM32教學-3] Timer計時器中斷</title><link>https://ziteh.github.io/posts/libopencm3-example-timer/</link><pubDate>Tue, 26 Apr 2022 12:53:00 +0000</pubDate><guid>https://ziteh.github.io/posts/libopencm3-example-timer/</guid><description>&lt;p>我在 2022 年 9 月重新寫了與本文內容相近的文章，建議可以觀看新文章：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/libopencm3-stm32-11/" target="_blank">STM32 Timer 計時器&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/libopencm3-stm32-12/" target="_blank">STM32 LibOpenCM3：Timer 計時器&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>&lt;a href="https://libopencm3.org/" target="_blank">LibOpenCM3&lt;/a> 是一個 Open-Source 的 ARM Cortex-M3 微控制器底層硬體函式庫，支援包含 STM32 在內的多種微控制器。&lt;/p>
+&lt;p>本文將以 STM32F103RB（Nucleo F103RB）作為示範，介紹如何使用 LibOpenCM3 寫出 STM32 的計時器（Timer）中斷功能。&lt;/p></description></item><item><title>[STM32學習記錄-7] AS5047P 旋轉位置感測器/磁性編碼器使用教學</title><link>https://ziteh.github.io/posts/learningstm32-as5047p/</link><pubDate>Sat, 16 Apr 2022 00:09:00 +0000</pubDate><guid>https://ziteh.github.io/posts/learningstm32-as5047p/</guid><description>前言AMS AS5047P 是一款旋轉位置感測器/磁性編碼器。 它擁有包含 SPI、ABI、UVW 及 PWM 的多種使用模式，及 14 位元的高解析度，和 28krpm 的高反應速度，還擁</description></item><item><title>[LibOpenCM3 × STM32教學-2] 按鈕觸發外部中斷 EXTI</title><link>https://ziteh.github.io/posts/libopencm3-example-exti/</link><pubDate>Sun, 28 Nov 2021 22:00:00 +0000</pubDate><guid>https://ziteh.github.io/posts/libopencm3-example-exti/</guid><description>&lt;p>我在 2022 年 9 月重新寫了與本文內容相近的文章，建議可以觀看新文章：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/libopencm3-stm32-7/" target="_blank">STM32 EXTI 外部中斷&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/libopencm3-stm32-8/" target="_blank">STM32 LibOpenCM3：EXTI 外部中斷&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>&lt;a href="https://libopencm3.org/" target="_blank">LibOpenCM3&lt;/a> 是一個 Open-Source 的 ARM Cortex-M3 微控制器底層硬體函式庫，支援包含 STM32 在內的多種微控制器。&lt;/p>
+&lt;p>本文將以 STM32F103RB（Nucleo F103RB）作為示範，介紹如何使用 LibOpenCM3 寫出 STM32 的外部中斷（External interrupt，EXTI）。&lt;/p></description></item><item><title>[LibOpenCM3 × STM32教學-1] 用LibOpenCM3來開發STM32-LED閃爍範例</title><link>https://ziteh.github.io/posts/libopencm3-example-blink/</link><pubDate>Fri, 26 Nov 2021 21:17:00 +0000</pubDate><guid>https://ziteh.github.io/posts/libopencm3-example-blink/</guid><description>&lt;p>我在 2022 年 9 月重新寫了與本文內容相近的文章，建議可以觀看新文章：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/libopencm3-stm32-3/" target="_blank">STM32 GPIO 簡介&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://ziteh.github.io/posts/libopencm3-stm32-4/" target="_blank">STM32 LibOpenCM3：GPIO 輸出&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>&lt;a href="https://libopencm3.org/" target="_blank">LibOpenCM3&lt;/a> 是一個 Open-Source（LGPL） 的 ARM Cortex-M3 微控制器底層硬體函式庫，支援包含 STM32、NXP LPC1000、Atmel SAM3U 等各種微控制器。&lt;/p>
+&lt;p>本篇文章將會示範如何以 LibOpenCM3 寫出可以在 STM32 上執行的 LED 閃爍程式。本文的程式也有一併放在 GitHub 上：&lt;a href="https://github.com/ziteh/stm32-examples" target="_blank">ziteh/stm32-examples&lt;/a>。&lt;/p></description></item><item><title>[STM32學習記錄-6] 在VS Code與PlatformIO上開發STM32</title><link>https://ziteh.github.io/posts/learningstm32-platformio/</link><pubDate>Mon, 15 Nov 2021 22:15:00 +0000</pubDate><guid>https://ziteh.github.io/posts/learningstm32-platformio/</guid><description>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://blogger.googleusercontent.com/img/a/AVvXsEitW-RvmJa7RDSr_52UGweZc-G7pHkN0GECSLKrNoD0olnhbHNcsn0ogqQtQo1iBYTdPskq7LNuMicgjj_PQj_JQAMtZc5uKaiq-kIqjZHO36tTTcIcLKR7DL_jqpZENUUZTbuAsey8m4klKbUhXVoxQ4yTiy872IhnfLmTQ6Tmdysq2dFZQ6czBWwd=s1920" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>&lt;a href="https://platformio.org/" target="_blank">PlatformIO&lt;/a> 是一個開源的嵌入式系統整合開發平臺，你可以在上面使用各式各樣的開發板進行開發，包括 Arduino、ESP8266 與今天的主角 STM32。我認為它的重點特色為：&lt;/p>
+&lt;ul>
+&lt;li>跨平臺。&lt;/li>
+&lt;li>可以搭配 VS Code（Visual Studio Code） 使用。&lt;/li>
+&lt;li>安裝方便，設定簡單。&lt;/li>
+&lt;li>整合了眾多開發板、平臺、函式庫及框架。&lt;/li>
+&lt;li>可以設定多種開發環境，並隨時切換。&lt;/li>
+&lt;li>擁有 Debugging 功能。&lt;/li>
+&lt;li>擁有單元測試（Unit test）的功能。&lt;/li>
+&lt;li>靜態程式碼分析。&lt;/li>
+&lt;li>遠端開發。&lt;/li>
+&lt;/ul>
+&lt;p>本篇文章將會介紹並示範如何在 VS Code 上使用 PlatformIO 開發 STM32。&lt;/p></description></item><item><title>[STM32學習記錄-5] 優化STM32 GPIO設定函式</title><link>https://ziteh.github.io/posts/learningstm32-05/</link><pubDate>Thu, 02 Apr 2020 15:40:00 +0000</pubDate><guid>https://ziteh.github.io/posts/learningstm32-05/</guid><description>&lt;p>&lt;em>&lt;strong>注意&lt;/strong>&lt;/em>，本文的內容過於老舊，不建議實際使用，僅保留以作爲參考用。&lt;/p>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>在先前的&lt;a href="https://ziteh.github.io/2018/09/learningstm32-03/">[STM32學習記錄-3] 基本輸入與輸出教學-GPIO相關程式寫法&lt;/a>中已經介紹過STM32設定GPIO的相關函式，但如果是常用Arduion的人一定不太習慣這種設定方式，畢竟每設定一個GPIO就要打4行程式，雖然可以複製貼上，但程式一多難免看起來混亂複雜，所以我自己寫了一些GPIO相關的函式，方便自己未來使用。&lt;/p></description></item><item><title>自組60%藍牙機械鍵盤-Just60 後續改軸</title><link>https://ziteh.github.io/posts/just60-replaceswitches/</link><pubDate>Tue, 31 Mar 2020 16:59:00 +0000</pubDate><guid>https://ziteh.github.io/posts/just60-replaceswitches/</guid><description>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://1.bp.blogspot.com/-MJaz0ArUBZE/XomfS_eOL2I/AAAAAAAACC8/Ho-R4rr6xTQu2M5y5ticJV4EHoG0_qlDgCKgBGAsYHg/s1600/ZPH_0116.jpg" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>之前在&lt;a href="https://ziteh.github.io/2020/03/unbox-just60/">[開箱]自組60%藍牙機械鍵盤-Just60&lt;/a>一文中介紹了我組裝Just60的過程，在我使用到目前為止的3個多月下來都沒有什麼太大的問題。不過因為我的鍵位配列方案相當緊湊，尤其是左Shift從正常的2.25U變成只有1U的長度，使用起來還是多少有些不習慣，經常誤觸，甚至連帶著左Ctrl也變得容易按錯。&lt;/p></description></item><item><title>[STM32學習記錄-4] 免費好用的STM32 IDE——TrueSTUDIO</title><link>https://ziteh.github.io/posts/learningstm32-04/</link><pubDate>Tue, 31 Mar 2020 15:18:00 +0000</pubDate><guid>https://ziteh.github.io/posts/learningstm32-04/</guid><description>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://1.bp.blogspot.com/-jpislKTRwlY/XomHrzCsbVI/AAAAAAAACCk/ambFVA1uD4guODQ_Zurcc9CNpkfhFiiQwCKgBGAsYHg/s640/Screenshot%2B%252811%2529.png" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>我之前搭配STM32使用的IDE為Keil uVision 5，但用了一段時間後實在是無法習慣它的操作。後來又上網找了許多不同的IDE來用，最後我就找到了今天的主角——&lt;a href="https://atollic.com/truestudio/" target="_blank">Atollic TrueSTUDIO for STM32&lt;/a>。&lt;/p></description></item><item><title>[開箱]自組60%藍牙機械鍵盤-Just60</title><link>https://ziteh.github.io/posts/unbox-just60/</link><pubDate>Sun, 08 Mar 2020 17:38:00 +0000</pubDate><guid>https://ziteh.github.io/posts/unbox-just60/</guid><description>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://1.bp.blogspot.com/-w0fao2bdCd0/XomqiW0jgWI/AAAAAAAACDY/1wlDE8Qf2L0khbeXGFc3ntvnL9kEorsvACKgBGAsYHg/s640/cover.JPG" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>一直以來我用的都是100%鍵盤（標準104鍵），但是因為右側的控制鍵區（方向鍵、Home和PageUp等）還有數字鍵區讓右手從鍵盤到滑鼠的移動距離非常遠，長時間使用或頻繁移動的話對右手來說非常累。雖然我個人認為最好的方式就是好筆電一樣，在空白鍵下放一個觸控板，這樣指標的動作就交給左右大拇指就可以了，但是觸控板產品實在不多，而就算用手機裝相關App其操作手感也還是比不上一般的筆電，故此想法目前還無法實現。&lt;/p></description></item><item><title>真空管工作原理與結構介紹</title><link>https://ziteh.github.io/posts/vacuumtube/</link><pubDate>Sun, 03 Mar 2019 23:14:00 +0000</pubDate><guid>https://ziteh.github.io/posts/vacuumtube/</guid><description>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://1.bp.blogspot.com/-iB0ociK8_LY/XpnI0QMSUJI/AAAAAAAACE8/PPnFzlFjoEQyrNI15MU9EraVOseQCuJLwCPcBGAsYHg/s640/ZPH_0058.JPG" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>之前有介紹到我做了一個簡易版的真空管耳機擴大機(&lt;a href="https://ziteh.github.io/2019/02/12au7-vtha/">自製12AU7(ECC82) 真空管耳機擴大機&lt;/a>)，在做這個電路的時候我也找了很多真空管的相關文章，來瞭解它的結構和運作原理。而我有將這些我查到的資料放在真空管耳機擴大機的結果報告中，但我還是在另外寫這一篇，想説比較好查到資料，但内容基本上是一樣的。&lt;/p></description></item><item><title>自製12AU7(ECC82) 真空管耳機擴大機</title><link>https://ziteh.github.io/posts/12au7-vtha/</link><pubDate>Mon, 18 Feb 2019 09:59:00 +0000</pubDate><guid>https://ziteh.github.io/posts/12au7-vtha/</guid><description>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://1.bp.blogspot.com/-lbg-gEN1IxM/XppfskTS_xI/AAAAAAAACGg/pkHxv9yG9tQX-e7VCSXuP-Wmu1jx6LmTwCPcBGAsYHg/s640/360%25E7%259C%259F%25E7%25A9%25BA%25E7%25AE%25A1%25E8%2580%25B3%25E6%2593%25B4.gif" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>這學期因爲有一門電子學實習的課程，而實習的期末作業就是要自己找一個電路來做，然後自己佈線、手洗電路板最後在焊接。由於我之前一直都是使用PCB電路板雕刻機，所以這次的實習作業讓我非常的期待，而這個題目也必定要好好思考，得做些特別的才有趣，於是我就想起了我國中時的夢想：真空管擴大機。&lt;/p></description></item><item><title>把Seagate Personal Cloud改裝成USB外接硬碟</title><link>https://ziteh.github.io/posts/seagatepersonalcloud/</link><pubDate>Sat, 10 Nov 2018 10:33:00 +0000</pubDate><guid>https://ziteh.github.io/posts/seagatepersonalcloud/</guid><description>&lt;p>前幾天我的Seagate Personal Cloud 3TB壞掉了，拆開來測試後發現是主機板掛了，而我就想說反正它也過保了，我也懶得送修，所以就想把它改成一般的USB外接硬碟，於是這篇文章就產生了。&lt;/p></description></item><item><title>[STM32學習記錄-3] 基本輸入與輸出教學-GPIO相關程式寫法</title><link>https://ziteh.github.io/posts/learningstm32-03/</link><pubDate>Sat, 08 Sep 2018 14:24:00 +0000</pubDate><guid>https://ziteh.github.io/posts/learningstm32-03/</guid><description>&lt;p>先前已經介紹過&lt;a href="https://ziteh.github.io/2018/08/learningstm32-02/">GPIO相關暫存器&lt;/a>的用法了，現在我來介紹幾個最基本的輸出入程式寫法。&lt;/p>
+&lt;p>由於我使用的開發板NUCLEO-F103RB上有内建LED燈（PA5）和按鈕（PC13），所以以下的程式我就直接使用這兩隻腳位。&lt;/p></description></item><item><title>[STM32學習記錄-2] 基本輸入與輸出教學-GPIO相關暫存器簡介</title><link>https://ziteh.github.io/posts/learningstm32-02/</link><pubDate>Sun, 26 Aug 2018 10:47:00 +0000</pubDate><guid>https://ziteh.github.io/posts/learningstm32-02/</guid><description>&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>MCU控制最基本的就是輸入與輸出，此篇就來簡單介紹最基本的輸出入相關暫存器。&lt;/p>
+&lt;p>首先我們要來認識STM32F10x和輸出入有關的暫存器。每個GPIO有：(以下x為Port名稱，也就是A，B，C，D或E)&lt;/p>
+&lt;ol>
+&lt;li>兩個32位元的設置暫存器（GPIOx_CRH、GPIOx_CRL）&lt;/li>
+&lt;li>兩個32位元的資料暫存器（GPIOx_IDR、GPIOx_ODR）&lt;/li>
+&lt;li>一個32位元的位元設定/重置暫存器（GPIOx_BSRR）&lt;/li>
+&lt;li>一個16位元的位元重置暫存器（GPIOx_BRR）&lt;/li>
+&lt;li>一個32位元的設置鎖定暫存器（GPIOx_LCKR）&lt;/li>
+&lt;/ol></description></item><item><title>[STM32學習記錄-1] 建立工程環境教學</title><link>https://ziteh.github.io/posts/learningstm32-01/</link><pubDate>Sat, 04 Aug 2018 15:05:00 +0000</pubDate><guid>https://ziteh.github.io/posts/learningstm32-01/</guid><description>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://1.bp.blogspot.com/-lN8BAf_D-F0/Xoh7te-zqZI/AAAAAAAACAs/ff1cV3v-KAMA_kYaM8sPZXr6xg4EhYDvACKgBGAsYHg/s480/MOV_0032.mp4_20180823_233924.884.png" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>由於最近在接觸ARM，而我選擇STM32系列的微控制器，它們和FPGA/CPLD的用法有著不少的差別，讓我一時之間無法很好理解用法，而台灣相關的資源也不是很豐富，所以我想來寫有關STM32系列微控制器的文章。&lt;/p></description></item><item><title>[專案:電腦風扇控制器-2] OLED-SSD1306零件簡單介紹</title><link>https://ziteh.github.io/posts/fenctrl-2/</link><pubDate>Wed, 27 Dec 2017 14:56:00 +0000</pubDate><guid>https://ziteh.github.io/posts/fenctrl-2/</guid><description>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://1.bp.blogspot.com/-HdFGyfRgpCI/XqUx46khu6I/AAAAAAAACIE/ODfjLdGcWiATpEiAIsihhjISX9eLH2eiQCPcBGAsYHg/s320/DSC_0357.JPG" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>我第一次接觸OLED-SSD1306是因為高中技藝競賽的題目有用到，當時我覺得這是一個很難的零件，當然我到現在也沒完全了解這個零件，但我覺得網路上可以參考的中文資源太少了，所以我藉著這次製作風扇控制器的關係，還是打了這個文章，還請各位讀者見笑了，內容如果有錯還請各位指導。(本文都是以128*64解析度的單色OLED來做示範)&lt;/p></description></item><item><title>[專案:電腦風扇控制器-1] 構想與零件選用</title><link>https://ziteh.github.io/posts/fenctrl-1/</link><pubDate>Sat, 25 Nov 2017 15:30:00 +0000</pubDate><guid>https://ziteh.github.io/posts/fenctrl-1/</guid><description>&lt;h1 id="前言">前言&lt;a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80">&lt;/a>&lt;/h1>&lt;p>2017年10月初，我在虎尾科大裡加入了一個我也不知道算不算社團的社團，叫做Dream Maker築夢者，不難看出和自造者有很大的關係。我加入他們並成為所謂的第二屆黃豆學習生，而成為黃豆學習生有一個重要的任務就是要在12月底前完成並發表一個專案，所以我就開始執行這個電腦風扇控制器的製作計劃。&lt;/p></description></item><item><title>[心得:機械手專題-1] 製作過程</title><link>https://ziteh.github.io/posts/macarm-1/</link><pubDate>Wed, 02 Aug 2017 12:30:00 +0000</pubDate><guid>https://ziteh.github.io/posts/macarm-1/</guid><description>&lt;p>&lt;figure>
+&lt;a class="paragraph-image">
+&lt;img data-src="https://3.bp.blogspot.com/-a1H0Poj7P-E/XqY2wqNljhI/AAAAAAAACJk/VVi0FlUmY1s8Cn8DFY7u0RTMGbuZe-v2wCPcBGAsYHg/s400/DSC_0421.JPG" data-action="zoom" alt="" class="lazyload">
+&lt;/a>
+&lt;/figure>&lt;/p>
+&lt;h1 id="起源">起源&lt;a class="anchorjs-link" href="#%e8%b5%b7%e6%ba%90">&lt;/a>&lt;/h1>&lt;p>電子機械手義肢是我讀高職資訊科的畢業專題，雖然說是三年級的畢業專題，但我在一升二年級的暑假時就已經對此專題進行一些初步的構想，也在二年級的寒假時正式開始了這項專題。當時我就開始將我所有的想法都整理起來，包括列出要加入的功能、要買的零件、要做的實驗和可以參考的資料等。&lt;/p></description></item></channel></rss>
