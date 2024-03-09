@@ -101,8 +101,25 @@ draft: false
 | [STSPIN32F0A][spin32f0A] | MCU + Gate Driver + Op-amp                           | QFN-48 7x7mm        |
 | [STSPIN32F0B][spin32f0B] | MCU + Gate Driver + Op-amp                           | QFN-48 7x7mm        |
 |      [L6234][l6234]      | Gate Driver + FETs                                   | PowerSO20 16x14.5mm |
-|   [DRV8316C][drv8316c]   | Gate Driver + FETs + 電流感測放大器                  | VQFN-40 7x5mm       |
-|   [MCF8316A][mcf8316a]   | FOC controller + Gate Driver + FETs + 電流感測放大器 | VQFN-40 7x5mm       |
+|   [DRV8316C][drv8316c]   | Gate Driver + FETs + 電流感測放大器                   | VQFN-40 7x5mm       |
+|   [MCF8316A][mcf8316a]   | 硬體 FOC controller + Gate Driver + FETs + 電流感測放大器 | VQFN-40 7x5m       |
+|   [TMC4671][tmc4671]     | 硬體 FOC controller                                  | QFN-76 10.5x6.5mm   |
+
+STSPIN32 SiP
+| STSPIN32          | F0               | F0A              | F0B              | G4               |
+| ----------------- | ---------------- | ---------------- | ---------------- | ---------------- |
+| MCU               | STM32F031C6      | STM32F031C6      | STM32F031C6      | STM32G431VB      |
+| Clock             | 48 MHz           | 48 MHz           | 48 MHz           | 170 MHz          |
+| SRAM              | 4 KB             | 4 KB             | 4 KB             | 32 KB            |
+| Flash             | 32 KB            | 32 KB            | 32 KB            | 128 KB           |
+| Operating voltage | 8~45V            | 6.7~45V          | 6.7~45V          | 5.5~75V          |
+| OP-Amps           | 4                | 3                | 1                | 3                |
+| GPIOs             | 15               | 16               | 20               | 40               |
+| CAN Bus           | 0                | 0                | 0                | 1 (CAN-FD)       |
+| USB               | 0                | 0                | 0                | 1 (USB 2.0 FS)   |
+| BOOT0 pin         | No               | Yes              | Yes              | Yes              |
+| 3FG Hall decoding | Yes              | No               | No               | No               |
+| Package           | QFN-48 7x7mm 1EP | QFN-48 7x7mm 1EP | QFN-48 7x7mm 1EP | QFN-64 9x9mm 1EP |
 
 > [Solved: STSPIN32F0 vs STSPIN32F0A vs STSPIN32F0B](https://community.st.com/t5/power-management/stspin32f0-vs-stspin32f0a-vs-stspin32f0b/td-p/273388)
 
@@ -113,6 +130,7 @@ draft: false
 [l6234]: https://www.st.com/en/motor-drivers/l6234.html
 [drv8316c]: https://www.ti.com/product/DRV8316C
 [mcf8316a]: https://www.ti.com/product/MCF8316A
+[tmc4671]: https://www.analog.com/en/products/tmc4671.html
 
 # 功率 MOSFET
 
