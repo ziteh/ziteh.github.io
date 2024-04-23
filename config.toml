@@ -1,6 +1,6 @@
 baseURL = 'https://ziteh.github.io/'
 languageCode = 'zh-TW'
-title = 'ZiTe 本物誌'
+title = 'ZiTe 本物志'
 theme = 'puppet' 
 
 copyright = ""
