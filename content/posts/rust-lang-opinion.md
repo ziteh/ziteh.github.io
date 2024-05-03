@@ -12,7 +12,7 @@ toc: true
 draft: false
 ---
 
-[Rust](https://www.rust-lang.org/) 在這幾年相當熱門，常常可以看到各大公司宣佈他們在嘗試使用 Rust 重新某某程式，開源界也有許多新使用 Rust 編寫的工具（例如我喜歡的 Python linter：[Ruff](https://docs.astral.sh/ruff/)）。我也在好奇心下來嘗試學習這門語言，在簡單學習並寫了一個簡單的程式後，我想來分享一下我寫 Rust 的感想。
+[Rust](https://www.rust-lang.org/) 在這幾年相當熱門，常常可以看到各大公司宣佈他們在嘗試使用 Rust 重寫某某程式，開源界也有許多新使用 Rust 編寫的工具（例如我喜歡的 Python linter：[Ruff](https://docs.astral.sh/ruff/)）。我也在好奇心下來嘗試學習這門語言，在簡單學習並寫了一個簡單的程式後，我想來分享一下我寫 Rust 的感想。
 
 由於我目前對 Rust 還不是非常熟悉，而且其實高階語言現在也不常寫了，如果有誤還請指正。
 
