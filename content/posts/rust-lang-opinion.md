@@ -150,7 +150,7 @@ switch(status) {
 ```
 
 ```python
-# Python： 9行，3層縮排
+# Python： 9行，2層縮排
 match status:
     case 400:
         print("Bad request")
