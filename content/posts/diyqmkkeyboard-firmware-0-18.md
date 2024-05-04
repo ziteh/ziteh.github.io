@@ -16,7 +16,7 @@ draft: false
 
 ⚠ 由於最新的 [`0.21.3`](https://github.com/qmk/qmk_firmware/releases/tag/0.21.3) 版本的 QMK 在使用上的差異滿大的，這篇是針對舊版 [`0.18.3`](https://github.com/qmk/qmk_firmware/releases/tag/0.18.3) 的 QMK 教學，僅作爲參考保留。
 
-[最新版的 QMK 教學](/posts/diyqmkkeyboard-2/)。
+[最新版的 QMK 教學](/posts/diyqmkkeyboard-edit-qmk/)。
 
 如果你因爲某些原因需要使用舊版 QMK 的話，可以使用下面的方法來切換 QMK 版本（需要先安裝好 QMK MSYS 環境）。
 

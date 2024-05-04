@@ -1,6 +1,6 @@
 ---
-title: '[自製QMK鍵盤-番外] 0.21.3版QMK韌體'
-subtitle: '2023 QMK 韌體編輯教學'
+title: '[自製QMK鍵盤-番外] 產生並編輯QMK韌體'
+subtitle: '2024 QMK 韌體編輯教學'
 author: ZiTe
 tags:
   - 教學
@@ -8,27 +8,25 @@ tags:
   - 3C
   - QMK 
 series: ["自製QMK鍵盤"]
-date: 2023-07-02 10:48:00+08:00
+date: 2024-05-04 11:12:00+08:00
 comment: true
 toc: true
 draft: false
----
-
-本文是舊版本的 QMK，如果需要新版本的教學請看[新版 QMK 教學](/posts/diyqmkkeyboard-edit-qmk/)。
-
-如果你因爲某些原因需要使用舊版 QMK 的話，可以使用下面的方法來切換 QMK 版本（需要先安裝好 QMK MSYS 環境）。
-
-1. 打開 QMK MSYS
-2. 執行 `qmk cd`
-3. 執行 `git fetch --all --tags --prune`
-4. 執行 `git checkout tags/0.21.3`
-
+aliases: ["/posts/diyqmkkeyboard-edit-qmk/", "/2020/06/diyqmkkeyboard-2/", "/posts/diyqmkkeyboard-2/"]
 ---
 
 在[上一篇文章](/posts/diyqmkkeyboard-1/)中已經完成鍵盤的 Layout，這篇文章將會接續[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 3 步——生成並編輯 QMK 韌體。
 
-> 本篇是以發文當時最新的 [`0.21.3`](https://github.com/qmk/qmk_firmware/releases/tag/0.21.3) 版本的 QMK 作爲示範。  
-> 本文的[前一個版本](/posts/diyqmkkeyboard-firmware-0-18/)是針對 `0.18.3` 版所撰寫的，已經不適合最新版的 QMK，故更新本文內容，舊版教學文僅作爲參考保留。
+> 本篇是以發文當時最新的 [`0.24.8`](https://github.com/qmk/qmk_firmware/releases/tag/0.24.8) 版本的 QMK 作爲示範。目前 QMK 的最新版本請在[此處查看](https://github.com/qmk/qmk_firmware/tags)。本文的[前一個版本](/posts/diyqmkkeyboard-firmware-0-21-3/)是針對 `0.21.3` 版所撰寫的，舊版教學文僅作爲參考保留。
+>
+> 如果你想要切換 QMK 版本的話，可以使用下面的方法（需要先安裝好 QMK MSYS 環境）。
+>
+> 1. 打開 QMK MSYS
+> 2. 移到 QMK 工作目錄： `qmk cd`
+> 3. 更新 Repo： `git fetch --all --tags --prune`
+> 4. 切換指定版本： `git checkout tags/<VERSION>`，其中 `<VERSION>` 替換成目標版本。例如 `git checkout tags/0.24.8`
+> 5. 可以忽略提示「detached HEAD」狀態。
+> 6. 確認：`git status`。可能會看到類似 `HEAD detached at 0.24.8`，就代表目前已經切換到 `0.24.8` 版了。
 
 <!--more-->
 
@@ -40,15 +38,17 @@ draft: false
 2. 在 QMK MSYS 中輸入並執行指令 `qmk setup` 指令。
 3. 過程中它可能會請你確認一些問題，多數情況只要回答 `y` 既可。
 
-完成後會有一行 `QMK is ready to go`。往上滾動一些會看到一行 `Repo version: 0.21.3` 代表目前的 QMK 版本。
+完成後會有一行 `QMK is ready to go`。往上滾動一些會看到一行 `Repo version: x.y.z`，`x.y.z` 代表目前的 QMK 版本。
 
 準備好環境後，可以先編譯其它鍵盤作爲測試。在 QMK MSYS 中執行：
-```cmd
+
+```bash
 qmk compile -kb clueboard/66/rev3 -km default
 ```
 
 若環境沒問題的話，稍微等待後你應該會看到一排 `[OK]`，及類似這樣的結尾：
-```cmd
+
+```bash
 Linking: .build/clueboard_66_rev3_default.elf                          [OK]
 Creating load file for flashing: .build/clueboard_66_rev3_default.hex  [OK]
 Copying clueboard_66_rev3_default.hex to qmk_firmware folder           [OK]
@@ -56,22 +56,17 @@ Checking file size of clueboard_66_rev3_default.hex                    [OK]
  * The firmware size is fine - 26356/28672 (2316 bytes free)
 ```
 
-如果你因爲某些原因需要使用不同版本的 QMK，可以使用下面的方法來切換 QMK 版本。你可以在[這裡](https://github.com/qmk/qmk_firmware/tags)查看所有 QMK 的版本（Tag）。可能需要另外安裝 Git。
-
-1. 打開 QMK MSYS
-2. 導航到 QMK 的工作路徑：執行 `qmk cd`
-3. 更新 Tag：執行 `git fetch --all --tags --prune`
-4. 切換到指定的版本 Tag（以`0.21.3`爲例）：執行 `git checkout tags/0.21.3`
-
 # 創建新鍵盤
 
 在 QMK MSYS 中執行：
-```cmd
+
+```bash
 qmk new-keyboard
 ```
 
 這時你可能會看到這樣的回應：
-```cmd
+
+```bash
 Generating a new QMK keyboard directory
 
 Name Your Keyboard Project
@@ -85,22 +80,37 @@ Keyboard Name?
 
 再來它回問你 Username 及 Real Name，這部分就打你自己想要的名稱即可（之後也還可以改），例如我兩者都打「ziteh」。
 
+```bash
+Attribution
+Used for maintainer, copyright, etc
+
+Your GitHub Username?  [ziteh]
+
+More Attribution
+Used for maintainer, copyright, etc
+
+Your Real Name?  [ziteh]
+```
+
 ![▲ 使用指令建立新鍵盤](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEipRq6B074RdBe4t0Uc5qIZajM0j3dS-lwJiel-cEGdwrgVwFBNWHkSDjBokQI7N9364L2eQS3B76_HAbcgsMVklbBPCllBSvPRhwkurRY7zW37mGWr9xHy45LYGZhKvf4_5H8WnezV1XLlVYv6JDWDXGkTmCSksXUbO2h7pkZ_FZtD-vOIUkRB-q7wug4/s16000/2023-07-01%2022-10-24.mkv_20230702_095338.927.jpg)
 
-接著會問你基礎佈局，你可以選一個和你預計要做的鍵盤較爲類似的佈局，這樣後續要改的東西就會比較少。例如常見的 60% 鍵盤爲「8. 65_ansi」，那就輸入「8」後按 Enter。
+接著會問你基礎佈局，你可以選一個和你預計要做的鍵盤較爲類似的佈局，這樣後續要改的東西就會比較少。例如常見的 60% 鍵盤爲「11. 65_ansi」，那就輸入「11」後按 Enter。
 
-最後會問你所使用的 MCU，如果你使用的是 Pro Micro 的話，可以選「13」號。當然如果你是用別的 MCU 的話就自行選擇。這些設定後續都可以再修改。
+最後會問你所使用的 MCU，如果你使用的是 Pro Micro 的話，可以選「14」號的「promicro」。當然如果你是用別的 MCU 的話就自行選擇。這些設定後續都可以再修改。
 
-> 你可能會在意使用 Pro Micro 的話選「28」號的「atmega32u4」可以嗎？答案是可以，但是後續還要手動改掉 Bootloader，所以建議直接選「13」就好。
+> 實際編號可能會不同，請以名稱爲主及你看到的爲主。
+>
+> 你可能會在意使用 Pro Micro 的話選「29」號的「atmega32u4」可以嗎？答案是可以，但是後續還要手動改掉 Bootloader，所以建議直接選「14」就好。
 
-![▲ 選擇基底佈局與微控制器](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTN8nyl-WGZQDeSTBAFr7o2-FVoNBfXDcSmoQvBaDw-ABHSI-kEHleAzx7MduwvqTKRlGnP04BQ3-kKpBmTM-pAN5s6fht8CHbQDzlVIzdTJJbKIRH19N1P4fq7WqL0Bu3F2YPKa9gup2i9TwPvlwhEKDbe9asl487Yzbw85lB1jYVjtwuQmbX7uGTEbU/s16000/Unnamed.png)
+![▲ 選擇基底佈局與微控制器示意。這裡是舊版的圖，編號請以實際爲主](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTN8nyl-WGZQDeSTBAFr7o2-FVoNBfXDcSmoQvBaDw-ABHSI-kEHleAzx7MduwvqTKRlGnP04BQ3-kKpBmTM-pAN5s6fht8CHbQDzlVIzdTJJbKIRH19N1P4fq7WqL0Bu3F2YPKa9gup2i9TwPvlwhEKDbe9asl487Yzbw85lB1jYVjtwuQmbX7uGTEbU/s16000/Unnamed.png)
 
 完成後會顯示類似這樣的訊息：
-```cmd
+
+```bash
 Created a new keyboard called mytestkb.
-To start working on things, 'cd' into keyboards/mytestkb,
-or open the directory in your preferred text editor.
-And build with qmk compile -kb mytestkb -km default.
+Build Command: qmk compile -kb mytestkb -km default.
+Project Location: C:/Users/USERNAME/qmk_firmware/keyboards/mytestkb,
+{}Now update the config files to match the hardware!{}
 ```
 
 這樣我們的新鍵盤就在 QMK 的目錄底下建立完成了。
@@ -112,6 +122,7 @@ And build with qmk compile -kb mytestkb -km default.
 使用文字編輯器（例如我使用 [VSCode](https://code.visualstudio.com/)）打開剛剛建立的新鍵盤的資料夾。QMK 預設的路徑是在 `C:\Users\<USERNAME>\qmk_firmware\`，而我們剛剛建立的鍵盤在其中的 `keyboards\mytestkb\`。
 
 這時你會看到 `mytestkb` 下有這些檔案：
+
 - `keymaps\`
   - `default\`
     - `keymap.c`
@@ -122,7 +133,7 @@ And build with qmk compile -kb mytestkb -km default.
 
 ## 修改 `info.json`
 
-`info.json` 是最主要的設定檔，大部分的設定都在這裡調整。有關它的詳細說明請參考 [info.json Format](https://docs.qmk.fm/#/reference_info_json) 及 [Data Driven Configuration](https://docs.qmk.fm/#/data_driven_config)。
+`info.json` 是最主要的設定檔，大部分的設定都在這裡調整。有關它的詳細說明請參考 [info.json Format](https://docs.qmk.fm/#/reference_info_json) 及 [Data Driven Configuration](https://docs.qmk.fm/#/data_driven_config)。以下設定不照順序說明，請以名稱爲主。
 
 > [舊版 QMK](/posts/diyqmkkeyboard-firmware-0-18/) 在 `rules.mk` 和 `config.h` 中的設定現在多數都移到 `info.json` 中了。
 
@@ -173,7 +184,8 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 
 > USB VID 與 PID 是 USB 設備的識別號，正常來說是要向 USB 協會申請/購買，但是我們只是要自己做鍵盤的話通常都自行設定就好。要注意的是，如果一臺電腦同時接了多個相同 VID 和 PID 的裝置，那這些裝置可能無法運作。
 
-例如可以使用：
+例如可以使用（`vid`，`pid` 爲十六進制數值）：
+
 ```json
 "usb": {
     "vid": "0xC1ED",
@@ -182,13 +194,14 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 }
 ```
 
-### 佈局
+### 佈局 layouts
 
 一把鍵盤可以設定多個佈局（Layout），但這裡我們就僅簡單示範單一佈局。官方文件請參考 [Layout Format](https://docs.qmk.fm/#/reference_info_json?id=layout-format)。
 
-`LAYOUT_65_ansi` 就是我們剛剛選擇的基底佈局，內部的 `layout` 就是要設定每一個按鍵的位置，包含了物理上的實際位置和在鍵矩陣中的行列位置。我這裡把 `LAYOUT_65_ansi` 這個名稱改成 `LAYOUT`。
+`LAYOUT_65_ansi` 就是我們剛剛選擇的基底佈局的名稱，內部的 `layout` 就是要設定每一個按鍵的位置，包含了物理上的實際位置和在鍵矩陣中的行列位置。我這裡把 `LAYOUT_65_ansi` 這個名稱改成 `LAYOUT`（這個只是名稱而已，不改也可以）。
 
 看其中兩個鍵：
+
 ```json
 {"matrix": [0, 0], "x": 0, "y": 0},
 {"matrix": [0, 1], "x": 1, "y": 0},
@@ -199,6 +212,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 `layout` 的內容可以透過一些工具來幫忙，就不用完全自己手打。打開 [Convert KLE to QMK info.json](https://qmk.fm/converter/) 頁面，並將[上一篇文章](/posts/diyqmkkeyboard-1/#輸出) 最後的 Raw data 複製並貼到裡面就可以轉換。
 
 例如我貼上：
+
 ```json
 ["Num Lock","/","*","-"],
 ["7\nHome","8\n↑","9\nPgUp",{h:2},"+"],
@@ -208,6 +222,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 ```
 
 轉換後會得到：
+
 ```json
 {
   "keyboard_name": "", 
@@ -256,6 +271,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 它提供的接線圖就很清楚地表達了每個鍵的鍵矩陣位置，請以此爲依據來編輯每個鍵的 `matrix` 內容。
 
 修改完成後：
+
 ```json
 "layouts": {
   "LAYOUT": {
@@ -286,6 +302,8 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 }
 ```
 
+這一步可能比較複雜，要多看幾次比對。
+
 > 注意這裡 `matrix` 設定的鍵矩陣行列大小要和下面的 `matrix_pins` 中的 `cols` 與 `rows` 數量是一致的。
 
 ### 鍵矩陣
@@ -304,6 +322,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 ![▲ Pro Micro 腳位對應圖(取自SparkFun)](https://1.bp.blogspot.com/-UqmjvTbo7Uo/Xu4yajqMXKI/AAAAAAAACeE/AEfdjtlknrcRsjSYvmRz5B0IxY4RIiQegCK4BGAsYHg/s1166/ProMicroPin.png)
 
 例如我可以這樣設定：
+
 ```json
 "diode_direction": "COL2ROW",
 "matrix_pins": {
@@ -319,10 +338,10 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 
 這部分的官方文件請參考 [Matrix Pins](https://docs.qmk.fm/#/reference_info_json?id=matrix-pins)。
 
-
 ### 修改完成
 
 完成的完整 `info.json` 大概長這樣：
+
 ```json
 {
   "keyboard_name": "mytestkb",
@@ -398,6 +417,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 你所需要做的就是把該按鍵的代號（如 `KC_P7`）放在對的位置就好了，之後你按下這個位置的按鍵就會是輸出這個鍵值。QMK 鍵盤支援多層 Keymap 設定，而每一塊 `[n] = LAYOUT()` 代表的是一層，最上面的是第 0 層，往下是第 1、2...n 層。
 
 修改完的 `keymap.c` 大概長這樣：
+
 ```c
 #include QMK_KEYBOARD_H
 
@@ -421,7 +441,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // clang-format on
 ```
 
-有些人會加上一些圖案來讓 `LAYOUT()` 更容易閱讀：
+有些人會加上一些圖案：
+
 ```c
 [0] = LAYOUT(
 // ┌────────┬─────────┬──────────┬─────────┐
@@ -439,23 +460,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ```
 
 > `clang-format off` 與 `clang-format on` 是讓 VSCode 的 Clang-format 格式化工具不用美化該區域的內容。  
-> 如果你稍微懂一點 C 語言的話，`LAYOUT()` 其實是 Macro。
+> 如果你稍微懂一點 C 語言的話，`LAYOUT()` 就是是巨集 Macro。
 
 ## 修改 `rules.mk`
 
 如果你使用的是 Pro Micro 的話，Pro Micro 一般會分 16MHz/5V 和 8MHz/3.3V 這兩種版本，若你使用的是後者，那請在 `rules.mk` 中加入：
+
 ```mk
 # Processor frequency
 F_CPU = 8000000
 ```
 
 另外如果 MCU 是 Atmel AVR 的話（包含 ATmega32U4 和 Pro Micro），還可以再加一行設定來降低韌體的大小，避免發生韌體太大無法燒錄的情況：
+
 ```mk
 # Link time optimization, enable to reduce the compiled size of firmware
 LTO_ENABLE = yes
 ```
 
-> 請注意 `rules.mk` 中的各行結尾不能有空白，否則會導致編譯錯誤：`Compiling: .build/obj_mytestkb/src/default_keyboard.c    avr-gcc.exe: error: UL: No such file or directory`。
+> 請注意 `rules.mk` 中的各行結尾不能有空白，否則可能會導致奇怪的編譯錯誤，例如：`Compiling: .build/obj_mytestkb/src/default_keyboard.c    avr-gcc.exe: error: UL: No such file or directory`。
 
 ## 完成修改
 
@@ -474,10 +497,11 @@ LTO_ENABLE = yes
 - [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - [Keyboard Firmware Builder](https://kbfirmware.com/)
 - [Qwiic Pro Micro USB-C (ATmega32U4) Hookup Guide - SparkFun Learn](https://learn.sparkfun.com/tutorials/qwiic-pro-micro-usb-c-atmega32u4-hookup-guide/all)
-- [本篇的舊版（0.18.3）內容](/posts/diyqmkkeyboard-firmware-0-18/)
+- 本篇的舊版內容
+  - [0.21.3 版](/posts/diyqmkkeyboard-firmware-0-21-3/)
+  - [0.18.3 版](/posts/diyqmkkeyboard-firmware-0-18/)
 - QMK相關
   - [QMK 官方網站](https://qmk.fm/)
   - [QMK 官方文件](https://docs.qmk.fm/#/)
   - [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)
-
-> 本文最早發佈於 2020-06-21，於 2023-04-21 重新編排並更新內容，再於 2023-07-02 更新爲 QMK 0.21.3 版。
+- 撰寫本文時的 QMK MSYS 版本：`1.9.0`

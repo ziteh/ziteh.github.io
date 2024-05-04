@@ -1,6 +1,6 @@
 ---
 title: '[自製QMK鍵盤-4] 編譯與燒錄'
-subtitle: '2023 QMK 韌體編譯及燒錄教學'
+subtitle: 'QMK 韌體編譯及燒錄教學'
 author: ZiTe
 tags:
   - 教學
