@@ -492,6 +492,8 @@ LTO_ENABLE = yes
 
 這一篇的內容可能比較複雜，且 QMK 也一直再更新，如果有我寫得不夠清楚或是有誤的地方，歡迎提出。
 
+[本文的範例 repo](https://github.com/ziteh/qmk-example)
+
 # 相關網站及參考資料
 
 - [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
