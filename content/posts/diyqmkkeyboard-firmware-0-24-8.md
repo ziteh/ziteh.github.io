@@ -1,5 +1,5 @@
 ---
-title: '[自製QMK鍵盤-番外] 產生並編輯QMK韌體'
+title: '[自製QMK鍵盤-3] 產生並編輯QMK韌體'
 subtitle: '2024 QMK 韌體編輯教學'
 author: ZiTe
 tags:
