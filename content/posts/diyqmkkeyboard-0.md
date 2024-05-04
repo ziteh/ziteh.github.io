@@ -39,6 +39,7 @@ aliases: ["/2020/06/diyqmkkeyboard-0/"]
 
 ## 封存
 
+- [0.21.3 版 QMK 韌體教學](/posts/diyqmkkeyboard-firmware-0-21-3/)
 - [0.18.3 版 QMK 韌體教學](/posts/diyqmkkeyboard-firmware-0-18/)
 
 ---
