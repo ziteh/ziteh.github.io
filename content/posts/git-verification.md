@@ -1,6 +1,6 @@
 ---
-title: '簽署你的 Git commit'
-subtitle: 'Git commit signature verification'
+title: '簽署 commit 並設定 GitHub GPG Key 以驗證'
+subtitle: 'Git commit signature verification & GPG key'
 author: ZiTe
 tags:
   - 教學
@@ -16,7 +16,10 @@ draft: false
 
 在 GitHub 看 commit 記錄時，可能會發現有些 commit 被標記爲已驗證（Verified），代表這個 commit 可以確認是真的由此使用者提交的。因爲 commit 是可以[僞造](https://medium.com/starbugs/how-to-fake-the-author-of-git-commit-f44453b70afc)的，你只要知道某人的 username 和 email 就可以用 `git config --global user.name` 和 `user.email` 設定並假冒 commit 的作者。然而這兩項資訊在現代來說超級公開。
 
+<!--more-->
+
 爲了避免被僞造 commit（雖然我不知道有誰會想來假冒我），你可以設定驗證金鑰和爲 commit 加上簽名，來讓 GitHub 確認那些 commit 確實是你提交的。
+
 
 > 本文以 Windows 11 爲主。
 
