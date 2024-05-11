@@ -93,7 +93,7 @@ uid                 [ultimate] your_name <my@email.com>
 ssb   cv25519/196D7ACDB8D502QF 2024-05-11 [E]
 ```
 
-其中 `D54135B170193E40` 就是你要的 Key ID。可以先複製起來，後續的步驟會需要。請注意不是 `0F65BDEE517E693D23F4BCF295FF8Q01CDE31413` 這段，這個是 Fingerprint。
+其中 `D54135B170193E40` 就是你要的 Key ID。可以先複製起來，後續的步驟會需要。
 
 再來要輸出公鑰：
 
