@@ -55,7 +55,7 @@ draft: false
 再來有 2 個資訊需要被使用。一個是 Key ID，另一個是你的公鑰（Public Key）。
 
 - Key ID 的話就在清單上，例如這裡是 `D54135B170193E40`。
-- 公鑰的話要雙擊目標證書（金鑰對），在新開始的視窗按下面的「Export」按鈕。會再開啓一個新視窗，顯示的一大串文字就是公鑰。會以 `-----BEGIN PGP PUBLIC KEY BLOCK-----` 開頭， `-----END PGP PUBLIC KEY BLOCK-----` 結尾。你可以直接整段複製。
+- 公鑰的話要雙擊清單中的證書（金鑰對），在新開始的視窗按下面的「Export」按鈕。會再開啓一個新視窗，顯示的一大串文字就是公鑰。會以 `-----BEGIN PGP PUBLIC KEY BLOCK-----` 開頭， `-----END PGP PUBLIC KEY BLOCK-----` 結尾。你可以直接整段複製。
 
 ## CLI 命令行
 
@@ -63,7 +63,7 @@ draft: false
 
 開始 PowerShell。開始互動式嘗試金鑰對：
 
-```ps
+```bash
 gpg --full-generate-key
 ```
 
@@ -75,13 +75,13 @@ gpg --full-generate-key
 
 列出金鑰對以查看 Key ID：
 
-```ps
+```bash
 gpg --list-secret-keys --keyid-format=long
 ```
 
 它可能會回覆類似這樣的訊息：
 
-```ps
+```bash
 [keyboxd]
 ---------
 sec   ed25519/D54135B170193E40 2024-05-11 [SC]
@@ -94,7 +94,7 @@ ssb   cv25519/196D7ACDB8D502QF 2024-05-11 [E]
 
 再來要輸出公鑰：
 
-```ps
+```bash
 gpg --armor --export D54135B170193E40
 ```
 
@@ -132,13 +132,13 @@ where.exe gpg
 
 爲 Git 設定 GPG 程式路徑：
 
-```ps
+```bash
 git config --global gpg.program "<GPG_PATH>"
 ```
 
 請將 `<GPG_PATH>` 替換成你在上一步得到的實際路徑。例如：
 
-```ps
+```bash
 git config --global gpg.program "C:\Program Files (x86)\GnuPG\bin\gpg.exe"
 ```
 
@@ -146,7 +146,7 @@ git config --global gpg.program "C:\Program Files (x86)\GnuPG\bin\gpg.exe"
 
 設定 Git 要用來簽名的 Key ID：
 
-```ps
+```bash
 git config --global user.signingkey "<KEY_ID>"
 ```
 
@@ -156,7 +156,7 @@ git config --global user.signingkey "<KEY_ID>"
 
 設定讓 Git 爲所有 commit 簽署：
 
-```ps
+```bash
 git config --global commit.gpgsign true
 ```
 
@@ -166,7 +166,7 @@ git config --global commit.gpgsign true
 
 確認是否設定成功：
 
-```ps
+```bash
 git config --global gpg.program
 git config --global user.signingkey
 git config --global commit.gpgsign
