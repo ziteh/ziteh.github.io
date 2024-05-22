@@ -54,10 +54,10 @@ draft: true # false
 |:-:|:-:|:-:|:-|:-:|
 |繼承|Generalization 或 Inheritance|is a|就如同一般 OOP 中的繼承||
 |實作|Realization 或 Implementation|implement|通常用在表達實現了 Interface||
-|聚合|Aggregation|owns|兩者的生命週期無關且獨立，弱擁有||
-|組合|Composition|is a part of|兩者的生命週期相關，強擁有||
-|依賴|Dependency|use|使用，例如當作參數傳遞||
-|關聯|Association|known|若上述關聯皆不適用，則用此表達||
+|聚合|Aggregation|owns|弱擁有，兩者的生命週期無關且獨立||
+|組合|Composition|is a part of|強擁有，兩者的什麼週期相關||
+|依賴|Dependency|use|使用，例如僅當作參數傳遞||
+|關聯|Association|known|若上述關聯皆不適合描述，則用此表達||
 
 
 
@@ -70,121 +70,4 @@ draft: true # false
 - 依賴：(想不到生活化的例子)
 - 關聯：(想不到生活化的例子)
 
-> 以下的範例只是要表達類別和實體間的關係，沒有使用推薦的命名或寫法，也並非最佳實踐。
-
-## 繼承
-
-Python
-
-```py
-class Smartphone:
-    def __init__(self):
-        self.brand: str
-        self.price: float 
-    
-    def Call(self, name: str):
-        pass  # Do something
-        
-class iPhone15(Smartphone):
-    def HeySiri(self):
-        pass  # Do something
-
-class Pixel8(Smartphone):
-    def OkGoogle(self):
-        pass  # Do something
-
-myIphone = iPhone15()
-myIphone.Call("Bob")
-myIphone.HeySiri()
-
-myPixel = Pixel8()
-myPixel.Call("Alice")
-myPixel.OkGoogle()
-```
-
-C#
-
-```cs
-public class Smartphone
-{
-    public string Brand;
-    public float Price;
-    public void Call(string name) { /* Do something */ }
-}
-
-public class iPhone15 : Smartphone
-{
-    public void HeySiri() { /* Do something */ }
-}
-
-public class Pixel8 : Smartphone
-{
-    public void OkGoogle() { /* Do something */ }
-}
-
-//
-
-var myIphone = new iPhone15();
-myIphone.Call("Bob");
-myIphone.HeySiri();
-
-var myPixel = new Pixel8();
-myPixel.Call("Alice");
-myPixel.OkGoogle();
-```
-
-## 實作
-
-Python
-
-```py
-from abc import ABC, abstractmethod
-
-class Phone(ABC):
-    @abstractmethod
-    def call(self, name: str):
-        pass
-
-class Camera(ABC):
-    @abstractmethod
-    def take_picture(self) -> Image:
-        pass
-
-class Smartphone(Phone, Camera):
-    def call(self, name):
-        pass  # Do something
-
-    def take_picture(self):
-        pass  # Do something
-
-class Landline(Phone):
-    def call(self, name):
-        pass  # Do something
-
-```
-
-C#
-
-```cs
-public interface Phone
-{
-    void Call(string name);
-}
-
-public interface Camera
-{
-    Image TakePicture();
-}
-
-public class Smartphone : Phone, Camera
-{
-    public void Call(string name) { /* Do something */ }
-    public Image TakePicture() { /* Do something */ }
-}
-
-public class Landline : Phone
-{
-    public void Call(string name) { /* Do something */ }
-}
-```
 
