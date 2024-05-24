@@ -214,11 +214,11 @@ uint16_t foobar4(int a, int b, const int *c)
 
 讓我們來看一下主流的 Coding style 長什麼樣。首先要注意的是，一般說的 K&R 有兩種：
 
-1. 第一種是網路上大家普遍討論時認爲的 K&R，即所有左右花括號都不換行。以下稱其爲 gen-K&R。
-2. 第二種是 Linux kernel 所使用的 K&R，函數的左右花括號換行，其餘的左右花括號都不換行。以下稱其爲 linux-K&R。這種才是 Kernighan & Ritchie 的書《[The C Programming Language](https://en.wikipedia.org/wiki/The_C_Programming_Language)》中真正使用的風格。
+1. 第一種是網路上大家普遍討論時認爲的 K&R，即所有左右花括號都不換行。以下姑且稱其爲 llvm-K&R。
+2. 第二種是 Linux kernel 所使用的風格，函數的左右花括號換行，其餘的左右花括號都不換行。以下稱其爲 linux-K&R。這種才是 Kernighan & Ritchie 的書《[The C Programming Language](https://en.wikipedia.org/wiki/The_C_Programming_Language)》中真正使用的風格。
 
 ```c
-// gen-K&R
+// llvm-K&R
 typedef struct {
     int foo;
     int bar;
@@ -307,20 +307,20 @@ int main(void)
 
 嘗試歸納並描述它們的規則：
 
-- gen-K&R：所有的左右花括號都不換行。
+- llvm-K&R：所有的左右花括號都不換行。
 - linux-K&R：所有的左右花括號都不換行，除了函數。
 - Allman：流程控制、迴圈、函數的左右花括號都換行（`do-while` 的右花括號可能是例外）。`typedef` 的左花擴行換行、右花括號不換行。初始化時左右花括號不換行。
 
-很明顯，gen-K&R 的規則最簡單且毫無例外。linux-K&R 的規則比 gen-K&R 多了一個唯一的例外。Allman 的規則就複雜多了。
+很明顯，llvm-K&R 的規則最簡單且毫無例外。linux-K&R 的規則比 llvm-K&R 多了一個唯一的例外。Allman 的規則就複雜多了。
 
 # 總結
 
 在實例比較時，我認爲風格 A——*所有的左右花括號都不換行*——在多數情況下都是最好看、自然且直覺的，除了「宣告函式原型」的地方，因爲它的操作要更多一點。而且風格 A 的規則也是最少的。
 
-- 如果完全套用風格 A 的話，你得到的是 gen-K&R。
+- 如果完全套用風格 A 的話，你得到的是 llvm-K&R。
 - 如果你想要在「宣告函式原型」的地方佔有操作優勢的話，你得到的是 linux-K&R。雖然這樣會多一個例外，但也只是多一個而已。多增加的這個例外可以幫你換到操作優勢。
 
-恩... K&R 一家親。總之在我的定義下，K&R 風格是較具優勢的，無論是 gen- 還是 linux-。
+恩... K&R 一家親。至少我認爲 K&R 風格是較具優勢的，無論是 llvm- 還是 linux-。
 
 但是還有一點，在我的定義下，「看得順眼」的權重更高。你完全有理由只憑這點就推翻上面的所有比較，然後繼續用你最熟悉的 Coding style。當然你也有可能和我一樣，瞬間跳槽。
 
