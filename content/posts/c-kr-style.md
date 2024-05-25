@@ -9,7 +9,7 @@ date: 2024-05-23T19:51:00+08:00
 header_img: ""
 comment: true
 toc: true
-draft: true # false
+draft: false
 ---
 
 多年來，就算我在寫其它語言時用的都不是 Allman 風格。但是只要我寫 C，我就會自然而然地用 Allman。而且我甚至有點反感 K&R，更不要說是花括號行爲不一致的 Linux K&R 了。
@@ -214,8 +214,8 @@ uint16_t foobar4(int a, int b, const int *c)
 
 讓我們來看一下主流的 Coding style 長什麼樣。首先要注意的是，一般說的 K&R 有兩種：
 
-1. 第一種是網路上大家普遍討論時認爲的 K&R，即所有左右花括號都不換行。以下姑且稱其爲 llvm-K&R。
-2. 第二種是 Linux kernel 所使用的風格，函數的左右花括號換行，其餘的左右花括號都不換行。以下稱其爲 linux-K&R。這種才是 Kernighan & Ritchie 的書《[The C Programming Language](https://en.wikipedia.org/wiki/The_C_Programming_Language)》中真正使用的風格。
+1. 第一種是網路上大家普遍討論時認爲的 K&R，即所有左右花括號都不換行。以下姑且稱其爲 **llvm-K&R**。
+2. 第二種是 Linux kernel 所使用的風格，函數的左右花括號換行，其餘的左右花括號都不換行。以下稱其爲 **linux-K&R**。這種才是 Kernighan & Ritchie 的書《[The C Programming Language](https://en.wikipedia.org/wiki/The_C_Programming_Language)》中真正使用的風格。
 
 ```c
 // llvm-K&R
@@ -323,6 +323,9 @@ int main(void)
 恩... K&R 一家親。至少我認爲 K&R 風格是較具優勢的，無論是 llvm- 還是 linux-。
 
 但是還有一點，在我的定義下，「看得順眼」的權重更高。你完全有理由只憑這點就推翻上面的所有比較，然後繼續用你最熟悉的 Coding style。當然你也有可能和我一樣，瞬間跳槽。
+
+另外也可以看看我自己的完整規範：[C 語言 Coding Style 規範](/posts/c-style1/)
+
 
 # 參考
 

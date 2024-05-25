@@ -1,15 +1,15 @@
 ---
-title: "C 語言 Coding Style 風格規範"
+title: "C 語言 Coding Style 規範"
 subtitle: "我的編程風格"
 # description: ""
-tags: ["教學", "程式"]
+tags: ["心得", "程式"]
 series: []
 # categories: []
-date: 2024-05-24T14:55:00+08:00
+date: 2024-05-25T14:55:00+08:00
 header_img: ""
 comment: true
 toc: true
-draft: true # false
+draft: false
 ---
 
 稍微整理了一下我自己習慣的 C 語言 Coding style。這些規則只是我自己的喜好。
@@ -120,13 +120,13 @@ int my_function(int param) {
 - 使用`ip_address` 而非 `IP_address`
 - 使用 `uart_send` 而非 `UART_send`。
 
-# C. 函式（Function）
+# C. 函數（Function）
 
-1. 函式名稱**必須**使用**蛇型**風格，命名**應該**偏好**具描述性**。
+1. 函數名稱**必須**使用**蛇型**風格，命名**應該**偏好**具描述性**。
 2. 參數（Parameter）
    1. 名稱**必須**使用**蛇形**風格，命名**應該**偏好**簡潔有力**，爲名詞。
-   2. 若指標形式的參數不會或不應該在函式內變更，**必須**加上 `const`。
-   3. 無參數的函式也**必須**要補上 `void`。
+   2. 若指標形式的參數不會或不應該在函數內變更，**必須**加上 `const`。
+   3. 無參數的函數也**必須**要補上 `void`。
    4. 所有的參數**必須**要全部都在同一行或都在不同行，**不允許**有些在同行、有些獨立一行。
 
 ```c
@@ -138,25 +138,25 @@ void foobar(int long_param) {
     int foo = long_param;
 }
 
-void loooooooooooooooooooooong_function(
+void loooooooooooooooooooooonooooooooooong_function(
     int param1, int param2, int param3
 ) {
     int foo = 0;
 }
 
-void loooooooooooooooooooooong_function(
+void looooooooooooooooooooooooooooonoooong_function(
     int param1,
     int param2,
-    int looooooooooooooooong_param3,
+    int looooooooooooooooong_param3
 ) {
     int foo = 0;
 }
 
 // Wrong
 void timer_setup();           // 遺失 `void`
-void loooooooooooooooooooooong_function(
+void looooooooooooooooooooooooooooonoooong_function(
     int param1, int param2,   // 只要有一個參數換行，那所有的參數都需要獨立一行
-    int looooooooooooooooong_param3,
+    int looooooooooooooooong_param3
 ) {
     int foo = 0;
 }
@@ -199,7 +199,7 @@ void func(void) {
     3. 多行形式下，最後一個成員**必須**加上尾隨逗號（Trailing comma）。
 2. 使用 `typedef` 定義的...
     1. 型別名稱要加上 `_t` 後綴。
-    2. 函式指標名稱要加上 `_fn` 後綴。
+    2. 函數指標名稱要加上 `_fn` 後綴。
 3. Enum 的成員名稱**可以**加上某些統一的前綴，以避免與其它 Enum 成員重複。
 4. Struct 的成員...
     1. 如果其值不會或不應該改變的話，**必須**加上 `const`。
@@ -337,12 +337,12 @@ extern "C" {
     4. 使用 `@author <NAME>` 標記作者。**可以**在作者的名字後面加上以角括號 `< >` 包圍的 Email。
     5. 使用 `@copyright <LICENSE>` 標記此檔案的授權許可。`<LICENSE>` **應該**使用 `SPDX-License-Identifier: <SPDX_ID>` 這樣的格式，除非此授權不在 [SPDX](https://spdx.org/licenses/) 內。或是嵌入授權許可的所有內容。
     6. 使用 `@note <TEXT>` 寫其它說明，尤其是段落性質的筆記。
-6. 對於函式的 Doxygen 格式**必須**遵守以下規則與順序：
-    1. 使用 `@brief <TEXT>` 簡述此函式。
+6. 對於函數的 Doxygen 格式**必須**遵守以下規則與順序：
+    1. 使用 `@brief <TEXT>` 簡述此函數。
     2. 使用 `@note <TEXT>` 寫其它說明，尤其是段落性質的筆記。
     3. 使用 `@param <NAME> <TEXT>` 描述各個參數。**可以**使用下述帶資料方向標記的版本。
     4. 使用 `@param[<DIR>] <NAME> <TEXT>` 描述帶有方向的各個參數。`[<DIR>]` **必須**是 `[in]`、`[out]`或 `[in, out]`。
-    5. 使用 `@return <TEXT>` 描述函式的回傳值。
+    5. 使用 `@return <TEXT>` 描述函數的回傳值。
 7. 對於全域變數、常數的 Doxygen 格式**必須**遵守以下規則與順序：
     1. 使用 `@brief <TEXT>` 簡述此變數或常數。
     2. 使用 `@note <TEXT>` 寫其它說明，尤其是段落性質的筆記。
@@ -420,12 +420,12 @@ int main(void) {
 
 ### 爲何要使用 `(void)` 捨棄非 `void` 的函數回傳值？
 
-爲了明確表達你知道這個函數有回傳值，但是你不需要它，因爲很多情況下函式的回傳值會是錯誤代碼之類的。
+爲了明確表達你知道這個函數有回傳值，但是你不需要它，因爲很多情況下函數的回傳值會是錯誤代碼之類的。
 
 > 這是來自 Rust 的啓發。  
 > [Casting function returns to void](https://stackoverflow.com/a/3998815)
 
-### 爲什麼函式的參數只能有全部同行和全部不同行兩種？
+### 爲什麼函數的參數只能有全部同行和全部不同行兩種？
 
 1. 保持規則單純。
 2. 參數寫成多行的情況表示此函數的參數有一定的複雜性（無論是數量還是名稱），各自獨立一行更方便閱讀和修改。
@@ -626,8 +626,9 @@ LineEnding: DeriveLF
 
 如果你想要另外下載執行檔的話，可以在 [LLVM 的 GitHub](https://github.com/llvm/llvm-project/releases) 下載並安裝。安裝完的預設路徑應該是在 `C:\Program Files\LLVM\bin\clang-format.exe`。
 
-# References
+# 參考
 
 - [Recommended C style and coding rules](https://github.com/MaJerle/c-code-style)
 - [Linux kernel coding style](https://www.kernel.org/doc/html/v4.10/process/coding-style.html)
 - [My favorite C programming practices.](https://github.com/mcinglis/c-style)
+- [C 語言用 K&R Coding Style 的最大理由不是省行數](/posts/c-kr-style/)
