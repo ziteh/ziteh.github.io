@@ -139,7 +139,9 @@ if (foobar) {
 if (fb) {
     fb = 0;
 }
+```
 
+```c
 // B
 if (foo)
 {
