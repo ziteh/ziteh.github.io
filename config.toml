@@ -33,7 +33,8 @@ codeFences = true
 guessSyntax = true
 lineNos = true
 lineNumbersInTable = false
-style = "dracula" #"onedark"
+style = "dracula"
+# style = "onedark" # Preprocessor的顏色和comment一樣
 
 [markup.goldmark.renderer]
 unsafe = true
