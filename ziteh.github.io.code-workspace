@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "Posts",
+			"path": "./content/posts"
+		},
+		{
+			"name": "root",
+			"path": "."
+		}
+	],
+	"settings": {}
+}
