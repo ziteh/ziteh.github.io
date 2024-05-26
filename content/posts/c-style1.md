@@ -79,7 +79,7 @@ int main(void) {
     3. **可以**使用*常見*的縮寫，*常見*代表這個縮寫（在此專業領域內）同時滿足：不會造成歧義、一目瞭然、足夠通用。但是需要注意**不允許**打破命名風格規則。
 4. 16 進制數的數值部分的英文**必須**爲大寫，如：`0x3A`、`0xFF8D`。
 5. 描述陣列的名稱**應該**使用複數形、集合名詞或容器等可以表示多個的名詞。
-6. 指標**可以**加上 `_p` 後綴。
+6. 在需要區分的場合，指標**可以**加上 `_p` 後綴。
 7. **應該**盡可能使用 `const` 常數取代巨集常數 `#define`。
 8. **應該**盡可能使用 `inline` 取代巨集 `#define`。
 9. 如果呼叫的函數有非 `void` 回傳值，但你不需要用到它時，**應該**使用 `(void)` 明確地捨棄它。
@@ -89,7 +89,7 @@ int main(void) {
 
 ```c
 int main(void) {
-    char rx_buf[32] = {0}; 
+    char rx_buf[32] = {0};
 
     if (cnt > 0xF3) {
         // Do somethings
@@ -98,7 +98,7 @@ int main(void) {
     } else {
         // Do somethings
     }
-    
+
     while (1) {
         (void)my_function(cnt);
     }
@@ -138,13 +138,13 @@ void foobar(int long_param) {
     int foo = long_param;
 }
 
-void loooooooooooooooooooooonooooooooooong_function(
+void loooooooooooooooooooooooooooooooooong_function(
     int param1, int param2, int param3
 ) {
     int foo = 0;
 }
 
-void looooooooooooooooooooooooooooonoooong_function(
+void loooooooooooooooooooooooooooooooooong_function(
     int param1,
     int param2,
     int looooooooooooooooong_param3
@@ -154,7 +154,7 @@ void looooooooooooooooooooooooooooonoooong_function(
 
 // Wrong
 void timer_setup();           // 遺失 `void`
-void looooooooooooooooooooooooooooonoooong_function(
+void loooooooooooooooooooooooooooooooooong_function(
     int param1, int param2,   // 只要有一個參數換行，那所有的參數都需要獨立一行
     int looooooooooooooooong_param3
 ) {
@@ -294,9 +294,9 @@ void function(int param) {
 
 #ifndef MY_FILE_H
 #define MY_FILE_H
- 
+
 // Your code
-    
+
 #endif
 ```
 
@@ -319,36 +319,36 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
-    
+
 #endif
 ```
 
 # H. 註解
 
 1. 所有註解句子的第一個字**必須**要大寫，除非句子的開頭不是英文。
-2. 如果註解前有程式碼，**必須**間隔 2 該空白。
-3. 一般註解**必須**使用單行註解形式，即雙斜線，即使它會寫成多行的形式。行末**不允許**加句號，即使行中有其它標點符號。
-4. 文件註解**必須**使用 Doxygen 的三斜線 `///` 註解形式。如果是描述性的句子，各行末**必須**加句號。
+2. 一般註解**必須**使用單行註解形式，即雙斜線，即使它會寫成多行的形式。行末**不允許**加句號，即使行中有其它標點符號。
+    1. *例外*：帶有特殊功能的註解**必須**使用多行註解形式，例如 `/* clang-format off */`。
+3. 文件註解**必須**使用 Doxygen 的三斜線 `///` 註解形式。如果是描述性的句子，各行末**必須**加句號。
     1. *例外*：URL 網址或檔案名等特殊字段行末**不允許**加句號，以避免感染閱讀或複製。
-5. 對於檔案的 Doxygen 格式**必須**遵守以下規則與順序：
+4. 對於檔案的 Doxygen 格式**必須**遵守以下規則與順序：
     1. 使用 `@file <FILENAME>` 標記此檔案的名稱。
     2. 使用 `@brief <TEXT>` 簡述此檔案。
     3. 使用 `@attention <TEXT>` 描述特別需要注意的事情。
     4. 使用 `@author <NAME>` 標記作者。**可以**在作者的名字後面加上以角括號 `< >` 包圍的 Email。
     5. 使用 `@copyright <LICENSE>` 標記此檔案的授權許可。`<LICENSE>` **應該**使用 `SPDX-License-Identifier: <SPDX_ID>` 這樣的格式，除非此授權不在 [SPDX](https://spdx.org/licenses/) 內。或是嵌入授權許可的所有內容。
     6. 使用 `@note <TEXT>` 寫其它說明，尤其是段落性質的筆記。
-6. 對於函數的 Doxygen 格式**必須**遵守以下規則與順序：
+5. 對於函數的 Doxygen 格式**必須**遵守以下規則與順序：
     1. 使用 `@brief <TEXT>` 簡述此函數。
     2. 使用 `@note <TEXT>` 寫其它說明，尤其是段落性質的筆記。
     3. 使用 `@param <NAME> <TEXT>` 描述各個參數。**可以**使用下述帶資料方向標記的版本。
     4. 使用 `@param[<DIR>] <NAME> <TEXT>` 描述帶有方向的各個參數。`[<DIR>]` **必須**是 `[in]`、`[out]`或 `[in, out]`。
     5. 使用 `@return <TEXT>` 描述函數的回傳值。
-7. 對於全域變數、常數的 Doxygen 格式**必須**遵守以下規則與順序：
+6. 對於全域變數、常數的 Doxygen 格式**必須**遵守以下規則與順序：
     1. 使用 `@brief <TEXT>` 簡述此變數或常數。
     2. 使用 `@note <TEXT>` 寫其它說明，尤其是段落性質的筆記。
-8. 如果是段落性質的 Doxygen 文字，換行後**必須**要保持縮排。
-9. Doxygen 文字**可以**使用 Markdown 語法.
-10. **不允許** 結構化註解，例如：`// ########## //`
+7. 如果是段落性質的 Doxygen 文字，換行後**必須**要保持縮排。
+8. Doxygen 文字**可以**使用 Markdown 語法.
+9. **不允許** 結構化註解，例如：`// ########## //`
 
 ```c
 /// @file foobar.c
@@ -361,19 +361,19 @@ uint8_t foobar = 0;
 
 /// @brief Do something, doc comment end with a period.
 ///        Url without period: https://github.com/git/git
-/// 
+///
 /// @param data A pointer to the data.
 /// @param len The length of data.
 /// @return 0 if successful, otherwise an error code.
 uint16_t do_something(const uint8_t *data, uint16_t len) {
     // Multi line comment
     // foo, bar
-    uint8_t val = *data;  // Without period    
+    uint8_t val = *data;  // Without period
     return 0;             // Success
 }
 
 /// @brief Copies the values of `len` bytes from `src` to `des`.
-/// 
+///
 /// @param[out] des Pointer to the destination array.
 /// @param[in] src Pointer to the source of data.
 /// @param[in] len Number of bytes to copy.
@@ -383,10 +383,11 @@ void array_copy(uint8_t *des, const uint8_t *src, uint16_t len) {
 
 # I. 空白
 
-1. 函數（包含宣告、定義、呼叫）和 `sizeof` 運算子的左圓括號前**不允許**插入空白，其餘都**必須**在前有 1 個空白。
-2. 右圓括號前**不允許**插入空白。
-3. 若逗號 `,` 或分號 `;` 前**不允許**插入空白，若其後還有其它內容，其後**必須**有 1 個空白。除了三元運算子以外的冒號 `:` 也套用此規則。
-4. 除了下述的運算子與其它數值或變數間**必須**有 1 個空白、以及 `sizeof` 運算子套用函數規則外，其餘運算子與數值或變數之間**不允許**有空白。
+1. 如果註解前有程式碼，**必須**間隔 2 個空白。
+2. 函數（包含宣告、定義、呼叫）和 `sizeof` 運算子的左圓括號前**不允許**插入空白，其餘都**必須**在前有 1 個空白。
+3. 右圓括號前**不允許**插入空白。
+4. 若逗號 `,` 或分號 `;` 前**不允許**插入空白，若其後還有其它內容，其後**必須**有 1 個空白。除了三元運算子以外的冒號 `:` 也套用此規則。
+5. 除了下述的運算子與其它數值或變數間**必須**有 1 個空白、以及 `sizeof` 運算子套用函數規則外，其餘運算子與數值或變數之間**不允許**有空白。
     1. 三元條件 `? :`。
     2. 各種賦值：`=`, `+=`, `-=`, `*=`, `/=`, `%=`, `<<=`, `=>>`, `&=`, `|=`, `^=`。
     3. 邏輯 AND `&&`，邏輯 OR `||`。
@@ -422,7 +423,7 @@ int main(void) {
 
 爲了明確表達你知道這個函數有回傳值，但是你不需要它，因爲很多情況下函數的回傳值會是錯誤代碼之類的。
 
-> 這是來自 Rust 的啓發。  
+> 這是來自 Rust 的啓發。
 > [Casting function returns to void](https://stackoverflow.com/a/3998815)
 
 ### 爲什麼函數的參數只能有全部同行和全部不同行兩種？
@@ -436,8 +437,8 @@ int main(void) {
 
 所以你只能使用常見、不會造成歧義和一目瞭然的縮寫。
 
-> C is a Spartan language, and your naming conventions should follow suit. Unlike Modula-2 and Pascal programmers, C programmers do not use cute names like `ThisVariableIsATemporaryCounter`.  
-> A C programmer would call that variable `tmp`, which is much easier to write, and not the least more difficult to understand.  
+> C is a Spartan language, and your naming conventions should follow suit. Unlike Modula-2 and Pascal programmers, C programmers do not use cute names like `ThisVariableIsATemporaryCounter`.
+> A C programmer would call that variable `tmp`, which is much easier to write, and not the least more difficult to understand.
 > -- From [Linux kernel coding style](https://www.kernel.org/doc/html/v4.10/process/coding-style.html#naming)
 
 ### 爲何 `switch-case` 的最後一個案例也要加 `break`？
@@ -446,10 +447,10 @@ int main(void) {
 
 讓我節錄一些看法：
 
-> Refactorability. If all your branches end with break or return, you can reorder them without changing the meaning. This makes it less likely for such a reordering to introduce a regression.  
+> Refactorability. If all your branches end with break or return, you can reorder them without changing the meaning. This makes it less likely for such a reordering to introduce a regression.
 > -- From @tdammers [Break on default case in switch](https://softwareengineering.stackexchange.com/a/201786)
 
-> As a matter of good form, put a break after the last case (the default here) even though it's logically unnecessary. Some day when another case gets added at the end, this bit of defensive programming will save you.  
+> As a matter of good form, put a break after the last case (the default here) even though it's logically unnecessary. Some day when another case gets added at the end, this bit of defensive programming will save you.
 > -- From *The C Programming Language, 2/e*, [Should we break the default case in switch statement?](https://stackoverflow.com/a/26139061)
 
 ### 爲何使用花括號的 `switch-case` 的 `break` 要在其外？
@@ -474,7 +475,7 @@ int main(void) {
 
 另外，爲了鼓勵使用者爲本來就不會也不該改變的值使用不可變變數（Immutable variable），`const` 區域變數、成員和參數不實施**大寫蛇形**，而是遵照原始規則，可以讓使用者不會爲了「避免程式碼出現一堆難看的全大寫」而進一步避免使用 `const`。所以如果你確定這個區域變數、成員或參數的值不會也不該改變，請考慮加上 `const`。這是來自 Rust 的一個啓發。
 
-> you should use `const` wherever possible but for *maintainability reasons* & *preventing yourself from doing stupid mistakes*.  
+> you should use `const` wherever possible but for *maintainability reasons* & *preventing yourself from doing stupid mistakes*.
 > -- From [Should I use const for local variables for better code optimization?](https://stackoverflow.com/a/10747948)
 
 > [[106] const 變數有助理解程式碼並協助編譯器優化](https://samtsai.org/2016/07/24/106-const-bian-shu-you-zhu-li-jie-cheng-shi-ma-bing-xie-zhu-bian-yi-qi-you-hua/)
@@ -550,7 +551,7 @@ extern "C" {
 
 那如果是其它預處理器判斷式呢？我認爲，如果那些判斷式寫的很複雜或很多行（尤其無法在一個螢幕上顯示）的話，可以考慮加上註解。但同時也要優先考慮是否真的有必要使用這麼複雜或長的預處理器判斷式？
 
-就如同 Linux Kernal 風格的縮排使用 8 個空白，如果有人抱怨「用 8 個空白的話一下就縮排到最右邊了！」，那他們會回應：「不要讓你的程式碼使用超過 3 層縮排就不會有這個問題。如果你的程式超過 3 層，那代表它不夠簡潔，需要重新檢視」
+就如同 Linux Kernel 風格的縮排使用 8 個空白，如果有人抱怨「用 8 個空白的話一下就縮排到最右邊了！」，那他們會回應：「不要讓你的程式碼使用超過 3 層縮排就不會有這個問題。如果你的程式超過 3 層，那代表它不夠簡潔，需要重新檢視」
 
 如果你有 N 個預處理器 Flag，那這個程式就有 2^N 種變化性（或著說狀態），這可能是難以掌握的。而且這是不是預處理或是檔案層級的單一職責問題？
 
@@ -625,6 +626,30 @@ LineEnding: DeriveLF
 ```
 
 如果你想要另外下載執行檔的話，可以在 [LLVM 的 GitHub](https://github.com/llvm/llvm-project/releases) 下載並安裝。安裝完的預設路徑應該是在 `C:\Program Files\LLVM\bin\clang-format.exe`。
+
+## Doxygen
+
+你可以在 VScode 安裝這個 [Doxygen Documentation Generator](https://marketplace.visualstudio.com/items?itemName=cschlosser.doxdocgen) 來協助產生 Doxygen 註解。可以使用以下的設定：
+
+```json
+{
+  "doxdocgen.c.commentPrefix": "/// ",
+  "doxdocgen.c.firstLine": "",
+  "doxdocgen.c.lastLine": "",
+  "doxdocgen.c.triggerSequence": "///",
+  "doxdocgen.file.copyrightTag": [
+    "@copyright SPDX-License-Identifier: "
+  ],
+  "doxdocgen.file.fileOrder": [
+    "file",
+    "brief",
+    "author",
+    "copyright"
+  ],
+  "doxdocgen.generic.authorTag": "@author {author} <{email}>",
+  "doxdocgen.generic.returnTemplate": "@return ",
+}
+```
 
 # 參考
 
