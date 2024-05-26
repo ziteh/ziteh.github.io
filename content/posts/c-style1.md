@@ -113,7 +113,7 @@ int my_function(int param) {
 
 - 使用 `len` 代表 `length`。此縮寫在 C 語言中足夠*常見*。
 - 使用 `buf` 代表 `buffer`。此縮寫在 C 語言中足夠*常見*。
-- 使用 `uart` 代表 `universalAsynchronousReceiverTransmitter`。此縮寫在嵌入式領域中足夠*常見*。
+- 使用 `isr` 代表 `interrupt_service_routine`。此縮寫在嵌入式領域中足夠*常見*。
 
 縮寫名稱**不允許**打破命名風格。例如：
 
