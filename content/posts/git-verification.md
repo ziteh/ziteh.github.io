@@ -12,7 +12,7 @@ toc: true
 draft: false
 ---
 
-![](https://i.imgur.com/ugAQ8rK.png)
+![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhbS1awMSWll3iWn0eyymEKwcIK7OyjTvZ8RNxl3jHDaJHpWmJrwU8G0e1e0xKm-KEVq069BrngyRKphQJDaaDZ_Y7mQG4OQ1tu9BJA1yecJc8nmizcnxVcZvr3Qu1fx-di9L0IgAtWjo9uEZdm7Tyyw3x7zm4UxOgS8U5YkE0MKyyZEFJXaT25YBT6wwY/s16000/5%20-%20ugAQ8rK.png)
 
 在 GitHub 看 commit 記錄時，可能會發現有些 commit 被標記爲已驗證（Verified），代表這個 commit 可以確認是真的由此使用者提交的。因爲 commit 是可以[僞造](https://medium.com/starbugs/how-to-fake-the-author-of-git-commit-f44453b70afc)的，你只要知道某人的 username 和 email 就可以用 `git config --global user.name` 和 `user.email` 設定並假冒 commit 的作者。然而這兩項資訊在現代來說超級公開。
 
@@ -37,11 +37,11 @@ draft: false
 
 安裝好 Gpg4win 後應該會有個軟體 Kleopatra 也被一併安裝，這是一個憑證管理軟體。開啓它並選擇「File > New OpenPGP Key Pair...」（或 Ctrl+N）。
 
-![](https://i.imgur.com/Hc51k6F.png)
+![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-gleIAljQS2xfDv2YyNYyTl8o5wstoDf_WETUdmyYmikFjwFkPUw7AucRhri9RrQ9CaLz9Y6eZZJwMhiOsW_aU7uVfZsA03uiQa49ut8zhXFMcqYYQ3zPe4R01FhyDMEuq7Dr0azlgYKopZ1k0QnCXauAn8hXMiYlR-NjNvxVzKunfMHHK1P_BiIoP1E/s16000/7%20-%20Hc51k6F.png)
 
 填入你的名字與 Email。如果你想要使用密碼來進一步保護此金鑰的話，可以勾選下面的「Protext the generated key with a passphrase.」，如果有密碼的話，往後每次要爲 commit 簽名時都會要求輸入此密碼。
 
-![](https://i.imgur.com/0xEpVbf.png)
+![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhTO6c_QXTNxojWXVCWmfUdSaGgMId9yOz3l2aRXkx5wfERO0v6RExISnQLhrAITGOc_9lqiwRPRToRfX8mYla8ADcQkiJ_GmTIf1loebndywhwLv9OvZhgaatXuKPpYoege6G7poWH44HSvgjGFheVuG1wnSV2UbaGsSS6Frlk9K75TTvD8cVxR8BQ14Y/w400-h379/4%20-%200xEpVbf.png)
 
 按下「Advanced Settings...」開啓進階設定。
 
@@ -49,11 +49,11 @@ draft: false
 
 如果想要此金鑰對在一段時間後會過期的話，可以設定「Vaild until」的時間。不需要的話（永久有效）就不要勾選即可。
 
-![Advanced Settings](https://i.imgur.com/WKN7s2s.png)
+![Advanced Settings](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgB60n9PtXZcpFNTsyDqJBeX9CAaoEX0flMCFsPKvI8jrlzK_hUuvfcUYeluXL678CTdKDpOoPHW2s2NIkKz1ai0koV0DnURZhZ_fjeQoOtn14YIG596vnAxVB-r7oS0pXeTKlqwEYyA33IMzmNRo7AjlmWzRD3TLFRH163OC5RxH2q3fDfARrO2NByukA/w286-h400/1%20-%20WKN7s2s.png)
 
 確認沒問題後按 OK 就會提示成功產生。並且附上一段密碼指紋 Fingerprint。清單上也會多出剛剛產生的證書資訊。
 
-![](https://i.imgur.com/QlGGD4k.png)
+![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0OdKPc7MXiJOS5wsfdgNZq6H6pZB8GRWd2qIkeUjqMh3Tpk7l65D2Doks49KzW6Zf-VDYVcLm6P2Gog19uu_BWKeYC5JB016VHr1g8DylrU48akYU_DRSUMVhsDDeQXtawgO86-cVcClbx5XH0D6elhr4WxEgIu85Yi78BzeRwcu5Ie2jXzh3VEjv93Q/s16000/2%20-%20QlGGD4k.png)
 
 再來有 2 個資訊需要被使用。一個是 Key ID，另一個是你的公鑰（Public Key）。
 
@@ -111,10 +111,10 @@ gpg --armor --export D54135B170193E40
 
 按下「Add GPG Key」即可。
 
-![新增 GPG Key 示意](https://i.imgur.com/4ystOtj.png)
+![新增 GPG Key 示意](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgINvNdBT_g9tqH0bDIaQbQdt0glR2bPIwroIHWnrfQnhM0Whrou2NcCY3nZ0RkXp2NJ1tGA8A__SVg7y4SvzAB80O36VPmcp-IDN1VDnL8qJS-mNbXHp790mGFVJQphZMVN4_GrzDbuUIW2NrFxn9_MKpggIRghD1Lemslh19cK9RyOZsSeqLunAojw4I/s16000/8%20-%204ystOtj.png)
 
-> 注意，如果你把某個 GPG Key 刪除的話，原先使用這個金鑰對簽名的 commit 就會失去驗證變成 Unverified（因爲 GitHub 失去了這個公鑰當然無法驗證）。  
-> 
+> 注意，如果你把某個 GPG Key 刪除的話，原先使用這個金鑰對簽名的 commit 就會失去驗證變成 Unverified（因爲 GitHub 失去了這個公鑰當然無法驗證）。
+>
 > 你可以開一個測試用的 repo，先送幾個有簽名且可被認證的 commit，接著刪除 GitHub 上對應的 GPG Key，這些 commit 會從 Verified 變成 Unverified。如果再把對應的 GPG Key 加回去的話，又會變回到 Verified。
 
 # Git 設定
@@ -179,7 +179,7 @@ git config --global commit.gpgsign
 
 如果沒問題的話，現在你就可以嘗試 commit 並 push 到 GitHub 上看看了。
 
-![認證的 commit](https://i.imgur.com/MsSco5U.png)
+![認證的 commit](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMwrB0a-HhD1i-cbCTegVrpUdi5hgn2AYgAWBmLrAUhg5lrbBUgTdJqX7h_w4p5yayTlxjsm_jR6WIn3ng-1pHQEEvpnG9IxtgZVzdURNFfIPHKlJNFd9Ev8alu0jb0ZjCIhgi9V1K9hBcAAQPMl0IIi3rEKjN8zoUP93i1ga1Tz_8DlM5T78V_tgH_0s/w400-h292/6%20-%20MsSco5U.png)
 
 > 上圖的 Key ID 和文中的不同是因爲文中的是範例用的，不是我真正的金鑰對。
 
