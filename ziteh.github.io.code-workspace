@@ -9,5 +9,24 @@
 			"path": "."
 		}
 	],
+	"tasks": {
+		"version": "2.0.0",
+		"problemMatcher": [],
+		"options": {
+			"cwd": "${fileWorkspaceFolder}"
+		},
+		"presentation": {
+			"reveal": "always"
+		},
+		"group": "none",
+		"type": "shell",
+		"tasks": [
+			{
+				"label": "Server with draft",
+				"command": "hugo server -D",
+				"args": [],
+			}
+		]
+	},
 	"settings": {}
 }
