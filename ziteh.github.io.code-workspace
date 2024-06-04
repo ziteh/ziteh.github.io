@@ -5,7 +5,7 @@
 			"path": "./content/posts"
 		},
 		{
-			"name": "root",
+			"name": "Root",
 			"path": "."
 		}
 	],
@@ -22,11 +22,19 @@
 		"type": "shell",
 		"tasks": [
 			{
-				"label": "Server with draft",
+				"label": "Server including draft",
 				"command": "hugo server -D",
 				"args": [],
 			}
 		]
 	},
-	"settings": {}
+	"settings": {
+		"[markdown]": {
+			"editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+			"editor.snippetSuggestions": "top",
+			"editor.quickSuggestions": {
+				"other": true
+			},
+		}
+	}
 }

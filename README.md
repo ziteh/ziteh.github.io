@@ -23,18 +23,17 @@ draft: true # false
 
 
 <!--more-->
-
-
 ```
 
 or command:
-```
+
+```bash
 hugo new posts/<FILENAME>.md
 ```
 
 ## Run
 
-```
+```bash
 hugo server -D
 ```
 
