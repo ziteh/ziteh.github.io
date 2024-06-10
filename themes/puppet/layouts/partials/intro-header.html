@@ -1,3 +1,4 @@
+
 {{ $header_img := .Scratch.Get "header_img" }}
 
 {{ if .IsPage }}
@@ -29,7 +30,7 @@
           {{ else }}
           {{ end }}
           <span class="meta">
-            Posted 
+            Posted
             <!-- by {{ with $.Params.author }} {{ $.Params.author }} {{ else }} {{ .Site.Params.author }} {{ end }} -->
             on {{ .Date.Format "2006-01-02" }}
           </span>

@@ -42,7 +42,7 @@
   <link rel="stylesheet" href="{{ $custom_style.RelPermalink }}">
   {{ end }}
   {{- end -}}
-  
+
   <!-- Font -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,6 +77,9 @@
   <link rel="shortcut icon" href="{{ "favicon.ico" | relURL }}" type="image/x-icon">
   <link rel="icon" href="{{ "logo.svg" | relURL }}" sizes="any" type="image/svg+xml" />
 {{ end }}
+
+<!-- {{ if .Params.math }}{{ partial "helpers/mathjax.html" . }}{{ end }} -->
+{{ if .Params.math }}{{ partial "helpers/katex.html" . }}{{ end }}
 
 </head>
 
