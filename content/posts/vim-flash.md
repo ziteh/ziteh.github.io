@@ -9,7 +9,7 @@ date: 2024-06-15T12:33:00+08:00
 header_img: ""
 comment: true
 toc: true
-draft: true # false
+draft: false
 ---
 
 對於常用 Vim 的人來說，[Easy Motion](https://github.com/easymotion/vim-easymotion) 絕對是一個好用的插件，它可以讓你在使用 Vim 時更快速且方便的將遊標移動到螢幕上任何想要的位置。不過，對於 Easy Motion 不少人也有一些意見，例如太久沒人維護（筆者寫本文當下最後一筆 commit 是 2022 年，且只是修改文件）、實現方式老舊、慢...
