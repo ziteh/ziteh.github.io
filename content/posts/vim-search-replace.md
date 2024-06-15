@@ -3,7 +3,8 @@ title: 在Vim中搜尋並取代文字
 author: ZiTe
 tags:
   - 教學
-  
+  - Vim
+
 categories: []
 date: 2020-09-05 23:37:00
 comment: true
@@ -37,8 +38,8 @@ aliases: ["/2020/09/vim-search-replace/"]
 
 先按下<kbd>v</kbd>、<kbd>V</kbd>或<kbd>Ctrl</kbd>+<kbd>v</kbd>進入Visual mode，並選取範圍。
 
-`:'<,'>s/SSS/RRR/g`  
-在Visual mode所選的範圍中，將SSS取代成RRR。其中`:'<,'>`只要在Visual mode中按下<kbd>:</kbd>就會自動出現。  
+`:'<,'>s/SSS/RRR/g`
+在Visual mode所選的範圍中，將SSS取代成RRR。其中`:'<,'>`只要在Visual mode中按下<kbd>:</kbd>就會自動出現。
 
 參考：[Search and replace in a visual selection | Vim Tips Wiki | Fandom](https://vim.fandom.com/wiki/Search_and_replace_in_a_visual_selection)
 

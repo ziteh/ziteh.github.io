@@ -2,7 +2,7 @@
 title: "Vim 複製並連續取代文字"
 subtitle: ""
 # description: ""
-tags: ["教學"]
+tags: ["教學", "Vim"]
 series: []
 # categories: []
 date: 2023-09-30T20:33:00+08:00
