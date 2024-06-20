@@ -3,18 +3,18 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
+title: ZiTe 本物志
+subtitle: '一位慢步於程式、電路與文學之人的學習記錄與分享'
 description: ''
-keywords:
-author: John Doe
-language: en
-timezone: ''
+keywords: ['open source', '開源', 'firmware' , '韌體', 'software', '軟體', 'electronic', '電子電路']
+author: ZiTe
+language: zh-TW
+timezone: 'Asia/Taipei'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
-permalink: :year/:month/:day/:title/
+url: https://ziteh.github.io
+permalink: posts/:title/
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -47,13 +47,13 @@ syntax_highlighter: highlight.js
 highlight:
   line_number: true
   auto_detect: false
-  tab_replace: ''
+  tab_replace: '    '
   wrap: true
   hljs: false
 prismjs:
   preprocess: true
   line_number: true
-  tab_replace: ''
+  tab_replace: '    '
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
@@ -97,6 +97,7 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: next
+theme_config: '_config.next.yml'
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
