@@ -49,6 +49,13 @@
           {%- endif %}
         </{% if is_index %}h2{% else %}h1{% endif %}>
 
+        {%- if post.subtitle %}
+          <h3 class="post-subtitle">
+            {{- post.subtitle }}
+          </h3>
+        {%- endif %}
+
+
         <div class="post-meta-container">
           {{ partial('_partials/post/post-meta.njk') }}
 
