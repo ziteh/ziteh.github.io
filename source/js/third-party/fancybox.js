@@ -29,6 +29,14 @@ document.addEventListener('page:loaded', () => {
       imageWrapLink.dataset.caption = imageTitle;
     }
     image.wrap(imageWrapLink);
+
+    // Figure caption
+    if (imageTitle) {
+      const caption = document.createElement('p');
+      caption.classList.add('image-caption')
+      caption.textContent = imageTitle
+      imageWrapLink.appendChild(caption)
+    }
   });
 
   Fancybox.bind('[data-fancybox]');
