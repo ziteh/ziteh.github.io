@@ -49,16 +49,16 @@ widget:
 counter:
   tag_cloud:
     zero: 沒有標籤
-    one: 目前共有 1 個標籤
-    other: "目前共有 %d 個標籤"
+    one: 共有 1 個標籤
+    other: "共有 %d 個標籤"
   categories:
     zero: 沒有分類
-    one: 目前共有 1 個分類
-    other: "目前共有 %d 個分類"
+    one: 共有 1 個分類
+    other: "共有 %d 個分類"
   archive_posts:
     zero: 沒有文章。
-    one: 目前共有 1 篇文章。
-    other: "目前共有 %d 篇文章。"
+    one: 共有 1 篇文章
+    other: "共有 %d 篇文章"
 state:
   posts: 文章
   tags: 標籤
