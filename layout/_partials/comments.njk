@@ -1,4 +1,8 @@
 {%- if page.comments %}
+
+  <p style="text-align: center;color: #a3a3a3;font-size: 14px;margin-top: 60px;">留言可能不會立即顯示。若過了幾天仍未出現，請 <a href="mailto:honmonoh@gmail.com">Email</a> 聯繫：）</p>
+
+
   {%- if theme.injects.comment.length == 1 %}
     {%- set inject_item = theme.injects.comment[0] %}
     {{ partial(inject_item.layout, inject_item.locals, inject_item.options) }}
