@@ -30,6 +30,10 @@ if (hexo-config('toc.enable')) {
       if (not hexo-config('toc.wrap')) {
         white-space: nowrap;
       }
+
+      a {
+        color: $grey-dark;
+      }
     }
 
     .nav {
@@ -53,11 +57,12 @@ if (hexo-config('toc.enable')) {
 
       .active > a {
         border-bottom-color: $sidebar-highlight;
-        color: $sidebar-highlight;
+        color: $black-dim;
+        font-weight: bold;
       }
 
       .active-current > a {
-        color: $sidebar-highlight;
+        color: $black-dim;
 
         &:hover {
           color: $sidebar-highlight;
