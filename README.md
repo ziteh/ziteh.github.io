@@ -24,6 +24,8 @@ draft: true # false
 
 ```
 
+Deploy
+
 ```bash
 hexo cl
 hexo g
