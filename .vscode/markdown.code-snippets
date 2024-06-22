@@ -1,0 +1,26 @@
+{
+    "Header": {
+        "prefix": [
+            "head",
+            "---"
+        ],
+        "body": [
+            "---",
+            "title: \"${1:TITLE}\"",
+            "subtitle: \"\"",
+            "# description: \"\"",
+            "tags: [\"\"]",
+            "categories: []",
+            "date: YYYY-MM-DDThh:mm:00+08:00",
+            "header_img: \"\"",
+            "comments: true",
+            "toc: true",
+            "---",
+            "",
+            "$0",
+            "",
+            "<!--more-->",
+            ""
+        ]
+    }
+}

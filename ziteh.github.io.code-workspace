@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"name": "Posts",
+			"path": "./source/_posts"
+		},
+		{
+			"name": "Draft",
+			"path": "./source/_draft"
+		},
+		{
+			"name": "Root",
+			"path": "."
+		}
+	],
+	"settings": {
+		"[markdown]": {
+			"editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+			"editor.snippetSuggestions": "top",
+			"editor.quickSuggestions": {
+				"other": true
+			},
+		}
+	}
+}
