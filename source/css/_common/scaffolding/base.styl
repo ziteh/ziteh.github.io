@@ -43,30 +43,18 @@ h1 {
 }
 
 h2 {
-  font-size: 1.75em;
+  font-size: $font-size-headings-base - $font-size-headings-step * 2.2;
 }
 
 h3 {
-  font-size: $font-size-larger;
+  font-size: $font-size-headings-base - $font-size-headings-step * 3.5;
 }
 
-h4 {
-  font-size: $font-size-large;
+for $headline in (4 .. 6) {
+  h{$headline} {
+    font-size: $font-size-headings-base - $font-size-headings-step * $headline;
+  }
 }
-
-h5 {
-  font-size: $font-size-medium;
-}
-
-h6 {
-  font-size: $font-size-small;
-}
-
-// for $headline in (1 .. 6) {
-//   h{$headline} {
-//     font-size: $font-size-headings-base - $font-size-headings-step * $headline;
-//   }
-// }
 
 p {
   margin: 0 0 20px;
