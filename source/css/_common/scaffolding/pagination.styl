@@ -9,9 +9,10 @@ $page-number-basic {
 }
 
 $page-number-current {
-  background: $pagination-active-bg;
-  border-color: $pagination-active-border;
-  color: $pagination-active-color;
+  // background: $pagination-active-bg;
+  // border-color: $pagination-active-border;
+  // color: $pagination-active-color;
+  border-top: 4px solid $pagination-active-border;
 }
 
 .pagination {
@@ -22,7 +23,7 @@ $page-number-current {
   .prev, .next, .page-number {
     @extend $page-number-basic;
     border-bottom: 0;
-    border-top: 1px solid $pagination-link-border;
+    // border-top: 1px solid $pagination-link-border;
     transition: border-color $transition-ease;
 
     &:hover {
