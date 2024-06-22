@@ -7,11 +7,11 @@ tags:
   - DIY
   - 3C
   - QMK
-series: ["自製QMK鍵盤"]
-# categories: []
+categories: ["自製QMK鍵盤"]
+
 date: 2023-05-07T19:35:00+08:00
 header_img: ""
-comment: true
+comments: true
 toc: true
 draft: false
 ---
@@ -19,6 +19,8 @@ draft: false
 ![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhOF6b7-mRVv7Y0PEoCoy_pVOzkPhyMW3kYbQw_p2jTFS3YdxRnitzlXpjoO4I_xoj_R56uG2KJMint2danQ17QLopP2u6Yf1_b9VtiSZ-paKYZ0_7fucCKq_bRrzyVoqwPCTa4hGBweNOzQo8lXpUEycVdEwaeAYT_mYyNr9XTghl7VJCXmvT3nrxN/s16000/Screenshot%202023-05-07%20191506.jpg)
 
 在[上一篇](/posts/diyqmkkeyboard-pcb-layout-sch)中已經介紹了 PCB 的設計步驟及 [KiCad](https://www.kicad.org/) Schematic 的基本用法，接下來要以 KiCad 7 作爲示範，繼續介紹[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 5 步的 PCB Layout 的部分。
+
+<!--more-->
 
 > 以下內容以 KiCad `v7.0.2` 作爲示範。
 

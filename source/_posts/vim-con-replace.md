@@ -3,16 +3,18 @@ title: "Vim 複製並連續取代文字"
 subtitle: ""
 # description: ""
 tags: ["教學", "Vim"]
-series: []
-# categories: []
+categories: []
+
 date: 2023-09-30T20:33:00+08:00
 header_img: ""
-comment: true
+comments: true
 toc: false
 draft: false
 ---
 
 我在使用 Vim 撰寫程式時，常常需要複製一段文字，然後連續在多個地方貼上/取代。這篇文章簡單記錄一下我目前比較順手的做法。
+
+<!--more-->
 
 例如我要把以下的 `IndexOri` 和 `IndexSource` 取代成 `IndexWithLongLongLongLongLongLongName`。
 ```c

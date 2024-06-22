@@ -5,9 +5,9 @@ tags:
   - STM32
   - LibOpenCM3
   - 教學
-series: ["簡單入門 LibOpenCM3 STM32 嵌入式系統開發"]
+categories: ["簡單入門 LibOpenCM3 STM32 嵌入式系統開發"]
 date: 2022-10-13 08:50:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2022/10/libopencm3-stm32-30/"]

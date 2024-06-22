@@ -5,9 +5,9 @@ tags:
   - STM32
   - LibOpenCM3
   - 教學
-series: ["簡單入門 LibOpenCM3 STM32 嵌入式系統開發"]
+categories: ["簡單入門 LibOpenCM3 STM32 嵌入式系統開發"]
 date: 2022-10-10 09:18:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2022/10/libopencm3-stm32-27/"]
@@ -21,9 +21,9 @@ CRC（Cyclic redundancy check）即循環冗餘校驗是一種雜湊函式，通
 <!--more-->
 
 # 正文
-首先一樣以 Nucleo-F446RE 做示範。  
+首先一樣以 Nucleo-F446RE 做示範。
 
-首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 爲「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c`。  
+首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 爲「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c`。
 
 ## 完整程式
 ``` c
@@ -164,9 +164,9 @@ CRC 計算單元的使用方式很單純，因此我直接寫在 USART2 的 ISR 
 
 
 ## 多環境程式（F446RE + F103RB）
-由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。  
-  
-以下列出主要的差異部分，也就是 GPIO 的部分。完整的程式請看 [GitHub repo](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/crc)。  
+由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。
+
+以下列出主要的差異部分，也就是 GPIO 的部分。完整的程式請看 [GitHub repo](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/crc)。
 
 ```c
 static void usart_setup(void)
@@ -223,5 +223,5 @@ CRC 的使用還是滿單純的，就只要致能 RCC 後呼叫計算函式，�
 * [STM32F103RB datasheet (DS5319)](https://www.st.com/resource/en/datasheet/stm32f103rb.pdf)
 * [STM32 Nucleo-64 board user manual (UM1724)](https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf)
 
-> 本文的程式也有放在 [GitHub](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/crc) 上。  
+> 本文的程式也有放在 [GitHub](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/crc) 上。
 > 本文同步發表於[ iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10306443)。

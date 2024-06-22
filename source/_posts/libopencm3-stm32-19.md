@@ -5,9 +5,9 @@ tags:
   - STM32
   - LibOpenCM3
   - 教學
-series: ["簡單入門 LibOpenCM3 STM32 嵌入式系統開發"]
+categories: ["簡單入門 LibOpenCM3 STM32 嵌入式系統開發"]
 date: 2022-10-02 12:00:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2022/10/libopencm3-stm32-19/"]
@@ -23,10 +23,10 @@ STM32 中的 ADC 功能相當多樣，也造成它的使用有一定程度的複
 # 基本介紹
 STM32F446RE 擁有三個 12-bit 的 ADC，且擁有 19 個通道，其中包含 16 個來自外部、2 個來自內部，還有一個是 `V_BAT` 通道。ADC 的輸入電壓範圍爲 `V_REF-` \~ `V_REF+`，也就是最大 `0` \~ `3.6` V。
 
-![▲ ADC 容許電壓範圍。取自 DS106893 Rev10 P.139。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhuWWHI4rT9elX1Q6tVOq6ihHGnvlt0Nw63soBztR2k6zU2yCfZmtkdZnZXYkdF-uyh94ru_NNA-hX-VT9EmstBHldvGbAZeWLuV1lSZNrrvlaJBzuKKauU8hat2q5xfeiIvhRBjCoNjcVr1wwuc8s6DFmGtzAxgqibYBrcBuHr8s3PB4xlk1PCTOti/s16000/image_1664365176174_0.png) 
-  
+![▲ ADC 容許電壓範圍。取自 DS106893 Rev10 P.139。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhuWWHI4rT9elX1Q6tVOq6ihHGnvlt0Nw63soBztR2k6zU2yCfZmtkdZnZXYkdF-uyh94ru_NNA-hX-VT9EmstBHldvGbAZeWLuV1lSZNrrvlaJBzuKKauU8hat2q5xfeiIvhRBjCoNjcVr1wwuc8s6DFmGtzAxgqibYBrcBuHr8s3PB4xlk1PCTOti/s16000/image_1664365176174_0.png)
+
 ![▲ 單一 ADC 的方塊圖。取自 RM0390 Rev6 P.356。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj9ap5_i4X5FTeUcZtJVWPF4PaMDRQIpMnTBl94o8bVIIAFRZ3CQBpDjj0ZCgVtCBuWwZWjYnBBTYKQPamB5kvbd1WLzJ7q9htO0ZoCh1VXME9nbOXCiNth-xJ3sW9HA7iggds_Z6_TWl5tNX1Vi6-NRYelHUFSpERWZj5JOJYdf0xs2spD0IB8QCwi/s16000/image_1664363794814_0.png)
- 
+
 ADC 有兩個 Clock：
 * 類比電路時鐘：所有 ADC 皆相同。此時鐘訊號來自 APB2，經過一個可程式的預除頻器（\2、\4、\6 或 \8）。此時鐘頻率的上限爲 18 MHz（`V_DDA` = 1.7 ~ 2.4 V）或 36 MHz（`V_DDA` = 2.4 ~ 3.6 V）。參考 DS10693 的 Table 74. ADC characteristics。
 * 數位介面時鐘：用於相關暫存器的讀寫操作。此時鐘等同 APB2，可以透過設定 RCC 來單獨致/禁能特定的 ADC。
@@ -42,7 +42,7 @@ ADC 有兩個 Clock：
 
 Regular 與 Injected 的主要差異除了上面列的外，還有就是 Injected 有著類似中斷（Interrupt）的功能。一般狀態下，使用者可以將平常要量測的類比訊號源設爲「 Regular 常規組」，當特殊事件發生時，「Injected 注入組」可以中斷 Regular 的轉換，優先進行 A/D 轉換，完成後再回去進行 Regular 組的轉換。
 
-> Regular 比較常見翻譯成「規則」通道，但在此我認爲翻成「常規」比較能夠區分其與 Injected 的功能差異。  
+> Regular 比較常見翻譯成「規則」通道，但在此我認爲翻成「常規」比較能夠區分其與 Injected 的功能差異。
 
 # 內部通道
 F446RE 中有 3 個內部通道：溫度感測器、內部參考電壓 `V_REFINT` 與電池 `V_BAT`。
@@ -69,7 +69,7 @@ F446RE 中有 3 個內部通道：溫度感測器、內部參考電壓 `V_REFINT
 * 將 ADC_CR2 的 SWSTART 位元設爲 `1`，即軟體觸發轉換。僅限 Regular 通道。
 * 外部觸發（如 Timer 或 EXTI）。僅限 Regular 通道。
 
-> Injected 通道無法使用連續轉換，除非設定 JAUTO 位元以啓用 Auto-injection，在此就不詳細說明。  
+> Injected 通道無法使用連續轉換，除非設定 JAUTO 位元以啓用 Auto-injection，在此就不詳細說明。
 
 # 其它模式
 ## Scan mode 掃描模式
@@ -81,7 +81,7 @@ F446RE 中有 3 個內部通道：溫度感測器、內部參考電壓 `V_REFINT
 由於 Regular 組只有一個 16 位元的資料暫存器，所以通常會搭配 DMA 來存取轉換完成的資料，避免資料被下一個通道的資料覆蓋。而 Injected 組的 4 個通道都有自己獨立且專用的 16 位元資料暫存器，故其轉換完成的資料會儲存進各自的資料暫存器中，不必擔心資料會被其它通道所覆蓋。
 
 此模式透過設定 ADC_CR1 中的 SCAN 位元來啓用。
-  
+
 ## Discontinuous mode 不連續模式
 此模式的概念是可以將組（或序列 Sequence）再分成更短的小組，當觸發轉換時，會以小組爲單位進行轉換，也就是可以不一次轉換組內的全部通道，而是分批掃描。
 
@@ -94,8 +94,8 @@ F446RE 中有 3 個內部通道：溫度感測器、內部參考電壓 `V_REFINT
 
 此模式透過設定 ADC_CR1 的 DISCEN（對於 Regular）或 JDISCEN（對於 Injected）位元來啓用。Regular 和 Injected 不能同時啓用 Discontinuous mode。
 
-> Auto-injected 與 Discontinuous mode 無法同時使用。  
-> Discontinuous mode 與 Continuous conversion mode 雖然名稱相近但其「連續」的意義不同。前者是可以將組再細分成小組，後者是在每次轉換完成後自動觸發下一次的轉換。  
+> Auto-injected 與 Discontinuous mode 無法同時使用。
+> Discontinuous mode 與 Continuous conversion mode 雖然名稱相近但其「連續」的意義不同。前者是可以將組再細分成小組，後者是在每次轉換完成後自動觸發下一次的轉換。
 
 # 小結
 ADC 的功能相當複雜與多元，以上也只是簡單介紹最基本的概念，還有很多進階的功能沒有提到，像是 ADC watchdog、Multi ADC 或電池監控等，這些進階的功能可以參考 RM0390（STM32F446RE）。

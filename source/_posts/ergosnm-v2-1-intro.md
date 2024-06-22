@@ -6,11 +6,11 @@ tags:
   - DIY
   - 3C
   - QMK
-series: []
-# categories: []
+categories: []
+
 date: 2023-04-30T17:10:00+08:00
 header_img: ""
-comment: true
+comments: true
 toc: true
 draft: false
 ---
@@ -20,6 +20,8 @@ draft: false
 [ErgoSNM](https://github.com/siderakb/ergo-snm-keyboard) 是我自己設計並製作的分離式人體工學機械式鍵盤（Split ergonomic keyboard），並且有可以取代滑鼠功能的軌跡球，其韌體使用 QMK。
 
 這把鍵盤的目標就是讓人們（尤其是常需要敲鍵盤寫程式的工程師，甚至是 Vim 的使用者）在使用電腦時，右手可以不用在鍵盤與滑鼠之間來回移動。長時間使用電腦的話，這僅僅幾公分的移動都會讓效率下降，最糟糕的是造成手部的負擔。就算 ErgoSNM 可能難以完全 100% 地取代滑鼠，但希望至少可以勝任簡單的遊標操作。
+
+<!--more-->
 
 爲了做成這把鍵盤，我開始研究 [QMK](https://github.com/qmk/qmk_firmware)，所以我才會寫了一系列的 [QMK 教學文](/posts/diyqmkkeyboard-0/)。而現在，第一個可以正式當作鍵盤使用的 `Rev 2.1` 版完成了，因此來介紹一下。
 
@@ -134,7 +136,7 @@ SNM 鍵盤計劃是我從 2020 年 6 月開始的，目標是設計並作出整�
 
 ## Rev 1.0
 
-Rev 1.0 的 PCB 主要是測試鍵盤 Layout 與[我自己畫的鍵軸 Footprint](https://github.com/ziteh/key-switches.pretty) 是否有問題。 
+Rev 1.0 的 PCB 主要是測試鍵盤 Layout 與[我自己畫的鍵軸 Footprint](https://github.com/ziteh/key-switches.pretty) 是否有問題。
 
 ![ErgoSNM v1.0 測試用 PCB](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitaAlcXrmnpa3CZ6V1rrfLeljqgOJvkNGBEQa05XK4XgPMpLP9Oy2oX3L8lmncuiWlqg87H7gg5QgE8sOIxh-KwxSd3eqmiZ8tmLseaz1_KOkwmJqY9gHgh-hkZ0r9BpftmvUmXGtSVBr1sMQgEg4lawGbmtWf02tzIRqrQrKvwpDHzc9sUcDd0dlt/s16000/PuP0csC.jpg)
 

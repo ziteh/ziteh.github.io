@@ -7,9 +7,9 @@ tags:
   - DIY
   - 3C
   - QMK
-series: ["自製QMK鍵盤"]
+categories: ["自製QMK鍵盤"]
 date: 2023-07-02 10:50:00+08:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2020/06/diyqmkkeyboard-3/", "/posts/diyqmkkeyboard-3/"]
@@ -31,7 +31,7 @@ aliases: ["/2020/06/diyqmkkeyboard-3/", "/posts/diyqmkkeyboard-3/"]
 qmk compile -kb mytetstkb -km default
 ```
 
-> `qmk compile -kb <keyboard> -km <keymap>` 是 QMK 的編譯指令。  
+> `qmk compile -kb <keyboard> -km <keymap>` 是 QMK 的編譯指令。
 > `<keyboard>` 代表了你要編譯的鍵盤，這裡的是 `kb`。`<keymap>` 是要編譯的鍵映射（Keymap），這裡是 `default`。
 
 如果有問題的話會顯示問題出在哪裡。如果都沒問題的話，應該會看到一整排的 `[OK]`，並且會告訴你編譯好的 `.hex` 檔儲存的路徑（Creating load file for flashing: .build/mytestkb_default.hex，參考路徑：`C:\Users\<USERNAME>\qmk_firmware\.build\mytestkb_default.hex`）。
@@ -144,7 +144,7 @@ RP2040 可以透過以下任一種方式燒錄韌體：
 	- [\[2020\] 新版 QMK 教學](https://ergotaiwan.tw/install-qmk-tutorials-2020/)
 	- [SparkFun Pro Micro: Reset to Bootloader](https://learn.sparkfun.com/tutorials/pro-micro--fio-v3-hookup-guide/troubleshooting-and-faq#ts-reset)
 	- [Trouble flashing QMK - No device present](https://www.keebtalk.com/t/trouble-flashing-qmk-no-device-present/5871/21)
-	- [Installing an Arduino Bootloader](https://learn.sparkfun.com/tutorials/installing-an-arduino-bootloader) 
+	- [Installing an Arduino Bootloader](https://learn.sparkfun.com/tutorials/installing-an-arduino-bootloader)
 	- [Replace Pro Micro bootloader with QMK DFU](https://www.reddit.com/r/olkb/comments/8sxgzb/replace_pro_micro_bootloader_with_qmk_dfu/)
 - QMK相關
 	- [QMK 官方網站](https://qmk.fm/)

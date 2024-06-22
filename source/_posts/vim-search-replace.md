@@ -7,7 +7,7 @@ tags:
 
 categories: []
 date: 2020-09-05 23:37:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2020/09/vim-search-replace/"]

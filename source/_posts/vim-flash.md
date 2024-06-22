@@ -3,11 +3,11 @@ title: "在 NeoVim 中使用 Flash 取代 Easy Motion 來快速跳轉"
 subtitle: ""
 # description: ""
 tags: ["Vim", "教學"]
-series: []
-# categories: []
+categories: []
+
 date: 2024-06-15T12:33:00+08:00
 header_img: ""
-comment: true
+comments: true
 toc: true
 draft: false
 ---

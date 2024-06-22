@@ -5,9 +5,9 @@ author: ZiTe
 tags:
   - 教學
   - 程式
-series: []
+categories: []
 date: 2024-05-11 15:04:00+08:00
-comment: true
+comments: true
 toc: true
 draft: false
 ---

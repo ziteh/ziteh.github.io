@@ -6,9 +6,9 @@ tags:
   - DIY
   - 教學
   - QMK
-series: ["自製QMK鍵盤"]
+categories: ["自製QMK鍵盤"]
 date: 2020-06-23 23:53:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2020/06/diyqmkkeyboard-4/", "/posts/diyqmkkeyboard-4/"]

@@ -4,7 +4,7 @@ author: ZiTe
 tags:
 categories: []
 date: 2017-08-15 08:49:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases : ["/2017/08/archivers/"]

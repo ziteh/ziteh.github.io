@@ -6,16 +6,16 @@ tags:
   - 開箱
 categories: []
 date: 2019-02-18 10:12:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2019/02/unbox-zsa4itx/"]
 ---
 ![](https://1.bp.blogspot.com/-Jek05an0SBQ/XppkUD8qVUI/AAAAAAAACGs/tE3_tc4nZ2oNFL2W3EV_sZyhHBe3NaZcQCPcBGAsYHg/s640/ZPH_0224.JPG)
 
-  
+
 # 前言
-  
+
 因爲我本身很喜歡「短小精幹」的感覺，所以從開始接觸電腦以來，我就一直對ITX機殼很有興趣，尤其是空間利用到極緻的超緊凑型ITX機殼。最近換換病發作，而且考慮到在外租屋，結果電腦機殼太大也真的不是很方便，所以這次就來升級一下。然而市場上符合我喜好的機殼並不多，就算有，也要價不菲，當時有考慮下面幾種機殼：
 
 <!--more-->
@@ -61,12 +61,12 @@ PSU的部分之前是用海盜船的CX500，它年事已高，老早就過保了
 
 ![](https://1.bp.blogspot.com/-bEaUqMH-VKs/XppkUPsBi_I/AAAAAAAACGs/OWGEouzibqAgCtedEmfOqckrtzgCAexiACPcBGAsYHg/s1600/ZPH_0202.JPG)
 
-Cryorig 快睿 C7的内容物有一包外六角螺絲、產品保固卡、用來取代固定背板的墊片、CP7散熱膏、外六角螺絲起子和C7散熱器本體，其中固定背板在本體上。  
-  
-  
+Cryorig 快睿 C7的内容物有一包外六角螺絲、產品保固卡、用來取代固定背板的墊片、CP7散熱膏、外六角螺絲起子和C7散熱器本體，其中固定背板在本體上。
+
+
 # ZS-A4 機殼
-  
-終於來到重點了，我訂的機殼千里迢迢來到我手上了。馬上來開箱。  
+
+終於來到重點了，我訂的機殼千里迢迢來到我手上了。馬上來開箱。
 
 ![這個包裝保護還滿扎實的，讚!](https://1.bp.blogspot.com/-MeFWoGCNSUY/XppkUJ_ifAI/AAAAAAAACGs/_WvXJWDL-qcWtGDHyxhR8f8D31J8eKyZgCPcBGAsYHg/s1600/ZPH_0183.JPG)
 
@@ -78,7 +78,7 @@ Cryorig 快睿 C7的内容物有一包外六角螺絲、產品保固卡、用來
 
 ![](https://1.bp.blogspot.com/-XR7MOtzmQjY/XppkUNO0ivI/AAAAAAAACGs/kJaQhF-IMY4wv8g26-LlAtDsL4-rDWQvgCPcBGAsYHg/s1600/ZPH_0189.JPG)
 
-此機殼用的電源接頭是通常用在筆記型電腦充電器上的米奇頭(8字頭)，所以不能用一般電源供應器的線，而店家附的是中國用的插座，所以要再去買一條電源線來用。  
+此機殼用的電源接頭是通常用在筆記型電腦充電器上的米奇頭(8字頭)，所以不能用一般電源供應器的線，而店家附的是中國用的插座，所以要再去買一條電源線來用。
 
 ![機殼上方的散熱孔有附這種PVC防塵網，至於兩側就沒有，可能之後自己去買來剪。](https://1.bp.blogspot.com/-LbyG7qnla2k/XppkUC_3StI/AAAAAAAACGs/xL5G08IS_x8-eQUzpbJTJjHnIciy1ss4ACPcBGAsYHg/s1600/ZPH_0194.JPG)
 
@@ -86,9 +86,9 @@ Cryorig 快睿 C7的内容物有一包外六角螺絲、產品保固卡、用來
 
 ![](https://1.bp.blogspot.com/-DeVsD2oCU6U/XppkUM5YjEI/AAAAAAAACGs/ibxjc26Z7F88Qs5SHY2bNYoBrJPcHTGgACPcBGAsYHg/s1600/ZPH_0198.JPG)
 
-首先當然要把舊零件拆下來。看看我之前的機殼：NZXT的Phantom 410，它依然是很帥氣的機殼，只是真的有些太大了。  
-  
-組裝零件的過程因爲我太笨手笨腳了，就忘記拍照片了。  
+首先當然要把舊零件拆下來。看看我之前的機殼：NZXT的Phantom 410，它依然是很帥氣的機殼，只是真的有些太大了。
+
+組裝零件的過程因爲我太笨手笨腳了，就忘記拍照片了。
 
 ![裝上CPU：i5-4460。用了超過5年還是非常夠用的。](https://1.bp.blogspot.com/-4MHIJDqL7tE/XppkUIqKr1I/AAAAAAAACGs/mN54WN15MKobaBcpVerQ-yIWzjqYTNveQCPcBGAsYHg/s1600/ZPH_0200.JPG)
 
@@ -110,8 +110,8 @@ Cryorig 快睿 C7的内容物有一包外六角螺絲、產品保固卡、用來
 
 ![](https://1.bp.blogspot.com/-S7UXtJGy-p4/XppkUA8uIhI/AAAAAAAACGs/YsIpzYIGQ-kUYpECojJuRx_jpPnDBjx5QCPcBGAsYHg/s1600/ZPH_0229.JPG)
 
-整個機殼就在手忙腳亂的幾個小時内組好了，我對成果還是非常滿意的。這個機殼真的很小，我的後背包都可以很輕鬆的裝下它。  
-  
+整個機殼就在手忙腳亂的幾個小時内組好了，我對成果還是非常滿意的。這個機殼真的很小，我的後背包都可以很輕鬆的裝下它。
+
 總之，這次的超不專業開箱就先到這裡了。
 
 # 相關文章

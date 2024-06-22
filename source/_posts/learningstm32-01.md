@@ -5,9 +5,9 @@ tags:
   - 電子電路
   - 教學
   - STM32
-series: ["STM32學習記錄"]
+categories: ["STM32學習記錄"]
 date: 2018-08-04 15:05:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2018/08/learningstm32-01/"]
@@ -20,9 +20,9 @@ aliases: ["/2018/08/learningstm32-01/"]
 
 <!--more-->
 
-雖然我不是很厲害，但是想說一邊學習一邊將我學到的知識或遇到的問題做一個整理，讓和我一樣的初學者可以和我一起學習與討論，也希望如果我的內容有錯誤的時候有前輩可以指導一番。  
+雖然我不是很厲害，但是想說一邊學習一邊將我學到的知識或遇到的問題做一個整理，讓和我一樣的初學者可以和我一起學習與討論，也希望如果我的內容有錯誤的時候有前輩可以指導一番。
 
-我使用的開發板為NUCLEO-F103RB，上面的晶片型號是STM32F103RBT6。此開發板自帶ST-Link/V2，所以只要USB接上電腦就可以進行燒錄工作。而我使用的IDE是Keil uVision 5。  
+我使用的開發板為NUCLEO-F103RB，上面的晶片型號是STM32F103RBT6。此開發板自帶ST-Link/V2，所以只要USB接上電腦就可以進行燒錄工作。而我使用的IDE是Keil uVision 5。
 
 # 建立工程環境
 
@@ -87,9 +87,9 @@ aliases: ["/2018/08/learningstm32-01/"]
 ![](https://1.bp.blogspot.com/-KBYZnDDbYhk/Xoh7tSJjb4I/AAAAAAAACAs/FH8P6CzTRZYPbaX9NsXf9lFfdi4Wef2OQCKgBGAsYHg/s640/1-%25E5%25BB%25BA%25E7%25AB%258B%25E8%25B3%2587%25E6%2596%2599%25E5%25A4%25BE.png)
 
 2.在User資料夾中新增一個txt檔，並改名為\[main.c\]。然後將【一、下載Library】部分中的Project\\STM32F10x\_StdPeriph\_Template裡以下4個檔案直接複製過來。
-* system\_stm32f10x.c  
-* stm32f10x\_it.c  
-* stm32f10x\_it.h  
+* system\_stm32f10x.c
+* stm32f10x\_it.c
+* stm32f10x\_it.h
 * stm32f10x\_conf.h
 
 ![](https://1.bp.blogspot.com/-4xQ9w8Y01iE/Xoh7tUvGofI/AAAAAAAACAs/_riuRWr5OHYVBz9Y1qExDEqQzwAMhOZHwCKgBGAsYHg/s640/2-User%25E8%25B3%2587%25E6%2596%2599%25E5%25A4%25BE%25E6%2596%25B0%25E5%25A2%259E%25E6%25AA%2594%25E6%25A1%2588.png)

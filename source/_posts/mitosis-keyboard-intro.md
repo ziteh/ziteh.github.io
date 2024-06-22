@@ -5,9 +5,9 @@ tags:
   - DIY
   - 3C
   - QMK
-series: []
+categories: []
 date: 2022-01-09 22:11:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2022/01/diyqmkkeyboard-6/"]
@@ -213,9 +213,9 @@ static uint32_t read_keys(void)
 ```c
 // If a data packet was received, identify half, and throw flag
 void nrf_gzll_host_rx_data_ready(uint32_t pipe, nrf_gzll_host_rx_info_t rx_info)
-{   
+{
     uint32_t data_payload_length = NRF_GZLL_CONST_MAX_PAYLOAD_LENGTH;
-    
+
     if (pipe == 0)
     {
         packet_received_left = true;
@@ -230,7 +230,7 @@ void nrf_gzll_host_rx_data_ready(uint32_t pipe, nrf_gzll_host_rx_info_t rx_info)
         // Pop packet and write first byte of the payload to the GPIO port.
         nrf_gzll_fetch_packet_from_rx_fifo(pipe, data_payload_right, &data_payload_length);
     }
-    
+
     // not sure if required, I guess if enough packets are missed during blocking uart
     nrf_gzll_flush_rx_fifo(pipe);
 
@@ -249,7 +249,7 @@ void nrf_gzll_host_rx_data_ready(uint32_t pipe, nrf_gzll_host_rx_info_t rx_info)
 int main(void)
 {
     /* 省略部分程式 */
-	
+
     // main loop
     while (true)
     {
@@ -290,7 +290,7 @@ int main(void)
         if (packet_received_right)
         {
             packet_received_right = false;
-            
+
             data_buffer[1] = ((data_payload_right[0] & 1<<7) ? 1:0) << 0 |
                              ((data_payload_right[0] & 1<<6) ? 1:0) << 1 |
                              ((data_payload_right[0] & 1<<5) ? 1:0) << 2 |
@@ -331,7 +331,7 @@ int main(void)
         }
         // allowing UART buffers to clear
         nrf_delay_us(10);
-        
+
         /* 省略部分程式 */
     }
 }
@@ -344,8 +344,8 @@ int main(void)
 ## QMK / 接收器（Pro Micro）
 
 這部分的程式在：[qmk/qmk_firmware/keyboards/mitosis](https://github.com/qmk/qmk_firmware/tree/master/keyboards/mitosis)。主要有：
-- `rules.mk` 
-- `config.h` 
+- `rules.mk`
+- `config.h`
 - `matrix.c`
 
 ### rules.mk
@@ -453,7 +453,7 @@ uint8_t matrix_scan(void)
 	- QMK 程式
 	- commit：[`f718a10889e6adf33f3fc2f41b61cad7fe9e0c2e`](https://github.com/qmk/qmk_firmware/commit/f718a10889e6adf33f3fc2f41b61cad7fe9e0c2e)
 
-> 文章修改記錄 2022/02/23：原本寫的各個 nRF51822 之間的通訊方式是 BLE，但應該是 Gazell，故更新內容。 
+> 文章修改記錄 2022/02/23：原本寫的各個 nRF51822 之間的通訊方式是 BLE，但應該是 Gazell，故更新內容。
 
 # 相關文章
 

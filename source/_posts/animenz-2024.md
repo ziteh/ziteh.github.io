@@ -3,18 +3,20 @@ title: "Animenz 2024 鋼琴演奏會--高雄衛武營"
 subtitle: "Animenz Live Asia Tour 2024"
 # description: ""
 tags: ["心得", "生活"]
-series: []
-# categories: []
+categories: []
+
 date: 2024-04-23T20:25:00+08:00
 header_img: ""
-comment: true
+comments: true
 toc: false
 draft: false
 ---
 
 某天我在滑 YouTube 時，突然看到某個鋼琴頻道的貼文說A叔 （Animenz）要來臺灣衛武營辦演奏會。我先是反覆確認幾次貼文內容的人物、時間和地點，然後馬上到衛武營的網站上確認。
 
-但我看到還有票時相當興奮。我很喜歡 Animenz 的鋼琴，而且我也一直很想去一次衛武營，這麼好的機會不能放過，於是我馬上就訂了票，並和朋友們分享。
+<!--more-->
+
+當我看到還有票時相當興奮。我很喜歡 Animenz 的鋼琴，而且我也一直很想去一次衛武營，這麼好的機會不能放過，於是我馬上就訂了票，並和朋友們分享。
 
 ---
 

@@ -6,7 +6,7 @@ tags:
   - 開箱
 categories: []
 date: 2020-05-10 14:26:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2020/05/unbox-sansunggalaxys6lite/"]

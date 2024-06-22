@@ -5,25 +5,25 @@ tags:
   - STM32
   - LibOpenCM3
   - 教學
-series: ["簡單入門 LibOpenCM3 STM32 嵌入式系統開發"]
+categories: ["簡單入門 LibOpenCM3 STM32 嵌入式系統開發"]
 date: 2022-10-06 09:14:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2022/10/libopencm3-stm32-23/"]
 ---
 
 # 前言
-ADC（Analog to Digital Converter）顧名思義是將類比訊號轉換成數位訊號的元件，現今多數 MCU 都會內建 ADC，而這也是相當基本且常用的功能。  
+ADC（Analog to Digital Converter）顧名思義是將類比訊號轉換成數位訊號的元件，現今多數 MCU 都會內建 ADC，而這也是相當基本且常用的功能。
 
 之前的文章已經介紹過 3 中不同的 ADC 使用環境，這次要再介紹以 Timer 定期觸發 ADC 進行轉換的寫法，且一樣會啓用 ADC 的轉換完成（EOC）中斷。
 
 <!--more-->
 
 # 正文
-首先一樣以 Nucleo-F446RE 做示範。  
+首先一樣以 Nucleo-F446RE 做示範。
 
-首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 爲「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h`。  
+首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 爲「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h`。
 
 ## 完整程式
 ``` c
@@ -228,11 +228,11 @@ static void delay(uint32_t value);
 #include <libopencm3/stm32/timer.h>
 #include <libopencm3/cm3/nvic.h>
 ```
-除了基本的 `rcc.h` 和 `gpio.h` 及必要的 `adc.h` 外，因爲我要使用 USART 和 `printf()`，所以還會需要 `usart.h`、`stdio.h` 與 `errno.h`。  
+除了基本的 `rcc.h` 和 `gpio.h` 及必要的 `adc.h` 外，因爲我要使用 USART 和 `printf()`，所以還會需要 `usart.h`、`stdio.h` 與 `errno.h`。
 
 另外就是因爲要使用中斷及 Timer，所以 `nvic.h` 和 `timer.h` 也是必要的。
-  
-> USART 和 `printf()` 的詳細用法請看[之前的文章](https://ziteh.github.io/2022/09/libopencm3-stm32-9/)。  
+
+> USART 和 `printf()` 的詳細用法請看[之前的文章](https://ziteh.github.io/2022/09/libopencm3-stm32-9/)。
 
 ### 設定 ADC
 ``` c
@@ -270,9 +270,9 @@ static void adc_setup(void)
   delay(800000); /* Wait a bit. */
 }
 ```
-要使用 ADC 功能，首先要知道 ADC 的通道在哪些 GPIO 上，並將其設定爲類比輸入。  
+要使用 ADC 功能，首先要知道 ADC 的通道在哪些 GPIO 上，並將其設定爲類比輸入。
 
-接下來就是要設定 ADC。  
+接下來就是要設定 ADC。
 * `adc_disable_scan_mode()` 禁能多通道掃描模式，因爲本範例只需要讀取一個通道而已。
 * `adc_set_single_conversion_mode()` 設定成單一轉換模式，不連續轉換。
 * `adc_set_right_aligned()` 讓資料的對齊方式爲靠右對齊。
@@ -300,7 +300,7 @@ void adc_isr(void)
 
 首先先清除 ADC 的轉換完成位元（EOC），再使用 `adc_read_regular()` 讀取 ADC 轉換完成的數值。
 
-  
+
 ### Timer 設定
 ``` c
 static void timer_setup(void)
@@ -327,9 +327,9 @@ static void timer_setup(void)
 > Timer 的頻率設定請看[之前的文章](https://ziteh.github.io/2022/09/libopencm3-stm32-12/)。
 
 ## 多環境程式（F446RE + F103RB）
-由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。  
-  
-由於本例的差異比較大，爲了不佔版面這裡就不列出的，完整的程式請看 [GitHub repo](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/adc_external_trigger_timer)。  
+由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。
+
+由於本例的差異比較大，爲了不佔版面這裡就不列出的，完整的程式請看 [GitHub repo](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/adc_external_trigger_timer)。
 
 # 小結
 若需要定期進行 ADC 轉換的話，使用 Timer 進行觸發是一個不錯的做法。本次範例使用 Timer 3 的 TRGO 訊號定期觸發 ADC 進行轉換，並且也有啓用 ADC 本身的轉換完成中斷，是一種比較有效率的寫法。
@@ -342,5 +342,5 @@ static void timer_setup(void)
 * [STM32F103RB datasheet (DS5319)](https://www.st.com/resource/en/datasheet/stm32f103rb.pdf)
 * [STM32 Nucleo-64 board user manual (UM1724)](https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf)
 
-> 本文的程式也有放在 [GitHub](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/adc_external_trigger_timer) 上。  
+> 本文的程式也有放在 [GitHub](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/adc_external_trigger_timer) 上。
 > 本文同步發表於[ iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10302079)。

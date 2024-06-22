@@ -5,7 +5,7 @@ tags:
   - 3C
 categories: []
 date: 2020-05-10 14:27:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2020/05/s6lite-vs-ipad2019/"]

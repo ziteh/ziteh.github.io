@@ -6,11 +6,11 @@ tags:
   - DIY
   - 3C
   - QMK
-series: []
-# categories: []
+categories: []
+
 date: 2023-12-30T12:55:00+08:00
 header_img: ""
-comment: true
+comments: true
 toc: true
 draft: false
 ---
@@ -20,6 +20,8 @@ draft: false
 [ErgoSNM](https://github.com/siderakb/ergo-snm-keyboard) 是我自己設計並製作的分離式人體工學機械式鍵盤，並且有可以取代滑鼠功能的軌跡球。
 
 之前我已經完成有線版本了，現在是要把它改成無線的。
+
+<!--more-->
 
 更多資訊請看[ErgoSNM——有軌跡球的分離式人體工學QMK鍵盤 (v2.1)](/posts/ergosnm-v2-1-intro/) 與 [ErgoSNM Keyboard | SideraKB](https://siderakb.github.io/docs/category/ergosnm)。
 
@@ -85,7 +87,7 @@ draft: false
 1. ZMK 是寬鬆的 MIT License，而 QMK 是 GPL。
 2. 用 ZMK 的話就不用額外的接收器，可以直接用 BLE 藍牙。
 3. ZMK 已經有包含功耗在內各方面最佳化。
-  
+
 # 相關連結
 
 - [ErgoSNM——有軌跡球的分離式人體工學QMK鍵盤 (v2.1)](/posts/ergosnm-v2-1-intro/)

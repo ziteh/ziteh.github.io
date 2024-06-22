@@ -5,25 +5,25 @@ tags:
   - STM32
   - LibOpenCM3
   - 教學
-series: ["簡單入門 LibOpenCM3 STM32 嵌入式系統開發"]
+categories: ["簡單入門 LibOpenCM3 STM32 嵌入式系統開發"]
 date: 2022-09-23 8:51:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2022/09/libopencm3-stm32-10/"]
 ---
 
 # 前言
-上一篇中我介紹了 USART 的發送，這次要來寫 USART 的接收了。由於透過輪詢的方式實現 USART 的接收實在是不是一個好的寫法，因此我們會直接使用中斷（Interrupt）的方式來達成。  
-  
-這次的功能爲讓 STM32 將 USART 接收到的資料原封不動丟回去，且收到資料時 LED 會閃一下。  
+上一篇中我介紹了 USART 的發送，這次要來寫 USART 的接收了。由於透過輪詢的方式實現 USART 的接收實在是不是一個好的寫法，因此我們會直接使用中斷（Interrupt）的方式來達成。
+
+這次的功能爲讓 STM32 將 USART 接收到的資料原封不動丟回去，且收到資料時 LED 會閃一下。
 
 <!--more-->
 
 # 正文
-一樣先以 Nucleo-F446RE 做示範。  
-  
-首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 爲「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 檔案。  
+一樣先以 Nucleo-F446RE 做示範。
+
+首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 爲「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 檔案。
 ## 完整程式
 ``` c
 /**
@@ -133,7 +133,7 @@ void usart2_isr(void)
 #include <libopencm3/stm32/usart.h>
 #include <libopencm3/cm3/nvic.h>
 ```
-因爲會用到中斷的功能，所以記得要引入 `nvic.h`。  
+因爲會用到中斷的功能，所以記得要引入 `nvic.h`。
 
 ### GPIO 腳位
 ``` c
@@ -147,7 +147,7 @@ void usart2_isr(void)
 #define GPIO_LED_PORT (GPIOA)
 #define GPIO_LED_PIN (GPIO5) /* D13. */
 ```
-這裡一樣使用 Nucleo 開發板規劃好的 USART2，其 Tx 與 Rx 腳分別爲 PA2 與 PA3。LED 一樣是 PA5。  
+這裡一樣使用 Nucleo 開發板規劃好的 USART2，其 Tx 與 Rx 腳分別爲 PA2 與 PA3。LED 一樣是 PA5。
 
 ### RCC
 ``` c
@@ -158,9 +158,9 @@ static void rcc_setup(void)
   rcc_periph_clock_enable(RCC_USART2);
 }
 ```
-除了要致能 USART Tx/Rx 與 LED 所在的 GPIO Port 外，也要記得致能 USART 本身。  
-  
-> 由於此例中 USART Tx/Rx 與 LED 都位於 GPIO Port-A，其實可以只致能一次就好。  
+除了要致能 USART Tx/Rx 與 LED 所在的 GPIO Port 外，也要記得致能 USART 本身。
+
+> 由於此例中 USART Tx/Rx 與 LED 都位於 GPIO Port-A，其實可以只致能一次就好。
 
 ### USART 設定
 ``` c
@@ -191,11 +191,11 @@ static void usart_setup(void)
   usart_enable(USART2);
 }
 ```
-先設定 GPIO。我們要把 USART 的 Tx 與 Rx 都設定成 Alternate Function。  
+先設定 GPIO。我們要把 USART 的 Tx 與 Rx 都設定成 Alternate Function。
 
-再來使用 `nvic_enable_irq()` 來致能 USART 的 IRQ，`usart_enable_rx_interrupt()` 致能 USART 的接收中斷。  
+再來使用 `nvic_enable_irq()` 來致能 USART 的 IRQ，`usart_enable_rx_interrupt()` 致能 USART 的接收中斷。
 
-最後就是設定 USART 的通訊設置（鮑率、資料位元、停止位元等），值得注意的是因爲我們這次需要同時啓用接收（Rx）與發送（Tx），所以 `usart_set_mode()` 的引數是 `USART_MODE_TX_RX`。  
+最後就是設定 USART 的通訊設置（鮑率、資料位元、停止位元等），值得注意的是因爲我們這次需要同時啓用接收（Rx）與發送（Tx），所以 `usart_set_mode()` 的引數是 `USART_MODE_TX_RX`。
 
 ### USART ISR
 ``` c
@@ -217,9 +217,9 @@ void usart2_isr(void)
 ```
 這是 USART2 的 ISR，其名稱 `usart2_isr` 是固定的，不能打錯。當 STM32 從 USART2 接收到資料時就會產生 IRQ 並執行此 ISR。
 
-使用 `usart_recv()` 函式來讀取接收到的資料，再用 `usart_send_blocking()` 把資料直接傳回去。  
-  
-`USART_SR(USART2) &= ~USART_SR_RXNE` 是用來清除「接收資料非空（RXNE）」旗標的。  
+使用 `usart_recv()` 函式來讀取接收到的資料，再用 `usart_send_blocking()` 把資料直接傳回去。
+
+`USART_SR(USART2) &= ~USART_SR_RXNE` 是用來清除「接收資料非空（RXNE）」旗標的。
 
 ## 多環境程式（F446RE + F103RB）
 由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。
@@ -268,7 +268,7 @@ static void led_setup(void)
 ```
 
 # 小結
-這次介紹了 USART 的接收寫法，並且是以中斷的方式實現的。STM32 的中斷用法大同小異，都是致能 IRQ，然後實作對應的 ISR，應該不會太難。  
+這次介紹了 USART 的接收寫法，並且是以中斷的方式實現的。STM32 的中斷用法大同小異，都是致能 IRQ，然後實作對應的 ISR，應該不會太難。
 
 # 參考資料
 * [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
@@ -277,5 +277,5 @@ static void led_setup(void)
 * [STM32F103RB datasheet (DS5319)](https://www.st.com/resource/en/datasheet/stm32f103rb.pdf)
 * [STM32 Nucleo-64 board user manual (UM1724)](https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf)
 
-> 本文的程式也有放在 [GitHub](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/usart_receive_interrupt) 上。  
+> 本文的程式也有放在 [GitHub](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/usart_receive_interrupt) 上。
 > 本文同步發表於[ iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10292498)。

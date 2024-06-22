@@ -5,25 +5,25 @@ tags:
   - STM32
   - LibOpenCM3
   - 教學
-series: ["簡單入門 LibOpenCM3 STM32 嵌入式系統開發"]
+categories: ["簡單入門 LibOpenCM3 STM32 嵌入式系統開發"]
 date: 2022-10-04 08:32:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2022/10/libopencm3-stm32-21/"]
 ---
 
 # 前言
-ADC（Analog to Digital Converter）顧名思義是將類比訊號轉換成數位訊號的元件，現今多數 MCU 都會內建 ADC，而這也是相當基本且常用的功能。  
+ADC（Analog to Digital Converter）顧名思義是將類比訊號轉換成數位訊號的元件，現今多數 MCU 都會內建 ADC，而這也是相當基本且常用的功能。
 
-上一篇已經介紹過最基本的 ADC 單一 Regular 通道用法，這篇文章要繼續示範如何使用 ADC Injected 多通道讀取，並使用 UART 傳到電腦上觀看。  
+上一篇已經介紹過最基本的 ADC 單一 Regular 通道用法，這篇文章要繼續示範如何使用 ADC Injected 多通道讀取，並使用 UART 傳到電腦上觀看。
 
 <!--more-->
 
 # 正文
-首先一樣以 Nucleo-F446RE 做示範。  
+首先一樣以 Nucleo-F446RE 做示範。
 
-首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 爲「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h`。  
+首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 爲「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h`。
 
 ## 完整程式
 ``` c
@@ -200,9 +200,9 @@ static void delay(uint32_t value);
 #include <libopencm3/stm32/adc.h>
 #include <libopencm3/stm32/usart.h>
 ```
-除了基本的 `rcc.h` 和 `gpio.h` 及必要的 `adc.h` 外，因爲我要使用 USART 和 `printf()`，所以還會需要 `usart.h`、`stdio.h` 與 `errno.h`。  
-  
-> USART 和 `printf()` 的詳細用法請看[之前的文章](https://ziteh.github.io/2022/09/libopencm3-stm32-9/)。  
+除了基本的 `rcc.h` 和 `gpio.h` 及必要的 `adc.h` 外，因爲我要使用 USART 和 `printf()`，所以還會需要 `usart.h`、`stdio.h` 與 `errno.h`。
+
+> USART 和 `printf()` 的詳細用法請看[之前的文章](https://ziteh.github.io/2022/09/libopencm3-stm32-9/)。
 
 ### 設定 ADC
 ``` c
@@ -240,9 +240,9 @@ static void adc_setup(void)
   delay(800000); /* Wait a bit. */
 }
 ```
-要使用 ADC 功能，首先要知道 ADC 的通道在哪些 GPIO 上，並將其設定爲類比輸入。  
-  
-接下來就是要設定 ADC。  
+要使用 ADC 功能，首先要知道 ADC 的通道在哪些 GPIO 上，並將其設定爲類比輸入。
+
+接下來就是要設定 ADC。
 * `adc_enable_scan_mode()` 由於本例要讀取 3 個通道，所以要致能掃描模式。
 * `adc_set_single_conversion_mode()` 設定成單一轉換模式，不連續轉換。
 * `adc_disable_discontinuous_mode_regular()` 與 `adc_disable_discontinuous_mode_injected()` 禁能 Regular 與 Injected 的不連續模式。
@@ -263,7 +263,7 @@ static void rcc_setup(void)
   rcc_periph_clock_enable(RCC_ADC1);
 }
 ```
-除了 GPIO 外，還要記得致能各功能本身的時鐘。  
+除了 GPIO 外，還要記得致能各功能本身的時鐘。
 
 ### 主程式
 ``` c
@@ -302,9 +302,9 @@ int main(void)
 確認 ADC 轉換完成後使用 `adc_read_injected()` 來讀取各個轉換完的資料。雖然 Injected 組最多只能設定 4 個，但是它的 4 個通道的資料暫存器是各自獨立的（ADC_JDRx），這裡的第二個參數就是選擇要讀取 1\~4 哪一個 Injected 資料暫存器。要注意這裡的第二個引數是 1\~4 而非 0\~3。
 
 ## 多環境程式（F446RE + F103RB）
-由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。  
-  
-不過這次的程式我還沒完成 F103RB 的部分，目前不會動作，未來有時間會再看是哪邊有問題。我還是把完整的程式的連接放上來：[GitHub repo](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/adc_multi_channel_injected)。  
+由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。
+
+不過這次的程式我還沒完成 F103RB 的部分，目前不會動作，未來有時間會再看是哪邊有問題。我還是把完整的程式的連接放上來：[GitHub repo](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/adc_multi_channel_injected)。
 
 # 小結
 這次延續了上一篇的內容，介紹多通道的 Injected 用法。
@@ -319,5 +319,5 @@ int main(void)
 * [STM32F103RB datasheet (DS5319)](https://www.st.com/resource/en/datasheet/stm32f103rb.pdf)
 * [STM32 Nucleo-64 board user manual (UM1724)](https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf)
 
-> 本文的程式也有放在 [GitHub](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/adc_multi_channel_injected) 上。  
+> 本文的程式也有放在 [GitHub](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/adc_multi_channel_injected) 上。
 > 本文同步發表於[ iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10301616)。

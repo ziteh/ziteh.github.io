@@ -5,14 +5,16 @@ author: ZiTe
 tags:
   - DIY
   - 電子電路
-series: ["雜七雜八專案分享"]
+categories: ["雜七雜八專案分享"]
 date: 2023-10-29 11:50:00+08:00
-comment: true
+comments: true
 toc: true
 draft: false
 ---
 
 分享一些我最近在各處看到的有趣專案。
+
+<!--more-->
 
 # μLA 邏輯分析儀
 

@@ -3,11 +3,11 @@ title: "一種巧妙及噁心並具的 C 語言寫法：達夫裝置 (Duff's dev
 subtitle: ""
 # description: ""
 tags: ["程式"]
-series: []
-# categories: []
+categories: []
+
 date: 2024-06-17T20:25:00+08:00
 header_img: ""
-comment: true
+comments: true
 toc: false
 draft: false
 ---
@@ -26,18 +26,18 @@ send(to, from, count)
 register short *to, *from;
 register count;
 {
-	register n = (count + 7) / 8;
-	switch (count % 8) {
-	case 0:	do { *to = *from++;
-	case 7:		 *to = *from++;
-	case 6:		 *to = *from++;
-	case 5:		 *to = *from++;
-	case 4:	     *to = *from++;
-	case 3:      *to = *from++;
-	case 2:      *to = *from++;
-	case 1:      *to = *from++;
-	        } while (--n > 0);
-	}
+    register n = (count + 7) / 8;
+    switch (count % 8) {
+    case 0: do { *to = *from++;
+    case 7:      *to = *from++;
+    case 6:      *to = *from++;
+    case 5:      *to = *from++;
+    case 4:      *to = *from++;
+    case 3:      *to = *from++;
+    case 2:      *to = *from++;
+    case 1:      *to = *from++;
+            } while (--n > 0);
+    }
 }
 ```
 

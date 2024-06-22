@@ -5,9 +5,9 @@ tags:
   - 電子電路
   - 教學
   - STM32
-series: ["STM32學習記錄"]
+categories: ["STM32學習記錄"]
 date: 2021-11-15 22:15:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2021/11/learningstm32-platformio/"]

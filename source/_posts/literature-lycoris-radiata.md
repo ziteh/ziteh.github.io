@@ -5,7 +5,7 @@ tags:
   - 文藝
 categories: []
 date: 2020-05-04 17:29:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2020/05/literature-lycoris-radiata/"]

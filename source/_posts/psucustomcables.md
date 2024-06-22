@@ -6,16 +6,16 @@ tags:
   - DIY
 categories: []
 date: 2019-02-22 09:26:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2019/02/psucustomcables/"]
 ---
 ![](https://1.bp.blogspot.com/-DWIH30NOyDI/XppYajhsUdI/AAAAAAAACFg/wPQROsxK1J0R6B1fgoHXJOisvhhVRSJDwCPcBGAsYHg/s640/ZPH_0309.JPG)
-  
+
 # 前言
-上次買了[新的電腦機殼ZS-A4](/2019/02/unbox-zsa4itx/)，也順便換了些零件，但由於新機殼實在是太小了，原本PSU附的線有點太長，比較嚴重的是3個2.5寸硬碟的電源線因爲距離太近，所以只能插到2個硬碟。基於以上的原因，我就想説來試試看自己做電源供應器的模組線，所以就上網買了些材料，開始了手殘之旅。  
-  
+上次買了[新的電腦機殼ZS-A4](/2019/02/unbox-zsa4itx/)，也順便換了些零件，但由於新機殼實在是太小了，原本PSU附的線有點太長，比較嚴重的是3個2.5寸硬碟的電源線因爲距離太近，所以只能插到2個硬碟。基於以上的原因，我就想説來試試看自己做電源供應器的模組線，所以就上網買了些材料，開始了手殘之旅。
+
 <!--more-->
 
 # 材料

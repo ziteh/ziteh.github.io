@@ -6,7 +6,7 @@ tags:
   - 電子電路
   - QMK
 date: 2023-02-10 23:10:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2023/02/calcite52-keyboard-1/"]
@@ -49,5 +49,5 @@ PCB 基本上一下就畫好了。以往比較麻煩的是要把按鍵和二極�
 - XCV、M<> 鍵套用 ARTSEY 空白鍵的概念（原本是 4 鍵）。
 - 我一直覺得 Enter 和 Backspace 放在小拇指很糟糕，故改到大拇指。擺在中央讓左右手可以單獨按到。
 
-> Calcite52 的相關檔案在 GitHub 上：[ziteh/calcite](https://github.com/ziteh/calcite)  
+> Calcite52 的相關檔案在 GitHub 上：[ziteh/calcite](https://github.com/ziteh/calcite)
 > [下一篇](/posts/calcite52-keyboard-2/)

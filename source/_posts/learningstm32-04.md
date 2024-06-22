@@ -5,9 +5,9 @@ tags:
   - 電子電路
   - 教學
   - STM32
-series: ["STM32學習記錄"]
+categories: ["STM32學習記錄"]
 date: 2020-03-31 15:18:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2020/03/learningstm32-04/"]
@@ -20,17 +20,17 @@ aliases: ["/2020/03/learningstm32-04/"]
 
 <!--more-->
 
-TrueSTUDIO是一套由意法半導體（STMicroelectronics）公司專門為STM32開發的免費IDE。它是基於開源標準，建立於Eclipse、CDT、GCC和GDB之上的C/C++開發工具。  
+TrueSTUDIO是一套由意法半導體（STMicroelectronics）公司專門為STM32開發的免費IDE。它是基於開源標準，建立於Eclipse、CDT、GCC和GDB之上的C/C++開發工具。
 
-熟悉Java的人可能有聽過甚至用過[Eclipse](https://www.eclipse.org/)，TrueSTUDIO就是基於Eclipse框架進行開發的，所以其界面和Eclipse基本上是一模一樣，自然也傳承了它的靈活性。  
+熟悉Java的人可能有聽過甚至用過[Eclipse](https://www.eclipse.org/)，TrueSTUDIO就是基於Eclipse框架進行開發的，所以其界面和Eclipse基本上是一模一樣，自然也傳承了它的靈活性。
 
 # 開始使用
 
-首先到其[官網下載](https://atollic.com/resources/download/)軟體（需填寫用戶資料），目前有Windows與Linux版。安裝過程沒什麼特別的，在此就不贅述了。安裝完成後就可以執行了。  
+首先到其[官網下載](https://atollic.com/resources/download/)軟體（需填寫用戶資料），目前有Windows與Linux版。安裝過程沒什麼特別的，在此就不贅述了。安裝完成後就可以執行了。
 
 ![▲ 界面樣式。](https://1.bp.blogspot.com/-tq_EUl3acBg/XomHr6bMzAI/AAAAAAAACCk/GsC-z1-5ZWw0yuHSo8wpEqrhkviURouIACKgBGAsYHg/s1600/Screenshot%2B%252812%2529.png)
 
-其實IDE也沒有什麼好特別介紹的，新增專案那些功能每個軟體都大同小異。這裡就簡單介紹一下新增C專案。  
+其實IDE也沒有什麼好特別介紹的，新增專案那些功能每個軟體都大同小異。這裡就簡單介紹一下新增C專案。
 
 ![▲ 新增專案：File > New > C Project。](https://1.bp.blogspot.com/-GvkgWX6JYcQ/XomHr8uDR3I/AAAAAAAACCk/YCdA0MHFjWkhNssZSor_jdMVb1bbGwYhwCKgBGAsYHg/s1600/Screenshot%2B%252815%2529.png)
 
@@ -46,14 +46,14 @@ TrueSTUDIO是一套由意法半導體（STMicroelectronics）公司專門為STM3
 
 ![▲ 如要新增.c或.h檔，在src右鍵 > New > Source File (或 Header File)。](https://1.bp.blogspot.com/-96OhBtd2iTw/XomHr7_lnbI/AAAAAAAACCk/JqsDHSwIS9035Onm6WFFEj3nbD8FM54JQCKgBGAsYHg/s1600/Screenshot%2B%252821%2529.png)
 
-由於TrueSTUDIO是建立於Eclipse框架之上，所以它也非常靈活，有很多東西都可以自行設定。而基本的顏色主題當然也可以隨意變化，它當然也可以使用[Eclipse的主題庫](http://eclipsecolorthemes.org/)（目前此網站似乎有問題），直接下載使用他人做好的設定。像是我使用的是William製作的Atom One Dark Syntax Clone。  
+由於TrueSTUDIO是建立於Eclipse框架之上，所以它也非常靈活，有很多東西都可以自行設定。而基本的顏色主題當然也可以隨意變化，它當然也可以使用[Eclipse的主題庫](http://eclipsecolorthemes.org/)（目前此網站似乎有問題），直接下載使用他人做好的設定。像是我使用的是William製作的Atom One Dark Syntax Clone。
 
 ![▲ 我實際使用的界面樣式。](https://1.bp.blogspot.com/-MrrPmveWI7A/XomHr7ooq5I/AAAAAAAACCk/iSThUurHcq8iMAgnaWhpBjsfPB1Z13jxACKgBGAsYHg/s1600/Screenshot%2B%252828%2529.png)
 
 # 結語
 
-我使用TrueSTUDIO來進行STM32的開發已經超過半年了，沒有什麼太大的問題。不過如果真的要說的話，它的“程式碼自動補全”功能對C\\C++的支援度不高，必須要使用者自己按下快捷鍵才行。不過這部分或許有插件可以補全，但我目前還沒發現。  
+我使用TrueSTUDIO來進行STM32的開發已經超過半年了，沒有什麼太大的問題。不過如果真的要說的話，它的“程式碼自動補全”功能對C\\C++的支援度不高，必須要使用者自己按下快捷鍵才行。不過這部分或許有插件可以補全，但我目前還沒發現。
 
-TrueSTUDIO有很高的可擴展性、插件可以使用，我自己也有裝一些，未來有機會再來介紹。  
+TrueSTUDIO有很高的可擴展性、插件可以使用，我自己也有裝一些，未來有機會再來介紹。
 
 ![▲ 本文使用之TrueSTUDIO為Version：9.3.0；Build id：20190212-0734。](https://1.bp.blogspot.com/-XRXvwadDtVs/XomHrwMB8wI/AAAAAAAACCk/4qRVLrqHApYbyNlYXsg_ks_ZMPqKOtGRACKgBGAsYHg/s1600/Screenshot%2B%252813%2529.png)

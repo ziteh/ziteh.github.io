@@ -7,7 +7,7 @@ tags:
   - 電子電路
 categories: []
 date: 2018-11-10 10:33:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2018/11/seagatepersonalcloud/"]

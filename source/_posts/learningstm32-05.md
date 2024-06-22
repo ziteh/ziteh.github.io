@@ -5,9 +5,9 @@ tags:
   - 電子電路
   - 教學
   - STM32
-series: ["STM32學習記錄"]
+categories: ["STM32學習記錄"]
 date: 2020-04-02 15:40:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2020/04/learningstm32-05/"]
@@ -218,7 +218,7 @@ Pin_Mod(PA3, IN, FL, S50M);  // PA3: USART2_RX
 
 這樣的話就可以更簡單方便地設定GPIO了。
 
-至於其引入的“GPIO\_mapping.h”內容如下：（只適用於STM32F103RB，請依照自己的MCU腳位更改）  
+至於其引入的“GPIO\_mapping.h”內容如下：（只適用於STM32F103RB，請依照自己的MCU腳位更改）
 
 ```c
 /**
@@ -387,7 +387,7 @@ Pin_Mod(PA3, IN, FL, S50M);  // PA3: USART2_RX
 
 # 結語
 
-這次簡單地分享了自己打的程式，不敢說自己的程式很完善、漂亮，但希望它有幫助到你。  
-如有問題或錯誤也歡迎提出討論！  
+這次簡單地分享了自己打的程式，不敢說自己的程式很完善、漂亮，但希望它有幫助到你。
+如有問題或錯誤也歡迎提出討論！
 
 > ***注意***，本文的內容過於老舊，不建議實際使用，僅保留以作爲參考用。

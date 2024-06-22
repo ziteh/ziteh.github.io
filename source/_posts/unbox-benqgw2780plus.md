@@ -6,7 +6,7 @@ tags:
   - 3C
 categories: []
 date: 2020-05-03 18:43:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2020/05/unbox-benqgw2780plus/"]

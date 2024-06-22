@@ -5,9 +5,9 @@ tags:
   - 電子電路
   - 教學
   - STM32
-series: ["STM32學習記錄"]
+categories: ["STM32學習記錄"]
 date: 2018-08-26 10:47:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2018/08/learningstm32-02/"]
@@ -19,16 +19,16 @@ MCU控制最基本的就是輸入與輸出，此篇就來簡單介紹最基本�
 首先我們要來認識STM32F10x和輸出入有關的暫存器。每個GPIO有：(以下x為Port名稱，也就是A，B，C，D或E)
 
 1.  兩個32位元的設置暫存器（GPIOx\_CRH、GPIOx\_CRL）
-2.  兩個32位元的資料暫存器（GPIOx\_IDR、GPIOx\_ODR）  
+2.  兩個32位元的資料暫存器（GPIOx\_IDR、GPIOx\_ODR）
 3.  一個32位元的位元設定/重置暫存器（GPIOx\_BSRR）
-4.  一個16位元的位元重置暫存器（GPIOx\_BRR）  
+4.  一個16位元的位元重置暫存器（GPIOx\_BRR）
 5.  一個32位元的設置鎖定暫存器（GPIOx\_LCKR）
 
 <!--more-->
 
 ## 一、設置暫存器CRH、CRL
 
-CRH和CRL分別是Configuration Register High與Configuration Register Low的縮寫。CRL負責0～7號接腳，CRH負責8～15號接腳，而每隻接腳使用4個位元。接腳可以透過這4個位元設定成不同的功能。其設定方法如下。  
+CRH和CRL分別是Configuration Register High與Configuration Register Low的縮寫。CRL負責0～7號接腳，CRH負責8～15號接腳，而每隻接腳使用4個位元。接腳可以透過這4個位元設定成不同的功能。其設定方法如下。
 
 ![](https://1.bp.blogspot.com/-uqsaxcbFSxI/XolLhLiIU4I/AAAAAAAACCM/3zvpEceOBNEFJDV4o_pEFGgD_fQvsA_3gCKgBGAsYHg/s1600/GPIO-CRH%2526CRL%25E8%25A8%25AD%25E7%25BD%25AE%25E8%25A1%25A8.png)
 
@@ -51,7 +51,7 @@ GPIOA->CRL = 0x22222222;
 至於各個輸出入模式有什麼差別，我簡單的以我找到的資料說明一下：
 
 ### ※推挽和汲極開路
-這兩者根本的差異在於電路結構不同。  
+這兩者根本的差異在於電路結構不同。
 
 *   推挽（Push-Pull）使用一對互補的電晶體，輸出可以直接是高或低準位，不用再外加電路，並且能夠灌電流（Sink current）與拉電流（Sourcing current）。
 *   汲極開路（Open-Drain，OD）是MOSFET版的集極開路（ Open-Collector，OC），基本上只有開路（浮接）和接地這兩種狀態，所以如果要輸出高低準位的話要外加一個上拉電阻（提升電阻，Pull-up resistor），也因為可以使用上拉電阻，所以上拉的電源電壓可以自己決定，可以當作邏輯電壓轉換，且可以提供大於晶片本身能提供的電流，因為電源已經獨立出來了。而一般情況只能灌電流（Sink current），外加上拉電阻後才行拉電流（Sourcing current）。而將多隻OD輸出接在一起後加上一上拉電阻，會形成所謂的“線接及閘（Wired AND）”
@@ -111,7 +111,7 @@ if (!(GPIOA->IDR) & 0x0040) // 如果PA6是輸入低準位的話
 
 ## 三、位元設置/重置暫存器
 
-BSRR與BRR分別是Bit Set/Reset Register和Bit Reset Register的縮寫。BSRR的31到16位元分別控制15到0號腳的重置功能，如果該位元被設置為1的話，對應的腳位就會被重置為0。而BSRR的15到0位元分別控制15到0號腳的設置功能，如果該位元被設置為1的話，對應的腳位就會被設置為1。  
+BSRR與BRR分別是Bit Set/Reset Register和Bit Reset Register的縮寫。BSRR的31到16位元分別控制15到0號腳的重置功能，如果該位元被設置為1的話，對應的腳位就會被重置為0。而BSRR的15到0位元分別控制15到0號腳的設置功能，如果該位元被設置為1的話，對應的腳位就會被設置為1。
 
 而設置的權重比重置高，所以如果該腳位同時被設置又被重置的話，其結果是該腳位會被設置為1。而BRR的功能和BSRR的31到16位元一樣。而可以注意到的是BSRR和BRR所有位元都是唯寫的。
 
@@ -125,7 +125,7 @@ GPIOB->BRR = 0xFFFF;      // 將Port B的所有腳位重置為0
 
 ## 四、設置鎖定暫存器
 
-LCKR是Configuration Lock Register的縮寫。其中15到0位元分別控制15到0號腳的設置（CRH、CRL）鎖定狀態，0是未鎖定，1是鎖定，這16位元只能在LCKK為0時寫入。而第16位元是LCKK(Lock Key)位元，用來鎖定LCKR暫存器，0代表未鎖定，1代表鎖定，直到下次系統重置前LCKR暫存器都會被鎖定。  
+LCKR是Configuration Lock Register的縮寫。其中15到0位元分別控制15到0號腳的設置（CRH、CRL）鎖定狀態，0是未鎖定，1是鎖定，這16位元只能在LCKK為0時寫入。而第16位元是LCKK(Lock Key)位元，用來鎖定LCKR暫存器，0代表未鎖定，1代表鎖定，直到下次系統重置前LCKR暫存器都會被鎖定。
 
 要特別注意到是這個鎖定的功能是用來鎖定腳位的輸出入模式設置，也就是鎖CRH和CRL的設置，不是用來鎖定腳位的高低準位的。
 
@@ -143,7 +143,7 @@ RD LCKR[16] = ‘1’（非必要，但可以確保）
 
 ## 五、 APB2外圍設備時鐘致能暫存器
 
-除了以上5種暫存器外，還要在加上一個RCC\_APB2ENR暫存器，腳位才能正常的使用。  
+除了以上5種暫存器外，還要在加上一個RCC\_APB2ENR暫存器，腳位才能正常的使用。
 
 APB2ENR是APB2 Peripheral Clock Enable Register的縮寫。每個位元都代表一個外圍設備，而當該位元為1時代表對應的功能致能（開啟），反之設為0代表禁能（關閉）。
 

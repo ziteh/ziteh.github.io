@@ -7,7 +7,7 @@ tags:
   - 教學
 categories: []
 date: 2020-10-09 18:23:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2020/10/deft-pro-switch/"]

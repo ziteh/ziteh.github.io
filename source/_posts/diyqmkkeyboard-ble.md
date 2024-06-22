@@ -6,9 +6,9 @@ tags:
   - 3C
   - 教學
   - QMK
-series: ["自製QMK鍵盤"]
+categories: ["自製QMK鍵盤"]
 date: 2022-02-21 13:31:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2022/02/diyqmkkeyboard-8/", "/posts/diyqmkkeyboard-8/"]
@@ -108,7 +108,7 @@ CONNECTED LED (Blue)|P0.19|--|--
 # 相關資訊
 
 - QMK 版本：`0.15.13`
-- [Adafruit Bluefruit LE Firmware](https://github.com/adafruit/Adafruit_BluefruitLE_Firmware) 
+- [Adafruit Bluefruit LE Firmware](https://github.com/adafruit/Adafruit_BluefruitLE_Firmware)
 	- 韌體版本：`0.8.1`
 	- SoftDevice 版本：`8.0.0`
 	- Bootloader 版本：`2`

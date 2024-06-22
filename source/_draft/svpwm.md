@@ -3,11 +3,11 @@ title: "馬達調變技術：SPWM 與 SVPWM"
 subtitle: ""
 # description: ""
 tags: [""]
-series: []
-# categories: []
+categories: []
+
 date: 2024-06-10T18:00:00+08:00
 header_img: ""
-comment: true
+comments: true
 toc: true
 mathjax: true
 draft: true # false
@@ -16,6 +16,8 @@ draft: true # false
 # SPWM
 
 SPWM是藉由Park逆變換將$d$-$q$座標系根據目前馬達角度轉換到$\alpha$-$\beta$座標系，並以Clarke逆變換再次轉換到直流無刷馬達的三相$A$-$B$-$C$座標系。\cite{Meghana2017}
+
+<!--more-->
 
 $d$軸與$\alpha$軸對齊的Park逆變換可以寫為：
 

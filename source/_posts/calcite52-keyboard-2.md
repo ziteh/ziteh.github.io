@@ -6,7 +6,7 @@ tags:
   - 電子電路
   - QMK
 date: 2023-04-16 15:00:00+08:00
-comment: true
+comments: true
 toc: true
 draft: false
 ---

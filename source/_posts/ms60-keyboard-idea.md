@@ -5,11 +5,11 @@ subtitle: ""
 tags:
   - DIY
   - 3C
-series: []
-# categories: []
+categories: []
+
 date: 2023-07-10 22:30:00+08:00
 header_img: ""
-comment: true
+comments: true
 toc: false
 draft: false
 ---
@@ -19,6 +19,8 @@ draft: false
 左移佈局是爲了在 60% 的尺寸下可以有方向鍵。整體佈局會很類似 FILCO MINILA。
 
 會想做這個鍵盤是因爲我的 Just60 已經有點舊了，而且它也不支援 [Vial](https://get.vial.today)，再加上現在金屬 CNC 加工的價格也變得很便宜了，所以想說做一款風格走向比較主流的 60% 鍵盤，也因此它被命名爲 ***M***ain ***S***equence，也就是天文學中的主序帶——它們是恆星演化中宇宙裡數量最多的恆星所在的階段。
+
+<!--more-->
 
 目前還在初期開發階段，我連要採用的 MCU 方案都還沒確定要 RP2040 還是 nRF52840、韌體要 QMK 還是 ZMK。MS60 不算是我的主要專案，所以進度大概會很慢。
 

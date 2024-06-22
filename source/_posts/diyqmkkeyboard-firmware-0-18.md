@@ -6,10 +6,10 @@ tags:
   - 教學
   - DIY
   - 3C
-  - QMK 
-series: ["自製QMK鍵盤"]
+  - QMK
+categories: ["自製QMK鍵盤"]
 date: 2023-04-21 22:48:00+08:00
-comment: true
+comments: true
 toc: true
 draft: false
 ---
@@ -17,6 +17,8 @@ draft: false
 ⚠ 由於最新的 [`0.21.3`](https://github.com/qmk/qmk_firmware/releases/tag/0.21.3) 版本的 QMK 在使用上的差異滿大的，這篇是針對舊版 [`0.18.3`](https://github.com/qmk/qmk_firmware/releases/tag/0.18.3) 的 QMK 教學，僅作爲參考保留。
 
 [最新版的 QMK 教學](/posts/diyqmkkeyboard-edit-qmk/)。
+
+<!--more-->
 
 如果你因爲某些原因需要使用舊版 QMK 的話，可以使用下面的方法來切換 QMK 版本（需要先安裝好 QMK MSYS 環境）。
 
@@ -28,8 +30,6 @@ draft: false
 ---
 
 在[上一篇文章](/posts/diyqmkkeyboard-1/)中已經完成鍵盤的 Layout，這篇文章將會接續[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 3 步——生成並編輯 QMK 韌體。
-
-<!--more-->
 
 # 自動產生韌體
 
@@ -73,8 +73,8 @@ draft: false
 
 以下圖爲例，「Pins」頁面中的 `D0` 其實是指 `PD0`（藍紫色），它也被稱爲 `D3`（綠色）。要注意你現在看到的腳位名稱到底是微控制器（藍紫色）的還是開發板（綠色）的，「Pins」頁面顯示的是微控制器的腳位名。
 
-> PB2、PD7...的 P 是指 Port，通常以 8 或 16 腳為一個 Port。  
-> P 後面的英文字為 Port 名，通常由 A 開始。再來的數字是腳位編號，通常由 0 開始。  
+> PB2、PD7...的 P 是指 Port，通常以 8 或 16 腳為一個 Port。
+> P 後面的英文字為 Port 名，通常由 A 開始。再來的數字是腳位編號，通常由 0 開始。
 > 所以 PB2 就代表 Port-B 的 2 號腳，也就是 Port-B 的第 3 支接腳，因為 Port-B 的第一支腳是 PB0。
 
 ![▲ Pro Micro 腳位對應圖(取自SparkFun)](https://1.bp.blogspot.com/-UqmjvTbo7Uo/Xu4yajqMXKI/AAAAAAAACeE/AEfdjtlknrcRsjSYvmRz5B0IxY4RIiQegCK4BGAsYHg/s1166/ProMicroPin.png)
@@ -95,7 +95,7 @@ QMK 可以設定的按鍵請看說明文件：[Keycodes Overview](https://docs.q
 
 如果要使用層的功能的話，可以參考說明文件：[Keycodes Overview-Layer Switching](https://docs.qmk.fm/#/keycodes?id=layer-switching)
 
-> 歸功於 [Vial](https://get.vial.today/)，QMK 鍵盤可以很方便地隨時編輯 Keymap，甚至連下載軟體都不用，所以在「Keymap」頁面你可以不用真的把它編輯成最終的樣子，可以先用個大概，等之後再用 Vial 修改。  
+> 歸功於 [Vial](https://get.vial.today/)，QMK 鍵盤可以很方便地隨時編輯 Keymap，甚至連下載軟體都不用，所以在「Keymap」頁面你可以不用真的把它編輯成最終的樣子，可以先用個大概，等之後再用 Vial 修改。
 > 但不建議完全空白，至少預設的第 0 層的每個鍵都要分配按鍵，方便未來測試。
 
 ![▲ 其中一種切換層的按鍵設定](https://1.bp.blogspot.com/-AXyTVOereYY/Xu4uDQIikrI/AAAAAAAACdM/ZKoLu2A_TsMjSCcAAJVC_-EHaGEJ9w3agCK4BGAsYHg/s800/%255B06%255DKeyboard%2BFirmware%2BBuilder_Keymap_2.png)
@@ -497,9 +497,9 @@ RGBLIGHT_ENABLE ?= no
 ```c
 // const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
 //   keyevent_t event = record->event;
-// 
+//
 //   switch (id) {
-// 
+//
 //   }
 //   return MACRO_NONE;
 // }

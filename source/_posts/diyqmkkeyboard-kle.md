@@ -6,9 +6,9 @@ tags:
   - DIY
   - 3C
   - QMK
-series: ["自製QMK鍵盤"]
+categories: ["自製QMK鍵盤"]
 date: 2023-04-18 21:14:00+08:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2020/06/diyqmkkeyboard-1/", "/posts/diyqmkkeyboard-1/"]
@@ -70,13 +70,13 @@ aliases: ["/2020/06/diyqmkkeyboard-1/", "/posts/diyqmkkeyboard-1/"]
 
 ![▲ 按鍵文字樣式](https://1.bp.blogspot.com/-yhzg5EnWmCc/Xu4uA5Xq1KI/AAAAAAAACco/XNep3M3gpd8FtkYBbdyBcu9RMEKQlTR_ACK4BGAsYHg/s546/%255B05%255DKeyboard%2BLayout%2BEditor_Key_Properties-text.png)
 
-下方還有許多不同的標籤頁可以進行不同的設定（如作者名字或鍵盤名稱），在此就不多做介紹。 
+下方還有許多不同的標籤頁可以進行不同的設定（如作者名字或鍵盤名稱），在此就不多做介紹。
 
 ## 輸出
 
 編輯完成後就可以輸出 Layout 了。
 
-選到下方的「Raw data」標籤頁。這裡可以看到文字格式的 Layout 原始資料。未來要使用 [Keyboard Firmware Builder](https://kbfirmware.com/) 產生韌體或產生定位板等工具時，通常都是將此 raw data 複製過去使用。 
+選到下方的「Raw data」標籤頁。這裡可以看到文字格式的 Layout 原始資料。未來要使用 [Keyboard Firmware Builder](https://kbfirmware.com/) 產生韌體或產生定位板等工具時，通常都是將此 raw data 複製過去使用。
 
 ```json
 ["Num Lock","/","*","-"],

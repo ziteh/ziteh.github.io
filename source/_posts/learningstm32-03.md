@@ -5,9 +5,9 @@ tags:
   - 電子電路
   - 教學
   - STM32
-series: ["STM32學習記錄"]
+categories: ["STM32學習記錄"]
 date: 2018-09-08 14:24:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2018/09/learningstm32-03/"]
@@ -194,7 +194,7 @@ GPIO\_ResetBits
 // 啟用Port-A、C時鐘
 RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA |
                        RCC_APB2Periph_GPIOC ,
-                       ENABLE);                   
+                       ENABLE);
 ```
 
 NewState|描述

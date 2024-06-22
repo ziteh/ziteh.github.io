@@ -7,11 +7,11 @@ tags:
   - DIY
   - 3C
   - QMK
-series: ["自製QMK鍵盤"]
-# categories: []
+categories: ["自製QMK鍵盤"]
+
 date: 2023-04-28T23:26:49+08:00
 header_img: ""
-comment: true
+comments: true
 toc: true
 draft: false
 ---
@@ -21,6 +21,8 @@ draft: false
 [Vial](https://get.vial.today/) 是一個可以讓你隨時修改 QMK 鍵盤的各種設定的軟體，其中就包含可以即時編輯 Keymap（也就是改鍵位）。如果要自製 QMK 鍵盤的話，加入 Vial 絕對會方便很多。
 
 這篇文章會教你如何爲你自己的 QMK 鍵盤啓用 Vial 功能。
+
+<!--more-->
 
 > 除了 Vial 外，還有一個類似的功能稱爲 [Via](https://www.caniusevia.com/)，雖然功能相近但用法不同，不要搞混了。
 
@@ -110,9 +112,9 @@ draft: false
               [
                 "1,0",
                 "1,1",
-          
+
                 ... ...
-          
+
                 "4,7"
               ]
             ]
@@ -178,7 +180,7 @@ make vial_example/vial_atmega32u4:default
 
 要爲 Vial 建立其專屬的 Keymap。
 
-在 `keymaps` 資料夾底下新增一個資料夾 `vial`，複製 `keymaps/default` 資料夾內的所有內容（應該只會有一個 `keymap.c`），貼上到剛剛新增的 `vial` 資料夾底下。 
+在 `keymaps` 資料夾底下新增一個資料夾 `vial`，複製 `keymaps/default` 資料夾內的所有內容（應該只會有一個 `keymap.c`），貼上到剛剛新增的 `vial` 資料夾底下。
 
 在 `keymaps/vial` 內新增一個 `rules.mk`，並增加以下內容：
 ```mk

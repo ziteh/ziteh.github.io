@@ -5,9 +5,9 @@ tags:
   - STM32
   - LibOpenCM3
   - 教學
-series: ["簡單入門 LibOpenCM3 STM32 嵌入式系統開發"]
+categories: ["簡單入門 LibOpenCM3 STM32 嵌入式系統開發"]
 date: 2022-10-11 09:46:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2022/10/libopencm3-stm32-28/"]
@@ -97,7 +97,7 @@ class MCP2515
     spiDeselect_t spiDeselect;
     spiTransfer_t spiTransfer;
     delay_t delay;
-  
+
 /* 省略部分程式 */
 ```
 
@@ -200,14 +200,14 @@ void mcp2515Init(void)
   mcp2515.setNormalMode();
 }
 ```
-實際修改完的 Library 爲 [ziteh/mcp2515-driver](https://github.com/ziteh/mcp2515-driver)。  
+實際修改完的 Library 爲 [ziteh/mcp2515-driver](https://github.com/ziteh/mcp2515-driver)。
 完整的範例程式可以看[這裡](https://github.com/ziteh/mcp2515-driver/blob/main/examples/stm32_main.cpp)。
 
 # 依賴反轉 DIP
 我這次修改的主要是將 SPI 及 delay 的操作函式移出 Library，這是一種「依賴反轉」的概念。
 
 依賴反轉原則（Dependency Inversion Principle，DIP）是 SOLID 原則中的其中一個，其概念是：
-> 高層模組不應該依賴於低層模組，兩者都該依賴抽象。  
+> 高層模組不應該依賴於低層模組，兩者都該依賴抽象。
 > 抽象不應該依賴於具體實作，具體實作則應該依賴抽象。
 
 對於不熟悉 OOP  的人，這兩句話應該很難理解。
@@ -240,5 +240,5 @@ typedef void (*delay_t)(uint32_t ms);
 # 參考資料
 - [autowp/arduino-mcp2515: Arduino MCP2515 CAN interface library](https://github.com/autowp/arduino-mcp2515)
 
-> 本文的程式也有放在 [GitHub](https://github.com/ziteh/mcp2515-driver) 上。  
+> 本文的程式也有放在 [GitHub](https://github.com/ziteh/mcp2515-driver) 上。
 > 本文同步發表於[ iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10306596)。

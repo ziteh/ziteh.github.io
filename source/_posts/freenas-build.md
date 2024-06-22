@@ -4,10 +4,10 @@ author: ZiTe
 tags:
   - 3C
   - DIY
-  
+
 categories: []
 date: 2020-12-03 16:19:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2020/12/freenas-build/"]

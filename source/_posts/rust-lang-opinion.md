@@ -3,16 +3,18 @@ title: "Rust 之我見"
 subtitle: "Rust Programming Language"
 # description: ""
 tags: ["心得","程式"]
-series: []
-# categories: []
+categories: []
+
 date: 2024-05-03T21:10:00+08:00
 header_img: ""
-comment: true
+comments: true
 toc: true
 draft: false
 ---
 
 [Rust](https://www.rust-lang.org/) 在這幾年相當熱門，常常可以看到各大公司宣佈他們在嘗試使用 Rust 重寫某某程式，開源界也有許多新使用 Rust 編寫的工具（例如我喜歡的 Python linter：[Ruff](https://docs.astral.sh/ruff/)）。我也在好奇心下來嘗試學習這門語言，在簡單學習並寫了一個簡單的程式後，我想來分享一下我寫 Rust 的感想。
+
+<!--more-->
 
 由於我目前對 Rust 還不是非常熟悉，而且其實高階語言現在也不常寫了，如果有誤還請指正。
 
@@ -43,7 +45,7 @@ int b = 2;           // 可變
 
 // C++
 const int a = 1;     // 不可變
-int b = 2;           // 可變 
+int b = 2;           // 可變
 ```
 
 可以發現，Rust 可變變數的代價較高（要多打3個字），Kotlin 兩者代價相同，C# 和 C/C++ 都是不可變變數的代價較高。雖然可能有人覺得現代 IDE 都有自動補全，差不了多少，但人類是很懶惰的，優秀的工程師更是如此（程式員三美德——懶惰、急躁、傲慢《Programming Perl》Larry Wall [Laziness Impatience Hubris](http://wiki.c2.com/?LazinessImpatienceHubris)）。
@@ -311,4 +313,3 @@ fn main() {
 以上就是我在簡單使用 Rust 一段時間後的感想，整體來說，我滿喜歡 Rust 的設計的，寫起來的感覺也很不錯（雖然我現在還不是完全理解 [Ownership 和 Lifetime](https://doc.rust-lang.org/nomicon/ownership.html)）。未來我會繼續學習 Rust ，讓它變成主力語言（無論是嵌入式還是桌面程式開發）。
 
 當然，以上所述只是我個人的看法。如果有誤也歡迎提出。
-

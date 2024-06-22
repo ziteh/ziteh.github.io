@@ -5,9 +5,9 @@ tags:
   - STM32
   - LibOpenCM3
   - 教學
-series: ["簡單入門 LibOpenCM3 STM32 嵌入式系統開發"]
+categories: ["簡單入門 LibOpenCM3 STM32 嵌入式系統開發"]
 date: 2022-10-08 11:00:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2022/10/libopencm3-stm32-25/"]
@@ -19,9 +19,9 @@ aliases: ["/2022/10/libopencm3-stm32-25/"]
 <!--more-->
 
 # 正文
-首先一樣以 Nucleo-F446RE 做示範。  
-  
-首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 爲「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h` 檔案。  
+首先一樣以 Nucleo-F446RE 做示範。
+
+首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 爲「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h` 檔案。
 
 ## 完整程式
 ``` c
@@ -271,16 +271,16 @@ static void spi_setup(void)
 }
 ```
 這部分與[設定 Master](https://ziteh.github.io/2022/10/libopencm3-stm32-24/) 時的類似。不過要注意的是，Master device 的 CS（NSS）腳不受 AF 控制，但 Slave device 的會，所以 CS 腳也要設爲 AF。
-  
+
 SPI 本身的設定如 CPOL 與 CPHA 要與 Master 一致才可以正常通訊，這裡設爲 CPOL=`0` CPHA=`1`。
 
-然後先使用 `spi_init_master()` 初始化 SPI 的相關設定，再以 `spi_set_slave_mode()` 設定成 Slave mode。 
+然後先使用 `spi_init_master()` 初始化 SPI 的相關設定，再以 `spi_set_slave_mode()` 設定成 Slave mode。
 
 一樣以 `spi_set_full_duplex_mode()` 設爲全雙工模式。
 
 再來，爲了要使用硬體 CS，所以要將 SSM 和 SSOE 都設爲 `0`。這裡呼叫 `spi_disable_software_slave_management()` 與 `spi_disable_ss_output()` 來完成設定。
 
-> **NSS output disable (SSM=0, SSOE = 0)**: In slave mode, the NSS pin works as a standard “chip select” input and the slave is selected while NSS line is at low level.  
+> **NSS output disable (SSM=0, SSOE = 0)**: In slave mode, the NSS pin works as a standard “chip select” input and the slave is selected while NSS line is at low level.
 > 節錄自 RM0390 Rev6 P.854。
 
 之後再啓用 SPI 的中斷功能。
@@ -322,22 +322,22 @@ void usart2_isr(void)
   USART_SR(USART2) &= ~USART_SR_RXNE;
 }
 ```
-當 USART 收到資料時，會將資料先用 `spi_send()` 寫入到傳送暫存器中，然後以 `spi_rq_set()` 將 RQ 腳拉低以請求 Master 進行通訊。  
+當 USART 收到資料時，會將資料先用 `spi_send()` 寫入到傳送暫存器中，然後以 `spi_rq_set()` 將 RQ 腳拉低以請求 Master 進行通訊。
 
 ## 多環境程式（F446RE + F103RB）
-由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。  
-  
-由於這次程式較長，所以完整的程式請看 [GitHub repo](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/spi_slave)。  
+由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。
+
+由於這次程式較長，所以完整的程式請看 [GitHub repo](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/spi_slave)。
 
 ## 成果
-我使用兩塊 STM32 Nucleo 板分別當作 Master 與 Slave。將線都接好後就可以讓兩者互相溝通了，記得要共地。  
+我使用兩塊 STM32 Nucleo 板分別當作 Master 與 Slave。將線都接好後就可以讓兩者互相溝通了，記得要共地。
 
 ![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQWxce05Q7hVidOerp87jGm3OdbFC2Z6R4fT8o7EljCvE50yJ360QFM87wZq7DYdsORGyXTv_Hm7Ujjtrdhl9a9U5j0sPhTLAEehmcv-Ey53StAYgbEO_WVBDiUF5DEnAEI_jBuwArcBKY_myZj_CiiYOZZLFbCFGxnYpCGCdiE369_P9nS2cinnnW/s16000/spi_new.gif)
-  
+
 # 小結
-這次接續上次的 SPI Master，寫了 Slave 的操作介紹。其實用法基本上是差不多的，相信不會太難。  
-  
-會使用 SPI 通常是要連接其它的模組，所以 STM32 通常是當作 Master 的角色，但如果想要自己用 STM32 做一個「模組」的話，就可以用到 SPI Slave 模式了。  
+這次接續上次的 SPI Master，寫了 Slave 的操作介紹。其實用法基本上是差不多的，相信不會太難。
+
+會使用 SPI 通常是要連接其它的模組，所以 STM32 通常是當作 Master 的角色，但如果想要自己用 STM32 做一個「模組」的話，就可以用到 SPI Slave 模式了。
 
 # 參考資料
 * [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
@@ -347,5 +347,5 @@ void usart2_isr(void)
 * [STM32F103RB datasheet (DS5319)](https://www.st.com/resource/en/datasheet/stm32f103rb.pdf)
 * [STM32 Nucleo-64 board user manual (UM1724)](https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf)
 
-> 本文的程式也有放在 [GitHub](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/spi_slave) 上。  
+> 本文的程式也有放在 [GitHub](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/spi_slave) 上。
 > 本文同步發表於[ iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10302253)。

@@ -3,11 +3,11 @@ title: "C 語言 Coding Style 規範"
 subtitle: "我的編程風格"
 # description: ""
 tags: ["心得", "程式"]
-series: []
-# categories: []
+categories: []
+
 date: 2024-05-25T14:55:00+08:00
 header_img: ""
-comment: true
+comments: true
 toc: true
 draft: false
 ---

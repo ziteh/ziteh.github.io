@@ -5,16 +5,18 @@ title: "BLDC無刷直流馬達控制/驅動器研究"
 tags:
   - 電子電路
   - 馬達
-# series: []
-# categories: []
+
+
 date: 2023-08-02T11:59:00+08:00
 # header_img: ""
-comment: true
+comments: true
 toc: true
 draft: false
 ---
 
 最近在研究 BLDC 驅動電路，稍微整理一下可以參考的各種零件或成品。
+
+<!--more-->
 
 # 完整電路板
 

@@ -6,9 +6,9 @@ tags:
   - 3C
   - QMK
   - 教學
-series: ["自製QMK鍵盤"]
+categories: ["自製QMK鍵盤"]
 date: 2022-02-22 18:42:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2022/02/diyqmkkeyboard-9/", "/posts/diyqmkkeyboard-9/"]

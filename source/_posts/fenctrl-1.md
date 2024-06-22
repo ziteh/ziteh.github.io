@@ -6,24 +6,24 @@ tags:
   - DIY
 categories: []
 date: 2017-11-25 15:30:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases : ["/2017/11/fenctrl-1/"]
 ---
 # 前言
 
-2017年10月初，我在虎尾科大裡加入了一個我也不知道算不算社團的社團，叫做Dream Maker築夢者，不難看出和自造者有很大的關係。我加入他們並成為所謂的第二屆黃豆學習生，而成為黃豆學習生有一個重要的任務就是要在12月底前完成並發表一個專案，所以我就開始執行這個電腦風扇控制器的製作計劃。  
+2017年10月初，我在虎尾科大裡加入了一個我也不知道算不算社團的社團，叫做Dream Maker築夢者，不難看出和自造者有很大的關係。我加入他們並成為所謂的第二屆黃豆學習生，而成為黃豆學習生有一個重要的任務就是要在12月底前完成並發表一個專案，所以我就開始執行這個電腦風扇控制器的製作計劃。
 
 <!--more-->
 
 # 發想
 
-我的電腦總共裝了5個系統散熱風扇，雖然說它們其實並不會吵，但平常用電腦只是上上網、看看影片之類的，也不用這麽多風扇，感覺有點浪費電，畢竟我現在在外租屋，一度電是5塊錢，要盡量的節能省碳。所以我之前就有想要做一個風扇控制器，可以個別調整風扇的轉速和電源，而現在剛好有個機會可以讓我把它實作出來。 
+我的電腦總共裝了5個系統散熱風扇，雖然說它們其實並不會吵，但平常用電腦只是上上網、看看影片之類的，也不用這麽多風扇，感覺有點浪費電，畢竟我現在在外租屋，一度電是5塊錢，要盡量的節能省碳。所以我之前就有想要做一個風扇控制器，可以個別調整風扇的轉速和電源，而現在剛好有個機會可以讓我把它實作出來。
 
 # 製作概要
 
-我的主控一樣會使用FPGA，程式使用VHDL，畢竟這些還是我目前最熟悉的方案。控制風扇轉速的部分很簡單，就用FPGA直接輸出PWM訊號就好了，而風扇電源的部分我會使用繼電器的方式來控制，雖然我之前沒用過繼電器，的相關知識還是有的。而顯示介面我選擇用128x64的單色OLED，介面操作的方式就用最簡單的4個按鈕。而整個電路都要塞入電腦的5.25前面板的空間內，且最多可以控制6個風扇。  
+我的主控一樣會使用FPGA，程式使用VHDL，畢竟這些還是我目前最熟悉的方案。控制風扇轉速的部分很簡單，就用FPGA直接輸出PWM訊號就好了，而風扇電源的部分我會使用繼電器的方式來控制，雖然我之前沒用過繼電器，的相關知識還是有的。而顯示介面我選擇用128x64的單色OLED，介面操作的方式就用最簡單的4個按鈕。而整個電路都要塞入電腦的5.25前面板的空間內，且最多可以控制6個風扇。
 
 # 零件列表
 
@@ -55,42 +55,42 @@ aliases : ["/2017/11/fenctrl-1/"]
 |保險絲|?|?|
 |電源指示LED|SMD|3|
 |LED電阻|1KΩ|3|
-  
+
 ## FPGA部分
 
-  
-FPGA我選擇使用Altera Cyclone II EP2C5T144C8N TQFP-144。核心電壓(VCCINT)使用1.2V，接腳電壓(VCCIO)我使用3.3V，運作頻率為48MHz。配置晶片我使用EPCS4I8。到時候會有JTAG和AS兩種燒錄座。  
-  
 
-這個部分我覺得比較會有問題的是電路設計的部分，因為我之前都是用現成的FPGA實驗板來做東西，第一次自己設計FPGA的完整電路，可能有很多電氣的觀念要注意。還有就是我之前也沒有用過FPGA的配置晶片，但配置晶片的可以參考的電路有很多，只要照著Data Sheet內的電路做應該就沒問題了。  
+FPGA我選擇使用Altera Cyclone II EP2C5T144C8N TQFP-144。核心電壓(VCCINT)使用1.2V，接腳電壓(VCCIO)我使用3.3V，運作頻率為48MHz。配置晶片我使用EPCS4I8。到時候會有JTAG和AS兩種燒錄座。
+
+
+這個部分我覺得比較會有問題的是電路設計的部分，因為我之前都是用現成的FPGA實驗板來做東西，第一次自己設計FPGA的完整電路，可能有很多電氣的觀念要注意。還有就是我之前也沒有用過FPGA的配置晶片，但配置晶片的可以參考的電路有很多，只要照著Data Sheet內的電路做應該就沒問題了。
 
 ![▲ EPCSxx AS模式接線圖。出自原廠Data Sheet P.4-8](https://1.bp.blogspot.com/-_z6wF1bGvPk/XqU9VsHukvI/AAAAAAAACIQ/sBOHtZP4b943GplE-Fv078OiH7xfVhIzwCPcBGAsYHg/s1600/EPCSxx-AS.jpg)
 
 ## 繼電器部分
 
-  
-繼電器我選擇使用LEG-12，它要用12V的電壓才能驅動，所以要搭配電晶體電路才能運作，並加上一個整流二極體1N4004來保護電路免於受到繼電器線圈的反電動勢破壞。  
 
-繼電器的電路應該不會有什麼問題，可能要比較注意的是電晶體和耐壓的部分。  
+繼電器我選擇使用LEG-12，它要用12V的電壓才能驅動，所以要搭配電晶體電路才能運作，並加上一個整流二極體1N4004來保護電路免於受到繼電器線圈的反電動勢破壞。
+
+繼電器的電路應該不會有什麼問題，可能要比較注意的是電晶體和耐壓的部分。
 
 ![▲ LEG-12 繼電器電路](https://1.bp.blogspot.com/-JPalLluSf-4/XqU9Vmvjx0I/AAAAAAAACIQ/P2kRCuOvz6waD4NgMXer7_flv_Dn06nHQCPcBGAsYHg/s1600/%25E8%259E%25A2%25E5%25B9%2595%25E6%2593%25B7%25E5%258F%2596%25E7%2595%25AB%25E9%259D%25A2%2B%25284%2529.png)
 
 ## 穩壓晶片部分
 
-  
-我的3.3V穩壓晶片使用LM1117S-3.3，另外還有像是AMS1117、AMC1117之類的穩壓晶片應該也差不多。1.2V的穩壓晶片我還沒選擇好。  
-  
 
-穩壓晶片我之前也沒有用過，但照著網路上找到的電路接應該就可以了，穩壓晶片的電路都很簡單，就幾個電容而已，但可能要注意的就是電容的規格。  
+我的3.3V穩壓晶片使用LM1117S-3.3，另外還有像是AMS1117、AMC1117之類的穩壓晶片應該也差不多。1.2V的穩壓晶片我還沒選擇好。
+
+
+穩壓晶片我之前也沒有用過，但照著網路上找到的電路接應該就可以了，穩壓晶片的電路都很簡單，就幾個電容而已，但可能要注意的就是電容的規格。
 
 ![▲ LM1117S的固定電壓電路。出自原廠Data Sheet P.2](https://1.bp.blogspot.com/-JzMDgTaj7jE/XqU9VuiTtmI/AAAAAAAACIQ/l31GSXBDfVwC_a4AWMRfBeMETlzaJV6agCPcBGAsYHg/s1600/LM1117S.jpg)
 
 # 參考資料
 
-這些是我在網路上找到並覺得很有參考價值的資料。如有覺得連結侵犯的您的權益請告知，謝謝。  
+這些是我在網路上找到並覺得很有參考價值的資料。如有覺得連結侵犯的您的權益請告知，謝謝。
 
 ## 網站 :
-1.  FPGA : [Altera Cyclone II 系列官方介紹](https://www.altera.com.cn/products/fpga/cyclone-series/cyclone-ii/support.html#General_Power_Supplies)
+1.  FPGA : [Altera Cyclone II 系列官方介紹](https://www.altera.com.cn/products/fpga/cyclone-categories/cyclone-ii/support.html#General_Power_Supplies)
 2.  FPGA電路 : [Altera Cyclone II EP2C5T144 FPGA Mini Development Board – FZ0697](http://artofcircuits.com/product/altera-cyclone-ii-ep2c5t144-fpga-mini-development-board-fz0697)
 3.  繼電器 : [Cooper Maa :](http://coopermaa2nd.blogspot.tw/2011/03/lab21-12v.html?m=1) [Arduino 筆記 - Lab21 用繼電器控制 12V 風扇](http://coopermaa2nd.blogspot.tw/2011/03/lab21-12v.html?m=1)
 4.  穩壓晶片 : [小狐狸事務所 :](http://yhhuang1966.blogspot.tw/2015/07/ic.html) [關於電源穩壓 IC](http://yhhuang1966.blogspot.tw/2015/07/ic.html)

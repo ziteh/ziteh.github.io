@@ -6,15 +6,15 @@ tags:
   - 天文
 categories: []
 date: 2021-11-14 22:22:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2021/11/step-across-630000/"]
 ---
-將距離化爲時間的機器  
-讓思緒超越光筆直前進  
+將距離化爲時間的機器
+讓思緒超越光筆直前進
 
-跨越六十三萬個地日  
+跨越六十三萬個地日
 時間是否能回到十年之前？
 
 # 說明

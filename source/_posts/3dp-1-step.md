@@ -4,22 +4,22 @@ author: ZiTe
 tags:
   - 3D列印
   - 教學
-categories: []
+
 date: 2017-03-25 13:04:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases : ["/2017/03/3dp-1-step/"]
 ---
 ![](https://1.bp.blogspot.com/-yLX9tUKZ2EI/Xq0AMyYj-wI/AAAAAAAACKk/0y5YFIsiqIIhFeFGAvNYhZKxCM8P1Hv-QCPcBGAsYHg/s400/DSC_0084.JPG)
 
-使用3D列印機的步驟主要有3項:  
+使用3D列印機的步驟主要有3項:
 
 1. 取得3D模型
 2. 將3D模型進行切片
 3. 開始列印
 
-看起來很簡單,也確實很簡單.但要如何完成以上的3個步驟呢?  
+看起來很簡單,也確實很簡單.但要如何完成以上的3個步驟呢?
 
 <!--more-->
 

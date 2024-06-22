@@ -5,9 +5,9 @@ tags:
   - 'STM32'
   - '電子電路'
   - '教學'
-series: ["LibOpenCM3 × STM32教學"]
+categories: ["LibOpenCM3 × STM32教學"]
 date: 2022-04-26 12:53:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2022/04/libopencm3-example-timer/"]

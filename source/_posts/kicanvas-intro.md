@@ -4,11 +4,11 @@ title: "KiCanvas——線上預覽KiCAD電路圖"
 # description: ""
 tags:
   - 電子電路
-series: []
-# categories: []
+categories: []
+
 date: 2023-04-25T23:23:49+08:00
 # header_img: ""
-comment: true
+comments: true
 toc: false
 draft: false
 ---
@@ -16,6 +16,8 @@ draft: false
 [KiCanvas](https://kicanvas.org/) 是一個基於瀏覽器的開源 [KiCAD](https://www.kicad.org/) Schematic、PCB 電路板檢視器。可以透過直接貼上 GitHub 連結或開啓本機檔案來查看 KiCAD 電路圖。
 
 以往如果我想要查看 GitHub 上的 KiCAD 電路圖，都要把整個 repo 載下來，再用 KiCAD 開啓。但用 KiCanvas 就可以直接貼上網址，不用特別下載下來，對我來說還滿方便的。
+
+<!--more-->
 
 > 目前還處在 alpha 開發階段，但基本功能都已經有了。
 

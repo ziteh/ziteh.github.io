@@ -5,9 +5,9 @@ tags:
   - 電子電路
   - 教學
   - STM32
-series: ["STM32學習記錄"]
+categories: ["STM32學習記錄"]
 date: 2022-04-16 00:09:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2022/04/learningstm32-as5047p/"]
@@ -40,7 +40,7 @@ AS5047P 透過 SPI 進行通訊。其對 SPI 的要求為：
 static void SPI_Init(void)
 {
   SPI_HandleTypeDef hspi1;
-  
+
   hspi1.Instance = SPI1;
   hspi1.Init.Mode = SPI_MODE_MASTER;
   hspi1.Init.Direction = SPI_DIRECTION_2LINES;
@@ -53,7 +53,7 @@ static void SPI_Init(void)
   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
   hspi1.Init.CRCPolynomial = 10;
-  
+
   if (HAL_SPI_Init(&hspi1) != HAL_OK)
   {
     Error_Handler();

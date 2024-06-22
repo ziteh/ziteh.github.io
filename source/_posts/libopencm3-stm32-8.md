@@ -5,25 +5,25 @@ tags:
   - STM32
   - LibOpenCM3
   - 教學
-series: ["簡單入門 LibOpenCM3 STM32 嵌入式系統開發"]
+categories: ["簡單入門 LibOpenCM3 STM32 嵌入式系統開發"]
 date: 2022-09-21 08:07:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2022/09/libopencm3-stm32-8/"]
 ---
 
 # 前言
-在之前的文章中我們使用輪詢的方式來讀取目前的按鈕狀態，但這種方式的效率不是很好，在需要讀取按鈕狀態等情況下，我們可以使用外部中斷（External Interrupt，EXTI），讓 CPU 可以去忙其它事情，等到按鈕被按下時會產生中斷事件，才去執行按鈕被按下時要處理的事。  
-  
-這次要我們的目標功能是每次按下按鈕後，LED 的閃爍速度就會變化。  
+在之前的文章中我們使用輪詢的方式來讀取目前的按鈕狀態，但這種方式的效率不是很好，在需要讀取按鈕狀態等情況下，我們可以使用外部中斷（External Interrupt，EXTI），讓 CPU 可以去忙其它事情，等到按鈕被按下時會產生中斷事件，才去執行按鈕被按下時要處理的事。
+
+這次要我們的目標功能是每次按下按鈕後，LED 的閃爍速度就會變化。
 
 <!--more-->
 
 # 正文
-首先一樣以 Nucleo-F446RE 做示範。  
-  
-首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 爲「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 檔案。  
+首先一樣以 Nucleo-F446RE 做示範。
+
+首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 爲「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 檔案。
 ## 完整程式
 ``` c
 /**
@@ -130,11 +130,11 @@ void exti15_10_isr(void)
 #include <libopencm3/stm32/exti.h>
 #include <libopencm3/cm3/nvic.h>
 ```
-除了基本的 `rcc.h` 和 `gpio.h` 外，還要引入 `exti.h` 與 `nvic.h`。  
-  
-`exti.h` 當然就是包含了 EXTI 的各種函式。`nvic.h` 是嵌套向量中斷控制器（Nested Vectored Interrupt Controller，NVIC），這是一個 ARM Cortex-M 中負責處理中斷的控制器，有用到中斷的話都會需要它。  
-  
-> 注意是 `libopencm3/cm3/nvic.h`，而不是 `libopencm3/stm32/nvic.h`。  
+除了基本的 `rcc.h` 和 `gpio.h` 外，還要引入 `exti.h` 與 `nvic.h`。
+
+`exti.h` 當然就是包含了 EXTI 的各種函式。`nvic.h` 是嵌套向量中斷控制器（Nested Vectored Interrupt Controller，NVIC），這是一個 ARM Cortex-M 中負責處理中斷的控制器，有用到中斷的話都會需要它。
+
+> 注意是 `libopencm3/cm3/nvic.h`，而不是 `libopencm3/stm32/nvic.h`。
 
 ### 設定腳位
 ``` c
@@ -150,8 +150,8 @@ void exti15_10_isr(void)
 #define EXTI_BUTTON_SOURCE (EXTI13)
 #define NVIC_BUTTON_IRQ (NVIC_EXTI15_10_IRQ)
 ```
-  
-這次處理要定義 RCC 與腳位外，還一併設定了按鈕的 IRQ 與 EXTI 來源。因爲按鈕是 PC13，所以 IRQ 是 `NVIC_EXTI15_10_IRQ`，它負責處理 EXTI 15 \~ 10，而我們實際會觸發的是 `EXTI13`。  
+
+這次處理要定義 RCC 與腳位外，還一併設定了按鈕的 IRQ 與 EXTI 來源。因爲按鈕是 PC13，所以 IRQ 是 `NVIC_EXTI15_10_IRQ`，它負責處理 EXTI 15 \~ 10，而我們實際會觸發的是 `EXTI13`。
 
 ### 設定中斷
 ``` c
@@ -194,11 +194,11 @@ void exti15_10_isr(void)
   }
 }
 ```
-`exti_reset_request()` 可以用來清除 IRQ flag。  
+`exti_reset_request()` 可以用來清除 IRQ flag。
 
 由於 EXTI 15 \~ 10 共用一個 ISR，所以還要再用 `exti_get_flag_status()` 來讀取 EXTI_PR 暫存器的值，以確定目前是哪一個 EXTI Line 被觸發。
 
-在 LibOpenCM3 中，各個功能的 ISR 函式名稱是固定的，如果打錯的話就無法正常執行。完整的 STM32F4 系列的 ISR 列表[在此](http://libopencm3.org/docs/latest/stm32f4/html/group__CM3__nvic__isrprototypes__STM32F4.html)。  
+在 LibOpenCM3 中，各個功能的 ISR 函式名稱是固定的，如果打錯的話就無法正常執行。完整的 STM32F4 系列的 ISR 列表[在此](http://libopencm3.org/docs/latest/stm32f4/html/group__CM3__nvic__isrprototypes__STM32F4.html)。
 
 ### RCC
 ``` c
@@ -209,7 +209,7 @@ static void rcc_setup(void)
   rcc_periph_clock_enable(RCC_SYSCFG); /* For EXTI. */
 }
 ```
-比較要注意的是，RCC 除了 GPIO Port 外，還要致能 `RCC_SYSCFG`，否則 EXTI 不會工作。  
+比較要注意的是，RCC 除了 GPIO Port 外，還要致能 `RCC_SYSCFG`，否則 EXTI 不會工作。
 
 ## 多環境程式（F446RE + F103RB）
 由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。
@@ -258,9 +258,9 @@ static void button_setup(void)
 ```
 
 # 小結
-這次簡單介紹了 EXTI 的實際程式。中斷是很基本也實用的功能，而外部中斷 EXTI 也是中斷中比較單純且常用的，希望大家看完後也會使用 EXTI 了。  
-  
-實際上 STM32 的中斷還要許多細節我沒寫到，因爲本篇主要還是希望大家可以最快速入門，因此就先省略了。  
+這次簡單介紹了 EXTI 的實際程式。中斷是很基本也實用的功能，而外部中斷 EXTI 也是中斷中比較單純且常用的，希望大家看完後也會使用 EXTI 了。
+
+實際上 STM32 的中斷還要許多細節我沒寫到，因爲本篇主要還是希望大家可以最快速入門，因此就先省略了。
 
 # 參考資料
 * [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
@@ -268,6 +268,6 @@ static void button_setup(void)
 * [STM32F446RE datasheet (DS10693)](https://www.st.com/resource/en/datasheet/stm32f446re.pdf)
 * [STM32F103RB datasheet (DS5319)](https://www.st.com/resource/en/datasheet/stm32f103rb.pdf)
 * [STM32 Nucleo-64 board user manual (UM1724)](https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf)
-  
-> 本文的程式也有放在 [GitHub](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/exti_button) 上。  
+
+> 本文的程式也有放在 [GitHub](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/exti_button) 上。
 > 本文同步發表於[ iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10291761)。

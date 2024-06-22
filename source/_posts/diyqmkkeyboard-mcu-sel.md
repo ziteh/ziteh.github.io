@@ -6,11 +6,11 @@ tags:
   - DIY
   - 3C
   - QMK
-series: ["自製QMK鍵盤"]
-# categories: []
+categories: ["自製QMK鍵盤"]
+
 date: 2023-12-21T20:04:00+08:00
 header_img: ""
-comment: true
+comments: true
 toc: true
 draft: false
 ---
@@ -18,6 +18,8 @@ draft: false
 在正式編寫 QMK 韌體前，我們還需要先決定要使用什麼微控制器（Microcontroller，MCU）。這篇文章會介紹幾個比較常見的 MCU 並且說明它們的優缺點，讓你可以依據不同的需求來選擇要使用的 MCU。
 
 要注意的是，本文的重點是 MCU IC 本身而非開發板。不同的開發板可能會使用相同的 MCU（例如 Pro Micro 和 Arduino Leonardo 都是使用 ATmega32U4 這顆 MCU），但其出廠預燒的 Bootloader 可能不同。
+
+<!--more-->
 
 本文不會把所有支援的 MCU 都介紹（太多了），只會重點介紹那些適合新手及不熟悉該領域的人的型號。如果你想知道所有 QMK 支援的 MCU 的話，請參考官網文件：[Compatible Microcontrollers](https://docs.qmk.fm/#/compatible_microcontrollers)
 
@@ -124,7 +126,7 @@ draft: false
 - 缺點：
   - 僅有 QFN 封裝，手工焊接需要一定的技術。
   - 要外接 Flash IC，會佔用 PCB 空間與增加 Layout 難度。
-  - 週邊電路的電容數量比較多且擠，Layout 難度較高。 
+  - 週邊電路的電容數量比較多且擠，Layout 難度較高。
 - 要注意的事：
   - QMK 針對 RP2040 有個專屬頁面：[Raspberry Pi RP2040](https://docs.qmk.fm/#/platformdev_rp2040)
   - 如果你真的很想用 RP2040 但也真的無法焊接 QFN 的話，可以試著去瞭解 PCBA 服務，現在要使用不會很難也不會很貴。
@@ -134,7 +136,7 @@ draft: false
 
 ![RP Micro：RP2040 開發板](https://i.imgur.com/sVGqRyk.jpg)
 
-## AT90USB1286 
+## AT90USB1286
 
 [官網][at90]
 
@@ -148,7 +150,7 @@ draft: false
 
 [官網][303]
 
-ST 意法半導體龐大的 32-bit ARM MCU 系列——STM32 的一員。在上千的 STM32 型號中特別選這個型號的理由是 QMK 的官方開發板 [Proton C](https://qmk.fm/proton-c) 使用的 MCU 就是 STM32F303CCT6。 
+ST 意法半導體龐大的 32-bit ARM MCU 系列——STM32 的一員。在上千的 STM32 型號中特別選這個型號的理由是 QMK 的官方開發板 [Proton C](https://qmk.fm/proton-c) 使用的 MCU 就是 STM32F303CCT6。
 
 如果你想要看不同腳位數/ROM/RAM/封裝的話，可以看 [STM32F303 系列](https://www.st.com/en/microcontrollers-microprocessors/stm32f303.html)
 
@@ -156,7 +158,7 @@ ST 意法半導體龐大的 32-bit ARM MCU 系列——STM32 的一員。在上�
 
 [官網][401]
 
-ST 意法半導體龐大的 32-bit ARM MCU 系列——STM32 的一員。在上千的 STM32 型號中特別選這個型號的理由是它的開發板特別好買，且 QMK 的支援硬體清單中也有特別列出 F401。 
+ST 意法半導體龐大的 32-bit ARM MCU 系列——STM32 的一員。在上千的 STM32 型號中特別選這個型號的理由是它的開發板特別好買，且 QMK 的支援硬體清單中也有特別列出 F401。
 
 如果你想要看不同腳位數/ROM/RAM/封裝的話，可以看 [STM32F401 系列](https://www.st.com/en/microcontrollers-microprocessors/stm32f401.html)
 

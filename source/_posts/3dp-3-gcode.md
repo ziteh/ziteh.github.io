@@ -6,7 +6,7 @@ tags:
   - 教學
 categories: []
 date: 2017-05-25 12:43:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases : ["/2017/05/3dp-3-gcode/"]
@@ -37,7 +37,7 @@ aliases : ["/2017/05/3dp-3-gcode/"]
 * **M190 等待設定熱床溫度** : 可以設定熱床的溫度，且達到目標溫度前不執行其他動作。
 * **M221 擠出量百分率** : 調整擠出量百分率。
     * Ex : M221 S90 ; 調整擠出量為正常的90%
-    
+
 # 相關文章
 
 * [\[教學:3D列印-1\] 使用3D列印機的步驟](/2017/03/3dp-1-step/)

@@ -5,9 +5,9 @@ tags:
   - 'STM32'
   - '電子電路'
   - '教學'
-series: ["LibOpenCM3 × STM32教學"]
+categories: ["LibOpenCM3 × STM32教學"]
 date: 2022-04-26 12:55:00
-comment: true
+comments: true
 toc: true
 draft: false
 aliases: ["/2022/04/libopencm3-example-pwm/"]
@@ -44,7 +44,7 @@ aliases: ["/2022/04/libopencm3-example-pwm/"]
 
 /*
  * PER = {f_tim / [(PRS + 1) * f_pwm]} - 1
- * 
+ *
  * f_pwm: PWM frequency.
  * f_tim: Timer frequency. The value is 'rcc_apb1_frequency * 2' equal 48MHz in this case.
  * PRS:   PWM timer prescaler.
@@ -204,7 +204,7 @@ void pwm_setup(void)
 
 在 `TIM_OCM_PWM1` 模式下，想要輸出 `X`% Duty Cycle 的 PWM，只要把 CCR 的數值也設定成 Timer 週期的 `x`% 就可以了，也就是 `CCR_Value = (PWM_TIMER_PERIOD + 1) * (PWM_DUTY_CYCLE / 100.0)`。
 
-最後以 `timer_enable_oc_output()` 啟動 PWM 的輸出，`timer_enable_counter()` 啟動整個 Timer。 
+最後以 `timer_enable_oc_output()` 啟動 PWM 的輸出，`timer_enable_counter()` 啟動整個 Timer。
 
 ### 主程式
 ```c
