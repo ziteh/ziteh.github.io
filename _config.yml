@@ -104,6 +104,13 @@ theme_config: '_config.next.yml'
 marked:
   modifyAnchors: 1  # Transform the anchorIds into lower case (1) or upper case (2)
 
+# hexo-generator-searchdb
+search:
+  path: search.xml
+  field: posts
+  content: true
+  format: html
+
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
