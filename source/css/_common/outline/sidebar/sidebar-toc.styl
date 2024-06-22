@@ -59,6 +59,10 @@ if (hexo-config('toc.enable')) {
         border-bottom-color: $sidebar-highlight;
         color: $black-dim;
         font-weight: bold;
+
+        +mobile() {
+          color: $grey-lighter;
+        }
       }
 
       .active-current > a {
@@ -66,6 +70,10 @@ if (hexo-config('toc.enable')) {
 
         &:hover {
           color: $sidebar-highlight;
+        }
+
+        +mobile() {
+          color: $grey-lighter;
         }
       }
     }
