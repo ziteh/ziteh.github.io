@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/uploads/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300italic,400,400italic,700,700italic%7CNoto+Sans+TC:300,300italic,400,400italic,700,700italic%7CFira+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ziteh.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}},"activeClass":"disqus"},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="前言在使用 STM32 的過程中，一定會搭配許多不同的模組使用，像是各種感測器或額外的通訊模組等，但是實際搜尋 GitHub 就會發現很難找到基於 LibOpenCM3 寫的 Library。若是很簡單的模組大不了可以看一下 Datasheet 就自己寫函式庫算了，但只要稍微複雜一點的模組，自己重寫一個 Library 的效率實在是太低了。 在 GitHub 搜尋「XXX模組 library」或「">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STM32 LibOpenCM3 尋找與移植函式庫">
+<meta property="og:url" content="https://ziteh.github.io/posts/libopencm3-stm32-28/index.html">
+<meta property="og:site_name" content="ZiTe 本物志">
+<meta property="og:description" content="前言在使用 STM32 的過程中，一定會搭配許多不同的模組使用，像是各種感測器或額外的通訊模組等，但是實際搜尋 GitHub 就會發現很難找到基於 LibOpenCM3 寫的 Library。若是很簡單的模組大不了可以看一下 Datasheet 就自己寫函式庫算了，但只要稍微複雜一點的模組，自己重寫一個 Library 的效率實在是太低了。 在 GitHub 搜尋「XXX模組 library」或「">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2022-10-11T01:46:00.000Z">
+<meta property="article:modified_time" content="2024-06-22T08:56:19.900Z">
+<meta property="article:author" content="ZiTe">
+<meta property="article:tag" content="教學">
+<meta property="article:tag" content="STM32">
+<meta property="article:tag" content="LibOpenCM3">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://ziteh.github.io/posts/libopencm3-stm32-28/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://ziteh.github.io/posts/libopencm3-stm32-28/","path":"posts/libopencm3-stm32-28/","title":"STM32 LibOpenCM3 尋找與移植函式庫"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>STM32 LibOpenCM3 尋找與移植函式庫 | ZiTe 本物志</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZiTe 本物志</p>
+      <i class="logo-line"></i>
+      <p class="site-subtitle" itemprop="description">一位慢步於程式、電路與文學之人的學習記錄與分享</p>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-folder-open fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8C%91%E9%81%B8-library"><span class="nav-text">挑選 Library</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-library"><span class="nav-text">修改 Library</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B0-library"><span class="nav-text">使用新 Library</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BE%9D%E8%B3%B4%E5%8F%8D%E8%BD%89-dip"><span class="nav-text">依賴反轉 DIP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E7%B5%90"><span class="nav-text">小結</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-text">參考資料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a href="/about/" title="About">
+      <img class="site-author-image" itemprop="image" alt="ZiTe"
+        src="/uploads/avatar.png">
+    <p class="site-author-name" itemprop="name">ZiTe</p>
+    <div class="site-description" itemprop="description"></div>
+  </a>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ziteh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ziteh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/@siderakb" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;@siderakb" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://siderakb.github.io/" title="SideraKB → https:&#x2F;&#x2F;siderakb.github.io&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-keyboard fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:honmonoh@gmail.com" title="E-Mail → mailto:honmonoh@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="回到頂端">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ziteh.github.io/posts/libopencm3-stm32-28/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="ZiTe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="STM32 LibOpenCM3 尋找與移植函式庫 | ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%95%99%E5%AD%B8/" rel="tag"> 教學</a>
+              <a href="/tags/STM32/" rel="tag"> STM32</a>
+              <a href="/tags/LibOpenCM3/" rel="tag"> LibOpenCM3</a>
+          </div>
+
+        <h1 class="post-title" itemprop="name headline">
+          STM32 LibOpenCM3 尋找與移植函式庫
+        </h1>
+
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%B0%A1%E5%96%AE%E5%85%A5%E9%96%80-LibOpenCM3-STM32-%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%B5%B1%E9%96%8B%E7%99%BC/" itemprop="url" rel="index"><span itemprop="name">簡單入門 LibOpenCM3 STM32 嵌入式系統開發</span></a>
+        </span>
+    </span>
+    <span class="post-meta-item">
+      
+      
+
+      <time title="創建時間：2022-10-11 09:46:00" itemprop="dateCreated datePublished" datetime="2022-10-11T09:46:00+08:00">2022-10-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在使用 STM32 的過程中，一定會搭配許多不同的模組使用，像是各種感測器或額外的通訊模組等，但是實際搜尋 GitHub 就會發現很難找到基於 LibOpenCM3 寫的 Library。若是很簡單的模組大不了可以看一下 Datasheet 就自己寫函式庫算了，但只要稍微複雜一點的模組，自己重寫一個 Library 的效率實在是太低了。</p>
+<p>在 GitHub 搜尋「XXX模組 library」或「XXX模組 driver」就會發現找到最多的通常是專門寫給 Arduino 的，再來可能會有一些是 STM32 HAL 的。很明顯這些 Library 都沒辦法直接搭配 LibOpenCM3 使用。但是我們可以透過修改這些現成的 Library，將它們移植到 LibOpenCM3 上，甚至將其改成平臺無關（Platform Independent）的通用 Library。</p>
+<p>若原始 Library 寫得好的話，只要簡單修改幾行就可以讓它可以用 LibOpenCM3 了，絕對比自己看 Datasheet 重寫一個 Library 還快。</p>
+<p>而這篇文章將會示範我如何將一個 <a target="_blank" rel="noopener" href="https://www.microchip.com/en-us/product/MCP2515">MCP2515</a> Arduino Library 修改成 Platform Independent 的 Library，讓它可以搭配 LibOpenCM3 甚至任何平臺或框架使用。</p>
+<span id="more"></span>
+
+<h1 id="挑選-library"><a href="#挑選-library" class="headerlink" title="挑選 Library"></a>挑選 Library</h1><p>首先要選擇要以哪個 Library 會基礎進行修改。</p>
+<p>如前言所述，GitHub 上最多的搜尋結果通常是 Arduino 的。Arduino 的 Library 基本上就是用 C++ 寫的，而且總會有幾個 repo 星星很多，代表這個 Library 可能很多人在用，所以它的 API 或功能應該比較完整，Bug 也比較少。這種就很適合拿來修改。</p>
+<p>再來還有一個很重要的是要確認該 Library 的授權許可（License），Open-Source License 有很多種，每一種的限制都不同，這部分一定要看清楚該 License 對於修改或再發佈等行爲的限制和要求是什麼。</p>
+<p>在這部分，選擇以 <a target="_blank" rel="noopener" href="https://opensource.org/licenses/MIT">MIT License</a> 發佈的 Library 基本上是最方便的。MIT License 是一個非常寬鬆的 License，基本上只有要求要明確註明著作權（Copyright）和 MIT License 就可以了。</p>
+<p>MIT License 大概長這樣：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">MIT License</span><br><span class="line"></span><br><span class="line">Copyright (c) &lt;YEAR&gt; &lt;FULLNAME&gt;</span><br><span class="line"></span><br><span class="line">Permission is hereby granted, free of charge, to any person obtaining a copy</span><br><span class="line">of this software and associated documentation files (the &quot;Software&quot;), to deal</span><br><span class="line">in the Software without restriction, including without limitation the rights</span><br><span class="line">to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span><br><span class="line">copies of the Software, and to permit persons to whom the Software is</span><br><span class="line">furnished to do so, subject to the following conditions:</span><br><span class="line"></span><br><span class="line">The above copyright notice and this permission notice shall be included in all</span><br><span class="line">copies or substantial portions of the Software.</span><br><span class="line"></span><br><span class="line">THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span><br><span class="line">IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span><br><span class="line">FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span><br><span class="line">AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span><br><span class="line">LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span><br><span class="line">OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span><br><span class="line">SOFTWARE.</span><br></pre></td></tr></table></figure>
+
+<p>而在這裡，我選擇 <a target="_blank" rel="noopener" href="https://github.com/autowp/arduino-mcp2515">autowp&#x2F;arduino-mcp2515</a> 作爲我要修改的 Library。它是以 MIT License 授權並發佈的 Arduino Library，目前有 447 顆星，算是滿熱門的 repo。</p>
+<p>這個 Library 主要有 3 個程式檔案：</p>
+<ul>
+<li><code>mcp2515.cpp</code></li>
+<li><code>mcp2515.h</code></li>
+<li><code>can.h</code></li>
+</ul>
+<h1 id="修改-library"><a href="#修改-library" class="headerlink" title="修改 Library"></a>修改 Library</h1><p>有了基底 Library 就可以開始修改了。</p>
+<p>首先是 <code>#include</code> 的部分。<code>mcp2515.cpp</code> 中有引入 <code>Arduino.h</code>，而 <code>mcp2515.h</code> 中有引入 <code>SPI.h</code>，先把這些刪除。</p>
+<p>MCP2515 是一個以 SPI 通訊介面操作的 IC，因此我們要把原本的 Arduino SPI 操作改掉。</p>
+<p>仔細觀察就會發現，實際要替換或修改的函式只有 4 個：</p>
+<ul>
+<li><code>startSPI()</code>：初始化 SPI 配置並下拉 CS Pin 以選擇 MCP2515。</li>
+<li><code>endSPI()</code>：拉高 CS Pin 以取消選擇 MCP2515 並結束 SPI 通訊。</li>
+<li><code>SPI.transfer()</code>：進行 SPI 的雙向資料傳輸。</li>
+<li><code>delay()</code></li>
+</ul>
+<blockquote>
+<p><code>memset()</code> 與 <code>memcpy()</code> 應該也會提示找不到，這部分只要引入 <a target="_blank" rel="noopener" href="https://cplusplus.com/reference/cstring/"><code>&lt;cstring&gt;</code></a> 就可以了。</p>
+</blockquote>
+<p>在實際修改前，我們先到 <code>.h</code> 檔，並在 Class <code>MCP2515</code> 中增加一些 member：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MCP2515</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">typedef</span> <span class="title">void</span> <span class="params">(*spiSelect_t)</span><span class="params">(<span class="type">void</span>)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">typedef</span> <span class="title">void</span> <span class="params">(*spiDeselect_t)</span><span class="params">(<span class="type">void</span>)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">typedef</span> <span class="title">uint8_t</span> <span class="params">(*spiTransfer_t)</span><span class="params">(<span class="type">uint8_t</span> data)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">typedef</span> <span class="title">void</span> <span class="params">(*<span class="type">delay_t</span>)</span><span class="params">(<span class="type">uint32_t</span> ms)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 省略部分程式 */</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">    spiSelect_t spiSelect;</span><br><span class="line">    spiDeselect_t spiDeselect;</span><br><span class="line">    spiTransfer_t spiTransfer;</span><br><span class="line">    <span class="type">delay_t</span> delay;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 省略部分程式 */</span></span><br></pre></td></tr></table></figure>
+
+<p>這幾個就是上面我們要替換或修改的函式，我用 <code>typedef</code> 定義好它們，方便後續傳入。</p>
+<p>再來，要修改建構子，讓我們可以把函式傳進來：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// mcp2515.h</span></span><br><span class="line"><span class="built_in">MCP2515</span>(spiSelect_t spiSelectFun,</span><br><span class="line">        spiDeselect_t spiDeselectFun,</span><br><span class="line">        spiTransfer_t spiTransferFun,</span><br><span class="line">        <span class="type">delay_t</span> delayFun);</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// mcp2515.cpp</span></span><br><span class="line">MCP2515::<span class="built_in">MCP2515</span>(spiSelect_t spiSelectFun,</span><br><span class="line">                 spiDeselect_t spiDeselectFun,</span><br><span class="line">                 spiTransfer_t spiTransferFun,</span><br><span class="line">                 <span class="type">delay_t</span> delayFun)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">this</span>-&gt;spiSelect = spiSelectFun;</span><br><span class="line">  <span class="keyword">this</span>-&gt;spiDeselect = spiDeselectFun;</span><br><span class="line">  <span class="keyword">this</span>-&gt;spiTransfer = spiTransferFun;</span><br><span class="line">  <span class="keyword">this</span>-&gt;delay = delayFun;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">spiDeselect</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下來就可以把原本的那 4 個要替換或修改的 Arduino 程式改成我們自己新增的函式了。例如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">MCP2515::ERROR <span class="title">MCP2515::reset</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">spiSelect</span>();</span><br><span class="line">  <span class="built_in">spiTransfer</span>(INSTRUCTION_RESET);</span><br><span class="line">  <span class="built_in">spiDeselect</span>();</span><br><span class="line"></span><br><span class="line">  <span class="built_in">delay</span>(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 省略部分程式 */</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">uint8_t</span> <span class="title">MCP2515::readRegister</span><span class="params">(<span class="type">const</span> REGISTER reg)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">spiSelect</span>();</span><br><span class="line">  <span class="built_in">spiTransfer</span>(INSTRUCTION_READ);</span><br><span class="line">  <span class="built_in">spiTransfer</span>(reg);</span><br><span class="line">  <span class="type">uint8_t</span> ret = <span class="built_in">spiTransfer</span>(<span class="number">0x00</span>);</span><br><span class="line">  <span class="built_in">spiDeselect</span>();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">MCP2515::setRegister</span><span class="params">(<span class="type">const</span> REGISTER reg, <span class="type">const</span> <span class="type">uint8_t</span> value)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">spiSelect</span>();</span><br><span class="line">  <span class="built_in">spiTransfer</span>(INSTRUCTION_WRITE);</span><br><span class="line">  <span class="built_in">spiTransfer</span>(reg);</span><br><span class="line">  <span class="built_in">spiTransfer</span>(value);</span><br><span class="line">  <span class="built_in">spiDeselect</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>將那些函式修改完後，Library 的移植其實就已經完成了。</p>
+<h1 id="使用新-library"><a href="#使用新-library" class="headerlink" title="使用新 Library"></a>使用新 Library</h1><p>經過上面這樣的改造，我將 SPI 的操作及 delay 等函式的實作（Implementation）都移出 Library 了，即 Library 不依賴 SPI 和 delay 函式，Library 中僅留有這些函式的「長相」（<code>typedef</code>）。</p>
+<p>既然實作不在 Library 內，那我們現在不管用什麼平臺或框架都 ok，只要使用時再透過建構子將實作函式注入即可，這也就達成了 Platform Independent 的目的。</p>
+<p>具體的使用方式以 LibOpenCM3 爲例：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">spiSelect</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">gpio_clear</span>(GPIO_CS_PORT, GPIO_CS_PIN); <span class="comment">/* Set CS pin to low. */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">spiDeselect</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">/* Wait for SPI transmit complete. */</span></span><br><span class="line">  <span class="keyword">while</span> (!(<span class="built_in">SPI_SR</span>(SPI1) &amp; SPI_SR_TXE));</span><br><span class="line">  <span class="keyword">while</span> ((<span class="built_in">SPI_SR</span>(SPI1) &amp; SPI_SR_BSY));</span><br><span class="line"></span><br><span class="line">  <span class="built_in">gpio_set</span>(GPIO_CS_PORT, GPIO_CS_PIN); <span class="comment">/* Set CS pin to high. */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">uint8_t</span> <span class="title">spiTransfer</span><span class="params">(<span class="type">uint8_t</span> data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="type">uint16_t</span> rec = <span class="built_in">spi_xfer</span>(SPI1, data); <span class="comment">/* SPI data write and read. */</span></span><br><span class="line">  <span class="keyword">return</span> rec &amp; <span class="number">0xFF</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">mcp2515Init</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="function">MCP2515 <span class="title">mcp2515</span><span class="params">(&amp;spiSelect, &amp;spiDeselect, &amp;spiTransfer, &amp;delay)</span></span>;</span><br><span class="line"></span><br><span class="line">  mcp2515.<span class="built_in">reset</span>();</span><br><span class="line">  mcp2515.<span class="built_in">setBitrate</span>(CAN_125KBPS);</span><br><span class="line">  mcp2515.<span class="built_in">setNormalMode</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>實際修改完的 Library 爲 <a target="_blank" rel="noopener" href="https://github.com/ziteh/mcp2515-driver">ziteh&#x2F;mcp2515-driver</a>。<br>完整的範例程式可以看<a target="_blank" rel="noopener" href="https://github.com/ziteh/mcp2515-driver/blob/main/examples/stm32_main.cpp">這裡</a>。</p>
+<h1 id="依賴反轉-dip"><a href="#依賴反轉-dip" class="headerlink" title="依賴反轉 DIP"></a>依賴反轉 DIP</h1><p>我這次修改的主要是將 SPI 及 delay 的操作函式移出 Library，這是一種「依賴反轉」的概念。</p>
+<p>依賴反轉原則（Dependency Inversion Principle，DIP）是 SOLID 原則中的其中一個，其概念是：</p>
+<blockquote>
+<p>高層模組不應該依賴於低層模組，兩者都該依賴抽象。<br>抽象不應該依賴於具體實作，具體實作則應該依賴抽象。</p>
+</blockquote>
+<p>對於不熟悉 OOP  的人，這兩句話應該很難理解。</p>
+<p>在這裡，「高層模組」是「MCP2515 Library」，而「低層模組」是「SPI 及 delay 操作函式」。若高層模組直接依賴於低層模組的話，一旦底層模組改變（例如換平臺、框架、API），那高層模組也必須要改變。</p>
+<p>就像我們這次的修改一樣，原本的 Library 是不符合 DIP 的，所以當我們要將其從 Arduino 變成 LibOpenCM3 時（低層模組），Library 本身（高層模組）也要修改。</p>
+<p>但我修改後，新增了 4 個 <code>typedef</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span> <span class="params">(*spiSelect_t)</span><span class="params">(<span class="type">void</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span> <span class="params">(*spiDeselect_t)</span><span class="params">(<span class="type">void</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">uint8_t</span> <span class="params">(*spiTransfer_t)</span><span class="params">(<span class="type">uint8_t</span> data)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span> <span class="params">(*<span class="type">delay_t</span>)</span><span class="params">(<span class="type">uint32_t</span> ms)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>這些就是在定義一個抽象的介面。它只定義這些函式的「長相」（參數及回傳值），並沒有定義實際的實作（Implementation）。而現在高&#x2F;低模組都依賴於它們。</p>
+<p>現在，無論低層模組長怎麼樣，我都可以在此 Library 以外處理，然後再透過建構子傳入就好。</p>
+<p>若對於 DIP 或 SOLID 還是不太瞭解的話，可以看這 2 篇文章：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://medium.com/@f40507777/%E4%BE%9D%E8%B3%B4%E5%8F%8D%E8%BD%89%E5%8E%9F%E5%89%87-dependency-inversion-principle-dip-bc0ba2e3a388">SOLID 依賴反轉原則 Dependency Inversion Principle (DIP) - Finn - Medium</a></li>
+<li><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10191603">10. 從被動變主動—依賴反轉 - iT 邦幫忙</a></li>
+</ul>
+<h1 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h1><p>這次介紹了要如何將 Arduino 的 Library 修改成 Platform Independent 的架構，並讓 LibOpenCM3 可以使用。</p>
+<p>這不是 STM32 或 LibOpenCM3 本身的介紹，但我覺得這是實際在寫程式會遇到的一個問題，也相當重要，因此寫了這篇文章，簡單分享了我會如何修改。</p>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/autowp/arduino-mcp2515">autowp&#x2F;arduino-mcp2515: Arduino MCP2515 CAN interface library</a></li>
+</ul>
+<blockquote>
+<p>本文的程式也有放在 <a target="_blank" rel="noopener" href="https://github.com/ziteh/mcp2515-driver">GitHub</a> 上。<br>本文同步發表於<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10306596"> iT 邦幫忙-2022 iThome 鐵人賽</a>。</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/libopencm3-stm32-27/" rel="prev" title="STM32 LibOpenCM3：CRC">
+                  <i class="fa fa-angle-left"></i> STM32 LibOpenCM3：CRC
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/libopencm3-stm32-29/" rel="next" title="STM32 延伸內容">
+                  STM32 延伸內容 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+  <p style="text-align: center;color: #a3a3a3;font-size: 14px;margin-top: 60px;">留言可能不會立即顯示。若過了幾天仍未出現，請 <a href="mailto:honmonoh@gmail.com">Email</a> 聯繫：）</p>
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="本網站所有內容除特別聲明外，均採用創用CC 姓名標示-非商業性-禁止改作授權。
+    分享時請註明作者及出處。" style="border-bottom: 0;">
+      <img src="https://i.creativecommons.org/l/by-nc-nd/3.0/80x15.png" style="display: unset;">
+    </a>
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ZiTe</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zite-honmonoh","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/uploads/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300italic,400,400italic,700,700italic%7CNoto+Sans+TC:300,300italic,400,400italic,700,700italic%7CFira+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ziteh.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}},"activeClass":"disqus"},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="上一篇中介紹了 Calcite52 的設計理念，現在 Rev 1.0 成品已經完成了，所以來介紹一下。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Calcite52 - 52鍵正交Choc矮軸QMK鍵盤">
+<meta property="og:url" content="https://ziteh.github.io/posts/calcite52-keyboard-2/index.html">
+<meta property="og:site_name" content="ZiTe 本物志">
+<meta property="og:description" content="上一篇中介紹了 Calcite52 的設計理念，現在 Rev 1.0 成品已經完成了，所以來介紹一下。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKrX4InG0CDi9J4rxBfj1XvoBp39i0X6CXaR_wyasREFn4BxrTexYuP0vROMtQIGfLt_6gkNh0lb6M7TYZLwriSnQ5JP9V52IgqrJiJpjT8gTMj5tax3iX0biZTjZiDzAjpzmLIdEStf45gbJtT6WZyjd6xAjK2sIlUPeIRzbR_tMsJRhPgC14oT80/s16000/PXL_20230323_025401968.jpg">
+<meta property="og:image" content="https://i.imgur.com/m04crWC.png">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjRnFEKRBJ7iNYcNnThtgxdujw8hKnr6jOnZLkGaHeWJBu8ChyzXImCRcPN3VqpI-OZzK09yqdHHWk6SIQQP1faMhg7S55MpW70Xr4NV4MYkg5cUx6rhbpv-kLuznfU7cozklshcH1HfW2hht1NzcZVqTx1ksY3ogoQQq9ib7ChhR5WH1FtdjPLjoa6/s16000/PXL_20230323_020054339.jpg">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj4cGd6Qtf8rXbQwBZeQcwbcZLTnXCBV-krr1yxjjMS4yICjKyjpGxp_eVWnotqVPJJBIlYC8BAHWnyi0zJTL--S1-4EUjiQaVKbXPFnhlMoLk67yvTXyp4ffNllEERttb5tVPF4WN8ChXrb-wBX1hVRj7MNsJ-33T7yqMlQcMe7fBCoAFwumHJkF25/s16000/PXL_20230323_020100545.jpg">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg64EOXAwVJxsgCpf3syuZ2W5GAHNQ68kyDRTmcnXuehMDmML2z7FeCdI1EZHo6L5XV4sBnbiZ0MgvQBcVy8M4S0PTh_r1JMMogS-lyDl4hRPelj7Syc_e-pvcWRCU36HHnw127Sj0s6t4FBnrn-cO7LSISemdttyJarilnRVFmWvQmKgLAjzQmSV58/s16000/PXL_20230323_023905851.jpg">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmfE0mPVh55yl-CaZKAJ-orO5lwxG2PWed4JhCUuRFSKT7cfikM8_eithVTcj8_s0xvmi4A-vDeDQmETqat_DvpdOQ8LHxr9PBkUj-o3Y0PwG_6UJOAQKPSqBGIMTKo1tZBVbWTa4QRovr8wCgdDGxC9UVRbZ3mYQ5X3_ISIOO2u2e4BglNodC4FPB/s16000/PXL_20230323_024932747.jpg">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKrX4InG0CDi9J4rxBfj1XvoBp39i0X6CXaR_wyasREFn4BxrTexYuP0vROMtQIGfLt_6gkNh0lb6M7TYZLwriSnQ5JP9V52IgqrJiJpjT8gTMj5tax3iX0biZTjZiDzAjpzmLIdEStf45gbJtT6WZyjd6xAjK2sIlUPeIRzbR_tMsJRhPgC14oT80/s16000/PXL_20230323_025401968.jpg">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhmr_DMNlwNzqUsNTaYp9UoUN2R_wAhKOJalTTSuQlJxnKGz78d97tJr2mUL8zhrxSIY-JzdG0aj6ypamoPKeGVDJITZxz8cQJ_Df8iSzOAAdQRjIhCtzApzlbLlPRnl8LH2axqrS7LQYJAGVgWmNlJQrKt7Kh9PODV12fggUrxylUDXfcXcLuZ9h-o/s16000/PXL_20230323_025445281.jpg">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLvhCOc6cILoEQddSdR0jBt9UP7P58Om_LskFnOMWUPNFXZ2GS4g03FyhJy8WC-ewfyFdjhub9qAudjKzrU9uKFHv4_zPWKGAQfFo-DZeM-sg6RaTjFxjAkxMAYlasGZYdOT12umNdp2ngD1bq8V1W_gLcR8QXA8ym4m1hxZ4bJnBKwjhm6SPnd35T/s16000/Screenshot%202023-04-16%20142751.jpg">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgy79q2UstUWryWLyk3ffX1WBqTew_vnVN13rVSsr5RLpfUTdkW7WYf61b6lRouUqZqK7Bp5_nQfBu6OGmFe__L7HP6HSuUtk7OGM0vrvYYXyHbz_9UY-Y71Ma41Y5A-hZfk1X4TNOGORNAomGEwASzSlIhM5Nd_pev0LAZAH__HbkhUSXIbmFMmFDC/s16000/PXL_20230411_103348679.jpg">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhfX1hBYsFMBB77TgpRU9hVMuR8ZW3-mdgVgktAS4FkzjyUphRKC0RQmBfnxtvIOdq5UxDEDuC_8aHWKg9Ecg75NMFYK_4aryd7_b42M1zRfHhwAWBi3DuuUvRT8r3u2lxO4wSUpb4faNbWNQGKn1Ze5N_glunpaF0jf6573tLMlzWE3HMBtl6pBpun/s16000/PXL_20230411_102646515.jpg">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj-0Yq_OSo44Hc6yIhH_ddPYKyU7v-_z1o_DljKDLdX3AhDMGTMhLmQf-YkATNBpcaUbP4Ayz1sj0cQLOBw43D3npkBvDzttBiTTTDCTIaUsPuZsZxGEa0ri2zG4qOTgMtwJhPpBFjD0eMVWeFe1sMTWtu4u0Qho_Xent1c-ydfd0UpfsT7NqCyres6/s16000/PXL_20230411_102639224.MP.jpg">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiKm5YevuV_KIbJUCILuzB1_1jl_IttPrKgmzhFeJyo61ee6dWGH0-5PJqbqN1pe5Jby-jsUf7dkk-Fko_dKERc72ugLOs-Pmhnful-jaXOzQxAIMZtDjpup8Z_97G2PotA1SOclV0eTKU3Q8dqLjVONAoNF7zHXinC-ZMmUFIW0qMg9uCjOAVxH2ce/s16000/image.png">
+<meta property="article:published_time" content="2023-04-15T23:00:00.000Z">
+<meta property="article:modified_time" content="2024-06-22T08:56:19.869Z">
+<meta property="article:author" content="ZiTe">
+<meta property="article:tag" content="電子電路">
+<meta property="article:tag" content="DIY">
+<meta property="article:tag" content="QMK">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKrX4InG0CDi9J4rxBfj1XvoBp39i0X6CXaR_wyasREFn4BxrTexYuP0vROMtQIGfLt_6gkNh0lb6M7TYZLwriSnQ5JP9V52IgqrJiJpjT8gTMj5tax3iX0biZTjZiDzAjpzmLIdEStf45gbJtT6WZyjd6xAjK2sIlUPeIRzbR_tMsJRhPgC14oT80/s16000/PXL_20230323_025401968.jpg">
+
+
+<link rel="canonical" href="https://ziteh.github.io/posts/calcite52-keyboard-2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://ziteh.github.io/posts/calcite52-keyboard-2/","path":"posts/calcite52-keyboard-2/","title":"Calcite52 - 52鍵正交Choc矮軸QMK鍵盤"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Calcite52 - 52鍵正交Choc矮軸QMK鍵盤 | ZiTe 本物志</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZiTe 本物志</p>
+      <i class="logo-line"></i>
+      <p class="site-subtitle" itemprop="description">一位慢步於程式、電路與文學之人的學習記錄與分享</p>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-folder-open fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#pcb"><span class="nav-text">PCB</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%96%E6%AE%BC"><span class="nav-text">外殼</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%85%B3%E6%9E%B6"><span class="nav-text">腳架</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#keymap"><span class="nav-text">Keymap</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a href="/about/" title="About">
+      <img class="site-author-image" itemprop="image" alt="ZiTe"
+        src="/uploads/avatar.png">
+    <p class="site-author-name" itemprop="name">ZiTe</p>
+    <div class="site-description" itemprop="description"></div>
+  </a>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ziteh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ziteh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/@siderakb" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;@siderakb" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://siderakb.github.io/" title="SideraKB → https:&#x2F;&#x2F;siderakb.github.io&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-keyboard fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:honmonoh@gmail.com" title="E-Mail → mailto:honmonoh@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="回到頂端">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ziteh.github.io/posts/calcite52-keyboard-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="ZiTe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Calcite52 - 52鍵正交Choc矮軸QMK鍵盤 | ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+          
+          <div class="post-tags">
+              <a href="/tags/%E9%9B%BB%E5%AD%90%E9%9B%BB%E8%B7%AF/" rel="tag"> 電子電路</a>
+              <a href="/tags/DIY/" rel="tag"> DIY</a>
+              <a href="/tags/QMK/" rel="tag"> QMK</a>
+          </div>
+
+        <h1 class="post-title" itemprop="name headline">
+          Calcite52 - 52鍵正交Choc矮軸QMK鍵盤
+        </h1>
+
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      
+      
+
+      <time title="創建時間：2023-04-16 07:00:00" itemprop="dateCreated datePublished" datetime="2023-04-16T07:00:00+08:00">2023-04-16</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKrX4InG0CDi9J4rxBfj1XvoBp39i0X6CXaR_wyasREFn4BxrTexYuP0vROMtQIGfLt_6gkNh0lb6M7TYZLwriSnQ5JP9V52IgqrJiJpjT8gTMj5tax3iX0biZTjZiDzAjpzmLIdEStf45gbJtT6WZyjd6xAjK2sIlUPeIRzbR_tMsJRhPgC14oT80/s16000/PXL_20230323_025401968.jpg"></p>
+<p><a href="/posts/calcite52-keyboard-1/">上一篇</a>中介紹了 Calcite52 的設計理念，現在 Rev 1.0 成品已經完成了，所以來介紹一下。</p>
+<span id="more"></span>
+
+<h1 id="pcb"><a href="#pcb" class="headerlink" title="PCB"></a>PCB</h1><p>Calcite52 是基於 <a target="_blank" rel="noopener" href="https://precondition.github.io/home-row-mods">Home row mods</a> 和 <a target="_blank" rel="noopener" href="https://artsey.io/">ARTSEY</a> 這兩個鍵盤操作系統進行設計的鍵盤，所以按鍵數特別少，只有 52 鍵。</p>
+<p>微控制器爲 RP2040，有 USB ESD 保護（SRV05-4）和 PPTC 自恢復保險絲。整體尺寸爲 231.14 mm x 97.79 mm 。</p>
+<p>最下面的四個鍵爲 1.25 U。</p>
+<p><img src="https://i.imgur.com/m04crWC.png" alt="最終 PCB Layout"></p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjRnFEKRBJ7iNYcNnThtgxdujw8hKnr6jOnZLkGaHeWJBu8ChyzXImCRcPN3VqpI-OZzK09yqdHHWk6SIQQP1faMhg7S55MpW70Xr4NV4MYkg5cUx6rhbpv-kLuznfU7cozklshcH1HfW2hht1NzcZVqTx1ksY3ogoQQq9ib7ChhR5WH1FtdjPLjoa6/s16000/PXL_20230323_020054339.jpg" alt="PCB 正面"></p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj4cGd6Qtf8rXbQwBZeQcwbcZLTnXCBV-krr1yxjjMS4yICjKyjpGxp_eVWnotqVPJJBIlYC8BAHWnyi0zJTL--S1-4EUjiQaVKbXPFnhlMoLk67yvTXyp4ffNllEERttb5tVPF4WN8ChXrb-wBX1hVRj7MNsJ-33T7yqMlQcMe7fBCoAFwumHJkF25/s16000/PXL_20230323_020100545.jpg" alt="PCB 背面"></p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg64EOXAwVJxsgCpf3syuZ2W5GAHNQ68kyDRTmcnXuehMDmML2z7FeCdI1EZHo6L5XV4sBnbiZ0MgvQBcVy8M4S0PTh_r1JMMogS-lyDl4hRPelj7Syc_e-pvcWRCU36HHnw127Sj0s6t4FBnrn-cO7LSISemdttyJarilnRVFmWvQmKgLAjzQmSV58/s16000/PXL_20230323_023905851.jpg" alt="裝上鍵軸與鍵帽"></p>
+<p>這是我第一次用 Choc 軸，選擇茶軸。鍵帽是 Keychron K1 上拆下來的。</p>
+<h1 id="外殼"><a href="#外殼" class="headerlink" title="外殼"></a>外殼</h1><p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmfE0mPVh55yl-CaZKAJ-orO5lwxG2PWed4JhCUuRFSKT7cfikM8_eithVTcj8_s0xvmi4A-vDeDQmETqat_DvpdOQ8LHxr9PBkUj-o3Y0PwG_6UJOAQKPSqBGIMTKo1tZBVbWTa4QRovr8wCgdDGxC9UVRbZ3mYQ5X3_ISIOO2u2e4BglNodC4FPB/s16000/PXL_20230323_024932747.jpg" alt="樹脂 SLA 3D 列印的外殼"></p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKrX4InG0CDi9J4rxBfj1XvoBp39i0X6CXaR_wyasREFn4BxrTexYuP0vROMtQIGfLt_6gkNh0lb6M7TYZLwriSnQ5JP9V52IgqrJiJpjT8gTMj5tax3iX0biZTjZiDzAjpzmLIdEStf45gbJtT6WZyjd6xAjK2sIlUPeIRzbR_tMsJRhPgC14oT80/s16000/PXL_20230323_025401968.jpg" alt="組裝起來的樣子"></p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhmr_DMNlwNzqUsNTaYp9UoUN2R_wAhKOJalTTSuQlJxnKGz78d97tJr2mUL8zhrxSIY-JzdG0aj6ypamoPKeGVDJITZxz8cQJ_Df8iSzOAAdQRjIhCtzApzlbLlPRnl8LH2axqrS7LQYJAGVgWmNlJQrKt7Kh9PODV12fggUrxylUDXfcXcLuZ9h-o/s16000/PXL_20230323_025445281.jpg" alt="整體高約 2.3cm"></p>
+<p>上面這個外殼其實是畫錯的。在畫此外殼時，我首次使用 FreeCAD，但是因爲不夠熟悉，加上沒有最終確認尺寸，所以外殼和 PCB 有一個段差，我原本是想 PCB 和外殼的外緣齊平。</p>
+<p>此外，3D 列印扁平的零件難免會有點彎曲，而 PCB 最外側的螺絲孔沒有加大，也不是槽孔，只要外殼稍微彎曲就會鎖不進去。這是設計時沒有考慮到的。</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLvhCOc6cILoEQddSdR0jBt9UP7P58Om_LskFnOMWUPNFXZ2GS4g03FyhJy8WC-ewfyFdjhub9qAudjKzrU9uKFHv4_zPWKGAQfFo-DZeM-sg6RaTjFxjAkxMAYlasGZYdOT12umNdp2ngD1bq8V1W_gLcR8QXA8ym4m1hxZ4bJnBKwjhm6SPnd35T/s16000/Screenshot%202023-04-16%20142751.jpg" alt="修正後的外殼，並加強結構"></p>
+<h1 id="腳架"><a href="#腳架" class="headerlink" title="腳架"></a>腳架</h1><p>雖然修正後的外殼畫好了，但我暫時懶得再次訂 SLA 列印件，所以就簡單地再設計一對腳架，用 FDM 3D 列印。</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgy79q2UstUWryWLyk3ffX1WBqTew_vnVN13rVSsr5RLpfUTdkW7WYf61b6lRouUqZqK7Bp5_nQfBu6OGmFe__L7HP6HSuUtk7OGM0vrvYYXyHbz_9UY-Y71Ma41Y5A-hZfk1X4TNOGORNAomGEwASzSlIhM5Nd_pev0LAZAH__HbkhUSXIbmFMmFDC/s16000/PXL_20230411_103348679.jpg"></p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhfX1hBYsFMBB77TgpRU9hVMuR8ZW3-mdgVgktAS4FkzjyUphRKC0RQmBfnxtvIOdq5UxDEDuC_8aHWKg9Ecg75NMFYK_4aryd7_b42M1zRfHhwAWBi3DuuUvRT8r3u2lxO4wSUpb4faNbWNQGKn1Ze5N_glunpaF0jf6573tLMlzWE3HMBtl6pBpun/s16000/PXL_20230411_102646515.jpg"></p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj-0Yq_OSo44Hc6yIhH_ddPYKyU7v-_z1o_DljKDLdX3AhDMGTMhLmQf-YkATNBpcaUbP4Ayz1sj0cQLOBw43D3npkBvDzttBiTTTDCTIaUsPuZsZxGEa0ri2zG4qOTgMtwJhPpBFjD0eMVWeFe1sMTWtu4u0Qho_Xent1c-ydfd0UpfsT7NqCyres6/s16000/PXL_20230411_102639224.MP.jpg"></p>
+<h1 id="keymap"><a href="#keymap" class="headerlink" title="Keymap"></a>Keymap</h1><p>Calcite52 支援 <a target="_blank" rel="noopener" href="https://get.vial.today/">Vial</a>，可以即使編輯鍵位及各種功能。</p>
+<p>爲了實現 Home row mods 和 ARTSEY，使用 Vial 編輯也比在 QMK 韌體內設定還方便些。Home row mods 使用 <a target="_blank" rel="noopener" href="https://docs.qmk.fm/#/mod_tap">Mod-Tap</a> 實現，ARTSEY 使用 <a target="_blank" rel="noopener" href="https://docs.qmk.fm/#/feature_combo">Combos</a> 實現。</p>
+<p>在下圖看不出來，我設定同時按下「XCV」或「M&lt;&gt;」時會輸出空白鍵，也就是 ARTSEY 的概念。</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiKm5YevuV_KIbJUCILuzB1_1jl_IttPrKgmzhFeJyo61ee6dWGH0-5PJqbqN1pe5Jby-jsUf7dkk-Fko_dKERc72ugLOs-Pmhnful-jaXOzQxAIMZtDjpup8Z_97G2PotA1SOclV0eTKU3Q8dqLjVONAoNF7zHXinC-ZMmUFIW0qMg9uCjOAVxH2ce/s16000/image.png" alt="鍵位"></p>
+<blockquote>
+<p>Calcite52 的相關檔案在 GitHub 上：<a target="_blank" rel="noopener" href="https://github.com/ziteh/calcite">ziteh&#x2F;calcite</a></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/calcite52-keyboard-1/" rel="prev" title="Calcite52 - 一種52鍵QMK正交鍵盤的初步設計">
+                  <i class="fa fa-angle-left"></i> Calcite52 - 一種52鍵QMK正交鍵盤的初步設計
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/diyqmkkeyboard-0/" rel="next" title="[自製QMK鍵盤-0] 開始 DIY 一把機械鍵盤">
+                  [自製QMK鍵盤-0] 開始 DIY 一把機械鍵盤 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+  <p style="text-align: center;color: #a3a3a3;font-size: 14px;margin-top: 60px;">留言可能不會立即顯示。若過了幾天仍未出現，請 <a href="mailto:honmonoh@gmail.com">Email</a> 聯繫：）</p>
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="本網站所有內容除特別聲明外，均採用創用CC 姓名標示-非商業性-禁止改作授權。
+    分享時請註明作者及出處。" style="border-bottom: 0;">
+      <img src="https://i.creativecommons.org/l/by-nc-nd/3.0/80x15.png" style="display: unset;">
+    </a>
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ZiTe</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zite-honmonoh","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/uploads/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300italic,400,400italic,700,700italic%7CNoto+Sans+TC:300,300italic,400,400italic,700,700italic%7CFira+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ziteh.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}},"activeClass":"disqus"},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="稍微整理了一下我自己習慣的 C 語言 Coding style。這些規則只是我自己的喜好。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C 語言 Coding Style 規範">
+<meta property="og:url" content="https://ziteh.github.io/posts/c-style1/index.html">
+<meta property="og:site_name" content="ZiTe 本物志">
+<meta property="og:description" content="稍微整理了一下我自己習慣的 C 語言 Coding style。這些規則只是我自己的喜好。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2024-05-24T22:55:00.000Z">
+<meta property="article:modified_time" content="2024-06-22T08:56:19.868Z">
+<meta property="article:author" content="ZiTe">
+<meta property="article:tag" content="心得">
+<meta property="article:tag" content="程式">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://ziteh.github.io/posts/c-style1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://ziteh.github.io/posts/c-style1/","path":"posts/c-style1/","title":"C 語言 Coding Style 規範"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>C 語言 Coding Style 規範 | ZiTe 本物志</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZiTe 本物志</p>
+      <i class="logo-line"></i>
+      <p class="site-subtitle" itemprop="description">一位慢步於程式、電路與文學之人的學習記錄與分享</p>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-folder-open fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B0%A1%E8%BF%B0"><span class="nav-text">簡述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#a-%E5%AE%9A%E7%BE%A9"><span class="nav-text">A. 定義</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#b-%E9%80%9A%E5%89%87"><span class="nav-text">B. 通則</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#c-%E5%87%BD%E6%95%B8%EF%BC%88function%EF%BC%89"><span class="nav-text">C. 函數（Function）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#d-%E8%AE%8A%E6%95%B8%EF%BC%88variable%EF%BC%89"><span class="nav-text">D. 變數（Variable）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#e-%E8%B3%87%E6%96%99%E5%9E%8B%E5%88%A5%EF%BC%88data-type%EF%BC%89"><span class="nav-text">E. 資料型別（Data Type）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#f-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="nav-text">F. 流程控制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#g-%E9%A0%90%E8%99%95%E7%90%86%E5%99%A8%EF%BC%88preprocessor%EF%BC%89"><span class="nav-text">G. 預處理器（Preprocessor）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#h-%E8%A8%BB%E8%A7%A3"><span class="nav-text">H. 註解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#i-%E7%A9%BA%E7%99%BD"><span class="nav-text">I. 空白</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%99%84%E9%8C%84"><span class="nav-text">附錄</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#q-a"><span class="nav-text">Q&amp;A</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%B2%E4%BD%95%E6%89%80%E6%9C%89%E7%9A%84%E8%8A%B1%E6%8B%AC%E8%99%9F-%E9%83%BD%E4%B8%8D%E6%8F%9B%E8%A1%8C%EF%BC%9F%E7%88%B2%E4%BD%95%E4%B8%8D%E6%98%AF-allman-%E9%A2%A8%E6%A0%BC%EF%BC%9F"><span class="nav-text">爲何所有的花括號 {} 都不換行？爲何不是 Allman 風格？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%B2%E4%BD%95%E8%A6%81%E4%BD%BF%E7%94%A8-void-%E6%8D%A8%E6%A3%84%E9%9D%9E-void-%E7%9A%84%E5%87%BD%E6%95%B8%E5%9B%9E%E5%82%B3%E5%80%BC%EF%BC%9F"><span class="nav-text">爲何要使用 (void) 捨棄非 void 的函數回傳值？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%B2%E4%BB%80%E9%BA%BC%E5%87%BD%E6%95%B8%E7%9A%84%E5%8F%83%E6%95%B8%E5%8F%AA%E8%83%BD%E6%9C%89%E5%85%A8%E9%83%A8%E5%90%8C%E8%A1%8C%E5%92%8C%E5%85%A8%E9%83%A8%E4%B8%8D%E5%90%8C%E8%A1%8C%E5%85%A9%E7%A8%AE%EF%BC%9F"><span class="nav-text">爲什麼函數的參數只能有全部同行和全部不同行兩種？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%B8%AE%E5%AF%AB%E4%B8%8D%E6%9C%83%E5%BD%B1%E9%9F%BF%E9%96%B1%E8%AE%80%E5%92%8C%E5%88%A4%E6%96%B7%E5%97%8E%EF%BC%9F"><span class="nav-text">使用縮寫不會影響閱讀和判斷嗎？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%B2%E4%BD%95-switch-case-%E7%9A%84%E6%9C%80%E5%BE%8C%E4%B8%80%E5%80%8B%E6%A1%88%E4%BE%8B%E4%B9%9F%E8%A6%81%E5%8A%A0-break%EF%BC%9F"><span class="nav-text">爲何 switch-case 的最後一個案例也要加 break？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%B2%E4%BD%95%E4%BD%BF%E7%94%A8%E8%8A%B1%E6%8B%AC%E8%99%9F%E7%9A%84-switch-case-%E7%9A%84-break-%E8%A6%81%E5%9C%A8%E5%85%B6%E5%A4%96%EF%BC%9F"><span class="nav-text">爲何使用花括號的 switch-case 的 break 要在其外？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%B2%E4%BD%95-typedef-%E8%A6%81%E5%8A%A0%E4%B8%8A%E5%BE%8C%E7%B6%B4%EF%BC%9F"><span class="nav-text">爲何 typedef 要加上後綴？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%B2%E4%BD%95%E8%A6%81%E7%88%B2%E6%8C%87%E6%A8%99%E5%8A%A0%E4%B8%8A%E5%BE%8C%E7%B6%B4%EF%BC%9F"><span class="nav-text">爲何要爲指標加上後綴？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%B2%E4%BD%95-const-%E5%8F%AA%E5%9C%A8%E5%85%A8%E5%9F%9F%E6%89%8D%E5%AF%A6%E6%96%BD%E5%A4%A7%E5%AF%AB%E8%9B%87%E5%BD%A2%EF%BC%8C%E8%80%8C%E5%8D%80%E5%9F%9F%E8%AE%8A%E6%95%B8%E3%80%81%E6%88%90%E5%93%A1%E5%92%8C%E5%8F%83%E6%95%B8%E4%B8%8D%E5%AF%A6%E6%96%BD%EF%BC%9F"><span class="nav-text">爲何 const 只在全域才實施大寫蛇形，而區域變數、成員和參數不實施？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%B2%E4%BD%95%E8%A6%81%E7%94%A8-const-%E5%85%A8%E5%9F%9F%E5%B8%B8%E6%95%B8%E5%8F%96%E4%BB%A3-define%EF%BC%9F"><span class="nav-text">爲何要用 const 全域常數取代 #define？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%B2%E4%BD%95%E8%A6%81%E7%94%A8-inline-%E5%8F%96%E4%BB%A3-define-%E5%B7%A8%E9%9B%86%EF%BC%9F"><span class="nav-text">爲何要用 inline 取代 #define 巨集？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%B2%E4%BD%95%E6%A8%99%E9%A0%AD%E6%AA%94%E7%9A%84-c-%E6%AA%A2%E6%9F%A5%E4%B8%8D%E6%98%AF%E5%BF%85%E9%A0%88%EF%BC%9F"><span class="nav-text">爲何標頭檔的 C++ 檢查不是必須？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%B2%E4%BD%95-endif-%E5%BE%8C%E4%B8%8D%E5%8A%A0%E5%B0%8D%E6%87%89%E9%96%8B%E9%A0%AD%E7%9A%84%E8%A8%BB%E8%A7%A3%EF%BC%9F"><span class="nav-text">爲何 #endif 後不加對應開頭的註解？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%8B%95%E6%A0%BC%E5%BC%8F%E5%8C%96"><span class="nav-text">自動格式化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#doxygen"><span class="nav-text">Doxygen</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83"><span class="nav-text">參考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a href="/about/" title="About">
+      <img class="site-author-image" itemprop="image" alt="ZiTe"
+        src="/uploads/avatar.png">
+    <p class="site-author-name" itemprop="name">ZiTe</p>
+    <div class="site-description" itemprop="description"></div>
+  </a>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ziteh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ziteh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/@siderakb" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;@siderakb" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://siderakb.github.io/" title="SideraKB → https:&#x2F;&#x2F;siderakb.github.io&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-keyboard fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:honmonoh@gmail.com" title="E-Mail → mailto:honmonoh@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="回到頂端">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ziteh.github.io/posts/c-style1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="ZiTe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="C 語言 Coding Style 規範 | ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+          
+          <div class="post-tags">
+              <a href="/tags/%E5%BF%83%E5%BE%97/" rel="tag"> 心得</a>
+              <a href="/tags/%E7%A8%8B%E5%BC%8F/" rel="tag"> 程式</a>
+          </div>
+
+        <h1 class="post-title" itemprop="name headline">
+          C 語言 Coding Style 規範
+        </h1>
+          <h3 class="post-subtitle">我的編程風格
+          </h3>
+
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      
+      
+
+      <time title="創建時間：2024-05-25 06:55:00" itemprop="dateCreated datePublished" datetime="2024-05-25T06:55:00+08:00">2024-05-25</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>稍微整理了一下我自己習慣的 C 語言 Coding style。這些規則只是我自己的喜好。</p>
+<span id="more"></span>
+
+<h1 id="簡述"><a href="#簡述" class="headerlink" title="簡述"></a>簡述</h1><ol>
+<li>所有的左右花括號 <code>&#123; &#125;</code> 都不換行。</li>
+<li>縮排使用 4 個空白，而非 <code>Tab</code> 字元。</li>
+<li>僅 <code>const</code> 全域常數、<code>#define</code> 巨集常數和巨集這三者使用大寫蛇形（<code>SCREAMING_SNAKE_CASE</code>），其餘全部使用蛇形（<code>snake_case</code>）命名風格。</li>
+<li>全域範圍命名偏好用更多文字描述，區域範圍的命名偏好簡短。</li>
+<li>使用常見的縮寫，但不能打破命名風格。</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> LOOP_TIMEOUT = <span class="number">1000</span>;</span><br><span class="line"><span class="type">char</span> tx_buffer[<span class="number">128</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> id_number;</span><br><span class="line">&#125; <span class="type">human_info_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">do_something</span><span class="params">(<span class="type">int</span> my_param)</span> &#123;</span><br><span class="line">    <span class="type">int</span> local_var = my_param;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">    do_something(<span class="number">0xF3</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (foo &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        bar = <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        bar = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;  <span class="comment">// Main loop</span></span><br><span class="line">        bar++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="a-定義"><a href="#a-定義" class="headerlink" title="A. 定義"></a>A. 定義</h1><p>提及這些關鍵字時會以粗體標示。</p>
+<ol>
+<li>強度：以下特定關鍵字按照 <a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc2119">RFC2119</a> 中的描述解釋。<ul>
+<li><strong>必須</strong>：MUST</li>
+<li><strong>不允許</strong>：MUST NOT</li>
+<li><strong>應該</strong>：SHOULD</li>
+<li><strong>不應該</strong>：SHOULD NOT</li>
+<li><strong>可以</strong>：MAY</li>
+</ul>
+</li>
+<li>命名風格：皆爲<strong>必須</strong>。<ul>
+<li><strong>蛇型</strong>（Snake case）：<code>snake_case</code>、<code>the_name</code></li>
+<li><strong>大寫蛇型</strong>（Screaming snake case）：<code>SCREAMING_SNAKE_CASE</code>、<code>THE_NAME</code></li>
+</ul>
+</li>
+<li>命名偏好：皆爲<strong>應該</strong>。<ul>
+<li><strong>具描述性</strong>：代表用更多文字精確描述。</li>
+<li><strong>簡潔有力</strong>：代表盡可能簡短。</li>
+</ul>
+</li>
+</ol>
+<h1 id="b-通則"><a href="#b-通則" class="headerlink" title="B. 通則"></a>B. 通則</h1><ol>
+<li>縮排<strong>必須</strong>使用 4 個空白（<code>Space</code>），<strong>不允許</strong>用 <code>Tab</code> 字元。（建議設定爲軟 Tab，即按 Tab 出空白）</li>
+<li>任何左&#x2F;右花括號 <code>&#123; &#125;</code> 都<strong>必須</strong>置於同一行，並縮進其內容一次，即 LLVM 或（類）K&amp;R Coding style。</li>
+<li>任何名稱都…<ol>
+<li><strong>不允許</strong>加上單&#x2F;雙底線（<code>_</code> 或 <code>__</code>）的前&#x2F;後綴。</li>
+<li><strong>不允許</strong>使用阿拉伯數字作爲開頭。</li>
+<li><strong>可以</strong>使用<em>常見</em>的縮寫，<em>常見</em>代表這個縮寫（在此專業領域內）同時滿足：不會造成歧義、一目瞭然、足夠通用。但是需要注意<strong>不允許</strong>打破命名風格規則。</li>
+</ol>
+</li>
+<li>16 進制數的數值部分的英文<strong>必須</strong>爲大寫，如：<code>0x3A</code>、<code>0xFF8D</code>。</li>
+<li>描述陣列的名稱<strong>應該</strong>使用複數形、集合名詞或容器等可以表示多個的名詞。</li>
+<li>在需要區分的場合，指標<strong>可以</strong>加上 <code>_p</code> 後綴。</li>
+<li><strong>應該</strong>盡可能使用 <code>const</code> 常數取代巨集常數 <code>#define</code>。</li>
+<li><strong>應該</strong>盡可能使用 <code>inline</code> 取代巨集 <code>#define</code>。</li>
+<li>如果呼叫的函數有非 <code>void</code> 回傳值，但你不需要用到它時，<strong>應該</strong>使用 <code>(void)</code> 明確地捨棄它。</li>
+<li>檔案名稱<strong>必須</strong>使用<strong>蛇形</strong>，副檔名<strong>必須</strong>爲小寫。</li>
+<li>檔案末行<strong>必須</strong>有一個換行符號。</li>
+<li>特別對於嵌入式應用，<strong>應該</strong>使用明確大小和有無號的型別，例如 <code>uint8_t</code>。</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">    <span class="type">char</span> rx_buf[<span class="number">32</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (cnt &gt; <span class="number">0xF3</span>) &#123;</span><br><span class="line">        <span class="comment">// Do somethings</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (cnt &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// Do somethings</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// Do somethings</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        (<span class="type">void</span>)my_function(cnt);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">my_function</span><span class="params">(<span class="type">int</span> param)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> param;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>縮寫例如：</p>
+<ul>
+<li>使用 <code>len</code> 代表 <code>length</code>。此縮寫在 C 語言中足夠<em>常見</em>。</li>
+<li>使用 <code>buf</code> 代表 <code>buffer</code>。此縮寫在 C 語言中足夠<em>常見</em>。</li>
+<li>使用 <code>isr</code> 代表 <code>interrupt_service_routine</code>。此縮寫在嵌入式領域中足夠<em>常見</em>。</li>
+</ul>
+<p>縮寫名稱<strong>不允許</strong>打破命名風格。例如：</p>
+<ul>
+<li>使用<code>ip_address</code> 而非 <code>IP_address</code></li>
+<li>使用 <code>uart_send</code> 而非 <code>UART_send</code>。</li>
+</ul>
+<h1 id="c-函數（function）"><a href="#c-函數（function）" class="headerlink" title="C. 函數（Function）"></a>C. 函數（Function）</h1><ol>
+<li>函數名稱<strong>必須</strong>使用<strong>蛇型</strong>風格，命名<strong>應該</strong>偏好<strong>具描述性</strong>。</li>
+<li>參數（Parameter）<ol>
+<li>名稱<strong>必須</strong>使用<strong>蛇形</strong>風格，命名<strong>應該</strong>偏好<strong>簡潔有力</strong>，爲名詞。</li>
+<li>若指標形式的參數不會或不應該在函數內變更，<strong>必須</strong>加上 <code>const</code>。</li>
+<li>無參數的函數也<strong>必須</strong>要補上 <code>void</code>。</li>
+<li>所有的參數<strong>必須</strong>要全部都在同一行或都在不同行，<strong>不允許</strong>有些在同行、有些獨立一行。</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// OK</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">timer_setup</span><span class="params">(<span class="type">void</span>)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">module_is_enabled</span><span class="params">(<span class="type">void</span>)</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">uart1_send</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* data, <span class="type">size_t</span> len)</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">foobar</span><span class="params">(<span class="type">int</span> long_param)</span> &#123;</span><br><span class="line">    <span class="type">int</span> foo = long_param;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">loooooooooooooooooooooooooooooooooong_function</span><span class="params">(</span></span><br><span class="line"><span class="params">    <span class="type">int</span> param1, <span class="type">int</span> param2, <span class="type">int</span> param3</span></span><br><span class="line"><span class="params">)</span> &#123;</span><br><span class="line">    <span class="type">int</span> foo = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">loooooooooooooooooooooooooooooooooong_function</span><span class="params">(</span></span><br><span class="line"><span class="params">    <span class="type">int</span> param1,</span></span><br><span class="line"><span class="params">    <span class="type">int</span> param2,</span></span><br><span class="line"><span class="params">    <span class="type">int</span> looooooooooooooooong_param3</span></span><br><span class="line"><span class="params">)</span> &#123;</span><br><span class="line">    <span class="type">int</span> foo = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Wrong</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">timer_setup</span><span class="params">()</span>;           <span class="comment">// 遺失 `void`</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">loooooooooooooooooooooooooooooooooong_function</span><span class="params">(</span></span><br><span class="line"><span class="params">    <span class="type">int</span> param1, <span class="type">int</span> param2,   <span class="comment">// 只要有一個參數換行，那所有的參數都需要獨立一行</span></span></span><br><span class="line"><span class="params">    <span class="type">int</span> looooooooooooooooong_param3</span></span><br><span class="line"><span class="params">)</span> &#123;</span><br><span class="line">    <span class="type">int</span> foo = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="d-變數（variable）"><a href="#d-變數（variable）" class="headerlink" title="D. 變數（Variable）"></a>D. 變數（Variable）</h1><ol>
+<li>全域範圍<ol>
+<li>一般全域變數名稱<strong>必須</strong>使用<strong>蛇形</strong>風格，命名<strong>應該</strong>偏好<strong>具描述性</strong>，爲名詞。</li>
+<li><code>const</code> 全域常數名稱<strong>必須</strong>使用<strong>大寫蛇形</strong>風格，命名<strong>應該</strong>偏好<strong>具描述性</strong>，爲名詞。</li>
+</ol>
+</li>
+<li>區域變數名稱<strong>必須</strong>使用<strong>蛇形</strong>風格，命名<strong>應該</strong>偏好<strong>簡潔有力</strong>，爲名詞。</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// OK</span></span><br><span class="line"><span class="type">int</span> uart1_rx_index = <span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> analog_channels[<span class="number">5</span>];</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> UART1_BAUDRATE = <span class="number">9600</span>;</span><br><span class="line"><span class="type">static</span> <span class="type">const</span> <span class="type">int</span> UART1_TIMEOUT = <span class="number">10000</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">func</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">    <span class="type">int</span> tmp = <span class="number">0</span>;</span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> cnt;</span><br><span class="line">    <span class="type">char</span> rx_buf[<span class="number">16</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Wrong</span></span><br><span class="line"><span class="type">int</span> rx_i = <span class="number">0</span>;            <span class="comment">// 太短</span></span><br><span class="line"><span class="type">int</span> UART1_rx_index = <span class="number">0</span>;  <span class="comment">// 縮寫不能打破命名風格規則，即使是首字母縮寫</span></span><br><span class="line"><span class="type">int</span> analog_channel[<span class="number">5</span>];   <span class="comment">// 在陣列使用複數形、集合名稱或容器</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">func</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> CNT;      <span class="comment">// `static` 不會改變命名風格</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="e-資料型別（data-type）"><a href="#e-資料型別（data-type）" class="headerlink" title="E. 資料型別（Data Type）"></a>E. 資料型別（Data Type）</h1><ol>
+<li>列舉（Enum）、結構（Struct）與聯合（Union）<ol>
+<li>本身的名稱<strong>必須</strong>使用<strong>蛇型</strong>風格，命名<strong>應該</strong>偏好<strong>具描述性</strong>，爲名詞。</li>
+<li>成員的名稱<strong>必須</strong>使用<strong>蛇形</strong>風格，命名<strong>應該</strong>偏好<strong>簡潔有力</strong>，爲名詞。</li>
+<li>多行形式下，最後一個成員<strong>必須</strong>加上尾隨逗號（Trailing comma）。</li>
+</ol>
+</li>
+<li>使用 <code>typedef</code> 定義的…<ol>
+<li>型別名稱要加上 <code>_t</code> 後綴。</li>
+<li>函數指標名稱要加上 <code>_fn</code> 後綴。</li>
+</ol>
+</li>
+<li>Enum 的成員名稱<strong>可以</strong>加上某些統一的前綴，以避免與其它 Enum 成員重複。</li>
+<li>Struct 的成員…<ol>
+<li>如果其值不會或不應該改變的話，<strong>必須</strong>加上 <code>const</code>。</li>
+<li>視情況使用 bit-field。</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// OK</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">human_info</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">    <span class="type">int</span> id;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">enum</span> &#123;</span></span><br><span class="line">    key_release = <span class="number">0</span>,</span><br><span class="line">    key_debounce,</span><br><span class="line">    key_accept,</span><br><span class="line">&#125; <span class="type">key_stage_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">union</span> <span class="title">control_reg</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">        <span class="type">int</span> bit1: <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> bit2: <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> bit34: <span class="number">2</span>;</span><br><span class="line">        <span class="type">const</span> <span class="type">int</span> unused: <span class="number">7</span>;</span><br><span class="line">    &#125; bits;</span><br><span class="line">    <span class="type">int</span> byte;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="title function_">int</span> <span class="params">(*event_callback_fn)</span><span class="params">(<span class="type">int</span> long_param)</span>;</span><br></pre></td></tr></table></figure>
+
+<h1 id="f-流程控制"><a href="#f-流程控制" class="headerlink" title="F. 流程控制"></a>F. 流程控制</h1><ol>
+<li><code>switch-case</code> 語法的 <code>case</code> 或 <code>default</code> <strong>不允許</strong>縮排。其內容<strong>必須</strong>要縮排。</li>
+<li><code>switch-case</code> 語法的最後一個 <code>case</code> 或 <code>default</code> 也<strong>必須</strong>要加上 <code>break</code>，即使它在語法上是可以省略的。</li>
+<li>如果要在 <code>case</code> 或 <code>default</code> 中加入花括號，且該區塊末的 <code>break</code> <strong>必須</strong>放在其外。</li>
+<li>總是<strong>必須</strong>明確地加上 <code>default</code>，即使它的內容爲空。</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">function</span><span class="params">(<span class="type">int</span> param)</span> &#123;</span><br><span class="line">    <span class="type">int</span> foo;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">switch</span> (param) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">        foo = <span class="number">100</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">        foo = <span class="number">250</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">-1</span>: &#123;</span><br><span class="line">        foo = <span class="number">-99</span>;</span><br><span class="line">    &#125; <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="g-預處理器（preprocessor）"><a href="#g-預處理器（preprocessor）" class="headerlink" title="G. 預處理器（Preprocessor）"></a>G. 預處理器（Preprocessor）</h1><ol>
+<li>巨集常數（Macro constants，以 <code>#define</code> 定義的值）<ol>
+<li>名稱<strong>必須</strong>使用<strong>大寫蛇形</strong>風格，命名<strong>應該</strong>偏好<strong>具描述性</strong>，爲名詞。</li>
+<li>值<strong>必須</strong>使用括號 <code>()</code> 包圍，以避免展開錯誤。</li>
+<li><strong>可以</strong>加上強制轉型（Casting）作爲型別標記。</li>
+</ol>
+</li>
+<li>巨集（Macro）<ol>
+<li>本身的名稱<strong>必須</strong>使用<strong>大寫蛇形</strong>風格，命名<strong>應該</strong>偏好<strong>具描述性</strong>。</li>
+<li>參數的名稱<strong>必須</strong>使用<strong>蛇形</strong>風格，命名<strong>應該</strong>偏好<strong>簡潔有力</strong>（更甚至使用單一字母）。</li>
+<li>所有參數皆<strong>必須</strong>使用括號 <code>()</code> 包圍，以避免展開錯誤。</li>
+<li>複雜（內有邏輯處理）的巨集<strong>應該</strong>使用 <code>do-while(0)</code> 包圍，確保讓編譯器將其解釋爲一個獨立的 Block。</li>
+<li><strong>可以</strong>加上強制轉型（Casting）作爲型別標記。</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// OK</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> UART_RX_PIN   (GPIO5)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> UART_BAUDRATE ((uint16_t)19200)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ADD2(a, b)          ((a) + (b))</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FOO_BAR(foo_bar)    (foo_bar++)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Wrong</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> UART_RX_PIN  GPIO5           <span class="comment">// 遺失括號包圍</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ADD2(a, b)          (a + b)  <span class="comment">// 參數遺失括號包圍</span></span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><code>#endif</code> 後<strong>不應該</strong>加上用於標註其對應的開頭的註解。</li>
+<li>所有 <code>.h</code> 標頭檔皆<strong>必須</strong>有引用保護（Include Guard）。<ol>
+<li>若使用的編譯器支援 <code>#pragma once</code> 則優先使用，否則使用預處理器達成，其格式爲：</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// @file my_file.h</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> MY_FILE_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MY_FILE_H</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Your code</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>視情況而定，<strong>可以</strong>加入 C++ 檢查。格式爲：</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// @file my_file.h</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> MY_FILE_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MY_FILE_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;something.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> __cplusplus</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> &#123;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Your code</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> __cplusplus</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<h1 id="h-註解"><a href="#h-註解" class="headerlink" title="H. 註解"></a>H. 註解</h1><ol>
+<li>所有註解句子的第一個字<strong>必須</strong>要大寫，除非句子的開頭不是英文。</li>
+<li>一般註解<strong>必須</strong>使用單行註解形式，即雙斜線，即使它會寫成多行的形式。行末<strong>不允許</strong>加句號，即使行中有其它標點符號。<ol>
+<li><em>例外</em>：帶有特殊功能的註解<strong>必須</strong>使用多行註解形式，例如 <code>/* clang-format off */</code>。</li>
+</ol>
+</li>
+<li>文件註解<strong>必須</strong>使用 Doxygen 的三斜線 <code>///</code> 註解形式。如果是描述性的句子，各行末<strong>必須</strong>加句號。<ol>
+<li><em>例外</em>：URL 網址或檔案名等特殊字段行末<strong>不允許</strong>加句號，以避免感染閱讀或複製。</li>
+</ol>
+</li>
+<li>對於檔案的 Doxygen 格式<strong>必須</strong>遵守以下規則與順序：<ol>
+<li>使用 <code>@file &lt;FILENAME&gt;</code> 標記此檔案的名稱。</li>
+<li>使用 <code>@brief &lt;TEXT&gt;</code> 簡述此檔案。</li>
+<li>使用 <code>@attention &lt;TEXT&gt;</code> 描述特別需要注意的事情。</li>
+<li>使用 <code>@author &lt;NAME&gt;</code> 標記作者。<strong>可以</strong>在作者的名字後面加上以角括號 <code>&lt; &gt;</code> 包圍的 Email。</li>
+<li>使用 <code>@copyright &lt;LICENSE&gt;</code> 標記此檔案的授權許可。<code>&lt;LICENSE&gt;</code> <strong>應該</strong>使用 <code>SPDX-License-Identifier: &lt;SPDX_ID&gt;</code> 這樣的格式，除非此授權不在 <a target="_blank" rel="noopener" href="https://spdx.org/licenses/">SPDX</a> 內。或是嵌入授權許可的所有內容。</li>
+<li>使用 <code>@note &lt;TEXT&gt;</code> 寫其它說明，尤其是段落性質的筆記。</li>
+</ol>
+</li>
+<li>對於函數的 Doxygen 格式<strong>必須</strong>遵守以下規則與順序：<ol>
+<li>使用 <code>@brief &lt;TEXT&gt;</code> 簡述此函數。</li>
+<li>使用 <code>@note &lt;TEXT&gt;</code> 寫其它說明，尤其是段落性質的筆記。</li>
+<li>使用 <code>@param &lt;NAME&gt; &lt;TEXT&gt;</code> 描述各個參數。<strong>可以</strong>使用下述帶資料方向標記的版本。</li>
+<li>使用 <code>@param[&lt;DIR&gt;] &lt;NAME&gt; &lt;TEXT&gt;</code> 描述帶有方向的各個參數。<code>[&lt;DIR&gt;]</code> <strong>必須</strong>是 <code>[in]</code>、<code>[out]</code>或 <code>[in, out]</code>。</li>
+<li>使用 <code>@return &lt;TEXT&gt;</code> 描述函數的回傳值。</li>
+</ol>
+</li>
+<li>對於全域變數、常數的 Doxygen 格式<strong>必須</strong>遵守以下規則與順序：<ol>
+<li>使用 <code>@brief &lt;TEXT&gt;</code> 簡述此變數或常數。</li>
+<li>使用 <code>@note &lt;TEXT&gt;</code> 寫其它說明，尤其是段落性質的筆記。</li>
+</ol>
+</li>
+<li>如果是段落性質的 Doxygen 文字，換行後<strong>必須</strong>要保持縮排。</li>
+<li>Doxygen 文字<strong>可以</strong>使用 Markdown 語法.</li>
+<li><strong>不允許</strong> 結構化註解，例如：<code>// ########## //</code></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// @file foobar.c</span></span><br><span class="line"><span class="comment">/// @brief Awesome code.</span></span><br><span class="line"><span class="comment">/// @author ZiTe &lt;honmonoh@gmail.com&gt;</span></span><br><span class="line"><span class="comment">/// @copyright SPDX-License-Identifier: MIT</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/// @brief Comment, comment and comment.</span></span><br><span class="line"><span class="type">uint8_t</span> foobar = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// @brief Do something, doc comment end with a period.</span></span><br><span class="line"><span class="comment">///        Url without period: https://github.com/git/git</span></span><br><span class="line"><span class="comment">///</span></span><br><span class="line"><span class="comment">/// @param data A pointer to the data.</span></span><br><span class="line"><span class="comment">/// @param len The length of data.</span></span><br><span class="line"><span class="comment">/// @return 0 if successful, otherwise an error code.</span></span><br><span class="line"><span class="type">uint16_t</span> <span class="title function_">do_something</span><span class="params">(<span class="type">const</span> <span class="type">uint8_t</span> *data, <span class="type">uint16_t</span> len)</span> &#123;</span><br><span class="line">    <span class="comment">// Multi line comment</span></span><br><span class="line">    <span class="comment">// foo, bar</span></span><br><span class="line">    <span class="type">uint8_t</span> val = *data;  <span class="comment">// Without period</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;             <span class="comment">// Success</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// @brief Copies the values of `len` bytes from `src` to `des`.</span></span><br><span class="line"><span class="comment">///</span></span><br><span class="line"><span class="comment">/// @param[out] des Pointer to the destination array.</span></span><br><span class="line"><span class="comment">/// @param[in] src Pointer to the source of data.</span></span><br><span class="line"><span class="comment">/// @param[in] len Number of bytes to copy.</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">array_copy</span><span class="params">(<span class="type">uint8_t</span> *des, <span class="type">const</span> <span class="type">uint8_t</span> *src, <span class="type">uint16_t</span> len)</span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="i-空白"><a href="#i-空白" class="headerlink" title="I. 空白"></a>I. 空白</h1><ol>
+<li>如果註解前有程式碼，<strong>必須</strong>間隔 2 個空白。</li>
+<li>函數（包含宣告、定義、呼叫）和 <code>sizeof</code> 運算子的左圓括號前<strong>不允許</strong>插入空白，其餘都<strong>必須</strong>在前有 1 個空白。</li>
+<li>右圓括號前<strong>不允許</strong>插入空白。</li>
+<li>若逗號 <code>,</code> 或分號 <code>;</code> 前<strong>不允許</strong>插入空白，若其後還有其它內容，其後<strong>必須</strong>有 1 個空白。除了三元運算子以外的冒號 <code>:</code> 也套用此規則。</li>
+<li>除了下述的運算子與其它數值或變數間<strong>必須</strong>有 1 個空白、以及 <code>sizeof</code> 運算子套用函數規則外，其餘運算子與數值或變數之間<strong>不允許</strong>有空白。<ol>
+<li>三元條件 <code>? :</code>。</li>
+<li>各種賦值：<code>=</code>, <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>%=</code>, <code>&lt;&lt;=</code>, <code>=&gt;&gt;</code>, <code>&amp;=</code>, <code>|=</code>, <code>^=</code>。</li>
+<li>邏輯 AND <code>&amp;&amp;</code>，邏輯 OR <code>||</code>。</li>
+<li>位元 AND <code>&amp;</code>，位元 OR <code>|</code>，位元 XOR <code>^</code>。</li>
+<li>各種關係：<code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>。</li>
+<li>左移 <code>&lt;&lt;</code>，右移 <code>&gt;&gt;</code>。</li>
+<li>基本運算的：<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>。</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">func</span><span class="params">(<span class="type">uint8_t</span> p1, <span class="type">uint8_t</span> p2)</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">    func(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">    <span class="type">uint8_t</span> len = <span class="keyword">sizeof</span>(foobar);</span><br><span class="line">    <span class="type">uint8_t</span> a = <span class="number">1</span> + <span class="number">2</span>;</span><br><span class="line">    <span class="type">uint8_t</span> b = <span class="number">1</span> + (<span class="number">1</span> * <span class="number">10</span>) % (len / (a * <span class="number">3.14</span>));</span><br><span class="line">    ++a;</span><br><span class="line">    <span class="keyword">if</span> (a);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">uint8_t</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++);</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>);  <span class="comment">// Main loop</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="附錄"><a href="#附錄" class="headerlink" title="附錄"></a>附錄</h1><h2 id="q-a"><a href="#q-a" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h2><h3 id="爲何所有的花括號-都不換行？爲何不是-allman-風格？"><a href="#爲何所有的花括號-都不換行？爲何不是-allman-風格？" class="headerlink" title="爲何所有的花括號 {} 都不換行？爲何不是 Allman 風格？"></a>爲何所有的花括號 <code>&#123;&#125;</code> 都不換行？爲何不是 Allman 風格？</h3><p>因爲：<a href="/posts/c-kr-style/">C 語言用 K&amp;R Coding Style 的最大理由不是省行數</a></p>
+<h3 id="爲何要使用-void-捨棄非-void-的函數回傳值？"><a href="#爲何要使用-void-捨棄非-void-的函數回傳值？" class="headerlink" title="爲何要使用 (void) 捨棄非 void 的函數回傳值？"></a>爲何要使用 <code>(void)</code> 捨棄非 <code>void</code> 的函數回傳值？</h3><p>爲了明確表達你知道這個函數有回傳值，但是你不需要它，因爲很多情況下函數的回傳值會是錯誤代碼之類的。</p>
+<blockquote>
+<p>這是來自 Rust 的啓發。<br><a target="_blank" rel="noopener" href="https://stackoverflow.com/a/3998815">Casting function returns to void</a></p>
+</blockquote>
+<h3 id="爲什麼函數的參數只能有全部同行和全部不同行兩種？"><a href="#爲什麼函數的參數只能有全部同行和全部不同行兩種？" class="headerlink" title="爲什麼函數的參數只能有全部同行和全部不同行兩種？"></a>爲什麼函數的參數只能有全部同行和全部不同行兩種？</h3><ol>
+<li>保持規則單純。</li>
+<li>參數寫成多行的情況表示此函數的參數有一定的複雜性（無論是數量還是名稱），各自獨立一行更方便閱讀和修改。</li>
+</ol>
+<blockquote>
+<p>這是來自 Rust 的啓發。</p>
+</blockquote>
+<h3 id="使用縮寫不會影響閱讀和判斷嗎？"><a href="#使用縮寫不會影響閱讀和判斷嗎？" class="headerlink" title="使用縮寫不會影響閱讀和判斷嗎？"></a>使用縮寫不會影響閱讀和判斷嗎？</h3><p>所以你只能使用常見、不會造成歧義和一目瞭然的縮寫。</p>
+<blockquote>
+<p>C is a Spartan language, and your naming conventions should follow suit. Unlike Modula-2 and Pascal programmers, C programmers do not use cute names like <code>ThisVariableIsATemporaryCounter</code>.<br>A C programmer would call that variable <code>tmp</code>, which is much easier to write, and not the least more difficult to understand.<br>– From <a target="_blank" rel="noopener" href="https://www.kernel.org/doc/html/v4.10/process/coding-style.html#naming">Linux kernel coding style</a></p>
+</blockquote>
+<h3 id="爲何-switch-case-的最後一個案例也要加-break？"><a href="#爲何-switch-case-的最後一個案例也要加-break？" class="headerlink" title="爲何 switch-case 的最後一個案例也要加 break？"></a>爲何 <code>switch-case</code> 的最後一個案例也要加 <code>break</code>？</h3><p>主要有兩個理由：1. 保持一致，2. 如果哪天修改了這些案例，明確的 <code>break</code> 是一種保護。</p>
+<p>讓我節錄一些看法：</p>
+<blockquote>
+<p>Refactorability. If all your branches end with break or return, you can reorder them without changing the meaning. This makes it less likely for such a reordering to introduce a regression.<br>– From @tdammers <a target="_blank" rel="noopener" href="https://softwareengineering.stackexchange.com/a/201786">Break on default case in switch</a></p>
+</blockquote>
+<blockquote>
+<p>As a matter of good form, put a break after the last case (the default here) even though it’s logically unnecessary. Some day when another case gets added at the end, this bit of defensive programming will save you.<br>– From <em>The C Programming Language, 2&#x2F;e</em>, <a target="_blank" rel="noopener" href="https://stackoverflow.com/a/26139061">Should we break the default case in switch statement?</a></p>
+</blockquote>
+<h3 id="爲何使用花括號的-switch-case-的-break-要在其外？"><a href="#爲何使用花括號的-switch-case-的-break-要在其外？" class="headerlink" title="爲何使用花括號的 switch-case 的 break 要在其外？"></a>爲何使用花括號的 <code>switch-case</code> 的 <code>break</code> 要在其外？</h3><p>絕大多數的情況下 <code>case</code> 都會以 <code>break</code> 結束，以避免執行了預期外的程式。某些較複雜的案例會使用花括號包圍，將 <code>break</code> 放在其外可以更明確地確認你沒有遺漏結尾的 <code>break</code>。</p>
+<h3 id="爲何-typedef-要加上後綴？"><a href="#爲何-typedef-要加上後綴？" class="headerlink" title="爲何 typedef 要加上後綴？"></a>爲何 <code>typedef</code> 要加上後綴？</h3><p>加上 <code>_t</code> 後綴是來自標準庫的習慣，實際上大多數的專案也延續了此規則，而且這樣可以明確知道這個是一種型別，而非變數等。</p>
+<p>指標函數加上 <code>_fn</code> 後綴是對於 <code>_t</code> 行爲的擴充。</p>
+<h3 id="爲何要爲指標加上後綴？"><a href="#爲何要爲指標加上後綴？" class="headerlink" title="爲何要爲指標加上後綴？"></a>爲何要爲指標加上後綴？</h3><p>因爲指標代表的是該數值的記憶體位置，而不是該數值本身。例如「台北101」和「台北市信義區信義路五段7號」，雖然後者可以指向前者，但它們在概念上終究不是完全一樣的。</p>
+<p>當然，這個後綴是可選的，請根據實際需求選擇。</p>
+<h3 id="爲何-const-只在全域才實施大寫蛇形，而區域變數、成員和參數不實施？"><a href="#爲何-const-只在全域才實施大寫蛇形，而區域變數、成員和參數不實施？" class="headerlink" title="爲何 const 只在全域才實施大寫蛇形，而區域變數、成員和參數不實施？"></a>爲何 <code>const</code> 只在全域才實施<strong>大寫蛇形</strong>，而區域變數、成員和參數不實施？</h3><p><code>const</code> 全域常數實施<strong>大寫蛇形</strong>是爲了替換&#x2F;取代&#x2F;兼容 <code>#define</code> 的巨集常數。使用 <code>#define</code> 定義值的名稱使用<strong>大寫蛇形</strong>是多數 C 專案的共同習慣，所以作爲替換的 <code>const</code> 全域常數也使用相同的規則（此規則甚至在其它語言也適用）。區域變數、成員和參數不實施是因爲它們本來就沒有「替換 <code>#define</code>」的這層意義與功能在。</p>
+<p>另外，爲了鼓勵使用者爲本來就不會也不該改變的值使用不可變變數（Immutable variable），<code>const</code> 區域變數、成員和參數不實施<strong>大寫蛇形</strong>，而是遵照原始規則，可以讓使用者不會爲了「避免程式碼出現一堆難看的全大寫」而進一步避免使用 <code>const</code>。所以如果你確定這個區域變數、成員或參數的值不會也不該改變，請考慮加上 <code>const</code>。這是來自 Rust 的一個啓發。</p>
+<blockquote>
+<p>you should use <code>const</code> wherever possible but for <em>maintainability reasons</em> &amp; <em>preventing yourself from doing stupid mistakes</em>.<br>– From <a target="_blank" rel="noopener" href="https://stackoverflow.com/a/10747948">Should I use const for local variables for better code optimization?</a></p>
+</blockquote>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://samtsai.org/2016/07/24/106-const-bian-shu-you-zhu-li-jie-cheng-shi-ma-bing-xie-zhu-bian-yi-qi-you-hua/">[106] const 變數有助理解程式碼並協助編譯器優化</a></p>
+</blockquote>
+<h3 id="爲何要用-const-全域常數取代-define？"><a href="#爲何要用-const-全域常數取代-define？" class="headerlink" title="爲何要用 const 全域常數取代 #define？"></a>爲何要用 <code>const</code> 全域常數取代 <code>#define</code>？</h3><p>實際上 <code>const</code> 和 <code>#define</code> 的處理方式不同。<code>#define</code> 是預處理器會使用「替換」的方式處理，<code>const</code> 是表明此變數不可變（在編譯期檢查）。</p>
+<p>使用 <code>const</code> 或 <code>#define</code> 對編譯出來的程式大小或效能並不會有差異，所以性能不是區分何時該使用這兩者的考量。</p>
+<p><code>const</code> 的好處是：</p>
+<ol>
+<li>明確型別，編譯器會對它進行型別檢查（有寫過動態型別語言的使用者應該很清楚這件事的好處），而 <code>#define</code> 只是單純的替換文字。</li>
+<li><code>const</code> 可以用 <code>static</code> 限制存取範圍，有助於封裝（Encapsulation），而 <code>#define</code> 基本上是跨檔案的。</li>
+<li>在一些 IDE 中，Debug 模式下是看不到 <code>#define</code> 的實際值的，而 <code>const</code> 可以。</li>
+</ol>
+<p>當然，如果有特殊需求（例如刻意不想進行型別檢查）或充分理由時，還是可以使用 <code>#define</code>。</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/a/6442372">What is the difference between #define and const?</a></p>
+</blockquote>
+<h3 id="爲何要用-inline-取代-define-巨集？"><a href="#爲何要用-inline-取代-define-巨集？" class="headerlink" title="爲何要用 inline 取代 #define 巨集？"></a>爲何要用 <code>inline</code> 取代 <code>#define</code> 巨集？</h3><p>基本上和「爲何要用 <code>const</code> 全域常數替換或取代 <code>#define</code>？」的理由類似。</p>
+<p><code>#define</code> 的特性單純是不會進行型別檢查。大多數情況下，我們總是喜歡型別檢查，這會把錯誤顯式的帶到編譯期而非執行期。也同樣的，如果你有刻意不想進行型別檢查（例如想要參數不限型別）的充分理由或需求的話，使用巨集。</p>
+<p>在可讀性上巨集也差很多。多行的 <code>#define</code> 要在行末加上 <code>\</code>，複雜的甚至還要使用 <code>do-while(0)</code> 包圍才可以確保編譯器將其解釋爲一個 Block。而 <code>inline</code> 函數就只是比一般的函數前面多一個修飾詞而已。當然，如果這個巨集足夠單純的話，使用巨集無可厚非，但是還是要注意巨集的非預期行爲。</p>
+<p>巨集可能在展開後出現非預期行爲。想像一下如何用巨集實現一個 <code>MAX(a, b)</code> 函數，它會比較兩個參數並回傳較大的那個。感覺很簡單？</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAX(a, b) (a) &gt; (b) ? (a) : (b)</span></span><br></pre></td></tr></table></figure>
+
+<p>實際上上面的寫法在某些情況下會有非預期行爲，這是比較實務的寫法（<a target="_blank" rel="noopener" href="https://hackmd.io/@sysprog/linux-macro-minmax">Linux 核心原始程式碼巨集: max, min</a>）：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAX(a, b) (&#123;     \</span></span><br><span class="line"><span class="meta">    typeof (a) _a = (a); \</span></span><br><span class="line"><span class="meta">    typeof (b) _b = (b); \</span></span><br><span class="line"><span class="meta">    _a &gt; _b ? _a : _b;   \</span></span><br><span class="line"><span class="meta">&#125;)</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/a/1137627">Inline functions vs Preprocessor macros</a></p>
+</blockquote>
+<h3 id="爲何標頭檔的-c-檢查不是必須？"><a href="#爲何標頭檔的-c-檢查不是必須？" class="headerlink" title="爲何標頭檔的 C++ 檢查不是必須？"></a>爲何標頭檔的 C++ 檢查不是<strong>必須</strong>？</h3><p>簡單來說，我認爲這違反 YAGNI（You Aren’t Gonna Need It，你不會需要它）原則。我認爲它可能是一種對於未來情況的假設。</p>
+<p>如果你知道或認爲這個程式<em>就是不會</em>被 C++ 使用，只會在純 C 中的話，那加入 C++ 檢查就是多餘且干擾的。我參與的專案中有很多都是嵌入式系統，它們基本上永遠都只會是純 C，完全沒有必要讓 C++ 檢查爲強制<strong>必須</strong>的，你自行判斷是否該加入。但是我認爲這個判定可以寬鬆一點，即只要稍微有一點會在 C++ 中使用的可能，那就可以加。</p>
+<h3 id="爲何-endif-後不加對應開頭的註解？"><a href="#爲何-endif-後不加對應開頭的註解？" class="headerlink" title="爲何 #endif 後不加對應開頭的註解？"></a>爲何 <code>#endif</code> 後不加對應開頭的註解？</h3><p>在 <code>#endif</code> 後面加對應的 <code>#if</code>&#x2F;<code>#ifdef</code>&#x2F;<code>#ifndef</code> 名稱的註解是很多 C 專案的習慣，例如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> MY_CODE_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MY_CODE_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> __cplusplus</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> &#123;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">/* __cplusplus */</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> __cplusplus</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">/* __cplusplus */</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">/* MY_CODE_H */</span></span></span><br></pre></td></tr></table></figure>
+
+<p>但是，對於使用 <code>#ifndef</code> 作引入保護的標頭檔，誰不知道最後一個 <code>#endif</code> 對應的是引入保護？又或者是 C++ 檢查的部分，它們各自也只有3行而已，一看就知道對應的開頭是哪個。而且如果中間有一個 <code>#elif</code> 的話呢？</p>
+<p>那如果是其它預處理器判斷式呢？我認爲，如果那些判斷式寫的很複雜或很多行（尤其無法在一個螢幕上顯示）的話，可以考慮加上註解。但同時也要優先考慮是否真的有必要使用這麼複雜或長的預處理器判斷式？</p>
+<p>就如同 Linux Kernel 風格的縮排使用 8 個空白，如果有人抱怨「用 8 個空白的話一下就縮排到最右邊了！」，那他們會回應：「不要讓你的程式碼使用超過 3 層縮排就不會有這個問題。如果你的程式超過 3 層，那代表它不夠簡潔，需要重新檢視」</p>
+<p>如果你有 N 個預處理器 Flag，那這個程式就有 2^N 種變化性（或著說狀態），這可能是難以掌握的。而且這是不是預處理或是檔案層級的單一職責問題？</p>
+<h2 id="自動格式化"><a href="#自動格式化" class="headerlink" title="自動格式化"></a>自動格式化</h2><p>推薦使用 <a target="_blank" rel="noopener" href="https://clang.llvm.org/docs/ClangFormat.html">clang-format</a> 工具來自動完成程式碼格式化（已整合在 VS Code <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools">C&#x2F;C++ 套件</a>中），這是 LLVM 專案下的開源工具。可以在 <a target="_blank" rel="noopener" href="https://clang-format-configurator.site/">Clang-format configurator v2</a> 網站測試並預覽格式化設定。</p>
+<p>參考設定檔 <code>.clang-format</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="comment"># clang-format v18.1.3</span></span><br><span class="line"></span><br><span class="line"><span class="attr">BasedOnStyle:</span> <span class="string">LLVM</span></span><br><span class="line"><span class="attr">Language:</span> <span class="string">Cpp</span></span><br><span class="line"><span class="attr">TabWidth:</span> <span class="number">4</span></span><br><span class="line"><span class="attr">IndentWidth:</span> <span class="number">4</span></span><br><span class="line"><span class="attr">AccessModifierOffset:</span> <span class="number">-4</span></span><br><span class="line"><span class="attr">ColumnLimit:</span> <span class="number">0</span></span><br><span class="line"><span class="attr">UseTab:</span> <span class="string">Never</span></span><br><span class="line"><span class="attr">SortIncludes:</span> <span class="string">Never</span></span><br><span class="line"><span class="attr">AlignAfterOpenBracket:</span> <span class="string">BlockIndent</span></span><br><span class="line"><span class="attr">AlignArrayOfStructures:</span> <span class="string">Left</span></span><br><span class="line"><span class="attr">AlignConsecutiveMacros:</span></span><br><span class="line">  <span class="attr">Enabled:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">AcrossComments:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">AlignEscapedNewlines:</span> <span class="string">Left</span></span><br><span class="line"><span class="attr">AlignOperands:</span> <span class="string">AlignAfterOperator</span></span><br><span class="line"><span class="attr">AllowShortBlocksOnASingleLine:</span> <span class="string">Always</span></span><br><span class="line"><span class="attr">AllowShortFunctionsOnASingleLine:</span> <span class="string">None</span></span><br><span class="line"><span class="attr">AllowShortIfStatementsOnASingleLine:</span> <span class="string">AllIfsAndElse</span></span><br><span class="line"><span class="attr">AllowShortLoopsOnASingleLine:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">BinPackArguments:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">BinPackParameters:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">BitFieldColonSpacing:</span> <span class="string">After</span></span><br><span class="line"><span class="attr">BreakBeforeBraces:</span> <span class="string">Custom</span></span><br><span class="line"><span class="attr">BraceWrapping:</span></span><br><span class="line">  <span class="attr">AfterCaseLabel:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">AfterClass:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">AfterControlStatement:</span> <span class="string">Never</span></span><br><span class="line">  <span class="attr">AfterEnum:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">AfterFunction:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">AfterNamespace:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">AfterObjCDeclaration:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">AfterStruct:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">AfterUnion:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">AfterExternBlock:</span> <span class="literal">true</span>  <span class="comment"># Make `IndentExternBlock: NoIndent` work. https://github.com/llvm/llvm-project/issues/49804</span></span><br><span class="line">  <span class="attr">BeforeCatch:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">BeforeElse:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">BeforeLambdaBody:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">BeforeWhile:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">IndentBraces:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">SplitEmptyFunction:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">SplitEmptyRecord:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">SplitEmptyNamespace:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">BreakBeforeBinaryOperators:</span> <span class="string">NonAssignment</span></span><br><span class="line"><span class="attr">CommentPragmas:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="attr">IncludeIsMainRegex:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="attr">IndentExternBlock:</span> <span class="string">NoIndent</span></span><br><span class="line"><span class="attr">IndentPPDirectives:</span> <span class="string">BeforeHash</span></span><br><span class="line"><span class="attr">InsertNewlineAtEOF:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">InsertTrailingCommas:</span> <span class="string">Wrapped</span></span><br><span class="line"><span class="attr">KeepEmptyLinesAtTheStartOfBlocks:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">LineEnding:</span> <span class="string">DeriveLF</span></span><br><span class="line"><span class="string">...</span></span><br></pre></td></tr></table></figure>
+
+<p>如果你使用的是 VS Code，也可以使用 key-value 格式直接設定（推薦設定在 <code>C_Cpp.clang_format_fallbackStyle</code> 內）：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span>BasedOnStyle<span class="punctuation">:</span> LLVM<span class="punctuation">,</span> Language<span class="punctuation">:</span> Cpp<span class="punctuation">,</span> TabWidth<span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span> IndentWidth<span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span> AccessModifierOffset<span class="punctuation">:</span> <span class="number">-4</span><span class="punctuation">,</span> ColumnLimit<span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> UseTab<span class="punctuation">:</span> Never<span class="punctuation">,</span> SortIncludes<span class="punctuation">:</span> Never<span class="punctuation">,</span> AlignAfterOpenBracket<span class="punctuation">:</span> BlockIndent<span class="punctuation">,</span> AlignArrayOfStructures<span class="punctuation">:</span> Left<span class="punctuation">,</span> AlignConsecutiveMacros<span class="punctuation">:</span> <span class="punctuation">&#123;</span>Enabled<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span> AcrossComments<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">&#125;</span><span class="punctuation">,</span> AlignEscapedNewlines<span class="punctuation">:</span> Left<span class="punctuation">,</span> AlignOperands<span class="punctuation">:</span> AlignAfterOperator<span class="punctuation">,</span> AllowShortBlocksOnASingleLine<span class="punctuation">:</span> Always<span class="punctuation">,</span> AllowShortFunctionsOnASingleLine<span class="punctuation">:</span> None<span class="punctuation">,</span> AllowShortIfStatementsOnASingleLine<span class="punctuation">:</span> AllIfsAndElse<span class="punctuation">,</span> AllowShortLoopsOnASingleLine<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span> BinPackArguments<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span> BinPackParameters<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span> BitFieldColonSpacing<span class="punctuation">:</span> After<span class="punctuation">,</span> BreakBeforeBraces<span class="punctuation">:</span> Custom<span class="punctuation">,</span> BraceWrapping<span class="punctuation">:</span> <span class="punctuation">&#123;</span>AfterCaseLabel<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span> AfterClass<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span> AfterControlStatement<span class="punctuation">:</span> Never<span class="punctuation">,</span> AfterEnum<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span> AfterFunction<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span> AfterNamespace<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span> AfterObjCDeclaration<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span> AfterStruct<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span> AfterUnion<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span> AfterExternBlock<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span> BeforeCatch<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span> BeforeElse<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span> BeforeLambdaBody<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span> BeforeWhile<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span> IndentBraces<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span> SplitEmptyFunction<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span> SplitEmptyRecord<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span> SplitEmptyNamespace<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">&#125;</span><span class="punctuation">,</span> BreakBeforeBinaryOperators<span class="punctuation">:</span> NonAssignment<span class="punctuation">,</span> CommentPragmas<span class="punctuation">:</span> &#x27;&#x27;<span class="punctuation">,</span> IncludeIsMainRegex<span class="punctuation">:</span> &#x27;&#x27;<span class="punctuation">,</span> IndentExternBlock<span class="punctuation">:</span> NoIndent<span class="punctuation">,</span> IndentPPDirectives<span class="punctuation">:</span> BeforeHash<span class="punctuation">,</span> InsertNewlineAtEOF<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span> InsertTrailingCommas<span class="punctuation">:</span> Wrapped<span class="punctuation">,</span> KeepEmptyLinesAtTheStartOfBlocks<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span> LineEnding<span class="punctuation">:</span> DeriveLF<span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果你想要另外下載執行檔的話，可以在 <a target="_blank" rel="noopener" href="https://github.com/llvm/llvm-project/releases">LLVM 的 GitHub</a> 下載並安裝。安裝完的預設路徑應該是在 <code>C:\Program Files\LLVM\bin\clang-format.exe</code>。</p>
+<h2 id="doxygen"><a href="#doxygen" class="headerlink" title="Doxygen"></a>Doxygen</h2><p>你可以在 VScode 安裝這個 <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=cschlosser.doxdocgen">Doxygen Documentation Generator</a> 來協助產生 Doxygen 註解。可以使用以下的設定：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;doxdocgen.c.commentPrefix&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/// &quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;doxdocgen.c.firstLine&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;doxdocgen.c.lastLine&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;doxdocgen.c.triggerSequence&quot;</span><span class="punctuation">:</span> <span class="string">&quot;///&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;doxdocgen.file.copyrightTag&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;@copyright SPDX-License-Identifier: &quot;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;doxdocgen.file.fileOrder&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;file&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;brief&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;author&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;copyright&quot;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;doxdocgen.generic.authorTag&quot;</span><span class="punctuation">:</span> <span class="string">&quot;@author &#123;author&#125; &lt;&#123;email&#125;&gt;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;doxdocgen.generic.returnTemplate&quot;</span><span class="punctuation">:</span> <span class="string">&quot;@return &quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/MaJerle/c-code-style">Recommended C style and coding rules</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.kernel.org/doc/html/v4.10/process/coding-style.html">Linux kernel coding style</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/mcinglis/c-style">My favorite C programming practices.</a></li>
+<li><a href="/posts/c-kr-style/">C 語言用 K&amp;R Coding Style 的最大理由不是省行數</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/c-kr-style/" rel="prev" title="C 語言用 K&R Coding Style 的最大理由不是省行數">
+                  <i class="fa fa-angle-left"></i> C 語言用 K&R Coding Style 的最大理由不是省行數
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/book-9786263245792/" rel="next" title="《流暢的C》——適合C語言的各種模式">
+                  《流暢的C》——適合C語言的各種模式 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+  <p style="text-align: center;color: #a3a3a3;font-size: 14px;margin-top: 60px;">留言可能不會立即顯示。若過了幾天仍未出現，請 <a href="mailto:honmonoh@gmail.com">Email</a> 聯繫：）</p>
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="本網站所有內容除特別聲明外，均採用創用CC 姓名標示-非商業性-禁止改作授權。
+    分享時請註明作者及出處。" style="border-bottom: 0;">
+      <img src="https://i.creativecommons.org/l/by-nc-nd/3.0/80x15.png" style="display: unset;">
+    </a>
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ZiTe</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zite-honmonoh","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

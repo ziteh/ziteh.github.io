@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/uploads/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300italic,400,400italic,700,700italic%7CNoto+Sans+TC:300,300italic,400,400italic,700,700italic%7CFira+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ziteh.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}},"activeClass":"disqus"},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Mitosis 是一款使用 QMK 作爲韌體所開發的無線分離式鍵盤，它不僅僅是與電腦之間無線，它的左右兩部分之間也沒有實體連線，可謂是「真 • 無線」。就我所知，有許多基於 QMK 的無線分離式鍵盤都是受到 Mitosis 的啓發。 本文將會概略性地介紹 Mitosis 是如何做到無線的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="無線分離式人體工學鍵盤Mitosis的介紹與分析">
+<meta property="og:url" content="https://ziteh.github.io/posts/mitosis-keyboard-intro/index.html">
+<meta property="og:site_name" content="ZiTe 本物志">
+<meta property="og:description" content="Mitosis 是一款使用 QMK 作爲韌體所開發的無線分離式鍵盤，它不僅僅是與電腦之間無線，它的左右兩部分之間也沒有實體連線，可謂是「真 • 無線」。就我所知，有許多基於 QMK 的無線分離式鍵盤都是受到 Mitosis 的啓發。 本文將會概略性地介紹 Mitosis 是如何做到無線的。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2022-01-09T14:11:00.000Z">
+<meta property="article:modified_time" content="2024-06-22T08:56:19.910Z">
+<meta property="article:author" content="ZiTe">
+<meta property="article:tag" content="DIY">
+<meta property="article:tag" content="QMK">
+<meta property="article:tag" content="3C">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://ziteh.github.io/posts/mitosis-keyboard-intro/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://ziteh.github.io/posts/mitosis-keyboard-intro/","path":"posts/mitosis-keyboard-intro/","title":"無線分離式人體工學鍵盤Mitosis的介紹與分析"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>無線分離式人體工學鍵盤Mitosis的介紹與分析 | ZiTe 本物志</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZiTe 本物志</p>
+      <i class="logo-line"></i>
+      <p class="site-subtitle" itemprop="description">一位慢步於程式、電路與文學之人的學習記錄與分享</p>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-folder-open fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A1%AC%E9%AB%94%E8%88%87%E5%9F%BA%E6%9C%AC%E6%9E%B6%E6%A7%8B"><span class="nav-text">硬體與基本架構</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A8%8B%E5%BC%8F"><span class="nav-text">程式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A6%E5%8F%B3%E6%89%8B%E9%8D%B5%E7%9B%A4%EF%BC%88nrf51822%EF%BC%89"><span class="nav-text">左右手鍵盤（nRF51822）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#handler-debounce"><span class="nav-text">handler_debounce()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#handler-maintenance"><span class="nav-text">handler_maintenance()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#send-data"><span class="nav-text">send_data()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#read-keys"><span class="nav-text">read_keys()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E6%94%B6%E5%99%A8%EF%BC%88nrf51822%EF%BC%89"><span class="nav-text">接收器（nRF51822）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nrf-gzll-host-rx-data-ready"><span class="nav-text">nrf_gzll_host_rx_data_ready()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#main"><span class="nav-text">main()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#qmk-%E6%8E%A5%E6%94%B6%E5%99%A8%EF%BC%88pro-micro%EF%BC%89"><span class="nav-text">QMK &#x2F; 接收器（Pro Micro）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#rules-mk"><span class="nav-text">rules.mk</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#config-h"><span class="nav-text">config.h</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#matrix-c"><span class="nav-text">matrix.c</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B5%90%E8%AA%9E"><span class="nav-text">結語</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B8%E9%97%9C%E6%96%87%E7%AB%A0"><span class="nav-text">相關文章</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a href="/about/" title="About">
+      <img class="site-author-image" itemprop="image" alt="ZiTe"
+        src="/uploads/avatar.png">
+    <p class="site-author-name" itemprop="name">ZiTe</p>
+    <div class="site-description" itemprop="description"></div>
+  </a>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ziteh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ziteh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/@siderakb" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;@siderakb" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://siderakb.github.io/" title="SideraKB → https:&#x2F;&#x2F;siderakb.github.io&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-keyboard fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:honmonoh@gmail.com" title="E-Mail → mailto:honmonoh@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="回到頂端">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ziteh.github.io/posts/mitosis-keyboard-intro/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="ZiTe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="無線分離式人體工學鍵盤Mitosis的介紹與分析 | ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+          
+          <div class="post-tags">
+              <a href="/tags/DIY/" rel="tag"> DIY</a>
+              <a href="/tags/QMK/" rel="tag"> QMK</a>
+              <a href="/tags/3C/" rel="tag"> 3C</a>
+          </div>
+
+        <h1 class="post-title" itemprop="name headline">
+          無線分離式人體工學鍵盤Mitosis的介紹與分析
+        </h1>
+
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      
+      
+
+      <time title="創建時間：2022-01-09 22:11:00" itemprop="dateCreated datePublished" datetime="2022-01-09T22:11:00+08:00">2022-01-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><a target="_blank" rel="noopener" href="https://github.com/qmk/qmk_firmware/tree/master/keyboards/mitosis">Mitosis</a> 是一款使用 <a target="_blank" rel="noopener" href="https://qmk.fm/">QMK</a> 作爲韌體所開發的無線分離式鍵盤，它不僅僅是與電腦之間無線，它的左右兩部分之間也沒有實體連線，可謂是「真 • 無線」。就我所知，有許多基於 QMK 的無線分離式鍵盤都是受到 Mitosis 的啓發。</p>
+<p>本文將會概略性地介紹 Mitosis 是如何做到無線的。</p>
+<span id="more"></span>
+
+<h1 id="硬體與基本架構"><a href="#硬體與基本架構" class="headerlink" title="硬體與基本架構"></a>硬體與基本架構</h1><p>首先，Mitosis 是擁有並需要自製的專用接收器，而 QMK 實際上只在此接收器上運作。</p>
+<p>Mitosis 的架構中，主要擁有這些硬體：</p>
+<ul>
+<li>1 個 Pro Micro（ATmega32U4）。接收器的一部分，QMK 實際上只在 Pro Micro 上運作，以 USB 線連接電腦。</li>
+<li>3 個 nRF51822。這是一個整合了 BLE（Bluetooth Low Energy，藍牙低功耗）等無線功能的 SoC（System On Chip）。<ul>
+<li>第 1 個 nRF51822 作爲接收器的一部分，負責接收來自左右兩部分鍵盤的訊號，並將其透過 UART 傳給 Pro Micro。</li>
+<li>第 2、3 個 nRF51822 分別在左右兩鍵盤上，負責讀取鍵盤上的按鍵狀態，並將其透過 Gazell 傳給接收器的 nRF51822。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">            PC</span><br><span class="line">             |</span><br><span class="line">           &lt;USB&gt;</span><br><span class="line">             |</span><br><span class="line">       Pro Micro(QMK)</span><br><span class="line">             |</span><br><span class="line">          &lt;UART&gt;</span><br><span class="line">             |</span><br><span class="line">        nRF51822(#1)</span><br><span class="line">         /        \</span><br><span class="line">    &lt;Gazell&gt;      &lt;Gazell&gt;</span><br><span class="line">       /              \</span><br><span class="line"> nRF51822(#2)        nRF51822(#3)</span><br><span class="line">     |                   |</span><br><span class="line">Left Keyboard      Right Keyboard</span><br></pre></td></tr></table></figure>
+
+<p>可以看出，Mitosis 的架構其實很簡單。雖然這樣的架構要用上更多的 IC，以導致它感覺起來不夠精簡，但這也其容易達成、理解或修改。</p>
+<p>總的來說，左右鍵盤上的 nRF51822 會處理各自的按鍵狀態，並各自將其透過 Gazell 傳輸給接收器上的 nRF51822，接收器受到新的按鍵狀態後，會將左右部分的按鍵狀態組合在一起，並透過 UART 傳給 Pro Micro，Pro Micro 收到來自 UART 的封包後就解析按鍵狀態，並交由 QMK 處理。</p>
+<h1 id="程式"><a href="#程式" class="headerlink" title="程式"></a>程式</h1><p>從基本架構可以得知，Mitosis 總共有 4 個 MCU（1 個 Pro Micro 的 ATmega32U4，3 個 nRF51822），而它們執行的程式當然也不一樣，以下就一一介紹不同部分的程式。</p>
+<h2 id="左右手鍵盤（nrf51822）"><a href="#左右手鍵盤（nrf51822）" class="headerlink" title="左右手鍵盤（nRF51822）"></a>左右手鍵盤（nRF51822）</h2><p>首先，這部分的程式在：<a target="_blank" rel="noopener" href="https://github.com/reversebias/mitosis/tree/master/mitosis-keyboard-basic">reversebias&#x2F;mitosis&#x2F;mitosis-keyboard-basic&#x2F;</a>。主要有：</p>
+<ul>
+<li><code>main.c</code> 是主程式。</li>
+<li><code>config/mitosis.h</code> 是包含了腳位設定的標頭檔。</li>
+</ul>
+<p>左右手鍵盤上 nRF51822 的程式是同一個，僅透過 <code>#define COMPILE_RIGHT</code> 或 <code>#define COMPILE_LEFT</code> 來切換不同的腳位設定和通道編號（Pipe number）而已。</p>
+<p>在這裡有幾個重要的函數（僅列出函數名稱）：</p>
+<ul>
+<li><code>read_keys()</code></li>
+<li><code>send_data()</code></li>
+<li><code>handler_maintenance()</code></li>
+<li><code>handler_debounce()</code></li>
+</ul>
+<h3 id="handler-debounce"><a href="#handler-debounce" class="headerlink" title="handler_debounce()"></a>handler_debounce()</h3><p>先看到 <a target="_blank" rel="noopener" href="https://github.com/reversebias/mitosis/blob/f2bb956f8565762212d361a42f830390ef5c6845/mitosis-keyboard-basic/main.c#L115"><code>handler_debounce()</code> </a> 這個函數，它負責處理按鍵防彈跳（Debounce）。內容如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1000Hz debounce sampling</span></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">handler_debounce</span><span class="params">(<span class="type">nrf_drv_rtc_int_type_t</span> int_type)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// debouncing, waits until there have been no transitions in 5ms (assuming five 1ms ticks)</span></span><br><span class="line">    <span class="keyword">if</span> (debouncing)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// if debouncing, check if current keystates equal to the snapshot</span></span><br><span class="line">        <span class="keyword">if</span> (keys_snapshot == read_keys())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// DEBOUNCE ticks of stable sampling needed before sending data</span></span><br><span class="line">            debounce_ticks++;</span><br><span class="line">            <span class="keyword">if</span> (debounce_ticks == DEBOUNCE)</span><br><span class="line">            &#123;</span><br><span class="line">                keys = keys_snapshot;</span><br><span class="line">                send_data();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// if keys change, start period again</span></span><br><span class="line">            debouncing = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// if the keystate is different from the last data</span></span><br><span class="line">        <span class="comment">// sent to the receiver, start debouncing</span></span><br><span class="line">        <span class="keyword">if</span> (keys != read_keys())</span><br><span class="line">        &#123;</span><br><span class="line">            keys_snapshot = read_keys();</span><br><span class="line">            debouncing = <span class="literal">true</span>;</span><br><span class="line">            debounce_ticks = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// looking for 500 ticks of no keys pressed, to go back to deep sleep</span></span><br><span class="line">    <span class="keyword">if</span> (read_keys() == <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        activity_ticks++;</span><br><span class="line">        <span class="keyword">if</span> (activity_ticks &gt; ACTIVITY)</span><br><span class="line">        &#123;</span><br><span class="line">            nrf_drv_rtc_disable(&amp;rtc_maint);</span><br><span class="line">            nrf_drv_rtc_disable(&amp;rtc_deb);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        activity_ticks = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>handler_debounce()</code> 每秒會觸發 1000 次（也就是以 1000 Hz運作，<a target="_blank" rel="noopener" href="https://github.com/reversebias/mitosis/blob/f2bb956f8565762212d361a42f830390ef5c6845/mitosis-keyboard-basic/main.c#L180">由 <code>RTC1</code> 處理</a>）。</p>
+<p>它會先判斷目前是否在防彈跳中（<code>if (debouncing)</code>），如果沒有的話會去判斷目前的按鍵狀態是否和最後一次一樣，如果不一樣代表有按鍵按下或放開了，透過 <code>read_keys()</code> 讀取目前的按鍵狀態，並儲存爲快照 <code>keys_snapshot</code>，同時開始防彈跳（將 <code>deboducing</code> 設爲 <code>true</code>）。</p>
+<p>一旦開始防彈跳，它就會一直確認快照與目前的按鍵狀態是否一樣，一旦不一樣就停止防彈跳，若累計達到設定的防彈跳次數就會承認快照的按鍵狀態，並將快照的值給目前的鍵值 <code>keys</code>，並呼叫 <code>send_data()</code> 開始傳送。</p>
+<h3 id="handler-maintenance"><a href="#handler-maintenance" class="headerlink" title="handler_maintenance()"></a>handler_maintenance()</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 8Hz held key maintenance, keeping the reciever keystates valid</span></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">handler_maintenance</span><span class="params">(<span class="type">nrf_drv_rtc_int_type_t</span> int_type)</span></span><br><span class="line">&#123;</span><br><span class="line">    send_data();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此函數的功能顯而易見，就是以 8 Hz 的頻率次數呼叫 <code>send_data()</code> 傳送資料。此函數<a target="_blank" rel="noopener" href="https://github.com/reversebias/mitosis/blob/f2bb956f8565762212d361a42f830390ef5c6845/mitosis-keyboard-basic/main.c#L179">由 RTC0 處理</a>。</p>
+<h3 id="send-data"><a href="#send-data" class="headerlink" title="send_data()"></a>send_data()</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Assemble packet and send to receiver</span></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">send_data</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    data_payload[<span class="number">0</span>] = ((keys &amp; <span class="number">1</span>&lt;&lt;S01) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">7</span> | \</span><br><span class="line">                      ((keys &amp; <span class="number">1</span>&lt;&lt;S02) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">6</span> | \</span><br><span class="line">                      ((keys &amp; <span class="number">1</span>&lt;&lt;S03) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">5</span> | \</span><br><span class="line">                      ((keys &amp; <span class="number">1</span>&lt;&lt;S04) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">4</span> | \</span><br><span class="line">                      ((keys &amp; <span class="number">1</span>&lt;&lt;S05) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">3</span> | \</span><br><span class="line">                      ((keys &amp; <span class="number">1</span>&lt;&lt;S06) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">2</span> | \</span><br><span class="line">                      ((keys &amp; <span class="number">1</span>&lt;&lt;S07) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">1</span> | \</span><br><span class="line">                      ((keys &amp; <span class="number">1</span>&lt;&lt;S08) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    data_payload[<span class="number">1</span>] = ((keys &amp; <span class="number">1</span>&lt;&lt;S09) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">7</span> | \</span><br><span class="line">                      ((keys &amp; <span class="number">1</span>&lt;&lt;S10) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">6</span> | \</span><br><span class="line">                      ((keys &amp; <span class="number">1</span>&lt;&lt;S11) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">5</span> | \</span><br><span class="line">                      ((keys &amp; <span class="number">1</span>&lt;&lt;S12) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">4</span> | \</span><br><span class="line">                      ((keys &amp; <span class="number">1</span>&lt;&lt;S13) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">3</span> | \</span><br><span class="line">                      ((keys &amp; <span class="number">1</span>&lt;&lt;S14) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">2</span> | \</span><br><span class="line">                      ((keys &amp; <span class="number">1</span>&lt;&lt;S15) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">1</span> | \</span><br><span class="line">                      ((keys &amp; <span class="number">1</span>&lt;&lt;S16) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    data_payload[<span class="number">2</span>] = ((keys &amp; <span class="number">1</span>&lt;&lt;S17) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">7</span> | \</span><br><span class="line">                      ((keys &amp; <span class="number">1</span>&lt;&lt;S18) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">6</span> | \</span><br><span class="line">                      ((keys &amp; <span class="number">1</span>&lt;&lt;S19) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">5</span> | \</span><br><span class="line">                      ((keys &amp; <span class="number">1</span>&lt;&lt;S20) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">4</span> | \</span><br><span class="line">                      ((keys &amp; <span class="number">1</span>&lt;&lt;S21) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">3</span> | \</span><br><span class="line">                      ((keys &amp; <span class="number">1</span>&lt;&lt;S22) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">2</span> | \</span><br><span class="line">                      ((keys &amp; <span class="number">1</span>&lt;&lt;S23) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">1</span> | \</span><br><span class="line">                      <span class="number">0</span> &lt;&lt; <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    nrf_gzll_add_packet_to_tx_fifo(PIPE_NUMBER, data_payload, TX_PAYLOAD_LENGTH);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此函數就是將目前的鍵值 <code>keys</code> 打包成資料封包並傳輸出去。<code>keys</code> 的值會在 <code>handler_debounce()</code> 中更新。</p>
+<p><code>PIPE_NUMBER</code> 的值左右鍵盤不同（在 <a target="_blank" rel="noopener" href="https://github.com/reversebias/mitosis/blob/f2bb956f8565762212d361a42f830390ef5c6845/mitosis-keyboard-basic/config/mitosis.h"><code>mitosis.h</code></a> 中定義），接收器藉此判斷收到的資料是來自左還是右鍵盤。</p>
+<h3 id="read-keys"><a href="#read-keys" class="headerlink" title="read_keys()"></a>read_keys()</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Return the key states, masked with valid key pins</span></span><br><span class="line"><span class="type">static</span> <span class="type">uint32_t</span> <span class="title function_">read_keys</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> ~NRF_GPIO-&gt;IN &amp; INPUT_MASK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此函數的功能也是很直觀，就是讀取並回傳所有的按鍵狀態。</p>
+<p>從這裡也可以得知，Mitosis 是<strong>不用矩陣掃描</strong>（Matrix scan）的，畢竟它的按鍵數本來就比較少（左右各 23 鍵），又是分離式的鍵盤，一個 nRF51822 的 GPIO 足以分配到每個按鍵上，自然不用掃描，直接讀值就好。</p>
+<h2 id="接收器（nrf51822）"><a href="#接收器（nrf51822）" class="headerlink" title="接收器（nRF51822）"></a>接收器（nRF51822）</h2><p>這部分的程式在：<a target="_blank" rel="noopener" href="https://github.com/reversebias/mitosis/tree/master/mitosis-receiver-basic">reversebias&#x2F;mitosis&#x2F;mitosis-receiver-basic&#x2F;</a>。主要有：</p>
+<ul>
+<li><code>main.c</code> 是主程式。</li>
+</ul>
+<p>其中有幾個重要的函數（僅列出函數名稱）：</p>
+<ul>
+<li><code>nrf_gzll_host_rx_data_ready()</code></li>
+<li><code>main()</code></li>
+</ul>
+<h3 id="nrf-gzll-host-rx-data-ready"><a href="#nrf-gzll-host-rx-data-ready" class="headerlink" title="nrf_gzll_host_rx_data_ready()"></a>nrf_gzll_host_rx_data_ready()</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// If a data packet was received, identify half, and throw flag</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">nrf_gzll_host_rx_data_ready</span><span class="params">(<span class="type">uint32_t</span> pipe, <span class="type">nrf_gzll_host_rx_info_t</span> rx_info)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">uint32_t</span> data_payload_length = NRF_GZLL_CONST_MAX_PAYLOAD_LENGTH;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (pipe == <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        packet_received_left = <span class="literal">true</span>;</span><br><span class="line">        left_active = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// Pop packet and write first byte of the payload to the GPIO port.</span></span><br><span class="line">        nrf_gzll_fetch_packet_from_rx_fifo(pipe, data_payload_left, &amp;data_payload_length);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (pipe == <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        packet_received_right = <span class="literal">true</span>;</span><br><span class="line">        right_active = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// Pop packet and write first byte of the payload to the GPIO port.</span></span><br><span class="line">        nrf_gzll_fetch_packet_from_rx_fifo(pipe, data_payload_right, &amp;data_payload_length);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// not sure if required, I guess if enough packets are missed during blocking uart</span></span><br><span class="line">    nrf_gzll_flush_rx_fifo(pipe);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//load ACK payload into TX queue</span></span><br><span class="line">    ack_payload[<span class="number">0</span>] =  <span class="number">0x55</span>;</span><br><span class="line">    nrf_gzll_add_packet_to_tx_fifo(pipe, ack_payload, TX_PAYLOAD_LENGTH);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>這是接收處理函數。當接收到資料時，以 <code>pipe</code> 判斷這是來自左還是右鍵盤，並設定好資料。</p>
+<h3 id="main"><a href="#main" class="headerlink" title="main()"></a>main()</h3><p>以下省略一些不重要的程式：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* 省略部分程式 */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// main loop</span></span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// detecting received packet from interupt, and unpacking</span></span><br><span class="line">        <span class="keyword">if</span> (packet_received_left)</span><br><span class="line">        &#123;</span><br><span class="line">            packet_received_left = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">            data_buffer[<span class="number">0</span>] = ((data_payload_left[<span class="number">0</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">3</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">0</span> |</span><br><span class="line">                             ((data_payload_left[<span class="number">0</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">4</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">1</span> |</span><br><span class="line">                             ((data_payload_left[<span class="number">0</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">5</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">2</span> |</span><br><span class="line">                             ((data_payload_left[<span class="number">0</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">6</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">3</span> |</span><br><span class="line">                             ((data_payload_left[<span class="number">0</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">7</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">            data_buffer[<span class="number">2</span>] = ((data_payload_left[<span class="number">1</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">6</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">0</span> |</span><br><span class="line">                             ((data_payload_left[<span class="number">1</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">7</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">1</span> |</span><br><span class="line">                             ((data_payload_left[<span class="number">0</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">0</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">2</span> |</span><br><span class="line">                             ((data_payload_left[<span class="number">0</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">1</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">3</span> |</span><br><span class="line">                             ((data_payload_left[<span class="number">0</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">2</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">            data_buffer[<span class="number">4</span>] = ((data_payload_left[<span class="number">1</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">1</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">0</span> |</span><br><span class="line">                             ((data_payload_left[<span class="number">1</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">2</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">1</span> |</span><br><span class="line">                             ((data_payload_left[<span class="number">1</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">3</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">2</span> |</span><br><span class="line">                             ((data_payload_left[<span class="number">1</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">4</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">3</span> |</span><br><span class="line">                             ((data_payload_left[<span class="number">1</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">5</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">            data_buffer[<span class="number">6</span>] = ((data_payload_left[<span class="number">2</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">5</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">1</span> |</span><br><span class="line">                             ((data_payload_left[<span class="number">2</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">6</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">2</span> |</span><br><span class="line">                             ((data_payload_left[<span class="number">2</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">7</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">3</span> |</span><br><span class="line">                             ((data_payload_left[<span class="number">1</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">0</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">            data_buffer[<span class="number">8</span>] = ((data_payload_left[<span class="number">2</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">1</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">1</span> |</span><br><span class="line">                             ((data_payload_left[<span class="number">2</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">2</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">2</span> |</span><br><span class="line">                             ((data_payload_left[<span class="number">2</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">3</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">3</span> |</span><br><span class="line">                             ((data_payload_left[<span class="number">2</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">4</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">4</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (packet_received_right)</span><br><span class="line">        &#123;</span><br><span class="line">            packet_received_right = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">            data_buffer[<span class="number">1</span>] = ((data_payload_right[<span class="number">0</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">7</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">0</span> |</span><br><span class="line">                             ((data_payload_right[<span class="number">0</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">6</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">1</span> |</span><br><span class="line">                             ((data_payload_right[<span class="number">0</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">5</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">2</span> |</span><br><span class="line">                             ((data_payload_right[<span class="number">0</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">4</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">3</span> |</span><br><span class="line">                             ((data_payload_right[<span class="number">0</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">3</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">            data_buffer[<span class="number">3</span>] = ((data_payload_right[<span class="number">0</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">2</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">0</span> |</span><br><span class="line">                             ((data_payload_right[<span class="number">0</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">1</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">1</span> |</span><br><span class="line">                             ((data_payload_right[<span class="number">0</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">0</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">2</span> |</span><br><span class="line">                             ((data_payload_right[<span class="number">1</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">7</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">3</span> |</span><br><span class="line">                             ((data_payload_right[<span class="number">1</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">6</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">            data_buffer[<span class="number">5</span>] = ((data_payload_right[<span class="number">1</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">5</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">0</span> |</span><br><span class="line">                             ((data_payload_right[<span class="number">1</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">4</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">1</span> |</span><br><span class="line">                             ((data_payload_right[<span class="number">1</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">3</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">2</span> |</span><br><span class="line">                             ((data_payload_right[<span class="number">1</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">2</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">3</span> |</span><br><span class="line">                             ((data_payload_right[<span class="number">1</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">1</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">            data_buffer[<span class="number">7</span>] = ((data_payload_right[<span class="number">1</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">0</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">0</span> |</span><br><span class="line">                             ((data_payload_right[<span class="number">2</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">7</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">1</span> |</span><br><span class="line">                             ((data_payload_right[<span class="number">2</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">6</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">2</span> |</span><br><span class="line">                             ((data_payload_right[<span class="number">2</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">5</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">            data_buffer[<span class="number">9</span>] = ((data_payload_right[<span class="number">2</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">4</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">0</span> |</span><br><span class="line">                             ((data_payload_right[<span class="number">2</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">3</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">1</span> |</span><br><span class="line">                             ((data_payload_right[<span class="number">2</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">2</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">2</span> |</span><br><span class="line">                             ((data_payload_right[<span class="number">2</span>] &amp; <span class="number">1</span>&lt;&lt;<span class="number">1</span>) ? <span class="number">1</span>:<span class="number">0</span>) &lt;&lt; <span class="number">3</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// checking for a poll request from QMK</span></span><br><span class="line">        <span class="keyword">if</span> (app_uart_get(&amp;c) == NRF_SUCCESS &amp;&amp; c == <span class="string">&#x27;s&#x27;</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// sending data to QMK, and an end byte</span></span><br><span class="line">            nrf_drv_uart_tx(data_buffer,<span class="number">10</span>);</span><br><span class="line">            app_uart_put(<span class="number">0xE0</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">/* 省略部分程式 */</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// allowing UART buffers to clear</span></span><br><span class="line">        nrf_delay_us(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* 省略部分程式 */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>這裡就是來負責將 Gazell 接收到的左右鍵盤按鍵狀態重新打包，只要確認了來自 QMK 的輪詢請求（<code>s</code>），就透過 UART 傳送出去。</p>
+<p>傳給 QMK 的封包除了按鍵狀態外，還有一個 <code>0xE0</code> 作爲結束封包。</p>
+<h2 id="qmk-接收器（pro-micro）"><a href="#qmk-接收器（pro-micro）" class="headerlink" title="QMK &#x2F; 接收器（Pro Micro）"></a>QMK &#x2F; 接收器（Pro Micro）</h2><p>這部分的程式在：<a target="_blank" rel="noopener" href="https://github.com/qmk/qmk_firmware/tree/master/keyboards/mitosis">qmk&#x2F;qmk_firmware&#x2F;keyboards&#x2F;mitosis</a>。主要有：</p>
+<ul>
+<li><code>rules.mk</code></li>
+<li><code>config.h</code></li>
+<li><code>matrix.c</code></li>
+</ul>
+<h3 id="rules-mk"><a href="#rules-mk" class="headerlink" title="rules.mk"></a>rules.mk</h3><figure class="highlight mk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># MCU name</span></span><br><span class="line">MCU = atmega32u4</span><br><span class="line"></span><br><span class="line"><span class="comment"># Bootloader selection</span></span><br><span class="line">BOOTLOADER = caterina</span><br><span class="line"></span><br><span class="line"><span class="comment"># Build Options</span></span><br><span class="line"><span class="comment">#    change yes to no to disable</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">BOOTMAGIC_ENABLE = no  <span class="comment"># Enable Bootmagic Lite</span></span><br><span class="line">MOUSEKEY_ENABLE = yes  <span class="comment"># Mouse keys</span></span><br><span class="line">EXTRAKEY_ENABLE = yes  <span class="comment"># Audio control and System control</span></span><br><span class="line">CONSOLE_ENABLE = yes   <span class="comment"># Console for debug</span></span><br><span class="line">COMMAND_ENABLE = yes   <span class="comment"># Commands for debug and configuration</span></span><br><span class="line">CUSTOM_MATRIX = yes    <span class="comment"># Remote matrix from the wireless bridge</span></span><br><span class="line">NKRO_ENABLE = yes      <span class="comment"># Enable N-Key Rollover</span></span><br><span class="line"><span class="comment"># BACKLIGHT_ENABLE = yes  # Enable keyboard backlight functionality</span></span><br><span class="line">UNICODE_ENABLE = yes   <span class="comment"># Unicode</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># # project specific files</span></span><br><span class="line">SRC += matrix.c serial_uart.c</span><br></pre></td></tr></table></figure>
+
+<p>這裡可以注意到作者使用了 QMK 的「<a target="_blank" rel="noopener" href="https://docs.qmk.fm/#/custom_matrix">Custom Matrix</a>」功能 （<code>CUSTOM_MATRIX = yes</code> 及 <code>SRC += matrix.c</code>），因爲 Mitosis 不像一般的鍵盤透過矩陣掃描得知按鍵狀態，而是讀取來自 nRF51822 透過 UART 傳送的封包。</p>
+<h3 id="config-h"><a href="#config-h" class="headerlink" title="config.h"></a>config.h</h3><p><code>config.h</code> 主要是設定 QMK 中的各種東西，稍微熟悉 QMK 的人都不陌生。這裡僅列出重要的地方，也就是 UART 的相關設定：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//UART settings for communication with the RF microcontroller</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SERIAL_UART_BAUD 1000000</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SERIAL_UART_RXD_PRESENT (UCSR1A &amp; _BV(RXC1))</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SERIAL_UART_INIT_CUSTOM       \</span></span><br><span class="line"><span class="meta">    <span class="comment">/* enable TX and RX */</span>            \</span></span><br><span class="line"><span class="meta">    UCSR1B = _BV(TXEN1) | _BV(RXEN1); \</span></span><br><span class="line"><span class="meta">    <span class="comment">/* 8-bit data */</span>                  \</span></span><br><span class="line"><span class="meta">    UCSR1C = _BV(UCSZ11) | _BV(UCSZ10);</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="matrix-c"><a href="#matrix-c" class="headerlink" title="matrix.c"></a>matrix.c</h3><p><code>matrix.c</code> 是爲了使用 QMK 的「<a target="_blank" rel="noopener" href="https://docs.qmk.fm/#/custom_matrix">Custom Matrix</a>」功能所必要的檔案。</p>
+<p>重點在 <code>matrix_scan()</code>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">uint8_t</span> <span class="title function_">matrix_scan</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">uint32_t</span> timeout = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//the s character requests the RF slave to send the matrix</span></span><br><span class="line">    SERIAL_UART_DATA = <span class="string">&#x27;s&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//trust the external keystates entirely, erase the last data</span></span><br><span class="line">    <span class="type">uint8_t</span> uart_data[<span class="number">11</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//there are 10 bytes corresponding to 10 columns, and an end byte</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">uint8_t</span> i = <span class="number">0</span>; i &lt; <span class="number">11</span>; i++) &#123;</span><br><span class="line">        <span class="comment">//wait for the serial data, timeout if it&#x27;s been too long</span></span><br><span class="line">        <span class="comment">//this only happened in testing with a loose wire, but does no</span></span><br><span class="line">        <span class="comment">//harm to leave it in here</span></span><br><span class="line">        <span class="keyword">while</span>(!SERIAL_UART_RXD_PRESENT)&#123;</span><br><span class="line">            timeout++;</span><br><span class="line">            <span class="keyword">if</span> (timeout &gt; <span class="number">10000</span>)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        uart_data[i] = SERIAL_UART_DATA;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//check for the end packet, the key state bytes use the LSBs, so 0xE0</span></span><br><span class="line">    <span class="comment">//will only show up here if the correct bytes were recieved</span></span><br><span class="line">    <span class="keyword">if</span> (uart_data[<span class="number">10</span>] == <span class="number">0xE0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//shifting and transferring the keystates to the QMK matrix variable</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">uint8_t</span> i = <span class="number">0</span>; i &lt; MATRIX_ROWS; i++) &#123;</span><br><span class="line">            matrix[i] = (<span class="type">uint16_t</span>) uart_data[i*<span class="number">2</span>] | (<span class="type">uint16_t</span>) uart_data[i*<span class="number">2</span>+<span class="number">1</span>] &lt;&lt; <span class="number">5</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    matrix_scan_quantum();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>首先此函數會傳送一個 <code>s</code> 以請求 nRF51822 開始傳送按鍵狀態封包。</p>
+<p>接著，一個 <code>for</code> 迴圈會處理來自 UART 的按鍵狀態封包。當接收完成後，判斷結束封包是否正確（爲 <code>0xE0</code>），如果沒問題的話就將按鍵狀態封包處理並賦值給 <code>matrix[]</code>，接下來就是讓 QMK 去處理了。</p>
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><p>本次簡單地介紹 Mitosis 鍵盤是如和達成無線的，但我其實沒用過 nRF51822，對 QMK 的瞭解也還很粗淺，很多細節沒辦法講解，而如果上述內容有任何錯誤也請指正。</p>
+<p>撰寫本文時的 Mitosis 相關 repo 資訊：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/reversebias/mitosis">reversebias&#x2F;mitosis</a><ul>
+<li>nRF51822 的程式</li>
+<li>commit：<a target="_blank" rel="noopener" href="https://github.com/reversebias/mitosis/commit/f2bb956f8565762212d361a42f830390ef5c6845"><code>f2bb956f8565762212d361a42f830390ef5c6845</code></a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/qmk/qmk_firmware/tree/master/keyboards/mitosis">qmk&#x2F;qmk_firmware</a><ul>
+<li>QMK 程式</li>
+<li>commit：<a target="_blank" rel="noopener" href="https://github.com/qmk/qmk_firmware/commit/f718a10889e6adf33f3fc2f41b61cad7fe9e0c2e"><code>f718a10889e6adf33f3fc2f41b61cad7fe9e0c2e</code></a></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>文章修改記錄 2022&#x2F;02&#x2F;23：原本寫的各個 nRF51822 之間的通訊方式是 BLE，但應該是 Gazell，故更新內容。</p>
+</blockquote>
+<h1 id="相關文章"><a href="#相關文章" class="headerlink" title="相關文章"></a>相關文章</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://imgur.com/a/mwTFj">Mitosis 原作者的文章</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.qmk.fm/#/">QMK 官方文件</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/libopencm3-example-exti/" rel="prev" title="[LibOpenCM3 × STM32教學-2] 按鈕觸發外部中斷 EXTI">
+                  <i class="fa fa-angle-left"></i> [LibOpenCM3 × STM32教學-2] 按鈕觸發外部中斷 EXTI
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/diyqmkkeyboard-custom-matrix/" rel="next" title="[自製QMK鍵盤-番外] 在Custom Matrix中使用UART與控制滑鼠遊標，並加上無線模組">
+                  [自製QMK鍵盤-番外] 在Custom Matrix中使用UART與控制滑鼠遊標，並加上無線模組 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+  <p style="text-align: center;color: #a3a3a3;font-size: 14px;margin-top: 60px;">留言可能不會立即顯示。若過了幾天仍未出現，請 <a href="mailto:honmonoh@gmail.com">Email</a> 聯繫：）</p>
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="本網站所有內容除特別聲明外，均採用創用CC 姓名標示-非商業性-禁止改作授權。
+    分享時請註明作者及出處。" style="border-bottom: 0;">
+      <img src="https://i.creativecommons.org/l/by-nc-nd/3.0/80x15.png" style="display: unset;">
+    </a>
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ZiTe</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zite-honmonoh","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

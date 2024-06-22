@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/uploads/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300italic,400,400italic,700,700italic%7CNoto+Sans+TC:300,300italic,400,400italic,700,700italic%7CFira+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ziteh.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}},"activeClass":"disqus"},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="對於常用 Vim 的人來說，Easy Motion 絕對是一個好用的插件，它可以讓你在使用 Vim 時更快速且方便的將遊標移動到螢幕上任何想要的位置。不過，對於 Easy Motion 不少人也有一些意見，例如太久沒人維護（筆者寫本文當下最後一筆 commit 是 2022 年，且只是修改文件）、實現方式老舊、慢… 爲了有一個更現代、快速的類-Easy Motion 體驗，我開始轉而使用 Flas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在 NeoVim 中使用 Flash 取代 Easy Motion 來快速跳轉">
+<meta property="og:url" content="https://ziteh.github.io/posts/vim-flash/index.html">
+<meta property="og:site_name" content="ZiTe 本物志">
+<meta property="og:description" content="對於常用 Vim 的人來說，Easy Motion 絕對是一個好用的插件，它可以讓你在使用 Vim 時更快速且方便的將遊標移動到螢幕上任何想要的位置。不過，對於 Easy Motion 不少人也有一些意見，例如太久沒人維護（筆者寫本文當下最後一筆 commit 是 2022 年，且只是修改文件）、實現方式老舊、慢… 爲了有一個更現代、快速的類-Easy Motion 體驗，我開始轉而使用 Flas">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhsmKKhFqR0JYDZRZHeOXDHXqUacfTUG6CfT5tVXN0KRMYn3kKoxQZxwXaSm-dO9FLtdWn7RQCg3f5QzFENFr8tq0mxfBTaNdNpsKB6VlxNGINOOfbv2etEFmF90kg6ykWj5AmXOjQwCKa8Xqw7PueLB6IRgRmIvbG8zhbXbjycrjJnbcD661XnIQGBk0A/s16000/op-s.png">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhcErCEr_JSKjS5fb0OyXvWj4OvihMl7PGoxKBGKngt74UHe5hyyfJLAbm23sQcXvbqTGjvaqgjSJ8nGuXKljvE8iWJYdFZdDU0PRZYYL0p4poHhcNczkl2PfY5Rr1Uq7KdFrKBoCHMRPoo86olNEmQGtt66xB4LfQM9aVfdTo4HsDu3G-hLqSVW6n1exE/s16000/op-f.png">
+<meta property="article:published_time" content="2024-06-14T20:33:00.000Z">
+<meta property="article:modified_time" content="2024-06-22T08:56:19.918Z">
+<meta property="article:author" content="ZiTe">
+<meta property="article:tag" content="教學">
+<meta property="article:tag" content="Vim">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhsmKKhFqR0JYDZRZHeOXDHXqUacfTUG6CfT5tVXN0KRMYn3kKoxQZxwXaSm-dO9FLtdWn7RQCg3f5QzFENFr8tq0mxfBTaNdNpsKB6VlxNGINOOfbv2etEFmF90kg6ykWj5AmXOjQwCKa8Xqw7PueLB6IRgRmIvbG8zhbXbjycrjJnbcD661XnIQGBk0A/s16000/op-s.png">
+
+
+<link rel="canonical" href="https://ziteh.github.io/posts/vim-flash/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://ziteh.github.io/posts/vim-flash/","path":"posts/vim-flash/","title":"在 NeoVim 中使用 Flash 取代 Easy Motion 來快速跳轉"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>在 NeoVim 中使用 Flash 取代 Easy Motion 來快速跳轉 | ZiTe 本物志</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZiTe 本物志</p>
+      <i class="logo-line"></i>
+      <p class="site-subtitle" itemprop="description">一位慢步於程式、電路與文學之人的學習記錄與分享</p>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-folder-open fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D"><span class="nav-text">安裝</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C"><span class="nav-text">操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BB%B6%E4%BC%B8"><span class="nav-text">延伸</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a href="/about/" title="About">
+      <img class="site-author-image" itemprop="image" alt="ZiTe"
+        src="/uploads/avatar.png">
+    <p class="site-author-name" itemprop="name">ZiTe</p>
+    <div class="site-description" itemprop="description"></div>
+  </a>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ziteh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ziteh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/@siderakb" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;@siderakb" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://siderakb.github.io/" title="SideraKB → https:&#x2F;&#x2F;siderakb.github.io&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-keyboard fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:honmonoh@gmail.com" title="E-Mail → mailto:honmonoh@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="回到頂端">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ziteh.github.io/posts/vim-flash/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="ZiTe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="在 NeoVim 中使用 Flash 取代 Easy Motion 來快速跳轉 | ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%95%99%E5%AD%B8/" rel="tag"> 教學</a>
+              <a href="/tags/Vim/" rel="tag"> Vim</a>
+          </div>
+
+        <h1 class="post-title" itemprop="name headline">
+          在 NeoVim 中使用 Flash 取代 Easy Motion 來快速跳轉
+        </h1>
+
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      
+      
+
+      <time title="創建時間：2024-06-15 04:33:00" itemprop="dateCreated datePublished" datetime="2024-06-15T04:33:00+08:00">2024-06-15</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>對於常用 Vim 的人來說，<a target="_blank" rel="noopener" href="https://github.com/easymotion/vim-easymotion">Easy Motion</a> 絕對是一個好用的插件，它可以讓你在使用 Vim 時更快速且方便的將遊標移動到螢幕上任何想要的位置。不過，對於 Easy Motion 不少人也有一些意見，例如太久沒人維護（筆者寫本文當下最後一筆 commit 是 2022 年，且只是修改文件）、實現方式老舊、慢…</p>
+<p>爲了有一個更現代、快速的<em>類-Easy Motion</em> 體驗，我開始轉而使用 <a target="_blank" rel="noopener" href="https://github.com/folke/flash.nvim">Flash</a>。目前已經用了半年，我認爲 Flash 可以完全取代 Easy Motion，而且可以做得更好。</p>
+<span id="more"></span>
+
+<h1 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h1><p>Flash 使用 Lua 寫成，需要有 LuaJIT 的環境（例如 Neovim）。</p>
+<p>如果你是使用 <a target="_blank" rel="noopener" href="https://github.com/folke/lazy.nvim">Lazy Nvim</a> 的話，可以在 <code>init.lua</code> 內加入：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> plugins = &#123;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">&quot;folke/flash.nvim&quot;</span>,</span><br><span class="line">    event = <span class="string">&quot;VeryLazy&quot;</span>,</span><br><span class="line">    <span class="comment">---@type Flash.Config</span></span><br><span class="line">    opts = &#123;</span><br><span class="line">      labels = <span class="string">&quot;asdfghjklqwertyuiopzxcvbnm&quot;</span>,</span><br><span class="line">      label = &#123; uppercase = <span class="literal">false</span>, &#125;,</span><br><span class="line">      search = &#123; multi_window = <span class="literal">true</span>, &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">-- stylua: ignore</span></span><br><span class="line">    keys = &#123;</span><br><span class="line">      &#123; <span class="string">&quot;s&quot;</span>,     mode = &#123; <span class="string">&quot;n&quot;</span>, <span class="string">&quot;x&quot;</span>, <span class="string">&quot;o&quot;</span> &#125;, <span class="function"><span class="keyword">function</span><span class="params">()</span></span> <span class="built_in">require</span>(<span class="string">&quot;flash&quot;</span>).jump() <span class="keyword">end</span>,              desc = <span class="string">&quot;Flash&quot;</span> &#125;,</span><br><span class="line">      &#123; <span class="string">&quot;S&quot;</span>,     mode = &#123; <span class="string">&quot;n&quot;</span>, <span class="string">&quot;x&quot;</span>, <span class="string">&quot;o&quot;</span> &#125;, <span class="function"><span class="keyword">function</span><span class="params">()</span></span> <span class="built_in">require</span>(<span class="string">&quot;flash&quot;</span>).treesitter() <span class="keyword">end</span>,        desc = <span class="string">&quot;Flash Treesitter&quot;</span> &#125;,</span><br><span class="line">      &#123; <span class="string">&quot;r&quot;</span>,     mode = <span class="string">&quot;o&quot;</span>,               <span class="function"><span class="keyword">function</span><span class="params">()</span></span> <span class="built_in">require</span>(<span class="string">&quot;flash&quot;</span>).remote() <span class="keyword">end</span>,            desc = <span class="string">&quot;Remote Flash&quot;</span> &#125;,</span><br><span class="line">      &#123; <span class="string">&quot;R&quot;</span>,     mode = &#123; <span class="string">&quot;o&quot;</span>, <span class="string">&quot;x&quot;</span> &#125;,      <span class="function"><span class="keyword">function</span><span class="params">()</span></span> <span class="built_in">require</span>(<span class="string">&quot;flash&quot;</span>).treesitter_search() <span class="keyword">end</span>, desc = <span class="string">&quot;Treesitter Search&quot;</span> &#125;,</span><br><span class="line">      &#123; <span class="string">&quot;&lt;c-s&gt;&quot;</span>, mode = &#123; <span class="string">&quot;c&quot;</span> &#125;,           <span class="function"><span class="keyword">function</span><span class="params">()</span></span> <span class="built_in">require</span>(<span class="string">&quot;flash&quot;</span>).toggle() <span class="keyword">end</span>,            desc = <span class="string">&quot;Toggle Flash Search&quot;</span> &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">require</span>(<span class="string">&quot;lazy&quot;</span>).setup(plugins)</span><br></pre></td></tr></table></figure>
+
+<p>如果你是用 <a target="_blank" rel="noopener" href="https://github.com/AstroNvim/AstroNvim">AstroNvim</a> 的話，可以在 <code>plugins</code> 資料夾下新增 <code>flash.lua</code>，並加入內容：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> &#123;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;folke/flash.nvim&quot;</span>,</span><br><span class="line">        event = <span class="string">&quot;VeryLazy&quot;</span>,</span><br><span class="line">        <span class="comment">---@type Flash.Config</span></span><br><span class="line">        opts = &#123;</span><br><span class="line">            labels = <span class="string">&quot;asdfghjklqwertyuiopzxcvbnm&quot;</span>,</span><br><span class="line">            label = &#123; uppercase = <span class="literal">false</span>, &#125;,</span><br><span class="line">            search = &#123; multi_window = <span class="literal">true</span>, &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">-- stylua: ignore</span></span><br><span class="line">        keys = &#123;</span><br><span class="line">            &#123; <span class="string">&quot;s&quot;</span>, mode = &#123; <span class="string">&quot;n&quot;</span>, <span class="string">&quot;x&quot;</span>, <span class="string">&quot;o&quot;</span> &#125;, <span class="function"><span class="keyword">function</span><span class="params">()</span></span> <span class="built_in">require</span>(<span class="string">&quot;flash&quot;</span>).jump() <span class="keyword">end</span>, desc = <span class="string">&quot;Flash&quot;</span> &#125;,</span><br><span class="line">            &#123; <span class="string">&quot;S&quot;</span>, mode = &#123; <span class="string">&quot;n&quot;</span>, <span class="string">&quot;x&quot;</span>, <span class="string">&quot;o&quot;</span> &#125;, <span class="function"><span class="keyword">function</span><span class="params">()</span></span> <span class="built_in">require</span>(<span class="string">&quot;flash&quot;</span>).treesitter() <span class="keyword">end</span>, desc = <span class="string">&quot;Flash Treesitter&quot;</span> &#125;,</span><br><span class="line">            &#123; <span class="string">&quot;r&quot;</span>, mode = <span class="string">&quot;o&quot;</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span></span> <span class="built_in">require</span>(<span class="string">&quot;flash&quot;</span>).remote() <span class="keyword">end</span>, desc = <span class="string">&quot;Remote Flash&quot;</span> &#125;,</span><br><span class="line">            &#123; <span class="string">&quot;R&quot;</span>, mode = &#123; <span class="string">&quot;o&quot;</span>, <span class="string">&quot;x&quot;</span> &#125;, <span class="function"><span class="keyword">function</span><span class="params">()</span></span> <span class="built_in">require</span>(<span class="string">&quot;flash&quot;</span>).treesitter_search() <span class="keyword">end</span>, desc = <span class="string">&quot;Treesitter Search&quot;</span> &#125;,</span><br><span class="line">            &#123; <span class="string">&quot;&lt;c-s&gt;&quot;</span>, mode = &#123; <span class="string">&quot;c&quot;</span> &#125;, <span class="function"><span class="keyword">function</span><span class="params">()</span></span> <span class="built_in">require</span>(<span class="string">&quot;flash&quot;</span>).toggle() <span class="keyword">end</span>, desc = <span class="string">&quot;Toggle Flash Search&quot;</span> &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h1><p>我最常使用的操作有 2 種。第一種是 <code>s</code>+ 搜尋文字，這個操作就很類似 Easy Motion 的 <code>&lt;leader&gt;&lt;leader&gt;</code>，不過 Flash <code>s</code> 後面的搜尋文字不限數量，如果你要跳轉的目標字串開頭重複性很高的話，你可以打 2~3 個字符來匹配，被匹配的文字會高亮顯示，這時你只要再鍵入各個匹配項後的 label 就可以跳轉，而且 Flash 的跳轉可以跨分隔畫面（可以設定）。</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhsmKKhFqR0JYDZRZHeOXDHXqUacfTUG6CfT5tVXN0KRMYn3kKoxQZxwXaSm-dO9FLtdWn7RQCg3f5QzFENFr8tq0mxfBTaNdNpsKB6VlxNGINOOfbv2etEFmF90kg6ykWj5AmXOjQwCKa8Xqw7PueLB6IRgRmIvbG8zhbXbjycrjJnbcD661XnIQGBk0A/s16000/op-s.png" alt="鍵入 sun 以搜尋 un 的範例"></p>
+<p>第二個常用的是 <code>f</code> 和 <code>F</code>。<code>f</code> 只會搜尋並配對目前遊標以下的範圍，而 <code>F</code> 則只會搜尋以上的範圍。後面一樣鍵入要匹配的字符，成功匹配的文字會高亮，你可以透過重複按 <code>f</code> 來移動到下一個匹配項，或使用 <code>;</code> 或 <code>.</code> 來移動到下&#x2F;上一個匹配項目。匹配範圍超過螢幕顯示，即會捲動螢幕繼續搜尋。</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhcErCEr_JSKjS5fb0OyXvWj4OvihMl7PGoxKBGKngt74UHe5hyyfJLAbm23sQcXvbqTGjvaqgjSJ8nGuXKljvE8iWJYdFZdDU0PRZYYL0p4poHhcNczkl2PfY5Rr1Uq7KdFrKBoCHMRPoo86olNEmQGtt66xB4LfQM9aVfdTo4HsDu3G-hLqSVW6n1exE/s16000/op-f.png" alt="鍵入 fr 向下搜尋 r 的範例"></p>
+<h1 id="延伸"><a href="#延伸" class="headerlink" title="延伸"></a>延伸</h1><p>Flash 還有其它功能和設定我就不一一細講了。</p>
+<p>還有一個 <a target="_blank" rel="noopener" href="https://github.com/justinmk/vim-sneak">vim-sneak</a> 也是可以達成類似 Easy Motion 的操作，不過它好像只能限定向下或上搜尋，沒辦法全螢幕搜尋（Flash 的 <code>s</code>），所以我試用一下後就改成用 Flash 了。</p>
+<p>附帶一提，如果有人想看我的完整 Neovim 配置，可以參考 <a target="_blank" rel="noopener" href="https://github.com/ziteh/vim-config">ziteh&#x2F;vim-config</a>，透過 branch 切換。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/book-9789865022754/" rel="prev" title="《The Pragmatic Programmer》做一位務實的程式設計師">
+                  <i class="fa fa-angle-left"></i> 《The Pragmatic Programmer》做一位務實的程式設計師
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/duffs-device/" rel="next" title="一種巧妙及噁心並具的 C 語言寫法：達夫裝置 (Duff's device)">
+                  一種巧妙及噁心並具的 C 語言寫法：達夫裝置 (Duff's device) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+  <p style="text-align: center;color: #a3a3a3;font-size: 14px;margin-top: 60px;">留言可能不會立即顯示。若過了幾天仍未出現，請 <a href="mailto:honmonoh@gmail.com">Email</a> 聯繫：）</p>
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="本網站所有內容除特別聲明外，均採用創用CC 姓名標示-非商業性-禁止改作授權。
+    分享時請註明作者及出處。" style="border-bottom: 0;">
+      <img src="https://i.creativecommons.org/l/by-nc-nd/3.0/80x15.png" style="display: unset;">
+    </a>
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ZiTe</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zite-honmonoh","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

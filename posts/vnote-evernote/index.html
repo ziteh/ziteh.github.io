@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/uploads/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300italic,400,400italic,700,700italic%7CNoto+Sans+TC:300,300italic,400,400italic,700,700italic%7CFira+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ziteh.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}},"activeClass":"disqus"},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="前言經由電腦玩物得知Evernote後，我使用它也有6年的時間了，記事的數量超過2500則，也在2年前訂購了專業版。每天上課做筆記、回家寫作業、上網找資料和規劃做專案都少不了Evernote，我可以説是滿重度的使用者了，沒有它我很多事沒辦法做。 但是就在這幾年我開始接觸「開源」和「自由檔案」，我就漸漸脫離商業軟體的束縛，改為使用開源的軟體，像是文書辦公軟體LibreOffice、簡單影片剪輯Sh">
+<meta property="og:type" content="article">
+<meta property="og:title" content="免費開源的VNote如何取代Evernote">
+<meta property="og:url" content="https://ziteh.github.io/posts/vnote-evernote/index.html">
+<meta property="og:site_name" content="ZiTe 本物志">
+<meta property="og:description" content="前言經由電腦玩物得知Evernote後，我使用它也有6年的時間了，記事的數量超過2500則，也在2年前訂購了專業版。每天上課做筆記、回家寫作業、上網找資料和規劃做專案都少不了Evernote，我可以説是滿重度的使用者了，沒有它我很多事沒辦法做。 但是就在這幾年我開始接觸「開源」和「自由檔案」，我就漸漸脫離商業軟體的束縛，改為使用開源的軟體，像是文書辦公軟體LibreOffice、簡單影片剪輯Sh">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://1.bp.blogspot.com/-6qpzgyusXrI/XpnFL8rL1UI/AAAAAAAACEs/Ob5Z50NP0JcFMSaaDtU_8QKUdd8d6glXwCPcBGAsYHg/s640/Cover.png">
+<meta property="og:image" content="https://1.bp.blogspot.com/-mSRKhkiedNA/XpnFL1NVfPI/AAAAAAAACEs/XRpVW4ycUHUPefjJ_mJKtksy-rq4PH-ygCPcBGAsYHg/s1600/MD-01.png">
+<meta property="og:image" content="https://1.bp.blogspot.com/-lco_Qii2fMc/XpnFL8vxFlI/AAAAAAAACEs/ZtCFYNswyMMDFflSBoqC4iFvJjx_togVACPcBGAsYHg/s1600/MD-02.png">
+<meta property="og:image" content="https://1.bp.blogspot.com/-I24rC57jTlY/XpnFL3-q34I/AAAAAAAACEs/0b82q5pnc-8THTMvwvIq-Qc9jIZGaEWBQCPcBGAsYHg/s1600/%25E4%25B8%25BB%25E7%2595%25AB%25E9%259D%25A2-01.png">
+<meta property="og:image" content="https://1.bp.blogspot.com/-vHH1Cj7-dRA/XpnFLxlEUlI/AAAAAAAACEs/OXMAyoFuv3k-YlEGy1KGMYvGuOc3FR4OACPcBGAsYHg/s1600/%25E5%258A%25A0%25E5%2585%25A5%25E5%259C%2596%25E7%2589%2587.gif">
+<meta property="og:image" content="https://1.bp.blogspot.com/-Su-KLGKLv54/XpnFL01DQWI/AAAAAAAACEs/VWmodzWRMwca0HoVPFs4k6BZMz1TExYbwCPcBGAsYHg/s640/Table-01.gif">
+<meta property="og:image" content="https://1.bp.blogspot.com/-qpQ6MubQrGM/XpnFLyrDkSI/AAAAAAAACEs/aDNVc80wrVsDbhphWfqgl9fo5Gf1luNIgCPcBGAsYHg/s1600/MathJax-01.png">
+<meta property="og:image" content="https://1.bp.blogspot.com/-SWfAMPmI9d4/XpnFL8XkCZI/AAAAAAAACEs/fSw93zoMMvo24kbjcaKyM6uPv_dvmsFAQCPcBGAsYHg/s1600/MathJax-02.png">
+<meta property="og:image" content="https://1.bp.blogspot.com/-jfLaL2vtefY/XpnFL3qDzDI/AAAAAAAACEs/hhLO2vcR4oEzBWSwVEWq4exdIIu0jL_9QCPcBGAsYHg/s1600/Flowchart.js-01.png">
+<meta property="og:image" content="https://1.bp.blogspot.com/-nUaIcjn26L4/XpnFL25NCNI/AAAAAAAACEs/M-HTcld03PUpx-FlyzWcjJJQbGlxMifkgCPcBGAsYHg/s1600/PlantUML-01.png">
+<meta property="og:image" content="https://1.bp.blogspot.com/-3SxC9zj2ktM/XpnFL2ZGWYI/AAAAAAAACEs/K0qT7Eg-CkE6STMBbaykfUKTmh961Vy2QCPcBGAsYHg/s1600/Graphviz-01.png">
+<meta property="og:image" content="https://1.bp.blogspot.com/-MjMDisgkpS0/XpnFL1gWCDI/AAAAAAAACEs/40pxY-I2Q0wJ12Q0yjJq-rl4waBN6JctwCPcBGAsYHg/s1600/Mermaid-01.png">
+<meta property="og:image" content="https://1.bp.blogspot.com/-zEgAcsZysvE/XpnFL2r7diI/AAAAAAAACEs/MP6YdmyR2WYAfL-6apItxqc1giGzxabYgCPcBGAsYHg/s1600/WaveDrom-01.png">
+<meta property="article:published_time" content="2019-03-31T14:57:00.000Z">
+<meta property="article:modified_time" content="2024-06-22T08:56:19.919Z">
+<meta property="article:author" content="ZiTe">
+<meta property="article:tag" content="open source">
+<meta property="article:tag" content="開源">
+<meta property="article:tag" content="firmware">
+<meta property="article:tag" content="韌體">
+<meta property="article:tag" content="software">
+<meta property="article:tag" content="軟體">
+<meta property="article:tag" content="electronic">
+<meta property="article:tag" content="電子電路">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://1.bp.blogspot.com/-6qpzgyusXrI/XpnFL8rL1UI/AAAAAAAACEs/Ob5Z50NP0JcFMSaaDtU_8QKUdd8d6glXwCPcBGAsYHg/s640/Cover.png">
+
+
+<link rel="canonical" href="https://ziteh.github.io/posts/vnote-evernote/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://ziteh.github.io/posts/vnote-evernote/","path":"posts/vnote-evernote/","title":"免費開源的VNote如何取代Evernote"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>免費開源的VNote如何取代Evernote | ZiTe 本物志</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZiTe 本物志</p>
+      <i class="logo-line"></i>
+      <p class="site-subtitle" itemprop="description">一位慢步於程式、電路與文學之人的學習記錄與分享</p>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-folder-open fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vnote%E7%B0%A1%E4%BB%8B"><span class="nav-text">VNote簡介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E9%BA%BD%E6%98%AFmarkdown"><span class="nav-text">什麽是Markdown ?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%95%8C%E9%9D%A2%E5%B0%8E%E8%A6%BD"><span class="nav-text">界面導覽</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E9%BB%9E%E5%8A%9F%E8%83%BD"><span class="nav-text">重點功能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E5%85%A5%E5%9C%96%E7%89%87"><span class="nav-text">加入圖片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%99%BA%E6%85%A7%E8%A1%A8%E6%A0%BC"><span class="nav-text">智慧表格</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9B%B4%E5%A4%9A%E5%8A%9F%E8%83%BD"><span class="nav-text">更多功能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#mathjax"><span class="nav-text">MathJax</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flowchart-js"><span class="nav-text">Flowchart.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#plantuml"><span class="nav-text">PlantUML</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#graphviz"><span class="nav-text">Graphviz</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mermaid"><span class="nav-text">Mermaid</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wavedrom"><span class="nav-text">WaveDrom</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B5%90%E8%AB%96"><span class="nav-text">結論</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a href="/about/" title="About">
+      <img class="site-author-image" itemprop="image" alt="ZiTe"
+        src="/uploads/avatar.png">
+    <p class="site-author-name" itemprop="name">ZiTe</p>
+    <div class="site-description" itemprop="description"></div>
+  </a>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ziteh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ziteh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/@siderakb" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;@siderakb" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://siderakb.github.io/" title="SideraKB → https:&#x2F;&#x2F;siderakb.github.io&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-keyboard fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:honmonoh@gmail.com" title="E-Mail → mailto:honmonoh@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="回到頂端">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ziteh.github.io/posts/vnote-evernote/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="ZiTe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="免費開源的VNote如何取代Evernote | ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+
+        <h1 class="post-title" itemprop="name headline">
+          免費開源的VNote如何取代Evernote
+        </h1>
+
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      
+      
+
+      <time title="創建時間：2019-03-31 22:57:00" itemprop="dateCreated datePublished" datetime="2019-03-31T22:57:00+08:00">2019-03-31</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="https://1.bp.blogspot.com/-6qpzgyusXrI/XpnFL8rL1UI/AAAAAAAACEs/Ob5Z50NP0JcFMSaaDtU_8QKUdd8d6glXwCPcBGAsYHg/s640/Cover.png"></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>經由<a target="_blank" rel="noopener" href="https://www.playpcesor.com/?m=0">電腦玩物</a>得知Evernote後，我使用它也有6年的時間了，記事的數量超過2500則，也在2年前訂購了專業版。每天上課做筆記、回家寫作業、上網找資料和規劃做專案都少不了Evernote，我可以説是滿重度的使用者了，沒有它我很多事沒辦法做。</p>
+<p>但是就在這幾年我開始接觸「開源」和「自由檔案」，我就漸漸脫離商業軟體的束縛，改為使用開源的軟體，像是文書辦公軟體LibreOffice、簡單影片剪輯Shotcut和文字編輯器ATOM。但Evernote我一直找不到好的軟體來取代它，但筆記軟體對我來説又是這麽的重要，所以在尋尋覓覓下，終於找到了今天的主角——<a target="_blank" rel="noopener" href="https://tamlok.github.io/vnote/zh_cn/#!index.md">VNote</a>。</p>
+<span id="more"></span>
+
+<h1 id="vnote簡介"><a href="#vnote簡介" class="headerlink" title="VNote簡介"></a>VNote簡介</h1><ol>
+<li>使用Markdown語法</li>
+<li>在編輯模式下原地預覽圖片、圖表和公式</li>
+<li>分類方式有筆記本、無限層級的資料夾和標簽</li>
+<li>可以直接貼上圖片</li>
+<li>模糊搜尋</li>
+<li>MIT開源協議</li>
+<li>由Qt和C++建構而成</li>
+<li>Windows、macOS和Linux都有</li>
+<li>高度可制定的外觀樣式(畢竟是開源的</li>
+<li>UML圖表、流程圖、時序圖和數學公式。支援語法：Mermaid、 Flowchart.js、 MathJax、 WaveDrom、PlantUML 和 Graphviz</li>
+<li>更詳細介紹請見<a target="_blank" rel="noopener" href="https://tamlok.github.io/vnote/zh_cn/#!index.md">網站</a>和<a target="_blank" rel="noopener" href="https://github.com/tamlok/vnote">GitHub</a></li>
+</ol>
+<h1 id="什麽是markdown"><a href="#什麽是markdown" class="headerlink" title="什麽是Markdown ?"></a>什麽是Markdown ?</h1><p>Markdown是一種自由格式的輕量級標示語言(Lightweight Markup Language)，還可以很輕鬆的和HTML互相轉換。</p>
+<p>我在找尋替代的筆記軟體時就是以支援Markdown的軟體為最優先的，因爲我想替換掉Evernote的根本原因就是不想被單一廠商束縛，所以最底層的檔案格式當然也是要用自由檔案格式。之後GitHub常見的Markdown格式就被我優先考慮了。</p>
+<p>至於Markdown的用法和教學可以參考此網頁：<a target="_blank" rel="noopener" href="https://github.com/younghz/Markdown">Markdown 基本语法</a><br>另外介紹一個國產的超優質Markdown線上筆記網站：<a target="_blank" rel="noopener" href="https://hackmd.io/">HackMD</a></p>
+<p><img src="https://1.bp.blogspot.com/-mSRKhkiedNA/XpnFL1NVfPI/AAAAAAAACEs/XRpVW4ycUHUPefjJ_mJKtksy-rq4PH-ygCPcBGAsYHg/s1600/MD-01.png" alt="▲Markdown語法示範(編輯界面)"></p>
+<p><img src="https://1.bp.blogspot.com/-lco_Qii2fMc/XpnFL8vxFlI/AAAAAAAACEs/ZtCFYNswyMMDFflSBoqC4iFvJjx_togVACPcBGAsYHg/s1600/MD-02.png" alt="▲Markdown語法示範(編輯界面)"></p>
+<h1 id="界面導覽"><a href="#界面導覽" class="headerlink" title="界面導覽"></a>界面導覽</h1><p><img src="https://1.bp.blogspot.com/-I24rC57jTlY/XpnFL3-q34I/AAAAAAAACEs/0b82q5pnc-8THTMvwvIq-Qc9jIZGaEWBQCPcBGAsYHg/s1600/%25E4%25B8%25BB%25E7%2595%25AB%25E9%259D%25A2-01.png" alt="▲主畫面"></p>
+<p>這是VNote的基本界面。以下先簡單的介紹各個區域：(因爲這些區塊都是可以任意移動位置的，所以我以預設為例)</p>
+<ul>
+<li>中間是筆記編輯&#x2F;預覽區：就是用來打筆記的地方。</li>
+<li>上方是功能區：像是新筆記、儲存、預覽、加表格或加附件等相關功能都在這裡。</li>
+<li>左方是分類區：<ul>
+<li>筆記本：列出筆記本和資料夾，在下方會列出各自的筆記，以方便開啓。</li>
+<li>歷史：顯示瀏覽筆記的歷史記錄。</li>
+<li>瀏覽器：就是檔案總管。</li>
+<li>標簽：列出標簽，在下方會列出各自的筆記，以方便開啓。</li>
+</ul>
+</li>
+<li>右上是工具：<ul>
+<li>大綱：以筆記的標題自動列出大綱，點擊各標題可以跳至標題處。</li>
+<li>片段：可以加入一些自己常用的詞，以快速打進筆記。</li>
+<li>小推車：應該是類似快速集合的地方。</li>
+</ul>
+</li>
+<li>右下是搜尋：可以用來搜尋筆記、筆記本、内文…等等。</li>
+<li>下方是標簽和字數統計：編輯標簽和顯示字數統計。</li>
+</ul>
+<h1 id="重點功能"><a href="#重點功能" class="headerlink" title="重點功能"></a>重點功能</h1><h2 id="加入圖片"><a href="#加入圖片" class="headerlink" title="加入圖片"></a>加入圖片</h2><p>Markdown是純文字的檔案，它不像.doc、.odt之類的文件檔案可以直接插入圖片。但作爲一個筆記軟體，圖片要如何加入是非常重要的。</p>
+<p>VNote除了用網址的方式加入圖片外還支援直接按“Ctrl + V”貼上圖片，他會自動將圖片存到筆記本内的特定資料夾中(預設為<em>v</em>images)，只要將整個記事本都傳上雲端，就可以實現多裝置同步查看&#x2F;編輯筆記了，這也是我在眾多Markdown軟體中選擇VNote的重要原因。</p>
+<p>而且VNote的圖片支援編輯時及時原地預覽功能。</p>
+<p><img src="https://1.bp.blogspot.com/-vHH1Cj7-dRA/XpnFLxlEUlI/AAAAAAAACEs/OXMAyoFuv3k-YlEGy1KGMYvGuOc3FR4OACPcBGAsYHg/s1600/%25E5%258A%25A0%25E5%2585%25A5%25E5%259C%2596%25E7%2589%2587.gif" alt="▲用貼上的方式加入圖片"></p>
+<h2 id="智慧表格"><a href="#智慧表格" class="headerlink" title="智慧表格"></a>智慧表格</h2><p>剛開始用Markdown語法時可能會覺得它的表格不是很好打，會弄得很亂，但VNote的表格會自動依照内容長度進行調整，相當方便。</p>
+<p><img src="https://1.bp.blogspot.com/-Su-KLGKLv54/XpnFL01DQWI/AAAAAAAACEs/VWmodzWRMwca0HoVPFs4k6BZMz1TExYbwCPcBGAsYHg/s640/Table-01.gif" alt="▲智慧表格"></p>
+<h1 id="更多功能"><a href="#更多功能" class="headerlink" title="更多功能"></a>更多功能</h1><h2 id="mathjax"><a href="#mathjax" class="headerlink" title="MathJax"></a>MathJax</h2><p>MathJax是一個JavaScript庫，可以利用LaTeX、MathML 或AsciiMath的語法來編寫數學算式。而且VNote支援編輯時及時原地預覽功能，讓更加編寫方便。</p>
+<p>詳細用法請看：<a target="_blank" rel="noopener" href="https://www.mathjax.org/">MathJax</a>。要將上方工具列 &gt; Markdown &gt; 擴展 &gt; MathJax 勾選起來並重新打開檔案才能使用此功能。</p>
+<p>範例：</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">$</span><span class="built_in">$</span></span><br><span class="line"></span><br><span class="line">V<span class="keyword">\_</span>N (&#123;1 <span class="keyword">\\</span>over Z<span class="keyword">\_</span>0&#125; + &#123;3 <span class="keyword">\\</span>over Z<span class="keyword">\_</span><span class="keyword">\\</span>phi&#125;) = &#123;&#123;V<span class="keyword">\_</span>&#123;a&#x27;n&#125;+V<span class="keyword">\_</span>&#123;b&#x27;n&#125;+V<span class="keyword">\_</span>&#123;c&#x27;n&#125;&#125; <span class="keyword">\\</span>over Z<span class="keyword">\_</span><span class="keyword">\\</span>phi&#125; <span class="keyword">\\</span>qquad <span class="keyword">\\</span>color&#123;<span class="params">#0</span>8A&#125;&#123;(11.6)&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">$</span><span class="built_in">$</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://1.bp.blogspot.com/-qpQ6MubQrGM/XpnFLyrDkSI/AAAAAAAACEs/aDNVc80wrVsDbhphWfqgl9fo5Gf1luNIgCPcBGAsYHg/s1600/MathJax-01.png" alt="▲MathJax示範(編輯界面)"></p>
+<p><img src="https://1.bp.blogspot.com/-SWfAMPmI9d4/XpnFL8XkCZI/AAAAAAAACEs/fSw93zoMMvo24kbjcaKyM6uPv_dvmsFAQCPcBGAsYHg/s1600/MathJax-02.png" alt="▲MathJax示範(檢視界面)"></p>
+<h2 id="flowchart-js"><a href="#flowchart-js" class="headerlink" title="Flowchart.js"></a>Flowchart.js</h2><p>Flowchart.js可以用來繪製流程圖，VNote支援編輯時及時原地預覽功能。</p>
+<p>詳細用法請看：<a target="_blank" rel="noopener" href="https://flowchart.js.org/">Flowchart.js</a>。要將上方工具列 &gt; Markdown &gt; 擴展 &gt; Flowchart.js 勾選起來並重新打開檔案才能使用此功能。</p>
+<p>範例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">st=&gt;start: Start:&gt;http://www.google.com[blank]</span><br><span class="line">e=&gt;end:&gt;http://www.google.com</span><br><span class="line">op1=&gt;operation: My Operation</span><br><span class="line">sub1=&gt;subroutine: My Subroutine</span><br><span class="line">cond=&gt;condition: Yes</span><br><span class="line">or No?:&gt;http://www.google.com</span><br><span class="line">io=&gt;inputoutput: catch something...</span><br><span class="line"></span><br><span class="line">st-&gt;op1-&gt;cond</span><br><span class="line">cond(yes)-&gt;io-&gt;e</span><br><span class="line">cond(no)-&gt;sub1(right)-&gt;op1</span><br></pre></td></tr></table></figure>
+<p><img src="https://1.bp.blogspot.com/-jfLaL2vtefY/XpnFL3qDzDI/AAAAAAAACEs/hhLO2vcR4oEzBWSwVEWq4exdIIu0jL_9QCPcBGAsYHg/s1600/Flowchart.js-01.png" alt="▲Flowchart.js示範"></p>
+<h2 id="plantuml"><a href="#plantuml" class="headerlink" title="PlantUML"></a>PlantUML</h2><p>PlantUML可以用來繪製各種圖表，VNote支援編輯時及時原地預覽功能。</p>
+<p>詳細用法請看：<a target="_blank" rel="noopener" href="http://plantuml.com/">PlantUML</a>。要在設定中啓用PlantUML才能使用此功能。</p>
+<p>範例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Alice -&gt; Bob: Authentication Request</span><br><span class="line">Bob --&gt; Alice: Authentication Response</span><br><span class="line"></span><br><span class="line">Alice -&gt; Bob: Another authentication Request</span><br><span class="line">Alice &lt;-- Bob: another authentication Response</span><br></pre></td></tr></table></figure>
+<p><img src="https://1.bp.blogspot.com/-nUaIcjn26L4/XpnFL25NCNI/AAAAAAAACEs/M-HTcld03PUpx-FlyzWcjJJQbGlxMifkgCPcBGAsYHg/s1600/PlantUML-01.png" alt="▲PlantUML示範"></p>
+<h2 id="graphviz"><a href="#graphviz" class="headerlink" title="Graphviz"></a>Graphviz</h2><p>Graphviz可以用來文字來描述各個節點的關係，并且圖形化，VNote支援編輯時及時原地預覽功能。</p>
+<p>詳細用法請看：<a target="_blank" rel="noopener" href="https://www.graphviz.org/about/">Graphviz</a>。要在設定中啓用Graphviz，并且下載Graphviz，將dot.exe的路徑在設定中的「Graphviz可執行文件」欄位中貼上才能使用此功能。</p>
+<p>範例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">digraph G</span><br><span class="line">&#123;</span><br><span class="line">  a -&gt; b;</span><br><span class="line">  a -&gt; c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://1.bp.blogspot.com/-3SxC9zj2ktM/XpnFL2ZGWYI/AAAAAAAACEs/K0qT7Eg-CkE6STMBbaykfUKTmh961Vy2QCPcBGAsYHg/s1600/Graphviz-01.png" alt="▲Graphviz示範"></p>
+<h2 id="mermaid"><a href="#mermaid" class="headerlink" title="Mermaid"></a>Mermaid</h2><p>Mermaid可以讓你用簡單的語法繪製圖表。不過目前不支援編輯時及時原地預覽功能，要右鍵開啓「圖表實時預覽」畫面。</p>
+<p>詳細用法請看：<a target="_blank" rel="noopener" href="https://mermaidjs.github.io/">Mermaid</a>。要將上方工具列 &gt; Markdown &gt; 擴展 &gt; Mermaid 勾選起來並重新打開檔案才能使用此功能。</p>
+<p>範例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">graph TD;</span><br><span class="line">A--&gt;B;</span><br><span class="line">A--&gt;C;</span><br><span class="line">B--&gt;D;</span><br><span class="line">C--&gt;D;</span><br></pre></td></tr></table></figure>
+<p><img src="https://1.bp.blogspot.com/-MjMDisgkpS0/XpnFL1gWCDI/AAAAAAAACEs/40pxY-I2Q0wJ12Q0yjJq-rl4waBN6JctwCPcBGAsYHg/s1600/Mermaid-01.png" alt="▲Mermaid示範"></p>
+<h2 id="wavedrom"><a href="#wavedrom" class="headerlink" title="WaveDrom"></a>WaveDrom</h2><p>WaveDrom是一個基於JavaScript的時序圖編寫語法，對於電機電子相關領域的人來説有這個功能很方便。目前不支援編輯時及時原地預覽功能，要右鍵開啓「圖表實時預覽」畫面。</p>
+<p>詳細用法請看：<a target="_blank" rel="noopener" href="https://wavedrom.com/">WaveDrom</a>。要將上方工具列 &gt; Markdown &gt; 擴展 &gt; WaveDrom 勾選起來並重新打開檔案才能使用此功能。</p>
+<p>範例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;signal:[</span><br><span class="line">  &#123;name: &#x27;/EA&#x27;,    wave: &#x27;0......&#x27;&#125;,</span><br><span class="line">  &#123;name: &#x27;ALE&#x27;,    wave: &#x27;010..1.&#x27;&#125;,</span><br><span class="line">  &#123;name: &#x27;/PSEN&#x27;,  wave: &#x27;01.0.1.&#x27;&#125;,</span><br><span class="line">  &#123;name: &#x27;Port-0&#x27;, wave: &#x27;x2.x3.x&#x27; , data: [&#x27;輸出低位置&#x27;, &#x27;輸入指令&#x27;]&#125;,</span><br><span class="line">  &#123;name: &#x27;Port-2&#x27;, wave: &#x27;x4....x&#x27; , data: [&#x27;輸出高位置&#x27;]&#125;,</span><br><span class="line">]&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://1.bp.blogspot.com/-zEgAcsZysvE/XpnFL2r7diI/AAAAAAAACEs/MP6YdmyR2WYAfL-6apItxqc1giGzxabYgCPcBGAsYHg/s1600/WaveDrom-01.png" alt="▲WaveDrom示範"></p>
+<h1 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h1><p>VNote的功能非常多，如過在使用上有任何問題，都可以向打開上方工具列 &gt;幫助(H) &gt; Markdown指南(M) 來查看官方的教學文件。</p>
+<p>本文章使用之VNote為2.3版。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/vacuumtube/" rel="prev" title="真空管工作原理與結構介紹">
+                  <i class="fa fa-angle-left"></i> 真空管工作原理與結構介紹
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/book-9789578787360/" rel="next" title="[閱讀]《四月，她將到來。》川村元氣 ——愛的失能與追尋">
+                  [閱讀]《四月，她將到來。》川村元氣 ——愛的失能與追尋 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+  <p style="text-align: center;color: #a3a3a3;font-size: 14px;margin-top: 60px;">留言可能不會立即顯示。若過了幾天仍未出現，請 <a href="mailto:honmonoh@gmail.com">Email</a> 聯繫：）</p>
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="本網站所有內容除特別聲明外，均採用創用CC 姓名標示-非商業性-禁止改作授權。
+    分享時請註明作者及出處。" style="border-bottom: 0;">
+      <img src="https://i.creativecommons.org/l/by-nc-nd/3.0/80x15.png" style="display: unset;">
+    </a>
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ZiTe</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zite-honmonoh","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

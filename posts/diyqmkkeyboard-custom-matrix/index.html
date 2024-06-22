@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/uploads/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300italic,400,400italic,700,700italic%7CNoto+Sans+TC:300,300italic,400,400italic,700,700italic%7CFira+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ziteh.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}},"activeClass":"disqus"},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="在這篇文章中我簡單地介紹了 Mitosis 這個基於 QMK 的無線分離式人體工學鍵盤，而在這篇文章中，我將參考其架構來做出一個我自己的無線分離式鍵盤的雛形。 要達成這樣的功能，會需要用到 QMK 的 Custom Matrix 和 UART 功能，並且使用 LoRa 無線通訊模組 HC-12 來暫時替代藍牙作爲無線通訊。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[自製QMK鍵盤-番外] 在Custom Matrix中使用UART與控制滑鼠遊標，並加上無線模組">
+<meta property="og:url" content="https://ziteh.github.io/posts/diyqmkkeyboard-custom-matrix/index.html">
+<meta property="og:site_name" content="ZiTe 本物志">
+<meta property="og:description" content="在這篇文章中我簡單地介紹了 Mitosis 這個基於 QMK 的無線分離式人體工學鍵盤，而在這篇文章中，我將參考其架構來做出一個我自己的無線分離式鍵盤的雛形。 要達成這樣的功能，會需要用到 QMK 的 Custom Matrix 和 UART 功能，並且使用 LoRa 無線通訊模組 HC-12 來暫時替代藍牙作爲無線通訊。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/a/AVvXsEh23-UqK5AQeWB-A4o5h_LPG0SIaIlC-GztC4eKfsTX8H2FMCodib8pZtAbyoWirD0ZXoQBExe1vncnQf1nYHZTyfLCW4fDuxhrmR8I608NxoxttwwQi9YyPmhMMvBXkEwbsuYppXw5H61Smc1ApNGVr6Lu-h5Lpu6qFU_DDWL-9Ha0zI1R6pLUSmUw=s16000">
+<meta property="article:published_time" content="2022-02-05T13:40:00.000Z">
+<meta property="article:modified_time" content="2024-06-22T08:56:19.872Z">
+<meta property="article:author" content="ZiTe">
+<meta property="article:tag" content="DIY">
+<meta property="article:tag" content="教學">
+<meta property="article:tag" content="QMK">
+<meta property="article:tag" content="3C">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blogger.googleusercontent.com/img/a/AVvXsEh23-UqK5AQeWB-A4o5h_LPG0SIaIlC-GztC4eKfsTX8H2FMCodib8pZtAbyoWirD0ZXoQBExe1vncnQf1nYHZTyfLCW4fDuxhrmR8I608NxoxttwwQi9YyPmhMMvBXkEwbsuYppXw5H61Smc1ApNGVr6Lu-h5Lpu6qFU_DDWL-9Ha0zI1R6pLUSmUw=s16000">
+
+
+<link rel="canonical" href="https://ziteh.github.io/posts/diyqmkkeyboard-custom-matrix/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://ziteh.github.io/posts/diyqmkkeyboard-custom-matrix/","path":"posts/diyqmkkeyboard-custom-matrix/","title":"[自製QMK鍵盤-番外] 在Custom Matrix中使用UART與控制滑鼠遊標，並加上無線模組"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>[自製QMK鍵盤-番外] 在Custom Matrix中使用UART與控制滑鼠遊標，並加上無線模組 | ZiTe 本物志</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZiTe 本物志</p>
+      <i class="logo-line"></i>
+      <p class="site-subtitle" itemprop="description">一位慢步於程式、電路與文學之人的學習記錄與分享</p>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-folder-open fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8-qmk-%E4%B8%AD%E4%BD%BF%E7%94%A8-custom-matrix-%E8%88%87-uart"><span class="nav-text">在 QMK 中使用 Custom Matrix 與 UART</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#rules-mk"><span class="nav-text">rules.mk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matrix-c"><span class="nav-text">matrix.c</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A9%E7%94%A8-qmk-%E7%A7%BB%E5%8B%95%E6%BB%91%E9%BC%A0%E9%81%8A%E6%A8%99"><span class="nav-text">利用 QMK 移動滑鼠遊標</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lora-%E7%84%A1%E7%B7%9A%E9%80%9A%E8%A8%8A%E6%A8%A1%E7%B5%84-hc-12"><span class="nav-text">LoRa 無線通訊模組 HC-12</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B5%90%E8%AA%9E"><span class="nav-text">結語</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B8%E9%97%9C%E6%96%87%E7%AB%A0"><span class="nav-text">相關文章</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a href="/about/" title="About">
+      <img class="site-author-image" itemprop="image" alt="ZiTe"
+        src="/uploads/avatar.png">
+    <p class="site-author-name" itemprop="name">ZiTe</p>
+    <div class="site-description" itemprop="description"></div>
+  </a>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ziteh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ziteh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/@siderakb" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;@siderakb" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://siderakb.github.io/" title="SideraKB → https:&#x2F;&#x2F;siderakb.github.io&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-keyboard fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:honmonoh@gmail.com" title="E-Mail → mailto:honmonoh@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="回到頂端">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ziteh.github.io/posts/diyqmkkeyboard-custom-matrix/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="ZiTe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="[自製QMK鍵盤-番外] 在Custom Matrix中使用UART與控制滑鼠遊標，並加上無線模組 | ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+          
+          <div class="post-tags">
+              <a href="/tags/DIY/" rel="tag"> DIY</a>
+              <a href="/tags/%E6%95%99%E5%AD%B8/" rel="tag"> 教學</a>
+              <a href="/tags/QMK/" rel="tag"> QMK</a>
+              <a href="/tags/3C/" rel="tag"> 3C</a>
+          </div>
+
+        <h1 class="post-title" itemprop="name headline">
+          [自製QMK鍵盤-番外] 在Custom Matrix中使用UART與控制滑鼠遊標，並加上無線模組
+        </h1>
+
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%87%AA%E8%A3%BDQMK%E9%8D%B5%E7%9B%A4/" itemprop="url" rel="index"><span itemprop="name">自製QMK鍵盤</span></a>
+        </span>
+    </span>
+    <span class="post-meta-item">
+      
+      
+
+      <time title="創建時間：2022-02-05 21:40:00" itemprop="dateCreated datePublished" datetime="2022-02-05T21:40:00+08:00">2022-02-05</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>在<a href="/posts/mitosis-keyboard-intro">這篇文章</a>中我簡單地介紹了 Mitosis 這個基於 QMK 的無線分離式人體工學鍵盤，而在這篇文章中，我將參考其架構來做出一個我自己的無線分離式鍵盤的雛形。</p>
+<p>要達成這樣的功能，會需要用到 QMK 的 <a target="_blank" rel="noopener" href="https://docs.qmk.fm/#/custom_matrix">Custom Matrix</a> 和 UART 功能，並且使用 LoRa 無線通訊模組 HC-12 來暫時替代藍牙作爲無線通訊。</p>
+<p><img src="https://blogger.googleusercontent.com/img/a/AVvXsEh23-UqK5AQeWB-A4o5h_LPG0SIaIlC-GztC4eKfsTX8H2FMCodib8pZtAbyoWirD0ZXoQBExe1vncnQf1nYHZTyfLCW4fDuxhrmR8I608NxoxttwwQi9YyPmhMMvBXkEwbsuYppXw5H61Smc1ApNGVr6Lu-h5Lpu6qFU_DDWL-9Ha0zI1R6pLUSmUw=s16000"></p>
+<span id="more"></span>
+
+<h1 id="在-qmk-中使用-custom-matrix-與-uart"><a href="#在-qmk-中使用-custom-matrix-與-uart" class="headerlink" title="在 QMK 中使用 Custom Matrix 與 UART"></a>在 QMK 中使用 Custom Matrix 與 UART</h1><p>由於 Mitosis 不是和一般的鍵盤一樣透過按鍵掃描來取得按鍵狀態，而是藉由 UART 通訊，所以我們需要改變 QMK 的掃描程式，改成使用 UART 取得按鍵狀態。以下將會說明要如何達成。</p>
+<h2 id="rules-mk"><a href="#rules-mk" class="headerlink" title="rules.mk"></a>rules.mk</h2><p>首先，要完整地啓用「<a target="_blank" rel="noopener" href="https://docs.qmk.fm/#/custom_matrix">Custom Matrix</a>」功能的話，要在 <code>rules.mk</code> 中增加 <code>CUSTOM_MATRIX = yes</code> 與 <code>SRC += matrix.c</code>，並在鍵盤資料夾中增加 <code>matrix.c</code> 檔案。而自定的掃描程式就要按照格式寫在 <code>matrix.c</code> 中。</p>
+<p>然後，因爲我們還會需要使用 UART 功能，所以在 <code>rules.mk</code> 中還要增加 <code>SRC += uart.c</code> 。因此，<code>rules.mk</code> 大概會長這樣：</p>
+<figure class="highlight mk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># MCU name</span></span><br><span class="line">MCU = atmega32u4</span><br><span class="line"></span><br><span class="line"><span class="comment"># Processor frequency.</span></span><br><span class="line"><span class="comment">#     This will define a symbol, F_CPU, in all source code files equal to the</span></span><br><span class="line"><span class="comment">#     processor frequency in Hz. You can then use this symbol in your source code to</span></span><br><span class="line"><span class="comment">#     calculate timings. Do NOT tack on a &#x27;UL&#x27; at the end, this will be done</span></span><br><span class="line"><span class="comment">#     automatically to create a 32-bit value in your source code.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#     This will be an integer division of F_USB below, as it is sourced by</span></span><br><span class="line"><span class="comment">#     F_USB after it has run through any CPU prescalers. Note that this value</span></span><br><span class="line"><span class="comment">#     does not *change* the processor frequency - it should merely be updated to</span></span><br><span class="line"><span class="comment">#     reflect the processor speed set externally so that the code can use accurate</span></span><br><span class="line"><span class="comment">#     software delays.</span></span><br><span class="line">F_CPU = 8000000</span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># LUFA specific</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Target architecture (see library &quot;Board Types&quot; documentation).</span></span><br><span class="line">ARCH = AVR8</span><br><span class="line"></span><br><span class="line"><span class="comment"># Input clock frequency.</span></span><br><span class="line"><span class="comment">#     This will define a symbol, F_USB, in all source code files equal to the</span></span><br><span class="line"><span class="comment">#     input clock frequency (before any prescaling is performed) in Hz. This value may</span></span><br><span class="line"><span class="comment">#     differ from F_CPU if prescaling is used on the latter, and is required as the</span></span><br><span class="line"><span class="comment">#     raw input clock is fed directly to the PLL sections of the AVR for high speed</span></span><br><span class="line"><span class="comment">#     clock generation for the USB and other AVR subsections. Do NOT tack on a &#x27;UL&#x27;</span></span><br><span class="line"><span class="comment">#     at the end, this will be done automatically to create a 32-bit value in your</span></span><br><span class="line"><span class="comment">#     source code.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#     If no clock division is performed on the input clock inside the AVR (via the</span></span><br><span class="line"><span class="comment">#     CPU clock adjust registers or the clock division fuses), this will be equal to F_CPU.</span></span><br><span class="line">F_USB = <span class="variable">$(F_CPU)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Bootloader selection</span></span><br><span class="line"><span class="comment">#   Teensy       halfkay</span></span><br><span class="line"><span class="comment">#   Pro Micro    caterina</span></span><br><span class="line"><span class="comment">#   Atmel DFU    atmel-dfu</span></span><br><span class="line"><span class="comment">#   LUFA DFU     lufa-dfu</span></span><br><span class="line"><span class="comment">#   QMK DFU      qmk-dfu</span></span><br><span class="line"><span class="comment">#   ATmega32A    bootloadHID</span></span><br><span class="line"><span class="comment">#   ATmega328P   USBasp</span></span><br><span class="line">BOOTLOADER = caterina</span><br><span class="line"></span><br><span class="line"><span class="comment"># Interrupt driven control endpoint task(+60)</span></span><br><span class="line">OPT_DEFS += -DINTERRUPT_CONTROL_ENDPOINT</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Boot Section Size in *bytes*</span></span><br><span class="line">OPT_DEFS += -DBOOTLOADER_SIZE=4096</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Build Options</span></span><br><span class="line"><span class="comment">#   comment out to disable the options.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">BOOTMAGIC_ENABLE ?= yes    <span class="comment"># Virtual DIP switch configuration(+1000)</span></span><br><span class="line">MOUSEKEY_ENABLE ?= yes    <span class="comment"># Mouse keys(+4700)</span></span><br><span class="line">EXTRAKEY_ENABLE ?= yes    <span class="comment"># Audio control and System control(+450)</span></span><br><span class="line">CONSOLE_ENABLE ?= no    <span class="comment"># Console for debug(+400)</span></span><br><span class="line">COMMAND_ENABLE ?= no    <span class="comment"># Commands for debug and configuration</span></span><br><span class="line">SLEEP_LED_ENABLE ?= no  <span class="comment"># Breathing sleep LED during USB suspend</span></span><br><span class="line">NKRO_ENABLE ?= yes        <span class="comment"># USB Nkey Rollover - if this doesn&#x27;t work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work</span></span><br><span class="line">BACKLIGHT_ENABLE ?= no  <span class="comment"># Enable keyboard backlight functionality</span></span><br><span class="line">AUDIO_ENABLE ?= no</span><br><span class="line">RGBLIGHT_ENABLE ?= no</span><br><span class="line">ENABLE_VIA = yes</span><br><span class="line">POINTING_DEVICE_ENABLE = yes</span><br><span class="line">CUSTOM_MATRIX = yes</span><br><span class="line"></span><br><span class="line">SRC += matrix.c uart.c</span><br></pre></td></tr></table></figure>
+
+<h2 id="matrix-c"><a href="#matrix-c" class="headerlink" title="matrix.c"></a>matrix.c</h2><p>自行新增的程式檔案 <code>matrix.c</code> 是用來放自定的掃描程式的，我們要在掃描程式中使用 UART 進行通訊。</p>
+<p>根據 QMK 文件的說明，<code>matrix.c</code> 需要實作以下的函式：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Implement the following functions in a matrix.c file in your keyboard folder: */</span></span><br><span class="line"><span class="type">matrix_row_t</span> <span class="title function_">matrix_get_row</span><span class="params">(<span class="type">uint8_t</span> row)</span> &#123;</span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> return the requested row data</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">matrix_print</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> use print() to dump the current matrix state to console</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">matrix_init</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> initialize hardware and global matrix state here</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Unless hardware debouncing - Init the configured debounce routine</span></span><br><span class="line">    debounce_init(MATRIX_ROWS);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// This *must* be called for correct keyboard behavior</span></span><br><span class="line">    matrix_init_quantum();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">uint8_t</span> <span class="title function_">matrix_scan</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">    <span class="type">bool</span> matrix_has_changed = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> add matrix scanning routine here</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Unless hardware debouncing - use the configured debounce routine</span></span><br><span class="line">    debounce(raw_matrix, matrix, MATRIX_ROWS, changed);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// This *must* be called for correct keyboard behavior</span></span><br><span class="line">    matrix_scan_quantum();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> matrix_has_changed;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* And also provide defaults for the following callbacks: */</span></span><br><span class="line">__attribute__((weak)) <span class="type">void</span> <span class="title function_">matrix_init_kb</span><span class="params">(<span class="type">void</span>)</span> &#123; matrix_init_user(); &#125;</span><br><span class="line">__attribute__((weak)) <span class="type">void</span> <span class="title function_">matrix_scan_kb</span><span class="params">(<span class="type">void</span>)</span> &#123; matrix_scan_user(); &#125;</span><br><span class="line">__attribute__((weak)) <span class="type">void</span> <span class="title function_">matrix_init_user</span><span class="params">(<span class="type">void</span>)</span> &#123;&#125;</span><br><span class="line">__attribute__((weak)) <span class="type">void</span> <span class="title function_">matrix_scan_user</span><span class="params">(<span class="type">void</span>)</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>對我們來說，只需要注意 <code>matrix_init()</code> 與 <code>matrix_scan()</code> 這兩個函式就好了。<code>matrix_init()</code> 就是初始化矩陣掃描（只會被呼叫一次），我們要在此函式中完成 UART 的初始化，而 <code>matrix_scan()</code> 就是矩陣掃描的程式，也就是每次要進行掃描是要執行的程式，我們要在此函式中接收 UART 的封包並告訴 QMK 有哪些按鍵狀態改變了（被壓下或釋放）。</p>
+<p>一個簡單的測試程式大概長這樣：（我根據 Mitosis 的程式進行修改的，未檢查是否有不必要的程式）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Copyright 2012 Jun Wako</span></span><br><span class="line"><span class="comment">Copyright 2014 Jack Humbert</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">This program is free software: you can redistribute it and/or modify</span></span><br><span class="line"><span class="comment">it under the terms of the GNU General Public License as published by</span></span><br><span class="line"><span class="comment">the Free Software Foundation, either version 2 of the License, or</span></span><br><span class="line"><span class="comment">(at your option) any later version.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">This program is distributed in the hope that it will be useful,</span></span><br><span class="line"><span class="comment">but WITHOUT ANY WARRANTY; without even the implied warranty of</span></span><br><span class="line"><span class="comment">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span></span><br><span class="line"><span class="comment">GNU General Public License for more details.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">You should have received a copy of the GNU General Public License</span></span><br><span class="line"><span class="comment">along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdint.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdbool.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> defined(__AVR__)</span></span><br><span class="line"><span class="meta">#    <span class="keyword">include</span> <span class="string">&lt;avr/io.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;wait.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;print.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;debug.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;util.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;matrix.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;timer.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;uart.h&quot;</span></span></span><br><span class="line"><span class="comment">//#include &quot;quantum.h&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> (MATRIX_COLS &lt;= 8)</span></span><br><span class="line"><span class="meta">#    <span class="keyword">define</span> print_matrix_header() print(<span class="string">&quot;\nr/c 01234567\n&quot;</span>)</span></span><br><span class="line"><span class="meta">#    <span class="keyword">define</span> print_matrix_row(row) print_bin_reverse8(matrix_get_row(row))</span></span><br><span class="line"><span class="meta">#    <span class="keyword">define</span> matrix_bitpop(i) bitpop(matrix[i])</span></span><br><span class="line"><span class="meta">#    <span class="keyword">define</span> ROW_SHIFTER ((uint8_t)1)</span></span><br><span class="line"><span class="meta">#<span class="keyword">elif</span> (MATRIX_COLS &lt;= 16)</span></span><br><span class="line"><span class="meta">#    <span class="keyword">define</span> print_matrix_header() print(<span class="string">&quot;\nr/c 0123456789ABCDEF\n&quot;</span>)</span></span><br><span class="line"><span class="meta">#    <span class="keyword">define</span> print_matrix_row(row) print_bin_reverse16(matrix_get_row(row))</span></span><br><span class="line"><span class="meta">#    <span class="keyword">define</span> matrix_bitpop(i) bitpop16(matrix[i])</span></span><br><span class="line"><span class="meta">#    <span class="keyword">define</span> ROW_SHIFTER ((uint16_t)1)</span></span><br><span class="line"><span class="meta">#<span class="keyword">elif</span> (MATRIX_COLS &lt;= 32)</span></span><br><span class="line"><span class="meta">#    <span class="keyword">define</span> print_matrix_header() print(<span class="string">&quot;\nr/c 0123456789ABCDEF0123456789ABCDEF\n&quot;</span>)</span></span><br><span class="line"><span class="meta">#    <span class="keyword">define</span> print_matrix_row(row) print_bin_reverse32(matrix_get_row(row))</span></span><br><span class="line"><span class="meta">#    <span class="keyword">define</span> matrix_bitpop(i) bitpop32(matrix[i])</span></span><br><span class="line"><span class="meta">#    <span class="keyword">define</span> ROW_SHIFTER ((uint32_t)1)</span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* matrix state(1:on, 0:off) */</span></span><br><span class="line"><span class="type">static</span> <span class="type">matrix_row_t</span> matrix[MATRIX_ROWS];</span><br><span class="line"></span><br><span class="line">__attribute__((weak)) <span class="type">void</span> <span class="title function_">matrix_init_kb</span><span class="params">(<span class="type">void</span>)</span> &#123; matrix_init_user(); &#125;</span><br><span class="line">__attribute__((weak)) <span class="type">void</span> <span class="title function_">matrix_scan_kb</span><span class="params">(<span class="type">void</span>)</span> &#123; matrix_scan_user(); &#125;</span><br><span class="line">__attribute__((weak)) <span class="type">void</span> <span class="title function_">matrix_init_user</span><span class="params">(<span class="type">void</span>)</span> &#123;&#125;</span><br><span class="line">__attribute__((weak)) <span class="type">void</span> <span class="title function_">matrix_scan_user</span><span class="params">(<span class="type">void</span>)</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="type">uint8_t</span> <span class="title function_">matrix_rows</span><span class="params">(<span class="type">void</span>)</span> &#123; <span class="keyword">return</span> MATRIX_ROWS; &#125;</span><br><span class="line"><span class="keyword">inline</span> <span class="type">uint8_t</span> <span class="title function_">matrix_cols</span><span class="params">(<span class="type">void</span>)</span> &#123; <span class="keyword">return</span> MATRIX_COLS; &#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">matrix_init</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">    uart_init(<span class="number">9600</span>);</span><br><span class="line">    matrix_init_quantum();  <span class="comment">// This *must* be called for correct keyboard behavior.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">uint8_t</span> <span class="title function_">matrix_scan</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (uart_available()) &#123;</span><br><span class="line">        <span class="type">uint8_t</span> indata = uart_read();</span><br><span class="line">        <span class="keyword">switch</span> (indata) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">0x00</span>:</span><br><span class="line">                matrix[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">case</span> <span class="number">0x01</span>:</span><br><span class="line">                matrix[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">case</span> <span class="number">0x10</span>:</span><br><span class="line">                matrix[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">case</span> <span class="number">0x11</span>:</span><br><span class="line">                matrix[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    matrix_scan_quantum();  <span class="comment">// This *must* be called for correct keyboard behavior.</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="type">bool</span> <span class="title function_">matrix_is_on</span><span class="params">(<span class="type">uint8_t</span> row, <span class="type">uint8_t</span> col)</span> &#123; <span class="keyword">return</span> (matrix[row] &amp; ((<span class="type">matrix_row_t</span>)<span class="number">1</span> &lt;&lt; col)); &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">inline</span> <span class="type">matrix_row_t</span> <span class="title function_">matrix_get_row</span><span class="params">(<span class="type">uint8_t</span> row)</span> &#123; <span class="keyword">return</span> matrix[row]; &#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">matrix_print</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">    print_matrix_header();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">uint8_t</span> row = <span class="number">0</span>; row &lt; MATRIX_ROWS; row++) &#123;</span><br><span class="line">        print_hex8(row);</span><br><span class="line">        print(<span class="string">&quot;: &quot;</span>);</span><br><span class="line">        print_matrix_row(row);</span><br><span class="line">        print(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">uint8_t</span> <span class="title function_">matrix_key_count</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">    <span class="type">uint8_t</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">uint8_t</span> i = <span class="number">0</span>; i &lt; MATRIX_ROWS; i++) &#123;</span><br><span class="line">        count += matrix_bitpop(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面這段程式比較重要的有幾點：</p>
+<ul>
+<li><code>#include &quot;uart.h&quot;</code>：引用 QMK 的 UART 功能，否則會編譯錯誤。</li>
+<li><code>uart_init(9600)</code>：在 <code>matrix_init()</code> 中初始化 UART，並將鮑率（Baud Rate）設定爲 9600 bps。</li>
+<li><code>uart_available()</code>：有用過 Arduino 的 Serial Port 的人應該都看得懂這一段，就是只要 UART 的接收緩衝區有值（有接收到資料），就使用 <code>uart_read()</code> 將收到的資料讀出，在透過 <code>switch-case</code> 來處理並改寫 <code>matrix[]</code> 的值，以完成按鍵狀態的更新。</li>
+</ul>
+<h2 id="利用-qmk-移動滑鼠遊標"><a href="#利用-qmk-移動滑鼠遊標" class="headerlink" title="利用 QMK 移動滑鼠遊標"></a>利用 QMK 移動滑鼠遊標</h2><p>因爲我要做的無線分離式鍵盤上預計裝有軌跡球，所以我也一併測試了 QMK 要如何控制滑鼠遊標。</p>
+<p>首先，在 <code>rules.mk</code> 中增加 <code>MOUSEKEY_ENABLE = yes</code>、<code>POINTING_DEVICE_ENABLE = yes</code> 和 <code>POINTING_DEVICE_DRIVER = custom</code> 就可以啓用滑鼠與遊標的相關功能。</p>
+<p>在 <code>matrix.c</code> 中加入 <code>#include &quot;quantum.h&quot;</code>，並將剛剛的 <code>matrix_scan()</code> 的程式改成：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;quantum.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">uint8_t</span> <span class="title function_">matrix_scan</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (uart_available()) &#123;</span><br><span class="line">            <span class="type">uint8_t</span> indata = uart_read();</span><br><span class="line">            <span class="type">report_mouse_t</span> report = &#123;&#125;;</span><br><span class="line">            report.x = (<span class="type">int8_t</span>)indata;</span><br><span class="line">            pointing_device_set_report(report);</span><br><span class="line">            pointing_device_send();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    matrix_scan_quantum();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>report_mouse_t</code> 就是 QMK 中滑鼠遊標的 Data type，其原型爲：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// File：qmk_firmware/tmk_core/protocol/report.h</span></span><br><span class="line"><span class="comment">// URL：https://github.com/qmk/qmk_firmware/blob/master/tmk_core/protocol/report.h</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> MOUSE_SHARED_EP</span></span><br><span class="line">    <span class="type">uint8_t</span> report_id;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="type">uint8_t</span> buttons;</span><br><span class="line">    <span class="type">int8_t</span>  x;</span><br><span class="line">    <span class="type">int8_t</span>  y;</span><br><span class="line">    <span class="type">int8_t</span>  v;</span><br><span class="line">    <span class="type">int8_t</span>  h;</span><br><span class="line">&#125; __attribute__((packed)) <span class="type">report_mouse_t</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>x</code> 與 <code>y</code> 分別代表滑鼠遊標 X 軸與 Y 軸移動的距離，範圍是 <code>-128 ~ 127</code>。</li>
+<li><code>v</code> 與 <code>h</code> 代表滑鼠滾輪垂直與水平滾動的距離，範圍是 <code>-128 ~ 127</code>。</li>
+<li><code>buttons</code> 代表各個滑鼠按鈕按下的情況。</li>
+</ul>
+<h1 id="lora-無線通訊模組-hc-12"><a href="#lora-無線通訊模組-hc-12" class="headerlink" title="LoRa 無線通訊模組 HC-12"></a>LoRa 無線通訊模組 HC-12</h1><p>因爲我手邊沒有其它適合的無線通訊模組，所以就先拿「HC-12」這款 LoRa 模組來使用。</p>
+<p>這個模組的好處是使用簡單方便，就自己把它當成一般的 UART 就好，Tx 與 Rx 接好，不用特別設定什麼就可以無線通訊了。</p>
+<p>而我用來控制 HC-12 的是 Nucleo-F302R8（STM32F302R8），因爲只是要簡單的測試無線通訊及 QMK，所以就寫了一個按下按鈕會透過 UART 傳送特定資料的程式作爲測試。STM32 韌體函式庫使用「libopencm3」，IDE 爲「PlatformIO for VS Code」。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file   main.c</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> CFG_0</span></span><br><span class="line"><span class="comment">//#define CFG_1</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;libopencm3/stm32/rcc.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;libopencm3/stm32/gpio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;libopencm3/stm32/usart.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> USART (USART2)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* USART2-Tx = PA2 */</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> USART_TX_PORT (GPIOA)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> USART_TX_PIN (GPIO2)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* User-LED = PB13 */</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LED_PORT (GPIOB)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LED_PIN (GPIO13)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* User-Button = PC13 */</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> BUTTON_PORT (GPIOC)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> BUTTON_PIN (GPIO13)</span></span><br><span class="line"></span><br><span class="line"><span class="type">uint8_t</span> state = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">rcc_setup</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">  rcc_periph_clock_enable(RCC_GPIOA);</span><br><span class="line">  rcc_periph_clock_enable(RCC_GPIOB);</span><br><span class="line">  rcc_periph_clock_enable(RCC_GPIOC);</span><br><span class="line">  rcc_periph_clock_enable(RCC_USART2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">usart_setup</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">/* Setup Tx pin. */</span></span><br><span class="line">  gpio_mode_setup(USART_TX_PORT, GPIO_MODE_AF, GPIO_PUPD_NONE, USART_TX_PIN);</span><br><span class="line">  gpio_set_af(USART_TX_PORT, GPIO_AF7, USART_TX_PIN);</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* Setup UART config with 9600, 8-N-1. */</span></span><br><span class="line">  usart_set_baudrate(USART, <span class="number">9600</span>);</span><br><span class="line">  usart_set_databits(USART, <span class="number">8</span>);</span><br><span class="line">  usart_set_stopbits(USART, USART_STOPBITS_1);</span><br><span class="line">  usart_set_parity(USART, USART_PARITY_NONE);</span><br><span class="line">  usart_set_flow_control(USART, USART_FLOWCONTROL_NONE);</span><br><span class="line">  usart_set_mode(USART, USART_MODE_TX);</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* Enable. */</span></span><br><span class="line">  usart_enable(USART);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">led_setup</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">  gpio_mode_setup(LED_PORT, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, LED_PIN);</span><br><span class="line">  gpio_set_output_options(LED_PORT, GPIO_OTYPE_PP, GPIO_OSPEED_2MHZ, LED_PIN);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">button_setup</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">  gpio_mode_setup(BUTTON_PORT, GPIO_MODE_INPUT, GPIO_PUPD_NONE, BUTTON_PIN);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">  rcc_setup();</span><br><span class="line">  led_setup();</span><br><span class="line">  button_setup();</span><br><span class="line">  usart_setup();</span><br><span class="line"></span><br><span class="line">  usart_send_blocking(USART, <span class="string">&#x27;O&#x27;</span>);</span><br><span class="line">  usart_send_blocking(USART, <span class="string">&#x27;K&#x27;</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">if</span> defined(CFG_0)</span></span><br><span class="line">  usart_send_blocking(USART, <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">elif</span> defined(CFG_1)</span></span><br><span class="line">  usart_send_blocking(USART, <span class="string">&#x27;1&#x27;</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">error</span> CFG_0 or CFG_1</span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">  usart_send_blocking(USART, <span class="string">&#x27;\r&#x27;</span>);</span><br><span class="line">  usart_send_blocking(USART, <span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> (gpio_get(BUTTON_PORT, BUTTON_PIN) == <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">// Pressed.</span></span><br><span class="line">      gpio_set(LED_PORT, LED_PIN);</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> defined(CFG_0)</span></span><br><span class="line">      usart_send_blocking(USART, <span class="number">0x01</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">elif</span> defined(CFG_1)</span></span><br><span class="line">      usart_send_blocking(USART, <span class="number">0x11</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">error</span> CFG_0 or CFG_1</span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">state = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(state != <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">// Not pressed.</span></span><br><span class="line">      gpio_clear(LED_PORT, LED_PIN);</span><br><span class="line"><span class="meta">#<span class="keyword">if</span> defined(CFG_0)</span></span><br><span class="line">      usart_send_blocking(USART, <span class="number">0x00</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">elif</span> defined(CFG_1)</span></span><br><span class="line">      usart_send_blocking(USART, <span class="number">0x10</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">error</span> CFG_0 or CFG_1</span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">state = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>最終效果如影片所示：</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/L6DrpNg0moA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><p>這次簡單地分享了 QMK 使用 Custom Matrix、UART 和控制滑鼠遊標的方法，有些功能我自己也是找了不少資料才知道要怎麼做，並且也測試了很多次。</p>
+<p>然而對 QMK 的瞭解也還很粗淺，很多細節沒辦法講解，而如果上述內容有任何錯誤也請指正。</p>
+<h1 id="相關文章"><a href="#相關文章" class="headerlink" title="相關文章"></a>相關文章</h1><ul>
+<li><a href="/posts/diyqmkkeyboard-0/#%E6%95%99%E5%AD%B8%E6%96%87%E5%88%97%E8%A1%A8">本 QMK 教學系列文列表</a></li>
+<li><a href="/posts/mitosis-keyboard-intro">Mitosis 無線分離式鍵盤介紹</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.qmk.fm/#/">QMK 官方文件</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/mitosis-keyboard-intro/" rel="prev" title="無線分離式人體工學鍵盤Mitosis的介紹與分析">
+                  <i class="fa fa-angle-left"></i> 無線分離式人體工學鍵盤Mitosis的介紹與分析
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/diyqmkkeyboard-ble/" rel="next" title="[自製QMK鍵盤-番外] 爲QMK鍵盤加上Bluetooth藍牙無線功能">
+                  [自製QMK鍵盤-番外] 爲QMK鍵盤加上Bluetooth藍牙無線功能 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+  <p style="text-align: center;color: #a3a3a3;font-size: 14px;margin-top: 60px;">留言可能不會立即顯示。若過了幾天仍未出現，請 <a href="mailto:honmonoh@gmail.com">Email</a> 聯繫：）</p>
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="本網站所有內容除特別聲明外，均採用創用CC 姓名標示-非商業性-禁止改作授權。
+    分享時請註明作者及出處。" style="border-bottom: 0;">
+      <img src="https://i.creativecommons.org/l/by-nc-nd/3.0/80x15.png" style="display: unset;">
+    </a>
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ZiTe</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zite-honmonoh","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

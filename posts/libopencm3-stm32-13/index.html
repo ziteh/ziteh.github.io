@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/uploads/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300italic,400,400italic,700,700italic%7CNoto+Sans+TC:300,300italic,400,400italic,700,700italic%7CFira+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ziteh.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}},"activeClass":"disqus"},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="前言在上一篇中已經介紹過基本的 Timer 用法，而 Timer 除了單純的定時外，最常見的應用就是產生 PWM（Pulse width modulation）訊號。 在使用 PWM 時我們會需要控制兩種參數：頻率與 Duty Cycle（佔空比）。頻率的部分和 Timer 一樣，由 TIMx_PSC 與 TIMx_ARR 暫存器的值來設定，而 Duty Cycle 則由 TIMx_CCRx 暫存">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STM32 PWM 脈波寬度調變">
+<meta property="og:url" content="https://ziteh.github.io/posts/libopencm3-stm32-13/index.html">
+<meta property="og:site_name" content="ZiTe 本物志">
+<meta property="og:description" content="前言在上一篇中已經介紹過基本的 Timer 用法，而 Timer 除了單純的定時外，最常見的應用就是產生 PWM（Pulse width modulation）訊號。 在使用 PWM 時我們會需要控制兩種參數：頻率與 Duty Cycle（佔空比）。頻率的部分和 Timer 一樣，由 TIMx_PSC 與 TIMx_ARR 暫存器的值來設定，而 Duty Cycle 則由 TIMx_CCRx 暫存">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIKVkj3NgvUUj5ZZvegkFmet7d3aC_Y8CQg8Uo010RhlIKGCVW0qNN_yQuE8rGa9J9dUcdU-7Ij8QHcHJCCGVHgUJ3S596Lktihw0tdbHqE7kbJ6qkloKggNSj4bXMcwElSwNw6gGNzd1qnHjPX-zR6MuMXG0fgOjlB-HD7MjaPJ0wKasLpJTZmy7p/s16000/image_1662216176986_0.png">
+<meta property="article:published_time" content="2022-09-26T03:48:00.000Z">
+<meta property="article:modified_time" content="2024-06-22T08:56:19.893Z">
+<meta property="article:author" content="ZiTe">
+<meta property="article:tag" content="教學">
+<meta property="article:tag" content="STM32">
+<meta property="article:tag" content="LibOpenCM3">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIKVkj3NgvUUj5ZZvegkFmet7d3aC_Y8CQg8Uo010RhlIKGCVW0qNN_yQuE8rGa9J9dUcdU-7Ij8QHcHJCCGVHgUJ3S596Lktihw0tdbHqE7kbJ6qkloKggNSj4bXMcwElSwNw6gGNzd1qnHjPX-zR6MuMXG0fgOjlB-HD7MjaPJ0wKasLpJTZmy7p/s16000/image_1662216176986_0.png">
+
+
+<link rel="canonical" href="https://ziteh.github.io/posts/libopencm3-stm32-13/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://ziteh.github.io/posts/libopencm3-stm32-13/","path":"posts/libopencm3-stm32-13/","title":"STM32 PWM 脈波寬度調變"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>STM32 PWM 脈波寬度調變 | ZiTe 本物志</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZiTe 本物志</p>
+      <i class="logo-line"></i>
+      <p class="site-subtitle" itemprop="description">一位慢步於程式、電路與文學之人的學習記錄與分享</p>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-folder-open fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ccr-%E6%9A%AB%E5%AD%98%E5%99%A8"><span class="nav-text">CCR 暫存器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E7%B5%90"><span class="nav-text">小結</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-text">參考資料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a href="/about/" title="About">
+      <img class="site-author-image" itemprop="image" alt="ZiTe"
+        src="/uploads/avatar.png">
+    <p class="site-author-name" itemprop="name">ZiTe</p>
+    <div class="site-description" itemprop="description"></div>
+  </a>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ziteh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ziteh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/@siderakb" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;@siderakb" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://siderakb.github.io/" title="SideraKB → https:&#x2F;&#x2F;siderakb.github.io&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-keyboard fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:honmonoh@gmail.com" title="E-Mail → mailto:honmonoh@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="回到頂端">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ziteh.github.io/posts/libopencm3-stm32-13/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="ZiTe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="STM32 PWM 脈波寬度調變 | ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%95%99%E5%AD%B8/" rel="tag"> 教學</a>
+              <a href="/tags/STM32/" rel="tag"> STM32</a>
+              <a href="/tags/LibOpenCM3/" rel="tag"> LibOpenCM3</a>
+          </div>
+
+        <h1 class="post-title" itemprop="name headline">
+          STM32 PWM 脈波寬度調變
+        </h1>
+
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%B0%A1%E5%96%AE%E5%85%A5%E9%96%80-LibOpenCM3-STM32-%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%B5%B1%E9%96%8B%E7%99%BC/" itemprop="url" rel="index"><span itemprop="name">簡單入門 LibOpenCM3 STM32 嵌入式系統開發</span></a>
+        </span>
+    </span>
+    <span class="post-meta-item">
+      
+      
+
+      <time title="創建時間：2022-09-26 11:48:00" itemprop="dateCreated datePublished" datetime="2022-09-26T11:48:00+08:00">2022-09-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在上一篇中已經介紹過基本的 Timer 用法，而 Timer 除了單純的定時外，最常見的應用就是產生 PWM（Pulse width modulation）訊號。</p>
+<p>在使用 PWM 時我們會需要控制兩種參數：頻率與 Duty Cycle（佔空比）。頻率的部分和 Timer 一樣，由 TIMx_PSC 與 TIMx_ARR 暫存器的值來設定，而 Duty Cycle 則由 TIMx_CCRx 暫存器來指定。</p>
+<p>這篇會先從理論的部分說明要如何計算並設定 CCR 的值以精確地控制 Duty Cycle。</p>
+<span id="more"></span>
+
+<h1 id="ccr-暫存器"><a href="#ccr-暫存器" class="headerlink" title="CCR 暫存器"></a>CCR 暫存器</h1><p>當我們要使用 PWM 時，我們最在意的是 PWM 的頻率與 Duty Cycle。在 STM32 中，PWM 由 Timer 產生，其頻率的計算方式與 Timer 的部分一樣，這裡就不再贅述，可以參考<a href="https://ziteh.github.io/2022/09/libopencm3-stm32-11/">之前的文章</a>。<br>而 Duty Cycle 由 CCR（Capture&#x2F;Compare Register，捕獲&#x2F;比較暫存器） 來控制。</p>
+<blockquote>
+<p>The reference PWM signal OCxREF is high as long as TIMx_CNT &lt; TIMx_CCRx else it becomes low.</p>
+</blockquote>
+<p>在邊緣對齊、上數模式及 PWM mode 1 下，只要 Counter 的計數值 CNT &lt; CCR，那 PWM 就會輸出 <code>High</code>，否則輸出 <code>Low</code>。而 PWM mode 2 模式可以視爲 mode 1 的反相——只要 Counter 的計數值 CNT &lt; CCR，那 PWM 就會輸出 <code>Low</code>，否則輸出 <code>High</code>。</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIKVkj3NgvUUj5ZZvegkFmet7d3aC_Y8CQg8Uo010RhlIKGCVW0qNN_yQuE8rGa9J9dUcdU-7Ij8QHcHJCCGVHgUJ3S596Lktihw0tdbHqE7kbJ6qkloKggNSj4bXMcwElSwNw6gGNzd1qnHjPX-zR6MuMXG0fgOjlB-HD7MjaPJ0wKasLpJTZmy7p/s16000/image_1662216176986_0.png" alt="▲ PWM 的波形範例，上數 PWM mode 1 模式。取自 RM0390。"></p>
+<p>若 ARR &#x3D; 9，CCR &#x3D; 5，在 CNT &#x3D; 0~4（共 5 次計數） 時會是 <code>High</code>，CNT &#x3D; 5~9（共 5 次計數） 時會是 <code>Low</code>，此時的 Duty Cycle 是 50%。</p>
+<p>假設 ARR &#x3D; 99，CCR &#x3D; 30，在 CNT &#x3D; 0~29（共 30 次計數）時會是 <code>High</code>，CNT &#x3D; 30~99（共 70 次計數）時會是 <code>Low</code>，此時的 Duty Cycle 是 30%。</p>
+<p>再假設 ARR &#x3D; 499，CCR &#x3D; 350，在 CNT &#x3D; 0~349（共 350 次計數）時會是 <code>High</code>，CNT &#x3D; 350~499（共 150 次計數）時會是 <code>Low</code>，此時的 Duty Cycle 是 70%。</p>
+<p>由此可以得知其關係爲：<br><code>Duty_Cycle% = CCR / (ARR + 1) * 100%</code><br>所以<br><code>CCR = (ARR + 1) * Duty_Cycle%  / 100%</code></p>
+<p>因此我們只要照著這個公式去設定 CCR 的值就可以了。</p>
+<p>從上面的關係式也可以發現，Duty Cycle 的控制精度與 ARR 值有關。若 ARR &#x3D; 9，那 Duty Cycle 只能以 10% 爲單位進行調整；若 ARR &#x3D; 999，那 Duty Cycle 就能以 0.1% 爲單位進行調整。因此實際在使用時 ARR 的值不能太小，不然 Duty Cycle 的調整刻度會太大。</p>
+<p>實際上在使用 PWM 時可以依照以下的方向來設定數值：</p>
+<ul>
+<li>CCR 決定 Duty Cycle。</li>
+<li>ARR 決定 Duty Cycle 的控制精度。</li>
+<li>PSC 配合 ARR 以決定頻率。</li>
+</ul>
+<h1 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h1><p>這次介紹了 STM32 的 PWM 用法，PWM 是 Timer 的延伸功能，因此大部分的設定都和 Timer 有關，如果 Timer 有理解的話 PWM 應該不會太難。</p>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://www.st.com/resource/en/datasheet/stm32f446re.pdf">STM32F446RE datasheet (DS10693)</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.st.com/resource/en/reference_manual/rm0390-stm32f446xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf">STM32F446xx reference manual (RM0390)</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.st.com/resource/en/datasheet/stm32f103rb.pdf">STM32F103RB datasheet (DS5319)</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf">STM32 Nucleo-64 board user manual (UM1724)</a></li>
+</ul>
+<blockquote>
+<p>本文同步發表於<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10297647"> iT 邦幫忙-2022 iThome 鐵人賽</a>。</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/libopencm3-stm32-12/" rel="prev" title="STM32 LibOpenCM3：Timer 計時器">
+                  <i class="fa fa-angle-left"></i> STM32 LibOpenCM3：Timer 計時器
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/libopencm3-stm32-14/" rel="next" title="STM32 LibOpenCM3：PWM 脈波寬度調變">
+                  STM32 LibOpenCM3：PWM 脈波寬度調變 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+  <p style="text-align: center;color: #a3a3a3;font-size: 14px;margin-top: 60px;">留言可能不會立即顯示。若過了幾天仍未出現，請 <a href="mailto:honmonoh@gmail.com">Email</a> 聯繫：）</p>
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="本網站所有內容除特別聲明外，均採用創用CC 姓名標示-非商業性-禁止改作授權。
+    分享時請註明作者及出處。" style="border-bottom: 0;">
+      <img src="https://i.creativecommons.org/l/by-nc-nd/3.0/80x15.png" style="display: unset;">
+    </a>
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ZiTe</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zite-honmonoh","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/uploads/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300italic,400,400italic,700,700italic%7CNoto+Sans+TC:300,300italic,400,400italic,700,700italic%7CFira+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ziteh.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}},"activeClass":"disqus"},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="前言在上一篇中已經介紹了 WDG 看門狗計時器的用途以及 IWDG 與 WWDG 的差別，也示範了 IWDG 的基本用法。 這一篇要接著介紹 WWDG 窗口看門狗的基本概念。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STM32 WWDG 窗口看門狗計時器">
+<meta property="og:url" content="https://ziteh.github.io/posts/libopencm3-stm32-17/index.html">
+<meta property="og:site_name" content="ZiTe 本物志">
+<meta property="og:description" content="前言在上一篇中已經介紹了 WDG 看門狗計時器的用途以及 IWDG 與 WWDG 的差別，也示範了 IWDG 的基本用法。 這一篇要接著介紹 WWDG 窗口看門狗的基本概念。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi95ZGURIwumO5WY3GiuIpFNpwEI6zJKUZs8cggiZBgqOSoEvA9zeDnp_PwH-9Rw-bU9dzsMxStwm4YhffS6XIKYMm3uLHAwaRV5SQhuLPsnd89kdX3EoPfKNPODTTRrj4uCPP5Qr62Fbo_WSmnTAWt6PIt7gWErprcFJOqBdEGWxAV6ef8nN9oVlFd/s16000/image_1662526244380_0.png">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiu7DJwBpxMecTTFoUX6_b463B4cBxyV_pqtqi49nwg2tCEwgBgsYlhAmuDe15KWaExiTIiALhg6-lik1CTnTdrosXW9kkN2OHzv1f0ytKGlZaqjjMXwW_hDXcb37zFn2Kvd5IhGgFs4OZJ6hnZgkYF_xDVPOJRuTL7rSRJ0NwmujuTttDDQzEA8k2Y/s16000/image_1662527020990_0.png">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhLJOd0kVjLvFREZbFgal7bDN2U64qtQ-WLzdNKhhXWNb71g6BUun3GBzPMFvsQ5OTS4t9REMhuriMs7w_mpvu7mVXgY4jcr9K8pY5qt4so7qC6nbFE052ja_M2o2Uc-kIPrIo-ecWW1OGhKyc2sI5NMEodpXIAZprXzIPo161v6detq6bYW67FytKj/s16000/image_1662526953782_0.png">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZkpPZfWX2VwZZe3zYmpaNf5S0mwSHXbyEwxNUDbjALZiRhfSQdIHuiWORpAeqn_bYnkgIMoYleOt8dgsYkdQffiPoqGTGany_KFJdIBi_2GIgsdN_-MRmVtFTU7GfPMwjlTh_lpd0-ruxJ4lnyIufwXyS_RKB_c-kkZdBKC-D8SnpYigd8znIWanw/s16000/image_1662527383678_0.png">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiApCvsEK0-Kkmm-oRtXdXJD-OjPvMVWsUHu_pfZgSNRLIb_45VU20JQyPDdQBU0K0CS8qfhwEk77O-FTCSRCoIBzk--5d-R9biqCE7vzq3ay7oNpCe2aNw3I3srs4--9-AvryHwsPd8pkJnTu6Z5zZES_oHSjl3fQpi4kd4Ei97xhUG7g5P40FDACC/s16000/_1662527473515_0.png">
+<meta property="article:published_time" content="2022-09-30T04:00:00.000Z">
+<meta property="article:modified_time" content="2024-06-22T08:56:19.895Z">
+<meta property="article:author" content="ZiTe">
+<meta property="article:tag" content="教學">
+<meta property="article:tag" content="STM32">
+<meta property="article:tag" content="LibOpenCM3">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi95ZGURIwumO5WY3GiuIpFNpwEI6zJKUZs8cggiZBgqOSoEvA9zeDnp_PwH-9Rw-bU9dzsMxStwm4YhffS6XIKYMm3uLHAwaRV5SQhuLPsnd89kdX3EoPfKNPODTTRrj4uCPP5Qr62Fbo_WSmnTAWt6PIt7gWErprcFJOqBdEGWxAV6ef8nN9oVlFd/s16000/image_1662526244380_0.png">
+
+
+<link rel="canonical" href="https://ziteh.github.io/posts/libopencm3-stm32-17/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://ziteh.github.io/posts/libopencm3-stm32-17/","path":"posts/libopencm3-stm32-17/","title":"STM32 WWDG 窗口看門狗計時器"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>STM32 WWDG 窗口看門狗計時器 | ZiTe 本物志</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZiTe 本物志</p>
+      <i class="logo-line"></i>
+      <p class="site-subtitle" itemprop="description">一位慢步於程式、電路與文學之人的學習記錄與分享</p>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-folder-open fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#timeout-%E8%A8%88%E7%AE%97"><span class="nav-text">Timeout 計算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E7%B5%90"><span class="nav-text">小結</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-text">參考資料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a href="/about/" title="About">
+      <img class="site-author-image" itemprop="image" alt="ZiTe"
+        src="/uploads/avatar.png">
+    <p class="site-author-name" itemprop="name">ZiTe</p>
+    <div class="site-description" itemprop="description"></div>
+  </a>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ziteh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ziteh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/@siderakb" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;@siderakb" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://siderakb.github.io/" title="SideraKB → https:&#x2F;&#x2F;siderakb.github.io&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-keyboard fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:honmonoh@gmail.com" title="E-Mail → mailto:honmonoh@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="回到頂端">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ziteh.github.io/posts/libopencm3-stm32-17/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="ZiTe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="STM32 WWDG 窗口看門狗計時器 | ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%95%99%E5%AD%B8/" rel="tag"> 教學</a>
+              <a href="/tags/STM32/" rel="tag"> STM32</a>
+              <a href="/tags/LibOpenCM3/" rel="tag"> LibOpenCM3</a>
+          </div>
+
+        <h1 class="post-title" itemprop="name headline">
+          STM32 WWDG 窗口看門狗計時器
+        </h1>
+
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%B0%A1%E5%96%AE%E5%85%A5%E9%96%80-LibOpenCM3-STM32-%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%B5%B1%E9%96%8B%E7%99%BC/" itemprop="url" rel="index"><span itemprop="name">簡單入門 LibOpenCM3 STM32 嵌入式系統開發</span></a>
+        </span>
+    </span>
+    <span class="post-meta-item">
+      
+      
+
+      <time title="創建時間：2022-09-30 12:00:00" itemprop="dateCreated datePublished" datetime="2022-09-30T12:00:00+08:00">2022-09-30</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在<a href="https://ziteh.github.io/2022/09/libopencm3-stm32-16/">上一篇</a>中已經介紹了 WDG 看門狗計時器的用途以及 IWDG 與 WWDG 的差別，也示範了 IWDG 的基本用法。</p>
+<p>這一篇要接著介紹 WWDG 窗口看門狗的基本概念。</p>
+<span id="more"></span>
+
+<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p>在啓用 WWDG 時有兩種情況會造成它觸發 System Reset：</p>
+<ol>
+<li>當 WWDG 下數計數器的值變得小於 <code>0x40</code>。</li>
+<li>在時間窗口（Window）外時下數計數器被重新裝載（Reload）。</li>
+</ol>
+<blockquote>
+<p>Conditional reset</p>
+<ul>
+<li>Reset (if watchdog activated) when the downcounter value becomes less than 0x40</li>
+<li>Reset (if watchdog activated) if the downcounter is reloaded outside the window</li>
+</ul>
+</blockquote>
+<p>條件 1 就和 IWDG 是類似的情況，但它不是下數到 <code>0x00</code>，而是 <code>0x40</code>。這也是 Window 的下限，是不能調整的。</p>
+<p>條件 2 是 WWDG 與 IWDG 最大的不同，如果還沒到 Window 內就 Refresh 的話也會觸發 Reset。這也是 Window 的上限，可以由使用者調整。</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi95ZGURIwumO5WY3GiuIpFNpwEI6zJKUZs8cggiZBgqOSoEvA9zeDnp_PwH-9Rw-bU9dzsMxStwm4YhffS6XIKYMm3uLHAwaRV5SQhuLPsnd89kdX3EoPfKNPODTTRrj4uCPP5Qr62Fbo_WSmnTAWt6PIt7gWErprcFJOqBdEGWxAV6ef8nN9oVlFd/s16000/image_1662526244380_0.png" alt="▲ WWDG 的 Window 示意圖。取自 RM0390 Rev 6 P.648。"></p>
+<p>在上圖中，WWDG 下數計數器的當前計數值是 T[6:0]，而 Window 的值是 W[6:0]（上限）。</p>
+<p>透過圖可以看出，T[6:0] 會隨時間不斷下數，當數到 <code>0x3F</code>時（<code>0x40</code> 後，也就是 T6 位元從 <code>1</code> 變 <code>0</code>）會觸發 Reset（條件 1）。</p>
+<p>但是在 T[6:0] &gt; W[6:0] 時是在 Window 外，是「Refresh not allowed」的區段，在這個區段內進行 Refresh 也會觸發 Reset（條件 2）。</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiu7DJwBpxMecTTFoUX6_b463B4cBxyV_pqtqi49nwg2tCEwgBgsYlhAmuDe15KWaExiTIiALhg6-lik1CTnTdrosXW9kkN2OHzv1f0ytKGlZaqjjMXwW_hDXcb37zFn2Kvd5IhGgFs4OZJ6hnZgkYF_xDVPOJRuTL7rSRJ0NwmujuTttDDQzEA8k2Y/s16000/image_1662527020990_0.png" alt="▲ WWDG 的系統方塊圖。取自 RM0390 Rev 6 P.647。"></p>
+<h1 id="timeout-計算"><a href="#timeout-計算" class="headerlink" title="Timeout 計算"></a>Timeout 計算</h1><p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhLJOd0kVjLvFREZbFgal7bDN2U64qtQ-WLzdNKhhXWNb71g6BUun3GBzPMFvsQ5OTS4t9REMhuriMs7w_mpvu7mVXgY4jcr9K8pY5qt4so7qC6nbFE052ja_M2o2Uc-kIPrIo-ecWW1OGhKyc2sI5NMEodpXIAZprXzIPo161v6detq6bYW67FytKj/s16000/image_1662526953782_0.png" alt="▲ WWDG 的 Timeout 計算公式。取自 RM0390 Rev 6 P.648。"></p>
+<p>由於 WWDG 位於 APB1 底下，其時鐘會先經過一個固定除 4096 的除頻器，再經過一個可程式設定的 WDG 預除頻器。而計算公式也是相當簡單好理解，來看一下範例：</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZkpPZfWX2VwZZe3zYmpaNf5S0mwSHXbyEwxNUDbjALZiRhfSQdIHuiWORpAeqn_bYnkgIMoYleOt8dgsYkdQffiPoqGTGany_KFJdIBi_2GIgsdN_-MRmVtFTU7GfPMwjlTh_lpd0-ruxJ4lnyIufwXyS_RKB_c-kkZdBKC-D8SnpYigd8znIWanw/s16000/image_1662527383678_0.png" alt="▲ WWDG 的 Timeout 計算範例（結果錯誤）。取自 RM0390 Rev 6 P.649。"></p>
+<p>如果你真的照著上面的數字去按計算機的話，會發現結果不是 21.85，而是 87.38 ms。</p>
+<p>爲什麼？單純是因爲官方文件打錯了，在 2021 年<a target="_blank" rel="noopener" href="https://community.st.com/s/question/0D53W00000arBraSAE/wwdg-timeout-example-calculation-in-rm-incorrect">此問題就被提出</a>，官方看起來有收到此問題了，並有說後續更新文件時會修正。</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiApCvsEK0-Kkmm-oRtXdXJD-OjPvMVWsUHu_pfZgSNRLIb_45VU20JQyPDdQBU0K0CS8qfhwEk77O-FTCSRCoIBzk--5d-R9biqCE7vzq3ay7oNpCe2aNw3I3srs4--9-AvryHwsPd8pkJnTu6Z5zZES_oHSjl3fQpi4kd4Ei97xhUG7g5P40FDACC/s16000/_1662527473515_0.png"></p>
+<p>可能有些人會覺得爲什麼計算公式中是 T[5:0] 而不是 T[6:0]，因爲第 6 位元 T6 實際上是用來指示是否該進行 Reset 的 Flag。</p>
+<p>當 T[6:0] 的值從 <code>0x40</code> 變成 <code>0x3F</code>——也就是從 <code>0100 0000b</code> 變成 <code>0011 1111b</code>——時，T6 位元從 <code>1</code> 變成 <code>0</code>，就會觸發 Reset。</p>
+<p>這部分可以參考上面的 WWDG 的系統方塊圖， T6 位反相後接到一個 OR 閘，而此 OR 閘的輸出就是 Reset。所以實際的計數公式只有 T0~T5，不包含 T6。</p>
+<h1 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h1><p>這次接續 IWDG 的內容，繼續介紹 WWDG 的用法。</p>
+<p>相比於 IWDG，WWDG 多了 Windows 的概念，所以在計算 Timeout 時會多一個要計算的值，但計算的過程相信不會太複雜。</p>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://www.hackster.io/vasam2230/stm32-window-watchdog-wwdg-dda290">STM32 Window Watchdog (WWDG) - Hackster.io</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.st.com/resource/en/datasheet/stm32f446re.pdf">STM32F446RE datasheet (DS10693)</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.st.com/resource/en/reference_manual/rm0390-stm32f446xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf">STM32F446xx reference manual (RM0390)</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.st.com/resource/en/datasheet/stm32f103rb.pdf">STM32F103RB datasheet (DS5319)</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf">STM32 Nucleo-64 board user manual (UM1724)</a></li>
+</ul>
+<blockquote>
+<p>本文同步發表於<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10299454"> iT 邦幫忙-2022 iThome 鐵人賽</a>。</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/libopencm3-stm32-16/" rel="prev" title="STM32 LibOpenCM3：IWDG 獨立看門狗計時器">
+                  <i class="fa fa-angle-left"></i> STM32 LibOpenCM3：IWDG 獨立看門狗計時器
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/libopencm3-stm32-18/" rel="next" title="STM32 LibOpenCM3：WWDG 窗口看門狗計時器">
+                  STM32 LibOpenCM3：WWDG 窗口看門狗計時器 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+  <p style="text-align: center;color: #a3a3a3;font-size: 14px;margin-top: 60px;">留言可能不會立即顯示。若過了幾天仍未出現，請 <a href="mailto:honmonoh@gmail.com">Email</a> 聯繫：）</p>
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="本網站所有內容除特別聲明外，均採用創用CC 姓名標示-非商業性-禁止改作授權。
+    分享時請註明作者及出處。" style="border-bottom: 0;">
+      <img src="https://i.creativecommons.org/l/by-nc-nd/3.0/80x15.png" style="display: unset;">
+    </a>
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ZiTe</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zite-honmonoh","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

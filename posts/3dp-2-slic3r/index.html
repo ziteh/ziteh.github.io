@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/uploads/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300italic,400,400italic,700,700italic%7CNoto+Sans+TC:300,300italic,400,400italic,700,700italic%7CFira+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ziteh.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}},"activeClass":"disqus"},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="要把東西印得又好又快，除了一台設計良好的3D列印機外，調整恰當的切片參數也是非常重要的，只要慢慢的嘗試，就可以找出最適合的列印參數。 Slic3r是我第一個使用的切片軟體，所以也是我研究最深入也最熟悉的軟體，基本上使用容易，要進行更細緻的調整也可以。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[教學:3D列印-2] Slic3r 切片軟體教學">
+<meta property="og:url" content="https://ziteh.github.io/posts/3dp-2-slic3r/index.html">
+<meta property="og:site_name" content="ZiTe 本物志">
+<meta property="og:description" content="要把東西印得又好又快，除了一台設計良好的3D列印機外，調整恰當的切片參數也是非常重要的，只要慢慢的嘗試，就可以找出最適合的列印參數。 Slic3r是我第一個使用的切片軟體，所以也是我研究最深入也最熟悉的軟體，基本上使用容易，要進行更細緻的調整也可以。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://2.bp.blogspot.com/-GTTo62P_3n4/Xqz-jre9fjI/AAAAAAAACKY/vgm5JioIARQb2eXSzUhyvbvcTv5JUtPKwCPcBGAsYHg/s1600/Expert%2B%25E6%25A8%25A1%25E5%25BC%258F-2.png">
+<meta property="og:image" content="https://1.bp.blogspot.com/-Sw3WqrCe29U/Xqz-jlMemLI/AAAAAAAACKY/ozkM-4898H0f6mGp6w06nenvLC6N015_wCPcBGAsYHg/s1600/1-1.png">
+<meta property="og:image" content="https://1.bp.blogspot.com/-4LSrZ_ohJoQ/Xqz-jvtCJKI/AAAAAAAACKY/sYxDDZk6kvwzJOIcfudv8c3G6_md_yMPwCPcBGAsYHg/s1600/1-2.png">
+<meta property="og:image" content="https://2.bp.blogspot.com/-vH_5IvnHihs/Xqz-jmDUZ-I/AAAAAAAACKY/pWty8J2u0ywiYiRqDuzbp1umuiVEJrL2QCPcBGAsYHg/s1600/1-3.png">
+<meta property="og:image" content="https://3.bp.blogspot.com/-HSC7etsWyzQ/Xqz-jtL2gOI/AAAAAAAACKY/o4YGvVuUaA0PSDkBfKNkCrgbFcnpKknHACPcBGAsYHg/s1600/2-1.png">
+<meta property="og:image" content="https://1.bp.blogspot.com/-v_MjifqO6lA/Xqz-jgblLbI/AAAAAAAACKY/jhfNny8-C4M50jwz9PxmymWiZoFuSQKiQCPcBGAsYHg/s1600/2-2.png">
+<meta property="og:image" content="https://4.bp.blogspot.com/-MF8VogEfByQ/Xqz-jomDxfI/AAAAAAAACKY/SlWlJSNn1V8ou4k29AfmkNwybvi39zWeQCPcBGAsYHg/s1600/3-1.png">
+<meta property="og:image" content="https://1.bp.blogspot.com/-MZ1A5s4jTkk/Xqz-jgH_HyI/AAAAAAAACKY/QBNMKYxyVcUCRHEOZDrTBWodigpNg7ZfQCPcBGAsYHg/s1600/3-2.png">
+<meta property="og:image" content="https://2.bp.blogspot.com/-OwLfPZeCbUY/Xqz-jjqChRI/AAAAAAAACKY/cW8oI6DqLVwdVJ0KuhVTh9X3Hxz6oD0OwCPcBGAsYHg/s1600/3-3.png">
+<meta property="og:image" content="https://1.bp.blogspot.com/-S2lq4oWWU4g/Xqz-jm5QJ1I/AAAAAAAACKY/8A8y2Fukzy8QSHTqlMh8hD4dvZVXwpybACPcBGAsYHg/s1600/3-4.png">
+<meta property="og:image" content="https://3.bp.blogspot.com/-ydZ2-vd-Nnw/Xqz-jnvvJzI/AAAAAAAACKY/5P-qETglka4mWHrhOvqoiszqHIkM97YPwCPcBGAsYHg/s1600/3-5.png">
+<meta property="og:image" content="https://2.bp.blogspot.com/-sF8KyRKZ8Jw/Xqz-jh_IBJI/AAAAAAAACKY/TwEOVcNjdU4V2h_CR5LKuJ1Smt1cBrFCgCPcBGAsYHg/s1600/3-6.png">
+<meta property="og:image" content="https://1.bp.blogspot.com/-rpCch09vuS8/Xqz-jhQodyI/AAAAAAAACKY/ipaxIQxrcmUn36PTT0nwroK1_G96ZXbBACPcBGAsYHg/s1600/3-7.png">
+<meta property="og:image" content="https://1.bp.blogspot.com/-CpBgcnZ0ws4/Xqz-jg82wyI/AAAAAAAACKY/30dqcypJGF8fcBkkTmg0g5SyJIru0wkjQCPcBGAsYHg/s1600/3-8.png">
+<meta property="og:image" content="https://1.bp.blogspot.com/-CpBgcnZ0ws4/Xqz-jg82wyI/AAAAAAAACKY/30dqcypJGF8fcBkkTmg0g5SyJIru0wkjQCPcBGAsYHg/s1600/3-8.png">
+<meta property="article:published_time" content="2017-05-22T04:48:00.000Z">
+<meta property="article:modified_time" content="2024-06-22T08:56:19.861Z">
+<meta property="article:author" content="ZiTe">
+<meta property="article:tag" content="3D列印">
+<meta property="article:tag" content="教學">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://2.bp.blogspot.com/-GTTo62P_3n4/Xqz-jre9fjI/AAAAAAAACKY/vgm5JioIARQb2eXSzUhyvbvcTv5JUtPKwCPcBGAsYHg/s1600/Expert%2B%25E6%25A8%25A1%25E5%25BC%258F-2.png">
+
+
+<link rel="canonical" href="https://ziteh.github.io/posts/3dp-2-slic3r/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://ziteh.github.io/posts/3dp-2-slic3r/","path":"posts/3dp-2-slic3r/","title":"[教學:3D列印-2] Slic3r 切片軟體教學"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>[教學:3D列印-2] Slic3r 切片軟體教學 | ZiTe 本物志</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZiTe 本物志</p>
+      <i class="logo-line"></i>
+      <p class="site-subtitle" itemprop="description">一位慢步於程式、電路與文學之人的學習記錄與分享</p>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-folder-open fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%97%E5%8D%B0%E6%A9%9F%E8%A8%AD%E5%AE%9A%EF%BC%9A%E9%BB%9E%E9%81%B8-printer-settings-%E6%A8%99%E7%B0%BD"><span class="nav-text">列印機設定：點選[Printer Settings]標簽</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-general"><span class="nav-text">1.General</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-custom-g-code"><span class="nav-text">2.Custom G-code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-extruder-1"><span class="nav-text">3.Extruder 1</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%90%E6%96%99%E8%A8%AD%E5%AE%9A-%E9%BB%9E%E9%81%B8-filament-settings-%E6%A8%99%E7%B0%BD"><span class="nav-text">材料設定: 點選[Filament Settings]標簽</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-filament"><span class="nav-text">1.Filament</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-cooling"><span class="nav-text">2.Cooling</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%97%E5%8D%B0%E5%8F%83%E6%95%B8%E8%A8%AD%E5%AE%9A-%E9%BB%9E%E9%81%B8-print-settings-%E6%A8%99%E7%B0%BD"><span class="nav-text">列印參數設定: 點選[Print Settings]標簽</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-layers-and-perimeters"><span class="nav-text">1.Layers and perimeters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-infill"><span class="nav-text">2.Infill</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-skirt-and-brim"><span class="nav-text">3.Skirt and brim</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-support-material"><span class="nav-text">4.Support material</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-speed"><span class="nav-text">5.Speed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-multiple-extruders"><span class="nav-text">6.Multiple Extruders</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-advanced"><span class="nav-text">7.Advanced</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-output-options"><span class="nav-text">8.Output options</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-notes-%E7%AD%86%E8%A8%98"><span class="nav-text">9.Notes 筆記</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B8%E9%97%9C%E6%96%87%E7%AB%A0"><span class="nav-text">相關文章</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a href="/about/" title="About">
+      <img class="site-author-image" itemprop="image" alt="ZiTe"
+        src="/uploads/avatar.png">
+    <p class="site-author-name" itemprop="name">ZiTe</p>
+    <div class="site-description" itemprop="description"></div>
+  </a>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ziteh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ziteh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/@siderakb" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;@siderakb" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://siderakb.github.io/" title="SideraKB → https:&#x2F;&#x2F;siderakb.github.io&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-keyboard fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:honmonoh@gmail.com" title="E-Mail → mailto:honmonoh@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="回到頂端">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ziteh.github.io/posts/3dp-2-slic3r/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="ZiTe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="[教學:3D列印-2] Slic3r 切片軟體教學 | ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+          
+          <div class="post-tags">
+              <a href="/tags/3D%E5%88%97%E5%8D%B0/" rel="tag"> 3D列印</a>
+              <a href="/tags/%E6%95%99%E5%AD%B8/" rel="tag"> 教學</a>
+          </div>
+
+        <h1 class="post-title" itemprop="name headline">
+          [教學:3D列印-2] Slic3r 切片軟體教學
+        </h1>
+
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      
+      
+
+      <time title="創建時間：2017-05-22 12:48:00" itemprop="dateCreated datePublished" datetime="2017-05-22T12:48:00+08:00">2017-05-22</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>要把東西印得又好又快，除了一台設計良好的3D列印機外，調整恰當的切片參數也是非常重要的，只要慢慢的嘗試，就可以找出最適合的列印參數。</p>
+<p><a target="_blank" rel="noopener" href="http://slic3r.org/">Slic3r</a>是我第一個使用的切片軟體，所以也是我研究最深入也最熟悉的軟體，基本上使用容易，要進行更細緻的調整也可以。</p>
+<span id="more"></span>
+
+<p>首先要更改模式為Expert 將[Mode]中的[Simple]改為[Expert]。打開設定選單，點選左上角的[File] &gt; [Preferences]</p>
+<p><img src="https://2.bp.blogspot.com/-GTTo62P_3n4/Xqz-jre9fjI/AAAAAAAACKY/vgm5JioIARQb2eXSzUhyvbvcTv5JUtPKwCPcBGAsYHg/s1600/Expert%2B%25E6%25A8%25A1%25E5%25BC%258F-2.png"></p>
+<h1 id="列印機設定：點選-printer-settings-標簽"><a href="#列印機設定：點選-printer-settings-標簽" class="headerlink" title="列印機設定：點選[Printer Settings]標簽"></a>列印機設定：點選[Printer Settings]標簽</h1><h2 id="1-general"><a href="#1-general" class="headerlink" title="1.General"></a>1.General</h2><ul>
+<li>Size and coordinates<ul>
+<li>Bed shape : 設定3D列印機的可列印範圍與原點</li>
+<li>Z offset : Z軸高度調整。通常設定為0，Z軸高度會直接用3D列印機上的限位開關來調整</li>
+</ul>
+</li>
+<li>Capabilities<ul>
+<li>Extruders : 設定3D有幾個擠出機組</li>
+</ul>
+</li>
+<li>OctoPrint upload<ul>
+<li>Host or IP :</li>
+<li>API Key :</li>
+</ul>
+</li>
+<li>Firmware<ul>
+<li>G-code flavor : 選擇3D列印機的靭體類型。基本上使用Arduino和ATMega 2560的3D列印機都是選RepRap</li>
+</ul>
+</li>
+<li>Advanced<ul>
+<li>Use relative E distances :</li>
+<li>Use firmware retraction :</li>
+<li>Use volumetric E :</li>
+<li>Pressure advance :</li>
+<li>Vibration limit (deprecated) :</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://1.bp.blogspot.com/-Sw3WqrCe29U/Xqz-jlMemLI/AAAAAAAACKY/ozkM-4898H0f6mGp6w06nenvLC6N015_wCPcBGAsYHg/s1600/1-1.png"></p>
+<h2 id="2-custom-g-code"><a href="#2-custom-g-code" class="headerlink" title="2.Custom G-code"></a>2.Custom G-code</h2><ul>
+<li>Start G-code : 開始列印時要執行的G-code指令</li>
+<li>End G-code : 結束列印時要執行的G-code指令</li>
+<li>Before layer change G-code : 換層前時要執行的G-code指令</li>
+<li>After layer change G-code : 換層後時要執行的G-code指令</li>
+<li>Tool change G-code :</li>
+</ul>
+<p><img src="https://1.bp.blogspot.com/-4LSrZ_ohJoQ/Xqz-jvtCJKI/AAAAAAAACKY/sYxDDZk6kvwzJOIcfudv8c3G6_md_yMPwCPcBGAsYHg/s1600/1-2.png"></p>
+<h2 id="3-extruder-1"><a href="#3-extruder-1" class="headerlink" title="3.Extruder 1"></a>3.Extruder 1</h2><ul>
+<li>Size<ul>
+<li>Nozzle diameter : 設定3D列印機的擠出頭孔徑(直徑)。當層高(Layer height)大於擠出頭孔徑(Nozzle diameter)時會造成切片錯誤。</li>
+</ul>
+</li>
+<li>Position (for multi-extruder printers)<ul>
+<li>Extruder offset :</li>
+</ul>
+</li>
+<li>Retraction<ul>
+<li>Length : 回抽材料的長度。調整此數值可改善牽絲的問題，但不能太大也不能太小，需要自己不斷測試來找出最適合的數值</li>
+<li>Lift Z : 回抽時抬高Z軸的高度。此數值通常不會設定太大，甚至設定為0也可以</li>
+<li>Speed : 回抽材料的速度</li>
+<li>Extra length on restart : 回抽後重新進料時多擠的材料長度。通常此數值設定為0就好，但如果遇到回抽後重新擠料時來不及出料的狀況，就要增加此數值</li>
+<li>Minimum travel after retraction : 但此次列印結束的位置與下個列印開始的位置相距不到這個距離時，不要進行回抽</li>
+<li>Retract on layer change : 換層時是否要回抽。通常會開啟</li>
+<li>Wipe while retracting :</li>
+</ul>
+</li>
+<li>Retraction when toll is disabled (advanced settings for multi-extruder setups)<ul>
+<li>Length :</li>
+<li>Extra length on restart :</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://2.bp.blogspot.com/-vH_5IvnHihs/Xqz-jmDUZ-I/AAAAAAAACKY/pWty8J2u0ywiYiRqDuzbp1umuiVEJrL2QCPcBGAsYHg/s1600/1-3.png"></p>
+<h1 id="材料設定-點選-filament-settings-標簽"><a href="#材料設定-點選-filament-settings-標簽" class="headerlink" title="材料設定: 點選[Filament Settings]標簽"></a>材料設定: 點選[Filament Settings]標簽</h1><h2 id="1-filament"><a href="#1-filament" class="headerlink" title="1.Filament"></a>1.Filament</h2><ul>
+<li>Filament<ul>
+<li>Color : 列印材料的顔色</li>
+<li>Diameter : 列印材料的直徑</li>
+<li>Extrusion multiplier : 列印材料的尺寸差補償。廠商標示的材料尺寸可能會和實際尺寸有些誤差，可以透過此數值進行補償。計算方式為標示尺寸(Diameter)除以實際尺寸，例如標示3mm的材料，實際測量為2.95mm，那此數值為3÷2.95≒1.017</li>
+</ul>
+</li>
+<li>Temperature (°C)<ul>
+<li>Extruder :</li>
+<li>First layer : 列印第一層時的擠出頭溫度。由於第一層需要與列印平面有較好的接觸，所以第一層的溫度可以高一點</li>
+<li>Other layers : 列印其他層時的擠出頭溫度</li>
+</ul>
+</li>
+<li>Bed ：<ul>
+<li>First layer : 列印第一層時的熱床溫度。由於第一層需要與列印平面有較好的接觸，所以第一層的溫度可以高一點</li>
+<li>Other layers : 列印其他層時的熱床溫度</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://3.bp.blogspot.com/-HSC7etsWyzQ/Xqz-jtL2gOI/AAAAAAAACKY/o4YGvVuUaA0PSDkBfKNkCrgbFcnpKknHACPcBGAsYHg/s1600/2-1.png"></p>
+<h2 id="2-cooling"><a href="#2-cooling" class="headerlink" title="2.Cooling"></a>2.Cooling</h2><ul>
+<li>Enable<ul>
+<li>Keep fan always on : 風扇永遠開啓</li>
+<li>Enable auto cooling : 自動風扇控制。通常使用此設定</li>
+</ul>
+</li>
+<li>Fan settings<ul>
+<li>Fan speed :<ul>
+<li>Min : 最小風扇風量</li>
+<li>Max : 最大風扇風量</li>
+</ul>
+</li>
+<li>Bridges fan speed : 搭橋時的風扇風量。由於搭橋時需要快速讓材料冷卻，所以可以加強風量</li>
+<li>Disable fan for the first : 在列印前幾層時不要開啓風扇。由於第一層需要與列印平面有較好的接觸，所以可以設定列印前幾層時不要開啟風扇，以避免材料因為冷卻而收縮，造成列印件發生翹曲的狀況</li>
+</ul>
+</li>
+<li>Cooling thresholds<ul>
+<li>Enable fan if layer print time is below :</li>
+<li>Slow down if layer print time is below :</li>
+<li>Min Print speed :</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://1.bp.blogspot.com/-v_MjifqO6lA/Xqz-jgblLbI/AAAAAAAACKY/jhfNny8-C4M50jwz9PxmymWiZoFuSQKiQCPcBGAsYHg/s1600/2-2.png"></p>
+<h1 id="列印參數設定-點選-print-settings-標簽"><a href="#列印參數設定-點選-print-settings-標簽" class="headerlink" title="列印參數設定: 點選[Print Settings]標簽"></a>列印參數設定: 點選[Print Settings]標簽</h1><h2 id="1-layers-and-perimeters"><a href="#1-layers-and-perimeters" class="headerlink" title="1.Layers and perimeters"></a>1.Layers and perimeters</h2><ul>
+<li>Layer height<ul>
+<li>Layer height : 層高，每一層列印出的材料高度，通常3D列印機的解析度就是指這個數值。當層高(Layer height)大於擠出頭孔徑(Nozzle diameter)時會造成切片錯誤。</li>
+<li>First layer height : 第一層的層高。第一層的層高設定高一點可以補償列印平面表面的不平整</li>
+</ul>
+</li>
+<li>Vertical shells<ul>
+<li>Perimeters : 外殼厚為多少圈。通常設定2~4圈就好，設定太多圈會嚴重加長列印時間，因為每一層都要印外殼</li>
+<li>Spiral vase : 螺旋花瓶</li>
+</ul>
+</li>
+<li>Horizontal shells<ul>
+<li>Solid layers :<ul>
+<li>Top : 頂部的實體層為多少層。通常設定為2~4層</li>
+<li>Bottom : 底部的實體層為多少層。通常設定為2~4層</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Quality (slower slicing)<ul>
+<li>Extra perimeters if needed : 如果需要，增加外殼厚度</li>
+<li>Avoid crossing perimeters :</li>
+<li>Detect thin walls :</li>
+<li>Detect bridging perimeters :</li>
+</ul>
+</li>
+<li>Advanced<ul>
+<li>Seam position : 接縫位置。選擇列印兩不相鄰列印件時，每次開始列印不同列印件的位置。通常設定為Aligned來增加列印件美觀或Nearent來減少列印時間</li>
+<li>External perimeters firs : 印外殼時，先印最外圈。通常不會使用</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://4.bp.blogspot.com/-MF8VogEfByQ/Xqz-jomDxfI/AAAAAAAACKY/SlWlJSNn1V8ou4k29AfmkNwybvi39zWeQCPcBGAsYHg/s1600/3-1.png"></p>
+<h2 id="2-infill"><a href="#2-infill" class="headerlink" title="2.Infill"></a>2.Infill</h2><ul>
+<li>Infill<ul>
+<li>Fill density : 一般填充的百分比。通常設定15%~65%就好</li>
+<li>Fill pattern : 一般填充的樣式。建議使用Honeycomb</li>
+<li>Top&#x2F;bottom fill pattern : 頂&#x2F;底層一般填充的樣式。建議使用Rectilinear</li>
+</ul>
+</li>
+<li>Reducing printing time<ul>
+<li>Combine infill every :</li>
+<li>Only infill where needed : 只填充有需要的地方</li>
+</ul>
+</li>
+<li>Advanced<ul>
+<li>Solid infill every : 每多少層進行一次實體填充。可以增加列印件強度，但通常不用</li>
+<li>Fill angle : 每層填充轉的角度</li>
+<li>Solid infill threshold area : 如果部分面積小於這個值時，此部分使用實體填充，而不是一般填充，可以增加強度</li>
+<li>Only retract when crossing perimeters :</li>
+<li>Infill before perimeters : 每一層先印填充，再印外殼，通常不用</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://1.bp.blogspot.com/-MZ1A5s4jTkk/Xqz-jgH_HyI/AAAAAAAACKY/QBNMKYxyVcUCRHEOZDrTBWodigpNg7ZfQCPcBGAsYHg/s1600/3-2.png"></p>
+<h2 id="3-skirt-and-brim"><a href="#3-skirt-and-brim" class="headerlink" title="3.Skirt and brim"></a>3.Skirt and brim</h2><ul>
+<li>Skirt<ul>
+<li>Loops (minimum) : 預擠外框的最小圈數。為了確保列印時出料正常，會先在列印件外圍進行預擠，可以藉由觀察預擠外框來判斷出料的正確</li>
+<li>Distance from object : 預擠外框與列印件的距離</li>
+<li>Skirt height : 預擠外框的高度。通常設定為1層</li>
+<li>Minimum extrusion length : 最小長度</li>
+</ul>
+</li>
+<li>Brim<ul>
+<li>Brim width : 裙邊的寬度。增加裙邊可以讓列印件不容易發生翹曲的狀況，也可以當地基</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://2.bp.blogspot.com/-OwLfPZeCbUY/Xqz-jjqChRI/AAAAAAAACKY/cW8oI6DqLVwdVJ0KuhVTh9X3Hxz6oD0OwCPcBGAsYHg/s1600/3-3.png"></p>
+<h2 id="4-support-material"><a href="#4-support-material" class="headerlink" title="4.Support material"></a>4.Support material</h2><ul>
+<li>Support material<ul>
+<li>Generate support material : 開啓支撐架</li>
+<li>Overhang threshold :</li>
+<li>Enforce support for the first :</li>
+</ul>
+</li>
+<li>Raft<ul>
+<li>Raft layers : 棧板層高</li>
+</ul>
+</li>
+<li>Options for support material and raft<ul>
+<li>Contact Z distance : 支撐架與列印件上下距離要多遠</li>
+<li>Pattern :</li>
+<li>Pattern spacing :</li>
+<li>Pattern angle :</li>
+<li>Interface layers :</li>
+<li>Interface pattern spacing :</li>
+<li>Don’t support bridges : 搭橋的部分不要進行支撐</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://1.bp.blogspot.com/-S2lq4oWWU4g/Xqz-jm5QJ1I/AAAAAAAACKY/8A8y2Fukzy8QSHTqlMh8hD4dvZVXwpybACPcBGAsYHg/s1600/3-4.png"></p>
+<h2 id="5-speed"><a href="#5-speed" class="headerlink" title="5.Speed"></a>5.Speed</h2><ul>
+<li>Speed for print moves<ul>
+<li>Perimeters : 外殼的列印速度。此速度可以快一些，能大量減少列印時間，因為每一層都要印外殼</li>
+<li>Small perimeters :</li>
+<li>External perimeters : 外殼最外圈的列印速度。此速度可以稍慢於外殼列印速度(Perimeters)，讓成品更美觀</li>
+<li>Infill : 一般填充的列印速度</li>
+<li>Solid infill : 實體填充的列印速度</li>
+<li>Top solid infill : 頂層實體填充的列印速度。此速度設慢一些可以增加成品美觀</li>
+<li>Support material : 支撐架的列印速度</li>
+<li>Support material interface :</li>
+<li>Bridges : 搭橋的列印速度</li>
+<li>Gap fill : 薄牆的列印速度</li>
+</ul>
+</li>
+<li>Speed for non-print moves<ul>
+<li>Travel : 非列印時的移動速度</li>
+</ul>
+</li>
+<li>Modifiers<ul>
+<li>First layer speed : 第一層的列印速度。由於第一層需要與列印平面有較好的接觸，所以會慢慢印</li>
+</ul>
+</li>
+<li>Acceleration control (advanced)<ul>
+<li>Perimeters :</li>
+<li>Infill :</li>
+<li>Bridge :</li>
+<li>First layer :</li>
+<li>Default :</li>
+</ul>
+</li>
+<li>Autospeed (advanced)<ul>
+<li>Max print speed :</li>
+<li>Max volumetric speed :</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://3.bp.blogspot.com/-ydZ2-vd-Nnw/Xqz-jnvvJzI/AAAAAAAACKY/5P-qETglka4mWHrhOvqoiszqHIkM97YPwCPcBGAsYHg/s1600/3-5.png"></p>
+<h2 id="6-multiple-extruders"><a href="#6-multiple-extruders" class="headerlink" title="6.Multiple Extruders"></a>6.Multiple Extruders</h2><ul>
+<li>Extruders<ul>
+<li>Perimeter extruder :</li>
+<li>Infill extruder :</li>
+<li>Solid infill extruder :</li>
+<li>Support material&#x2F;raft&#x2F;skirt extruder :</li>
+<li>Support material&#x2F;raft interface extruder :</li>
+</ul>
+</li>
+<li>Ooze prevention<ul>
+<li>Enable :</li>
+<li>Temperature variation :</li>
+</ul>
+</li>
+<li>Advanced<ul>
+<li>Interface shells :</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://2.bp.blogspot.com/-sF8KyRKZ8Jw/Xqz-jh_IBJI/AAAAAAAACKY/TwEOVcNjdU4V2h_CR5LKuJ1Smt1cBrFCgCPcBGAsYHg/s1600/3-6.png"></p>
+<h2 id="7-advanced"><a href="#7-advanced" class="headerlink" title="7.Advanced"></a>7.Advanced</h2><ul>
+<li>Extrusion width<ul>
+<li>Default extrusion width : 默認的擠出線寬。通常設定為擠出頭孔徑(Nozzle diameter)</li>
+<li>First layer : 第一層的擠出線寬。由於第一層需要與列印平面有較好的接觸，所以會設定的寬一些</li>
+<li>Perimeters : 外殼的擠出線寬</li>
+<li>External perimeters : 外殼最外圈的擠出線寬</li>
+<li>Infill : 一般填充的擠出線寬</li>
+<li>Solid infill : 實體填充的擠出線寬</li>
+<li>Top solid infill : 頂層實體填充的擠出線寬</li>
+<li>Support material : 支撐架的擠出線寬</li>
+</ul>
+</li>
+<li>Overlap<ul>
+<li>Infill&#x2F;perimeters overlap : 填充與外殼重疊的長度。可以增加成品強度，但不可以設定太大</li>
+</ul>
+</li>
+<li>Flow<ul>
+<li>Bridge flow ratio : 搭橋時的擠出量。搭橋時可以些微降低擠出量來避免材料下垂的現象</li>
+</ul>
+</li>
+<li>Other<ul>
+<li>XY Size Compensation :</li>
+<li>Threads : 切片時要使用多少個電腦的執行緒進行運算</li>
+<li>Resolution : 切片前先降低模型的解析度。0為不降低解析度</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://1.bp.blogspot.com/-rpCch09vuS8/Xqz-jhQodyI/AAAAAAAACKY/ipaxIQxrcmUn36PTT0nwroK1_G96ZXbBACPcBGAsYHg/s1600/3-7.png"></p>
+<h2 id="8-output-options"><a href="#8-output-options" class="headerlink" title="8.Output options"></a>8.Output options</h2><ul>
+<li>Sequential printing<ul>
+<li>Complete individual objects :</li>
+<li>Extruder clearance (mm) :<ul>
+<li>Radius :</li>
+<li>Height :</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Output fill<ul>
+<li>Verbose G-code :</li>
+<li>Output filename format : 輸出檔案的檔名</li>
+</ul>
+</li>
+<li>Post-processing scripts : 後處理腳本</li>
+</ul>
+<p><img src="https://1.bp.blogspot.com/-CpBgcnZ0ws4/Xqz-jg82wyI/AAAAAAAACKY/30dqcypJGF8fcBkkTmg0g5SyJIru0wkjQCPcBGAsYHg/s1600/3-8.png"></p>
+<h2 id="9-notes-筆記"><a href="#9-notes-筆記" class="headerlink" title="9.Notes 筆記"></a>9.Notes 筆記</h2><ul>
+<li>Notes：可以在此做些筆記提醒自己。</li>
+</ul>
+<p><img src="https://1.bp.blogspot.com/-CpBgcnZ0ws4/Xqz-jg82wyI/AAAAAAAACKY/30dqcypJGF8fcBkkTmg0g5SyJIru0wkjQCPcBGAsYHg/s1600/3-8.png" alt="本文使用的Slic3r版本"></p>
+<p>此文章還有些地方沒有完成，未來有空再更新。</p>
+<h1 id="相關文章"><a href="#相關文章" class="headerlink" title="相關文章"></a>相關文章</h1><ul>
+<li><a href="/2017/03/3dp-1-step/">[教學:3D列印-1] 使用3D列印機的步驟</a></li>
+<li><a href="/2017/05/3dp-2-slic3r/">[教學:3D列印-2] Slic3r 切片軟體教學</a>(本篇)</li>
+<li><a href="/2017/05/3dp-3-gcode/">[教學:3D列印-3] 常用G-code指令解讀</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/3dp-1-step/" rel="prev" title="[教學:3D列印-1] 使用3D列印機的步驟">
+                  <i class="fa fa-angle-left"></i> [教學:3D列印-1] 使用3D列印機的步驟
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/3dp-3-gcode/" rel="next" title="[教學:3D列印-3] 常用G-code指令解讀">
+                  [教學:3D列印-3] 常用G-code指令解讀 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+  <p style="text-align: center;color: #a3a3a3;font-size: 14px;margin-top: 60px;">留言可能不會立即顯示。若過了幾天仍未出現，請 <a href="mailto:honmonoh@gmail.com">Email</a> 聯繫：）</p>
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="本網站所有內容除特別聲明外，均採用創用CC 姓名標示-非商業性-禁止改作授權。
+    分享時請註明作者及出處。" style="border-bottom: 0;">
+      <img src="https://i.creativecommons.org/l/by-nc-nd/3.0/80x15.png" style="display: unset;">
+    </a>
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ZiTe</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zite-honmonoh","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

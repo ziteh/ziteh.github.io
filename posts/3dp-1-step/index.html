@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/uploads/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300italic,400,400italic,700,700italic%7CNoto+Sans+TC:300,300italic,400,400italic,700,700italic%7CFira+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ziteh.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}},"activeClass":"disqus"},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="使用3D列印機的步驟主要有3項:  取得3D模型 將3D模型進行切片 開始列印  看起來很簡單,也確實很簡單.但要如何完成以上的3個步驟呢?">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[教學:3D列印-1] 使用3D列印機的步驟">
+<meta property="og:url" content="https://ziteh.github.io/posts/3dp-1-step/index.html">
+<meta property="og:site_name" content="ZiTe 本物志">
+<meta property="og:description" content="使用3D列印機的步驟主要有3項:  取得3D模型 將3D模型進行切片 開始列印  看起來很簡單,也確實很簡單.但要如何完成以上的3個步驟呢?">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://1.bp.blogspot.com/-yLX9tUKZ2EI/Xq0AMyYj-wI/AAAAAAAACKk/0y5YFIsiqIIhFeFGAvNYhZKxCM8P1Hv-QCPcBGAsYHg/s400/DSC_0084.JPG">
+<meta property="og:image" content="https://2.bp.blogspot.com/-DRYqrZ8eTQM/Xq0AM2wsKcI/AAAAAAAACKk/yav1v8efY0Yn2UjABhAuKvnVlNaleuecQCPcBGAsYHg/s1600/%25E8%259E%25A2%25E5%25B9%2595%25E6%2593%25B7%25E5%258F%2596%25E7%2595%25AB%25E9%259D%25A2%2B%252811%2529.png">
+<meta property="og:image" content="https://1.bp.blogspot.com/-HHCmE1juXrU/Xq0AM3_9iuI/AAAAAAAACKk/bEf7eQFFEs8QAf3hH7ZK5ZzHe88gbsH0ACPcBGAsYHg/s1600/%25E8%259E%25A2%25E5%25B9%2595%25E6%2593%25B7%25E5%258F%2596%25E7%2595%25AB%25E9%259D%25A2%2B%25288%2529.png">
+<meta property="og:image" content="https://4.bp.blogspot.com/-uxd2isu8kyQ/Xq0AM55yoqI/AAAAAAAACKk/Qbvoef1C1HANE-vuWRpMYEwf8qkOo8BjwCPcBGAsYHg/s1600/DSC_0194.JPG">
+<meta property="article:published_time" content="2017-03-25T05:04:00.000Z">
+<meta property="article:modified_time" content="2024-06-22T08:56:19.860Z">
+<meta property="article:author" content="ZiTe">
+<meta property="article:tag" content="3D列印">
+<meta property="article:tag" content="教學">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://1.bp.blogspot.com/-yLX9tUKZ2EI/Xq0AMyYj-wI/AAAAAAAACKk/0y5YFIsiqIIhFeFGAvNYhZKxCM8P1Hv-QCPcBGAsYHg/s400/DSC_0084.JPG">
+
+
+<link rel="canonical" href="https://ziteh.github.io/posts/3dp-1-step/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://ziteh.github.io/posts/3dp-1-step/","path":"posts/3dp-1-step/","title":"[教學:3D列印-1] 使用3D列印機的步驟"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>[教學:3D列印-1] 使用3D列印機的步驟 | ZiTe 本物志</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZiTe 本物志</p>
+      <i class="logo-line"></i>
+      <p class="site-subtitle" itemprop="description">一位慢步於程式、電路與文學之人的學習記錄與分享</p>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-folder-open fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5-%E5%8F%96%E5%BE%973d%E6%A8%A1%E5%9E%8B"><span class="nav-text">第一步-取得3D模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5-%E5%B0%873d%E6%A8%A1%E5%9E%8B%E9%80%B2%E8%A1%8C%E5%88%87%E7%89%87"><span class="nav-text">第二步-將3D模型進行切片</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5-%E9%96%8B%E5%A7%8B%E5%88%97%E5%8D%B0"><span class="nav-text">第三步-開始列印</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B8%E9%97%9C%E6%96%87%E7%AB%A0"><span class="nav-text">相關文章</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a href="/about/" title="About">
+      <img class="site-author-image" itemprop="image" alt="ZiTe"
+        src="/uploads/avatar.png">
+    <p class="site-author-name" itemprop="name">ZiTe</p>
+    <div class="site-description" itemprop="description"></div>
+  </a>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ziteh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ziteh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/@siderakb" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;@siderakb" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://siderakb.github.io/" title="SideraKB → https:&#x2F;&#x2F;siderakb.github.io&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-keyboard fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:honmonoh@gmail.com" title="E-Mail → mailto:honmonoh@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="回到頂端">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ziteh.github.io/posts/3dp-1-step/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="ZiTe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="[教學:3D列印-1] 使用3D列印機的步驟 | ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+          
+          <div class="post-tags">
+              <a href="/tags/3D%E5%88%97%E5%8D%B0/" rel="tag"> 3D列印</a>
+              <a href="/tags/%E6%95%99%E5%AD%B8/" rel="tag"> 教學</a>
+          </div>
+
+        <h1 class="post-title" itemprop="name headline">
+          [教學:3D列印-1] 使用3D列印機的步驟
+        </h1>
+
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      
+      
+
+      <time title="創建時間：2017-03-25 13:04:00" itemprop="dateCreated datePublished" datetime="2017-03-25T13:04:00+08:00">2017-03-25</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="https://1.bp.blogspot.com/-yLX9tUKZ2EI/Xq0AMyYj-wI/AAAAAAAACKk/0y5YFIsiqIIhFeFGAvNYhZKxCM8P1Hv-QCPcBGAsYHg/s400/DSC_0084.JPG"></p>
+<p>使用3D列印機的步驟主要有3項:</p>
+<ol>
+<li>取得3D模型</li>
+<li>將3D模型進行切片</li>
+<li>開始列印</li>
+</ol>
+<p>看起來很簡單,也確實很簡單.但要如何完成以上的3個步驟呢?</p>
+<span id="more"></span>
+
+<h1 id="第一步-取得3d模型"><a href="#第一步-取得3d模型" class="headerlink" title="第一步-取得3D模型"></a>第一步-取得3D模型</h1><p>目前全世界較通用的3D模型是STL檔,而STL檔的取得方式主要有3種:</p>
+<ol>
+<li>上模型分享網站下載其他人分享的3D模型</li>
+<li>自己使用3D繪圖軟體畫3D模型</li>
+<li>利用3D掃描機將實體掃描成3D模型檔</li>
+</ol>
+<p>第一種最簡單,什麼都不用買,什麼都不用學,只要花點時間上網找自己想要的就好了.以下我列出幾個自己覺得很不錯的3D模型分享網站.</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.thingiverse.com/">Thingiverse</a> (我自己最常用的網站)</li>
+<li><a target="_blank" rel="noopener" href="https://cults3d.com/">Cults</a></li>
+<li><a target="_blank" rel="noopener" href="https://pinshape.com/">Pinshape</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.instructables.com/">Instructables</a></li>
+</ul>
+<p>但有時候網路上都找不到自己想要的模型怎麽辦?這時就只好自己畫啦.現在市面上有許多3D繪圖軟體,也有很多是免費使用的,一下列出幾項常見的3D繪圖軟體.</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.sketchup.com/zh-TW">SketchUp</a> (Google的軟體.有<strong>免費</strong>的版本,也有免下載的<strong>網頁版</strong>.使用簡單,功能豐富.<strong>是我第一個會用的3D繪圖軟體</strong>)</li>
+<li><a target="_blank" rel="noopener" href="https://www.blender.org/">Blender</a> (<strong>免費開源</strong>的自由軟體.由於是開源軟體,其功能其實已經遠遠超過單純的3D繪圖軟體了,可以做到渲染.動畫.物理模擬等功能,可以說是最強大的免費3D繪圖軟題)</li>
+<li><a target="_blank" rel="noopener" href="http://www.123dapp.com/">123D</a> (由世界知名的Autodesk公司開發的<strong>免費線上</strong>軟體,可以說是入門的最佳選擇)</li>
+<li><a target="_blank" rel="noopener" href="https://www.autodesk.com/products/inventor/overview">Inventor</a> (一樣是由世界知名的Autodesk公司開發,功能強大的<strong>付費專業</strong>軟體)</li>
+<li><a target="_blank" rel="noopener" href="http://www.solidworks.com/">SolidWorks</a> (由Dassault Systemes旗下的SolidWorks公司開發.和Inventor一樣是<strong>付費專業</strong>軟體,功能非常強大)</li>
+</ul>
+<p><img src="https://2.bp.blogspot.com/-DRYqrZ8eTQM/Xq0AM2wsKcI/AAAAAAAACKk/yav1v8efY0Yn2UjABhAuKvnVlNaleuecQCPcBGAsYHg/s1600/%25E8%259E%25A2%25E5%25B9%2595%25E6%2593%25B7%25E5%258F%2596%25E7%2595%25AB%25E9%259D%25A2%2B%252811%2529.png" alt="我使用SolidWorks進行我高中專題的模型繪製"></p>
+<p>還有一種是使用3D掃描機實體物件掃描成3D模型檔案,但這部分需要有相關設備,所以暫時先不討論.</p>
+<h1 id="第二步-將3d模型進行切片"><a href="#第二步-將3d模型進行切片" class="headerlink" title="第二步-將3D模型進行切片"></a>第二步-將3D模型進行切片</h1><p>由於3D列印機的成型方式就是將許多的2D平面堆疊起來,最後形成3D模型,所以要有一個軟體幫忙把3D模型切成一層一層,一片一片的,而這種軟體就叫做切片軟體.以下列出幾項常見的切片軟體.(<strong>皆免費</strong>)</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://slic3r.org/">Slic3r</a> (目前我最喜歡也最熟悉的切片軟體)</li>
+<li><a target="_blank" rel="noopener" href="https://ultimaker.com/en/products/cura-software">Cura</a> (我第二熟悉的切片軟體)</li>
+<li><a target="_blank" rel="noopener" href="http://www.kisslicer.com/">KISSlicer</a> (我目前還沒深入研究的切片軟體)</li>
+</ul>
+<p><img src="https://1.bp.blogspot.com/-HHCmE1juXrU/Xq0AM3_9iuI/AAAAAAAACKk/bEf7eQFFEs8QAf3hH7ZK5ZzHe88gbsH0ACPcBGAsYHg/s1600/%25E8%259E%25A2%25E5%25B9%2595%25E6%2593%25B7%25E5%258F%2596%25E7%2595%25AB%25E9%259D%25A2%2B%25288%2529.png" alt="切片軟體-Slic3r"></p>
+<h1 id="第三步-開始列印"><a href="#第三步-開始列印" class="headerlink" title="第三步-開始列印"></a>第三步-開始列印</h1><p>將3D模型切片好後,就可以開始進行3D列印.控制3D列印機的方式主要用2種.</p>
+<ol>
+<li>使用USB與電腦進行連接,再用控制軟體進行控制,並將要列印的檔案傳輸給3D列印機.控制軟體通常是<a target="_blank" rel="noopener" href="https://www.repetier.com/documentation/repetier-host/">Repetier-Host</a>.(<strong>Fika就是這種)</strong></li>
+<li>用3D列印機上的操控界面進行控制,並將要列印的檔案放在SD記憶卡中插入3D列印機的讀卡槽.</li>
+</ol>
+<p><img src="https://4.bp.blogspot.com/-uxd2isu8kyQ/Xq0AM55yoqI/AAAAAAAACKk/Qbvoef1C1HANE-vuWRpMYEwf8qkOo8BjwCPcBGAsYHg/s1600/DSC_0194.JPG"></p>
+<p>當然市面上也有這兩種方法都可以使用的3D列印機.(像我自己的Graber i3)</p>
+<p>以上就是使用3D列印機的步驟,也是這個系列的第一篇文章,未來還會更詳細的進行相關教學.敬請期待!謝謝!</p>
+<h1 id="相關文章"><a href="#相關文章" class="headerlink" title="相關文章"></a>相關文章</h1><ul>
+<li><a href="/2017/03/3dp-1-step/">[教學:3D列印-1] 使用3D列印機的步驟</a>(本篇)</li>
+<li><a href="/2017/05/3dp-2-slic3r/">[教學:3D列印-2] Slic3r 切片軟體教學</a></li>
+<li><a href="/2017/05/3dp-3-gcode/">[教學:3D列印-3] 常用G-code指令解讀</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/repetierserver/" rel="prev" title="用Raspberry Pi架設Repetier-Server">
+                  <i class="fa fa-angle-left"></i> 用Raspberry Pi架設Repetier-Server
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/3dp-2-slic3r/" rel="next" title="[教學:3D列印-2] Slic3r 切片軟體教學">
+                  [教學:3D列印-2] Slic3r 切片軟體教學 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+  <p style="text-align: center;color: #a3a3a3;font-size: 14px;margin-top: 60px;">留言可能不會立即顯示。若過了幾天仍未出現，請 <a href="mailto:honmonoh@gmail.com">Email</a> 聯繫：）</p>
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="本網站所有內容除特別聲明外，均採用創用CC 姓名標示-非商業性-禁止改作授權。
+    分享時請註明作者及出處。" style="border-bottom: 0;">
+      <img src="https://i.creativecommons.org/l/by-nc-nd/3.0/80x15.png" style="display: unset;">
+    </a>
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ZiTe</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zite-honmonoh","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

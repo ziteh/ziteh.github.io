@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/uploads/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300italic,400,400italic,700,700italic%7CNoto+Sans+TC:300,300italic,400,400italic,700,700italic%7CFira+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ziteh.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}},"activeClass":"disqus"},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="前言小狼毫輸入法（Weasel）是開源的中州韻輸入法引擎（Rime 輸入法）在 Windows 上的官方發行版。另外它在Linux上的發行版爲中州韻（ibus-rime）、macOS 爲鼠鬚管（Squirrel），也有許多第三方的版本。 身爲開源軟體，其最大的特色就在於高度自訂的各種設定，想要什麼樣子或功能都可以自己修改。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小狼豪輸入法 模糊拼音設置">
+<meta property="og:url" content="https://ziteh.github.io/posts/ime-weasel-fuzzypinyin/index.html">
+<meta property="og:site_name" content="ZiTe 本物志">
+<meta property="og:description" content="前言小狼毫輸入法（Weasel）是開源的中州韻輸入法引擎（Rime 輸入法）在 Windows 上的官方發行版。另外它在Linux上的發行版爲中州韻（ibus-rime）、macOS 爲鼠鬚管（Squirrel），也有許多第三方的版本。 身爲開源軟體，其最大的特色就在於高度自訂的各種設定，想要什麼樣子或功能都可以自己修改。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://1.bp.blogspot.com/-iueiNPsmSM0/X172CNmVbqI/AAAAAAAACm8/BNsoDld4biYAgqkl9V3pGt8ZFiqLD-1WgCPcBGAsYHg/s272/rime-%25E5%258F%25B3%25E9%258D%25B5%25E9%2581%25B8%25E5%2596%25AE-1.png">
+<meta property="og:image" content="https://1.bp.blogspot.com/-PM-9gfp0-ho/X172CCwKZHI/AAAAAAAACm8/U9OoEY-gKFEzN4b_ZaGeT5Kk0kg7hI5PwCPcBGAsYHg/s264/rime-%25E7%2594%25A8%25E6%2588%25B6%25E8%25B3%2587%25E6%2596%2599%25E5%25A4%25BE-1.png">
+<meta property="og:image" content="https://1.bp.blogspot.com/-eH1rXjLq344/X172CCCFjQI/AAAAAAAACm8/0aPqPZ75mdUFHa8tHO4OypI6W8mzO86RgCPcBGAsYHg/s255/rime-%25E5%258F%25B3%25E9%258D%25B5%25E9%2581%25B8%25E5%2596%25AE-2.png">
+<meta property="article:published_time" content="2020-09-14T04:54:00.000Z">
+<meta property="article:modified_time" content="2024-06-22T08:56:19.883Z">
+<meta property="article:author" content="ZiTe">
+<meta property="article:tag" content="教學">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://1.bp.blogspot.com/-iueiNPsmSM0/X172CNmVbqI/AAAAAAAACm8/BNsoDld4biYAgqkl9V3pGt8ZFiqLD-1WgCPcBGAsYHg/s272/rime-%25E5%258F%25B3%25E9%258D%25B5%25E9%2581%25B8%25E5%2596%25AE-1.png">
+
+
+<link rel="canonical" href="https://ziteh.github.io/posts/ime-weasel-fuzzypinyin/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://ziteh.github.io/posts/ime-weasel-fuzzypinyin/","path":"posts/ime-weasel-fuzzypinyin/","title":"小狼豪輸入法 模糊拼音設置"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>小狼豪輸入法 模糊拼音設置 | ZiTe 本物志</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZiTe 本物志</p>
+      <i class="logo-line"></i>
+      <p class="site-subtitle" itemprop="description">一位慢步於程式、電路與文學之人的學習記錄與分享</p>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-folder-open fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%96%8B%E5%A7%8B%E8%A8%AD%E5%AE%9A%E6%A8%A1%E7%B3%8A%E6%8B%BC%E9%9F%B3"><span class="nav-text">開始設定模糊拼音</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81-%E5%88%B0%E7%94%A8%E6%88%B6%E8%B3%87%E6%96%99%E5%A4%BE"><span class="nav-text">一、 到用戶資料夾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81-%E5%8F%96%E5%BE%97%E8%A8%AD%E5%AE%9A%E6%AA%94"><span class="nav-text">二、 取得設定檔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81-%E4%BF%AE%E6%94%B9%E8%A8%AD%E5%AE%9A%E6%AA%94"><span class="nav-text">三、 修改設定檔</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B5%90%E8%AA%9E"><span class="nav-text">結語</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B8%E9%97%9C%E6%96%87%E7%AB%A0%E8%88%87%E8%B3%87%E6%BA%90"><span class="nav-text">相關文章與資源</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a href="/about/" title="About">
+      <img class="site-author-image" itemprop="image" alt="ZiTe"
+        src="/uploads/avatar.png">
+    <p class="site-author-name" itemprop="name">ZiTe</p>
+    <div class="site-description" itemprop="description"></div>
+  </a>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ziteh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ziteh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/@siderakb" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;@siderakb" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://siderakb.github.io/" title="SideraKB → https:&#x2F;&#x2F;siderakb.github.io&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-keyboard fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:honmonoh@gmail.com" title="E-Mail → mailto:honmonoh@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="回到頂端">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ziteh.github.io/posts/ime-weasel-fuzzypinyin/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="ZiTe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="小狼豪輸入法 模糊拼音設置 | ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%95%99%E5%AD%B8/" rel="tag"> 教學</a>
+          </div>
+
+        <h1 class="post-title" itemprop="name headline">
+          小狼豪輸入法 模糊拼音設置
+        </h1>
+
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      
+      
+
+      <time title="創建時間：2020-09-14 12:54:00" itemprop="dateCreated datePublished" datetime="2020-09-14T12:54:00+08:00">2020-09-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>小狼毫輸入法（Weasel）是開源的<a target="_blank" rel="noopener" href="https://rime.im/">中州韻輸入法引擎（Rime 輸入法）</a>在 Windows 上的官方發行版。另外它在Linux上的發行版爲中州韻（ibus-rime）、macOS 爲鼠鬚管（Squirrel），也有許多第三方的版本。</p>
+<p>身爲開源軟體，其最大的特色就在於高度自訂的各種設定，想要什麼樣子或功能都可以自己修改。</p>
+<span id="more"></span>
+
+<p>我從高中二年級就開始使用漢語拼音輸入法，但漢語拼音的主要用戶爲中國大陸，而我又不太喜歡中國那裡較常見的幾款拼音輸入法（如搜狗、QQ），而 Windows 內建的我也覺得不好用，所以一直以來我都是使用 Google 拼音輸入法。</p>
+<p>然而 Google 拼音輸入法老早就沒在更新了，有時運作起來也不穩定。故我開始找尋其它適合的拼音輸入法，便找到了小狼毫輸入法。</p>
+<p>而我當初會開始使用漢語拼音的原因就是因爲多數漢語拼音輸入法都有「模糊拼音」的功能，而小狼毫的拼音輸入法並未直接內建該功能，但是我們可以透過其強大的自訂功能來達成。</p>
+<p>小狼毫也有內建注音輸入法，但是我現在已經沒有、也不太會打注音了，所以也不知道和其它輸入法比較起來如何。</p>
+<h1 id="開始設定模糊拼音"><a href="#開始設定模糊拼音" class="headerlink" title="開始設定模糊拼音"></a>開始設定模糊拼音</h1><p>小狼毫在設定方面沒有圖形界面，所以你會需要使用文字編輯器來進行設定的修改。關於文字編輯器，我個人首先推薦 <a target="_blank" rel="noopener" href="https://code.visualstudio.com/">Visual Studio Code (VSCode)</a>，不過用記事本來編輯也是可以的。</p>
+<h2 id="一、-到用戶資料夾"><a href="#一、-到用戶資料夾" class="headerlink" title="一、 到用戶資料夾"></a>一、 到用戶資料夾</h2><p>需要修改的文件檔案都在用戶資料夾裡。有2種方式可以到達用戶資料夾：</p>
+<ol>
+<li>在檔案總管上的路徑欄輸入以下路徑：<ol>
+<li><code>%APPDATA%\Rime</code> (Windows)</li>
+<li><code>~/.config/ibus/rime</code>  (Linux)</li>
+<li><code>~/Library/Rime</code>  (Mac OS)</li>
+</ol>
+</li>
+<li>在電腦上安裝好小狼毫輸入法後，切換輸入法到小狼毫，並在其右下角的圖示按下滑鼠右鍵顯示選單，並點擊「用戶文件夾」。</li>
+</ol>
+<p><img src="https://1.bp.blogspot.com/-iueiNPsmSM0/X172CNmVbqI/AAAAAAAACm8/BNsoDld4biYAgqkl9V3pGt8ZFiqLD-1WgCPcBGAsYHg/s272/rime-%25E5%258F%25B3%25E9%258D%25B5%25E9%2581%25B8%25E5%2596%25AE-1.png" alt="▲ 在右鍵選單中點選用戶文件夾。"></p>
+<h2 id="二、-取得設定檔"><a href="#二、-取得設定檔" class="headerlink" title="二、 取得設定檔"></a>二、 取得設定檔</h2><p>到達用戶資料夾後應該會看到一些YAML檔，這些都是小狼毫的設定檔。</p>
+<p>這時要看各位所選擇使用的小狼毫輸入方案是那一種，像我是使用「朙月拼音」和「朙月拼音-臺灣正體」，而它們的設定檔分別爲「luna_pinyin.schema.yaml」和「luna_pinyin_tw.schema.yaml」。這兩個檔案可能會在<code>用戶資料夾/build/</code>裡。</p>
+<p>接着請到<a target="_blank" rel="noopener" href="https://gist.github.com/ziteh/beac7b7038652b79864fbab7a7254183">我的 GitHub </a>下載設定檔。</p>
+<p>可以發現其檔名爲「luna_pinyin.custom.yaml」，對應了上述的「luna_pinyin.schema.yaml」。請將「luna_pinyin.custom.yaml」放到用戶資料夾中（不是<code>用戶資料夾/build/</code>）。</p>
+<p>另外因爲我還有選擇「朙月拼音-臺灣正體」方案，所以我將「luna_pinyin.custom.yaml」複製一份並修改檔名爲「luna_pinyin_tw.custom.yaml」。</p>
+<p><img src="https://1.bp.blogspot.com/-PM-9gfp0-ho/X172CCwKZHI/AAAAAAAACm8/U9OoEY-gKFEzN4b_ZaGeT5Kk0kg7hI5PwCPcBGAsYHg/s264/rime-%25E7%2594%25A8%25E6%2588%25B6%25E8%25B3%2587%25E6%2596%2599%25E5%25A4%25BE-1.png" alt="▲ 加入設定檔的用戶資料夾。"></p>
+<h2 id="三、-修改設定檔"><a href="#三、-修改設定檔" class="headerlink" title="三、 修改設定檔"></a>三、 修改設定檔</h2><p>以文字編輯軟體打開「luna_pinyin.custom.yaml」。你會看到有許多行，其中每一行都是一種模糊音的規則。如果你想啓用該模糊音規則，就請將改行前的<code>#</code>（井號）刪除；反之要停用的話就在該行前加上井號。</p>
+<p>例如以下示範啓用規則「zh, ch, sh &#x3D;&gt; z, c, s」、「z, c, s &#x3D;&gt; zh, ch, sh」，並停用規則「n &#x3D;&gt; l」、「l &#x3D;&gt; n」。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="string">derive/^([zcs])h/$1/</span>             <span class="comment"># zh, ch, sh =&gt; z, c, s</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">derive/^([zcs])([^h])/$1h$2/</span>     <span class="comment"># z, c, s =&gt; zh, ch, sh</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#- derive/^n/l/                     # n =&gt; l</span></span><br><span class="line"><span class="comment">#- derive/^l/n/                     # l =&gt; n</span></span><br></pre></td></tr></table></figure>
+
+<p>修改完成後儲存該檔案，然後在右下角的圖示按下滑鼠右鍵顯示選單，並點擊「重新部署」。這樣就完成設定了。</p>
+<p><img src="https://1.bp.blogspot.com/-eH1rXjLq344/X172CCCFjQI/AAAAAAAACm8/0aPqPZ75mdUFHa8tHO4OypI6W8mzO86RgCPcBGAsYHg/s255/rime-%25E5%258F%25B3%25E9%258D%25B5%25E9%2581%25B8%25E5%2596%25AE-2.png" alt="▲ 在右鍵選單中點選重新部署。"></p>
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><p>上述步驟二所提供的設定檔是我從<a target="_blank" rel="noopener" href="https://gist.github.com/lotem/2320943">【朙月拼音】模糊音定製模板</a> fork 並自行測試並修改而成的，我以該設定檔在 Windows10 和 Ubuntu 上都可以正常運作。</p>
+<p>而設定檔內的那些模糊音規則使用的是 Perl 正規表示式，可以參考<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F#PCRE%E8%A1%A8%E9%81%94%E5%BC%8F%E5%85%A8%E9%9B%86">正規表示式 - 維基百科</a></p>
+<h1 id="相關文章與資源"><a href="#相關文章與資源" class="headerlink" title="相關文章與資源"></a>相關文章與資源</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://rime.im/">RIME | 中州韻輸入法引擎</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rime/home/wiki">GitHub · rime&#x2F;home Wiki</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rime/home/wiki/CustomizationGuide#%E6%9C%99%E6%9C%88%E6%8B%BC%E9%9F%B3%E6%A8%A1%E7%B3%8A%E9%9F%B3%E5%AE%9A%E8%A3%BD%E6%A8%A1%E6%9D%BF">Rime 定製指南</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/LEOYoon-Tsaw/Rime_collections/blob/master/Rime_description.md">Rime 設定項手冊</a></li>
+<li><a target="_blank" rel="noopener" href="https://gist.github.com/lotem/2320943">【朙月拼音】模糊音定製模板</a></li>
+<li><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F#PCRE%E8%A1%A8%E9%81%94%E5%BC%8F%E5%85%A8%E9%9B%86">正規表示式 - 維基百科</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/hh-andromedae/" rel="prev" title="仙女座HH">
+                  <i class="fa fa-angle-left"></i> 仙女座HH
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/deft-pro-switch/" rel="next" title="ELECOM Deft Pro 軌跡球更換微動開關">
+                  ELECOM Deft Pro 軌跡球更換微動開關 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+  <p style="text-align: center;color: #a3a3a3;font-size: 14px;margin-top: 60px;">留言可能不會立即顯示。若過了幾天仍未出現，請 <a href="mailto:honmonoh@gmail.com">Email</a> 聯繫：）</p>
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="本網站所有內容除特別聲明外，均採用創用CC 姓名標示-非商業性-禁止改作授權。
+    分享時請註明作者及出處。" style="border-bottom: 0;">
+      <img src="https://i.creativecommons.org/l/by-nc-nd/3.0/80x15.png" style="display: unset;">
+    </a>
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ZiTe</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zite-honmonoh","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

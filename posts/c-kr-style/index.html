@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/uploads/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300italic,400,400italic,700,700italic%7CNoto+Sans+TC:300,300italic,400,400italic,700,700italic%7CFira+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ziteh.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}},"activeClass":"disqus"},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="多年來，就算我在寫其它語言時用的都不是 Allman 風格。但是只要我寫 C，我就會自然而然地用 Allman。而且我甚至有點反感 K&amp;R，更不要說是花括號行爲不一致的 Linux K&amp;R 了。 我原本只是想整理一個自己偏好的 Coding style，但是在仔細思考詳細的規則和實際寫程式會遇到的情況後，我發現 K&amp;R 似乎才是唯一的真理。也總算理解 Linux kerne">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C 語言用 K&amp;R Coding Style 的最大理由不是省行數">
+<meta property="og:url" content="https://ziteh.github.io/posts/c-kr-style/index.html">
+<meta property="og:site_name" content="ZiTe 本物志">
+<meta property="og:description" content="多年來，就算我在寫其它語言時用的都不是 Allman 風格。但是只要我寫 C，我就會自然而然地用 Allman。而且我甚至有點反感 K&amp;R，更不要說是花括號行爲不一致的 Linux K&amp;R 了。 我原本只是想整理一個自己偏好的 Coding style，但是在仔細思考詳細的規則和實際寫程式會遇到的情況後，我發現 K&amp;R 似乎才是唯一的真理。也總算理解 Linux kerne">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2024-05-23T03:51:00.000Z">
+<meta property="article:modified_time" content="2024-06-22T08:56:19.867Z">
+<meta property="article:author" content="ZiTe">
+<meta property="article:tag" content="心得">
+<meta property="article:tag" content="程式">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://ziteh.github.io/posts/c-kr-style/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://ziteh.github.io/posts/c-kr-style/","path":"posts/c-kr-style/","title":"C 語言用 K&R Coding Style 的最大理由不是省行數"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>C 語言用 K&R Coding Style 的最大理由不是省行數 | ZiTe 本物志</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZiTe 本物志</p>
+      <i class="logo-line"></i>
+      <p class="site-subtitle" itemprop="description">一位慢步於程式、電路與文學之人的學習記錄與分享</p>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-folder-open fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9A%E7%BE%A9"><span class="nav-text">定義</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%A6%E4%BE%8B%E6%AF%94%E8%BC%83"><span class="nav-text">實例比較</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#a-typedef"><span class="nav-text">A. typedef</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#b-%E5%88%9D%E5%A7%8B%E5%8C%96-struct"><span class="nav-text">B. 初始化 struct</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c-%E7%B5%B1%E4%B8%80%E5%88%9D%E5%A7%8B%E5%8C%96%E9%99%A3%E5%88%97"><span class="nav-text">C. 統一初始化陣列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#d-if-else"><span class="nav-text">D. if-else</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#e-%E5%AE%A3%E5%91%8A%E5%87%BD%E5%BC%8F%E5%8E%9F%E5%9E%8B"><span class="nav-text">E. 宣告函式原型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#coding-style"><span class="nav-text">Coding Style</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90"><span class="nav-text">總結</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83"><span class="nav-text">參考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a href="/about/" title="About">
+      <img class="site-author-image" itemprop="image" alt="ZiTe"
+        src="/uploads/avatar.png">
+    <p class="site-author-name" itemprop="name">ZiTe</p>
+    <div class="site-description" itemprop="description"></div>
+  </a>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ziteh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ziteh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/@siderakb" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;@siderakb" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://siderakb.github.io/" title="SideraKB → https:&#x2F;&#x2F;siderakb.github.io&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-keyboard fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:honmonoh@gmail.com" title="E-Mail → mailto:honmonoh@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="回到頂端">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ziteh.github.io/posts/c-kr-style/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="ZiTe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="C 語言用 K&R Coding Style 的最大理由不是省行數 | ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+          
+          <div class="post-tags">
+              <a href="/tags/%E5%BF%83%E5%BE%97/" rel="tag"> 心得</a>
+              <a href="/tags/%E7%A8%8B%E5%BC%8F/" rel="tag"> 程式</a>
+          </div>
+
+        <h1 class="post-title" itemprop="name headline">
+          C 語言用 K&R Coding Style 的最大理由不是省行數
+        </h1>
+          <h3 class="post-subtitle">以實例分析使用 K&R 風格的優點
+          </h3>
+
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      
+      
+
+      <time title="創建時間：2024-05-23 11:51:00" itemprop="dateCreated datePublished" datetime="2024-05-23T11:51:00+08:00">2024-05-23</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>多年來，就算我在寫其它語言時用的都不是 Allman 風格。但是只要我寫 C，我就會自然而然地用 Allman。而且我甚至有點反感 K&amp;R，更不要說是花括號行爲不一致的 Linux K&amp;R 了。</p>
+<p>我原本只是想整理一個自己偏好的 Coding style，但是在仔細思考詳細的規則和實際寫程式會遇到的情況後，我發現 K&amp;R 似乎才是唯一的真理。也總算理解 <a target="_blank" rel="noopener" href="https://www.kernel.org/doc/html/v4.10/process/coding-style.html">Linux kernel coding style</a> 手冊裡的那段話：</p>
+<span id="more"></span>
+
+<blockquote>
+<p>Heretic people all over the world have claimed that this inconsistency is … well … inconsistent, but all right-thinking people know that (a) K&amp;R are right and (b) K&amp;R are right. Besides, functions are special anyway (you can’t nest them in C)</p>
+</blockquote>
+<p>在此之前，我覺得 K&amp;R 的唯一優點只有「節省行數」（然後把全部的東西擠在一起），但是我發現 K&amp;R 的其它優點，它們甚至讓節省行數都變得微不足道。</p>
+<p>所以我想藉由這篇文章，來說明我是如何在寫草稿時還是忠實的 Allman 用戶，突然就變成 K&amp;R 支持者。當然還有一點很重要的是，Coding style 還是有不少主觀因素在內，你完全可以不認同我的任何看法和感覺。這只是一個分享而已。</p>
+<h1 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h1><p>首先在討論各個 Coding style 前，我想先定義一下我認爲的好的 style 是什麼樣子的，有了統一的標準才有比較的依據。以下按權重排序：</p>
+<ol start="0">
+<li><strong>使用現有規定的風格</strong>。這個不用多說，如果專案已經有規定，那就是遵守。不過這篇討論的是你有完全的控制權的情況。</li>
+<li><strong>看得順眼</strong>。就如同工具順手最重要。</li>
+<li><strong>使用方便</strong>。當然沒人想被風格影響實際功能和 Coding 效率。</li>
+<li><strong>規則簡單且明確</strong>。規則越簡單、例外越少就越容易遵守。明確的規則就可以不用再花時間思考。</li>
+</ol>
+<h1 id="實例比較"><a href="#實例比較" class="headerlink" title="實例比較"></a>實例比較</h1><h2 id="a-typedef"><a href="#a-typedef" class="headerlink" title="A. typedef"></a>A. typedef</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> foo;</span><br><span class="line">    <span class="type">int</span> bar;</span><br><span class="line">&#125; <span class="type">foo_bar_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// B</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">int</span> foo;</span><br><span class="line">    <span class="type">int</span> bar;</span><br><span class="line">&#125; <span class="type">foo_bar_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// C</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">int</span> foo;</span><br><span class="line">    <span class="type">int</span> bar;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">foo_bar_t</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>A：只有一個規則 —— 左右花括號都不換行。</li>
+<li>B：雖然左右花括號的換行行爲不一致，但看起還是不錯，實際上這種風格也很常見。可是如果右花括號不換行的話，那 <code>if-else</code> 的右花括號也不換行嗎？還是它們的右花括號行爲也要不一致？</li>
+<li>C：我是沒看過這種風格。如果左右花括號都換行的話，那 <code>do-while</code> 也是嗎？</li>
+</ul>
+<h2 id="b-初始化-struct"><a href="#b-初始化-struct" class="headerlink" title="B. 初始化 struct"></a>B. 初始化 struct</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A</span></span><br><span class="line"><span class="type">foo_bar_t</span> fb = &#123;</span><br><span class="line">    .foo = <span class="number">0</span>,</span><br><span class="line">    .bar = <span class="number">1</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// B</span></span><br><span class="line"><span class="type">foo_bar_t</span> fb =</span><br><span class="line">&#123;</span><br><span class="line">    .foo = <span class="number">0</span>,</span><br><span class="line">    .bar = <span class="number">1</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// C</span></span><br><span class="line"><span class="type">foo_bar_t</span> fb =</span><br><span class="line">    &#123;</span><br><span class="line">        .foo = <span class="number">0</span>,</span><br><span class="line">        .bar = <span class="number">1</span>,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// D</span></span><br><span class="line"><span class="type">foo_bar_t</span> fb = &#123;</span><br><span class="line">                    .foo = <span class="number">0</span>,</span><br><span class="line">                    .bar = <span class="number">1</span>,</span><br><span class="line">               &#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>A：只有一個規則 —— 左右花括號都不換行。</li>
+<li>B：通常習慣上等號（賦值運算子）的右值如果換行的話會縮排。</li>
+<li>C：雖然 B，但是兩個花括號都縮排看起來不太自然。</li>
+<li>D：第1行的左花括號不一定在4的整數倍，這樣導致要嘛成員的縮排也不是4的整數倍，要嘛成員和花括號直接的差不是4，要嘛左花括號和等號之間的不是1個空白。此外太佔水平空間。</li>
+</ul>
+<blockquote>
+<p>這邊的 <code>struct</code> 只是舉例，實務上如果成員這麼少的話從一開始就可以只寫成一行。這裡想表達的是成員很多、或成員名很長、或結構較複雜的 <code>struct</code>。</p>
+<p>這裡的 4 指的是我用 4 的空白做縮排爲例，實際上到底是多少都不影響。</p>
+</blockquote>
+<h2 id="c-統一初始化陣列"><a href="#c-統一初始化陣列" class="headerlink" title="C. 統一初始化陣列"></a>C. 統一初始化陣列</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A</span></span><br><span class="line"><span class="type">int</span> arr[<span class="number">1024</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// B</span></span><br><span class="line"><span class="type">int</span> arr[<span class="number">1024</span>] =</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="number">0</span></span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>A：只有一個規則 —— 左右花括號都不換行。</li>
+<li>B：這種簡單的初始化，左右花括號如果強硬規定要換行明顯太不自然了，應該沒有人會這樣寫。</li>
+</ul>
+<blockquote>
+<p>這裡同樣也適用於初始化簡單到可以寫成一行的 <code>struct</code> 的情況。</p>
+</blockquote>
+<h2 id="d-if-else"><a href="#d-if-else" class="headerlink" title="D. if-else"></a>D. if-else</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A</span></span><br><span class="line"><span class="keyword">if</span> (foo) &#123;</span><br><span class="line">    foo = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (bar) &#123;</span><br><span class="line">    bar = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (foobar) &#123;</span><br><span class="line">    foobar = foo;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    foobar = bar;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (fb) &#123;</span><br><span class="line">    fb = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// B</span></span><br><span class="line"><span class="keyword">if</span> (foo)</span><br><span class="line">&#123;</span><br><span class="line">    foo = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (bar)</span><br><span class="line">&#123;</span><br><span class="line">    bar = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (foobar)</span><br><span class="line">&#123;</span><br><span class="line">    foobar = foo;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    foobar = bar;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (fb)</span><br><span class="line">&#123;</span><br><span class="line">    fb = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>這個例子可能不是非常好，至少我在寫類似的程式時，會加一些空白行來分隔，不會讓它們就這樣黏著。但是在不加空白行的情況下，A 應該稍微更容易區分各個 <code>if-else</code> 的開頭和結尾。注意，A 的規則還是左右花括號都換行，但是這是指同一個語句（Statement），不同的 <code>if-else</code> 不會疊在一起。</p>
+<h2 id="e-宣告函式原型"><a href="#e-宣告函式原型" class="headerlink" title="E. 宣告函式原型"></a>E. 宣告函式原型</h2><p>你現在已經先打好了一個函數，考慮現在要幫 <code>foobar()</code> 宣告函數原型…</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">foobar</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> &#123;</span><br><span class="line">    <span class="type">int</span> foo = a;</span><br><span class="line">    <span class="type">int</span> bar = b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// B</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">foobar</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> foo = a;</span><br><span class="line">    <span class="type">int</span> bar = b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>A：整行複製後，要先刪除行末的左花括號，才能打分號。</li>
+<li>B：整行複製後，可以直接在行末打分號。</li>
+</ul>
+<p>再考慮一下如果你一次寫了 5 個函數，現在要一次幫它們宣告函數原型。你已經把它們都整行複製到一起了，它們現在長這樣：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">foobar1</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line"><span class="type">uint16_t</span> <span class="title function_">foobar2</span><span class="params">(<span class="type">int</span> a)</span> &#123;</span><br><span class="line"><span class="type">void</span> <span class="title function_">foobar3</span><span class="params">(<span class="type">int</span> a)</span> &#123;</span><br><span class="line"><span class="type">uint16_t</span> <span class="title function_">foobar4</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b, <span class="type">const</span> <span class="type">int</span> *c)</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">// B</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">foobar1</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line"><span class="type">uint16_t</span> <span class="title function_">foobar2</span><span class="params">(<span class="type">int</span> a)</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">foobar3</span><span class="params">(<span class="type">int</span> a)</span></span><br><span class="line"><span class="type">uint16_t</span> <span class="title function_">foobar4</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b, <span class="type">const</span> <span class="type">int</span> *c)</span></span><br></pre></td></tr></table></figure>
+
+<p>如果用 Vim 的話來說可能是…</p>
+<ul>
+<li>A：<code>V</code>、<code>3j</code>、<code>:s/&#123;/;</code>、<code>Enter</code>（使用 Visual line 搜尋 <code>&#123;</code> 並替換成 <code>;</code>）</li>
+<li>B：<code>Ctrl-v</code>、<code>3j</code>、<code>$</code>、<code>A</code>、<code>;</code>、<code>ESC</code>（使用 Visual block 到行末 Append <code>;</code>）</li>
+</ul>
+<p>不知道你覺得哪個操作比較快，我自己是更加熟悉 B 的那套操作，而且實際上要按的鍵數也比較少。看來這次是 B 的勝利。不過對於 Vim 的使用者來說，這個差距不是很大。</p>
+<h1 id="coding-style"><a href="#coding-style" class="headerlink" title="Coding Style"></a>Coding Style</h1><p>讓我們來看一下主流的 Coding style 長什麼樣。首先要注意的是，一般說的 K&amp;R 有兩種：</p>
+<ol>
+<li>第一種是網路上大家普遍討論時認爲的 K&amp;R，即所有左右花括號都不換行。以下姑且稱其爲 <strong>llvm-K&amp;R</strong>。</li>
+<li>第二種是 Linux kernel 所使用的風格，函數的左右花括號換行，其餘的左右花括號都不換行。以下稱其爲 <strong>linux-K&amp;R</strong>。這種才是 Kernighan &amp; Ritchie 的書《<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/The_C_Programming_Language">The C Programming Language</a>》中真正使用的風格。</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// llvm-K&amp;R</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> foo;</span><br><span class="line">    <span class="type">int</span> bar;</span><br><span class="line">&#125; <span class="type">foo_bar_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">    <span class="type">foo_bar_t</span> my_foobar = &#123;</span><br><span class="line">        .foo = <span class="number">0</span>,</span><br><span class="line">        .bar = <span class="number">1</span>,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> arr[<span class="number">1024</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (b &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        b--;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        b++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        b++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// linux-K&amp;R</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> foo;</span><br><span class="line">    <span class="type">int</span> bar;</span><br><span class="line">&#125; <span class="type">foo_bar_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">foo_bar_t</span> my_foobar = &#123;</span><br><span class="line">        .foo = <span class="number">0</span>,</span><br><span class="line">        .bar = <span class="number">1</span>,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> arr[<span class="number">1024</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (b &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        b--;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        b++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        b++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Allman</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="type">int</span> foo;</span><br><span class="line">    <span class="type">int</span> bar;</span><br><span class="line">&#125; <span class="type">foo_bar_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">foo_bar_t</span> my_foobar = &#123;</span><br><span class="line">        .foo = <span class="number">0</span>,</span><br><span class="line">        .bar = <span class="number">1</span>,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> arr[<span class="number">1024</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (b &gt; <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        b--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        b++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        b++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>嘗試歸納並描述它們的規則：</p>
+<ul>
+<li>llvm-K&amp;R：所有的左右花括號都不換行。</li>
+<li>linux-K&amp;R：所有的左右花括號都不換行，除了函數。</li>
+<li>Allman：流程控制、迴圈、函數的左右花括號都換行（<code>do-while</code> 的右花括號可能是例外）。<code>typedef</code> 的左花括號換行、右花括號不換行。初始化時左右花括號不換行。</li>
+</ul>
+<p>很明顯，llvm-K&amp;R 的規則最簡單且毫無例外。linux-K&amp;R 的規則比 llvm-K&amp;R 多了一個唯一的例外。Allman 的規則就複雜多了。</p>
+<h1 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h1><p>在實例比較時，我認爲風格 A——<em>所有的左右花括號都不換行</em>——在多數情況下都是最好看、自然且直覺的，除了「宣告函式原型」的地方，因爲它的操作要更多一點。而且風格 A 的規則也是最少的。</p>
+<ul>
+<li>如果完全套用風格 A 的話，你得到的是 llvm-K&amp;R。</li>
+<li>如果你想要在「宣告函式原型」的地方佔有操作優勢的話，你得到的是 linux-K&amp;R。雖然這樣會多一個例外，但也只是多一個而已。多增加的這個例外可以幫你換到操作優勢。</li>
+</ul>
+<p>恩… K&amp;R 一家親。至少我認爲 K&amp;R 風格是較具優勢的，無論是 llvm- 還是 linux-。</p>
+<p>但是還有一點，在我的定義下，「看得順眼」的權重更高。你完全有理由只憑這點就推翻上面的所有比較，然後繼續用你最熟悉的 Coding style。當然你也有可能和我一樣，瞬間跳槽。</p>
+<p>另外也可以看看我自己的完整規範：<a href="/posts/c-style1/">C 語言 Coding Style 規範</a></p>
+<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://www.kernel.org/doc/html/v4.10/process/coding-style.html">Linux kernel coding style — The Linux Kernel documentation</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/The_C_Programming_Language">The C Programming Language - Wikipedia</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/git-verification/" rel="prev" title="簽署 commit 並設定 GitHub GPG Key 以驗證">
+                  <i class="fa fa-angle-left"></i> 簽署 commit 並設定 GitHub GPG Key 以驗證
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/c-style1/" rel="next" title="C 語言 Coding Style 規範">
+                  C 語言 Coding Style 規範 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+  <p style="text-align: center;color: #a3a3a3;font-size: 14px;margin-top: 60px;">留言可能不會立即顯示。若過了幾天仍未出現，請 <a href="mailto:honmonoh@gmail.com">Email</a> 聯繫：）</p>
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="本網站所有內容除特別聲明外，均採用創用CC 姓名標示-非商業性-禁止改作授權。
+    分享時請註明作者及出處。" style="border-bottom: 0;">
+      <img src="https://i.creativecommons.org/l/by-nc-nd/3.0/80x15.png" style="display: unset;">
+    </a>
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ZiTe</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zite-honmonoh","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

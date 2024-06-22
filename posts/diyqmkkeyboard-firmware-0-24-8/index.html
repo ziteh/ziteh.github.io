@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/uploads/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300italic,400,400italic,700,700italic%7CNoto+Sans+TC:300,300italic,400,400italic,700,700italic%7CFira+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ziteh.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}},"activeClass":"disqus"},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="在上一篇文章中已經完成鍵盤的 Layout，這篇文章將會接續製作步驟的第 3 步——生成並編輯 QMK 韌體。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[自製QMK鍵盤-3] 產生並編輯QMK韌體">
+<meta property="og:url" content="https://ziteh.github.io/posts/diyqmkkeyboard-firmware-0-24-8/index.html">
+<meta property="og:site_name" content="ZiTe 本物志">
+<meta property="og:description" content="在上一篇文章中已經完成鍵盤的 Layout，這篇文章將會接續製作步驟的第 3 步——生成並編輯 QMK 韌體。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEipRq6B074RdBe4t0Uc5qIZajM0j3dS-lwJiel-cEGdwrgVwFBNWHkSDjBokQI7N9364L2eQS3B76_HAbcgsMVklbBPCllBSvPRhwkurRY7zW37mGWr9xHy45LYGZhKvf4_5H8WnezV1XLlVYv6JDWDXGkTmCSksXUbO2h7pkZ_FZtD-vOIUkRB-q7wug4/s16000/2023-07-01%2022-10-24.mkv_20230702_095338.927.jpg">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTN8nyl-WGZQDeSTBAFr7o2-FVoNBfXDcSmoQvBaDw-ABHSI-kEHleAzx7MduwvqTKRlGnP04BQ3-kKpBmTM-pAN5s6fht8CHbQDzlVIzdTJJbKIRH19N1P4fq7WqL0Bu3F2YPKa9gup2i9TwPvlwhEKDbe9asl487Yzbw85lB1jYVjtwuQmbX7uGTEbU/s16000/Unnamed.png">
+<meta property="og:image" content="https://1.bp.blogspot.com/-UTbRymD6jFo/Xu4uCFUmN4I/AAAAAAAACc4/Pun-2kS6qooDb3plao7F_e5sogqH_uHKQCK4BGAsYHg/s1903/%255B01%255DKeyboard%2BFirmware%2BBuilder_Import.png">
+<meta property="og:image" content="https://1.bp.blogspot.com/-9pJYrEjmaXU/Xu4uCdp4PEI/AAAAAAAACc8/p8MMZuiSBUMSpTjsN0f0Xa78Turt48kzwCK4BGAsYHg/s1903/%255B02%255DKeyboard%2BFirmware%2BBuilder_Wiring_1.png">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh99UeiWYdyky-hZedrvxTovnjqjoeXQg2b2nYZkCG7fIvJS5kOdSyhxP5YzMR3x7MOMoicCb6okM89xIcLfbuSmaJ3zgJoFcT2RQMg0bXmGaoRXV6pNtBOw2l9e8GmFENw_JYKeWlvF3bz2kzGefg_tD-Udxw5MTlHtRQ8VjQH2laiJI5GSOSCh9Vvd_c/s16000/mt2.png">
+<meta property="og:image" content="https://1.bp.blogspot.com/-UqmjvTbo7Uo/Xu4yajqMXKI/AAAAAAAACeE/AEfdjtlknrcRsjSYvmRz5B0IxY4RIiQegCK4BGAsYHg/s1166/ProMicroPin.png">
+<meta property="og:image" content="https://1.bp.blogspot.com/-IbmnNoxPZ-s/Xu4uE8BFvvI/AAAAAAAACdg/khQpXPgiygkaVn409H394FOvf9RN8C-iACK4BGAsYHg/s800/%255B11%255DKeyboard%2BFirmware%2BBuilder_Compile.png">
+<meta property="article:published_time" content="2024-05-03T19:12:00.000Z">
+<meta property="article:modified_time" content="2024-06-22T08:56:19.875Z">
+<meta property="article:author" content="ZiTe">
+<meta property="article:tag" content="DIY">
+<meta property="article:tag" content="教學">
+<meta property="article:tag" content="QMK">
+<meta property="article:tag" content="3C">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEipRq6B074RdBe4t0Uc5qIZajM0j3dS-lwJiel-cEGdwrgVwFBNWHkSDjBokQI7N9364L2eQS3B76_HAbcgsMVklbBPCllBSvPRhwkurRY7zW37mGWr9xHy45LYGZhKvf4_5H8WnezV1XLlVYv6JDWDXGkTmCSksXUbO2h7pkZ_FZtD-vOIUkRB-q7wug4/s16000/2023-07-01%2022-10-24.mkv_20230702_095338.927.jpg">
+
+
+<link rel="canonical" href="https://ziteh.github.io/posts/diyqmkkeyboard-firmware-0-24-8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://ziteh.github.io/posts/diyqmkkeyboard-firmware-0-24-8/","path":"posts/diyqmkkeyboard-firmware-0-24-8/","title":"[自製QMK鍵盤-3] 產生並編輯QMK韌體"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>[自製QMK鍵盤-3] 產生並編輯QMK韌體 | ZiTe 本物志</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZiTe 本物志</p>
+      <i class="logo-line"></i>
+      <p class="site-subtitle" itemprop="description">一位慢步於程式、電路與文學之人的學習記錄與分享</p>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-folder-open fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BA%96%E5%82%99%E7%92%B0%E5%A2%83"><span class="nav-text">準備環境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%B5%E5%BB%BA%E6%96%B0%E9%8D%B5%E7%9B%A4"><span class="nav-text">創建新鍵盤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B7%A8%E8%BC%AF%E9%9F%8C%E9%AB%94"><span class="nav-text">編輯韌體</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-info-json"><span class="nav-text">修改 info.json</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%8D%B5%E7%9B%A4%E8%B3%87%E8%A8%8A"><span class="nav-text">鍵盤資訊</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mcu-%E8%88%87-bootloader"><span class="nav-text">MCU 與 Bootloader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD"><span class="nav-text">功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#usb"><span class="nav-text">USB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%88%E5%B1%80-layouts"><span class="nav-text">佈局 layouts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%8D%B5%E7%9F%A9%E9%99%A3"><span class="nav-text">鍵矩陣</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%AE%8C%E6%88%90"><span class="nav-text">修改完成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-keymap-c"><span class="nav-text">修改 keymap.c</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-rules-mk"><span class="nav-text">修改 rules.mk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E6%88%90%E4%BF%AE%E6%94%B9"><span class="nav-text">完成修改</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B5%90%E8%AA%9E"><span class="nav-text">結語</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B8%E9%97%9C%E7%B6%B2%E7%AB%99%E5%8F%8A%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-text">相關網站及參考資料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a href="/about/" title="About">
+      <img class="site-author-image" itemprop="image" alt="ZiTe"
+        src="/uploads/avatar.png">
+    <p class="site-author-name" itemprop="name">ZiTe</p>
+    <div class="site-description" itemprop="description"></div>
+  </a>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ziteh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ziteh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/@siderakb" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;@siderakb" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://siderakb.github.io/" title="SideraKB → https:&#x2F;&#x2F;siderakb.github.io&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-keyboard fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:honmonoh@gmail.com" title="E-Mail → mailto:honmonoh@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="回到頂端">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ziteh.github.io/posts/diyqmkkeyboard-firmware-0-24-8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="ZiTe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="[自製QMK鍵盤-3] 產生並編輯QMK韌體 | ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+          
+          <div class="post-tags">
+              <a href="/tags/DIY/" rel="tag"> DIY</a>
+              <a href="/tags/%E6%95%99%E5%AD%B8/" rel="tag"> 教學</a>
+              <a href="/tags/QMK/" rel="tag"> QMK</a>
+              <a href="/tags/3C/" rel="tag"> 3C</a>
+          </div>
+
+        <h1 class="post-title" itemprop="name headline">
+          [自製QMK鍵盤-3] 產生並編輯QMK韌體
+        </h1>
+          <h3 class="post-subtitle">2024 QMK 韌體編輯教學
+          </h3>
+
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%87%AA%E8%A3%BDQMK%E9%8D%B5%E7%9B%A4/" itemprop="url" rel="index"><span itemprop="name">自製QMK鍵盤</span></a>
+        </span>
+    </span>
+    <span class="post-meta-item">
+      
+      
+
+      <time title="創建時間：2024-05-04 03:12:00" itemprop="dateCreated datePublished" datetime="2024-05-04T03:12:00+08:00">2024-05-04</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>在<a href="/posts/diyqmkkeyboard-1/">上一篇文章</a>中已經完成鍵盤的 Layout，這篇文章將會接續<a href="/posts/diyqmkkeyboard-0/#%E8%A3%BD%E4%BD%9C%E6%AD%A5%E9%A9%9F">製作步驟</a>的第 3 步——生成並編輯 QMK 韌體。</p>
+<span id="more"></span>
+
+<blockquote>
+<p>本篇是以發文當時最新的 <a target="_blank" rel="noopener" href="https://github.com/qmk/qmk_firmware/releases/tag/0.24.8"><code>0.24.8</code></a> 版本的 QMK 作爲示範。目前 QMK 的最新版本請在<a target="_blank" rel="noopener" href="https://github.com/qmk/qmk_firmware/tags">此處查看</a>。本文的<a href="/posts/diyqmkkeyboard-firmware-0-21-3/">前一個版本</a>是針對 <code>0.21.3</code> 版所撰寫的，舊版教學文僅作爲參考保留。</p>
+<p>如果你想要切換 QMK 版本的話，可以使用下面的方法（需要先安裝好 QMK MSYS 環境）。</p>
+<ol>
+<li>打開 QMK MSYS</li>
+<li>移到 QMK 工作目錄： <code>qmk cd</code></li>
+<li>更新 Repo： <code>git fetch --all --tags --prune</code></li>
+<li>切換指定版本： <code>git checkout tags/&lt;VERSION&gt;</code>，其中 <code>&lt;VERSION&gt;</code> 替換成目標版本。例如 <code>git checkout tags/0.24.8</code></li>
+<li>可以忽略提示「detached HEAD」狀態。</li>
+<li>確認：<code>git status</code>。可能會看到類似 <code>HEAD detached at 0.24.8</code>，就代表目前已經切換到 <code>0.24.8</code> 版了。</li>
+</ol>
+</blockquote>
+<h1 id="準備環境"><a href="#準備環境" class="headerlink" title="準備環境"></a>準備環境</h1><p>首先要<a target="_blank" rel="noopener" href="https://docs.qmk.fm/#/newbs_getting_started?id=set-up-your-environment">準備 QMK 環境</a>，現在這一步已經相當簡單。請執行以下步驟：</p>
+<ol>
+<li>下載並執行 <a target="_blank" rel="noopener" href="https://msys.qmk.fm/">QMK MSYS</a> 工具。</li>
+<li>在 QMK MSYS 中輸入並執行指令 <code>qmk setup</code> 指令。</li>
+<li>過程中它可能會請你確認一些問題，多數情況只要回答 <code>y</code> 既可。</li>
+</ol>
+<p>完成後會有一行 <code>QMK is ready to go</code>。往上滾動一些會看到一行 <code>Repo version: x.y.z</code>，<code>x.y.z</code> 代表目前的 QMK 版本。</p>
+<p>準備好環境後，可以先編譯其它鍵盤作爲測試。在 QMK MSYS 中執行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qmk compile -kb clueboard/66/rev3 -km default</span><br></pre></td></tr></table></figure>
+
+<p>若環境沒問題的話，稍微等待後你應該會看到一排 <code>[OK]</code>，及類似這樣的結尾：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Linking: .build/clueboard_66_rev3_default.elf                          [OK]</span><br><span class="line">Creating load file <span class="keyword">for</span> flashing: .build/clueboard_66_rev3_default.hex  [OK]</span><br><span class="line">Copying clueboard_66_rev3_default.hex to qmk_firmware folder           [OK]</span><br><span class="line">Checking file size of clueboard_66_rev3_default.hex                    [OK]</span><br><span class="line"> * The firmware size is fine - 26356/28672 (2316 bytes free)</span><br></pre></td></tr></table></figure>
+
+<h1 id="創建新鍵盤"><a href="#創建新鍵盤" class="headerlink" title="創建新鍵盤"></a>創建新鍵盤</h1><p>在 QMK MSYS 中執行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qmk new-keyboard</span><br></pre></td></tr></table></figure>
+
+<p>這時你可能會看到這樣的回應：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Generating a new QMK keyboard directory</span><br><span class="line"></span><br><span class="line">Name Your Keyboard Project</span><br><span class="line">For more infomation, see:</span><br><span class="line">https://docs.qmk.fm/<span class="comment">#/hardware_keyboard_guidelines?id=naming-your-keyboardproject</span></span><br><span class="line"></span><br><span class="line">Keyboard Name?</span><br></pre></td></tr></table></figure>
+
+<p>這時請輸入你想要的鍵盤名稱後按 Enter，例如我使用「mytestkb」做示範。命名規則請參考 <a target="_blank" rel="noopener" href="https://docs.qmk.fm/#/hardware_keyboard_guidelines?id=naming-your-keyboardproject">Naming Your Keyboard&#x2F;Project</a>.</p>
+<p>再來它回問你 Username 及 Real Name，這部分就打你自己想要的名稱即可（之後也還可以改），例如我兩者都打「ziteh」。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Attribution</span><br><span class="line">Used <span class="keyword">for</span> maintainer, copyright, etc</span><br><span class="line"></span><br><span class="line">Your GitHub Username?  [ziteh]</span><br><span class="line"></span><br><span class="line">More Attribution</span><br><span class="line">Used <span class="keyword">for</span> maintainer, copyright, etc</span><br><span class="line"></span><br><span class="line">Your Real Name?  [ziteh]</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEipRq6B074RdBe4t0Uc5qIZajM0j3dS-lwJiel-cEGdwrgVwFBNWHkSDjBokQI7N9364L2eQS3B76_HAbcgsMVklbBPCllBSvPRhwkurRY7zW37mGWr9xHy45LYGZhKvf4_5H8WnezV1XLlVYv6JDWDXGkTmCSksXUbO2h7pkZ_FZtD-vOIUkRB-q7wug4/s16000/2023-07-01%2022-10-24.mkv_20230702_095338.927.jpg" alt="▲ 使用指令建立新鍵盤"></p>
+<p>接著會問你基礎佈局，你可以選一個和你預計要做的鍵盤較爲類似的佈局，這樣後續要改的東西就會比較少。例如常見的 60% 鍵盤爲「11. 65_ansi」，那就輸入「11」後按 Enter。</p>
+<p>最後會問你所使用的 MCU，如果你使用的是 Pro Micro 的話，可以選「14」號的「promicro」。當然如果你是用別的 MCU 的話就自行選擇。這些設定後續都可以再修改。</p>
+<blockquote>
+<p>實際編號可能會不同，請以名稱爲主及你看到的爲主。</p>
+<p>你可能會在意使用 Pro Micro 的話選「29」號的「atmega32u4」可以嗎？答案是可以，但是後續還要手動改掉 Bootloader，所以建議直接選「14」就好。</p>
+</blockquote>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTN8nyl-WGZQDeSTBAFr7o2-FVoNBfXDcSmoQvBaDw-ABHSI-kEHleAzx7MduwvqTKRlGnP04BQ3-kKpBmTM-pAN5s6fht8CHbQDzlVIzdTJJbKIRH19N1P4fq7WqL0Bu3F2YPKa9gup2i9TwPvlwhEKDbe9asl487Yzbw85lB1jYVjtwuQmbX7uGTEbU/s16000/Unnamed.png" alt="▲ 選擇基底佈局與微控制器示意。這裡是舊版的圖，編號請以實際爲主"></p>
+<p>完成後會顯示類似這樣的訊息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Created a new keyboard called mytestkb.</span><br><span class="line">Build Command: qmk compile -kb mytestkb -km default.</span><br><span class="line">Project Location: C:/Users/USERNAME/qmk_firmware/keyboards/mytestkb,</span><br><span class="line">&#123;&#125;Now update the config files to match the hardware!&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>這樣我們的新鍵盤就在 QMK 的目錄底下建立完成了。</p>
+<h1 id="編輯韌體"><a href="#編輯韌體" class="headerlink" title="編輯韌體"></a>編輯韌體</h1><p>現在要打開我們剛剛建立的鍵盤檔案，爲細部功能做調整。</p>
+<p>使用文字編輯器（例如我使用 <a target="_blank" rel="noopener" href="https://code.visualstudio.com/">VSCode</a>）打開剛剛建立的新鍵盤的資料夾。QMK 預設的路徑是在 <code>C:\Users\&lt;USERNAME&gt;\qmk_firmware\</code>，而我們剛剛建立的鍵盤在其中的 <code>keyboards\mytestkb\</code>。</p>
+<p>這時你會看到 <code>mytestkb</code> 下有這些檔案：</p>
+<ul>
+<li><code>keymaps\</code><ul>
+<li><code>default\</code><ul>
+<li><code>keymap.c</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>info.json</code></li>
+<li><code>config.h</code></li>
+<li><code>rules.mk</code></li>
+<li><code>readme.md</code></li>
+</ul>
+<h2 id="修改-info-json"><a href="#修改-info-json" class="headerlink" title="修改 info.json"></a>修改 <code>info.json</code></h2><p><code>info.json</code> 是最主要的設定檔，大部分的設定都在這裡調整。有關它的詳細說明請參考 <a target="_blank" rel="noopener" href="https://docs.qmk.fm/#/reference_info_json">info.json Format</a> 及 <a target="_blank" rel="noopener" href="https://docs.qmk.fm/#/data_driven_config">Data Driven Configuration</a>。以下設定不照順序說明，請以名稱爲主。</p>
+<blockquote>
+<p><a href="/posts/diyqmkkeyboard-firmware-0-18/">舊版 QMK</a> 在 <code>rules.mk</code> 和 <code>config.h</code> 中的設定現在多數都移到 <code>info.json</code> 中了。</p>
+</blockquote>
+<h3 id="鍵盤資訊"><a href="#鍵盤資訊" class="headerlink" title="鍵盤資訊"></a>鍵盤資訊</h3><ul>
+<li><code>keyboard_name</code>：鍵盤名稱。這裡目前是剛剛輸入的 <code>mytestkb</code>。</li>
+<li><code>url</code>：可以填該鍵盤的相關說明網址。可以留空。</li>
+<li><code>manufacturer</code>：製造商，可以打你的名字。</li>
+<li><code>maintainer</code>：維護者，一樣可以打你的名字。</li>
+</ul>
+<h3 id="mcu-與-bootloader"><a href="#mcu-與-bootloader" class="headerlink" title="MCU 與 Bootloader"></a>MCU 與 Bootloader</h3><p>MCU 與 Bootloader 的設定是要互相配合的，要依照你使用的 MCU 來選擇正確的 Bootloader。</p>
+<p>首先看到 <code>processor</code> 的部分，這裡要選擇使用的 MCU。由於我們剛剛選擇的是 Pro Micro，所以這裡目前是 <code>atmega32u4</code> 沒錯，如果你使用的是別的 MCU 就請修改。QMK 支援的 MCU 可以參考 <a target="_blank" rel="noopener" href="https://docs.qmk.fm/#/compatible_microcontrollers">Compatible Microcontrollers</a>。</p>
+<p>再來是 <code>bootloader</code> 的部分，由於我們是 Pro Micro，所以這裡要是 <code>caterina</code>。如果你使用的是不同的 MCU，那 bootloader 也要改，具體的對照爲：</p>
+<table>
+<thead>
+<tr>
+<th align="center">微控制器&#x2F;開發板</th>
+<th align="left">Bootloader</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Pro Micro</td>
+<td align="left"><code>caterina</code></td>
+</tr>
+<tr>
+<td align="center">RP2040</td>
+<td align="left"><code>rp2040</code></td>
+</tr>
+<tr>
+<td align="center">Teensy</td>
+<td align="left"><code>halfkay</code></td>
+</tr>
+<tr>
+<td align="center">Atmel DFU</td>
+<td align="left"><code>atmel-dfu</code></td>
+</tr>
+<tr>
+<td align="center">LUFA DFU</td>
+<td align="left"><code>lufa-dfu</code></td>
+</tr>
+<tr>
+<td align="center">QMK DFU</td>
+<td align="left"><code>qmk-dfu</code></td>
+</tr>
+<tr>
+<td align="center">ATmega328P</td>
+<td align="left"><code>usbasploader</code></td>
+</tr>
+</tbody></table>
+<p>QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的話，請自行參考 QMK 文件。更詳細的說明可以看 <a target="_blank" rel="noopener" href="https://docs.qmk.fm/#/flashing?id=flashing-instructions-and-bootloader-information">Flashing Instructions and Bootloader Information</a> 。</p>
+<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><p><code>features</code> 中可以設定要啓用的功能，像是 <code>nkro</code> 是 N 鍵防衝突（USB N-Key Rollover），<code>mousekey</code> 是滑鼠按鍵支援。更詳細的設定請參考 <a target="_blank" rel="noopener" href="https://docs.qmk.fm/#/config_options?id=configuring-qmk">Config Options</a>。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;features&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;bootmagic&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;console&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;extrakey&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;mousekey&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;nkro&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="usb"><a href="#usb" class="headerlink" title="USB"></a>USB</h3><p><code>usb</code> 底下會設定一些 USB 相關的資料。有 <code>vid</code>、<code>pid</code> 及 <code>device_version</code> 這三個，分別代表 Vendor ID、Product ID 和 Device version。可以保持不變，也可以改成自己喜歡的。官方文件請參考 <a target="_blank" rel="noopener" href="https://docs.qmk.fm/#/reference_info_json?id=usb">USB</a>。</p>
+<blockquote>
+<p>USB VID 與 PID 是 USB 設備的識別號，正常來說是要向 USB 協會申請&#x2F;購買，但是我們只是要自己做鍵盤的話通常都自行設定就好。要注意的是，如果一臺電腦同時接了多個相同 VID 和 PID 的裝置，那這些裝置可能無法運作。</p>
+</blockquote>
+<p>例如可以使用（<code>vid</code>，<code>pid</code> 爲十六進制數值）：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;usb&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;vid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0xC1ED&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;pid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0x23B0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;device_version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1.0.0&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="佈局-layouts"><a href="#佈局-layouts" class="headerlink" title="佈局 layouts"></a>佈局 layouts</h3><p>一把鍵盤可以設定多個佈局（Layout），但這裡我們就僅簡單示範單一佈局。官方文件請參考 <a target="_blank" rel="noopener" href="https://docs.qmk.fm/#/reference_info_json?id=layout-format">Layout Format</a>。</p>
+<p><code>LAYOUT_65_ansi</code> 就是我們剛剛選擇的基底佈局的名稱，內部的 <code>layout</code> 就是要設定每一個按鍵的位置，包含了物理上的實際位置和在鍵矩陣中的行列位置。我這裡把 <code>LAYOUT_65_ansi</code> 這個名稱改成 <code>LAYOUT</code>（這個只是名稱而已，不改也可以）。</p>
+<p>看其中兩個鍵：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span><span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">0</span><span class="punctuation">,</span> <span class="number">0</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#123;</span><span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">0</span><span class="punctuation">,</span> <span class="number">1</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<p><code>matrix</code> 是設定該鍵在「鍵矩陣」中的行列位置，格式爲 <code>[row, col]</code>。<code>x</code> 和 <code>y</code> 是設定該鍵的「物理」位置，也就是它擺在哪裡。另外還有 <code>w</code> 與 <code>h</code> 可以設定按鍵的寬度和高度，<code>label</code> 可以設定名稱。</p>
+<p><code>layout</code> 的內容可以透過一些工具來幫忙，就不用完全自己手打。打開 <a target="_blank" rel="noopener" href="https://qmk.fm/converter/">Convert KLE to QMK info.json</a> 頁面，並將<a href="/posts/diyqmkkeyboard-1/#%E8%BC%B8%E5%87%BA">上一篇文章</a> 最後的 Raw data 複製並貼到裡面就可以轉換。</p>
+<p>例如我貼上：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">[</span><span class="string">&quot;Num Lock&quot;</span><span class="punctuation">,</span><span class="string">&quot;/&quot;</span><span class="punctuation">,</span><span class="string">&quot;*&quot;</span><span class="punctuation">,</span><span class="string">&quot;-&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">[</span><span class="string">&quot;7\nHome&quot;</span><span class="punctuation">,</span><span class="string">&quot;8\n↑&quot;</span><span class="punctuation">,</span><span class="string">&quot;9\nPgUp&quot;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span>h<span class="punctuation">:</span><span class="number">2</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="string">&quot;+&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">[</span><span class="string">&quot;4\n←&quot;</span><span class="punctuation">,</span><span class="string">&quot;5&quot;</span><span class="punctuation">,</span><span class="string">&quot;6\n→&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">[</span><span class="string">&quot;1\nEnd&quot;</span><span class="punctuation">,</span><span class="string">&quot;2\n↓&quot;</span><span class="punctuation">,</span><span class="string">&quot;3\nPgDn&quot;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span>h<span class="punctuation">:</span><span class="number">2</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="string">&quot;Enter&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">[</span><span class="punctuation">&#123;</span>w<span class="punctuation">:</span><span class="number">2</span><span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="string">&quot;0\nIns&quot;</span><span class="punctuation">,</span><span class="string">&quot;.\nDel&quot;</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<p>轉換後會得到：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;keyboard_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;maintainer&quot;</span><span class="punctuation">:</span> <span class="string">&quot;qmk&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;layouts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;LAYOUT&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;layout&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span><span class="string">&quot;Num Lock&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span><span class="number">0</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span><span class="number">0</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span><span class="string">&quot;/&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span><span class="number">1</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span><span class="number">0</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span><span class="string">&quot;*&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span><span class="number">2</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span><span class="number">0</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span><span class="string">&quot;-&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span><span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span><span class="number">0</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span><span class="string">&quot;7&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span><span class="number">0</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span><span class="number">1</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span><span class="string">&quot;8&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span><span class="number">1</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span><span class="number">1</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span><span class="string">&quot;9&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span><span class="number">2</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span><span class="number">1</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span><span class="string">&quot;+&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span><span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span><span class="number">1</span><span class="punctuation">,</span> <span class="attr">&quot;h&quot;</span><span class="punctuation">:</span><span class="number">2</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span><span class="string">&quot;4&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span><span class="number">0</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span><span class="number">2</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span><span class="string">&quot;5&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span><span class="number">1</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span><span class="number">2</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span><span class="string">&quot;6&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span><span class="number">2</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span><span class="number">2</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span><span class="string">&quot;1&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span><span class="number">0</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span><span class="number">3</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span><span class="string">&quot;2&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span><span class="number">1</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span><span class="number">3</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span><span class="string">&quot;3&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span><span class="number">2</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span><span class="number">3</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span><span class="string">&quot;Enter&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span><span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span><span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;h&quot;</span><span class="punctuation">:</span><span class="number">2</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span><span class="string">&quot;0&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span><span class="number">0</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span><span class="number">4</span><span class="punctuation">,</span> <span class="attr">&quot;w&quot;</span><span class="punctuation">:</span><span class="number">2</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span><span class="string">&quot;.&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span><span class="number">2</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span><span class="number">4</span><span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>可以發現轉換出來的 <code>layout</code> 就是我們要的格式，將它複製到我們的 <code>info.json</code> 中（注意階層要看準，括號有多有少都會出錯。我通常會直接複製並取代方括號 <code>[]</code> 的內容）。</p>
+<p>但是它還是缺少了 <code>matrix</code> 的資料，這部分我們要自己手動打。<code>matrix</code> 的部分我還沒找到比較好的方式可以自動產生，所以目前就只能自己手打，稍微有點麻煩。</p>
+<p>如果你不太知道 <code>matrix</code> 的座標要怎麼打的話，可以使用 <a target="_blank" rel="noopener" href="https://kbfirmware.com/">Keyboard Firmware Builder</a>，將 <a href="/posts/diyqmkkeyboard-1/#%E8%BC%B8%E5%87%BA">上一篇文章</a> 最後的 Raw data 複製並貼到裡面。</p>
+<p><img src="https://1.bp.blogspot.com/-UTbRymD6jFo/Xu4uCFUmN4I/AAAAAAAACc4/Pun-2kS6qooDb3plao7F_e5sogqH_uHKQCK4BGAsYHg/s1903/%255B01%255DKeyboard%2BFirmware%2BBuilder_Import.png" alt="▲ 在 Keyboard Firmware Builder 貼上 KLE 的 Raw data"></p>
+<p>在標籤頁「Wiring」裡，你看到的是鍵盤的鍵矩陣接線圖。它會自動幫你生成一個可行的接線方式，如果你不喜歡的話也可以手動修改。</p>
+<p><img src="https://1.bp.blogspot.com/-9pJYrEjmaXU/Xu4uCdp4PEI/AAAAAAAACc8/p8MMZuiSBUMSpTjsN0f0Xa78Turt48kzwCK4BGAsYHg/s1903/%255B02%255DKeyboard%2BFirmware%2BBuilder_Wiring_1.png" alt="▲ 接線頁面"></p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh99UeiWYdyky-hZedrvxTovnjqjoeXQg2b2nYZkCG7fIvJS5kOdSyhxP5YzMR3x7MOMoicCb6okM89xIcLfbuSmaJ3zgJoFcT2RQMg0bXmGaoRXV6pNtBOw2l9e8GmFENw_JYKeWlvF3bz2kzGefg_tD-Udxw5MTlHtRQ8VjQH2laiJI5GSOSCh9Vvd_c/s16000/mt2.png" alt="▲ 接線圖和 Matrix 的對應關係"></p>
+<p>它提供的接線圖就很清楚地表達了每個鍵的鍵矩陣位置，請以此爲依據來編輯每個鍵的 <code>matrix</code> 內容。</p>
+<p>修改完成後：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;layouts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;LAYOUT&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;layout&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;NumLock&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">0</span><span class="punctuation">,</span> <span class="number">0</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">0</span><span class="punctuation">,</span> <span class="number">1</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;*&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">0</span><span class="punctuation">,</span> <span class="number">2</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;-&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">0</span><span class="punctuation">,</span> <span class="number">3</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;7&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">1</span><span class="punctuation">,</span> <span class="number">0</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;8&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">1</span><span class="punctuation">,</span> <span class="number">1</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;9&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">1</span><span class="punctuation">,</span> <span class="number">2</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;4&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">2</span><span class="punctuation">,</span> <span class="number">0</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;5&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">2</span><span class="punctuation">,</span> <span class="number">1</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;6&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">2</span><span class="punctuation">,</span> <span class="number">2</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;+&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">2</span><span class="punctuation">,</span> <span class="number">3</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">&quot;h&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">3</span><span class="punctuation">,</span> <span class="number">0</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">3</span><span class="punctuation">,</span> <span class="number">1</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;3&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">3</span><span class="punctuation">,</span> <span class="number">2</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">4</span><span class="punctuation">,</span> <span class="number">1</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span> <span class="attr">&quot;w&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;.&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">4</span><span class="punctuation">,</span> <span class="number">2</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Enter&quot;</span><span class="punctuation">,</span>   <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">4</span><span class="punctuation">,</span> <span class="number">3</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;h&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>這一步可能比較複雜，要多看幾次比對。</p>
+<blockquote>
+<p>注意這裡 <code>matrix</code> 設定的鍵矩陣行列大小要和下面的 <code>matrix_pins</code> 中的 <code>cols</code> 與 <code>rows</code> 數量是一致的。</p>
+</blockquote>
+<h3 id="鍵矩陣"><a href="#鍵矩陣" class="headerlink" title="鍵矩陣"></a>鍵矩陣</h3><p>一般來說，鍵盤的按鍵數都大於微控制器的 GPIO 接腳數，所以會使用鍵盤矩陣掃描（Keyboard Matrix Scanning）技術。如果不是很懂鍵盤矩陣掃描的話，最好先找一些資料瞭解一下，這裡就不贅述。</p>
+<ul>
+<li><code>diode_direction</code> 表示鍵矩陣硬體的二極體方向，一般都是使用 <code>COL2ROW</code>。</li>
+<li><code>matrix_pins</code> 設定鍵矩陣的各個腳位。這邊同時決定了鍵矩陣的大小和實際的腳位爲何。</li>
+</ul>
+<p>鍵矩陣的 Column 及 Row 數量請參考上面佈局中的 <code>matrix</code> 設定。</p>
+<p>要注意的是，開發板上標示的接腳名稱可能不是微控制器的原始腳位名稱，而在 QMK 中只使用微控制器的原始腳位名稱。</p>
+<p>請參考下圖，Pro Micro 開發板上的 <code>D16</code>（綠色） 其實是 ATmega32U4 的 <code>PB2</code>（藍紫色），而在 QMK 中要打 <code>B2</code>。如果是 <code>D2</code>（綠色）腳的話，它其實是 <code>PD1</code>（藍紫色），所以 QMK 中要打 <code>D1</code>。這邊小心不要搞混了，簡單來說就是要看藍紫色的腳位。</p>
+<p><img src="https://1.bp.blogspot.com/-UqmjvTbo7Uo/Xu4yajqMXKI/AAAAAAAACeE/AEfdjtlknrcRsjSYvmRz5B0IxY4RIiQegCK4BGAsYHg/s1166/ProMicroPin.png" alt="▲ Pro Micro 腳位對應圖(取自SparkFun)"></p>
+<p>例如我可以這樣設定：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;diode_direction&quot;</span><span class="punctuation">:</span> <span class="string">&quot;COL2ROW&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;matrix_pins&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;cols&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="string">&quot;D1&quot;</span><span class="punctuation">,</span> <span class="string">&quot;D0&quot;</span><span class="punctuation">,</span> <span class="string">&quot;D4&quot;</span><span class="punctuation">,</span> <span class="string">&quot;C6&quot;</span> <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;rows&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="string">&quot;F4&quot;</span><span class="punctuation">,</span> <span class="string">&quot;F5&quot;</span><span class="punctuation">,</span> <span class="string">&quot;F6&quot;</span><span class="punctuation">,</span> <span class="string">&quot;F7&quot;</span><span class="punctuation">,</span> <span class="string">&quot;B1&quot;</span> <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<p>如果你沒有使用微控制器的經驗，或是不知道要選哪個腳位才行，只要你的鍵盤沒有要加什麼特別的功能（如螢幕、搖桿、可條亮度的 LED 或分離式鍵盤）的話，基本上使用任何腳位都可以。如果你的鍵盤有這些需要特殊硬體功能（UART、SPI、I²C、PWM）的話，記得保留，不要被矩陣掃描佔用了。</p>
+<blockquote>
+<p>PB2、PD7…的 P 是指 Port，通常以 8 或 16 腳為一個 Port。P 後面的英文字為 Port 名，通常由 A 開始。再來的數字是腳位編號，通常由 0 開始。所以 PB2 就代表 Port-B 的 2 號腳，也就是 Port-B 的第 3 支接腳，因為 Port-B 的第一支腳是 PB0。<br>使用現成的開發板（像是 Pro Micro）的話，記得要選有引出的接腳（開發板可能不會把微控制器的所有接腳都拉出）。</p>
+</blockquote>
+<p>這部分的官方文件請參考 <a target="_blank" rel="noopener" href="https://docs.qmk.fm/#/reference_info_json?id=matrix-pins">Matrix Pins</a>。</p>
+<h3 id="修改完成"><a href="#修改完成" class="headerlink" title="修改完成"></a>修改完成</h3><p>完成的完整 <code>info.json</code> 大概長這樣：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;keyboard_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;mytestkb&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;manufacturer&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ziteh&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;maintainer&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ziteh&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;processor&quot;</span><span class="punctuation">:</span> <span class="string">&quot;atmega32u4&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;bootloader&quot;</span><span class="punctuation">:</span> <span class="string">&quot;caterina&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;diode_direction&quot;</span><span class="punctuation">:</span> <span class="string">&quot;COL2ROW&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;matrix_pins&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;cols&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="string">&quot;D1&quot;</span><span class="punctuation">,</span> <span class="string">&quot;D0&quot;</span><span class="punctuation">,</span> <span class="string">&quot;D4&quot;</span><span class="punctuation">,</span> <span class="string">&quot;C6&quot;</span> <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;rows&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span> <span class="string">&quot;F4&quot;</span><span class="punctuation">,</span> <span class="string">&quot;F5&quot;</span><span class="punctuation">,</span> <span class="string">&quot;F6&quot;</span><span class="punctuation">,</span> <span class="string">&quot;F7&quot;</span><span class="punctuation">,</span> <span class="string">&quot;B1&quot;</span> <span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;features&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;bootmagic&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;console&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;extrakey&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;mousekey&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;nkro&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;usb&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;vid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0xFEED&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;pid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0x0000&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;device_version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1.0.0&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;layouts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;LAYOUT&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;layout&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;NumLock&quot;</span><span class="punctuation">,</span> <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">0</span><span class="punctuation">,</span> <span class="number">0</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">0</span><span class="punctuation">,</span> <span class="number">1</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;*&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">0</span><span class="punctuation">,</span> <span class="number">2</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;-&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">0</span><span class="punctuation">,</span> <span class="number">3</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;7&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">1</span><span class="punctuation">,</span> <span class="number">0</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;8&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">1</span><span class="punctuation">,</span> <span class="number">1</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;9&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">1</span><span class="punctuation">,</span> <span class="number">2</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;4&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">2</span><span class="punctuation">,</span> <span class="number">0</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;5&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">2</span><span class="punctuation">,</span> <span class="number">1</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;6&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">2</span><span class="punctuation">,</span> <span class="number">2</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;+&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">2</span><span class="punctuation">,</span> <span class="number">3</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">&quot;h&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">3</span><span class="punctuation">,</span> <span class="number">0</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">3</span><span class="punctuation">,</span> <span class="number">1</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;3&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">3</span><span class="punctuation">,</span> <span class="number">2</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">4</span><span class="punctuation">,</span> <span class="number">1</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span> <span class="attr">&quot;w&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;.&quot;</span><span class="punctuation">,</span>       <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">4</span><span class="punctuation">,</span> <span class="number">2</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span><span class="attr">&quot;label&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Enter&quot;</span><span class="punctuation">,</span>   <span class="attr">&quot;matrix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">4</span><span class="punctuation">,</span> <span class="number">3</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="attr">&quot;x&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;y&quot;</span><span class="punctuation">:</span> <span class="number">3</span><span class="punctuation">,</span> <span class="attr">&quot;h&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="修改-keymap-c"><a href="#修改-keymap-c" class="headerlink" title="修改 keymap.c"></a>修改 <code>keymap.c</code></h2><p><code>keymaps</code> 資料夾內可以放多種不同的鍵映射（Keymap），但是至少有有一個名爲 <code>default</code> 的預設 Keymap。現在已經自動產生這個預設 keymap 了。打開 <code>keymaps\default\keymap.c</code> 。</p>
+<p>這裡要修改的是 <code>const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = &#123;&#125;</code> 的內容，也就是 Keymap。Keymap 的結構與行列數量必須要與剛剛在 <code>info.json</code> 中設定的 <code>layout</code> 中的 <code>matrix</code> 對應。</p>
+<p>這裡要手動修改的話也是有一點麻煩，所以一樣推薦使用 <a target="_blank" rel="noopener" href="https://kbfirmware.com/">Keyboard Firmware Builder</a>，將 <a href="/posts/diyqmkkeyboard-1/#%E8%BC%B8%E5%87%BA">上一篇文章</a> 最後的 Raw data 複製並貼到裡面。到最後一個標籤頁「Compile」按下「Download .zip」按鈕來儲存它產生的 QMK 韌體原始檔（舊版）。</p>
+<p><img src="https://1.bp.blogspot.com/-IbmnNoxPZ-s/Xu4uE8BFvvI/AAAAAAAACdg/khQpXPgiygkaVn409H394FOvf9RN8C-iACK4BGAsYHg/s800/%255B11%255DKeyboard%2BFirmware%2BBuilder_Compile.png" alt="▲ 「Compile」標籤頁"></p>
+<p>將下載的 <code>.zip</code> 檔解壓縮，打開其中的 <code>qmk_firmware\keyboards\kb\keymaps\default\keymap.c</code>。你會看到和我們所需要的 <code>const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = &#123;&#125;</code> 的內容，可以把複製到我們的鍵盤的 <code>keymap.c</code> 中。</p>
+<p>不過它的每一個層的名稱是 <code>KEYMAP()</code>，而我們剛剛產生的名稱是 <code>LAYOUT_65_ansi()</code>，但是由於我在 <code>info.json</code> 時把 <code>LAYOUT_65_ansi</code> 改成 <code>LAYOUT</code> 了，所以這邊也要一同改成 <code>LAYOUT()</code>。你可以只先複製一塊 <code>KEYMAP()</code>&#x2F;<code>LAYOUT()</code>，剩下的再自己修改。</p>
+<p><code>LAYOUT()</code> 中的這些就代表了鍵盤各個鍵位的按鍵功能。像是 <code>KC_P7</code> 代表了 <kbd>Numpad7</kbd>（數字鍵盤的 7），而詳細的按鍵名稱請參考 QMK 的說明文件：<a target="_blank" rel="noopener" href="https://docs.qmk.fm/#/keycodes?id=keycodes-overview">Keycodes Overview</a>。</p>
+<p>你所需要做的就是把該按鍵的代號（如 <code>KC_P7</code>）放在對的位置就好了，之後你按下這個位置的按鍵就會是輸出這個鍵值。QMK 鍵盤支援多層 Keymap 設定，而每一塊 <code>[n] = LAYOUT()</code> 代表的是一層，最上面的是第 0 層，往下是第 1、2…n 層。</p>
+<p>修改完的 <code>keymap.c</code> 大概長這樣：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> QMK_KEYBOARD_H</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// clang-format off</span></span><br><span class="line"><span class="type">const</span> <span class="type">uint16_t</span> PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = &#123;</span><br><span class="line">    [<span class="number">0</span>] = LAYOUT(</span><br><span class="line">      KC_NUM,  KC_PSLS, KC_PAST, KC_PMNS,</span><br><span class="line">      KC_P7,   KC_P8,   KC_P9,</span><br><span class="line">      KC_P4,   KC_P5,   KC_P6,   KC_PPLS,</span><br><span class="line">      KC_P1,   KC_P2,   KC_P3,</span><br><span class="line">               KC_P0,   MO(<span class="number">1</span>),   KC_PENT</span><br><span class="line">    ),</span><br><span class="line"></span><br><span class="line">    [<span class="number">1</span>] = LAYOUT(</span><br><span class="line">      _______, _______, _______, _______,</span><br><span class="line">      KC_HOME, KC_UP,   KC_PGUP,</span><br><span class="line">      KC_LEFT, _______, KC_RGHT, _______,</span><br><span class="line">      KC_END,  KC_DOWN, KC_PGDN,</span><br><span class="line">               KC_INS,  _______, KC_DEL</span><br><span class="line">    )&#125;;</span><br><span class="line"><span class="comment">// clang-format on</span></span><br></pre></td></tr></table></figure>
+
+<p>有些人會加上一些圖案：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">0</span>] = LAYOUT(</span><br><span class="line"><span class="comment">// ┌────────┬─────────┬──────────┬─────────┐</span></span><br><span class="line">     KC_NUM,  KC_PSLS,  KC_PAST,   KC_PMNS,</span><br><span class="line"><span class="comment">// ├────────┼─────────┼──────────┼─────────┤</span></span><br><span class="line">     KC_P7,   KC_P8,    KC_P9,</span><br><span class="line"><span class="comment">// ├────────┼─────────┼──────────┤         │</span></span><br><span class="line">     KC_P4,   KC_P5,    KC_P6,     KC_PPLS,</span><br><span class="line"><span class="comment">// ├────────┼─────────┼──────────┼─────────┤</span></span><br><span class="line">     KC_P1,   KC_P2,    KC_P3,</span><br><span class="line"><span class="comment">// ├────────┴─────────┼──────────┤         │</span></span><br><span class="line">          KC_P0,        MO(<span class="number">1</span>),     KC_PENT</span><br><span class="line"><span class="comment">// └──────────────────┴──────────┴─────────┘</span></span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>clang-format off</code> 與 <code>clang-format on</code> 是讓 VSCode 的 Clang-format 格式化工具不用美化該區域的內容。<br>如果你稍微懂一點 C 語言的話，<code>LAYOUT()</code> 就是是巨集 Macro。</p>
+</blockquote>
+<h2 id="修改-rules-mk"><a href="#修改-rules-mk" class="headerlink" title="修改 rules.mk"></a>修改 <code>rules.mk</code></h2><p>如果你使用的是 Pro Micro 的話，Pro Micro 一般會分 16MHz&#x2F;5V 和 8MHz&#x2F;3.3V 這兩種版本，若你使用的是後者，那請在 <code>rules.mk</code> 中加入：</p>
+<figure class="highlight mk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Processor frequency</span></span><br><span class="line">F_CPU = 8000000</span><br></pre></td></tr></table></figure>
+
+<p>另外如果 MCU 是 Atmel AVR 的話（包含 ATmega32U4 和 Pro Micro），還可以再加一行設定來降低韌體的大小，避免發生韌體太大無法燒錄的情況：</p>
+<figure class="highlight mk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Link time optimization, enable to reduce the compiled size of firmware</span></span><br><span class="line">LTO_ENABLE = yes</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>請注意 <code>rules.mk</code> 中的各行結尾不能有空白，否則可能會導致奇怪的編譯錯誤，例如：<code>Compiling: .build/obj_mytestkb/src/default_keyboard.c    avr-gcc.exe: error: UL: No such file or directory</code>。</p>
+</blockquote>
+<h2 id="完成修改"><a href="#完成修改" class="headerlink" title="完成修改"></a>完成修改</h2><p><code>config.h</code> 的內容可以保持不變，<code>readme.md</code> 是說明文件，只要修改完 <code>info.json</code>、<code>keymap.c</code> 和 <code>rules.mk</code> 就算是完成韌體的修改了。</p>
+<blockquote>
+<p>如果你使用的 MCU 是 RP2040 的話，建議在 <code>config.h</code> 中加入一行 <code>#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET</code> 來啓用 <a target="_blank" rel="noopener" href="https://docs.qmk.fm/#/platformdev_rp2040?id=double-tap">Double-tap Reset</a>，未來燒錄時會比較方便。</p>
+</blockquote>
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><p>到此為止，QMK 韌體原始檔的基本編輯就完成了，接下來就要準備進行編譯。</p>
+<p>這一篇的內容可能比較複雜，且 QMK 也一直再更新，如果有我寫得不夠清楚或是有誤的地方，歡迎提出。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/siderakb/qmk-example">本文的範例 repo</a></p>
+<h1 id="相關網站及參考資料"><a href="#相關網站及參考資料" class="headerlink" title="相關網站及參考資料"></a>相關網站及參考資料</h1><ul>
+<li><a href="/posts/diyqmkkeyboard-0/#%E6%95%99%E5%AD%B8%E6%96%87%E5%88%97%E8%A1%A8">本 QMK 教學系列文列表</a></li>
+<li><a target="_blank" rel="noopener" href="https://kbfirmware.com/">Keyboard Firmware Builder</a></li>
+<li><a target="_blank" rel="noopener" href="https://learn.sparkfun.com/tutorials/qwiic-pro-micro-usb-c-atmega32u4-hookup-guide/all">Qwiic Pro Micro USB-C (ATmega32U4) Hookup Guide - SparkFun Learn</a></li>
+<li>本篇的舊版內容<ul>
+<li><a href="/posts/diyqmkkeyboard-firmware-0-21-3/">0.21.3 版</a></li>
+<li><a href="/posts/diyqmkkeyboard-firmware-0-18/">0.18.3 版</a></li>
+</ul>
+</li>
+<li>QMK相關<ul>
+<li><a target="_blank" rel="noopener" href="https://qmk.fm/">QMK 官方網站</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.qmk.fm/#/">QMK 官方文件</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/qmk/qmk_firmware">QMK 的 GitHub</a></li>
+</ul>
+</li>
+<li>撰寫本文時的 QMK MSYS 版本：<code>1.9.0</code></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/rust-lang-opinion/" rel="prev" title="Rust 之我見">
+                  <i class="fa fa-angle-left"></i> Rust 之我見
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/git-verification/" rel="next" title="簽署 commit 並設定 GitHub GPG Key 以驗證">
+                  簽署 commit 並設定 GitHub GPG Key 以驗證 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+  <p style="text-align: center;color: #a3a3a3;font-size: 14px;margin-top: 60px;">留言可能不會立即顯示。若過了幾天仍未出現，請 <a href="mailto:honmonoh@gmail.com">Email</a> 聯繫：）</p>
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="本網站所有內容除特別聲明外，均採用創用CC 姓名標示-非商業性-禁止改作授權。
+    分享時請註明作者及出處。" style="border-bottom: 0;">
+      <img src="https://i.creativecommons.org/l/by-nc-nd/3.0/80x15.png" style="display: unset;">
+    </a>
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ZiTe</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zite-honmonoh","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

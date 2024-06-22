@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/uploads/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300italic,400,400italic,700,700italic%7CNoto+Sans+TC:300,300italic,400,400italic,700,700italic%7CFira+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ziteh.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}},"activeClass":"disqus"},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="在 GitHub 看 commit 記錄時，可能會發現有些 commit 被標記爲已驗證（Verified），代表這個 commit 可以確認是真的由此使用者提交的。因爲 commit 是可以僞造的，你只要知道某人的 username 和 email 就可以用 git config --global user.name 和 user.email 設定並假冒 commit 的作者。然而這兩項資訊在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="簽署 commit 並設定 GitHub GPG Key 以驗證">
+<meta property="og:url" content="https://ziteh.github.io/posts/git-verification/index.html">
+<meta property="og:site_name" content="ZiTe 本物志">
+<meta property="og:description" content="在 GitHub 看 commit 記錄時，可能會發現有些 commit 被標記爲已驗證（Verified），代表這個 commit 可以確認是真的由此使用者提交的。因爲 commit 是可以僞造的，你只要知道某人的 username 和 email 就可以用 git config --global user.name 和 user.email 設定並假冒 commit 的作者。然而這兩項資訊在">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhbS1awMSWll3iWn0eyymEKwcIK7OyjTvZ8RNxl3jHDaJHpWmJrwU8G0e1e0xKm-KEVq069BrngyRKphQJDaaDZ_Y7mQG4OQ1tu9BJA1yecJc8nmizcnxVcZvr3Qu1fx-di9L0IgAtWjo9uEZdm7Tyyw3x7zm4UxOgS8U5YkE0MKyyZEFJXaT25YBT6wwY/s16000/5%20-%20ugAQ8rK.png">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-gleIAljQS2xfDv2YyNYyTl8o5wstoDf_WETUdmyYmikFjwFkPUw7AucRhri9RrQ9CaLz9Y6eZZJwMhiOsW_aU7uVfZsA03uiQa49ut8zhXFMcqYYQ3zPe4R01FhyDMEuq7Dr0azlgYKopZ1k0QnCXauAn8hXMiYlR-NjNvxVzKunfMHHK1P_BiIoP1E/s16000/7%20-%20Hc51k6F.png">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhTO6c_QXTNxojWXVCWmfUdSaGgMId9yOz3l2aRXkx5wfERO0v6RExISnQLhrAITGOc_9lqiwRPRToRfX8mYla8ADcQkiJ_GmTIf1loebndywhwLv9OvZhgaatXuKPpYoege6G7poWH44HSvgjGFheVuG1wnSV2UbaGsSS6Frlk9K75TTvD8cVxR8BQ14Y/w400-h379/4%20-%200xEpVbf.png">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgB60n9PtXZcpFNTsyDqJBeX9CAaoEX0flMCFsPKvI8jrlzK_hUuvfcUYeluXL678CTdKDpOoPHW2s2NIkKz1ai0koV0DnURZhZ_fjeQoOtn14YIG596vnAxVB-r7oS0pXeTKlqwEYyA33IMzmNRo7AjlmWzRD3TLFRH163OC5RxH2q3fDfARrO2NByukA/w286-h400/1%20-%20WKN7s2s.png">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0OdKPc7MXiJOS5wsfdgNZq6H6pZB8GRWd2qIkeUjqMh3Tpk7l65D2Doks49KzW6Zf-VDYVcLm6P2Gog19uu_BWKeYC5JB016VHr1g8DylrU48akYU_DRSUMVhsDDeQXtawgO86-cVcClbx5XH0D6elhr4WxEgIu85Yi78BzeRwcu5Ie2jXzh3VEjv93Q/s16000/2%20-%20QlGGD4k.png">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgINvNdBT_g9tqH0bDIaQbQdt0glR2bPIwroIHWnrfQnhM0Whrou2NcCY3nZ0RkXp2NJ1tGA8A__SVg7y4SvzAB80O36VPmcp-IDN1VDnL8qJS-mNbXHp790mGFVJQphZMVN4_GrzDbuUIW2NrFxn9_MKpggIRghD1Lemslh19cK9RyOZsSeqLunAojw4I/s16000/8%20-%204ystOtj.png">
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMwrB0a-HhD1i-cbCTegVrpUdi5hgn2AYgAWBmLrAUhg5lrbBUgTdJqX7h_w4p5yayTlxjsm_jR6WIn3ng-1pHQEEvpnG9IxtgZVzdURNFfIPHKlJNFd9Ev8alu0jb0ZjCIhgi9V1K9hBcAAQPMl0IIi3rEKjN8zoUP93i1ga1Tz_8DlM5T78V_tgH_0s/w400-h292/6%20-%20MsSco5U.png">
+<meta property="article:published_time" content="2024-05-10T23:04:00.000Z">
+<meta property="article:modified_time" content="2024-06-22T08:56:19.881Z">
+<meta property="article:author" content="ZiTe">
+<meta property="article:tag" content="教學">
+<meta property="article:tag" content="程式">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhbS1awMSWll3iWn0eyymEKwcIK7OyjTvZ8RNxl3jHDaJHpWmJrwU8G0e1e0xKm-KEVq069BrngyRKphQJDaaDZ_Y7mQG4OQ1tu9BJA1yecJc8nmizcnxVcZvr3Qu1fx-di9L0IgAtWjo9uEZdm7Tyyw3x7zm4UxOgS8U5YkE0MKyyZEFJXaT25YBT6wwY/s16000/5%20-%20ugAQ8rK.png">
+
+
+<link rel="canonical" href="https://ziteh.github.io/posts/git-verification/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://ziteh.github.io/posts/git-verification/","path":"posts/git-verification/","title":"簽署 commit 並設定 GitHub GPG Key 以驗證"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>簽署 commit 並設定 GitHub GPG Key 以驗證 | ZiTe 本物志</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZiTe 本物志</p>
+      <i class="logo-line"></i>
+      <p class="site-subtitle" itemprop="description">一位慢步於程式、電路與文學之人的學習記錄與分享</p>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-folder-open fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D%E5%B7%A5%E5%85%B7"><span class="nav-text">安裝工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A2%E7%94%9F%E9%87%91%E9%91%B0"><span class="nav-text">產生金鑰</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gui-%E5%9C%96%E5%BD%A2%E5%8C%96"><span class="nav-text">GUI 圖形化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cli-%E5%91%BD%E4%BB%A4%E8%A1%8C"><span class="nav-text">CLI 命令行</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#github-%E8%A8%AD%E5%AE%9A-gpg-key"><span class="nav-text">GitHub 設定 GPG Key</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git-%E8%A8%AD%E5%AE%9A"><span class="nav-text">Git 設定</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gpg-%E8%B7%AF%E5%BE%91"><span class="nav-text">GPG 路徑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A-key-id"><span class="nav-text">設定 Key ID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B0%BD%E7%BD%B2%E6%89%80%E6%9C%89-commit"><span class="nav-text">簽署所有 commit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A2%BA%E8%AA%8D%E8%A8%AD%E5%AE%9A"><span class="nav-text">確認設定</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E6%88%90"><span class="nav-text">完成</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-text">參考資料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a href="/about/" title="About">
+      <img class="site-author-image" itemprop="image" alt="ZiTe"
+        src="/uploads/avatar.png">
+    <p class="site-author-name" itemprop="name">ZiTe</p>
+    <div class="site-description" itemprop="description"></div>
+  </a>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ziteh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ziteh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/@siderakb" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;@siderakb" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://siderakb.github.io/" title="SideraKB → https:&#x2F;&#x2F;siderakb.github.io&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-keyboard fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:honmonoh@gmail.com" title="E-Mail → mailto:honmonoh@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="回到頂端">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ziteh.github.io/posts/git-verification/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="ZiTe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="簽署 commit 並設定 GitHub GPG Key 以驗證 | ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%95%99%E5%AD%B8/" rel="tag"> 教學</a>
+              <a href="/tags/%E7%A8%8B%E5%BC%8F/" rel="tag"> 程式</a>
+          </div>
+
+        <h1 class="post-title" itemprop="name headline">
+          簽署 commit 並設定 GitHub GPG Key 以驗證
+        </h1>
+          <h3 class="post-subtitle">Git commit signature verification & GPG key
+          </h3>
+
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      
+      
+
+      <time title="創建時間：2024-05-11 07:04:00" itemprop="dateCreated datePublished" datetime="2024-05-11T07:04:00+08:00">2024-05-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhbS1awMSWll3iWn0eyymEKwcIK7OyjTvZ8RNxl3jHDaJHpWmJrwU8G0e1e0xKm-KEVq069BrngyRKphQJDaaDZ_Y7mQG4OQ1tu9BJA1yecJc8nmizcnxVcZvr3Qu1fx-di9L0IgAtWjo9uEZdm7Tyyw3x7zm4UxOgS8U5YkE0MKyyZEFJXaT25YBT6wwY/s16000/5%20-%20ugAQ8rK.png"></p>
+<p>在 GitHub 看 commit 記錄時，可能會發現有些 commit 被標記爲已驗證（Verified），代表這個 commit 可以確認是真的由此使用者提交的。因爲 commit 是可以<a target="_blank" rel="noopener" href="https://medium.com/starbugs/how-to-fake-the-author-of-git-commit-f44453b70afc">僞造</a>的，你只要知道某人的 username 和 email 就可以用 <code>git config --global user.name</code> 和 <code>user.email</code> 設定並假冒 commit 的作者。然而這兩項資訊在現代來說超級公開。</p>
+<span id="more"></span>
+
+<p>爲了避免被僞造 commit（雖然我不知道有誰會想來假冒我），你可以設定驗證金鑰和爲 commit 加上簽名，來讓 GitHub 確認那些 commit 確實是你提交的。</p>
+<blockquote>
+<p>本文以 Windows 11 爲主。</p>
+</blockquote>
+<h1 id="安裝工具"><a href="#安裝工具" class="headerlink" title="安裝工具"></a>安裝工具</h1><p>首先要安裝用來產生金鑰對的工具。在 Windows 上最簡單的方式是安裝 <a target="_blank" rel="noopener" href="https://www.gpg4win.org/">Gpg4win</a>，它是 <a target="_blank" rel="noopener" href="https://www.gnupg.org/">GnuPG</a> 的 Windows 官方發行版。安裝過程就不贅述了。</p>
+<h1 id="產生金鑰"><a href="#產生金鑰" class="headerlink" title="產生金鑰"></a>產生金鑰</h1><p>這裡有兩種方式可以產生金鑰，分別是 GUI 圖形化介面和 CLI 命令行，根據自己的喜好擇一即可。</p>
+<p>完成此步驟以取得 Key ID 和公鑰（Public Key）。</p>
+<h2 id="gui-圖形化"><a href="#gui-圖形化" class="headerlink" title="GUI 圖形化"></a>GUI 圖形化</h2><p>安裝好 Gpg4win 後應該會有個軟體 Kleopatra 也被一併安裝，這是一個憑證管理軟體。開啓它並選擇「File &gt; New OpenPGP Key Pair…」（或 Ctrl+N）。</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-gleIAljQS2xfDv2YyNYyTl8o5wstoDf_WETUdmyYmikFjwFkPUw7AucRhri9RrQ9CaLz9Y6eZZJwMhiOsW_aU7uVfZsA03uiQa49ut8zhXFMcqYYQ3zPe4R01FhyDMEuq7Dr0azlgYKopZ1k0QnCXauAn8hXMiYlR-NjNvxVzKunfMHHK1P_BiIoP1E/s16000/7%20-%20Hc51k6F.png"></p>
+<p>填入你的名字與 Email。如果你想要使用密碼來進一步保護此金鑰的話，可以勾選下面的「Protext the generated key with a passphrase.」，如果有密碼的話，往後每次要爲 commit 簽名時都會要求輸入此密碼。</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhTO6c_QXTNxojWXVCWmfUdSaGgMId9yOz3l2aRXkx5wfERO0v6RExISnQLhrAITGOc_9lqiwRPRToRfX8mYla8ADcQkiJ_GmTIf1loebndywhwLv9OvZhgaatXuKPpYoege6G7poWH44HSvgjGFheVuG1wnSV2UbaGsSS6Frlk9K75TTvD8cVxR8BQ14Y/w400-h379/4%20-%200xEpVbf.png"></p>
+<p>按下「Advanced Settings…」開啓進階設定。</p>
+<p>首先是金鑰加密算法，以往比較常見的是使用 RSA 4096 bits，不過這裡有提供 ECDSA&#x2F;EdDSA 算法，這種算法通常被認爲更加先進，且 GitHub 也支援此算法，所以我就使用 ECDSA&#x2F;EdDSA ed25519 + ECDH cv25519。</p>
+<p>如果想要此金鑰對在一段時間後會過期的話，可以設定「Vaild until」的時間。不需要的話（永久有效）就不要勾選即可。</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgB60n9PtXZcpFNTsyDqJBeX9CAaoEX0flMCFsPKvI8jrlzK_hUuvfcUYeluXL678CTdKDpOoPHW2s2NIkKz1ai0koV0DnURZhZ_fjeQoOtn14YIG596vnAxVB-r7oS0pXeTKlqwEYyA33IMzmNRo7AjlmWzRD3TLFRH163OC5RxH2q3fDfARrO2NByukA/w286-h400/1%20-%20WKN7s2s.png" alt="Advanced Settings"></p>
+<p>確認沒問題後按 OK 就會提示成功產生。並且附上一段密碼指紋 Fingerprint。清單上也會多出剛剛產生的證書資訊。</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0OdKPc7MXiJOS5wsfdgNZq6H6pZB8GRWd2qIkeUjqMh3Tpk7l65D2Doks49KzW6Zf-VDYVcLm6P2Gog19uu_BWKeYC5JB016VHr1g8DylrU48akYU_DRSUMVhsDDeQXtawgO86-cVcClbx5XH0D6elhr4WxEgIu85Yi78BzeRwcu5Ie2jXzh3VEjv93Q/s16000/2%20-%20QlGGD4k.png"></p>
+<p>再來有 2 個資訊需要被使用。一個是 Key ID，另一個是你的公鑰（Public Key）。</p>
+<ul>
+<li>Key ID 的話就在清單上，例如這裡是 <code>D54135B170193E40</code>。</li>
+<li>公鑰的話要雙擊清單中的證書（金鑰對），在新開始的視窗按下面的「Export」按鈕。會再開啓一個新視窗，顯示的一大串文字就是公鑰。會以 <code>-----BEGIN PGP PUBLIC KEY BLOCK-----</code> 開頭， <code>-----END PGP PUBLIC KEY BLOCK-----</code> 結尾。你可以直接整段複製。</li>
+</ul>
+<h2 id="cli-命令行"><a href="#cli-命令行" class="headerlink" title="CLI 命令行"></a>CLI 命令行</h2><p>參考 GitHub 文件：<a target="_blank" rel="noopener" href="https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key">Generating a new GPG key - GitHub Docs</a></p>
+<p>開始 PowerShell。開始互動式嘗試金鑰對：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --full-generate-key</span><br></pre></td></tr></table></figure>
+
+<p>它會依序提示你各個選項，依照你的需求選擇即可。（例如 RSA、4096 或 ECC、Curve 25519）</p>
+<p>確認完資訊後，會提示你輸入用於保護此金鑰對的密碼（如果有密碼的話，往後每次要爲 commit 簽名時都會要求輸入此密碼），如果不需要的話留空並確認即可。開始產生金鑰時它會提示你可以動動滑鼠、打打鍵盤之類的來協助亂數生成。過一段時間後就完成了。</p>
+<p>接下來要取得 Key ID 及公鑰。</p>
+<p>列出金鑰對以查看 Key ID：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --list-secret-keys --keyid-format=long</span><br></pre></td></tr></table></figure>
+
+<p>它可能會回覆類似這樣的訊息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[keyboxd]</span><br><span class="line">---------</span><br><span class="line">sec   ed25519/D54135B170193E40 2024-05-11 [SC]</span><br><span class="line">      0F65BDEE517E693D23F4BCF295FF8Q01CDE31413</span><br><span class="line">uid                 [ultimate] your_name &lt;my@email.com&gt;</span><br><span class="line">ssb   cv25519/196D7ACDB8D502QF 2024-05-11 [E]</span><br></pre></td></tr></table></figure>
+
+<p>其中 <code>D54135B170193E40</code> 就是你要的 Key ID。可以先複製起來，後續的步驟會需要。</p>
+<p>再來要輸出公鑰：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --armor --<span class="built_in">export</span> D54135B170193E40</span><br></pre></td></tr></table></figure>
+
+<p>這裡的 <code>D54135B170193E40</code> 記得換成你真正的 Key ID。它會輸出一大段文字，這就是你的公鑰，請整段複製起來。（連同開頭和結尾的 <code>-----BEGIN PGP PUBLIC KEY BLOCK-----</code>、<code>-----END PGP PUBLIC KEY BLOCK-----</code>）</p>
+<h1 id="github-設定-gpg-key"><a href="#github-設定-gpg-key" class="headerlink" title="GitHub 設定 GPG Key"></a>GitHub 設定 GPG Key</h1><p>開啓 GitHub 設定頁面的 <a target="_blank" rel="noopener" href="https://github.com/settings/keys">SSH and GPG keys</a> 頁。按下「New GPG key」按鈕以新增金鑰。</p>
+<p>取個名字並填入 Title 欄位，並在下方的 Key 文字框中完整貼上剛剛產生的整段公鑰。</p>
+<p>按下「Add GPG Key」即可。</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgINvNdBT_g9tqH0bDIaQbQdt0glR2bPIwroIHWnrfQnhM0Whrou2NcCY3nZ0RkXp2NJ1tGA8A__SVg7y4SvzAB80O36VPmcp-IDN1VDnL8qJS-mNbXHp790mGFVJQphZMVN4_GrzDbuUIW2NrFxn9_MKpggIRghD1Lemslh19cK9RyOZsSeqLunAojw4I/s16000/8%20-%204ystOtj.png" alt="新增 GPG Key 示意"></p>
+<blockquote>
+<p>注意，如果你把某個 GPG Key 刪除的話，原先使用這個金鑰對簽名的 commit 就會失去驗證變成 Unverified（因爲 GitHub 失去了這個公鑰當然無法驗證）。</p>
+<p>你可以開一個測試用的 repo，先送幾個有簽名且可被認證的 commit，接著刪除 GitHub 上對應的 GPG Key，這些 commit 會從 Verified 變成 Unverified。如果再把對應的 GPG Key 加回去的話，又會變回到 Verified。</p>
+</blockquote>
+<h1 id="git-設定"><a href="#git-設定" class="headerlink" title="Git 設定"></a>Git 設定</h1><p>接下來要設定讓 Git 使用該金鑰對爲 commit 簽名。</p>
+<blockquote>
+<p>以下範例的設定皆使用全局 <code>--global</code>，你可以視需求調整。</p>
+</blockquote>
+<h2 id="gpg-路徑"><a href="#gpg-路徑" class="headerlink" title="GPG 路徑"></a>GPG 路徑</h2><p>首先要知道你的 GPG 程式路徑。可以開啓 PowerShell 查詢：</p>
+<figure class="highlight ps"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">where.exe gpg</span><br></pre></td></tr></table></figure>
+
+<p>通常會是 <code>C:\Program Files (x86)\GnuPG\bin\gpg.exe</code>。</p>
+<p>爲 Git 設定 GPG 程式路徑：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global gpg.program <span class="string">&quot;&lt;GPG_PATH&gt;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>請將 <code>&lt;GPG_PATH&gt;</code> 替換成你在上一步得到的實際路徑。例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global gpg.program <span class="string">&quot;C:\Program Files (x86)\GnuPG\bin\gpg.exe&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="設定-key-id"><a href="#設定-key-id" class="headerlink" title="設定 Key ID"></a>設定 Key ID</h2><p>設定 Git 要用來簽名的 Key ID：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.signingkey <span class="string">&quot;&lt;KEY_ID&gt;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>這裡的 <code>&lt;KEY_ID&gt;</code> 請替換成你實際的 Key ID（例如本文的 <code>D54135B170193E40</code>）。</p>
+<h2 id="簽署所有-commit"><a href="#簽署所有-commit" class="headerlink" title="簽署所有 commit"></a>簽署所有 commit</h2><p>設定讓 Git 爲所有 commit 簽署：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global commit.gpgsign <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>或是如果你不想要每個 commit 都簽名的話，可以只在要簽名的 commit 時加上 <code>-S</code> 選項。(<a target="_blank" rel="noopener" href="https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--Sltkeyidgt">git commit</a>)</p>
+<h2 id="確認設定"><a href="#確認設定" class="headerlink" title="確認設定"></a>確認設定</h2><p>確認是否設定成功：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global gpg.program</span><br><span class="line">git config --global user.signingkey</span><br><span class="line">git config --global commit.gpgsign</span><br></pre></td></tr></table></figure>
+
+<h1 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h1><p>如果沒問題的話，現在你就可以嘗試 commit 並 push 到 GitHub 上看看了。</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMwrB0a-HhD1i-cbCTegVrpUdi5hgn2AYgAWBmLrAUhg5lrbBUgTdJqX7h_w4p5yayTlxjsm_jR6WIn3ng-1pHQEEvpnG9IxtgZVzdURNFfIPHKlJNFd9Ev8alu0jb0ZjCIhgi9V1K9hBcAAQPMl0IIi3rEKjN8zoUP93i1ga1Tz_8DlM5T78V_tgH_0s/w400-h292/6%20-%20MsSco5U.png" alt="認證的 commit"></p>
+<blockquote>
+<p>上圖的 Key ID 和文中的不同是因爲文中的是範例用的，不是我真正的金鑰對。</p>
+</blockquote>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://medium.com/@ryanmillerc/use-gpg-signing-keys-with-git-on-windows-10-github-4acbced49f68">Use GPG Signing Keys with Git (and GitHub) on Windows 10 | by Ryan Miller | Medium</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.git-tower.com/blog/setting-up-gpg-windows/">Setting Up GPG on Windows (The Easy Way) | Tower Blog</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key">Generating a new GPG key - GitHub Docs</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/starbugs/how-to-fake-the-author-of-git-commit-f44453b70afc">用 Git 這麼久了，你知道 commit 是可以偽造的嗎.</a></li>
+</ul>
+<p>撰寫本文時的版本資訊：</p>
+<ul>
+<li>git: <code>2.42.0</code></li>
+<li>Gpg4win: <code>4.3.1</code></li>
+<li>Kleopatra: <code>3.2.2.231170</code></li>
+<li>GPG: <code>2.4.5</code></li>
+<li>Libgcrypt: <code>1.10.3</code></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/diyqmkkeyboard-firmware-0-24-8/" rel="prev" title="[自製QMK鍵盤-3] 產生並編輯QMK韌體">
+                  <i class="fa fa-angle-left"></i> [自製QMK鍵盤-3] 產生並編輯QMK韌體
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/c-kr-style/" rel="next" title="C 語言用 K&R Coding Style 的最大理由不是省行數">
+                  C 語言用 K&R Coding Style 的最大理由不是省行數 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+  <p style="text-align: center;color: #a3a3a3;font-size: 14px;margin-top: 60px;">留言可能不會立即顯示。若過了幾天仍未出現，請 <a href="mailto:honmonoh@gmail.com">Email</a> 聯繫：）</p>
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="本網站所有內容除特別聲明外，均採用創用CC 姓名標示-非商業性-禁止改作授權。
+    分享時請註明作者及出處。" style="border-bottom: 0;">
+      <img src="https://i.creativecommons.org/l/by-nc-nd/3.0/80x15.png" style="display: unset;">
+    </a>
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ZiTe</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zite-honmonoh","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

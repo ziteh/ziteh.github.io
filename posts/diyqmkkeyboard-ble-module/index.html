@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/uploads/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300italic,400,400italic,700,700italic%7CNoto+Sans+TC:300,300italic,400,400italic,700,700italic%7CFira+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ziteh.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}},"activeClass":"disqus"},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="在上一篇文章中，我們使用 Adafruit Bluefruit LE SPI Friend（以下簡稱 Adafruit BLE）藍牙模組爲 QMK 添加了藍牙的功能。 不過這個模組的價格有點高，還好 Adafruit 有提供其韌體及燒錄工具，所以只要有 MDBT40 或 nRF51822 的話也可以自製 Adafruit Bluefruit LE SPI Friend 藍牙模組。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[自製QMK鍵盤-番外] Adafruit Bluefruit LE SPI Friend 韌體燒錄教學">
+<meta property="og:url" content="https://ziteh.github.io/posts/diyqmkkeyboard-ble-module/index.html">
+<meta property="og:site_name" content="ZiTe 本物志">
+<meta property="og:description" content="在上一篇文章中，我們使用 Adafruit Bluefruit LE SPI Friend（以下簡稱 Adafruit BLE）藍牙模組爲 QMK 添加了藍牙的功能。 不過這個模組的價格有點高，還好 Adafruit 有提供其韌體及燒錄工具，所以只要有 MDBT40 或 nRF51822 的話也可以自製 Adafruit Bluefruit LE SPI Friend 藍牙模組。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://cdn-learn.adafruit.com/assets/assets/000/026/205/original/adafruit_products_BluefruitLESPIFriend_sch.png?1436186237">
+<meta property="article:published_time" content="2022-02-22T10:42:00.000Z">
+<meta property="article:modified_time" content="2024-06-22T08:56:19.871Z">
+<meta property="article:author" content="ZiTe">
+<meta property="article:tag" content="DIY">
+<meta property="article:tag" content="教學">
+<meta property="article:tag" content="QMK">
+<meta property="article:tag" content="3C">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn-learn.adafruit.com/assets/assets/000/026/205/original/adafruit_products_BluefruitLESPIFriend_sch.png?1436186237">
+
+
+<link rel="canonical" href="https://ziteh.github.io/posts/diyqmkkeyboard-ble-module/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://ziteh.github.io/posts/diyqmkkeyboard-ble-module/","path":"posts/diyqmkkeyboard-ble-module/","title":"[自製QMK鍵盤-番外] Adafruit Bluefruit LE SPI Friend 韌體燒錄教學"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>[自製QMK鍵盤-番外] Adafruit Bluefruit LE SPI Friend 韌體燒錄教學 | ZiTe 本物志</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZiTe 本物志</p>
+      <i class="logo-line"></i>
+      <p class="site-subtitle" itemprop="description">一位慢步於程式、電路與文學之人的學習記錄與分享</p>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-folder-open fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A1%AC%E9%AB%94%E9%81%B8%E6%93%87"><span class="nav-text">硬體選擇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nrf51822"><span class="nav-text">nRF51822</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mdbt40"><span class="nav-text">MDBT40</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%87%92%E9%8C%84%E5%B7%A5%E5%85%B7"><span class="nav-text">燒錄工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9C%80%E6%B1%82"><span class="nav-text">需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BC%89"><span class="nav-text">下載</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%87%92%E9%8C%84%E5%BE%8C%E9%87%8D%E7%BD%AE"><span class="nav-text">燒錄後重置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%85%B3%E4%BD%8D%E5%B0%8D%E6%87%89"><span class="nav-text">腳位對應</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B5%90%E8%AA%9E"><span class="nav-text">結語</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B8%E9%97%9C%E8%B3%87%E6%96%99"><span class="nav-text">相關資料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a href="/about/" title="About">
+      <img class="site-author-image" itemprop="image" alt="ZiTe"
+        src="/uploads/avatar.png">
+    <p class="site-author-name" itemprop="name">ZiTe</p>
+    <div class="site-description" itemprop="description"></div>
+  </a>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ziteh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ziteh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/@siderakb" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;@siderakb" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://siderakb.github.io/" title="SideraKB → https:&#x2F;&#x2F;siderakb.github.io&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-keyboard fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:honmonoh@gmail.com" title="E-Mail → mailto:honmonoh@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="回到頂端">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ziteh.github.io/posts/diyqmkkeyboard-ble-module/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="ZiTe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="[自製QMK鍵盤-番外] Adafruit Bluefruit LE SPI Friend 韌體燒錄教學 | ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+          
+          <div class="post-tags">
+              <a href="/tags/DIY/" rel="tag"> DIY</a>
+              <a href="/tags/%E6%95%99%E5%AD%B8/" rel="tag"> 教學</a>
+              <a href="/tags/QMK/" rel="tag"> QMK</a>
+              <a href="/tags/3C/" rel="tag"> 3C</a>
+          </div>
+
+        <h1 class="post-title" itemprop="name headline">
+          [自製QMK鍵盤-番外] Adafruit Bluefruit LE SPI Friend 韌體燒錄教學
+        </h1>
+
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%87%AA%E8%A3%BDQMK%E9%8D%B5%E7%9B%A4/" itemprop="url" rel="index"><span itemprop="name">自製QMK鍵盤</span></a>
+        </span>
+    </span>
+    <span class="post-meta-item">
+      
+      
+
+      <time title="創建時間：2022-02-22 18:42:00" itemprop="dateCreated datePublished" datetime="2022-02-22T18:42:00+08:00">2022-02-22</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>在<a href="/posts/diyqmkkeyboard-ble/">上一篇文章中</a>，我們使用 <a target="_blank" rel="noopener" href="https://www.adafruit.com/product/2633">Adafruit Bluefruit LE SPI Friend</a>（以下簡稱 Adafruit BLE）藍牙模組爲 QMK 添加了藍牙的功能。</p>
+<p>不過這個模組的價格有點高，還好 Adafruit 有提供其韌體及燒錄工具，所以只要有 MDBT40 或 nRF51822 的話也可以自製 Adafruit Bluefruit LE SPI Friend 藍牙模組。</p>
+<span id="more"></span>
+
+<h1 id="硬體選擇"><a href="#硬體選擇" class="headerlink" title="硬體選擇"></a>硬體選擇</h1><p>先講結論，<strong>一定要</strong>選用 32KB SRAM 版本的 nRF51822-<strong>xxAC</strong>，例如 <a target="_blank" rel="noopener" href="https://www.raytac.com/product/ins.php?index_id=74">MDBT40-256<strong>R</strong>V3</a> 。本文接下來也將使用 MDBT40-256<strong>R</strong>V3（<a target="_blank" rel="noopener" href="https://www.raytac.com/product/ins.php?index_id=84">MDBT40-DB</a>）作爲示範。</p>
+<p>另外，爲了燒錄，還需要準備一個 Segger J-Link 或 STLink&#x2F;V2 燒錄器，雖然也可以使用 Raspberry Pi 作爲燒錄器，但這比較麻煩。</p>
+<h2 id="nrf51822"><a href="#nrf51822" class="headerlink" title="nRF51822"></a>nRF51822</h2><p>首先，Adafruit Bluefruit LE 是一系列的產品，Adafruit Bluefruit LE SPI Friend 只是該系列中的一個 SPI 介面的模組。其核心 SoC 就是 Nordic Semi 的 <a target="_blank" rel="noopener" href="https://www.nordicsemi.com/products/nrf51822">nRF51822</a>。</p>
+<p>在 Adafruit Bluefruit LE Firmware 的 <a target="_blank" rel="noopener" href="https://github.com/adafruit/Adafruit_BluefruitLE_Firmware#firmwareboard-compatibility-chart">GitHub repo</a> 中的說明有提到，<code>0.6.0</code> 及之後的韌體版本只適用於 32KB SRAM 的 nRF51822，而 16KB SRAM 的 nRF51822 只能使用 <code>0.5.0</code> 及之前的韌體版本。</p>
+<p>但是 Adafruit Bluefruit LE SPI Friend 所屬的 <strong>BLESPIFRIEND</strong> 沒有 <code>0.5.0</code> 及之前的版本。</p>
+<p>所以在購買 nRF51822 及其模組時，記得要選用 32KB SRAM 版本的 nRF51822-<em><strong>xxAC</strong></em>。</p>
+<blockquote>
+<p>依照命名規則看，只有 nRF51822-<em><strong>xxAC</strong></em> 是 32KB SRAM \ 256KB Flash 的版本，後綴爲 <em><strong>xxAA</strong></em> 或 <em><strong>xxAB</strong></em> 的 SRAM 大小都是 16KB（xxAA 與 xxAB 的差異是前者的 Flash 是128 KB，而後者是256 KB）。</p>
+</blockquote>
+<h2 id="mdbt40"><a href="#mdbt40" class="headerlink" title="MDBT40"></a>MDBT40</h2><p>雖然 Adafruit BLE 使用的是 nRF51822 SoC，但它並不是直接搭載該晶片，而是搭載了勁達 Raytac 的 <a target="_blank" rel="noopener" href="https://www.raytac.com/product/index.php?index_m1_id=74">MDBT40</a> 模組。</p>
+<p>MDBT40 是搭載了 nRF51822 的模組，並且整合了天線及一些週邊元件。上面有提到 nRF51822 有一些不同的版本，MDBT40 也有其相對應的細部型號。</p>
+<p>我們要的是 32KB SRAM &#x2F; 256KB Flash 的 nRF51822-xxAC，所以要選用 MDBT40-256<strong>R</strong>V3 或 MDBT40-<strong>P</strong>256<strong>R</strong>V3（這兩個的差異是前者爲陶瓷天線，後者爲 PCB 天線）。實際上 Adafruit Bluefruit LE 系列所使用的基本上就是 MDBT40-256<strong>R</strong>V3。</p>
+<h1 id="燒錄工具"><a href="#燒錄工具" class="headerlink" title="燒錄工具"></a>燒錄工具</h1><p>Adafruit 有提供他們所使用的燒錄工具：<a target="_blank" rel="noopener" href="https://github.com/adafruit/Adafruit_nRF51822_Flasher">Adafruit nRF51822 Flasher</a></p>
+<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>要使用這個工具，需要：</p>
+<ul>
+<li>下列的其中一個 SWD 燒錄器，並安裝好它們的驅動程式<ul>
+<li>Segger J-Link（本文以 J-Link 爲例）</li>
+<li>STLink&#x2F;V2</li>
+<li>Raspberry Pi</li>
+</ul>
+</li>
+<li>安裝好 <a target="_blank" rel="noopener" href="https://www.python.org/">Python</a></li>
+<li>安裝好 <a target="_blank" rel="noopener" href="https://github.com/adafruit/Adafruit_Adalink">Adafruit Adalink</a><ul>
+<li><code>git clone https://github.com/adafruit/Adafruit_Adalink.git</code></li>
+<li><code>python setup.py develop</code> （Windows）；<code>sudo python setup.py develop</code>（Linux and MacOS）</li>
+</ul>
+</li>
+<li>安裝好 Python library <a target="_blank" rel="noopener" href="https://click.palletsprojects.com/en/4.x/">Click</a><ul>
+<li>安裝好 Python Pip</li>
+<li><code>sudo pip install click</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="下載"><a href="#下載" class="headerlink" title="下載"></a>下載</h2><p>將燒錄工具 Git clone 下來。注意，因爲這個 repo 含有 submodule，所以記得加上 <code>--recursive</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone --recursive git@github.com:adafruit/Adafruit_nRF51822_Flasher.git</span><br></pre></td></tr></table></figure>
+
+<p>如果你在上一個步驟忘記加上 <code>--recursive</code>，或 <code>Adafruit_BluefruitLE_Firmware</code> 資料夾是空的，那需要再執行這這指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>將你的 nRF51822 或 MDBT40 連接上你的 SWD 燒錄器（J-Link、STLink&#x2F;V2 或 RPi），依照你使用的硬體而定，SWD 燒錄器可能不會提供電源給 nRF51822 或 MDBT40，如果是這樣的話記得好要接好電源。</p>
+<p>接著，就可以執行指令以使用  Adafruit nRF51822 Flasher 進行燒錄。燒錄指令有這些參數：</p>
+<ul>
+<li><code>--jtag</code> <code>TEXT</code>：選擇你使用的燒錄器，只能是 <code>jlink</code>、<code>stlink</code> 或 <code>rpigpio</code> 的其中一種。</li>
+<li><code>--softdevice</code> <code>TEXT</code>：選擇 SoftDevice 版本，例如 <code>8.0.0</code>。這個 SoftDevice 是 nRF51822 的東西。</li>
+<li><code>--bootloader</code> <code>INTEGER</code>：Bootloader 版本，例如 <code>0</code> 或 <code>2</code>。</li>
+<li><code>--board</code> <code>TEXT</code> (必要)：選擇你要燒錄的板子，必須爲 <code>blefriend16</code>、<code>blefriend32</code> 或 <code>blespifriend</code> 的其中一種。具體要選什麼可以看<a target="_blank" rel="noopener" href="https://github.com/adafruit/Adafruit_BluefruitLE_Firmware/tree/03110f6819d2e8c0928ce1f3879df22dab562447#adafruit-bluefruit-le-firmware">這裡</a>。</li>
+<li><code>--firmware</code> <code>TEXT</code> (必要)：韌體版本，例如 <code>0.6.5</code>、<code>0.8.1</code>。</li>
+</ul>
+<p>以本文來說，我們要的是「Adafruit Bluefruit LE SPI Friend」，因此可以下這樣的指令（燒錄器、版本可以依實際需求與情況自行調整）：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python flash.py --jtag=jlink --board=blespifriend --softdevice=<span class="number">8</span>.<span class="number">0</span>.<span class="number">0</span> --bootloader=<span class="number">2</span> --firmware=<span class="number">0</span>.<span class="number">8</span>.<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>燒錄完成後會顯示：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Flash OK</span><br></pre></td></tr></table></figure>
+
+<p>另外，還可以使用 <code>python flash.py --help</code> 查看說明。</p>
+<blockquote>
+<p>如果燒錄的過程中出現「SyntaxError: Missing parentheses in call to ‘print’.」錯誤訊息的話，請將 <code>flash.py</code> 檔中的所有 <code>print &quot;&quot;</code> 改成 <code>print(&quot;&quot;)</code>，也就是加上括號。這只是單純的 Python 版本問題，可以參考 <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/25445439/what-does-syntaxerror-missing-parentheses-in-call-to-print-mean-in-python">What does “SyntaxError: Missing parentheses in call to ‘print’” mean in Python?</a>。</p>
+</blockquote>
+<h1 id="燒錄後重置"><a href="#燒錄後重置" class="headerlink" title="燒錄後重置"></a>燒錄後重置</h1><p>根據 <a target="_blank" rel="noopener" href="https://learn.adafruit.com/introducing-the-adafruit-bluefruit-spi-breakout/device-recovery">Adafruit 的說明</a>，燒錄完韌體後，還要進行一次 Factory Reset，其步驟如下：</p>
+<ol>
+<li>當板子接上電源時，將 DFU 腳（nRF51822 的 P0.07）接 GND。</li>
+<li>保持 DFU 與 GND 之間的連線並等待數秒，直到藍色 LED (CONNECTED state LED，nRF51822 的 P0.19) 開始閃爍。</li>
+<li>移除 DFU 與 GND 之間的連線。</li>
+<li>完成。</li>
+</ol>
+<h1 id="腳位對應"><a href="#腳位對應" class="headerlink" title="腳位對應"></a>腳位對應</h1><table>
+<thead>
+<tr>
+<th>Bluefruit LE SPI Friend</th>
+<th>MDBT40 (nRF51822)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SCK</td>
+<td>P0.21</td>
+</tr>
+<tr>
+<td>MISO</td>
+<td>P0.22</td>
+</tr>
+<tr>
+<td>MOSI</td>
+<td>P0.23</td>
+</tr>
+<tr>
+<td>CS (有上拉電阻)</td>
+<td>P0.24</td>
+</tr>
+<tr>
+<td>IRQ</td>
+<td>P0.25</td>
+</tr>
+<tr>
+<td>DFU</td>
+<td>P0.07</td>
+</tr>
+<tr>
+<td>FACTORYRST</td>
+<td>P0.16</td>
+</tr>
+<tr>
+<td>MODE LED (紅色)</td>
+<td>P0.18</td>
+</tr>
+<tr>
+<td>CONNECTED LED (藍色)</td>
+<td>P0.19</td>
+</tr>
+<tr>
+<td>SWDIO&#x2F;RST</td>
+<td>SWDIO&#x2F;NRESET</td>
+</tr>
+<tr>
+<td>SWCLK</td>
+<td>SWCLK</td>
+</tr>
+</tbody></table>
+<p>另外需要注意的是，nRF51822 的 IO 是 1.8 V 或 3.3 V 的。還有 P0.03 是接地的（雖然我試過不接地好像也沒什麼影響）。</p>
+<p><img src="https://cdn-learn.adafruit.com/assets/assets/000/026/205/original/adafruit_products_BluefruitLESPIFriend_sch.png?1436186237" alt="▲ Adafruit Bluefruit LE SPI Friend 的電路圖，取自 Adafruit"></p>
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><p>這次介紹了要如何執行燒錄 Adafruit Bluefruit LE SPI Friend 的韌體。</p>
+<p>基本上比較要注意的就是 nRF51822 要選擇 32KB SRAM 的版本才能用，我有試著使用 16KB 的 nRF51822-xxAA，但它確實無法正常運作。</p>
+<p>若上述內容有錯誤還請指正。謝謝。</p>
+<h1 id="相關資料"><a href="#相關資料" class="headerlink" title="相關資料"></a>相關資料</h1><ul>
+<li><a href="/posts/diyqmkkeyboard-0/#%E6%95%99%E5%AD%B8%E6%96%87%E5%88%97%E8%A1%A8">本 QMK 教學系列文列表</a></li>
+<li><a target="_blank" rel="noopener" href="https://learn.adafruit.com/introducing-the-adafruit-bluefruit-spi-breakout/downloads">Introducing the Adafruit Bluefruit LE SPI Friend | Adafruit Learning System</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/adafruit/Adafruit_BluefruitLE_Firmware">Adafruit BluefruitLE Firmware</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/adafruit/Adafruit_Adalink">Adafruit Adalink</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/adafruit/Adafruit_nRF51822_Flasher">Adafruit nRF51822 Flasher</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/diyqmkkeyboard-ble/" rel="prev" title="[自製QMK鍵盤-番外] 爲QMK鍵盤加上Bluetooth藍牙無線功能">
+                  <i class="fa fa-angle-left"></i> [自製QMK鍵盤-番外] 爲QMK鍵盤加上Bluetooth藍牙無線功能
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/literature-stunning/" rel="next" title="讚歎！">
+                  讚歎！ <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+  <p style="text-align: center;color: #a3a3a3;font-size: 14px;margin-top: 60px;">留言可能不會立即顯示。若過了幾天仍未出現，請 <a href="mailto:honmonoh@gmail.com">Email</a> 聯繫：）</p>
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="本網站所有內容除特別聲明外，均採用創用CC 姓名標示-非商業性-禁止改作授權。
+    分享時請註明作者及出處。" style="border-bottom: 0;">
+      <img src="https://i.creativecommons.org/l/by-nc-nd/3.0/80x15.png" style="display: unset;">
+    </a>
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ZiTe</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zite-honmonoh","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/uploads/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300italic,400,400italic,700,700italic%7CNoto+Sans+TC:300,300italic,400,400italic,700,700italic%7CFira+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ziteh.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}},"activeClass":"disqus"},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="前言隨著 Google 宣佈 Google Photos 在 2021 年 6 月 後不會有無限儲存高畫質相片的服務後，大家也紛紛開始擔心再未來連學術帳號的雲端無限空間也會被影響。 而且在現代，數位資料的安全性是非常重要的，有許多重要的照片或文件都只會以電子檔案的方式保存，一旦儲存這些檔案的硬碟出現問題，往往都是非常麻煩的事情，就算資料救援有成功，但其花費也是不少。 因此越來越多人開始使用 NA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自組 FreeNAS">
+<meta property="og:url" content="https://ziteh.github.io/posts/freenas-build/index.html">
+<meta property="og:site_name" content="ZiTe 本物志">
+<meta property="og:description" content="前言隨著 Google 宣佈 Google Photos 在 2021 年 6 月 後不會有無限儲存高畫質相片的服務後，大家也紛紛開始擔心再未來連學術帳號的雲端無限空間也會被影響。 而且在現代，數位資料的安全性是非常重要的，有許多重要的照片或文件都只會以電子檔案的方式保存，一旦儲存這些檔案的硬碟出現問題，往往都是非常麻煩的事情，就算資料救援有成功，但其花費也是不少。 因此越來越多人開始使用 NA">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://1.bp.blogspot.com/-gu_QKiKQcY8/X8ieYisKAXI/AAAAAAAACtM/oibWqubpBFocWo7czgWtGE7ai6VAk2i0wCPcBGAsYHg/s4544/IMG_20201103_225204.jpg">
+<meta property="og:image" content="https://1.bp.blogspot.com/-l95qJ_1T8sw/X8ieYiN8cSI/AAAAAAAACtM/ViRcu5-SbKksvSF4KPuJkXqHEZM7_9frQCPcBGAsYHg/s4549/IMG_20201103_224301.jpg">
+<meta property="og:image" content="https://1.bp.blogspot.com/-aAMHiIQJI00/X8ieYsHKcHI/AAAAAAAACtM/gwPav_5ptBAOihi9AiSLqjlKOEjCtpXKQCPcBGAsYHg/s3877/IMG_20201029_235227.jpg">
+<meta property="og:image" content="https://1.bp.blogspot.com/-i-Ciaw6tjSA/X8ieYu0BnmI/AAAAAAAACtM/-cZhZDbYpFgLh4Zw2Q1nhWjoj23KBUfIwCPcBGAsYHg/s1920/Screenshot_2020-12-03%2BFreeNAS%2B-%2B140%2B130%2B32%2B69.png">
+<meta property="article:published_time" content="2020-12-03T08:19:00.000Z">
+<meta property="article:modified_time" content="2024-06-22T08:56:19.881Z">
+<meta property="article:author" content="ZiTe">
+<meta property="article:tag" content="DIY">
+<meta property="article:tag" content="3C">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://1.bp.blogspot.com/-gu_QKiKQcY8/X8ieYisKAXI/AAAAAAAACtM/oibWqubpBFocWo7czgWtGE7ai6VAk2i0wCPcBGAsYHg/s4544/IMG_20201103_225204.jpg">
+
+
+<link rel="canonical" href="https://ziteh.github.io/posts/freenas-build/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://ziteh.github.io/posts/freenas-build/","path":"posts/freenas-build/","title":"自組 FreeNAS"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>自組 FreeNAS | ZiTe 本物志</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZiTe 本物志</p>
+      <i class="logo-line"></i>
+      <p class="site-subtitle" itemprop="description">一位慢步於程式、電路與文學之人的學習記錄與分享</p>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-folder-open fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A1%AC%E9%AB%94%E8%A6%8F%E6%A0%BC"><span class="nav-text">硬體規格</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-freenas"><span class="nav-text">安裝 FreeNAS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B5%90%E8%AA%9E"><span class="nav-text">結語</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a href="/about/" title="About">
+      <img class="site-author-image" itemprop="image" alt="ZiTe"
+        src="/uploads/avatar.png">
+    <p class="site-author-name" itemprop="name">ZiTe</p>
+    <div class="site-description" itemprop="description"></div>
+  </a>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ziteh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ziteh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/@siderakb" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;@siderakb" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://siderakb.github.io/" title="SideraKB → https:&#x2F;&#x2F;siderakb.github.io&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-keyboard fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:honmonoh@gmail.com" title="E-Mail → mailto:honmonoh@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="回到頂端">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ziteh.github.io/posts/freenas-build/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="ZiTe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="自組 FreeNAS | ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+          
+          <div class="post-tags">
+              <a href="/tags/DIY/" rel="tag"> DIY</a>
+              <a href="/tags/3C/" rel="tag"> 3C</a>
+          </div>
+
+        <h1 class="post-title" itemprop="name headline">
+          自組 FreeNAS
+        </h1>
+
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      
+      
+
+      <time title="創建時間：2020-12-03 16:19:00" itemprop="dateCreated datePublished" datetime="2020-12-03T16:19:00+08:00">2020-12-03</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="https://1.bp.blogspot.com/-gu_QKiKQcY8/X8ieYisKAXI/AAAAAAAACtM/oibWqubpBFocWo7czgWtGE7ai6VAk2i0wCPcBGAsYHg/s4544/IMG_20201103_225204.jpg"></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>隨著 Google 宣佈 Google Photos 在 2021 年 6 月 後不會有無限儲存高畫質相片的服務後，大家也紛紛開始擔心再未來連學術帳號的雲端無限空間也會被影響。</p>
+<p>而且在現代，數位資料的安全性是非常重要的，有許多重要的照片或文件都只會以電子檔案的方式保存，一旦儲存這些檔案的硬碟出現問題，往往都是非常麻煩的事情，就算資料救援有成功，但其花費也是不少。</p>
+<p>因此越來越多人開始使用 NAS。對於一般人，買有現成的品牌 NAS 其實就非常好用了，但是如果對於電腦方面比較在行的話，也是有自己組裝一臺 NAS 的選擇，這樣做的話雖然會比較麻煩，但可以讓自己擁有更大的選擇彈性。</p>
+<p>而本文要介紹的就是現在在自組 NAS 中非常多人使用的作業系統——<a target="_blank" rel="noopener" href="https://www.freenas.org/">FreeNAS</a>。</p>
+<p>FreeNAS 是基於 FreeBSD 的開源 NAS 系統，作爲開源軟體，它也是免費的，因此世界上有非常多人在使用它，使用者社群可以說是非常完善，官方文件也很豐富。</p>
+<span id="more"></span>
+
+<h1 id="硬體規格"><a href="#硬體規格" class="headerlink" title="硬體規格"></a>硬體規格</h1><p>首先是硬體規格的部分。由於 FreeNAS 使用的檔案系統爲 ZFS，對硬體的要求與其它常見的 NAS 系統如 OpenMediaVault 是比較高的。</p>
+<p>根據<a target="_blank" rel="noopener" href="https://www.freenas.org/hardware-requirements/"> FreeNAS 官方硬體需求手冊</a>，建議你要有 64 位元的 CPU、至少 8GB 以上的硬碟來儲存作業系統、至少 8GB 以上的記憶體，甚至非常建議使用 ECC RAM。</p>
+<p>其中以 ECC RAM 這部分是比較麻煩的，因爲一般人的電腦不會用 ECC RAM，也不是所有的 CPU、MB 都支援 ECC RAM，通常是偏伺服器的零件才會支援、例如 Intel Xeon CPU。如果要使用 ECC RAM 的話，處了需要 ECC RAM 外，CPU 及 MB 也都要支援 ECC RAM 才可以。值得一提的是 AMD Ryzen CPU 全部都支援 ECC RAM，不過 MB 的部分就還是要再看看各產品是否有支援 ECC RAM。</p>
+<p>不過我這臺就只是先拿一堆舊的零件來試用看看，所以就沒有使用 ECC RAM。以下的零件都是舊電腦換下來的，只有 CPU、CASE 和 其中一條 RAM 是又另外買的二手貨。價格方面就只是個參考。</p>
+<p>機殼的話我選了一個套裝機的舊機殼，這種套裝機殼的特色就是會有許多免工具拆裝的設計。而我選的這個殼的其中一個很重要的原因是它有 4 個 3.5” 與 2 個 5.25” 槽，可以裝最多 4+3 個 3.5“ 硬碟，對於 NAS 的機殼來說可以裝多少硬碟是很重要的。</p>
+<p>▼ 硬體零件列表</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>型號</th>
+<th>價格($NT)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CPU</td>
+<td>Intel Pentium G3260 3.3GHz 2C2T (1150腳位)</td>
+<td>300</td>
+</tr>
+<tr>
+<td>MB</td>
+<td>ASUS B85M-G R2.0 (mATX)</td>
+<td>2000</td>
+</tr>
+<tr>
+<td>RAM</td>
+<td>Kingston DDR3 1600MHz 4GB*2</td>
+<td>500</td>
+</tr>
+<tr>
+<td>PSU</td>
+<td>Corsair CX500 500W</td>
+<td>1500</td>
+</tr>
+<tr>
+<td>CASE</td>
+<td>acer Veriton 套裝機殼</td>
+<td>200</td>
+</tr>
+</tbody></table>
+<p><img src="https://1.bp.blogspot.com/-l95qJ_1T8sw/X8ieYiN8cSI/AAAAAAAACtM/ViRcu5-SbKksvSF4KPuJkXqHEZM7_9frQCPcBGAsYHg/s4549/IMG_20201103_224301.jpg" alt="▲ 組裝完成的硬體。"></p>
+<h1 id="安裝-freenas"><a href="#安裝-freenas" class="headerlink" title="安裝 FreeNAS"></a>安裝 FreeNAS</h1><p>就和其它作業系統一樣，要安裝 FreeNAS 的話通常會使用開機碟的方式。準備一個隨身碟來將 FreeNAS 燒入，並在組裝好的電腦上以此開機碟開機。成功後就會進入 FreeNAS 的安裝程式。</p>
+<p><img src="https://1.bp.blogspot.com/-aAMHiIQJI00/X8ieYsHKcHI/AAAAAAAACtM/gwPav_5ptBAOihi9AiSLqjlKOEjCtpXKQCPcBGAsYHg/s3877/IMG_20201029_235227.jpg" alt="▲ FreeNAS 安裝畫面"></p>
+<p>安裝過程中除了要設定 root 使用者的密碼外，沒有什麼特別要設定的，唯一要注意的就是在選擇要將系統安裝進哪一個（或多個）硬碟時，因爲被選擇作爲系統硬碟的該硬碟就只能儲存系統資料，也就是它不能用來出處其它的檔案，因此要注意系統碟要與資料碟分開，像是我就是拿了一個 16 GB 的隨身碟來當做系統碟。</p>
+<p>安裝完成後就可以將開機碟移除，以系統碟開機。如果你的 FreeNAS 主機有接螢幕與網路的話，在開機完成後它會顯示該 FreeNAS 的網路位置，只要在瀏覽器上輸入該網址就可以進入 FreeNAS 的管理介面，並以 root 帳號密碼登入就可以了。</p>
+<p><img src="https://1.bp.blogspot.com/-i-Ciaw6tjSA/X8ieYu0BnmI/AAAAAAAACtM/-cZhZDbYpFgLh4Zw2Q1nhWjoj23KBUfIwCPcBGAsYHg/s1920/Screenshot_2020-12-03%2BFreeNAS%2B-%2B140%2B130%2B32%2B69.png" alt="▲ FreeNAS 管理介面"></p>
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><p>由於目前這臺 FreeNAS 只是我先組起來測試用的，因此資料碟也只裝了一個舊 HDD，所以我就只是簡單地記錄一下第一次組裝的過程。</p>
+<p>FreeNAS 上面有非常多的功能，例如檔案快照系統、擴充功能及虛擬機。未來如果我有用到的話就再另做介紹。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/diyqmkkeyboard-encoder/" rel="prev" title="[自製QMK鍵盤-番外] 旋轉編碼器 (Encoder)">
+                  <i class="fa fa-angle-left"></i> [自製QMK鍵盤-番外] 旋轉編碼器 (Encoder)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/step-across-630000/" rel="next" title="跨越六十三萬個地日">
+                  跨越六十三萬個地日 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+  <p style="text-align: center;color: #a3a3a3;font-size: 14px;margin-top: 60px;">留言可能不會立即顯示。若過了幾天仍未出現，請 <a href="mailto:honmonoh@gmail.com">Email</a> 聯繫：）</p>
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="本網站所有內容除特別聲明外，均採用創用CC 姓名標示-非商業性-禁止改作授權。
+    分享時請註明作者及出處。" style="border-bottom: 0;">
+      <img src="https://i.creativecommons.org/l/by-nc-nd/3.0/80x15.png" style="display: unset;">
+    </a>
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ZiTe</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zite-honmonoh","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

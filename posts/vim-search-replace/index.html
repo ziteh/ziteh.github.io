@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/uploads/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300italic,400,400italic,700,700italic%7CNoto+Sans+TC:300,300italic,400,400italic,700,700italic%7CFira+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ziteh.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}},"activeClass":"disqus"},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="前言在2個月前我開始使用Visual Studio Code並搭配Vim 插件來進行程式編寫和做Markdown筆記。 在這段時間內我學習了不少Vim的操作方式，而「搜尋-取代」對我來說是一種滿常用的功能，而Vim也可以透過許多不同的方式來達到此功能。 故我將我自己比較會用到的搜尋-取代方式記錄在下。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Vim中搜尋並取代文字">
+<meta property="og:url" content="https://ziteh.github.io/posts/vim-search-replace/index.html">
+<meta property="og:site_name" content="ZiTe 本物志">
+<meta property="og:description" content="前言在2個月前我開始使用Visual Studio Code並搭配Vim 插件來進行程式編寫和做Markdown筆記。 在這段時間內我學習了不少Vim的操作方式，而「搜尋-取代」對我來說是一種滿常用的功能，而Vim也可以透過許多不同的方式來達到此功能。 故我將我自己比較會用到的搜尋-取代方式記錄在下。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2020-09-05T15:37:00.000Z">
+<meta property="article:modified_time" content="2024-06-22T08:56:19.919Z">
+<meta property="article:author" content="ZiTe">
+<meta property="article:tag" content="教學">
+<meta property="article:tag" content="Vim">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://ziteh.github.io/posts/vim-search-replace/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://ziteh.github.io/posts/vim-search-replace/","path":"posts/vim-search-replace/","title":"在Vim中搜尋並取代文字"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>在Vim中搜尋並取代文字 | ZiTe 本物志</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZiTe 本物志</p>
+      <i class="logo-line"></i>
+      <p class="site-subtitle" itemprop="description">一位慢步於程式、電路與文學之人的學習記錄與分享</p>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-folder-open fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%90%9C%E5%B0%8B-%E5%8F%96%E4%BB%A3%E6%8C%87%E4%BB%A4"><span class="nav-text">基本搜尋-取代指令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8visual-mode%E9%81%B8%E5%8F%96%E7%AF%84%E5%9C%8D%E4%B8%A6%E6%90%9C%E5%B0%8B-%E5%8F%96%E4%BB%A3"><span class="nav-text">在Visual mode選取範圍並搜尋-取代</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8visual-mode%E9%81%B8%E6%93%87%E6%90%9C%E5%B0%8B%E4%B8%A6%E5%8F%96%E4%BB%A3"><span class="nav-text">使用Visual mode選擇搜尋並取代</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8visual-mode%E9%81%B8%E6%93%87%E6%90%9C%E5%B0%8B%E4%B8%A6%E7%94%A8cgn%E5%8F%96%E4%BB%A3"><span class="nav-text">使用Visual mode選擇搜尋並用cgn取代</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B5%90%E8%AA%9E"><span class="nav-text">結語</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B8%E9%97%9C%E6%96%87%E7%AB%A0%E8%88%87%E8%B3%87%E6%BA%90"><span class="nav-text">相關文章與資源</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a href="/about/" title="About">
+      <img class="site-author-image" itemprop="image" alt="ZiTe"
+        src="/uploads/avatar.png">
+    <p class="site-author-name" itemprop="name">ZiTe</p>
+    <div class="site-description" itemprop="description"></div>
+  </a>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ziteh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ziteh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/@siderakb" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;@siderakb" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://siderakb.github.io/" title="SideraKB → https:&#x2F;&#x2F;siderakb.github.io&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-keyboard fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:honmonoh@gmail.com" title="E-Mail → mailto:honmonoh@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="回到頂端">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ziteh.github.io/posts/vim-search-replace/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="ZiTe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="在Vim中搜尋並取代文字 | ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%95%99%E5%AD%B8/" rel="tag"> 教學</a>
+              <a href="/tags/Vim/" rel="tag"> Vim</a>
+          </div>
+
+        <h1 class="post-title" itemprop="name headline">
+          在Vim中搜尋並取代文字
+        </h1>
+
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      
+      
+
+      <time title="創建時間：2020-09-05 23:37:00" itemprop="dateCreated datePublished" datetime="2020-09-05T23:37:00+08:00">2020-09-05</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在2個月前我開始使用<a target="_blank" rel="noopener" href="https://code.visualstudio.com/">Visual Studio Code</a>並搭配<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=vscodevim.vim">Vim 插件</a>來進行程式編寫和做Markdown筆記。</p>
+<p>在這段時間內我學習了不少Vim的操作方式，而「搜尋-取代」對我來說是一種滿常用的功能，而Vim也可以透過許多不同的方式來達到此功能。</p>
+<p>故我將我自己比較會用到的搜尋-取代方式記錄在下。</p>
+<span id="more"></span>
+
+<h1 id="基本搜尋-取代指令"><a href="#基本搜尋-取代指令" class="headerlink" title="基本搜尋-取代指令"></a>基本搜尋-取代指令</h1><p>以下範例皆為將SSS取代成RRR，只是差在作用範圍不同。</p>
+<ul>
+<li><code>:%s/SSS/RRR/g</code>：所有行。</li>
+<li><code>:s/SSS/RRR/g</code>：目前游標所在行。</li>
+<li><code>:5,12s/SSS/RRR/g</code>：從第5行到第12行（包括）。</li>
+<li><code>:1,$s/SSS/RRR/g</code>：從第一行（<code>1</code>）到最後一行（<code>$</code>）。</li>
+<li><code>:.,+2s/SSS/RRR/g</code>：從目前游標所在行（<code>.</code>）到下2行（<code>+2</code>）。</li>
+</ul>
+<p>參考：<a target="_blank" rel="noopener" href="https://vim.fandom.com/wiki/Search_and_replace">Search and replace | Vim Tips Wiki | Fandom</a></p>
+<h1 id="在visual-mode選取範圍並搜尋-取代"><a href="#在visual-mode選取範圍並搜尋-取代" class="headerlink" title="在Visual mode選取範圍並搜尋-取代"></a>在Visual mode選取範圍並搜尋-取代</h1><p>先按下<kbd>v</kbd>、<kbd>V</kbd>或<kbd>Ctrl</kbd>+<kbd>v</kbd>進入Visual mode，並選取範圍。</p>
+<p><code>:&#39;&lt;,&#39;&gt;s/SSS/RRR/g</code><br>在Visual mode所選的範圍中，將SSS取代成RRR。其中<code>:&#39;&lt;,&#39;&gt;</code>只要在Visual mode中按下<kbd>:</kbd>就會自動出現。</p>
+<p>參考：<a target="_blank" rel="noopener" href="https://vim.fandom.com/wiki/Search_and_replace_in_a_visual_selection">Search and replace in a visual selection | Vim Tips Wiki | Fandom</a></p>
+<h1 id="使用visual-mode選擇搜尋並取代"><a href="#使用visual-mode選擇搜尋並取代" class="headerlink" title="使用Visual mode選擇搜尋並取代"></a>使用Visual mode選擇搜尋並取代</h1><ol>
+<li>按下<kbd>v</kbd>、<kbd>V</kbd>或<kbd>Ctrl</kbd>+<kbd>v</kbd>進入Visual mode，並選取欲搜尋之內容。</li>
+<li>按下<kbd>y</kbd>（yank）將選取的內容複製進”暫存器。</li>
+<li>使用指令（如<code>:%s/SSS/RRR/g</code>）並搭配<kbd>Ctrl</kbd>+<kbd>r</kbd> <kbd>"</kbd>貼上”暫存器的內容。</li>
+<li>按下<kbd>Enter</kbd>進行搜尋-取代。</li>
+</ol>
+<p>參考：<a target="_blank" rel="noopener" href="https://superuser.com/questions/41378/how-to-search-for-selected-text-in-vim">How to search for selected text in Vim? - Super User</a></p>
+<h1 id="使用visual-mode選擇搜尋並用cgn取代"><a href="#使用visual-mode選擇搜尋並用cgn取代" class="headerlink" title="使用Visual mode選擇搜尋並用cgn取代"></a>使用Visual mode選擇搜尋並用cgn取代</h1><ol>
+<li>按下<kbd>v</kbd>、<kbd>V</kbd>或<kbd>Ctrl</kbd>+<kbd>v </kbd>進入Visual mode，並選取欲搜尋之內容。</li>
+<li>按下<kbd>y</kbd>（yank）將選取的內容複製進”暫存器。</li>
+<li>按下<kbd>/</kbd>進入搜尋模式。</li>
+<li>按下<kbd>Ctrl</kbd>+<kbd>r</kbd> <kbd>"</kbd>貼上”暫存器的內容。</li>
+<li>按下<kbd>Enter</kbd>進行搜尋。</li>
+<li>按下<kbd>c</kbd><kbd>g</kbd><kbd>n</kbd>進入Insert mode並取代修改搜尋的結果。</li>
+<li>按下<kbd>Esc</kbd>或<kbd>Ctrl</kbd>+<kbd>[</kbd>離開Insert mode。</li>
+<li>按下<kbd>n</kbd>到下一個搜尋的結果。</li>
+<li>按下<kbd>.</kbd>重複步驟6的修改。</li>
+<li>重複步驟8和9來逐一修改。</li>
+</ol>
+<p>參考：<a target="_blank" rel="noopener" href="http://0x3f.org/post/enhance-search-with-gn-in-vim/">使用gn操作增强Vim的搜索 - 晴耕雨讀</a></p>
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><p>這次我列出了一些我自己常用的搜尋-取代在Vim中的做法，如果有其它方式的話也歡迎留言交流。另外也可以參考<a href="/posts/vim-con-replace/">Vim 複製並連續取代文字</a> 。</p>
+<h1 id="相關文章與資源"><a href="#相關文章與資源" class="headerlink" title="相關文章與資源"></a>相關文章與資源</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://vim.fandom.com/wiki/Search_and_replace">Search and replace | Vim Tips Wiki | Fandom</a></li>
+<li><a target="_blank" rel="noopener" href="https://vim.fandom.com/wiki/Search_and_replace_in_a_visual_selection">Search and replace in a visual selection | Vim Tips Wiki | Fandom</a></li>
+<li><a target="_blank" rel="noopener" href="https://superuser.com/questions/41378/how-to-search-for-selected-text-in-vim">How to search for selected text in Vim? - Super User</a></li>
+<li><a target="_blank" rel="noopener" href="http://0x3f.org/post/enhance-search-with-gn-in-vim/">使用gn操作增强Vim的搜索 - 晴耕雨讀</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/literature-phalaenopsis/" rel="prev" title="[滿載心意的吶喊，沒有回音。] 蝴蝶蘭渴望一現 α">
+                  <i class="fa fa-angle-left"></i> [滿載心意的吶喊，沒有回音。] 蝴蝶蘭渴望一現 α
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/hh-andromedae/" rel="next" title="仙女座HH">
+                  仙女座HH <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+  <p style="text-align: center;color: #a3a3a3;font-size: 14px;margin-top: 60px;">留言可能不會立即顯示。若過了幾天仍未出現，請 <a href="mailto:honmonoh@gmail.com">Email</a> 聯繫：）</p>
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="本網站所有內容除特別聲明外，均採用創用CC 姓名標示-非商業性-禁止改作授權。
+    分享時請註明作者及出處。" style="border-bottom: 0;">
+      <img src="https://i.creativecommons.org/l/by-nc-nd/3.0/80x15.png" style="display: unset;">
+    </a>
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ZiTe</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zite-honmonoh","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

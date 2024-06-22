@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="manifest" href="/uploads/site.webmanifest">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300italic,400,400italic,700,700italic%7CNoto+Sans+TC:300,300italic,400,400italic,700,700italic%7CFira+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ziteh.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":true,"nav":{"disqus":{"text":"Load Disqus","order":-1}},"activeClass":"disqus"},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="我在 2022 年 9 月重新寫了與本文內容相近的文章，建議可以觀看新文章：  STM32 EXTI 外部中斷 STM32 LibOpenCM3：EXTI 外部中斷  前言LibOpenCM3 是一個 Open-Source 的 ARM Cortex-M3 微控制器底層硬體函式庫，支援包含 STM32 在內的多種微控制器。 本文將以 STM32F103RB（Nucleo F103RB）作為示範，介">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[LibOpenCM3 × STM32教學-2] 按鈕觸發外部中斷 EXTI">
+<meta property="og:url" content="https://ziteh.github.io/posts/libopencm3-example-exti/index.html">
+<meta property="og:site_name" content="ZiTe 本物志">
+<meta property="og:description" content="我在 2022 年 9 月重新寫了與本文內容相近的文章，建議可以觀看新文章：  STM32 EXTI 外部中斷 STM32 LibOpenCM3：EXTI 外部中斷  前言LibOpenCM3 是一個 Open-Source 的 ARM Cortex-M3 微控制器底層硬體函式庫，支援包含 STM32 在內的多種微控制器。 本文將以 STM32F103RB（Nucleo F103RB）作為示範，介">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2021-11-28T14:00:00.000Z">
+<meta property="article:modified_time" content="2024-06-22T08:56:19.889Z">
+<meta property="article:author" content="ZiTe">
+<meta property="article:tag" content="電子電路">
+<meta property="article:tag" content="教學">
+<meta property="article:tag" content="STM32">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://ziteh.github.io/posts/libopencm3-example-exti/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://ziteh.github.io/posts/libopencm3-example-exti/","path":"posts/libopencm3-example-exti/","title":"[LibOpenCM3 × STM32教學-2] 按鈕觸發外部中斷 EXTI"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>[LibOpenCM3 × STM32教學-2] 按鈕觸發外部中斷 EXTI | ZiTe 本物志</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZiTe 本物志</p>
+      <i class="logo-line"></i>
+      <p class="site-subtitle" itemprop="description">一位慢步於程式、電路與文學之人的學習記錄與分享</p>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-folder-open fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E6%96%87"><span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BC%8F%E5%85%A8%E6%96%87"><span class="nav-text">程式全文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BC%8F%E8%AA%AA%E6%98%8E"><span class="nav-text">程式說明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E5%85%A5%E5%87%BD%E5%BC%8F%E5%BA%AB"><span class="nav-text">引入函式庫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A-led"><span class="nav-text">設定 LED</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A8%AD%E5%AE%9A%E6%8C%89%E9%88%95%E5%8F%8A-exti"><span class="nav-text">設定按鈕及 EXTI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E6%96%B7%E6%9C%8D%E5%8B%99%E7%A8%8B%E5%BA%8F-isr"><span class="nav-text">中斷服務程序 ISR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E7%A8%8B%E5%BC%8F"><span class="nav-text">主程式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B5%90%E8%AA%9E"><span class="nav-text">結語</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B8%E9%97%9C%E6%96%87%E7%AB%A0"><span class="nav-text">相關文章</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a href="/about/" title="About">
+      <img class="site-author-image" itemprop="image" alt="ZiTe"
+        src="/uploads/avatar.png">
+    <p class="site-author-name" itemprop="name">ZiTe</p>
+    <div class="site-description" itemprop="description"></div>
+  </a>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ziteh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ziteh" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/@siderakb" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;@siderakb" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://siderakb.github.io/" title="SideraKB → https:&#x2F;&#x2F;siderakb.github.io&#x2F;" rel="noopener me" target="_blank"><i class="fa fa-keyboard fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:honmonoh@gmail.com" title="E-Mail → mailto:honmonoh@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="回到頂端">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ziteh.github.io/posts/libopencm3-example-exti/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="ZiTe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="[LibOpenCM3 × STM32教學-2] 按鈕觸發外部中斷 EXTI | ZiTe 本物志">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+          
+          <div class="post-tags">
+              <a href="/tags/%E9%9B%BB%E5%AD%90%E9%9B%BB%E8%B7%AF/" rel="tag"> 電子電路</a>
+              <a href="/tags/%E6%95%99%E5%AD%B8/" rel="tag"> 教學</a>
+              <a href="/tags/STM32/" rel="tag"> STM32</a>
+          </div>
+
+        <h1 class="post-title" itemprop="name headline">
+          [LibOpenCM3 × STM32教學-2] 按鈕觸發外部中斷 EXTI
+        </h1>
+
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/LibOpenCM3-%C3%97-STM32%E6%95%99%E5%AD%B8/" itemprop="url" rel="index"><span itemprop="name">LibOpenCM3 × STM32教學</span></a>
+        </span>
+    </span>
+    <span class="post-meta-item">
+      
+      
+
+      <time title="創建時間：2021-11-28 22:00:00" itemprop="dateCreated datePublished" datetime="2021-11-28T22:00:00+08:00">2021-11-28</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>我在 2022 年 9 月重新寫了與本文內容相近的文章，建議可以觀看新文章：</p>
+<ul>
+<li><a href="https://ziteh.github.io/posts/libopencm3-stm32-7/">STM32 EXTI 外部中斷</a></li>
+<li><a href="https://ziteh.github.io/posts/libopencm3-stm32-8/">STM32 LibOpenCM3：EXTI 外部中斷</a></li>
+</ul>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><a target="_blank" rel="noopener" href="https://libopencm3.org/">LibOpenCM3</a> 是一個 Open-Source 的 ARM Cortex-M3 微控制器底層硬體函式庫，支援包含 STM32 在內的多種微控制器。</p>
+<p>本文將以 STM32F103RB（Nucleo F103RB）作為示範，介紹如何使用 LibOpenCM3 寫出 STM32 的外部中斷（External interrupt，EXTI）。</p>
+<span id="more"></span>
+
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>外部中斷最基本的應用就是按鈕。雖然可以使用輪詢的方式來感測按鈕是否有觸發，但這種做法不但消耗資源，也不保險（觸發當下可能剛好錯過輪詢），而使用外部中斷就不會有這樣的問題。</p>
+<p>本文示範一個以按鈕觸發的外部中斷，每次按下按鈕時就會觸發指定的外部中斷，讓 LED 進行一次開或關。</p>
+<h2 id="程式全文"><a href="#程式全文" class="headerlink" title="程式全文"></a>程式全文</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @file   main.c</span></span><br><span class="line"><span class="comment"> * @brief  Basic button external interrupt(EXTI).</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;libopencm3/stm32/rcc.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;libopencm3/stm32/gpio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;libopencm3/stm32/exti.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;libopencm3/cm3/nvic.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">led_setup</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">  rcc_periph_clock_enable(RCC_GPIOA);</span><br><span class="line">  gpio_set_mode(GPIOA,</span><br><span class="line">                GPIO_MODE_OUTPUT_2_MHZ,</span><br><span class="line">                GPIO_CNF_OUTPUT_PUSHPULL,</span><br><span class="line">                GPIO5);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">button_setup</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">  rcc_periph_clock_enable(RCC_GPIOC);</span><br><span class="line">  rcc_periph_clock_enable(RCC_AFIO);</span><br><span class="line"></span><br><span class="line">  nvic_enable_irq(NVIC_EXTI15_10_IRQ);</span><br><span class="line"></span><br><span class="line">  gpio_set_mode(GPIOC,</span><br><span class="line">                GPIO_MODE_INPUT,</span><br><span class="line">                GPIO_CNF_INPUT_FLOAT,</span><br><span class="line">                GPIO13);</span><br><span class="line"></span><br><span class="line">  exti_select_source(EXTI13, GPIOC);</span><br><span class="line">  exti_set_trigger(EXTI13, EXTI_TRIGGER_FALLING);</span><br><span class="line">  exti_enable_request(EXTI13);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief EXTI15~10 Interrupt service routine.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">exti15_10_isr</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">  exti_reset_request(EXTI13);</span><br><span class="line">  gpio_toggle(GPIOA, GPIO5);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">  led_setup();</span><br><span class="line">  button_setup();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    __asm__(<span class="string">&quot;nop&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="程式說明"><a href="#程式說明" class="headerlink" title="程式說明"></a>程式說明</h2><h3 id="引入函式庫"><a href="#引入函式庫" class="headerlink" title="引入函式庫"></a>引入函式庫</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;libopencm3/stm32/rcc.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;libopencm3/stm32/gpio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;libopencm3/stm32/exti.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;libopencm3/cm3/nvic.h&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>除了基本的「RCC」與「GPIO」函式庫外，要使用外部中斷還需要「EXTI」與「NVIC」這兩個函式庫。</p>
+<p>其中「EXTI」包含了外部中斷（External interrupt）的相關功能。「NVIC」是「Nested vectored interrupt controller」的意思，是 ARM Cortex-M3 中負責管理所有中斷的核心功能，包含了中斷優先級、中斷請求（Interrupt request，IRQ）、中斷旗標等。</p>
+<blockquote>
+<p>注意是 <code>libopencm3/cm3/nvic.h</code> 而非 <code>libopencm3/stm32/nvic.h</code>。</p>
+</blockquote>
+<h3 id="設定-led"><a href="#設定-led" class="headerlink" title="設定 LED"></a>設定 LED</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">led_setup</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">  rcc_periph_clock_enable(RCC_GPIOA);</span><br><span class="line">  gpio_set_mode(GPIOA,</span><br><span class="line">                GPIO_MODE_OUTPUT_2_MHZ,</span><br><span class="line">                GPIO_CNF_OUTPUT_PUSHPULL,</span><br><span class="line">                GPIO5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>函數 <code>led_setup()</code> 負責設定 LED。</p>
+<ul>
+<li><code>rcc_periph_clock_enable()</code> 用來致能目標 LED 所在 GPIO Port-A 的 Clock。</li>
+<li><code>gpio_set_mode()</code> 設定 LED 所在的 PA5 為最高速度 2 MHz 的推輓式（Push-Pull）輸出。</li>
+</ul>
+<h3 id="設定按鈕及-exti"><a href="#設定按鈕及-exti" class="headerlink" title="設定按鈕及 EXTI"></a>設定按鈕及 EXTI</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">button_setup</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">  rcc_periph_clock_enable(RCC_GPIOC);</span><br><span class="line">  rcc_periph_clock_enable(RCC_AFIO);</span><br><span class="line"></span><br><span class="line">  nvic_enable_irq(NVIC_EXTI15_10_IRQ);</span><br><span class="line"></span><br><span class="line">  gpio_set_mode(GPIOC,</span><br><span class="line">                GPIO_MODE_INPUT,</span><br><span class="line">                GPIO_CNF_INPUT_FLOAT,</span><br><span class="line">                GPIO13);</span><br><span class="line"></span><br><span class="line">  exti_select_source(EXTI13, GPIOC);</span><br><span class="line">  exti_set_trigger(EXTI13, EXTI_TRIGGER_FALLING);</span><br><span class="line">  exti_enable_request(EXTI13);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>函數 <code>button_setup()</code> 負責按鈕的相關設定。</p>
+<ul>
+<li>RCC<ul>
+<li><code>rcc_periph_clock_enable(RCC_GPIOC)</code> 致能按鈕本身所在的 GPIO Port-C 的 Clock。</li>
+<li><code>rcc_periph_clock_enable(RCC_AFIO)</code> 致能 Alternate function I&#x2F;O（AFIO） 的 Clock。使用外部中斷必須啟用 AFIO。</li>
+</ul>
+</li>
+<li><code>nvic_enable_irq(NVIC_EXTI15_10_IRQ)</code> 致能「EXTI-10 到 15」的中斷請求（Interrupt request，IRQ）。我使用的 STM32 中 EXTI-10 到 15 的 IRQ 是共用的，它們都會對應到相同的中斷服務程序（ISR）。我要使用的是 EXTI-13，所以要對「EXTI15_10」進行設定。</li>
+<li><code>gpio_set_mode()</code> 將按鈕所在的 PC13 設定成浮接輸入（Input float）模式。</li>
+<li>EXTI<ul>
+<li><code>exti_select_source(EXTI13, GPIOC)</code> 選擇 EXTI 的來源為 「EXIT-13」，「GPIO Port-C」，也就是「PC13」。</li>
+<li><code>exti_set_trigger(EXTI13, EXTI_TRIGGER_FALLING)</code> 設定 「EXTI-13」的觸發方式為「Falling（負緣）」。</li>
+<li><code>exti_enable_request(EXTI13)</code> 致能「EXTI-13」的中斷請求。</li>
+</ul>
+</li>
+</ul>
+<h3 id="中斷服務程序-isr"><a href="#中斷服務程序-isr" class="headerlink" title="中斷服務程序 ISR"></a>中斷服務程序 ISR</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief EXTI15~10 Interrupt service routine.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">exti15_10_isr</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">  exti_reset_request(EXTI13);</span><br><span class="line">  gpio_toggle(GPIOA, GPIO5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>函數 <code>exti15_10_isr()</code> 是「EXTI-10 到 15」的中斷服務程序（Interrupt service routine，ISR）。當「EXTI-10 到 15」發生中斷時就會執行這裡的程式。此函數名稱是規定好的，不能打錯。</p>
+<ul>
+<li><code>exti_reset_request(EXTI13)</code> 會清除來自「EXTI-13」的中斷請求旗標。</li>
+<li><code>gpio_toggle(GPIOA, GPIO5)</code> 是讓 LED（PA5）的輸出反轉，進行 LED 的開關，也就是我們要的功能——每次按下按鈕 LED 就開或關一次。</li>
+</ul>
+<h3 id="主程式"><a href="#主程式" class="headerlink" title="主程式"></a>主程式</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">  led_setup();</span><br><span class="line">  button_setup();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    __asm__(<span class="string">&quot;nop&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>主程式先依序呼叫 <code>led_setup()</code> 與 <code>button_setup()</code> 來完成設定，隨後就進入一個無限空迴圈，等待中斷的觸發。</p>
+<blockquote>
+<p><code>__asm__(&quot;nop&quot;)</code> 會嵌入組合語言的「nop（無操作）」指令。</p>
+</blockquote>
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><p>本次文章內介紹的程式我也有放在 <a target="_blank" rel="noopener" href="https://github.com/ziteh/stm32-examples">GitHub</a> 上，可以直接載下來並使用 PlatformIO 開始專案。</p>
+<h1 id="相關文章"><a href="#相關文章" class="headerlink" title="相關文章"></a>相關文章</h1><ul>
+<li><a href="https://ziteh.github.io/posts/libopencm3-stm32-7/">STM32 EXTI 外部中斷</a></li>
+<li><a href="https://ziteh.github.io/posts/libopencm3-stm32-8/">STM32 LibOpenCM3：EXTI 外部中斷</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/blissful-color/" rel="prev" title="如果幸福有顏色">
+                  <i class="fa fa-angle-left"></i> 如果幸福有顏色
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/mitosis-keyboard-intro/" rel="next" title="無線分離式人體工學鍵盤Mitosis的介紹與分析">
+                  無線分離式人體工學鍵盤Mitosis的介紹與分析 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+  <p style="text-align: center;color: #a3a3a3;font-size: 14px;margin-top: 60px;">留言可能不會立即顯示。若過了幾天仍未出現，請 <a href="mailto:honmonoh@gmail.com">Email</a> 聯繫：）</p>
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="本網站所有內容除特別聲明外，均採用創用CC 姓名標示-非商業性-禁止改作授權。
+    分享時請註明作者及出處。" style="border-bottom: 0;">
+      <img src="https://i.creativecommons.org/l/by-nc-nd/3.0/80x15.png" style="display: unset;">
+    </a>
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ZiTe</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zite-honmonoh","count":false,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>
