@@ -14,15 +14,17 @@ var subtitle = page.subtitle
         <div class="h2">
           <span id="title"></span><%- title %></span>
         </div>
-        <div class="h4">
-          <% if(theme.fun_features.typing.enable && in_scope(theme.fun_features.typing.scope)) { %>
-            <span id="subtitle" data-typed-text="<%= subtitle %>"></span>
-          <% } else { %>
-            <span id="subtitle"><%- subtitle %></span>
-          <% } %>
-        </div>
 
         <% if (is_post()) { %>
+          <% if(subtitle) { %>
+          <div class="h4">
+            <% if(theme.fun_features.typing.enable && in_scope(theme.fun_features.typing.scope)) { %>
+              <span id="subtitle" data-typed-text="<%= subtitle %>"></span>
+            <% } else { %>
+              <span id="subtitle"><%- subtitle %></span>
+            <% } %>
+          </div>
+          <% } %>
           <%- inject_point('postMetaTop') %>
         <% } %>
       </div>
