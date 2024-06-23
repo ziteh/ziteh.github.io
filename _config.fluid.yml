@@ -991,7 +991,7 @@ page:
 page404:
   enable: true
   banner_img:
-  banner_img_height: 85
+  banner_img_height: 80
   banner_mask_alpha: 0
   # 重定向到首页的延迟(毫秒)
   # Delay in redirecting to home page (milliseconds)
