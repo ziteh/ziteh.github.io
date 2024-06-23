@@ -8,10 +8,22 @@
     <% } %>
     <% if (theme.post.meta.date.enable) { %>
       <span class="post-meta">
-        <!-- <i class="fa fa-calendar-day" aria-hidden="true"></i> -->
-        <time datetime="<%= full_date(page.date, 'YYYY-MM-DD HH:mm') %>" pubdate>
-          <%= full_date(page.date, theme.post.meta.date.format) %>
-        </time>
+        <% if (page.updated && compare_date(page.date, page.updated)) { %>
+          <span>
+            <%- __('post.copyright.updated')%>
+            <%= full_date(page.updated, theme.post.meta.date.format) %>
+          </span>
+          /
+          <%- __('post.copyright.posted')%>
+          <time datetime="<%= full_date(page.date, 'YYYY-MM-DD HH:mm') %>" pubdate>
+            <%= full_date(page.date, theme.post.meta.date.format) %>
+          </time>
+        <% } else { %>
+          <!-- <i class="fa fa-calendar-day" aria-hidden="true"></i> -->
+          <time datetime="<%= full_date(page.date, 'YYYY-MM-DD HH:mm') %>" pubdate>
+            <%= full_date(page.date, theme.post.meta.date.format) %>
+          </time>
+        <% } %>
       </span>
     <% } %>
   </div>

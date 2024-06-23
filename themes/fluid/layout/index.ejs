@@ -43,10 +43,17 @@ page.banner_mask_alpha = theme.index.banner_mask_alpha
       <div class="index-btm post-metas">
         <% if (theme.index.post_meta.date) { %>
           <div class="post-meta mr-3">
-            <i class="fa fa-calendar-day"></i>
-            <time datetime="<%= full_date(post.date, 'YYYY-MM-DD HH:mm') %>" pubdate>
-              <%- date(post.date, config.date_format) %>
-            </time>
+            <% if (post.updated && compare_date(post.date, post.updated)) { %>
+              <i class="fa fa-clock-rotate-left"></i>
+              <time datetime="<%= full_date(post.updated, 'YYYY-MM-DD HH:mm') %>" pubdate>
+                <%- date(post.updated, config.date_format) %>
+              </time>
+            <% } else { %>
+              <i class="fa fa-calendar-day"></i>
+              <time datetime="<%= full_date(post.date, 'YYYY-MM-DD HH:mm') %>" pubdate>
+                <%- date(post.date, config.date_format) %>
+              </time>
+            <% } %>
           </div>
         <% } %>
         <% if (theme.index.post_meta.category && post.categories.length > 0) { %>
