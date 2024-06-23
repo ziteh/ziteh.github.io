@@ -10,7 +10,25 @@ var subtitle = page.subtitle
      style="background: url('<%- url_for(banner_img) %>') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, <%= parseFloat(banner_mask_alpha) %>)">
-      <div class="banner-text text-center fade-in-up">
+      <div class="banner-text fade-in-up">
+
+        <div class="post-metas my-3">
+          <% if (page.categories && page.categories.length > 0) { %>
+            <div class="post-meta mr-3 d-flex align-items-center">
+              <i class="fa fa-folder"></i>
+              <%- partial('_partials/category-chains', { categories: page.categories }) %>
+            </div>
+          <% } %>
+          <% if (page.tags && page.tags.length > 0 ) { %>
+            <div class="post-meta">
+              <i class="fa fa-tag"></i>
+              <% page.tags.each(function(tag) { %>
+                <a href="<%= url_for(tag.path) %>" class="print-no-link">#<%- tag.name %></a>
+              <% }) %>
+            </div>
+          <% } %>
+        </div>
+
         <div class="h2">
           <span id="title"></span><%- title %></span>
         </div>
