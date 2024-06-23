@@ -1,10 +1,22 @@
 <div class="footer-inner">
+  <% if (config.author) { %>
+      <a href="/about/">
+        <%= new Date().getFullYear() %>
+        <%- config.author %>
+      </a>
+      <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="本網站所有內容除特別聲明外，均採用創用CC 姓名標示-非商業性-禁止改作授權。分享時請註明作者及出處。">
+        <i class="fa-brands fa-creative-commons"></i>
+        <i class="fa-brands fa-creative-commons-by"></i>
+        <i class="fa-brands fa-creative-commons-nc"></i>
+        <i class="fa-brands fa-creative-commons-nd"></i>
+      </a>
+  <% } %>
   <% if (theme.footer.content) { %>
     <div class="footer-content">
       <%- theme.footer.content %>
     </div>
   <% } %>
-  <% if (theme.footer.statistics.enable) { %>
+    <% if (theme.footer.statistics.enable) { %>
     <%- partial('_partials/footer/statistics.ejs') %>
   <% } %>
   <% if(theme.footer.beian.enable) { %>
