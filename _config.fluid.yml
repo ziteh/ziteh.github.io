@@ -352,6 +352,7 @@ navbar:
     - { key: "category", link: "/categories/", icon: "fa fa-folder-open" }
     - { key: "archive", link: "/archives/", icon: "fa fa-box-archive" }
     - { key: "about", link: "/about/", icon: "fa fa-user" }
+    - { key: "github", link: "https://github.com/ziteh", icon: "fa-brands fa-github", name: "GitHub", target: "_blank"}
     #- { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
 
 # 搜索功能，基于 hexo-generator-search 插件，若已安装其他搜索插件请关闭此功能，以避免生成多余的索引文件
