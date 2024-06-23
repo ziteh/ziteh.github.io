@@ -52,7 +52,7 @@
         <% if(theme.search.enable) { %>
           <li class="nav-item" id="search-btn">
             <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
+              <i class="fa fa-magnifying-glass"></i>
             </a>
           </li>
           <% import_js(theme.static_prefix.internal_js, 'local-search.js') %>
@@ -60,7 +60,7 @@
         <% if(theme.dark_mode && theme.dark_mode.enable) { %>
           <li class="nav-item" id="color-toggle-btn">
             <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+              <i class="fa fa-circle-half-stroke" id="color-toggle-icon"></i>
             </a>
           </li>
         <% } %>

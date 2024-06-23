@@ -11,11 +11,11 @@
       >
         <%= cat.name.trim() %>
         <span class="list-group-count"><%= params.type === 'post' ? `(${ cat.posts.length })` : '' %></span>
-        <i class="iconfont icon-arrowright"></i>
+        <i class="fa fa-angle-right"></i>
       </a>
       <% if(params.type !== 'post') { %>
         <a href="<%= url_for(cat.path) %>" class="category-count col-2 col-md-1 col-xm-1">
-          <i class="iconfont icon-articles"></i>
+          <i class="fa fa-file-lines"></i>
           <span><%= cat.posts.length %></span>
         </a>
       <% } %>

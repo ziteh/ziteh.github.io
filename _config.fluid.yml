@@ -349,7 +349,7 @@ navbar:
   menu:
     # - { key: "home", link: "/", icon: "iconfont icon-home-fill" }
     - { key: "tag", link: "/tags/", icon: "fa fa-tags" }
-    - { key: "category", link: "/categories/", icon: "fa fa-cubes" }
+    - { key: "category", link: "/categories/", icon: "fa fa-folder-open" }
     - { key: "archive", link: "/archives/", icon: "fa fa-box-archive" }
     - { key: "about", link: "/about/", icon: "fa fa-user" }
     #- { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
@@ -427,7 +427,7 @@ footer:
   # HTML of the first line of the footer, it is recommended to keep the Fluid link to promote this theme to more people
   content: '
     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-    <i class="iconfont icon-love"></i>
+    <i class="fa fa-xmark"></i>
     <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
   '
 
