@@ -155,7 +155,7 @@
       if (iconElement) {
         iconElement.setAttribute(
           'class',
-          'iconfont ' + icon
+          'fa ' + icon
         );
         iconElement.setAttribute(
           'data',
@@ -168,7 +168,7 @@
           if (iconElement) {
             iconElement.setAttribute(
               'class',
-              'iconfont ' + icon
+              'fa ' + icon
             );
             iconElement.setAttribute(
               'data',
@@ -282,5 +282,5 @@
   Fluid.utils.waitElementLoaded(iframeSelector, function() {
     applyCustomColorSchemaSettings();
   });
-  
+
 })(window, document);

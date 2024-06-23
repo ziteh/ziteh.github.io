@@ -138,7 +138,7 @@ Fluid.plugins = {
         lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
       }
       $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
-        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="fa fa-copy"></i>' : ' code-widget">')));
 
       if (enableCopy) {
         var clipboard = new ClipboardJS('.copy-btn', {
@@ -153,9 +153,9 @@ Fluid.plugins = {
         });
         clipboard.on('success', function(e) {
           e.clearSelection();
-          e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+          e.trigger.innerHTML = e.trigger.innerHTML.replace('fa-copy', 'fa-circle-check');
           setTimeout(function() {
-            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('fa-circle-check', 'fa-copy');
           }, 2000);
         });
       }
