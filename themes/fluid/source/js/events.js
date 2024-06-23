@@ -104,7 +104,7 @@ Fluid.events = {
       var scrollHeight = document.body.scrollTop + document.documentElement.scrollTop;
       scrollDisplay = scrollHeight >= headerHeight;
       topArrow.css({
-        'bottom': posDisplay && scrollDisplay ? '20px' : '-60px'
+        'bottom': posDisplay && scrollDisplay ? '30px' : '-60px'
       });
     });
     // Click
