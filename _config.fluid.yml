@@ -225,7 +225,7 @@ color:
 # Font
 font:
   font_size: 16px
-  font_family: "Noto Sans, Noto Sans TC"
+  font_family: '"Noto Sans", "Noto Sans TC", sans-serif'
   letter_spacing: 0.02em
   code_font_size: 85%
 
@@ -240,7 +240,7 @@ custom_css:
 custom_head: '
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&family=Noto+Sans+TC:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   '
 
 # 网页访问统计
