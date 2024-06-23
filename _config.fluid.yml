@@ -225,7 +225,7 @@ color:
 # Font
 font:
   font_size: 16px
-  font_family: '"Noto Sans", "Noto Sans TC", sans-serif'
+  font_family: '"Noto Sans", "Noto Sans TC", sans-serif, "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"'
   letter_spacing: 0.02em
   code_font_size: 85%
 
