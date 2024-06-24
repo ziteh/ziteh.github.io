@@ -12,9 +12,11 @@ toc: false
 draft: false
 ---
 
-[達夫裝置（Duff's device）](https://zh.wikipedia.org/zh-tw/%E8%BE%BE%E5%A4%AB%E8%AE%BE%E5%A4%87) 是一種用來進行複製的特殊寫法，它非常巧妙地運用 C 語言 `switch-case` 的特性來達成，但這種寫法真的令人覺得噁心（包含[作者自己也使用 Disgusting 來描述](http://www.lysator.liu.se/c/duffs-device.html)）。
+[達夫裝置（Duff's device）](https://zh.wikipedia.org/zh-tw/%E8%BE%BE%E5%A4%AB%E8%AE%BE%E5%A4%87) 是一種用來進行複製的特殊寫法，它非常巧妙地運用 C 語言 `switch-case` 的特性來達成，但這種寫法真的滿噁心的（連[作者自己也使用 Disgusting 來描述](http://www.lysator.liu.se/c/duffs-device.html)）。
 
 <!--more-->
+
+之所以會寫得這麼特別，主要是要處理 `count` 不能被 8 整除的情況。
 
 它最初被用來改善運行速度，雖然在現代，編譯器最佳化後普通寫法的效能可以輕鬆達到並超越這種寫法，所以我們確實不用再實際用到這種寫法了。
 
