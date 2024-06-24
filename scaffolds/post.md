@@ -1,5 +1,14 @@
 ---
-title: {{ title }}
+title: ""
+# subtitle: ""
+# description: ""
+tags: [""]
+# categories: [""]
 date: {{ date }}
-tags:
+# updated: 2024-MM-DDTHH:MM:00
+comments: true
+toc: true
+# RESERVE
 ---
+
+<!-- more -->
