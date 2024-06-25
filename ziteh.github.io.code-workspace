@@ -6,7 +6,7 @@
 		},
 		{
 			"name": "Draft",
-			"path": "./source/_draft"
+			"path": "./source/_drafts"
 		},
 		{
 			"name": "Root",
@@ -17,9 +17,9 @@
 		"[markdown]": {
 			"editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
 			"editor.snippetSuggestions": "top",
-			"editor.quickSuggestions": {
-				"other": true
-			},
+			// "editor.quickSuggestions": {
+			// 	"other": true
+			// },
 		}
 	}
 }
