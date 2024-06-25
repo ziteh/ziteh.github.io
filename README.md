@@ -8,20 +8,27 @@ New post
 
 ```md
 ---
-title: "TITLE"
-subtitle: ""
+title: ""
+# subtitle: ""
 # description: ""
 tags: [""]
-categories: []
-date: YYYY-MM-DDThh:mm:00+08:00
-header_img: ""
+# categories: [""]
+date: 2024-MM-DD HH:MM:00
+# updated: 2024-MM-DD HH:MM:00
 comments: true
 toc: true
-draft: true # false
+# RESERVE
 ---
 
-<!--more-->
+<!-- more -->
 
+```
+
+Server
+
+```bash
+hexo server
+hexo server --draft
 ```
 
 Deploy
