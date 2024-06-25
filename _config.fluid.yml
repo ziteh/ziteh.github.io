@@ -400,7 +400,7 @@ scroll_down_arrow:
 
   # 翻页后自动滚动
   # Auto scroll after page turning
-  scroll_after_turning_page: true
+  scroll_after_turning_page: false
 
 # 向顶部滚动的箭头
 # Scroll top arrow
