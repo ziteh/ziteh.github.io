@@ -78,7 +78,7 @@ git clone neovim.git
 
 你應該會看到一個新的 `neovim` 資料夾，而且內部完整包含了所有檔案，各個 branch 和 tag 也都在。
 
-可以發現，這個 `neovim.git` 其實就和我們平常用的 GitHub、Remote repo 很類似，不過還是有點差別，有興趣的話可以查查 Git Bare repo[^1]。
+可以發現，這個 `neovim.git` 其實就和我們平常用的 GitHub、Remote repo 很類似，有興趣的話可以查查 Git Bare repo[^1]。
 
 [^1]: [Git Bare Repo - HackMD](https://hackmd.io/@hbdoy/BJz0V5tv8)
 
