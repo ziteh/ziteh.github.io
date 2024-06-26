@@ -4,7 +4,7 @@ subtitle: "使用 GitHub CLI 和 clone --mirror"
 # description: ""
 tags: ["教學", "Git", "程式"]
 # categories: [""]
-date: 2024-06-26 18:37:00
+date: 2024-06-26 19:17:00
 # updated: 2024-MM-DD HH:MM:00
 comments: true
 toc: true
