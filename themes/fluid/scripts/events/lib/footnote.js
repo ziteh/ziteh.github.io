@@ -95,7 +95,7 @@ module.exports = (hexo) => {
       html += '<span>';
       const fn = hexo.render.renderSync({ text: item.content, engine: 'markdown' });
       html += fn.replace(/(<p>)|(<\/p>)/g, '').replace(/<br>/g, '');
-      html += '<a href="#fnref:' + item.index + '" rev="footnote" class="footnote-backref"> ↩</a></span></span></li>';
+      html += '<a href="#fnref:' + item.index + '" rev="footnote" class="footnote-backref"> ⤶</a></span></span></li>';
     });
 
     // add footnotes at the end of the content
