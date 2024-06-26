@@ -27,8 +27,8 @@ toc: true
 Server
 
 ```bash
-hexo server
-hexo server --draft
+hexo s
+hexo s --draft
 ```
 
 Deploy
