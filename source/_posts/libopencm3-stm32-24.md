@@ -14,7 +14,7 @@ aliases: ["/2022/10/libopencm3-stm32-24/"]
 ---
 
 # 前言
-SPI（Serial Peripheral Interface）是一種常見的同步序列通訊協定，爲主從式架構。有許多感測器或模組都使用 SPI 進行通訊。
+SPI（Serial Peripheral Interface）是一種常見的同步序列通訊協定，為主從式架構。有許多感測器或模組都使用 SPI 進行通訊。
 
 這次的範例要實現 USART 與 SPI (Master mode) 的轉發器——把 USART 接收到的資料由 SPI 發送出去，而 SPI 收到的資料由 USART 發送。並且有一個 EXTI 的外部請求接腳。
 
@@ -31,7 +31,7 @@ SPI（Serial Peripheral Interface）是一種常見的同步序列通訊協定�
 # 正文
 首先一樣以 Nucleo-F446RE 做示範。
 
-首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 爲「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h`。
+首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h`。
 
 ## 完整程式
 ``` c
@@ -322,11 +322,11 @@ static void spi_setup(void)
   spi_enable(SPI1);
 }
 ```
-首先要設定 SPI 的 GPIO。除了 CS 腳設定爲通用功能 Push-Pull 輸出模式外，SCK、MOSI 與 MISO 都設定成 Alternate function Push-Pull。
+首先要設定 SPI 的 GPIO。除了 CS 腳設定為通用功能 Push-Pull 輸出模式外，SCK、MOSI 與 MISO 都設定成 Alternate function Push-Pull。
 
 再來是設定 SPI 本身。在使用 SPI 通訊時有幾個比較重要的設定要注意，首先是 SPI Mode，也就是 CPOL（Clock Polarity） 與 CPHA（Clock Phase） 的設定。
 
-CPOL 決定了 SPI 閒置時 SCK 要爲 `Low`（CPOL = `0`） 還是 `High`（CPOL = `1`）；CPHA 則是定義 SPI 的資料取樣要在第 1 個邊緣（CPHA = `0`），還是第 2 個邊緣（CPHA = `1`）。因此共有 4 種組合：
+CPOL 決定了 SPI 閒置時 SCK 要為 `Low`（CPOL = `0`） 還是 `High`（CPOL = `1`）；CPHA 則是定義 SPI 的資料取樣要在第 1 個邊緣（CPHA = `0`），還是第 2 個邊緣（CPHA = `1`）。因此共有 4 種組合：
 
 | Mode | CPOL | CPHA |
 |---|---|---|
@@ -335,11 +335,11 @@ CPOL 決定了 SPI 閒置時 SCK 要爲 `Low`（CPOL = `0`） 還是 `High`（CP
 | 2 | 1 | 0 |
 | 3 | 1 | 1 |
 
-這裡我使用 CPOL = `0`（`SPI_CR1_CPOL_CLK_TO_0_WHEN_IDLE`）與 CPHA = `1`（`SPI_CR1_CPHA_CLK_TRANSITION_2`），也就是 Mode 1。根據此設定，因爲閒置時 SCK 是 `Low`，而 SPI 在第 2 個邊緣進行資料取樣，也就是在 SCK 的負緣採樣。
+這裡我使用 CPOL = `0`（`SPI_CR1_CPOL_CLK_TO_0_WHEN_IDLE`）與 CPHA = `1`（`SPI_CR1_CPHA_CLK_TRANSITION_2`），也就是 Mode 1。根據此設定，因為閒置時 SCK 是 `Low`，而 SPI 在第 2 個邊緣進行資料取樣，也就是在 SCK 的負緣採樣。
 
-另外使用 `spi_set_full_duplex_mode()` 將 SPI 設爲全雙工模式。
+另外使用 `spi_set_full_duplex_mode()` 將 SPI 設為全雙工模式。
 
-要注意的是，若是使用一般的 SPI 配置（一個 Master，多個 Slave）的話，Master device 的 CS（NSS）腳是沒特殊作用的（即 AF 不會控制它，要使用者自己手動控制），且要啓用「Software NSS management（SSM=`1`）」和將 SSI（Internal slave select）設爲 `1`，以避免出錯。因此呼叫 `spi_enable_software_slave_management()` 及 `spi_set_nss_high()`。
+要注意的是，若是使用一般的 SPI 配置（一個 Master，多個 Slave）的話，Master device 的 CS（NSS）腳是沒特殊作用的（即 AF 不會控制它，要使用者自己手動控制），且要啓用「Software NSS management（SSM=`1`）」和將 SSI（Internal slave select）設為 `1`，以避免出錯。因此呼叫 `spi_enable_software_slave_management()` 及 `spi_set_nss_high()`。
 
 > NSS pin is not used on master side at this configuration. It has to be managed internally (SSM=1, SSI=1) to prevent any MODF error. 參考自 RM0390 Rev6 P.852。
 
@@ -385,10 +385,10 @@ void usart2_isr(void)
 ```
 由於目標功能是 USART-SPI 的轉發器，所以在 USART 接收到資料後，要將接收到的資料透過 SPI 傳送出去。
 
-這裡的 SPI 傳送步驟爲：
+這裡的 SPI 傳送步驟為：
 1. 選擇 Slave device（CS 輸出 `Low`）。
 2. 使用 `spi_send()` 將要傳送的資料寫入 SPI_DR 暫存器中。此函式會先等待目前的傳輸已經結束後（`SPI_SR_TXE` flag）才將資料寫入資料暫存器。
-3. 讀取 `SPI_SR_TXE`（傳送緩衝器爲空） 與 `SPI_SP_BSY`（忙碌） flag，以等待 SPI 完成傳輸。
+3. 讀取 `SPI_SR_TXE`（傳送緩衝器為空） 與 `SPI_SP_BSY`（忙碌） flag，以等待 SPI 完成傳輸。
 4. 取消選擇 Slave device（CS 輸出 `High`）。
 
 ### EXTI ISR
@@ -415,7 +415,7 @@ void exti9_5_isr(void)
 ```
 當 RQ 請求腳被觸發（`Low` 觸發）時，代表 Slave device 想發起通訊，因此 Master device 要拉低 CS 腳以選擇 Slave device，並讀取 MISO 的資料。
 
-要注意的是 SPI slave device 不會自己產生 SCK 時脈訊號，SCK 是由 Master device 產生的，而在這裡單純呼叫 `spi_read()` 也不會讓 Master device 產生 SCK 訊號，因此要呼叫 `spi_send()` 並傳送一個假資料（這裡爲 `0x00`）讓 SCK 產生。
+要注意的是 SPI slave device 不會自己產生 SCK 時脈訊號，SCK 是由 Master device 產生的，而在這裡單純呼叫 `spi_read()` 也不會讓 Master device 產生 SCK 訊號，因此要呼叫 `spi_send()` 並傳送一個假資料（這裡為 `0x00`）讓 SCK 產生。
 
 ## 多環境程式（F446RE + F103RB）
 由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。

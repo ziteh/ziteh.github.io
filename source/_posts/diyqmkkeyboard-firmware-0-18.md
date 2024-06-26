@@ -14,13 +14,13 @@ toc: true
 draft: false
 ---
 
-⚠ 由於最新的 [`0.21.3`](https://github.com/qmk/qmk_firmware/releases/tag/0.21.3) 版本的 QMK 在使用上的差異滿大的，這篇是針對舊版 [`0.18.3`](https://github.com/qmk/qmk_firmware/releases/tag/0.18.3) 的 QMK 教學，僅作爲參考保留。
+⚠ 由於最新的 [`0.21.3`](https://github.com/qmk/qmk_firmware/releases/tag/0.21.3) 版本的 QMK 在使用上的差異滿大的，這篇是針對舊版 [`0.18.3`](https://github.com/qmk/qmk_firmware/releases/tag/0.18.3) 的 QMK 教學，僅作為參考保留。
 
 [最新版的 QMK 教學](/posts/diyqmkkeyboard-edit-qmk/)。
 
 <!--more-->
 
-如果你因爲某些原因需要使用舊版 QMK 的話，可以使用下面的方法來切換 QMK 版本（需要先安裝好 QMK MSYS 環境）。
+如果你因為某些原因需要使用舊版 QMK 的話，可以使用下面的方法來切換 QMK 版本（需要先安裝好 QMK MSYS 環境）。
 
 1. 打開 QMK MSYS
 2. 執行 `qmk cd`
@@ -71,7 +71,7 @@ draft: false
 
 例如 Pro Micro 開發板上的 `D16` 其實是 ATmega32U4 的 `PB2`，而在「Pings」標籤頁顯示的是 `B2` 代表的是 `PB2`，設定前記得看好腳位對照圖。
 
-以下圖爲例，「Pins」頁面中的 `D0` 其實是指 `PD0`（藍紫色），它也被稱爲 `D3`（綠色）。要注意你現在看到的腳位名稱到底是微控制器（藍紫色）的還是開發板（綠色）的，「Pins」頁面顯示的是微控制器的腳位名。
+以下圖為例，「Pins」頁面中的 `D0` 其實是指 `PD0`（藍紫色），它也被稱為 `D3`（綠色）。要注意你現在看到的腳位名稱到底是微控制器（藍紫色）的還是開發板（綠色）的，「Pins」頁面顯示的是微控制器的腳位名。
 
 > PB2、PD7...的 P 是指 Port，通常以 8 或 16 腳為一個 Port。
 > P 後面的英文字為 Port 名，通常由 A 開始。再來的數字是腳位編號，通常由 0 開始。
@@ -118,7 +118,7 @@ QMK 可以設定的按鍵請看說明文件：[Keycodes Overview](https://docs.q
 
 在標籤頁「Settings」裡可以編輯一些其它的設定。包含名稱、Bootloader 大小、WS2812 LED 燈數量、背光等級。
 
-「Save Configuration」按鈕可以下載一個 JSON 檔，裡面儲存了目前爲止的各種設定。在[一開始的頁面](/posts/diyqmkkeyboard-2/#讀入鍵盤)裡，上方有個「Upload」按鈕，將此 JSON 檔傳上後就可以繼續編輯或修改該鍵盤。**建議一定要儲存此 JSON 檔**，且重新命名以避免與 Keyboard Layout Editor 的 JSON 搞混。
+「Save Configuration」按鈕可以下載一個 JSON 檔，裡面儲存了目前為止的各種設定。在[一開始的頁面](/posts/diyqmkkeyboard-2/#讀入鍵盤)裡，上方有個「Upload」按鈕，將此 JSON 檔傳上後就可以繼續編輯或修改該鍵盤。**建議一定要儲存此 JSON 檔**，且重新命名以避免與 Keyboard Layout Editor 的 JSON 搞混。
 
 ![▲ 「Settings」標籤頁](https://1.bp.blogspot.com/-Vdfp-gzx0uQ/Xu4uEo34ilI/AAAAAAAACdc/sRvlviZR_xUQEhy6Ma0oLsFQ9c_OW50hgCK4BGAsYHg/s800/%255B10%255DKeyboard%2BFirmware%2BBuilder_Settings.png)
 
@@ -245,7 +245,7 @@ RGBLIGHT_ENABLE ?= no
 
 這邊可以啓用/禁用一些特定的功能，可以參考 [Feature Options](https://docs.qmk.fm/#/config_options?id=feature-options) 來瞭解各個功能。
 
-另外，如果你使用的是 ATmega32U4 的話，爲了儘可能地降低最終韌體的大小，可以加入 `LTO_ENABLE = yes`，詳細可以參考 [Squeezing Space from AVR](https://docs.qmk.fm/#/squeezing_avr?id=rulesmk-settings)。
+另外，如果你使用的是 ATmega32U4 的話，為了儘可能地降低最終韌體的大小，可以加入 `LTO_ENABLE = yes`，詳細可以參考 [Squeezing Space from AVR](https://docs.qmk.fm/#/squeezing_avr?id=rulesmk-settings)。
 
 ### 修改完成
 
@@ -423,7 +423,7 @@ RGBLIGHT_ENABLE ?= no
 ...
 ```
 
-> 如果你沒有改用 `#pragma once`，且你有更改鍵盤的名稱（不是 `#define PRODUCT` 的名稱，是預設爲 kb 的[資料夾與檔案名稱](/posts/diyqmkkeyboard-2/#修改-rulesmk)），那原本的 `kb.h` 被修改成 `my_new_keyboard.h` 後，其內的 `KB_H` 要修改成 `MY_NEW_KEYBOARD_H`，即這裡也要改成你鍵盤的名稱且習慣全大寫。當然，如果你熟悉 C 的話可以用你喜歡的方式。
+> 如果你沒有改用 `#pragma once`，且你有更改鍵盤的名稱（不是 `#define PRODUCT` 的名稱，是預設為 kb 的[資料夾與檔案名稱](/posts/diyqmkkeyboard-2/#修改-rulesmk)），那原本的 `kb.h` 被修改成 `my_new_keyboard.h` 後，其內的 `KB_H` 要修改成 `MY_NEW_KEYBOARD_H`，即這裡也要改成你鍵盤的名稱且習慣全大寫。當然，如果你熟悉 C 的話可以用你喜歡的方式。
 
 如果你使用的是 RP2040 的話，可以在 `config.h` 中加入：
 ```c
@@ -526,7 +526,7 @@ KEYMAP(
 
 你所需要做的就是把該按鍵的代號（如 `KC_P7`）放在對的位置就好了。而每一塊 `KEYMAP(...)` 代表的是一層，最上面的是第 0 層，往下是第 1、2...n 層。
 
-> 新版的 QMK 習慣使用 `LAYOUT` 爲名而非 `KEYMAP`，你可以將 `keymap.c` 及 `kb.h` 內的 `KEYMAP` 都改成 `LAYOUT`。但是不修改應該還是可以完成編譯。
+> 新版的 QMK 習慣使用 `LAYOUT` 為名而非 `KEYMAP`，你可以將 `keymap.c` 及 `kb.h` 內的 `KEYMAP` 都改成 `LAYOUT`。但是不修改應該還是可以完成編譯。
 
 # 結語
 

@@ -27,9 +27,9 @@ draft: false
 
 # 架構
 
-雖然就目前來說，我認爲無線鍵盤的首選韌體應該是 [ZMK](https://zmk.dev/) 而非 QMK，但是我對 ZMK 和 Zephyr 還不夠熟悉，而且我想要有 [Vial](https://get.vial.today/) 的功能，所以目前還是用 QMK。
+雖然就目前來說，我認為無線鍵盤的首選韌體應該是 [ZMK](https://zmk.dev/) 而非 QMK，但是我對 ZMK 和 Zephyr 還不夠熟悉，而且我想要有 [Vial](https://get.vial.today/) 的功能，所以目前還是用 QMK。
 
-爲此我參考了 [Mitosis](https://github.com/reversebias/mitosis) 的設計。左右半鍵盤各使用一個 nRF52840 做鍵掃描，再將鍵狀態透過 Gazell 2.4GHz 無線通訊傳給接收器。接收器由一個 nRF52840 和一個 ATmega32U4 組成，nRF52840 爲 Gazell central 端接收兩半鍵盤的鍵狀態，再透過 UART 傳給 ATmega32U4。ATmega32U4 運行 QMK 並直接使用 UART 傳入的鍵狀態。
+為此我參考了 [Mitosis](https://github.com/reversebias/mitosis) 的設計。左右半鍵盤各使用一個 nRF52840 做鍵掃描，再將鍵狀態透過 Gazell 2.4GHz 無線通訊傳給接收器。接收器由一個 nRF52840 和一個 ATmega32U4 組成，nRF52840 為 Gazell central 端接收兩半鍵盤的鍵狀態，再透過 UART 傳給 ATmega32U4。ATmega32U4 運行 QMK 並直接使用 UART 傳入的鍵狀態。
 
 另外，右半還有一個軌跡球（PMW3360），其資料一樣是透過上述的方式傳到 QMK 內處理。
 
@@ -61,9 +61,9 @@ draft: false
 
 ![右 PCB](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvQy4JE9kI2WEfBKyMv7bO-4aVJDc80rboeAZuABMjaQ_AHBuU9bCUcDjpwhZBjLInous_Th0xz3eUU27Ell_cQqyaIu9QfvvQHEz3zcbZScoDJTL4ROLlSZP2_XE8q8sXWt3SLuRNuSM17eoMAzm79UzfTdutkWsgDfQzlIoviJ6G5u0fkK1KPJiRvOk/s16000/Screenshot%202023-12-30%20122714.png)
 
-主要就是把 MCU 從 RP2040 改成 nRF52840，但是因爲我不想處理天線，所以用的是現成的模組 E73-2G4M08S1C。我原本也有考慮 Raytac 的 MDBT50Q，但是底部焊盤對我這個焊接技術不怎麼樣的人實在是有點麻煩（雖然我有加熱台就是了）。
+主要就是把 MCU 從 RP2040 改成 nRF52840，但是因為我不想處理天線，所以用的是現成的模組 E73-2G4M08S1C。我原本也有考慮 Raytac 的 MDBT50Q，但是底部焊盤對我這個焊接技術不怎麼樣的人實在是有點麻煩（雖然我有加熱台就是了）。
 
-另外是電池我預計採用的是 eneloop 3 號電池 1.2V。不使用鋰電池是因爲我覺得如果兩半同時沒電的話要接兩條 USB 充電，好像有點怪，所以我選擇用換電池的方式。到底適不適合還要再看。
+另外是電池我預計採用的是 eneloop 3 號電池 1.2V。不使用鋰電池是因為我覺得如果兩半同時沒電的話要接兩條 USB 充電，好像有點怪，所以我選擇用換電池的方式。到底適不適合還要再看。
 
 另外 LDO 的輸出入電容我畫成 0402 的了，之後應該會改成 0603。
 

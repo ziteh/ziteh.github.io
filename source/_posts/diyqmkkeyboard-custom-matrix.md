@@ -16,7 +16,7 @@ aliases: ["/2022/02/diyqmkkeyboard-7/", "/posts/diyqmkkeyboard-7/"]
 
 在[這篇文章](/posts/mitosis-keyboard-intro)中我簡單地介紹了 Mitosis 這個基於 QMK 的無線分離式人體工學鍵盤，而在這篇文章中，我將參考其架構來做出一個我自己的無線分離式鍵盤的雛形。
 
-要達成這樣的功能，會需要用到 QMK 的 [Custom Matrix](https://docs.qmk.fm/#/custom_matrix) 和 UART 功能，並且使用 LoRa 無線通訊模組 HC-12 來暫時替代藍牙作爲無線通訊。
+要達成這樣的功能，會需要用到 QMK 的 [Custom Matrix](https://docs.qmk.fm/#/custom_matrix) 和 UART 功能，並且使用 LoRa 無線通訊模組 HC-12 來暫時替代藍牙作為無線通訊。
 
 ![](https://blogger.googleusercontent.com/img/a/AVvXsEh23-UqK5AQeWB-A4o5h_LPG0SIaIlC-GztC4eKfsTX8H2FMCodib8pZtAbyoWirD0ZXoQBExe1vncnQf1nYHZTyfLCW4fDuxhrmR8I608NxoxttwwQi9YyPmhMMvBXkEwbsuYppXw5H61Smc1ApNGVr6Lu-h5Lpu6qFU_DDWL-9Ha0zI1R6pLUSmUw=s16000)
 
@@ -30,7 +30,7 @@ aliases: ["/2022/02/diyqmkkeyboard-7/", "/posts/diyqmkkeyboard-7/"]
 
 首先，要完整地啓用「[Custom Matrix](https://docs.qmk.fm/#/custom_matrix)」功能的話，要在 `rules.mk` 中增加 `CUSTOM_MATRIX = yes` 與 `SRC += matrix.c`，並在鍵盤資料夾中增加 `matrix.c` 檔案。而自定的掃描程式就要按照格式寫在 `matrix.c` 中。
 
-然後，因爲我們還會需要使用 UART 功能，所以在 `rules.mk` 中還要增加 `SRC += uart.c` 。因此，`rules.mk` 大概會長這樣：
+然後，因為我們還會需要使用 UART 功能，所以在 `rules.mk` 中還要增加 `SRC += uart.c` 。因此，`rules.mk` 大概會長這樣：
 
 ```mk
 # MCU name
@@ -277,12 +277,12 @@ uint8_t matrix_key_count(void) {
 
 上面這段程式比較重要的有幾點：
 - `#include "uart.h"`：引用 QMK 的 UART 功能，否則會編譯錯誤。
-- `uart_init(9600)`：在 `matrix_init()` 中初始化 UART，並將鮑率（Baud Rate）設定爲 9600 bps。
+- `uart_init(9600)`：在 `matrix_init()` 中初始化 UART，並將鮑率（Baud Rate）設定為 9600 bps。
 - `uart_available()`：有用過 Arduino 的 Serial Port 的人應該都看得懂這一段，就是只要 UART 的接收緩衝區有值（有接收到資料），就使用 `uart_read()` 將收到的資料讀出，在透過 `switch-case` 來處理並改寫 `matrix[]` 的值，以完成按鍵狀態的更新。
 
 ## 利用 QMK 移動滑鼠遊標
 
-因爲我要做的無線分離式鍵盤上預計裝有軌跡球，所以我也一併測試了 QMK 要如何控制滑鼠遊標。
+因為我要做的無線分離式鍵盤上預計裝有軌跡球，所以我也一併測試了 QMK 要如何控制滑鼠遊標。
 
 首先，在 `rules.mk` 中增加 `MOUSEKEY_ENABLE = yes`、`POINTING_DEVICE_ENABLE = yes` 和 `POINTING_DEVICE_DRIVER = custom` 就可以啓用滑鼠與遊標的相關功能。
 
@@ -306,7 +306,7 @@ uint8_t matrix_scan(void) {
 }
 ```
 
-其中，`report_mouse_t` 就是 QMK 中滑鼠遊標的 Data type，其原型爲：
+其中，`report_mouse_t` 就是 QMK 中滑鼠遊標的 Data type，其原型為：
 ```c
 // File：qmk_firmware/tmk_core/protocol/report.h
 // URL：https://github.com/qmk/qmk_firmware/blob/master/tmk_core/protocol/report.h
@@ -329,11 +329,11 @@ typedef struct {
 
 # LoRa 無線通訊模組 HC-12
 
-因爲我手邊沒有其它適合的無線通訊模組，所以就先拿「HC-12」這款 LoRa 模組來使用。
+因為我手邊沒有其它適合的無線通訊模組，所以就先拿「HC-12」這款 LoRa 模組來使用。
 
 這個模組的好處是使用簡單方便，就自己把它當成一般的 UART 就好，Tx 與 Rx 接好，不用特別設定什麼就可以無線通訊了。
 
-而我用來控制 HC-12 的是 Nucleo-F302R8（STM32F302R8），因爲只是要簡單的測試無線通訊及 QMK，所以就寫了一個按下按鈕會透過 UART 傳送特定資料的程式作爲測試。STM32 韌體函式庫使用「libopencm3」，IDE 爲「PlatformIO for VS Code」。
+而我用來控制 HC-12 的是 Nucleo-F302R8（STM32F302R8），因為只是要簡單的測試無線通訊及 QMK，所以就寫了一個按下按鈕會透過 UART 傳送特定資料的程式作為測試。STM32 韌體函式庫使用「libopencm3」，IDE 為「PlatformIO for VS Code」。
 
 ```c
 /**

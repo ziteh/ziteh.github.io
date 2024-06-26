@@ -27,7 +27,7 @@ I2C 和 SPI 一樣是主從式架構，I2C 的主要特色就是無論有多少 
 # 正文
 首先一樣以 Nucleo-F446RE 做示範。
 
-首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 爲「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h`。
+首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h`。
 
 ## 完整程式
 ``` c
@@ -220,7 +220,7 @@ static void usart_setup(void);
 #include <libopencm3/stm32/usart.h>
 #include <libopencm3/cm3/nvic.h>
 ```
-除了基本的 `rcc.h` 和 `gpio.h` 及這次的 `i2c.h` 外，因爲我要使用 USART 和中斷功能，所以還會需要 `usart.h` 與 `nvic.h`。
+除了基本的 `rcc.h` 和 `gpio.h` 及這次的 `i2c.h` 外，因為我要使用 USART 和中斷功能，所以還會需要 `usart.h` 與 `nvic.h`。
 
 ### 設定 I2C
 ``` c
@@ -253,7 +253,7 @@ static void i2c_setup(void)
   i2c_peripheral_enable(i2c);
 }
 ```
-首先一樣先設定好 I2C 要使用的 SCL 與 SDA 接腳，將其設爲 Open-Drain 的 AF 功能。
+首先一樣先設定好 I2C 要使用的 SCL 與 SDA 接腳，將其設為 Open-Drain 的 AF 功能。
 
 再來要設定 I2C 本身。不同於 SPI 規定比較寬鬆（或說自由），I2C 本身的通訊規範基本上都定義好了，所以我們需要調整（或說可以調整）的設定就很少。這裡我們只需要設定要使用的 I2C 速度即可。
 
@@ -321,17 +321,17 @@ void usart2_isr(void)
 
 我自己定義了一個簡單的 USART 指令格式：`<RW> <Address_1> <Address_2> <Data>`
 
-若要在 24C256 的 `0x0102` 位置寫入資料 `0xAB`，就是用 USART 傳送：`0x00 0x01 0x02 0xAB`，完成後會收到一個 `0xF0` 作爲 ACK 確認。同理，要在 `0x0FCD` 寫入 `0x40` 拿就是要傳送 `0x00 0x0F 0xCD 0x40`。
+若要在 24C256 的 `0x0102` 位置寫入資料 `0xAB`，就是用 USART 傳送：`0x00 0x01 0x02 0xAB`，完成後會收到一個 `0xF0` 作為 ACK 確認。同理，要在 `0x0FCD` 寫入 `0x40` 拿就是要傳送 `0x00 0x0F 0xCD 0x40`。
 
 要讀取 `0x0102` 位置的資料的話，那就是用 USART 傳送：`0x01 0x01 0x02`，然後 STM32 就會回傳該位置的資料。
 
-> 24C256 的定址範圍爲 `0x0000` \~ `0x7FFF` 共 32768 個位置，每個位置皆爲一個 Byte。
+> 24C256 的定址範圍為 `0x0000` \~ `0x7FFF` 共 32768 個位置，每個位置皆為一個 Byte。
 
 當 USART 接收到一筆資料時，會先判斷這是要進行寫（`0x00`）還是讀（`0x01`）。然後再使用 I2C 傳送資料。
 
-`i2c_transfer7()` 用來進行 I2C 的傳輸，讀和寫都靠它。其參數意義依序爲：
+`i2c_transfer7()` 用來進行 I2C 的傳輸，讀和寫都靠它。其參數意義依序為：
 1. 使用的 I2C。這裡是用 `I2C1`。
-2. 要溝通的 Slave device I2C 7-bit 位置。24C256 的預設位置爲 `0x50`。
+2. 要溝通的 Slave device I2C 7-bit 位置。24C256 的預設位置為 `0x50`。
 3. 傳送資料陣列，即要傳送的位元組陣列。
 4. 傳送資料長度，要傳送幾個 Byte。填 `0` 代表不進行傳送。
 5. 接收資料陣列，接收到的資料會存進來。
@@ -339,7 +339,7 @@ void usart2_isr(void)
 
 24C256 基本的讀寫操作也是很簡單。要寫的話就是依序傳送「`位置-高`、`位置-低`、`資料`」這 3 個位元組即可。要讀的話就是依序傳送「`位置-高`、`位置-低`」這 2 個位元組，然後就可以讀取 該位置的資料位元組。
 
-因此寫入的程式爲：
+因此寫入的程式為：
 ```c
 uint8_t i2c_rx_data[1];
 uint8_t i2c_tx_data[3];
@@ -355,7 +355,7 @@ i2c_transfer7(I2C1,
               0);          /* Rx data lenght. */
 ```
 
-而讀取的程式爲：
+而讀取的程式為：
 ```c
 uint8_t i2c_rx_data[1];
 uint8_t i2c_tx_data[2];
@@ -375,9 +375,9 @@ usart_send_blocking(USART2, i2c_rx_data[0]);
 ## 多環境程式（F446RE + F103RB）
 由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。
 
-由於本例的差異比較大，爲了不佔版面這裡就不列出的，完整的程式請看 [GitHub repo](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/i2c_eeprom_24c256)。
+由於本例的差異比較大，為了不佔版面這裡就不列出的，完整的程式請看 [GitHub repo](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/i2c_eeprom_24c256)。
 
-特別要主要的是，F103RB 要使用 PB8 和 PB9 作爲 I2C 的 SCL 及 SDA 腳時，要啓用「Remap」。詳細請參考 DS5319 的 Table 5。
+特別要主要的是，F103RB 要使用 PB8 和 PB9 作為 I2C 的 SCL 及 SDA 腳時，要啓用「Remap」。詳細請參考 DS5319 的 Table 5。
 
 ```c
 static void i2c_setup(void)

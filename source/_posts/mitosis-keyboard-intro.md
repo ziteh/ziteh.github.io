@@ -13,7 +13,7 @@ draft: false
 aliases: ["/2022/01/diyqmkkeyboard-6/"]
 ---
 
-[Mitosis](https://github.com/qmk/qmk_firmware/tree/master/keyboards/mitosis) 是一款使用 [QMK](https://qmk.fm/) 作爲韌體所開發的無線分離式鍵盤，它不僅僅是與電腦之間無線，它的左右兩部分之間也沒有實體連線，可謂是「真 • 無線」。就我所知，有許多基於 QMK 的無線分離式鍵盤都是受到 Mitosis 的啓發。
+[Mitosis](https://github.com/qmk/qmk_firmware/tree/master/keyboards/mitosis) 是一款使用 [QMK](https://qmk.fm/) 作為韌體所開發的無線分離式鍵盤，它不僅僅是與電腦之間無線，它的左右兩部分之間也沒有實體連線，可謂是「真 • 無線」。就我所知，有許多基於 QMK 的無線分離式鍵盤都是受到 Mitosis 的啓發。
 
 本文將會概略性地介紹 Mitosis 是如何做到無線的。
 
@@ -26,7 +26,7 @@ aliases: ["/2022/01/diyqmkkeyboard-6/"]
 Mitosis 的架構中，主要擁有這些硬體：
 - 1 個 Pro Micro（ATmega32U4）。接收器的一部分，QMK 實際上只在 Pro Micro 上運作，以 USB 線連接電腦。
 - 3 個 nRF51822。這是一個整合了 BLE（Bluetooth Low Energy，藍牙低功耗）等無線功能的 SoC（System On Chip）。
-	- 第 1 個 nRF51822 作爲接收器的一部分，負責接收來自左右兩部分鍵盤的訊號，並將其透過 UART 傳給 Pro Micro。
+	- 第 1 個 nRF51822 作為接收器的一部分，負責接收來自左右兩部分鍵盤的訊號，並將其透過 UART 傳給 Pro Micro。
 	- 第 2、3 個 nRF51822 分別在左右兩鍵盤上，負責讀取鍵盤上的按鍵狀態，並將其透過 Gazell 傳給接收器的 nRF51822。
 
 ```
@@ -128,7 +128,7 @@ static void handler_debounce(nrf_drv_rtc_int_type_t int_type)
 
 `handler_debounce()` 每秒會觸發 1000 次（也就是以 1000 Hz運作，[由 `RTC1` 處理](https://github.com/reversebias/mitosis/blob/f2bb956f8565762212d361a42f830390ef5c6845/mitosis-keyboard-basic/main.c#L180)）。
 
-它會先判斷目前是否在防彈跳中（`if (debouncing)`），如果沒有的話會去判斷目前的按鍵狀態是否和最後一次一樣，如果不一樣代表有按鍵按下或放開了，透過 `read_keys()` 讀取目前的按鍵狀態，並儲存爲快照 `keys_snapshot`，同時開始防彈跳（將 `deboducing` 設爲 `true`）。
+它會先判斷目前是否在防彈跳中（`if (debouncing)`），如果沒有的話會去判斷目前的按鍵狀態是否和最後一次一樣，如果不一樣代表有按鍵按下或放開了，透過 `read_keys()` 讀取目前的按鍵狀態，並儲存為快照 `keys_snapshot`，同時開始防彈跳（將 `deboducing` 設為 `true`）。
 
 一旦開始防彈跳，它就會一直確認快照與目前的按鍵狀態是否一樣，一旦不一樣就停止防彈跳，若累計達到設定的防彈跳次數就會承認快照的按鍵狀態，並將快照的值給目前的鍵值 `keys`，並呼叫 `send_data()` 開始傳送。
 
@@ -339,7 +339,7 @@ int main(void)
 
 這裡就是來負責將 Gazell 接收到的左右鍵盤按鍵狀態重新打包，只要確認了來自 QMK 的輪詢請求（`s`），就透過 UART 傳送出去。
 
-傳給 QMK 的封包除了按鍵狀態外，還有一個 `0xE0` 作爲結束封包。
+傳給 QMK 的封包除了按鍵狀態外，還有一個 `0xE0` 作為結束封包。
 
 ## QMK / 接收器（Pro Micro）
 
@@ -374,7 +374,7 @@ UNICODE_ENABLE = yes   # Unicode
 SRC += matrix.c serial_uart.c
 ```
 
-這裡可以注意到作者使用了 QMK 的「[Custom Matrix](https://docs.qmk.fm/#/custom_matrix)」功能 （`CUSTOM_MATRIX = yes` 及 `SRC += matrix.c`），因爲 Mitosis 不像一般的鍵盤透過矩陣掃描得知按鍵狀態，而是讀取來自 nRF51822 透過 UART 傳送的封包。
+這裡可以注意到作者使用了 QMK 的「[Custom Matrix](https://docs.qmk.fm/#/custom_matrix)」功能 （`CUSTOM_MATRIX = yes` 及 `SRC += matrix.c`），因為 Mitosis 不像一般的鍵盤透過矩陣掃描得知按鍵狀態，而是讀取來自 nRF51822 透過 UART 傳送的封包。
 
 ### config.h
 
@@ -393,7 +393,7 @@ SRC += matrix.c serial_uart.c
 
 ### matrix.c
 
-`matrix.c` 是爲了使用 QMK 的「[Custom Matrix](https://docs.qmk.fm/#/custom_matrix)」功能所必要的檔案。
+`matrix.c` 是為了使用 QMK 的「[Custom Matrix](https://docs.qmk.fm/#/custom_matrix)」功能所必要的檔案。
 
 重點在 `matrix_scan()`：
 ```c
@@ -439,7 +439,7 @@ uint8_t matrix_scan(void)
 
 首先此函數會傳送一個 `s` 以請求 nRF51822 開始傳送按鍵狀態封包。
 
-接著，一個 `for` 迴圈會處理來自 UART 的按鍵狀態封包。當接收完成後，判斷結束封包是否正確（爲 `0xE0`），如果沒問題的話就將按鍵狀態封包處理並賦值給 `matrix[]`，接下來就是讓 QMK 去處理了。
+接著，一個 `for` 迴圈會處理來自 UART 的按鍵狀態封包。當接收完成後，判斷結束封包是否正確（為 `0xE0`），如果沒問題的話就將按鍵狀態封包處理並賦值給 `matrix[]`，接下來就是讓 QMK 去處理了。
 
 # 結語
 

@@ -14,7 +14,7 @@ aliases: ["/2019/02/psucustomcables/"]
 ![](https://1.bp.blogspot.com/-DWIH30NOyDI/XppYajhsUdI/AAAAAAAACFg/wPQROsxK1J0R6B1fgoHXJOisvhhVRSJDwCPcBGAsYHg/s640/ZPH_0309.JPG)
 
 # 前言
-上次買了[新的電腦機殼ZS-A4](/2019/02/unbox-zsa4itx/)，也順便換了些零件，但由於新機殼實在是太小了，原本PSU附的線有點太長，比較嚴重的是3個2.5寸硬碟的電源線因爲距離太近，所以只能插到2個硬碟。基於以上的原因，我就想説來試試看自己做電源供應器的模組線，所以就上網買了些材料，開始了手殘之旅。
+上次買了[新的電腦機殼ZS-A4](/2019/02/unbox-zsa4itx/)，也順便換了些零件，但由於新機殼實在是太小了，原本PSU附的線有點太長，比較嚴重的是3個2.5寸硬碟的電源線因為距離太近，所以只能插到2個硬碟。基於以上的原因，我就想説來試試看自己做電源供應器的模組線，所以就上網買了些材料，開始了手殘之旅。
 
 <!--more-->
 
@@ -26,7 +26,7 @@ aliases: ["/2019/02/psucustomcables/"]
 
 ![▲首先是做SATA電源線的部分，我買的是刺破型的接頭，比較方便使用。  ](https://1.bp.blogspot.com/-MlbTBRlPA5c/XppYaoJC1pI/AAAAAAAACFg/yvhG5UulaWYeEZVPNNBQuiX72bHGDhGgACPcBGAsYHg/s1600/ZPH_0271.JPG)
 
-![▲因爲機殼尺寸的關係，3個硬碟的距離非常近](https://1.bp.blogspot.com/-poRiXGsXJxM/XppYakaWIjI/AAAAAAAACFg/Ynnpx6BjrvMOd1ftxNXzlSqeR90DyD6nACPcBGAsYHg/s1600/ZPH_0269.JPG)
+![▲因為機殼尺寸的關係，3個硬碟的距離非常近](https://1.bp.blogspot.com/-poRiXGsXJxM/XppYakaWIjI/AAAAAAAACFg/Ynnpx6BjrvMOd1ftxNXzlSqeR90DyD6nACPcBGAsYHg/s1600/ZPH_0269.JPG)
 
 ![▲我的做法是先將接頭接上硬碟](https://1.bp.blogspot.com/-y2Nm42qS21s/XppYakRP4hI/AAAAAAAACFg/1PV28La4JW8MWOHjKDhaFEl85Bf8Rf9EwCPcBGAsYHg/s1600/ZPH_0272.JPG)
 
@@ -42,7 +42,7 @@ aliases: ["/2019/02/psucustomcables/"]
 
 ![▲...手殘果然沒極限](https://1.bp.blogspot.com/-83HzNrd9qbM/XppYapqpikI/AAAAAAAACFg/W7SNvHxQDBIfw8upUXpuoYN0Qamfh1sfACPcBGAsYHg/s1600/ZPH_0275.JPG)
 
-![▲再來是主機板的24Pin和CPU的4Pin，，因爲它PSU端的接頭我買不太到，故要先將原廠的線退Pin](https://1.bp.blogspot.com/-k2kLmognHY4/XppYakIrBcI/AAAAAAAACFg/VL2Cot86eCYufvf8gFQQhfyQpOs-gtv0ACPcBGAsYHg/s1600/ZPH_0285.JPG)
+![▲再來是主機板的24Pin和CPU的4Pin，，因為它PSU端的接頭我買不太到，故要先將原廠的線退Pin](https://1.bp.blogspot.com/-k2kLmognHY4/XppYakIrBcI/AAAAAAAACFg/VL2Cot86eCYufvf8gFQQhfyQpOs-gtv0ACPcBGAsYHg/s1600/ZPH_0285.JPG)
 
 ![▲一開始不太會退，但之後熟悉就退很快了  ](https://1.bp.blogspot.com/-0VSeehEzx10/XppYav005nI/AAAAAAAACFg/pFcEhgL-X28xkpoXjnUfhmR7l8diBiu-gCPcBGAsYHg/s1600/ZPH_0286.JPG)
 

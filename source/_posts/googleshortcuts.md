@@ -34,7 +34,7 @@ aliases: ["/2018/02/googleshortcuts/"]
 
 ![▲第三個設定切換後的顯示樣式](https://1.bp.blogspot.com/-P4ENkqtVQ7I/XqRfmpjqleI/AAAAAAAACH4/6MScXKJQpDofwWUaZqURzKrVdX1Ic8GCACPcBGAsYHg/s1600/%25E8%259E%25A2%25E5%25B9%2595%25E6%2593%25B7%25E5%258F%2596%25E7%2595%25AB%25E9%259D%25A2%2B%252818%2529.png)
 
-最下面可以重置設定﹑匯出與匯入設定值。因爲此擴充套件沒有雲端同步之類的功能，所以如果有多台電腦的話就可以匯出與匯入設定值，這樣就不用每一台電腦都設定一次了。
+最下面可以重置設定﹑匯出與匯入設定值。因為此擴充套件沒有雲端同步之類的功能，所以如果有多台電腦的話就可以匯出與匯入設定值，這樣就不用每一台電腦都設定一次了。
 **2018/02/10補充：**這個擴充套件好像有雲端同步的功能，但不用另外登入雲端賬號，可能是跟著Firefox的賬號。
 
 ![▲可以匯入與匯出設定值](https://1.bp.blogspot.com/-qEcg6SkwEqU/XqRfmmFGCdI/AAAAAAAACH4/wMsv47lUt60Mwd54V4E_ob_uRkFlFoglwCPcBGAsYHg/s1600/%25E8%259E%25A2%25E5%25B9%2595%25E6%2593%25B7%25E5%258F%2596%25E7%2595%25AB%25E9%259D%25A2%2B%252819%2529.png)

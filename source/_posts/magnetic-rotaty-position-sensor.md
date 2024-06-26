@@ -34,7 +34,7 @@ aliases: ["/2022/11/magnetic-rotaty-position-sensor/"]
 | [MA702](https://www.monolithicpower.com/en/ma702.html)                                                                                    | 12           | 60k        | SPI (25MHz) | ✔ (10 bit)  | ❌       | ✔ (12 bit) | 3.3              | QFN-16 (3x3mm)        |
 | [MT6816](https://www.magntek.com.cn/en/list/177/517.htm)                                                                                  | 14           | 25k        | SPI (16MHz) | ✔           | ✔        | ✔ (12 bit) | 3.3~5.0          | SOP-8                 |
 | [MT6701](https://www.magntek.com.cn/en/list/177/559.htm)                                                                                  | 14           | 55k        | SSI or I2C  | ✔           | ✔        | ✔ (12 bit) | 3.3~5.0          | SOP-8, QFN-16 (3x3mm) |
-> 上表僅供參考，請以官方資料爲準。
+> 上表僅供參考，請以官方資料為準。
 
 - `TLE5012B` 是一個系列，其中 `TLE5012B E1000` 是有 Encoder ABI (IIF) 輸出的版本，不同版本有不同的輸出方式。
 - `TLE5012B` 系列所使用的 SSC 通訊很類似 SPI，只是把 MOSI 及 MISO 合併，可以看作是半雙工版本的 SPI。

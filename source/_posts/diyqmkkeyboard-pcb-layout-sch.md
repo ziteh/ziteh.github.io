@@ -15,7 +15,7 @@ draft: false
 # aliases: []
 ---
 
-到[上一篇文章](/posts/diyqmkkeyboard-3/)爲止我們已經完成了鍵盤的韌體部分，接下來要進行硬體的部分。本篇要介紹的是[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 5 步——繪製 PCB。
+到[上一篇文章](/posts/diyqmkkeyboard-3/)為止我們已經完成了鍵盤的韌體部分，接下來要進行硬體的部分。本篇要介紹的是[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 5 步——繪製 PCB。
 
 我將示範以 KiCad 7 進行機械式鍵盤的 PCB Layout，包含基本的 KiCad 使用教學。要畫 PCB 可能多少需要一些基本電學或基礎電路學知識，但是如果你真的沒學過的話也沒關係，仔細照著本文應該也不會出錯。
 
@@ -25,7 +25,7 @@ draft: false
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/DOluUYmqIs4?si=y68SmS6Z4g1ycMCW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-> 以下內容以 KiCad `v7.0.2` 作爲示範。
+> 以下內容以 KiCad `v7.0.2` 作為示範。
 
 <!--more-->
 
@@ -57,7 +57,7 @@ draft: false
 4. 進行 Design rule check（DRC）
 5. 輸出生產所需的檔案（Gerber 檔）
 
-> *Footprint* 指的是一個電子元件物理上的實際樣子，包含了 Pin 腳的數量、位置及大小等。例如同樣是機械鍵軸，有分 Cherry MX、Alps、Kailh Choc 等不同的樣式，或是電阻有 THT 分插板型或 SMD 表面黏貼型的，而 SMD 型又會根據尺寸分爲 0805、0603、0402...等。
+> *Footprint* 指的是一個電子元件物理上的實際樣子，包含了 Pin 腳的數量、位置及大小等。例如同樣是機械鍵軸，有分 Cherry MX、Alps、Kailh Choc 等不同的樣式，或是電阻有 THT 分插板型或 SMD 表面黏貼型的，而 SMD 型又會根據尺寸分為 0805、0603、0402...等。
 > 不同 Footprint 的 Pin 腳位置（焊孔或焊盤）及大小不同，用錯 Footprint 的話到時候零件可是沒辦法裝上去的。
 
 # 自動生成鍵盤 PCB
@@ -131,7 +131,7 @@ GitHub 上有許多人畫好的機械軸 Footprint 庫，你可以選幾個喜�
 
 ## 編輯 Schematic
 
-> Schematic 常見翻譯爲原理圖，雖然我自己不是很習慣這個名稱。
+> Schematic 常見翻譯為原理圖，雖然我自己不是很習慣這個名稱。
 
 在專案頁面中雙擊 `.kicad_sch` 以打開 Schematic。現在是全空的狀態。
 
@@ -165,7 +165,7 @@ GitHub 上有許多人畫好的機械軸 Footprint 庫，你可以選幾個喜�
 
 ### 標籤
 
-在右排工具列中央處選擇「Add a global label」（或快捷鍵 `Ctrl`+`L`）可以新增全域標籤。這個全域標籤可以跨頁面連接走線，只要是名稱相同的標籤就會視爲連接在一起。善於全域標籤可以讓你的 Schematic 不會充滿一堆凌亂的走線。
+在右排工具列中央處選擇「Add a global label」（或快捷鍵 `Ctrl`+`L`）可以新增全域標籤。這個全域標籤可以跨頁面連接走線，只要是名稱相同的標籤就會視為連接在一起。善於全域標籤可以讓你的 Schematic 不會充滿一堆凌亂的走線。
 
 ![用「Add a global label」按鈕加入全域標籤](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh1bGF8PQQNGApgEIkDOkeTXLrdcC8mxZ4uGNAzVplSn9fCBltVw2GxDcnRSeElgKWUshjXtNyqCGb78YHjY2Zb9f3zyEoWkidkTXwog1PnWtF_npVhgkNI7Wlm6sVfHf6DuHacSS668gpyUV24ZQHbTw6FNpcB8VDRTt3-JibDpkkF-ATN9DbpTieQ/s16000/sch-add-global%20label.jpg)
 
@@ -187,7 +187,7 @@ Footprint 瀏覽頁面左側有兩個清單，在最左側的清單找種類，�
 
 至於要怎麼選擇 Footprint？這個牽涉到許多因素，首先是該零件要有，例如 RT9013-33GB 的封裝就是 SOT-23-5，那當然是選用「Package_TO_SOT_SMD:SOT-23-5」。但是像電容或電阻選擇就很多了，這時可以考慮焊接方式，要手工焊接的話，除非你手很穩（或有其它工具）可以焊 0201 尺寸的元件，不然通常會選 0805、0603 或 0402 的，同時你也可以考慮購買容易度；如果你打算使用 PCBA 的話，那可以考慮工廠那邊的報價。當然，封裝也和元件的功率和耐壓等電氣規格有關，但鍵盤的電路比較不需要擔心這點。
 
-> 一般說的 0603、0402 或 0201 封裝是英制尺寸，0603 就代表其尺寸長寬爲 0.06 * 0.03 inch。但是還有公制（Metric）表示法，公制 0603 代表的是長寬 0.6 * 0.3 mm。而英制 0402 等於公制 1005；英制 0201 等於公制 0603，所以一定不要搞混了。
+> 一般說的 0603、0402 或 0201 封裝是英制尺寸，0603 就代表其尺寸長寬為 0.06 * 0.03 inch。但是還有公制（Metric）表示法，公制 0603 代表的是長寬 0.6 * 0.3 mm。而英制 0402 等於公制 1005；英制 0201 等於公制 0603，所以一定不要搞混了。
 > KiCad 中的「C_0402_1005Metric」前面的「0402」是指英制尺寸，後面的「1005Metric」是指公制尺寸。所以這個 Footprint 就是我們一般習慣稱呼的 0402 封裝。
 
 ### 更新元件代號
@@ -221,7 +221,7 @@ Schematic 頁面右下角有一些資訊可以填寫。
 
 ## 使用開發板
 
-如果你覺得要自己畫[微控制器](/posts/diyqmkkeyboard-pcb-layout-sch/#繪製微控制器電路)、[電源](/posts/diyqmkkeyboard-pcb-layout-sch/#繪製電源電路)和 [USB](/posts/diyqmkkeyboard-pcb-layout-sch/#繪製-usb) 的電路太麻煩的話，你可以使用現成的開發板，使用排針或排插連接開發板，這樣就只需要畫[鍵矩陣掃描電路](/posts/diyqmkkeyboard-pcb-layout-sch/#繪製矩陣掃描電路)。以下以 Pro Micro 爲例。
+如果你覺得要自己畫[微控制器](/posts/diyqmkkeyboard-pcb-layout-sch/#繪製微控制器電路)、[電源](/posts/diyqmkkeyboard-pcb-layout-sch/#繪製電源電路)和 [USB](/posts/diyqmkkeyboard-pcb-layout-sch/#繪製-usb) 的電路太麻煩的話，你可以使用現成的開發板，使用排針或排插連接開發板，這樣就只需要畫[鍵矩陣掃描電路](/posts/diyqmkkeyboard-pcb-layout-sch/#繪製矩陣掃描電路)。以下以 Pro Micro 為例。
 
 加入兩個「Conn_01x12」元件來代表排針/插，雙擊它進入屬性頁面，將它的「Footprint」改成「Connector_PinHeader_2.54mm:PinHeader_1x12_P2.54mm_Vertical」。
 
@@ -235,7 +235,7 @@ Schematic 頁面右下角有一些資訊可以填寫。
 
 鍵盤矩陣掃描電路是由數個開關（鍵軸）及二極體組成的。
 
-爲了保持整潔，我喜歡將其放在一個獨立的子頁面中。先新增一個階層式子頁面，並命名爲「key-matrix」（Sheetname 與 Sheetfile 的名稱都要改）。雙擊方塊進入子頁面。
+為了保持整潔，我喜歡將其放在一個獨立的子頁面中。先新增一個階層式子頁面，並命名為「key-matrix」（Sheetname 與 Sheetfile 的名稱都要改）。雙擊方塊進入子頁面。
 
 ![新增「key-matrix」子頁面](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiOa15_1bCowe-jw0sThBPhy1HKScNgCSbzM3Pxdl9vqlK10vSq9YBykJv--pfhGIpbawNpbnGhVBqjv8qwNtpzC2SaoPjerYeD-jfdd7RDjZ42Pz4lN4vLNBNFihTzb15NSlloZRyQGdfuGW89w_J_8gepngKL9WbOiNxVQ5fHtBLUPrp2yk5_4Q2K/s16000/sch-new-key-matirx-subsheet.jpg)
 
@@ -251,7 +251,7 @@ Schematic 頁面右下角有一些資訊可以填寫。
 
 鍵軸的 Footprint 決定了最後這把鍵盤**可以使用什麼樣的機械軸**，Cherry MX、Alps、Kailh Choc 等各種機械軸的 Footprint 都不同，要選擇正確的 Footprint 才行。而如果要鍵盤可以熱插拔的話，也就必須選用有支援熱插拔座的 Footprint（不同軸體的熱插拔座也不同）。當然也有些 Footprint 同時整合並兼容了多種不同的軸體。請自行確認你所[安裝的鍵軸 Footprint 庫](/posts/diyqmkkeyboard-pcb-layout-sch/#安裝-footprint-庫)有哪些種類可以用。
 
-以[我自己的 Footprint 庫](https://github.com/ziteh/key-switches.pretty)爲例：`MX_switch_THT_hotswap_A` 是同時兼容 Cherry MX 軸體熱插拔與直接焊接的 Footprint；而 `MX_switch_PTH_hotswap_A` 只有 Cherry MX 熱插拔座的焊盤，沒有直接焊接的 PTH 焊盤；`MX_switch_hotswap_double_sided_A` 是雙面都有 Cherry MX 軸的熱插拔焊盤；`Kailh_Choc_PG1350_THT_A` 則是 Kailh Choc 矮軸直接焊接用的 Footprint。
+以[我自己的 Footprint 庫](https://github.com/ziteh/key-switches.pretty)為例：`MX_switch_THT_hotswap_A` 是同時兼容 Cherry MX 軸體熱插拔與直接焊接的 Footprint；而 `MX_switch_PTH_hotswap_A` 只有 Cherry MX 熱插拔座的焊盤，沒有直接焊接的 PTH 焊盤；`MX_switch_hotswap_double_sided_A` 是雙面都有 Cherry MX 軸的熱插拔焊盤；`Kailh_Choc_PG1350_THT_A` 則是 Kailh Choc 矮軸直接焊接用的 Footprint。
 
 ![我自己的 Footprint 庫中有多種不同的 Footprint](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh_ueLaVTGPaUM-MKQO7hDPP1pHJGXQ1mhv5XlmA8MBuWomK9TiAegrZqPXoeXnTjUgN20u7JVl8py9jgnJKyMlDxrFR_eTemduMBZesMK7hPURS9nQKfvcTRcDkWgFTBBHTaFHN5u1CYJ4etpJNOOSU_ue9EjbvftfKFGVRwPNf1vZypMso1tCJkbZ/s16000/Screenshot%202023-05-08%20at%2023-49-58%20ziteh_key-switches.pretty%20Mechanical%20keyboard%20switches%20KiCad%20footprint%20library.png)
 
@@ -263,15 +263,15 @@ Schematic 頁面右下角有一些資訊可以填寫。
 
 > 請注意走線的交叉處，若交叉點上有一個圓點，則代表交叉的兩條線有連接；無圓點的話就代表這兩線沒有實際連接，是跨越。要手動使交叉點連接的話可以用快捷鍵 `J`。
 
-爲鍵矩陣電路的各個 Row 和 Column 新增各自的全域標籤。
+為鍵矩陣電路的各個 Row 和 Column 新增各自的全域標籤。
 
 ![加上全域標籤](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj0yIr0fJaCqQXdnN5sLqaSHp7yrnsp2DpACNsbB5bWvw2yxGaoMwlI6pRKm-cN7Mi8dhO8CpSACS8315D6F3MHnIu-J_CF43cYgwdxGqdbBCp3S2WrZlarglVmYfdvCHDF9_tZ2EUCrU6syHDYVIsZRnsNIZadke1yowF-ptN_-qcTI1WASjwTn4mf/s16000/Inkedsch-key-matrix-2A.jpg)
 
 ## 繪製電源電路
 
-電源電路主要是提供穩定的電源給微控制器。現在的微控制通常使用 3.3V 或 5.0V 的電壓，而 USB 的電源電壓是 5.0V，若需要將 USB 的 5.0V 變成 3.3V 的話，就需要降壓電路。降壓電路通常有分 DC-DC（Buck converter）和 LDO（Low-dropout regulator）兩種，一般來說 DC-DC 的功率較大、效率較高，但週邊電路較複雜，因爲鍵盤其實不太耗電，所以比較沒必要使用 DC-DC 電路，大家通常都會選擇用 LDO。
+電源電路主要是提供穩定的電源給微控制器。現在的微控制通常使用 3.3V 或 5.0V 的電壓，而 USB 的電源電壓是 5.0V，若需要將 USB 的 5.0V 變成 3.3V 的話，就需要降壓電路。降壓電路通常有分 DC-DC（Buck converter）和 LDO（Low-dropout regulator）兩種，一般來說 DC-DC 的功率較大、效率較高，但週邊電路較複雜，因為鍵盤其實不太耗電，所以比較沒必要使用 DC-DC 電路，大家通常都會選擇用 LDO。
 
-LDO 的型號有非常多種，其規格可能都不太一樣，且還有分可調輸出或固定輸出型。若是需要 固定輸出 3.3V 的話，我常使用的 LDO 型號爲：
+LDO 的型號有非常多種，其規格可能都不太一樣，且還有分可調輸出或固定輸出型。若是需要 固定輸出 3.3V 的話，我常使用的 LDO 型號為：
 - [RT9013-33GB](https://www.digikey.tw/zh/products/detail/richtek-usa-inc/RT9013-33GB/2546347)：500mA，SOT-23-5（個人最常用）
 - [XC6220B331MR-G](https://www.digikey.tw/zh/products/detail/torex-semiconductor-ltd/XC6220B331MR-G/2138177?s=N4IgTCBcDaIBoGEBsYwAYBCBmLBGAsgEoC0A4iALoC%2BQA)：1A，SOT-23-5
 - [AMS1117-3.3](https://www.digikey.tw/zh/products/detail/umw/AMS1117-3-3/17635254)：1A，SOT-223
@@ -302,17 +302,17 @@ USB 差分訊號「D+」與「D-」各 2 腳，將相同的接在一起，然後
 
 「GND」和「SHIELD」接地。在一些情況下，「SHIELD」和地之間可能會接一些濾波電路，但是對鍵盤來說直接接地就可以了。
 
-「SBU1」和「SBU2」這裡用不到，可以爲其加上無連接的旗標（右側工具列的「Add a no-connection flag」或快捷鍵 `Q`）。
+「SBU1」和「SBU2」這裡用不到，可以為其加上無連接的旗標（右側工具列的「Add a no-connection flag」或快捷鍵 `Q`）。
 
-> 如果可以的話，可以爲 USB 加入 ESD 靜電保護的元件。
+> 如果可以的話，可以為 USB 加入 ESD 靜電保護的元件。
 
 ![USB Type-C 電路](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiHLtaF4GyRFYABUeV7Lrp9TkK2KQ2B8J3pV37GB6KVS9P74TzhlSNQOyP9wdEpzRpbUEgTvRHzgtReCEMpbqDn55Bm1CaTV-k5ct0UMZ4-IXIRYx844f9vdGVoJXqCoFvfkBJpR8H15A8_nhQ3yp_-05xi2nIT2C87HwLXlEZ3t5uk2ewUfbhbE01Y/s16000/sch-usb.jpg)
 
 ## 繪製微控制器電路
 
-微控制器電路是最複雜的部分，且每種微控制器都不同。想要知道一個微控制需要哪些週邊元件的話，最好的方式就算找現成的電路參考，ATmega32U4 可以參考 [Pro Micro 的電路](https://cdn.sparkfun.com/datasheets/Dev/Arduino/Boards/Pro_Micro_v13b.pdf)；RP2040 可以參考官方的[範例電路](https://www.raspberrypi.com/documentation/microcontrollers/rp2040.html#design-files)。爲了方便起見，我也爲微控制器電路新增一個名爲「mcu」的子頁面。
+微控制器電路是最複雜的部分，且每種微控制器都不同。想要知道一個微控制需要哪些週邊元件的話，最好的方式就算找現成的電路參考，ATmega32U4 可以參考 [Pro Micro 的電路](https://cdn.sparkfun.com/datasheets/Dev/Arduino/Boards/Pro_Micro_v13b.pdf)；RP2040 可以參考官方的[範例電路](https://www.raspberrypi.com/documentation/microcontrollers/rp2040.html#design-files)。為了方便起見，我也為微控制器電路新增一個名為「mcu」的子頁面。
 
-我這裡以較複雜的 RP2040 爲例。RP2040 所需的外圍元件有：
+我這裡以較複雜的 RP2040 為例。RP2040 所需的外圍元件有：
 - 石英振盪器。可以使用元件「Crystal_GND24」，將數值改成「12MHz」。
 - 外接 QSPI Flash。這裡使用 16MB 的 「W25Q128JVS」。Flash 也有自己的週邊電路元件。
 - USB 終端串聯電阻，阻值 27Ω。
@@ -330,11 +330,11 @@ USB 差分訊號「D+」與「D-」各 2 腳，將相同的接在一起，然後
 
 鍵盤會需要螺絲孔，這個也要加入 Schematic 中。在元件符號庫中找到「MountingHole」或「MountingHole_Pad」，前者是無焊盤的絕緣螺絲孔，後者有焊盤，可以做接地屏蔽等用途。要幾個螺絲孔加複製幾個。
 
-建議至少爲電源「+3V3」與「GND」加上測試焊盤，未來焊接前的短路檢查會比較方便。使用元件符號「TestPoint」，並將其接到要加上測試焊盤的接線上。
+建議至少為電源「+3V3」與「GND」加上測試焊盤，未來焊接前的短路檢查會比較方便。使用元件符號「TestPoint」，並將其接到要加上測試焊盤的接線上。
 
 ![測試焊盤](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg3XzabwSjq-KAEzUmmSC4x53fjTbuW_VyYEszuvdTVic2TeX3xfCLH5XgMYSbFyLQu1AOwF4lFXwNtlRldWg47vdwGMbD8JjdEifWwZPgKejKLIHad_opy-VxdkLk7cO6C2Ik2hcsPfCVlxgjShO_ABkc-o9qw1PFP_BpT8Y4AuDAsTFo9Ha5RlZYK/s16000/sch-testpotin.jpg)
 
-如果你要加入 LED 的話，LED 預設的 Reference 是「D」，爲了後續自動擺放方便，我喜歡將其改成「LD」（例如「LD1」），將 LED 和鍵矩陣電路的二極體作區隔。
+如果你要加入 LED 的話，LED 預設的 Reference 是「D」，為了後續自動擺放方便，我喜歡將其改成「LD」（例如「LD1」），將 LED 和鍵矩陣電路的二極體作區隔。
 
 ## 完成
 
@@ -347,7 +347,7 @@ USB 差分訊號「D+」與「D-」各 2 腳，將相同的接在一起，然後
 
 # Git
 
-如果你想爲 KiCad 用 Git 的話，可以參考以下的 `.gitignore`。
+如果你想為 KiCad 用 Git 的話，可以參考以下的 `.gitignore`。
 
 ```gitignore
 ## KiCad EDA .gitignore ##

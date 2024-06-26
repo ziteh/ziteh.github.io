@@ -21,9 +21,9 @@ draft: false
 
 Calcite52 是基於 [Home row mods](https://precondition.github.io/home-row-mods) 和 [ARTSEY](https://artsey.io/) 這兩個鍵盤操作系統進行設計的鍵盤，所以按鍵數特別少，只有 52 鍵。
 
-微控制器爲 RP2040，有 USB ESD 保護（SRV05-4）和 PPTC 自恢復保險絲。整體尺寸爲 231.14 mm x 97.79 mm 。
+微控制器為 RP2040，有 USB ESD 保護（SRV05-4）和 PPTC 自恢復保險絲。整體尺寸為 231.14 mm x 97.79 mm 。
 
-最下面的四個鍵爲 1.25 U。
+最下面的四個鍵為 1.25 U。
 
 ![最終 PCB Layout](https://i.imgur.com/m04crWC.png)
 
@@ -43,7 +43,7 @@ Calcite52 是基於 [Home row mods](https://precondition.github.io/home-row-mods
 
 ![整體高約 2.3cm](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhmr_DMNlwNzqUsNTaYp9UoUN2R_wAhKOJalTTSuQlJxnKGz78d97tJr2mUL8zhrxSIY-JzdG0aj6ypamoPKeGVDJITZxz8cQJ_Df8iSzOAAdQRjIhCtzApzlbLlPRnl8LH2axqrS7LQYJAGVgWmNlJQrKt7Kh9PODV12fggUrxylUDXfcXcLuZ9h-o/s16000/PXL_20230323_025445281.jpg)
 
-上面這個外殼其實是畫錯的。在畫此外殼時，我首次使用 FreeCAD，但是因爲不夠熟悉，加上沒有最終確認尺寸，所以外殼和 PCB 有一個段差，我原本是想 PCB 和外殼的外緣齊平。
+上面這個外殼其實是畫錯的。在畫此外殼時，我首次使用 FreeCAD，但是因為不夠熟悉，加上沒有最終確認尺寸，所以外殼和 PCB 有一個段差，我原本是想 PCB 和外殼的外緣齊平。
 
 此外，3D 列印扁平的零件難免會有點彎曲，而 PCB 最外側的螺絲孔沒有加大，也不是槽孔，只要外殼稍微彎曲就會鎖不進去。這是設計時沒有考慮到的。
 
@@ -63,7 +63,7 @@ Calcite52 是基於 [Home row mods](https://precondition.github.io/home-row-mods
 
 Calcite52 支援 [Vial](https://get.vial.today/)，可以即使編輯鍵位及各種功能。
 
-爲了實現 Home row mods 和 ARTSEY，使用 Vial 編輯也比在 QMK 韌體內設定還方便些。Home row mods 使用 [Mod-Tap](https://docs.qmk.fm/#/mod_tap) 實現，ARTSEY 使用 [Combos](https://docs.qmk.fm/#/feature_combo) 實現。
+為了實現 Home row mods 和 ARTSEY，使用 Vial 編輯也比在 QMK 韌體內設定還方便些。Home row mods 使用 [Mod-Tap](https://docs.qmk.fm/#/mod_tap) 實現，ARTSEY 使用 [Combos](https://docs.qmk.fm/#/feature_combo) 實現。
 
 在下圖看不出來，我設定同時按下「XCV」或「M<>」時會輸出空白鍵，也就是 ARTSEY 的概念。
 

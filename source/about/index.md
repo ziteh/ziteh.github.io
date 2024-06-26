@@ -31,4 +31,4 @@ comments: false
 ---
 
 本網站所有內容除特別聲明外，均採用「[創用CC：姓名標示-非商業性-禁止改作](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hant)」授權。
-分享時請註明作者 ZiTe 及出處爲本站。
+分享時請註明作者 ZiTe 及出處為本站。

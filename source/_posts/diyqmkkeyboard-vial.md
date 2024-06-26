@@ -20,23 +20,23 @@ draft: false
 
 [Vial](https://get.vial.today/) 是一個可以讓你隨時修改 QMK 鍵盤的各種設定的軟體，其中就包含可以即時編輯 Keymap（也就是改鍵位）。如果要自製 QMK 鍵盤的話，加入 Vial 絕對會方便很多。
 
-這篇文章會教你如何爲你自己的 QMK 鍵盤啓用 Vial 功能。
+這篇文章會教你如何為你自己的 QMK 鍵盤啓用 Vial 功能。
 
 <!--more-->
 
-> 除了 Vial 外，還有一個類似的功能稱爲 [Via](https://www.caniusevia.com/)，雖然功能相近但用法不同，不要搞混了。
+> 除了 Vial 外，還有一個類似的功能稱為 [Via](https://www.caniusevia.com/)，雖然功能相近但用法不同，不要搞混了。
 
 # 建立 vial.json
 
 要啓用 Vial，首先要準備所謂的鍵盤定義檔，這是一個 JSON 檔。
 
-> 此步驟的官方文件爲：[Build support 1 - Create JSON](https://get.vial.today/docs/porting-to-via.html)。
+> 此步驟的官方文件為：[Build support 1 - Create JSON](https://get.vial.today/docs/porting-to-via.html)。
 
 ## 鍵盤佈局
 
 到 [Keyboard Layout Editor](http://www.keyboard-layout-editor.com/)（KLE）完成你鍵盤的 Layout。當然，如果你之前使用 KLE 時有儲存 JSON 檔的話，可以把它重新上傳。
 
-接著，你需要在 KLE 中的各個鍵上標註此鍵的鍵矩陣掃描行列。以 `row,column` 的格式將其標記在左上，編號由 0 開始。例如 row1-col0 的鍵要標註爲 `1,0`。
+接著，你需要在 KLE 中的各個鍵上標註此鍵的鍵矩陣掃描行列。以 `row,column` 的格式將其標記在左上，編號由 0 開始。例如 row1-col0 的鍵要標註為 `1,0`。
 
 ![依照鍵矩陣的物理位置編輯 KLE 的各鍵標記](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmGmK-I0FxhPe0YjU61k0yghJYEcoYZTxGoFfwPn5VaUhtwbhB891raKLTWgmyJLFZLHWjZ4eFOU903iyHjp8vb7rHDa8dbRE9Qsjzrw8TEsx0OYRjuAZLzkDAENqVF5SbYRo0toVkiwtazgkN2YVx99tgj0eT5tg7JRWL1amIVKK3-_A2-DkZ00-B/s16000/c.jpg)
 
@@ -70,7 +70,7 @@ draft: false
 
 ## 建立定義檔
 
-使用以下的樣板格式建立一個新的 JSON 檔，命名爲 `vial.json`：
+使用以下的樣板格式建立一個新的 JSON 檔，命名為 `vial.json`：
 ```json
 {
     "name": "Calcite52",
@@ -126,7 +126,7 @@ draft: false
 
 ## 測試
 
-完成 `vial.json` 定義檔後可以先驗證，因爲 QMK 的編譯器不會對它的錯誤報錯，因此你需要自行確認。
+完成 `vial.json` 定義檔後可以先驗證，因為 QMK 的編譯器不會對它的錯誤報錯，因此你需要自行確認。
 
 打開 Vial 軟體，於上方工具列 File > Load dummy JSON 並選擇你的 `vial.json`，你應該會看到一個與你在 KLE 上一樣的鍵盤 Layout。
 
@@ -136,11 +136,11 @@ draft: false
 
 有了 `vial.json` 檔後就可以進行移植。
 
-> 此步驟的官方文件爲：[Build support 2 - Port to Vial](https://get.vial.today/docs/porting-to-vial.html)。
+> 此步驟的官方文件為：[Build support 2 - Port to Vial](https://get.vial.today/docs/porting-to-vial.html)。
 
 ## 下載 Vial QMK
 
-Vial 不使用 [QMK 的 repo](https://github.com/qmk/qmk_firmware)，他們有自己的 [Vial QMK repo](https://github.com/vial-kb/vial-qmk)，請 git clone 此 repo。不要把它 clone 到 `qmk_firmware` 資料夾內，請爲它指定另一個獨立的路徑。
+Vial 不使用 [QMK 的 repo](https://github.com/qmk/qmk_firmware)，他們有自己的 [Vial QMK repo](https://github.com/vial-kb/vial-qmk)，請 git clone 此 repo。不要把它 clone 到 `qmk_firmware` 資料夾內，請為它指定另一個獨立的路徑。
 
 ```git
 git clone https://github.com/vial-kb/vial-qmk
@@ -165,7 +165,7 @@ vial-qmk$ make git-submodule
 qmk doctor
 ```
 
-你可能會看到「The official repository does not seem to be configured as git remote "upstream"」警告訊息，這很正常，因爲這是 Vial QMK，確實不是官方 QMK。
+你可能會看到「The official repository does not seem to be configured as git remote "upstream"」警告訊息，這很正常，因為這是 Vial QMK，確實不是官方 QMK。
 
 接下來你可以進行一下編譯測試，例如：
 ```cmd
@@ -178,7 +178,7 @@ make vial_example/vial_atmega32u4:default
 
 ## 建立 Keymap
 
-要爲 Vial 建立其專屬的 Keymap。
+要為 Vial 建立其專屬的 Keymap。
 
 在 `keymaps` 資料夾底下新增一個資料夾 `vial`，複製 `keymaps/default` 資料夾內的所有內容（應該只會有一個 `keymap.c`），貼上到剛剛新增的 `vial` 資料夾底下。
 
@@ -192,7 +192,7 @@ VIAL_ENABLE = yes
 
 ## 生成識別碼
 
-接下來要爲你的鍵盤生成唯一的識別 ID。用 `cd` 指令回到 `vial-qmk` 的根目錄並執行：
+接下來要為你的鍵盤生成唯一的識別 ID。用 `cd` 指令回到 `vial-qmk` 的根目錄並執行：
 ```cmd
 python3 util/vial_generate_keyboard_uid.py
 ```
@@ -227,7 +227,7 @@ Vial 必須要你設定一個安全解鎖組合鍵，以避免惡意軟體寫入
 
 > 如果你不想要這個功能，可以在 `keymaps/vial/rules.mk` 中增加一行 `VIAL_INSECURE = yes`。但增加這行的鍵盤不會被允許提交並合併進 vial-qmk 的 repo 中。
 
-![設定 row0-col0 與 row3-col11 爲解鎖組合鍵](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiewtmovfv3rZfXMVOrWBdN3027MZVp0Vxfc47FuMFisgZXSweLn6awXprFMQjwAI6aPXnXKmgI4a1IHacKDKiyr1_k4f2qrGfeFCjaBp_vrSD6JXbZQt4OZnMZbiLYwz2g5GxvJf5HqIGDuDcGPdts0teKKFvJ4B6SZEqB3_iUPXWSmSlyXAGyKhlx/s16000/Screenshot%202023-04-28%20at%2022-55-09%20Keyboard%20Layout%20Editor.png)
+![設定 row0-col0 與 row3-col11 為解鎖組合鍵](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiewtmovfv3rZfXMVOrWBdN3027MZVp0Vxfc47FuMFisgZXSweLn6awXprFMQjwAI6aPXnXKmgI4a1IHacKDKiyr1_k4f2qrGfeFCjaBp_vrSD6JXbZQt4OZnMZbiLYwz2g5GxvJf5HqIGDuDcGPdts0teKKFvJ4B6SZEqB3_iUPXWSmSlyXAGyKhlx/s16000/Screenshot%202023-04-28%20at%2022-55-09%20Keyboard%20Layout%20Editor.png)
 
 ## 確認檔案
 

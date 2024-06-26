@@ -23,7 +23,7 @@ ADC（Analog to Digital Converter）顧名思義是將類比訊號轉換成數�
 # 正文
 首先一樣以 Nucleo-F446RE 做示範。
 
-首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 爲「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h`。
+首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h`。
 
 ## 完整程式
 ``` c
@@ -200,7 +200,7 @@ static void delay(uint32_t value);
 #include <libopencm3/stm32/adc.h>
 #include <libopencm3/stm32/usart.h>
 ```
-除了基本的 `rcc.h` 和 `gpio.h` 及必要的 `adc.h` 外，因爲我要使用 USART 和 `printf()`，所以還會需要 `usart.h`、`stdio.h` 與 `errno.h`。
+除了基本的 `rcc.h` 和 `gpio.h` 及必要的 `adc.h` 外，因為我要使用 USART 和 `printf()`，所以還會需要 `usart.h`、`stdio.h` 與 `errno.h`。
 
 > USART 和 `printf()` 的詳細用法請看[之前的文章](https://ziteh.github.io/2022/09/libopencm3-stm32-9/)。
 
@@ -240,14 +240,14 @@ static void adc_setup(void)
   delay(800000); /* Wait a bit. */
 }
 ```
-要使用 ADC 功能，首先要知道 ADC 的通道在哪些 GPIO 上，並將其設定爲類比輸入。
+要使用 ADC 功能，首先要知道 ADC 的通道在哪些 GPIO 上，並將其設定為類比輸入。
 
 接下來就是要設定 ADC。
 * `adc_enable_scan_mode()` 由於本例要讀取 3 個通道，所以要致能掃描模式。
 * `adc_set_single_conversion_mode()` 設定成單一轉換模式，不連續轉換。
 * `adc_disable_discontinuous_mode_regular()` 與 `adc_disable_discontinuous_mode_injected()` 禁能 Regular 與 Injected 的不連續模式。
 * `adc_enable_external_trigger_injected()` 設定以使用 Injected 的軟體觸發。
-* `adc_set_right_aligned()` 讓資料的對齊方式爲靠右對齊。
+* `adc_set_right_aligned()` 讓資料的對齊方式為靠右對齊。
 * `adc_set_sample_time_on_all_channels()` 設定所有通道的取樣時間，這裡使用 56 個 Cycle。
 * `adc_set_injected_sequence()` 設定 Injected 通道組的序列。本例要讀取的是 Ch0、Ch1 與 Ch4 這 3 個通道。
 

@@ -16,14 +16,14 @@ aliases: ["/2022/09/libopencm3-stm32-5/"]
 # 前言
 在上一篇中我們介紹了基本的 STM32 GPIO 輸出，並寫了一個簡單的 LED 閃爍程式，還教了 PIO 的多環境設定。
 
-這一篇要接續介紹 LibOpenCM3 的基本 GPIO 輸入寫法，功能爲當按下按鈕時 LED 會亮起。
+這一篇要接續介紹 LibOpenCM3 的基本 GPIO 輸入寫法，功能為當按下按鈕時 LED 會亮起。
 
 <!--more-->
 
 # 正文
 首先一樣以 Nucleo-F446RE 做示範。
 
-首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 爲「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 檔案。
+首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 檔案。
 
 ## 完整程式
 一樣先打出完整程式：
@@ -158,7 +158,7 @@ int main(void)
 ```
 和 GPIO 輸入的時候一樣，先啓用 RCC，然後再設定 GPIO。
 
-由於 Nucleo MB1136 開發板（參考 [UM1724](https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf)）的 User Button 已經有 4.7kΩ 的上拉電阻（平常是 `High`，按下時爲 `Low`），因此輸入模式選擇 Floating （不用上/下拉電阻，`GPIO_PUPD_NONE`）就好了。
+由於 Nucleo MB1136 開發板（參考 [UM1724](https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf)）的 User Button 已經有 4.7kΩ 的上拉電阻（平常是 `High`，按下時為 `Low`），因此輸入模式選擇 Floating （不用上/下拉電阻，`GPIO_PUPD_NONE`）就好了。
 
 我們使用最簡單的輪詢（Polling）方式來取得按鈕的輸入值，再依其值改變 LED 的明滅。使用 `gpio_get()` 來讀取指定的 GPIO 的值。
 
@@ -210,7 +210,7 @@ int main(void)
 ![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJgtNZ1OAUDzWV-6opgIXYXKbB2V4NEmDFh1UCC2bzTQ55h-jDx4YoB0uSZqduDWZXjUEOgec3wuTvf8WMg5plKgaWEOA_SclRUy_KnMsy1iakdoNDIJvi1ZoaKK0i1UHs6UbsDfpZbT93bONnceWQa1phumS6ainbGw0oapwPfy4RnCfwiFcfhkLd/w225-h400/gpio_input.gif)
 
 # 小結
-這次介紹了最簡單的 GPIO 輸入寫法。說實話，這種用法比較少會實際應用到，因爲大多數情況輪詢是一件很沒效率也不夠聰明的方法。通常要使用按鈕輸入時，我都會優先考慮使用外部中斷（EXTI）的方式達成，因此下一篇要介紹的就是外部中斷。
+這次介紹了最簡單的 GPIO 輸入寫法。說實話，這種用法比較少會實際應用到，因為大多數情況輪詢是一件很沒效率也不夠聰明的方法。通常要使用按鈕輸入時，我都會優先考慮使用外部中斷（EXTI）的方式達成，因此下一篇要介紹的就是外部中斷。
 
 # 參考資料
 * [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)

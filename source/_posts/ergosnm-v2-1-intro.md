@@ -23,7 +23,7 @@ draft: false
 
 <!--more-->
 
-爲了做成這把鍵盤，我開始研究 [QMK](https://github.com/qmk/qmk_firmware)，所以我才會寫了一系列的 [QMK 教學文](/posts/diyqmkkeyboard-0/)。而現在，第一個可以正式當作鍵盤使用的 `Rev 2.1` 版完成了，因此來介紹一下。
+為了做成這把鍵盤，我開始研究 [QMK](https://github.com/qmk/qmk_firmware)，所以我才會寫了一系列的 [QMK 教學文](/posts/diyqmkkeyboard-0/)。而現在，第一個可以正式當作鍵盤使用的 `Rev 2.1` 版完成了，因此來介紹一下。
 
 # 特色與規格
 
@@ -43,7 +43,7 @@ draft: false
 - 500mA 3.3V LDO。
 - 支援 JLCPCB 的 PCBA 服務，大部分的零件都不需要自己焊接。
 
-整體的鍵盤 Layout 參考並結合 [Keebio Iris](https://keeb.io/collections/iris-split-ergonomic-keyboard) 與 [ZSA Moonlander](https://www.zsa.io/moonlander/)，爲 6x5 設計，Column-staggered 的設計可以使手指的擺放更加自然。
+整體的鍵盤 Layout 參考並結合 [Keebio Iris](https://keeb.io/collections/iris-split-ergonomic-keyboard) 與 [ZSA Moonlander](https://www.zsa.io/moonlander/)，為 6x5 設計，Column-staggered 的設計可以使手指的擺放更加自然。
 
 預設在切換到 Layer 1 時，軌跡球會變成滑鼠滾輪的功能。滑鼠按鍵可以直接分配到特定的鍵上，而我使用 [QMK Combos](https://docs.qmk.fm/#/feature_combo) 功能，設定同時按 <kbd>J</kbd>+<kbd>K</kbd> 鍵時是左鍵；<kbd>K</kbd>+<kbd>L</kbd> 鍵時是右鍵；<kbd>J</kbd>+<kbd>L</kbd> 鍵時是中鍵（滾輪按下）。
 
@@ -69,7 +69,7 @@ draft: false
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/1BXKdrCFn6c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-因爲我有使用 PCBA 服務，所以大部分的零件都不用自己焊接，包含最麻煩的 QFN 封裝 RP2040。但是爲了降低成本，有一些零件我還是選擇自己手工焊接，包含了：USB、LDO、保險絲、鍵軸熱插拔座、TRRS 座、FPC/FFC 連接器。另外拇指區和軌跡球的子電路板我沒有用 PCBA，所以這 2 片是完全自己焊的。
+因為我有使用 PCBA 服務，所以大部分的零件都不用自己焊接，包含最麻煩的 QFN 封裝 RP2040。但是為了降低成本，有一些零件我還是選擇自己手工焊接，包含了：USB、LDO、保險絲、鍵軸熱插拔座、TRRS 座、FPC/FFC 連接器。另外拇指區和軌跡球的子電路板我沒有用 PCBA，所以這 2 片是完全自己焊的。
 
 將焊接好的 PCB 連接起來。這時就可以先燒錄 QMK 韌體進去，測試功能是否正常了。
 
@@ -116,11 +116,11 @@ SNM 鍵盤計劃是我從 2020 年 6 月開始的，目標是設計並作出整�
 
 最一開始是受到 TEX Yoda II 啓發，因此最初的計劃有也是做 60% 鍵盤，而鼠標裝置也是指點桿（小紅點），然後開始慢慢地學習 QMK。後來我朋友推坑我 Keebio Iris v4 分離式鍵盤，而我當時也開始使用食指軌跡球取代滑鼠，因此計劃改成做分離式鍵盤+軌跡球。
 
-但是因爲我還有其它東西要做，所以這個鍵盤的進度一直不多，包含我在研究要如何做到完全無線且還有軌跡球的功能。如果只是要全無線的分離式鍵盤其實不會太難，要再加上軌跡球功能的話也還好，但是因爲達成方案很多種，包括不使用 QMK 韌體，我想把每一種都實際測試過一次再決定最終方案，所以才會拖這麼久。
+但是因為我還有其它東西要做，所以這個鍵盤的進度一直不多，包含我在研究要如何做到完全無線且還有軌跡球的功能。如果只是要全無線的分離式鍵盤其實不會太難，要再加上軌跡球功能的話也還好，但是因為達成方案很多種，包括不使用 QMK 韌體，我想把每一種都實際測試過一次再決定最終方案，所以才會拖這麼久。
 
 ![早期設計的軌跡球感測器 PCB](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj_z8PRnwLFbvdWsDexqhSct47ZNFakd9bQ7tnrEC-UKPNpdqX4B1tdu5AGAJULK7ovLY6uH9rRhNHbo2MlhyqaV46diA7OJgS7A3kJ27i-OO_hL6N3-6Nz1Ug-GsFN99tKjNePSm4rn0mtIV7yqNW_EzMKo08CqwfctMv_A53iXZjpF9HVNFGQbQiA/s16000/bwTRRi4.jpg)
 
-其中包括爲了測試方便而自己設計的各種開發板：搭載 [nRF52840](https://www.nordicsemi.com/products/nrf52840) ([MDBT50Q](https://www.raytac.com/product/ins.php?index_id=24)) RF SoC 的 [MDBT Micro](https://github.com/ziteh/mdbt-micro)；搭載 ATmega32U4、取代 Pro Micro 的 [Next Micro](https://github.com/ziteh/next-micro)；搭載 RP2040 的 [RP Micro](https://github.com/ziteh/rp-micro)。
+其中包括為了測試方便而自己設計的各種開發板：搭載 [nRF52840](https://www.nordicsemi.com/products/nrf52840) ([MDBT50Q](https://www.raytac.com/product/ins.php?index_id=24)) RF SoC 的 [MDBT Micro](https://github.com/ziteh/mdbt-micro)；搭載 ATmega32U4、取代 Pro Micro 的 [Next Micro](https://github.com/ziteh/next-micro)；搭載 RP2040 的 [RP Micro](https://github.com/ziteh/rp-micro)。
 
 期間還受到了 PCBWay 的贊助，他們免費幫我生成了一批 PCB 與鋼網。人生第一次被贊助。
 

@@ -16,16 +16,16 @@ aliases: ["/2022/09/libopencm3-stm32-15/"]
 # 前言
 在前面的篇章中，我們已經學會使用 Timer 來精確定時了，而在使用 MCU 的過程中最常會需要精確定時的莫過於 `delay()` 函式，在此之前我都是單純的讓 MCU 空跑一定的次數，但這樣很難知道它實際上到底 delay 了多久的時間，而已同樣的數值在不同的 Clock Tree 設定下 delay 的長度也不同，因此我們可以使用 Timer 來做出一個更好的 `delay()`。
 
-但是如果只是要實現 `delay()` 功能的話，並不用像之前的 Timer 那樣計算並設定一大堆數值，因爲 ARM Cortex M3 有一個特殊的計時器——SysTick，我們可以使用它來完成 `delay()` 函式。
+但是如果只是要實現 `delay()` 功能的話，並不用像之前的 Timer 那樣計算並設定一大堆數值，因為 ARM Cortex M3 有一個特殊的計時器——SysTick，我們可以使用它來完成 `delay()` 函式。
 
-這次的目標是使用 SysTick 來實現一個 `delay_ms()` 函式，它可以以毫秒爲單位進行 delay，並且用來寫 LED 閃爍的程式。
+這次的目標是使用 SysTick 來實現一個 `delay_ms()` 函式，它可以以毫秒為單位進行 delay，並且用來寫 LED 閃爍的程式。
 
 <!--more-->
 
 # 正文
 首先一樣以 Nucleo-F446RE 做示範。
 
-首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 爲「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 檔案。
+首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 檔案。
 
 ## 完整程式
 ``` c
@@ -129,18 +129,18 @@ SysTick（System tick timer）是 ARM Cortex M3 系列內建的功能，這是�
 
 ![▲ SysTick 的時鐘源。取自 RM0390。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgVy0ddkXOGgBvgTb2fp0pYGGXxCuNUE0BODLoYido2400V2_OWev7rSIktKLzKhNeI8dyPfoQtwREg2R3R8qrpC5-u_w3RrgxkBO28fV4VUz-8k0GZbJmG3_ckhEaV8igVGVcnlMUPFS7I_WvAK2CcAwvgiJax5a3_Vxz7pOzE6uINKDFyHaYBYyVW/s16000/image_1662288150837_0.png)
 
-這裡使用 `systick_set_clocksource()` 來指定 SysTick 時鐘源爲 AHB 並啓用 `/8` 預分頻器，因此目前的 SysTick 頻率爲 `rcc_ahb_frequency / 8`。
+這裡使用 `systick_set_clocksource()` 來指定 SysTick 時鐘源為 AHB 並啓用 `/8` 預分頻器，因此目前的 SysTick 頻率為 `rcc_ahb_frequency / 8`。
 
 然後要設定 SysTick 的 RVR（Reload Value Register）暫存器，這個數值決定了 SysTick 發生中斷的頻率，SysTick 每次下數到 0 時都會自動載入 RVR 的值到 CVR（Current Value Register）中，所以 SysTick 會計數 RVR\~0 共 RVR + 1 次。
 
-所以 SysTick 中斷發生的頻率爲：
+所以 SysTick 中斷發生的頻率為：
 `f_int = f_systick / (RVR + 1)`
 因此
 `RVR = f_systick / f_int - 1`
 
-最後只要套用上面的公式，並用 `systick_set_reload()` 設定 RVR 的值就好。因爲這裡預計要實現 ms 等級的 delay，所以我希望 SysTick 可以每 1 ms 就中斷一次，也就是中斷頻率爲 1 kHz，故設定 RVR 的值爲 `rcc_ahb_frequency / 8 / 1000 - 1`。
+最後只要套用上面的公式，並用 `systick_set_reload()` 設定 RVR 的值就好。因為這裡預計要實現 ms 等級的 delay，所以我希望 SysTick 可以每 1 ms 就中斷一次，也就是中斷頻率為 1 kHz，故設定 RVR 的值為 `rcc_ahb_frequency / 8 / 1000 - 1`。
 
-> RVR 是一個 24 位元的暫存器，它的容許範圍爲 `0x000001` \~ `0xFFFFFF`，實際在設定時要注意一下。[官方說明](https://developer.arm.com/documentation/dui0552/a/cortex-m3-peripherals/system-timer--systick/systick-reload-value-register)
+> RVR 是一個 24 位元的暫存器，它的容許範圍為 `0x000001` \~ `0xFFFFFF`，實際在設定時要注意一下。[官方說明](https://developer.arm.com/documentation/dui0552/a/cortex-m3-peripherals/system-timer--systick/systick-reload-value-register)
 
 ### Delay 與 SysTick ISR
 ``` c
@@ -206,7 +206,7 @@ static void led_setup(void)
 ```
 ## 成果
 
-這裡使用兩個 STM32，並分別設定 LED 開關的 delay 爲 500ms 和 5ms，結果也是滿精準的。
+這裡使用兩個 STM32，並分別設定 LED 開關的 delay 為 500ms 和 5ms，結果也是滿精準的。
 
 > 請注意 LED 要切換 2 次才是一個完整的波形。
 

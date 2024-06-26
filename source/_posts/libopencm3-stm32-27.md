@@ -23,7 +23,7 @@ CRC（Cyclic redundancy check）即循環冗餘校驗是一種雜湊函式，通
 # 正文
 首先一樣以 Nucleo-F446RE 做示範。
 
-首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 爲「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c`。
+首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c`。
 
 ## 完整程式
 ``` c
@@ -156,7 +156,7 @@ CRC 計算單元的使用方式很單純，因此我直接寫在 USART2 的 ISR 
 
 但 ISR 執行後，先禁能 USART2 的中斷，以方便之後連續讀取 4 Byte 的資料。
 
-以 `crc_reset()` 重設 CRC 單元，並將資料暫存器重置爲 `0xFFFF FFFF`（即 CRC Init = `0xFFFF FFFF`）。
+以 `crc_reset()` 重設 CRC 單元，並將資料暫存器重置為 `0xFFFF FFFF`（即 CRC Init = `0xFFFF FFFF`）。
 
 以 `for` 迴圈連續接收 4 Byte 的資料，並使用 `crc_calculate()` 將要計算的資料寫入 CRC 的資料暫存器，該函式會自行 Blocking 直到 CRC 計算完就會回傳結果。
 
@@ -198,7 +198,7 @@ static void usart_setup(void)
 
 ## 成果
 
-從 RM0390 或 AN4187 中可以得知，STM32 使用的多項式是 `0x4C1 1DB7`（部分系列可修改），初始值爲 `0xFFFF FFFF`。
+從 RM0390 或 AN4187 中可以得知，STM32 使用的多項式是 `0x4C1 1DB7`（部分系列可修改），初始值為 `0xFFFF FFFF`。
 
 我依序輸入 32 位元的資料並各別得到其結果：
 - 輸入 `0x9D 12 3A D4` 得到 `0xC9 68 5F 5E`。

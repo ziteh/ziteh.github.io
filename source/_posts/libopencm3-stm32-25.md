@@ -14,14 +14,14 @@ aliases: ["/2022/10/libopencm3-stm32-25/"]
 ---
 
 # 前言
-上次已經介紹了 SPI 作爲 Master device 的程式，這次要接著介紹作爲 Slave device 的程式寫法，讓 Master 與 Slave 可以互相溝通。
+上次已經介紹了 SPI 作為 Master device 的程式，這次要接著介紹作為 Slave device 的程式寫法，讓 Master 與 Slave 可以互相溝通。
 
 <!--more-->
 
 # 正文
 首先一樣以 Nucleo-F446RE 做示範。
 
-首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 爲「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h` 檔案。
+首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h` 檔案。
 
 ## 完整程式
 ``` c
@@ -270,15 +270,15 @@ static void spi_setup(void)
   spi_enable(SPI1);
 }
 ```
-這部分與[設定 Master](https://ziteh.github.io/2022/10/libopencm3-stm32-24/) 時的類似。不過要注意的是，Master device 的 CS（NSS）腳不受 AF 控制，但 Slave device 的會，所以 CS 腳也要設爲 AF。
+這部分與[設定 Master](https://ziteh.github.io/2022/10/libopencm3-stm32-24/) 時的類似。不過要注意的是，Master device 的 CS（NSS）腳不受 AF 控制，但 Slave device 的會，所以 CS 腳也要設為 AF。
 
-SPI 本身的設定如 CPOL 與 CPHA 要與 Master 一致才可以正常通訊，這裡設爲 CPOL=`0` CPHA=`1`。
+SPI 本身的設定如 CPOL 與 CPHA 要與 Master 一致才可以正常通訊，這裡設為 CPOL=`0` CPHA=`1`。
 
 然後先使用 `spi_init_master()` 初始化 SPI 的相關設定，再以 `spi_set_slave_mode()` 設定成 Slave mode。
 
-一樣以 `spi_set_full_duplex_mode()` 設爲全雙工模式。
+一樣以 `spi_set_full_duplex_mode()` 設為全雙工模式。
 
-再來，爲了要使用硬體 CS，所以要將 SSM 和 SSOE 都設爲 `0`。這裡呼叫 `spi_disable_software_slave_management()` 與 `spi_disable_ss_output()` 來完成設定。
+再來，為了要使用硬體 CS，所以要將 SSM 和 SSOE 都設為 `0`。這裡呼叫 `spi_disable_software_slave_management()` 與 `spi_disable_ss_output()` 來完成設定。
 
 > **NSS output disable (SSM=0, SSOE = 0)**: In slave mode, the NSS pin works as a standard “chip select” input and the slave is selected while NSS line is at low level.
 > 節錄自 RM0390 Rev6 P.854。

@@ -22,7 +22,7 @@ aliases: ["/2020/06/diyqmkkeyboard-3/", "/posts/diyqmkkeyboard-3/"]
 <!--more-->
 
 > QMK 本身是用 C 及少部分的 C++ 寫的，如果你熟悉 C/C++ 的話，可以使用你喜歡的方式編譯。本篇主要是寫給不熟悉的人，可以用最簡單的方式編譯 QMK。
-> 本文以 Windows 系統爲主，macOS 與 Linux 還請參考[官方文件](https://docs.qmk.fm/#/newbs_getting_started)。
+> 本文以 Windows 系統為主，macOS 與 Linux 還請參考[官方文件](https://docs.qmk.fm/#/newbs_getting_started)。
 
 # 編譯
 
@@ -72,7 +72,7 @@ QMK 有個官方的燒錄工具——[QMK Toolbox](https://github.com/qmk/qmk_to
 
 1. 在上方的「Programmer」選單中選擇「Ateml AppNote AVR109 BootLoader」。
 2. 在下面的「Flash」中選擇點擊文字框右邊的「...」按鈕來選擇剛剛編譯好的 `.hex` 檔案（如示範為 `mytestkb_defaulf.hex`）。
-3. 在右上方的「MCU」選單中選擇「ATmega32U4」（或者你的晶片型號，Pro Micro 爲 ATmega32U4）。
+3. 在右上方的「MCU」選單中選擇「ATmega32U4」（或者你的晶片型號，Pro Micro 為 ATmega32U4）。
 4. 將你的開發板透過 USB 線接上電腦。這時「裝置管理員」可能會有反應。
 5. 讓你的開發板進入 DFU 模式（Pro Micro 就是快速短接 RST 和 GND 腳 2 次）。
 6. 這時「裝置管理員」應該會有反應，並請特別注意其中的「連接埠 (COM 和 LPT)」項目，進入 DFU 模式後這裡應該會出現一個新的裝置，並在後面會標示其 COM Port 名稱（如 `COM10`）。
@@ -107,7 +107,7 @@ RP2040 進入 DFU 模式的方法主要有以下幾種：
 - RP2040 接上電腦，先按著 Boot 按鈕不放，單擊 Reset 按鈕後放開 Boot 按鈕。
 - RP2040 先不接電腦，按著 Boot 按鈕不放，接上電腦後放開 Boot 按鈕。
 
-如果 RP2040 成功進入 DFU 模式，那你的電腦應該會多出一個名爲 `RPI-RP2` 的儲存裝置，可以在檔案總管的本機中確認。RP2040 的 DFU 模式不像 Pro Micro 有時間限制，要退出就是按一下 Reset 或直接拔除 USB 線。
+如果 RP2040 成功進入 DFU 模式，那你的電腦應該會多出一個名為 `RPI-RP2` 的儲存裝置，可以在檔案總管的本機中確認。RP2040 的 DFU 模式不像 Pro Micro 有時間限制，要退出就是按一下 Reset 或直接拔除 USB 線。
 
 ### 進行燒錄
 
@@ -135,7 +135,7 @@ RP2040 可以透過以下任一種方式燒錄韌體：
 
 # 結語
 
-如果到這一步都很成功的話那就恭喜了，到目前爲止 QMK 韌體的部分都完成了。
+如果到這一步都很成功的話那就恭喜了，到目前為止 QMK 韌體的部分都完成了。
 
 # 相關網頁
 

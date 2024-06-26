@@ -1,5 +1,5 @@
 ---
-title: '[自製QMK鍵盤-番外] 爲QMK鍵盤加上Bluetooth藍牙無線功能'
+title: '[自製QMK鍵盤-番外] 為QMK鍵盤加上Bluetooth藍牙無線功能'
 author: ZiTe
 tags:
   - DIY
@@ -28,15 +28,15 @@ aliases: ["/2022/02/diyqmkkeyboard-8/", "/posts/diyqmkkeyboard-8/"]
 1. Roving Networks RN-42：支援傳統藍牙（Bluetooth Classic）
 2. [Adafruit Bluefruit LE SPI Friend](https://www.adafruit.com/product/2633)：支援藍牙低功耗（Bluetooth Low Energy，BLE）
 
-而多數人使用的應該是「Adafruit Bluefruit LE SPI Friend」這個模組，以下也以它爲例。
+而多數人使用的應該是「Adafruit Bluefruit LE SPI Friend」這個模組，以下也以它為例。
 
-Adafruit Bluefruit LE SPI Friend（以下簡稱 Adafruit BLE）是 Adafruit 所推出 SPI 介面藍牙模組，上面搭載了勁達 Raytac 的 [MDBT40](https://www.raytac.com/product/ins.php?index_id=74) 藍牙模組，而 MDBT40 模組則是搭載了 Nordic Semi [nRF51822](https://www.nordicsemi.com/products/nrf51822) 這個主打 BLE 與 2.4 GHz 功能的 SoC。Adafruit BLE 內有燒錄爲其所寫的專屬[韌體](https://github.com/adafruit/Adafruit_BluefruitLE_Firmware)。
+Adafruit Bluefruit LE SPI Friend（以下簡稱 Adafruit BLE）是 Adafruit 所推出 SPI 介面藍牙模組，上面搭載了勁達 Raytac 的 [MDBT40](https://www.raytac.com/product/ins.php?index_id=74) 藍牙模組，而 MDBT40 模組則是搭載了 Nordic Semi [nRF51822](https://www.nordicsemi.com/products/nrf51822) 這個主打 BLE 與 2.4 GHz 功能的 SoC。Adafruit BLE 內有燒錄為其所寫的專屬[韌體](https://github.com/adafruit/Adafruit_BluefruitLE_Firmware)。
 
-因爲 Adafruit BLE 的韌體已經有實作藍牙 HID 的相關 [AT 指令](https://learn.adafruit.com/introducing-the-adafruit-bluefruit-spi-breakout/at-commands)，所以 QMK 其實只是依照按下的按鍵，再透過 AT 指令讓 Adafruit BLE 完成與電腦間的通訊。
+因為 Adafruit BLE 的韌體已經有實作藍牙 HID 的相關 [AT 指令](https://learn.adafruit.com/introducing-the-adafruit-bluefruit-spi-breakout/at-commands)，所以 QMK 其實只是依照按下的按鍵，再透過 AT 指令讓 Adafruit BLE 完成與電腦間的通訊。
 
 ## 自製 Adafruit BLE 模組
 
-Adafruit BLE 模組的價位有點高，但因爲它的韌體有在 [GitHub](https://github.com/adafruit/Adafruit_BluefruitLE_Firmware) 上，所以也可以自己買 MDBT40 或其它 nRF51822 模組來燒錄。我使用的就是自行燒錄的，詳細教學在[這裡](/posts/diyqmkkeyboard-ble-module)。
+Adafruit BLE 模組的價位有點高，但因為它的韌體有在 [GitHub](https://github.com/adafruit/Adafruit_BluefruitLE_Firmware) 上，所以也可以自己買 MDBT40 或其它 nRF51822 模組來燒錄。我使用的就是自行燒錄的，詳細教學在[這裡](/posts/diyqmkkeyboard-ble-module)。
 
 不過要注意的是，MDBT40 和 nRF51822 有不同的版本規格，要選用 32 KB RAM、256 KB Flash Memory 的版本才行，也就是 MDBT40-256RV3 或 MDBT40-P256RV3 及 nRF51822-xxAC。
 
@@ -76,7 +76,7 @@ NKRO_ENABLE = no
 
 # 接線
 
-因爲我使用的是 Pro Micro (ATmega32U4)，故以下將以它作爲示範。也需注意 `RST`、`IRQ`、`CS` 這三個的實際腳位是可以在 `config.h` 中修改的。
+因為我使用的是 Pro Micro (ATmega32U4)，故以下將以它作為示範。也需注意 `RST`、`IRQ`、`CS` 這三個的實際腳位是可以在 `config.h` 中修改的。
 
 實際上要連接的線有 6 條訊號，再加 2 條電源（Vcc、GND）。
 

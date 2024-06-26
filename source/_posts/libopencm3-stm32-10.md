@@ -16,14 +16,14 @@ aliases: ["/2022/09/libopencm3-stm32-10/"]
 # 前言
 上一篇中我介紹了 USART 的發送，這次要來寫 USART 的接收了。由於透過輪詢的方式實現 USART 的接收實在是不是一個好的寫法，因此我們會直接使用中斷（Interrupt）的方式來達成。
 
-這次的功能爲讓 STM32 將 USART 接收到的資料原封不動丟回去，且收到資料時 LED 會閃一下。
+這次的功能為讓 STM32 將 USART 接收到的資料原封不動丟回去，且收到資料時 LED 會閃一下。
 
 <!--more-->
 
 # 正文
 一樣先以 Nucleo-F446RE 做示範。
 
-首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 爲「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 檔案。
+首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 檔案。
 ## 完整程式
 ``` c
 /**
@@ -133,7 +133,7 @@ void usart2_isr(void)
 #include <libopencm3/stm32/usart.h>
 #include <libopencm3/cm3/nvic.h>
 ```
-因爲會用到中斷的功能，所以記得要引入 `nvic.h`。
+因為會用到中斷的功能，所以記得要引入 `nvic.h`。
 
 ### GPIO 腳位
 ``` c
@@ -147,7 +147,7 @@ void usart2_isr(void)
 #define GPIO_LED_PORT (GPIOA)
 #define GPIO_LED_PIN (GPIO5) /* D13. */
 ```
-這裡一樣使用 Nucleo 開發板規劃好的 USART2，其 Tx 與 Rx 腳分別爲 PA2 與 PA3。LED 一樣是 PA5。
+這裡一樣使用 Nucleo 開發板規劃好的 USART2，其 Tx 與 Rx 腳分別為 PA2 與 PA3。LED 一樣是 PA5。
 
 ### RCC
 ``` c
@@ -195,7 +195,7 @@ static void usart_setup(void)
 
 再來使用 `nvic_enable_irq()` 來致能 USART 的 IRQ，`usart_enable_rx_interrupt()` 致能 USART 的接收中斷。
 
-最後就是設定 USART 的通訊設置（鮑率、資料位元、停止位元等），值得注意的是因爲我們這次需要同時啓用接收（Rx）與發送（Tx），所以 `usart_set_mode()` 的引數是 `USART_MODE_TX_RX`。
+最後就是設定 USART 的通訊設置（鮑率、資料位元、停止位元等），值得注意的是因為我們這次需要同時啓用接收（Rx）與發送（Tx），所以 `usart_set_mode()` 的引數是 `USART_MODE_TX_RX`。
 
 ### USART ISR
 ``` c

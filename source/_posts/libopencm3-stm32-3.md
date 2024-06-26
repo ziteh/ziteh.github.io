@@ -38,16 +38,16 @@ GPIO（General Purpose Input/Output）可以說是微控制器最基本的功能
 * [Open-Drain（汲極開路）](https://zh.wikipedia.org/zh-tw/%E9%9B%86%E7%94%B5%E6%9E%81%E5%BC%80%E8%B7%AF)：FET 版的 Open-Collector。由一個 N 通道 FET 構成，只能輸出 `Low（GND）` 或 `Open（開路）`狀態，因此要外加一上拉電阻才能使其輸出的 `Open` 狀態變成 `High`，而 `High` 狀態的實際電壓根據上拉電阻所接的電源而定，可以高或低於 IC 本身的電壓值。擁有線接及閘（Wired AND）的特性。
 
 輸入模式：
-* Analog（類比）：用於使用 ADC 讀取類比的數值時。需要分配爲 ADC Channel 的 Pin 腳上才能正常使用。
+* Analog（類比）：用於使用 ADC 讀取類比的數值時。需要分配為 ADC Channel 的 Pin 腳上才能正常使用。
 * Floating（浮接）：一般的讀取模式。若不啓用 STM32 內部的上/下拉電阻，使用時外部電路應要有上/下拉電阻，否則該 Pin 腳浮空時可能無法正確讀值（或你保證它不會有浮空的情況）。
 
 上面的內容涉及一些基本電學或電子學的知識，以上僅簡單介紹。
 
 ![▲ GPIO 內部架構圖。取自 ST Wiki: GPIO internal peripheral。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhaPgVXld6m8H6bdFlCS8p2p1Qatn2PVDH2VBMzcyoO7i1FzXOf_Mwt3E8eJ2eKL_oK7gspo2X7AiYDcOAVmmrOnRjTOjFjdaKvZwwAB4XXSJj0-sfuEJYXQcPoRMnGXQL2TChNd_b8TeXqHQ-y-butpBBAGzfeJN8EYBO2yUJjecL9VrEe-iZvETyu/s16000/IO_port.png)
 
-剛開始使用 STM32 時可能會搞不太懂上面這些，尤其是 AF 的部分，簡單來說，「General Purpose」就是可以單純地人爲控制輸出 `High/Low`，而使用「Alternate Function」則會將控制 `High/Low` 的權利和責任交給指定的特殊功能，例如指定該 Pin 腳爲 UART-Tx，那我就沒辦法直接設定它要 `High` 還是 `Low`，因爲 UART-Tx 的 `High/Low` 要依據其通訊協定和資料來決定，我們只能告訴 UART 要傳送的資料是什麼，再由 UART 來依據此資料自動控制該 Pin 腳的 `High/Low` 以完成通訊。
+剛開始使用 STM32 時可能會搞不太懂上面這些，尤其是 AF 的部分，簡單來說，「General Purpose」就是可以單純地人為控制輸出 `High/Low`，而使用「Alternate Function」則會將控制 `High/Low` 的權利和責任交給指定的特殊功能，例如指定該 Pin 腳為 UART-Tx，那我就沒辦法直接設定它要 `High` 還是 `Low`，因為 UART-Tx 的 `High/Low` 要依據其通訊協定和資料來決定，我們只能告訴 UART 要傳送的資料是什麼，再由 UART 來依據此資料自動控制該 Pin 腳的 `High/Low` 以完成通訊。
 
-而「Push-Pull」和「Open-Drain」不知道要怎麼選的話，一般都是用「Push-Pull」，因爲它可以直接輸出強高或強低，但最好還是去詳細瞭解它們的差異。
+而「Push-Pull」和「Open-Drain」不知道要怎麼選的話，一般都是用「Push-Pull」，因為它可以直接輸出強高或強低，但最好還是去詳細瞭解它們的差異。
 
 另外，STM32 並非所有 Pin 腳都可以相容/承受 5V 的電壓，有些僅能 3.3V，且每個型號每支接腳都不一樣，在接電路或購買電子零件時，請查看 Datasheet 並多加留意是否需要電平轉換。
 
@@ -55,9 +55,9 @@ GPIO（General Purpose Input/Output）可以說是微控制器最基本的功能
 
 對於非 F1 系列的 STM32，要使用 AF 功能時，還有知道目標功能是「AF 幾？」。
 
-以 STM32F446RE 爲例，在其 Datasheet [DS10693](https://www.st.com/resource/en/datasheet/stm32f446re.pdf) 中的「Table 11. Alternate function」有把各個 AF 及其功能對應好。
+以 STM32F446RE 為例，在其 Datasheet [DS10693](https://www.st.com/resource/en/datasheet/stm32f446re.pdf) 中的「Table 11. Alternate function」有把各個 AF 及其功能對應好。
 
-例如要把 PA2 及 PA3 腳當成 USART2 的 Tx 與 Rx 使用的話，要設定這兩腳要啓用的 AF 爲「AF7」。
+例如要把 PA2 及 PA3 腳當成 USART2 的 Tx 與 Rx 使用的話，要設定這兩腳要啓用的 AF 為「AF7」。
 
 ![▲ GPIO 與 AF 功能的對應表。取自 DS10693 Rev10 P.57。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj72ewJ_VwsOl1dP04dVnK3d0_gQgeee_F--bjtTCwmkcl6OZTakXSoeTtcYou17UQgHYwZvFe-Mf6jKQCVp_L5apdSxokQz2_58K3fSawxfjjMyu0s0ydjxmkxJ0EyR1dQ5a4lZeAMUEM0KfBjuQsl9FLQC07cwiLG_xfm9BtumOkWG-AIKIqZDxSL/s16000/Screenshot_2022-09-15_115823_1663214323550_0.png)
 

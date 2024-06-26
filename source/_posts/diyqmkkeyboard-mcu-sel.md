@@ -84,7 +84,7 @@ draft: false
 
 [官網](32u4)
 
-熟悉 Arduino 的人應該對「ATmega」這個名字很熟悉，ATmega32U4 是 Microchip（原本是 Atmel，已被前者併購）公司的一款 8-bit AVR MCU。與 RP2040 同爲我推薦新手的其中一種 MCU。
+熟悉 Arduino 的人應該對「ATmega」這個名字很熟悉，ATmega32U4 是 Microchip（原本是 Atmel，已被前者併購）公司的一款 8-bit AVR MCU。與 RP2040 同為我推薦新手的其中一種 MCU。
 
 - 優點：
   - QMK 中最常見的 MCU，不管是想找範例或問問題都比較方便。
@@ -101,8 +101,8 @@ draft: false
   - 如果是單買 IC 本身，出廠大概不會幫你燒 Bootloader，你可能要另外用燒錄器燒。
 - 要注意的事：
   - 如果你編譯出來的韌體大小真的裝不進 32 KB 的 Flash 的話可以參考官方的文件：[Squeezing Space from AVR](https://docs.qmk.fm/#/squeezing_avr)。
-  - Pro Micro 分爲紅色的「SparkFun 原廠」和藍色的「副廠/第三方」版，前者約 NT$ 600\~1000，後者約 NT$200\~400，都可以使用。
-  - 工作電壓爲 5V 時 CPU 時脈可以到 16MHz；爲 3.3V 時只能到 8MHz。
+  - Pro Micro 分為紅色的「SparkFun 原廠」和藍色的「副廠/第三方」版，前者約 NT$ 600\~1000，後者約 NT$200\~400，都可以使用。
+  - 工作電壓為 5V 時 CPU 時脈可以到 16MHz；為 3.3V 時只能到 8MHz。
   - PCB Layout 時記得保留燒錄座。
 
 我自己畫的 ATmega32U4 開發板：[Next μ](https://github.com/siderakb/next-micro)
@@ -113,7 +113,7 @@ draft: false
 
 [官網][rp]
 
-樹莓派 Raspberry Pi 所推出的 32-bit ARM MCU，硬體規格非常強大，卻超級便宜。與 ATmega32U4 同爲我推薦新手的其中一種 MCU。我自己的 [ErgoSNM](https://github.com/siderakb/ergo-snm-keyboard) v2.1 也是使用 RP2040。
+樹莓派 Raspberry Pi 所推出的 32-bit ARM MCU，硬體規格非常強大，卻超級便宜。與 ATmega32U4 同為我推薦新手的其中一種 MCU。我自己的 [ErgoSNM](https://github.com/siderakb/ergo-snm-keyboard) v2.1 也是使用 RP2040。
 
 - 優點：
   - QMK 的新寵兒。雖然還比不上 ATmega32U4 的時間累積，但是有越來越多鍵盤將 MCU 換成 RP2040。要找參考資料和問問題也滿方便了。
@@ -140,9 +140,9 @@ draft: false
 
 [官網][at90]
 
-是 Microchip（原本是 Atmel，已被前者併購）公司的一款 8-bit AVR MCU。我幾乎沒有看到有人 QMK 鍵盤用這個 MCU，基本上不推薦新手使用，會列在這僅僅是因爲它是 QMK 支援列表中 Flash 容量比 ATmega32U4 大的 AVR MCU。
+是 Microchip（原本是 Atmel，已被前者併購）公司的一款 8-bit AVR MCU。我幾乎沒有看到有人 QMK 鍵盤用這個 MCU，基本上不推薦新手使用，會列在這僅僅是因為它是 QMK 支援列表中 Flash 容量比 ATmega32U4 大的 AVR MCU。
 
-如果你因爲一些原因一定要用 AVR MCU，但是韌體又超過 32 KB 的話可以考慮這個。
+如果你因為一些原因一定要用 AVR MCU，但是韌體又超過 32 KB 的話可以考慮這個。
 
 常見的開發板是 Teensy++ 2.0。
 
@@ -164,7 +164,7 @@ ST 意法半導體龐大的 32-bit ARM MCU 系列——STM32 的一員。在上�
 
 # 無線藍牙
 
-QMK 的藍牙是透過模組支援的，且原則上僅限 AVR MCU。可以參考：[\[自製QMK鍵盤-番外\] 爲QMK鍵盤加上Bluetooth藍牙無線功能](/posts/diyqmkkeyboard-ble/)
+QMK 的藍牙是透過模組支援的，且原則上僅限 AVR MCU。可以參考：[\[自製QMK鍵盤-番外\] 為QMK鍵盤加上Bluetooth藍牙無線功能](/posts/diyqmkkeyboard-ble/)
 
 不過在現在，如果你想要做藍牙鍵盤的話，我可能會另外推薦你 [ZMK](https://zmk.dev/) 和 nRF5 系列 SoC （如 [nRF52840](https://www.nordicsemi.com/products/nrf52840?lang=zh-TW)）。
 

@@ -33,7 +33,7 @@ aliases: ["/2020/06/diyqmkkeyboard-0/"]
 ## 進階內容
 
 - [QMK 啓用 Vial 教學](/posts/diyqmkkeyboard-vial/)
-- [爲 QMK 鍵盤加上 Bluetooth 藍牙無線功能](/posts/diyqmkkeyboard-ble/)
+- [為 QMK 鍵盤加上 Bluetooth 藍牙無線功能](/posts/diyqmkkeyboard-ble/)
 - [Adafruit Bluefruit LE SPI Friend 韌體燒錄教學](/posts/diyqmkkeyboard-ble-module/)
 - [旋轉編碼器 (Encoder)](/posts/diyqmkkeyboard-encoder/)
 - [QMK 的基本架構與運作方式](/posts/diyqmkkeyboard-operate/)
@@ -50,7 +50,7 @@ aliases: ["/2020/06/diyqmkkeyboard-0/"]
 
 但是我在學習的過程中走了不少冤枉路，故想要針對 QMK 鍵盤韌體寫一系列較完整的教學，幫助那些也想自己做鍵盤的人。希望看完這一系列的文章，大家也可以從零開始做成屬於自己的鍵盤。
 
-而這篇作爲開頭，會先介紹製作一把鍵盤所需的要件及步驟。
+而這篇作為開頭，會先介紹製作一把鍵盤所需的要件及步驟。
 
 <!--more-->
 
@@ -91,7 +91,7 @@ QMK 韌體的功能眾多、使用簡單、擴展方便，相關的工具及文�
 
 # 製作步驟
 
-既然知道了一把鍵盤有哪些要件，那接下來就可以按步驟一一完成了。我自己習慣的製作步驟爲：
+既然知道了一把鍵盤有哪些要件，那接下來就可以按步驟一一完成了。我自己習慣的製作步驟為：
 
 1. **整體設計**：這把鍵盤要有幾鍵？標準佈局還是要 Ortho？或是要做成 Alice Layout 甚至分離式的？需要 Bluetooth 嗎？等等。
 2. **編輯佈局**：使用 [Keyboard Layout Editor](http://www.keyboard-layout-editor.com/) 實際編排鍵盤佈局（Layout）。
@@ -103,7 +103,7 @@ QMK 韌體的功能眾多、使用簡單、擴展方便，相關的工具及文�
 8. **訂購**：向工廠訂購 PCB、3D 列印外殼、採購電子零件...等等
 9. **組裝**：焊接電子零件焊接、燒錄韌體、組合定位板及外殼等，完成鍵盤。
 
-步驟看起來不少，但因爲許多步驟都有自動工具可以幫忙，所以只要滑鼠點幾下就可以完成了。其中 PCB Layout 和設計外殼應該是過程中比較花時間的。
+步驟看起來不少，但因為許多步驟都有自動工具可以幫忙，所以只要滑鼠點幾下就可以完成了。其中 PCB Layout 和設計外殼應該是過程中比較花時間的。
 
 根據我自己製作 [Calcite52](https://github.com/ziteh/calcite) 的經驗，如果此鍵盤沒有什麼特別的功能且先不論美觀的話，步驟 2~7 甚至可以在一個週末——兩天內——完成（當然我是對整個流程和工具都有一定的經驗才有辦法）。
 

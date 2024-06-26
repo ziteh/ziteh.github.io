@@ -14,14 +14,14 @@ draft: false
 
 ![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhbS1awMSWll3iWn0eyymEKwcIK7OyjTvZ8RNxl3jHDaJHpWmJrwU8G0e1e0xKm-KEVq069BrngyRKphQJDaaDZ_Y7mQG4OQ1tu9BJA1yecJc8nmizcnxVcZvr3Qu1fx-di9L0IgAtWjo9uEZdm7Tyyw3x7zm4UxOgS8U5YkE0MKyyZEFJXaT25YBT6wwY/s16000/5%20-%20ugAQ8rK.png)
 
-在 GitHub 看 commit 記錄時，可能會發現有些 commit 被標記爲已驗證（Verified），代表這個 commit 可以確認是真的由此使用者提交的。因爲 commit 是可以[僞造](https://medium.com/starbugs/how-to-fake-the-author-of-git-commit-f44453b70afc)的，你只要知道某人的 username 和 email 就可以用 `git config --global user.name` 和 `user.email` 設定並假冒 commit 的作者。然而這兩項資訊在現代來說超級公開。
+在 GitHub 看 commit 記錄時，可能會發現有些 commit 被標記為已驗證（Verified），代表這個 commit 可以確認是真的由此使用者提交的。因為 commit 是可以[僞造](https://medium.com/starbugs/how-to-fake-the-author-of-git-commit-f44453b70afc)的，你只要知道某人的 username 和 email 就可以用 `git config --global user.name` 和 `user.email` 設定並假冒 commit 的作者。然而這兩項資訊在現代來說超級公開。
 
 <!--more-->
 
-爲了避免被僞造 commit（雖然我不知道有誰會想來假冒我），你可以設定驗證金鑰和爲 commit 加上簽名，來讓 GitHub 確認那些 commit 確實是你提交的。
+為了避免被僞造 commit（雖然我不知道有誰會想來假冒我），你可以設定驗證金鑰和為 commit 加上簽名，來讓 GitHub 確認那些 commit 確實是你提交的。
 
 
-> 本文以 Windows 11 爲主。
+> 本文以 Windows 11 為主。
 
 # 安裝工具
 
@@ -39,13 +39,13 @@ draft: false
 
 ![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-gleIAljQS2xfDv2YyNYyTl8o5wstoDf_WETUdmyYmikFjwFkPUw7AucRhri9RrQ9CaLz9Y6eZZJwMhiOsW_aU7uVfZsA03uiQa49ut8zhXFMcqYYQ3zPe4R01FhyDMEuq7Dr0azlgYKopZ1k0QnCXauAn8hXMiYlR-NjNvxVzKunfMHHK1P_BiIoP1E/s16000/7%20-%20Hc51k6F.png)
 
-填入你的名字與 Email。如果你想要使用密碼來進一步保護此金鑰的話，可以勾選下面的「Protext the generated key with a passphrase.」，如果有密碼的話，往後每次要爲 commit 簽名時都會要求輸入此密碼。
+填入你的名字與 Email。如果你想要使用密碼來進一步保護此金鑰的話，可以勾選下面的「Protext the generated key with a passphrase.」，如果有密碼的話，往後每次要為 commit 簽名時都會要求輸入此密碼。
 
 ![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhTO6c_QXTNxojWXVCWmfUdSaGgMId9yOz3l2aRXkx5wfERO0v6RExISnQLhrAITGOc_9lqiwRPRToRfX8mYla8ADcQkiJ_GmTIf1loebndywhwLv9OvZhgaatXuKPpYoege6G7poWH44HSvgjGFheVuG1wnSV2UbaGsSS6Frlk9K75TTvD8cVxR8BQ14Y/w400-h379/4%20-%200xEpVbf.png)
 
 按下「Advanced Settings...」開啓進階設定。
 
-首先是金鑰加密算法，以往比較常見的是使用 RSA 4096 bits，不過這裡有提供 ECDSA/EdDSA 算法，這種算法通常被認爲更加先進，且 GitHub 也支援此算法，所以我就使用 ECDSA/EdDSA ed25519 + ECDH cv25519。
+首先是金鑰加密算法，以往比較常見的是使用 RSA 4096 bits，不過這裡有提供 ECDSA/EdDSA 算法，這種算法通常被認為更加先進，且 GitHub 也支援此算法，所以我就使用 ECDSA/EdDSA ed25519 + ECDH cv25519。
 
 如果想要此金鑰對在一段時間後會過期的話，可以設定「Vaild until」的時間。不需要的話（永久有效）就不要勾選即可。
 
@@ -72,7 +72,7 @@ gpg --full-generate-key
 
 它會依序提示你各個選項，依照你的需求選擇即可。（例如 RSA、4096 或 ECC、Curve 25519）
 
-確認完資訊後，會提示你輸入用於保護此金鑰對的密碼（如果有密碼的話，往後每次要爲 commit 簽名時都會要求輸入此密碼），如果不需要的話留空並確認即可。開始產生金鑰時它會提示你可以動動滑鼠、打打鍵盤之類的來協助亂數生成。過一段時間後就完成了。
+確認完資訊後，會提示你輸入用於保護此金鑰對的密碼（如果有密碼的話，往後每次要為 commit 簽名時都會要求輸入此密碼），如果不需要的話留空並確認即可。開始產生金鑰時它會提示你可以動動滑鼠、打打鍵盤之類的來協助亂數生成。過一段時間後就完成了。
 
 接下來要取得 Key ID 及公鑰。
 
@@ -113,13 +113,13 @@ gpg --armor --export D54135B170193E40
 
 ![新增 GPG Key 示意](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgINvNdBT_g9tqH0bDIaQbQdt0glR2bPIwroIHWnrfQnhM0Whrou2NcCY3nZ0RkXp2NJ1tGA8A__SVg7y4SvzAB80O36VPmcp-IDN1VDnL8qJS-mNbXHp790mGFVJQphZMVN4_GrzDbuUIW2NrFxn9_MKpggIRghD1Lemslh19cK9RyOZsSeqLunAojw4I/s16000/8%20-%204ystOtj.png)
 
-> 注意，如果你把某個 GPG Key 刪除的話，原先使用這個金鑰對簽名的 commit 就會失去驗證變成 Unverified（因爲 GitHub 失去了這個公鑰當然無法驗證）。
+> 注意，如果你把某個 GPG Key 刪除的話，原先使用這個金鑰對簽名的 commit 就會失去驗證變成 Unverified（因為 GitHub 失去了這個公鑰當然無法驗證）。
 >
 > 你可以開一個測試用的 repo，先送幾個有簽名且可被認證的 commit，接著刪除 GitHub 上對應的 GPG Key，這些 commit 會從 Verified 變成 Unverified。如果再把對應的 GPG Key 加回去的話，又會變回到 Verified。
 
 # Git 設定
 
-接下來要設定讓 Git 使用該金鑰對爲 commit 簽名。
+接下來要設定讓 Git 使用該金鑰對為 commit 簽名。
 
 > 以下範例的設定皆使用全局 `--global`，你可以視需求調整。
 
@@ -133,7 +133,7 @@ where.exe gpg
 
 通常會是 `C:\Program Files (x86)\GnuPG\bin\gpg.exe`。
 
-爲 Git 設定 GPG 程式路徑：
+為 Git 設定 GPG 程式路徑：
 
 ```bash
 git config --global gpg.program "<GPG_PATH>"
@@ -157,7 +157,7 @@ git config --global user.signingkey "<KEY_ID>"
 
 ## 簽署所有 commit
 
-設定讓 Git 爲所有 commit 簽署：
+設定讓 Git 為所有 commit 簽署：
 
 ```bash
 git config --global commit.gpgsign true
@@ -181,7 +181,7 @@ git config --global commit.gpgsign
 
 ![認證的 commit](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMwrB0a-HhD1i-cbCTegVrpUdi5hgn2AYgAWBmLrAUhg5lrbBUgTdJqX7h_w4p5yayTlxjsm_jR6WIn3ng-1pHQEEvpnG9IxtgZVzdURNFfIPHKlJNFd9Ev8alu0jb0ZjCIhgi9V1K9hBcAAQPMl0IIi3rEKjN8zoUP93i1ga1Tz_8DlM5T78V_tgH_0s/w400-h292/6%20-%20MsSco5U.png)
 
-> 上圖的 Key ID 和文中的不同是因爲文中的是範例用的，不是我真正的金鑰對。
+> 上圖的 Key ID 和文中的不同是因為文中的是範例用的，不是我真正的金鑰對。
 
 # 參考資料
 

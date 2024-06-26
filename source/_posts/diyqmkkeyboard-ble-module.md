@@ -14,7 +14,7 @@ draft: false
 aliases: ["/2022/02/diyqmkkeyboard-9/", "/posts/diyqmkkeyboard-9/"]
 ---
 
-在[上一篇文章中](/posts/diyqmkkeyboard-ble/)，我們使用 [Adafruit Bluefruit LE SPI Friend](https://www.adafruit.com/product/2633)（以下簡稱 Adafruit BLE）藍牙模組爲 QMK 添加了藍牙的功能。
+在[上一篇文章中](/posts/diyqmkkeyboard-ble/)，我們使用 [Adafruit Bluefruit LE SPI Friend](https://www.adafruit.com/product/2633)（以下簡稱 Adafruit BLE）藍牙模組為 QMK 添加了藍牙的功能。
 
 不過這個模組的價格有點高，還好 Adafruit 有提供其韌體及燒錄工具，所以只要有 MDBT40 或 nRF51822 的話也可以自製 Adafruit Bluefruit LE SPI Friend 藍牙模組。
 
@@ -22,9 +22,9 @@ aliases: ["/2022/02/diyqmkkeyboard-9/", "/posts/diyqmkkeyboard-9/"]
 
 # 硬體選擇
 
-先講結論，**一定要**選用 32KB SRAM 版本的 nRF51822-**xxAC**，例如 [MDBT40-256**R**V3](https://www.raytac.com/product/ins.php?index_id=74) 。本文接下來也將使用 MDBT40-256**R**V3（[MDBT40-DB](https://www.raytac.com/product/ins.php?index_id=84)）作爲示範。
+先講結論，**一定要**選用 32KB SRAM 版本的 nRF51822-**xxAC**，例如 [MDBT40-256**R**V3](https://www.raytac.com/product/ins.php?index_id=74) 。本文接下來也將使用 MDBT40-256**R**V3（[MDBT40-DB](https://www.raytac.com/product/ins.php?index_id=84)）作為示範。
 
-另外，爲了燒錄，還需要準備一個 Segger J-Link 或 STLink/V2 燒錄器，雖然也可以使用 Raspberry Pi 作爲燒錄器，但這比較麻煩。
+另外，為了燒錄，還需要準備一個 Segger J-Link 或 STLink/V2 燒錄器，雖然也可以使用 Raspberry Pi 作為燒錄器，但這比較麻煩。
 
 ## nRF51822
 首先，Adafruit Bluefruit LE 是一系列的產品，Adafruit Bluefruit LE SPI Friend 只是該系列中的一個 SPI 介面的模組。其核心 SoC 就是 Nordic Semi 的 [nRF51822](https://www.nordicsemi.com/products/nrf51822)。
@@ -35,14 +35,14 @@ aliases: ["/2022/02/diyqmkkeyboard-9/", "/posts/diyqmkkeyboard-9/"]
 
 所以在購買 nRF51822 及其模組時，記得要選用 32KB SRAM 版本的 nRF51822-***xxAC***。
 
-> 依照命名規則看，只有 nRF51822-***xxAC*** 是 32KB SRAM \ 256KB Flash 的版本，後綴爲 ***xxAA*** 或 ***xxAB*** 的 SRAM 大小都是 16KB（xxAA 與 xxAB 的差異是前者的 Flash 是128 KB，而後者是256 KB）。
+> 依照命名規則看，只有 nRF51822-***xxAC*** 是 32KB SRAM \ 256KB Flash 的版本，後綴為 ***xxAA*** 或 ***xxAB*** 的 SRAM 大小都是 16KB（xxAA 與 xxAB 的差異是前者的 Flash 是128 KB，而後者是256 KB）。
 
 ## MDBT40
 雖然 Adafruit BLE 使用的是 nRF51822 SoC，但它並不是直接搭載該晶片，而是搭載了勁達 Raytac 的 [MDBT40](https://www.raytac.com/product/index.php?index_m1_id=74) 模組。
 
 MDBT40 是搭載了 nRF51822 的模組，並且整合了天線及一些週邊元件。上面有提到 nRF51822 有一些不同的版本，MDBT40 也有其相對應的細部型號。
 
-我們要的是 32KB SRAM / 256KB Flash 的 nRF51822-xxAC，所以要選用 MDBT40-256**R**V3 或 MDBT40-**P**256**R**V3（這兩個的差異是前者爲陶瓷天線，後者爲 PCB 天線）。實際上 Adafruit Bluefruit LE 系列所使用的基本上就是 MDBT40-256**R**V3。
+我們要的是 32KB SRAM / 256KB Flash 的 nRF51822-xxAC，所以要選用 MDBT40-256**R**V3 或 MDBT40-**P**256**R**V3（這兩個的差異是前者為陶瓷天線，後者為 PCB 天線）。實際上 Adafruit Bluefruit LE 系列所使用的基本上就是 MDBT40-256**R**V3。
 
 # 燒錄工具
 
@@ -52,7 +52,7 @@ Adafruit 有提供他們所使用的燒錄工具：[Adafruit nRF51822 Flasher](h
 
 要使用這個工具，需要：
 - 下列的其中一個 SWD 燒錄器，並安裝好它們的驅動程式
-	- Segger J-Link（本文以 J-Link 爲例）
+	- Segger J-Link（本文以 J-Link 為例）
 	- STLink/V2
 	- Raspberry Pi
 - 安裝好 [Python](https://www.python.org/)
@@ -65,7 +65,7 @@ Adafruit 有提供他們所使用的燒錄工具：[Adafruit nRF51822 Flasher](h
 
 ## 下載
 
-將燒錄工具 Git clone 下來。注意，因爲這個 repo 含有 submodule，所以記得加上 `--recursive`：
+將燒錄工具 Git clone 下來。注意，因為這個 repo 含有 submodule，所以記得加上 `--recursive`：
 ```git
 git clone --recursive git@github.com:adafruit/Adafruit_nRF51822_Flasher.git
 ```
@@ -83,7 +83,7 @@ git submodule update --init --recursive
 - `--jtag` `TEXT`：選擇你使用的燒錄器，只能是 `jlink`、`stlink` 或 `rpigpio` 的其中一種。
 - `--softdevice` `TEXT`：選擇 SoftDevice 版本，例如 `8.0.0`。這個 SoftDevice 是 nRF51822 的東西。
 - `--bootloader` `INTEGER`：Bootloader 版本，例如 `0` 或 `2`。
-- `--board` `TEXT` (必要)：選擇你要燒錄的板子，必須爲 `blefriend16`、`blefriend32` 或 `blespifriend` 的其中一種。具體要選什麼可以看[這裡](https://github.com/adafruit/Adafruit_BluefruitLE_Firmware/tree/03110f6819d2e8c0928ce1f3879df22dab562447#adafruit-bluefruit-le-firmware)。
+- `--board` `TEXT` (必要)：選擇你要燒錄的板子，必須為 `blefriend16`、`blefriend32` 或 `blespifriend` 的其中一種。具體要選什麼可以看[這裡](https://github.com/adafruit/Adafruit_BluefruitLE_Firmware/tree/03110f6819d2e8c0928ce1f3879df22dab562447#adafruit-bluefruit-le-firmware)。
 - `--firmware` `TEXT` (必要)：韌體版本，例如 `0.6.5`、`0.8.1`。
 
 以本文來說，我們要的是「Adafruit Bluefruit LE SPI Friend」，因此可以下這樣的指令（燒錄器、版本可以依實際需求與情況自行調整）：

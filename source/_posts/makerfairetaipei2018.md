@@ -15,7 +15,7 @@ aliases: ["/2019/02/makerfairetaipei2018/"]
 
 # 前言
 
-在2018年的11月(期中考前...)我和我們學校的同伴一起去參加Maker Faire Taipei 2018 (臺北華山創客嘉年華)。這是我第一次參加Maker Faire，因爲我們有攤位，需要一些作品來展示，所以我從暑假時就開始規劃要做些什麽作品，最後在學長的提議下選擇了這個游戲方向盤。而這件作品是參考以下的影片（目前原影片似乎已遺失了）。
+在2018年的11月(期中考前...)我和我們學校的同伴一起去參加Maker Faire Taipei 2018 (臺北華山創客嘉年華)。這是我第一次參加Maker Faire，因為我們有攤位，需要一些作品來展示，所以我從暑假時就開始規劃要做些什麽作品，最後在學長的提議下選擇了這個游戲方向盤。而這件作品是參考以下的影片（目前原影片似乎已遺失了）。
 
 <!--more-->
 
@@ -23,7 +23,7 @@ aliases: ["/2019/02/makerfairetaipei2018/"]
 <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/AqbKj3T-eaM" width="560"></iframe>
 </div>
 
-但是因爲用厚紙板做肯定一下就壞了，所以我們改用木頭來做。這個東西雖然感覺很簡單，一下就可以完成了，但是因爲我完全沒有做過木工，所以過程中還是遇到不少困難呀。
+但是因為用厚紙板做肯定一下就壞了，所以我們改用木頭來做。這個東西雖然感覺很簡單，一下就可以完成了，但是因為我完全沒有做過木工，所以過程中還是遇到不少困難呀。
 
 # 開始設計
 
@@ -44,7 +44,7 @@ aliases: ["/2019/02/makerfairetaipei2018/"]
 
 ![▲連桿式的設計](https://1.bp.blogspot.com/-Cxpauj5J5_Y/XppbGdF6yBI/AAAAAAAACFw/zdC24EMp72cixUpzBI-K26YFOIGsHMeVwCPcBGAsYHg/s1600/unnamed%2B%25283%2529.png)
 
-然而這些機械結構説實在沒有相關背景，還真不容易設計，最後也因爲怕來不及完成，所以並沒有做搖桿式的部分，有些可惜。
+然而這些機械結構説實在沒有相關背景，還真不容易設計，最後也因為怕來不及完成，所以並沒有做搖桿式的部分，有些可惜。
 
 
 # 鍵鼠式

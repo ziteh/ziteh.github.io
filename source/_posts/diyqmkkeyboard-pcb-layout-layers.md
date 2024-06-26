@@ -18,11 +18,11 @@ draft: false
 
 ![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhOF6b7-mRVv7Y0PEoCoy_pVOzkPhyMW3kYbQw_p2jTFS3YdxRnitzlXpjoO4I_xoj_R56uG2KJMint2danQ17QLopP2u6Yf1_b9VtiSZ-paKYZ0_7fucCKq_bRrzyVoqwPCTa4hGBweNOzQo8lXpUEycVdEwaeAYT_mYyNr9XTghl7VJCXmvT3nrxN/s16000/Screenshot%202023-05-07%20191506.jpg)
 
-在[上一篇](/posts/diyqmkkeyboard-pcb-layout-sch)中已經介紹了 PCB 的設計步驟及 [KiCad](https://www.kicad.org/) Schematic 的基本用法，接下來要以 KiCad 7 作爲示範，繼續介紹[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 5 步的 PCB Layout 的部分。
+在[上一篇](/posts/diyqmkkeyboard-pcb-layout-sch)中已經介紹了 PCB 的設計步驟及 [KiCad](https://www.kicad.org/) Schematic 的基本用法，接下來要以 KiCad 7 作為示範，繼續介紹[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 5 步的 PCB Layout 的部分。
 
 <!--more-->
 
-> 以下內容以 KiCad `v7.0.2` 作爲示範。
+> 以下內容以 KiCad `v7.0.2` 作為示範。
 
 # PCB 基礎介紹
 
@@ -30,7 +30,7 @@ draft: false
 
 ## 分層
 
-首先是銅箔層數。PCB 依照其銅箔層的數量可以分爲單層、雙層或 4、6、8 甚至到 64 層板，通常從 4 層板開始就會稱爲多層板了。銅箔層數越多走線的靈活度也越高，但價格當然也會提升。除非是高密度產品，一般來說雙層板就已經足夠，對鍵盤來說也是，所以以下內容皆以雙層板爲主。
+首先是銅箔層數。PCB 依照其銅箔層的數量可以分為單層、雙層或 4、6、8 甚至到 64 層板，通常從 4 層板開始就會稱為多層板了。銅箔層數越多走線的靈活度也越高，但價格當然也會提升。除非是高密度產品，一般來說雙層板就已經足夠，對鍵盤來說也是，所以以下內容皆以雙層板為主。
 
 對於一個雙層 PCB，它通常會有這樣的疊層：
 
@@ -52,7 +52,7 @@ PCB 上大概會有幾種東西：
 - 走線（Track）：用來連接各個零件的導線。
 - 焊盤（Pad）：阻焊層沒有覆蓋、讓零件可以焊接到板子上的地方。
 - [孔（Hole）](https://www.researchmfg.com/2015/06/pth-npth-via/)
-  - 電鍍通孔（PTH，Plating through hole）：通常用於焊接 DIP 插板零件。因爲孔壁有電鍍，可以導電，所以同時會連接上下兩層銅箔層。
+  - 電鍍通孔（PTH，Plating through hole）：通常用於焊接 DIP 插板零件。因為孔壁有電鍍，可以導電，所以同時會連接上下兩層銅箔層。
   - 非電鍍通孔（NPTH，Non plating through hole）：不能導電的鑽孔，通常用來鎖螺絲或插入零件的固定插銷等。
   - Via：也算一種 PTH，只是通常會很小，不能插入零件接腳，只用來導通各個銅層。
 - 鋪銅區（Filled zone）：大面積的銅箔區域，可以當作超粗的走線，也可以藉由其大表面積來幫助散熱，在一些情況下也有訊號屏蔽等功能。視情況而定，通常會連接 GND 走線網路。
@@ -67,7 +67,7 @@ PCB 上大概會有幾種東西：
 
 最後是表面處理。如果銅箔沒有做表面處理的話，那很容易就氧化掉了，會難以焊接。表面處理有很多種，但最常見的是 HASL（Hot air solder leveling，也就是常說的「噴錫」） 和 [ENIG](https://www.researchmfg.com/2016/02/enig-pros-cons/)（Electroless nickel immersion gold，也就是常說的「沉金」或「化金」）。
 
-HASL 比較便宜，但是其平整度較差，且放太久後會不易吃錫焊接，一般還會再細分成有鉛和環保無鉛製程；ENIG 因爲有金的關係，所以不易氧化，可以長時間儲存，而且表面非常平整，適合小型 SMD 元件，但是會貴上不少。
+HASL 比較便宜，但是其平整度較差，且放太久後會不易吃錫焊接，一般還會再細分成有鉛和環保無鉛製程；ENIG 因為有金的關係，所以不易氧化，可以長時間儲存，而且表面非常平整，適合小型 SMD 元件，但是會貴上不少。
 
 至少對於鍵盤 PCB 來說，不選擇 ENIG 的理由基本上只有成本考量。
 
@@ -90,11 +90,11 @@ HASL 比較便宜，但是其平整度較差，且放太久後會不易吃錫焊
 
 其中第 3、4 步會花不少時間，尤其經驗不夠的話會要花很多時間調整，如果這部分有問題的話，可以多參考看看別人的 PCB 是怎麼畫得。
 
-> 如果你需要上網查一些資料的話，有些人會將 KiCad 的 PCB 編輯器稱爲「pcbnew」。
+> 如果你需要上網查一些資料的話，有些人會將 KiCad 的 PCB 編輯器稱為「pcbnew」。
 
 ## PCB 設計參數
 
-PCB 設計參數是用來規範設計的。每一家 PCB 工廠的製作能力都不同，容許的生產規格也不同，甚至不同種類的 PCB 允許的規格也不同。爲了避免畫出工廠做不出來的 PCB，所以要設定一些參數限制。這些參數也會作爲 DRC（Design rule check） 的檢查依據。
+PCB 設計參數是用來規範設計的。每一家 PCB 工廠的製作能力都不同，容許的生產規格也不同，甚至不同種類的 PCB 允許的規格也不同。為了避免畫出工廠做不出來的 PCB，所以要設定一些參數限制。這些參數也會作為 DRC（Design rule check） 的檢查依據。
 
 在 KiCad 的專案頁面雙擊 `<Project_Name.kicad_pcb>` 以開啓 PCB 編輯器。點擊上方工具列「File > Board Setup > Design Rules > Constraints」，這裡可以調整基本的設計約束。就像上面說的一樣，每個工廠的製造能力都不同，所以請參考你預計使用的生產商所提供的資訊調整這裡的數值（[JLCPCB 製作能力](https://jlcpcb.com/capabilities/pcb-capabilities)、[PCBWay 製造能力](https://www.pcbway.com/capabilities.html)）。通常最重要的有：
 - Copper
@@ -112,15 +112,15 @@ PCB 設計參數是用來規範設計的。每一家 PCB 工廠的製作能力�
 
 ![PCB 設計參數參考](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiL7Eq_4aJDXbqMFusCc1_beWQzhuPcHhr1pn3LZugE9WOqu2bdoyjbtaXoaQ50AKiuQtUZJkCrUyricQG4Ya9K-q1QWrSWvTmtnXE0DCFShO6WIGGWnJP_db93m_uOACSDqt0PLfJDrnQGmvXspc8DDFePb-1TNLH4nNOMEiMIOX9AnX4phqY2274M/s16000/drc-0.jpg)
 
-另外，你可能會想爲特定的走線設定特殊的規格，這時可以到「File > Board Setup > Design Rules > Net Classes」中設定。最常見的是把電源單獨設定得走線粗一點、Via 大一點；或設定 USB D+/- 差分訊號走線以符合阻抗匹配。
+另外，你可能會想為特定的走線設定特殊的規格，這時可以到「File > Board Setup > Design Rules > Net Classes」中設定。最常見的是把電源單獨設定得走線粗一點、Via 大一點；或設定 USB D+/- 差分訊號走線以符合阻抗匹配。
 
-我通常使用的設定爲：
+我通常使用的設定為：
 - 一般：走線 0.2mm 寬/間距；Via Size 0.8mm，Via Hole 0.4mm。
 - 電源：走線 0.35mm 寬/間距；Via Size 0.8mm，Via Hole 0.4mm。
 - 細線：走線 0.15mm 寬/間距；Via Size 0.56mm，Via Hole 0.3mm。
 - USB 訊號差動對（1.6mm 厚 PCB）：DP Width 0.6mm；DP Gap 0.13mm。
 
-![爲不同走線網路單獨設定樣式](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgBBNxtF2Uqj4HZI1mYOX4elD70hwwXt4ylmb1nUYcbzIY2QJQ-VCjAqsjpLD-s11x46BMb561utNxK6BLV_Fl0VHji4Eh2-po0LnLnfjlmr_YP9rg5gBInAheQTqoQi0nCE2FbA1QinukWBm3wFkMKtqoJv2UUYYuKXQtbxvfRVjP7U-J0Ld618dHKkD8/s2326/Screenshot%202023-11-13%20190714.png)
+![為不同走線網路單獨設定樣式](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgBBNxtF2Uqj4HZI1mYOX4elD70hwwXt4ylmb1nUYcbzIY2QJQ-VCjAqsjpLD-s11x46BMb561utNxK6BLV_Fl0VHji4Eh2-po0LnLnfjlmr_YP9rg5gBInAheQTqoQi0nCE2FbA1QinukWBm3wFkMKtqoJv2UUYYuKXQtbxvfRVjP7U-J0Ld618dHKkD8/s2326/Screenshot%202023-11-13%20190714.png)
 
 如果你想要更詳細地設定 DRC 的話，可以到「File > Board Setup > Design Rules > Custom Rules」中設定。這裡是比較進階的用法，我自己也不是完全熟悉這邊的設定，但是可以大概參考一下我之前使用的設定：[KiCad custom rules for JLCPCB](https://gist.github.com/ziteh/0d88f3ad4d2d7f4b38755af364208a6e)
 
@@ -141,7 +141,7 @@ PCB 設計參數是用來規範設計的。每一家 PCB 工廠的製作能力�
 
 首先要將各個零件 Footprint 擺放到適合的位置，這一步驟相當吃經驗，可能也需要一些電路知識。Footprint 擺放得好的話，之後走線會很順暢，也會影響電路性能。這部分我暫時想不到有什麼訣竅，最好的方式就是多參考別人的 PCB。
 
-在擺放 Footprint 時爲了避免自己動到絲印或其它東西，以及保持畫面乾淨，我通常會在右側把「F/B. Silkscreen」和「F/B.Fab」層的顯示關閉，然後右下的「Selection Filter」也會取消「Text」的勾選。
+在擺放 Footprint 時為了避免自己動到絲印或其它東西，以及保持畫面乾淨，我通常會在右側把「F/B. Silkscreen」和「F/B.Fab」層的顯示關閉，然後右下的「Selection Filter」也會取消「Text」的勾選。
 
 ![關閉特定的層與可選性，以保持畫面感覺和避免誤觸](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsl3YPMuqulSYRRcE5GrXzet2rD5wvux6HQdk7qi-WdHRRNNywyiFLVHsg6FRHcIUxFkuP41TO2SegfIZvyL0dRsujwcJAaafwEc5hNSvHHM6JNKu7XYQj13SyNyGK278Ywrwq_yKg1PzcPQ0zQ0rrqzJT0jmTrSUKRy8FKhzkW1sUVNFglu7pTjQN/s16000/layers.jpg)
 
@@ -149,9 +149,9 @@ PCB 設計參數是用來規範設計的。每一家 PCB 工廠的製作能力�
 
 ![變更網格](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhyfm8UwQINP8SnwjYbEvAiUR0NBy0cqYyN0RCA7vTkmPEGT1UfRYx73m0x7F4MMwG1lCStKjHPvHZxNNFPUjralKfKsu6RPCvtJ5hJPJJZLhVYEc0L4prvKFHumlmRd7Txe8LpAxVUvPNxm8ZnzjVUgkv_MNS54RRCgJ4NzOafetEGQNT7w9VRukUA/s16000/Screenshot%202023-05-07%20192840.jpg)
 
-> PCB 通常會分別使用公制單位毫米 mm 與英制單位密耳 mil。1mil 爲千分之一英寸，也就是約 0.0254mm。
+> PCB 通常會分別使用公制單位毫米 mm 與英制單位密耳 mil。1mil 為千分之一英寸，也就是約 0.0254mm。
 
-***請注意***，PCB 分爲上下兩面：Front/Top Side 和 Back/Bottom Side，在擺放所有零件的時候都要注意這個 Footprint 應該在 Front 還是 Back？以鍵盤爲例，一般來說鍵軸本體會在 Front Side 上，但是它的 Pin 腳或穿過焊盤孔（PTH），所以其焊點其實是在 Back Side。而如果你要用鍵軸熱插拔座的話，它也是焊在 Back Side。所以在使用鍵軸的 Footprint 時一定要確認清楚它要擺在那一面？這個 Footprint 是否已經預先翻面了？如果你還不是很熟悉的話，最好找個照片或拿出實際的鍵軸多檢查幾遍。
+***請注意***，PCB 分為上下兩面：Front/Top Side 和 Back/Bottom Side，在擺放所有零件的時候都要注意這個 Footprint 應該在 Front 還是 Back？以鍵盤為例，一般來說鍵軸本體會在 Front Side 上，但是它的 Pin 腳或穿過焊盤孔（PTH），所以其焊點其實是在 Back Side。而如果你要用鍵軸熱插拔座的話，它也是焊在 Back Side。所以在使用鍵軸的 Footprint 時一定要確認清楚它要擺在那一面？這個 Footprint 是否已經預先翻面了？如果你還不是很熟悉的話，最好找個照片或拿出實際的鍵軸多檢查幾遍。
 
 ![注意 Footprint 所在的面](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh4rT8ZJqbm-jiHbB5s8FvM-w6WiE5B7caStKiNfGvrlgTn8lbsy7qNBujw5oryVDo7ZU2SIEOp7mX9OveRFb-8A-6-jCZiaMTtOaJwOhf42TkgxHQvJzbXf3_xUrJDMXnj4loSEUQZ4CbMdqT8N5rfT8EHeWlFpNQ8Fkd34of7_4m8umkUnh0HJ2v_/s16000/TfNX8Wn.jpg)
 
@@ -176,7 +176,7 @@ PCB 設計參數是用來規範設計的。每一家 PCB 工廠的製作能力�
 
 ### 自動擺放
 
-鍵盤 PCB 中擺放上比較*麻煩*的是鍵軸與衛星軸，因爲它們的位置不能亂排，必須要照著你設計的鍵盤  Layout 才行，但是一把鍵盤幾十甚至上百個按鍵，每個按鍵都手動擺位置既沒效率也容易出錯，更別說擺完鍵軸後還有同等數量的鍵矩陣掃描二極體，所以這時我們要善用自動化工具。
+鍵盤 PCB 中擺放上比較*麻煩*的是鍵軸與衛星軸，因為它們的位置不能亂排，必須要照著你設計的鍵盤  Layout 才行，但是一把鍵盤幾十甚至上百個按鍵，每個按鍵都手動擺位置既沒效率也容易出錯，更別說擺完鍵軸後還有同等數量的鍵矩陣掃描二極體，所以這時我們要善用自動化工具。
 
 我使用的是 [KiCAD KLE Placer](https://github.com/zykrah/kicad-kle-placer) 這個插件，它可以根據 Keyboard Layout Editor（KLE）下載的 JSON 檔幫你自動把鍵軸、衛星軸和二極體都自動擺放到位。
 
@@ -210,11 +210,11 @@ Schematic 有更新的話記得要再「Update PCB from Schematic」一次。打
 
 ![開啓 KLE Placer](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjIkjZGpyIon6rVt-CzREXcTvRQ7dCLCWutr6xIJ-lgehHzNKIHVtQWuBMxyEKxqjOHcsN790xbpF9WL7IPgbXFF4aaw3hs_Y-LrLrEFXXn9HdzARCVKg4kXEXzYZaJcuJz1PAffPz4Qe_9eQUoAA5_T-NNLYCxduTps7zjwXdtEMUxrLuNMp0Bv3Py/s16000/Screenshot%202023-05-02%20212214.jpg)
 
-在「Select KLE json file」中選擇你在 KLE 上編輯並下載的 JSON 檔，「Key/Stabillizer/Diode Annotation format string」中分別輸入你使用的鍵軸、衛星軸及二極體的代號格式，預設是 `SW{}`、`S{}`、`D{}`，但是我爲了把機械鍵軸與一般的按鈕分開，所以鍵軸的代號改成 `KEY{}`。設定好後就按「OK」即可。
+在「Select KLE json file」中選擇你在 KLE 上編輯並下載的 JSON 檔，「Key/Stabillizer/Diode Annotation format string」中分別輸入你使用的鍵軸、衛星軸及二極體的代號格式，預設是 `SW{}`、`S{}`、`D{}`，但是我為了把機械鍵軸與一般的按鈕分開，所以鍵軸的代號改成 `KEY{}`。設定好後就按「OK」即可。
 
 ![KLE Placer 頁面](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWnvRqMn6XsHFPpu_d9QEpqJ6sTHc7QHGOEZwSXPW8Sew1Q04C4Llf_WQt2PZipJ9IQO-SV8eYtHNsUi5vjoFA9Ry89EOer-cAQZhWna5s3kF2eiMxehwixj4TArwuF7ROWdb_fDUvw7x1OktnQgIv6Ky2RxrF2YgVq3GmvWTSrtXq5iSrE5IyNIuL/s16000/InkedKLE-placer-0.jpg)
 
-如果衛星軸的角度不對的話，可以按 `R` 旋轉。如果你的鍵軸都已經確定擺放到位的話，爲了避免後續又不小心動到，你可以將它們鎖定（選取後快捷鍵 `L`）。
+如果衛星軸的角度不對的話，可以按 `R` 旋轉。如果你的鍵軸都已經確定擺放到位的話，為了避免後續又不小心動到，你可以將它們鎖定（選取後快捷鍵 `L`）。
 
 ![完成自動擺放](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjP5-L-EJ7_wNXDvcFaNMnlhREdoA1ugIqkfyz8YHIvunc95_h1r-3cE59NlkTZNfEjZsjNP7xLoypHPYPi4Z1rCuOnMI5F9yuOEnAvgMZLXrl1QygiCyKWYt0EgKbpNoTWprtj5VGC6G97fGatia74yTspd9hlf16YAm2qc57ZvfMPNopBkL9rqawS/s16000/InkedScreenshot%202023-05-02%20205053.jpg)
 
@@ -228,7 +228,7 @@ Schematic 有更新的話記得要再「Update PCB from Schematic」一次。打
 
 ![各接腳會有預拉線連接](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2ghwE-kmv5Uhsf1d1I6lco4DWdtfZmnELysmD8r3fNeapXbhFKuEruOYu3HqrVHUpQuIqKL-Se-e2kavo7PGma3UZLdznU57irlouOTdYMOn2_qlcb78sRfAZy7b2A7BXY0tC9YvgFls0G__OOyM2PHIerVLQQZDqJE1FRbtQk7yjqvWRTBDXK36Z/s16000/Screenshot%202023-05-07%20192334.jpg)
 
-要進行走線的話，可以按 `X` 來開始進行走線。我通常會先將遊標移到焊盤上，再按 `X` 開始走線。爲了避免尖端輻射與避免銅箔脫離等問題，PCB 的走線轉角通常爲 135°，而不是 90°。如果要刪除一條走線的話，可以在選取後右鍵按「Unround Selected」。電源的走線可以設定得粗一點。也可以善用在點選一個走線後按 `U` 來選擇。
+要進行走線的話，可以按 `X` 來開始進行走線。我通常會先將遊標移到焊盤上，再按 `X` 開始走線。為了避免尖端輻射與避免銅箔脫離等問題，PCB 的走線轉角通常為 135°，而不是 90°。如果要刪除一條走線的話，可以在選取後右鍵按「Unround Selected」。電源的走線可以設定得粗一點。也可以善用在點選一個走線後按 `U` 來選擇。
 
 > 如果你想要走線有圓弧的轉角的話，可以選擇兩條線後按右鍵「Fillet Teacks」並輸入半徑。
 
@@ -242,11 +242,11 @@ Schematic 有更新的話記得要再「Update PCB from Schematic」一次。打
 
 佈線的過程倒是沒什麼特別的，基本上就是照著預拉線做連連看、把各個零件的接腳連接起來而已。左下角的「Unrouted」會顯示目前還有幾條線沒連接。
 
-![擺放零件並完成佈線（以 Calcite52 爲例）](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjynSqtaJQ93HTRfCEwwd-qHfAaWJ7zP-b5AsvJW0zF1FD1nzULd8pR5Z5cuKATv9hHJTZX2WTWpkc_-yYfoFgl3K3uvFva_GI-CljJGc40-YXqvZajo6QRa7ui4v_6DpKkncZ_N-l7UPobClzwVtmjAGU8KYn28p5ryx_jOsv-ikbzJSPK14KNy1u2/s16000/Screenshot%202023-05-07%20192543.jpg)
+![擺放零件並完成佈線（以 Calcite52 為例）](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjynSqtaJQ93HTRfCEwwd-qHfAaWJ7zP-b5AsvJW0zF1FD1nzULd8pR5Z5cuKATv9hHJTZX2WTWpkc_-yYfoFgl3K3uvFva_GI-CljJGc40-YXqvZajo6QRa7ui4v_6DpKkncZ_N-l7UPobClzwVtmjAGU8KYn28p5ryx_jOsv-ikbzJSPK14KNy1u2/s16000/Screenshot%202023-05-07%20192543.jpg)
 
 ### 自動佈線
 
-佈線通常是最無聊的一步，好險現在有自動佈線工具可以用。雖然自動佈線可能沒辦法走得很好看，但它可以爲我們提供一些參考，當然如果你不是很在乎美觀的話，也可以直接用它完成的佈線。
+佈線通常是最無聊的一步，好險現在有自動佈線工具可以用。雖然自動佈線可能沒辦法走得很好看，但它可以為我們提供一些參考，當然如果你不是很在乎美觀的話，也可以直接用它完成的佈線。
 
 我使用的工具是 [Freerouting](https://github.com/freerouting/freerouting)。在 KiCad 的 PCM 中就可以直接安裝了。使用上其實沒什麼特別的，詳細的用法就請參考[官方說明](https://github.com/freerouting/freerouting#additional-steps-for-users-of-kicad)。你可以先把一些比較重要的走線動手完成，之後在使用自動佈線工具完成剩餘的走線。
 
@@ -260,7 +260,7 @@ PCB 通常會進行鋪銅將 Footprint 與走線外的空白處保留銅箔，�
 
 ![鋪銅區域設定](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgf6x0LXDc58wfZh_Cr4-Q4dChl7f4y4pR6L3-DqWPHtY-_0frqZ81Zxqxd4Rxd7VndIQspG8jzue_o6qZOPVom5_ucYtfQJ41vYFSAvAAVG83cmlSdyRkmJg64yJvGtPOdp0K6wFhNMbw5r9Ttp5pjsEn8imXLnTtlMknxQrvvXz94YDgTvaP4Eoxw/s16000/zone.jpg)
 
-![完成外框與鋪銅的 PCB（以 Calcite52 爲例）](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgF1olCLFOiYqWujnPr2fxVX9lN9M9b_duqKYQeCvc3ucG_gT9c0oG7I2HPxlnmqu5Vbf-baYjrpeDOXLsJM0Y-XiA4fcD7dUmvhFFfXjK4iwffeuc7Cd1CE0ZZlieXyQ572TZ7I6wehzQlhMxDfyw4G0xwpLfUXgDfj7cg-tRxYRTet9HkCd9RRFD2/s16000/Screenshot%202023-05-07%20182745.jpg)
+![完成外框與鋪銅的 PCB（以 Calcite52 為例）](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgF1olCLFOiYqWujnPr2fxVX9lN9M9b_duqKYQeCvc3ucG_gT9c0oG7I2HPxlnmqu5Vbf-baYjrpeDOXLsJM0Y-XiA4fcD7dUmvhFFfXjK4iwffeuc7Cd1CE0ZZlieXyQ572TZ7I6wehzQlhMxDfyw4G0xwpLfUXgDfj7cg-tRxYRTet9HkCd9RRFD2/s16000/Screenshot%202023-05-07%20182745.jpg)
 
 ## 編輯絲印
 
@@ -280,7 +280,7 @@ KiCad 的文字支援變數如 `${TITLE}`、`${REVISION}`，或樣式標記例�
 
 ## DRC 檢測
 
-到這一步，PCB Layout 已經快要完成了，但是爲了確保我們的 PCB 符合工廠的製作能力與設計規則，我們要進行 DRC。
+到這一步，PCB Layout 已經快要完成了，但是為了確保我們的 PCB 符合工廠的製作能力與設計規則，我們要進行 DRC。
 
 在上方工具列按「Show the design rules checker window」以顯示 DRC 視窗，並點擊「Run DRC」，KiCad 就會自動根據你[設定的規則](/posts/diyqmkkeyboard-pcb-layout-layers/#pcb-設計參數)進行檢測，並且列出所有的 Error 與 Warning。Error 是一定要處理的問題，Warning 如果比較懶的話基本可以就放著不管。
 
@@ -292,7 +292,7 @@ KiCad 的文字支援變數如 `${TITLE}`、`${REVISION}`，或樣式標記例�
 
 當你的 PCB 都畫完後，可能會想看看它實際上長什麼樣，這時可以使用 3D 檢視器。在上放工具列「View > 3D Viewer」即可打開。
 
-![3D 檢視器（以 Calcite52 爲例）](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyEpLt0erGIwTcldJ1YiyfLYIhOhV9W-wVNFlRos3pXQxDk-DiiYXh_3kJSti7EvS-fV0qgb0gVtgsww5hTsafyTNIQDO1X_SY0yx1LFBP5UKEkDhkF6boPhpmWIHxzjFrF7SFPZJfYalYPqUE7UiYj1Xfvp_UEiTPSwvskYr5W-pXYMrQEaB3V3jK/s16000/Calcite52.jpg)
+![3D 檢視器（以 Calcite52 為例）](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyEpLt0erGIwTcldJ1YiyfLYIhOhV9W-wVNFlRos3pXQxDk-DiiYXh_3kJSti7EvS-fV0qgb0gVtgsww5hTsafyTNIQDO1X_SY0yx1LFBP5UKEkDhkF6boPhpmWIHxzjFrF7SFPZJfYalYPqUE7UiYj1Xfvp_UEiTPSwvskYr5W-pXYMrQEaB3V3jK/s16000/Calcite52.jpg)
 
 ## 輸出 Gerber 檔
 
@@ -304,7 +304,7 @@ PCB 全部完成後就可以輸出工廠生產用的 Gerber 檔了。
 
 ### 手動輸出
 
-以下以 JLCPCB 的規範爲例，示範一下手動輸出 Gerber 的方式。
+以下以 JLCPCB 的規範為例，示範一下手動輸出 Gerber 的方式。
 
 在上方工具列「File > Fabrication Outputs > Gerbers (.gbr)」
 

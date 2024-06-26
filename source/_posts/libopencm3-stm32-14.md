@@ -25,7 +25,7 @@ aliases: ["/2022/09/libopencm3-stm32-14/"]
 # 正文
 首先一樣以 Nucleo-F446RE 做示範。
 
-首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 爲「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 檔案。
+首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 檔案。
 ## 完整程式
 ``` c
 /**
@@ -116,12 +116,12 @@ int main(void)
 
 這部分的 `PWM_TIMER_CLOCK`、`PWM_COUNTER_CLOCK`、`PWM_TIMER_PRESCALER`(PSC)、 `PWM_TIMER_PERIOD`(ARR) 和 [Timer](https://ziteh.github.io/2022/09/libopencm3-stm32-12/) 的部分一樣，就不再贅述。
 
-這次的重點是 CCR 暫存器。在[上一篇](https://ziteh.github.io/2022/09/libopencm3-stm32-13/)中已經說明其關係式爲：
+這次的重點是 CCR 暫存器。在[上一篇](https://ziteh.github.io/2022/09/libopencm3-stm32-13/)中已經說明其關係式為：
 `Duty_Cycle% = CCR / (ARR + 1) * 100%`
 所以
 `CCR = (ARR + 1) * Duty_Cycle%  / 100%`
 
-因此這裡以 `PWM_TIMER_OC_VALUE` 爲名定義 CCR 的計算公式 `(PWM_TIMER_PERIOD + 1) * PWM_GOAL_DUTY_CYCLE / 100`。
+因此這裡以 `PWM_TIMER_OC_VALUE` 為名定義 CCR 的計算公式 `(PWM_TIMER_PERIOD + 1) * PWM_GOAL_DUTY_CYCLE / 100`。
 
 ### RCC
 ``` c
@@ -134,7 +134,7 @@ static void rcc_setup(void)
   rcc_periph_reset_pulse(RST_TIM3); /* Reset TIM3 to defaults. */
 }
 ```
-這部分還是和 [Timer](https://ziteh.github.io/2022/09/libopencm3-stm32-12/) 一樣。重點一樣是指定時鐘源爲 8 MHz 的 HSE，並設定系統時鐘爲 168 MHz。
+這部分還是和 [Timer](https://ziteh.github.io/2022/09/libopencm3-stm32-12/) 一樣。重點一樣是指定時鐘源為 8 MHz 的 HSE，並設定系統時鐘為 168 MHz。
 
 ### PWM 與 Timer 設定
 ``` c
@@ -158,9 +158,9 @@ static void pwm_setup(void)
   timer_enable_counter(TIM3);
 }
 ```
-要使 GPIO 可以輸出 PWM 訊號的話，要將 Timer 的 Channel 對應的 GPIO 設定爲 Alternate function。我們使用 TIM3 的 Channel 2。
+要使 GPIO 可以輸出 PWM 訊號的話，要將 Timer 的 Channel 對應的 GPIO 設定為 Alternate function。我們使用 TIM3 的 Channel 2。
 
-Timer 大部分的設定都和和[上一篇](https://ziteh.github.io/2022/09/libopencm3-stm32-12/)的一樣，主要差異爲要使用 `timer_set_oc_mode()` 指定使用 Channel 2（`TIM_OC2`），並設定爲 `TIM_OCM_PWM1` 模式。
+Timer 大部分的設定都和和[上一篇](https://ziteh.github.io/2022/09/libopencm3-stm32-12/)的一樣，主要差異為要使用 `timer_set_oc_mode()` 指定使用 Channel 2（`TIM_OC2`），並設定為 `TIM_OCM_PWM1` 模式。
 
 使用 `timer_set_oc_value()` 函式將 CCR 的值傳給 TIMx_CCRx 暫存器。
 
@@ -201,7 +201,7 @@ static void pwm_setup(void)
 ```
 
 ## 成果
-我使用兩組開發板並分別設定爲頻率 `1kHz`, Duty Cycle `72.5%` 以及頻率 `2kHz`, Duty Cycle `15.0%`。
+我使用兩組開發板並分別設定為頻率 `1kHz`, Duty Cycle `72.5%` 以及頻率 `2kHz`, Duty Cycle `15.0%`。
 可以看到 PWM 的輸出結果是相當精準的。
 
 ![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOn_sfqobeIN5fd6t3YzeHgUqWPUcpKCv0rEsTLt0UZLSM4ajE4QotX185KoVKkUVnGJMPa32G5Yt2vgXxYap2fxN_kzshZFhyHudJ5okK9OL4w_nhmeR0BSd7jRALq5fJdZkYmqZjClsU7WJpr-0y9MphcnPmL8NxiN9lrdlSAqBDAoxr7_rLM7Xo/s16000/pwm_1662278743101_0.png)

@@ -232,7 +232,7 @@ int main(void)
 
 ![▲ 輸出波形圖](https://i.imgur.com/GanKqb1.png)
 
-可以看到輸出的波形誤差很小（設定值爲：Duty Cycle 72.5%，頻率 1 kHz）。
+可以看到輸出的波形誤差很小（設定值為：Duty Cycle 72.5%，頻率 1 kHz）。
 
 # 結語
 本次的程式我一樣有放在 [GitHub](https://github.com/ziteh/stm32-examples) 上，可以使用 PlatformIO 開始專案。

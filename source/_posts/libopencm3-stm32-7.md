@@ -21,7 +21,7 @@ aliases: ["/2022/09/libopencm3-stm32-7/"]
 <!--more-->
 
 # EXTI 線路分配
-基本上 STM32 大部分甚至所有的 GPIO 都可以分配爲 EXTI（即可當作 EXTI 使用），但實際上的 EXTI 線路（EXTI Line）數量並沒有像 GPIO 一樣多，所以有些 GPIO 們會共用一個 EXTI。
+基本上 STM32 大部分甚至所有的 GPIO 都可以分配為 EXTI（即可當作 EXTI 使用），但實際上的 EXTI 線路（EXTI Line）數量並沒有像 GPIO 一樣多，所以有些 GPIO 們會共用一個 EXTI。
 
 ![▲ EXTI 與 GPIO 的對應關係圖。取自 RM0390 Rev6 P.246。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhO-0XJzlz2uhtlbllMNTacnAzWomY3BvlmzCjdUInbUbmlM10EMzVlaPUG3xEsypjaXmlAV8PChiGd-7BlotHymcGEu6b1EylORMv-hhaLTWp1Tc2GdMR1IBYXIUPHmT97ziibmQ6ID9meF7HA9dJrPhRuZNp9-nfjh6GAZVrL3FfJfAhQlv6YMZj6/s16000/image_1663301101772_0.png)
 
@@ -35,14 +35,14 @@ aliases: ["/2022/09/libopencm3-stm32-7/"]
 # 判斷觸發源
 但是中斷向量共用的話要如何分辨現在觸發的到底是哪一個 EXTI 呢？
 
-檔案是靠讀取 EXTI_PR (Pending Register) 暫存器。若此暫存器的對應位元爲 `1` 的話，代表有中斷請求發送。
+檔案是靠讀取 EXTI_PR (Pending Register) 暫存器。若此暫存器的對應位元為 `1` 的話，代表有中斷請求發送。
 
-例如 EXTI10\~15 都會觸發相同的 ISR（因爲其中斷向量共用/相同，都是 `0x0000 00E0`），但只要進入 EXTI10\~15 的 ISR 後，再讀取 EXTI_PR 並查看第 10 到 15 位元哪個是 `1` 就知道實際被觸發的到底是 10~15 的哪一個了。
+例如 EXTI10\~15 都會觸發相同的 ISR（因為其中斷向量共用/相同，都是 `0x0000 00E0`），但只要進入 EXTI10\~15 的 ISR 後，再讀取 EXTI_PR 並查看第 10 到 15 位元哪個是 `1` 就知道實際被觸發的到底是 10~15 的哪一個了。
 
 ![▲ EXTI_PR 暫存器。取自 RM0390 Rev6 P.249。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiuQqEmZOMh7vIrLyKeAcQ9EoZxidc5ZjKZav_ecwNkDhmP2_IJnRupgVEGE_tFzVQWBIcEpesvDBRs2UbtdbEMvarGexfoNLV_M_HPTF1ZB0w3gYEAbXb1FaJgdyOq7tmiTMOm6Q_TUCI-n5R9EyA-6ouF4lQwMmmEUWZo1ZtBnMq-08cYoDtei353/s16000/image_1663302880003_0.png)
 
 # 小結
-這次介紹了STM32 的 EXTI。一開始用 STM32 的 EXTI 時因爲分配與共用的關係，可能會有點搞混，但我想把 EXTI Line 的分配圖多一下應該就可以瞭解了。
+這次介紹了STM32 的 EXTI。一開始用 STM32 的 EXTI 時因為分配與共用的關係，可能會有點搞混，但我想把 EXTI Line 的分配圖多一下應該就可以瞭解了。
 
 
 下一篇文章將會正式介紹要如何寫程式。

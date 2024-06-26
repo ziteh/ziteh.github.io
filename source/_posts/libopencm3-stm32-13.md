@@ -28,7 +28,7 @@ aliases: ["/2022/09/libopencm3-stm32-13/"]
 
 > The reference PWM signal OCxREF is high as long as TIMx_CNT < TIMx_CCRx else it becomes low.
 
-在邊緣對齊、上數模式及 PWM mode 1 下，只要 Counter 的計數值 CNT < CCR，那 PWM 就會輸出 `High`，否則輸出 `Low`。而 PWM mode 2 模式可以視爲 mode 1 的反相——只要 Counter 的計數值 CNT < CCR，那 PWM 就會輸出 `Low`，否則輸出 `High`。
+在邊緣對齊、上數模式及 PWM mode 1 下，只要 Counter 的計數值 CNT < CCR，那 PWM 就會輸出 `High`，否則輸出 `Low`。而 PWM mode 2 模式可以視為 mode 1 的反相——只要 Counter 的計數值 CNT < CCR，那 PWM 就會輸出 `Low`，否則輸出 `High`。
 
 ![▲ PWM 的波形範例，上數 PWM mode 1 模式。取自 RM0390。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIKVkj3NgvUUj5ZZvegkFmet7d3aC_Y8CQg8Uo010RhlIKGCVW0qNN_yQuE8rGa9J9dUcdU-7Ij8QHcHJCCGVHgUJ3S596Lktihw0tdbHqE7kbJ6qkloKggNSj4bXMcwElSwNw6gGNzd1qnHjPX-zR6MuMXG0fgOjlB-HD7MjaPJ0wKasLpJTZmy7p/s16000/image_1662216176986_0.png)
 
@@ -38,14 +38,14 @@ aliases: ["/2022/09/libopencm3-stm32-13/"]
 
 再假設 ARR = 499，CCR = 350，在 CNT = 0\~349（共 350 次計數）時會是 `High`，CNT = 350\~499（共 150 次計數）時會是 `Low`，此時的 Duty Cycle 是 70%。
 
-由此可以得知其關係爲：
+由此可以得知其關係為：
 `Duty_Cycle% = CCR / (ARR + 1) * 100%`
 所以
 `CCR = (ARR + 1) * Duty_Cycle%  / 100%`
 
 因此我們只要照著這個公式去設定 CCR 的值就可以了。
 
-從上面的關係式也可以發現，Duty Cycle 的控制精度與 ARR 值有關。若 ARR = 9，那 Duty Cycle 只能以 10% 爲單位進行調整；若 ARR = 999，那 Duty Cycle 就能以 0.1% 爲單位進行調整。因此實際在使用時 ARR 的值不能太小，不然 Duty Cycle 的調整刻度會太大。
+從上面的關係式也可以發現，Duty Cycle 的控制精度與 ARR 值有關。若 ARR = 9，那 Duty Cycle 只能以 10% 為單位進行調整；若 ARR = 999，那 Duty Cycle 就能以 0.1% 為單位進行調整。因此實際在使用時 ARR 的值不能太小，不然 Duty Cycle 的調整刻度會太大。
 
 實際上在使用 PWM 時可以依照以下的方向來設定數值：
 * CCR 決定 Duty Cycle。

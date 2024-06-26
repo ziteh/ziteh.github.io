@@ -18,7 +18,7 @@ draft: false
 
 <!--more-->
 
-如果你因爲某些原因需要使用舊版 QMK 的話，可以使用下面的方法來切換 QMK 版本（需要先安裝好 QMK MSYS 環境）。
+如果你因為某些原因需要使用舊版 QMK 的話，可以使用下面的方法來切換 QMK 版本（需要先安裝好 QMK MSYS 環境）。
 
 1. 打開 QMK MSYS
 2. 執行 `qmk cd`
@@ -29,8 +29,8 @@ draft: false
 
 在[上一篇文章](/posts/diyqmkkeyboard-1/)中已經完成鍵盤的 Layout，這篇文章將會接續[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 3 步——生成並編輯 QMK 韌體。
 
-> 本篇是以發文當時最新的 [`0.21.3`](https://github.com/qmk/qmk_firmware/releases/tag/0.21.3) 版本的 QMK 作爲示範。
-> 本文的[前一個版本](/posts/diyqmkkeyboard-firmware-0-18/)是針對 `0.18.3` 版所撰寫的，已經不適合最新版的 QMK，故更新本文內容，舊版教學文僅作爲參考保留。
+> 本篇是以發文當時最新的 [`0.21.3`](https://github.com/qmk/qmk_firmware/releases/tag/0.21.3) 版本的 QMK 作為示範。
+> 本文的[前一個版本](/posts/diyqmkkeyboard-firmware-0-18/)是針對 `0.18.3` 版所撰寫的，已經不適合最新版的 QMK，故更新本文內容，舊版教學文僅作為參考保留。
 
 # 準備環境
 
@@ -42,7 +42,7 @@ draft: false
 
 完成後會有一行 `QMK is ready to go`。往上滾動一些會看到一行 `Repo version: 0.21.3` 代表目前的 QMK 版本。
 
-準備好環境後，可以先編譯其它鍵盤作爲測試。在 QMK MSYS 中執行：
+準備好環境後，可以先編譯其它鍵盤作為測試。在 QMK MSYS 中執行：
 ```cmd
 qmk compile -kb clueboard/66/rev3 -km default
 ```
@@ -56,12 +56,12 @@ Checking file size of clueboard_66_rev3_default.hex                    [OK]
  * The firmware size is fine - 26356/28672 (2316 bytes free)
 ```
 
-如果你因爲某些原因需要使用不同版本的 QMK，可以使用下面的方法來切換 QMK 版本。你可以在[這裡](https://github.com/qmk/qmk_firmware/tags)查看所有 QMK 的版本（Tag）。可能需要另外安裝 Git。
+如果你因為某些原因需要使用不同版本的 QMK，可以使用下面的方法來切換 QMK 版本。你可以在[這裡](https://github.com/qmk/qmk_firmware/tags)查看所有 QMK 的版本（Tag）。可能需要另外安裝 Git。
 
 1. 打開 QMK MSYS
 2. 導航到 QMK 的工作路徑：執行 `qmk cd`
 3. 更新 Tag：執行 `git fetch --all --tags --prune`
-4. 切換到指定的版本 Tag（以`0.21.3`爲例）：執行 `git checkout tags/0.21.3`
+4. 切換到指定的版本 Tag（以`0.21.3`為例）：執行 `git checkout tags/0.21.3`
 
 # 創建新鍵盤
 
@@ -87,7 +87,7 @@ Keyboard Name?
 
 ![▲ 使用指令建立新鍵盤](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEipRq6B074RdBe4t0Uc5qIZajM0j3dS-lwJiel-cEGdwrgVwFBNWHkSDjBokQI7N9364L2eQS3B76_HAbcgsMVklbBPCllBSvPRhwkurRY7zW37mGWr9xHy45LYGZhKvf4_5H8WnezV1XLlVYv6JDWDXGkTmCSksXUbO2h7pkZ_FZtD-vOIUkRB-q7wug4/s16000/2023-07-01%2022-10-24.mkv_20230702_095338.927.jpg)
 
-接著會問你基礎佈局，你可以選一個和你預計要做的鍵盤較爲類似的佈局，這樣後續要改的東西就會比較少。例如常見的 60% 鍵盤爲「8. 65_ansi」，那就輸入「8」後按 Enter。
+接著會問你基礎佈局，你可以選一個和你預計要做的鍵盤較為類似的佈局，這樣後續要改的東西就會比較少。例如常見的 60% 鍵盤為「8. 65_ansi」，那就輸入「8」後按 Enter。
 
 最後會問你所使用的 MCU，如果你使用的是 Pro Micro 的話，可以選「13」號。當然如果你是用別的 MCU 的話就自行選擇。這些設定後續都可以再修改。
 
@@ -107,7 +107,7 @@ And build with qmk compile -kb mytestkb -km default.
 
 # 編輯韌體
 
-現在要打開我們剛剛建立的鍵盤檔案，爲細部功能做調整。
+現在要打開我們剛剛建立的鍵盤檔案，為細部功能做調整。
 
 使用文字編輯器（例如我使用 [VSCode](https://code.visualstudio.com/)）打開剛剛建立的新鍵盤的資料夾。QMK 預設的路徑是在 `C:\Users\<USERNAME>\qmk_firmware\`，而我們剛剛建立的鍵盤在其中的 `keyboards\mytestkb\`。
 
@@ -139,7 +139,7 @@ MCU 與 Bootloader 的設定是要互相配合的，要依照你使用的 MCU �
 
 首先看到 `processor` 的部分，這裡要選擇使用的 MCU。由於我們剛剛選擇的是 Pro Micro，所以這裡目前是 `atmega32u4` 沒錯，如果你使用的是別的 MCU 就請修改。QMK 支援的 MCU 可以參考 [Compatible Microcontrollers](https://docs.qmk.fm/#/compatible_microcontrollers)。
 
-再來是 `bootloader` 的部分，由於我們是 Pro Micro，所以這裡要是 `caterina`。如果你使用的是不同的 MCU，那 bootloader 也要改，具體的對照爲：
+再來是 `bootloader` 的部分，由於我們是 Pro Micro，所以這裡要是 `caterina`。如果你使用的是不同的 MCU，那 bootloader 也要改，具體的對照為：
 | 微控制器/開發板 | Bootloader     |
 | :-------------: | :------------- |
 |    Pro Micro    | `caterina`     |
@@ -194,7 +194,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 {"matrix": [0, 1], "x": 1, "y": 0},
 ```
 
-`matrix` 是設定該鍵在「鍵矩陣」中的行列位置，格式爲 `[row, col]`。`x` 和 `y` 是設定該鍵的「物理」位置，也就是它擺在哪裡。另外還有 `w` 與 `h` 可以設定按鍵的寬度和高度，`label` 可以設定名稱。
+`matrix` 是設定該鍵在「鍵矩陣」中的行列位置，格式為 `[row, col]`。`x` 和 `y` 是設定該鍵的「物理」位置，也就是它擺在哪裡。另外還有 `w` 與 `h` 可以設定按鍵的寬度和高度，`label` 可以設定名稱。
 
 `layout` 的內容可以透過一些工具來幫忙，就不用完全自己手打。打開 [Convert KLE to QMK info.json](https://qmk.fm/converter/) 頁面，並將[上一篇文章](/posts/diyqmkkeyboard-1/#輸出) 最後的 Raw data 複製並貼到裡面就可以轉換。
 
@@ -253,7 +253,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 
 ![▲ 接線圖和 Matrix 的對應關係](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh99UeiWYdyky-hZedrvxTovnjqjoeXQg2b2nYZkCG7fIvJS5kOdSyhxP5YzMR3x7MOMoicCb6okM89xIcLfbuSmaJ3zgJoFcT2RQMg0bXmGaoRXV6pNtBOw2l9e8GmFENw_JYKeWlvF3bz2kzGefg_tD-Udxw5MTlHtRQ8VjQH2laiJI5GSOSCh9Vvd_c/s16000/mt2.png)
 
-它提供的接線圖就很清楚地表達了每個鍵的鍵矩陣位置，請以此爲依據來編輯每個鍵的 `matrix` 內容。
+它提供的接線圖就很清楚地表達了每個鍵的鍵矩陣位置，請以此為依據來編輯每個鍵的 `matrix` 內容。
 
 修改完成後：
 ```json
@@ -293,7 +293,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 一般來說，鍵盤的按鍵數都大於微控制器的 GPIO 接腳數，所以會使用鍵盤矩陣掃描（Keyboard Matrix Scanning）技術。如果不是很懂鍵盤矩陣掃描的話，最好先找一些資料瞭解一下，這裡就不贅述。
 
 - `diode_direction` 表示鍵矩陣硬體的二極體方向，一般都是使用 `COL2ROW`。
-- `matrix_pins` 設定鍵矩陣的各個腳位。這邊同時決定了鍵矩陣的大小和實際的腳位爲何。
+- `matrix_pins` 設定鍵矩陣的各個腳位。這邊同時決定了鍵矩陣的大小和實際的腳位為何。
 
 鍵矩陣的 Column 及 Row 數量請參考上面佈局中的 `matrix` 設定。
 
@@ -381,7 +381,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 
 ## 修改 `keymap.c`
 
-`keymaps` 資料夾內可以放多種不同的鍵映射（Keymap），但是至少有有一個名爲 `default` 的預設 Keymap。現在已經自動產生這個預設 keymap 了。打開 `keymaps\default\keymap.c` 。
+`keymaps` 資料夾內可以放多種不同的鍵映射（Keymap），但是至少有有一個名為 `default` 的預設 Keymap。現在已經自動產生這個預設 keymap 了。打開 `keymaps\default\keymap.c` 。
 
 這裡要修改的是 `const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {}` 的內容，也就是 Keymap。Keymap 的結構與行列數量必須要與剛剛在 `info.json` 中設定的 `layout` 中的 `matrix` 對應。
 
@@ -480,4 +480,4 @@ LTO_ENABLE = yes
   - [QMK 官方文件](https://docs.qmk.fm/#/)
   - [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)
 
-> 本文最早發佈於 2020-06-21，於 2023-04-21 重新編排並更新內容，再於 2023-07-02 更新爲 QMK 0.21.3 版。
+> 本文最早發佈於 2020-06-21，於 2023-04-21 重新編排並更新內容，再於 2023-07-02 更新為 QMK 0.21.3 版。

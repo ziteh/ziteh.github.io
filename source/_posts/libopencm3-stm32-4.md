@@ -21,7 +21,7 @@ aliases: ["/2022/09/libopencm3-stm32-4/"]
 # 正文
 先以 Nucleo-F446RE 做示範。
 
-首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 爲「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 檔案。
+首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 檔案。
 ## 完整程式
 
 先把完整的程式打出來：
@@ -97,11 +97,11 @@ int main(void)
 #define GPIO_LED_PIN (GPIO5)
 ```
 
-因爲每個 STM32 Nucleo 開發板的 LED 腳位可能不同，因此使用 `#define` 來定義腳位比較方便程式的撰寫與修改。
+因為每個 STM32 Nucleo 開發板的 LED 腳位可能不同，因此使用 `#define` 來定義腳位比較方便程式的撰寫與修改。
 
-根據資料手冊 [UM1724](https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf)，Nucleo-F446RE 的板載 LED（LD2）所在的腳位是 PA5（對應 Arduino 的 D13 腳位），也就是 GPIO Port-A 的 5 號腳，因此我們定義 `GPIO_LED_PORT` 爲 `GPIOA`，`GPIO_LED_PIN` 爲 `GPIO5`。
+根據資料手冊 [UM1724](https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf)，Nucleo-F446RE 的板載 LED（LD2）所在的腳位是 PA5（對應 Arduino 的 D13 腳位），也就是 GPIO Port-A 的 5 號腳，因此我們定義 `GPIO_LED_PORT` 為 `GPIOA`，`GPIO_LED_PIN` 為 `GPIO5`。
 
-此外 RCC 也會需要依照 GPIO Port 進行設定，所以也定義一個 `RCC_LED_GPIO` 爲 `RCC_GPIOA`。
+此外 RCC 也會需要依照 GPIO Port 進行設定，所以也定義一個 `RCC_LED_GPIO` 為 `RCC_GPIOA`。
 
 ### Delay 函式
 
@@ -149,15 +149,15 @@ int main(void)
 ```
 
 * `rcc_periph_clock_enable()`：這個函式會致能指定功能的 Clock。在這裡我們要啓用 LED 所在的 GPIO Port 的 Clock。
-* `gpio_mode_setup()`：爲指定的 GPIO 設定模式。
+* `gpio_mode_setup()`：為指定的 GPIO 設定模式。
 	* `GPIO_LED_PORT`：要設定的 GPIO Port。
-	* `GPIO_MODE_OUTPUT`：設定爲「General Purpose Output」 模式。
-	* `GPIO_PUPD_NONE`：設定爲不使用上下拉電阻。
+	* `GPIO_MODE_OUTPUT`：設定為「General Purpose Output」 模式。
+	* `GPIO_PUPD_NONE`：設定為不使用上下拉電阻。
 	* `GPIO_LED_PIN`：要設定的 GPIO Pin，若要在同一個 Port 中設定多個 Pin，各個 Pin 可以用 `|` 來複選。
 
-* `gpio_set_output_options()`：爲指定的 GPIO 設定輸出選項。
+* `gpio_set_output_options()`：為指定的 GPIO 設定輸出選項。
 	* `GPIO_LED_PORT`：要設定的 GPIO Port。
-	* `GPIO_OTYPE_PP`：設定輸出電路組態爲「Push-Pull（推挽）」 。
+	* `GPIO_OTYPE_PP`：設定輸出電路組態為「Push-Pull（推挽）」 。
 	* `GPIO_OSPEED_2MHZ`：設定速度。
 	* `GPIO_LED_PIN`：要設定的 GPIO Pin，若要在同一個 Port 中設定多個 Pin，各個 Pin 可以用 `|` 來複選。
 

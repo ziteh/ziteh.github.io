@@ -44,14 +44,14 @@ Timer 計時器是各個 MCU 中都會有的基本功能。正如其名，當需
 > 如果你好奇為什麼 LSE 是 32.768 k 這個奇怪的數字，因為 32786 是 2^15，在二進制的微控制器中使用二的冪次方為頻率在分頻與計數上比較方便。
 
 # Timer 頻率
-每個 STM32 中都有許多不同的 Timer，各個 Timer 的規格及功能都不同。我們這次用的是 TIM2，這是一個通用功能計時器（General-purpose timer），爲一個 32 位元的上/下數 Counter，擁有自動裝載（Auto-reload）功能，還有一個 16 位元的可程式預除頻器。
+每個 STM32 中都有許多不同的 Timer，各個 Timer 的規格及功能都不同。我們這次用的是 TIM2，這是一個通用功能計時器（General-purpose timer），為一個 32 位元的上/下數 Counter，擁有自動裝載（Auto-reload）功能，還有一個 16 位元的可程式預除頻器。
 
 根據 DS10693 的 Figure 3 可以知道 TIM2 在 APB1 （Advanced Peripheral Bus 1）底下。
 
 ![▲ STM32F446xC/E 的功能方塊圖。取自 DS10693 Figure 3。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj8XEh5OYupQ-3-JVsxY4sW1tWx8ZqJUhO1oenC2Yh6RuooigxKdbAmZ7wwniZZgfKVMmSj5dz492cbANOnoml1fUYGek7Qs-9rCtCERqPk3LjtxuzinSoXWc1BbQJoh2yxtVHaaXsM-ZPfhd8V7tL_u_9NIHf_FCRXBXq5JcQywR5Mbc-Sq74RE2Jf/s16000/1.png)
 
 
-從 STM32F446RE 的 Clock tree 還可以知道，當 APB1 的預除頻器設定爲 `/1` 時，APB1 timer  clock = APB1 clock，而 APB1 的預除頻器設定爲 `/1` 以外時，APB1 timer clock = 2* APB1 clock。
+從 STM32F446RE 的 Clock tree 還可以知道，當 APB1 的預除頻器設定為 `/1` 時，APB1 timer  clock = APB1 clock，而 APB1 的預除頻器設定為 `/1` 以外時，APB1 timer clock = 2* APB1 clock。
 
 ![▲ STM32F446xx 的部分 Clock tree。取自 RM0390 Figure 14。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhQMwCBOiY0kUEnYnyx-j6eZy9dEzhdc7Qqpa-cJF_d66O3lFPX7svRDGe7evlGih2Mx5Sv6OQr1r5bN7jRJUhncOvoDwMCHitRsOBhtjhexXiL6d0Ii5jcX5cTBgDMMBbFH3_niSvyIuvx8Vsfh-pkEyvV0BjmqV_thSEfOy0quqwUdvt07K2d5SKi/s16000/2.png)
 
@@ -59,7 +59,7 @@ Timer 計時器是各個 MCU 中都會有的基本功能。正如其名，當需
 # PSC 暫存器
 PSC 是 Prescaler 的意思，它用來設定各 Timer 自己的預除頻值。
 
-根據資料可以知道 Counter 的頻率計算公式爲：
+根據資料可以知道 Counter 的頻率計算公式為：
 `CK_CNT= CK_PSC / (PSC + 1)`
 * `CK_CNT`：Counter 的計數頻率，也就是預除頻器的輸出頻率。
 * `CK_PSC`：預除頻器的輸入頻率，也就是 Timer 頻率。
@@ -73,13 +73,13 @@ PSC 是 Prescaler 的意思，它用來設定各 Timer 自己的預除頻值。
 
 在上數模式時，Counter 會從 0 數到 ARR 值，然後重新從 0 開始數並產生 Overflow 及 Update 事件（包含 Update 中斷）。
 
-![▲ 上數模式下的 TIM2 行爲範例，ARR=0x36。取自 RM0390。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhF3xphTAy7Ilwm-lYcI-j8WBflXxeNHNIIZ36-O11JIsNGPAfxB0kznVcvEpNicphzRFXKrNrSnUHW9GP6MGojyA_95GMTaM6A84V4SyDcql6m_HtzWcq-KDPVtWCe7xH2ZIu-2BUnV1m7xwiIxejgRbCMc1j0TcepXS0eafuBpf7_OoZdAdL_zz0L/s16000/4.png)
+![▲ 上數模式下的 TIM2 行為範例，ARR=0x36。取自 RM0390。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhF3xphTAy7Ilwm-lYcI-j8WBflXxeNHNIIZ36-O11JIsNGPAfxB0kznVcvEpNicphzRFXKrNrSnUHW9GP6MGojyA_95GMTaM6A84V4SyDcql6m_HtzWcq-KDPVtWCe7xH2ZIu-2BUnV1m7xwiIxejgRbCMc1j0TcepXS0eafuBpf7_OoZdAdL_zz0L/s16000/4.png)
 
 
 所以如果 ARR = `0` 的話，每次 Counter 計數後都會發生 Overflow，此時 Overflow 的發生頻率和 Counter 的計數頻率一樣；當 ARR = `2` 時，Counter 會數：
 `0, 1, 2(Overflow), 0, 1, 2(Overflow), 0... ...`
 
-我們可以把 ARR 再當成一個除頻器，輸入爲 Counter 計數頻率，除頻值爲 ARR+1，輸出爲 Overflow 發生的頻率。
+我們可以把 ARR 再當成一個除頻器，輸入為 Counter 計數頻率，除頻值為 ARR+1，輸出為 Overflow 發生的頻率。
 
 # 完整公式
 然後我們就可以得到完整的結構：

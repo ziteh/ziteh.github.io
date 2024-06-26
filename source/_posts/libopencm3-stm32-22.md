@@ -23,7 +23,7 @@ ADC（Analog to Digital Converter）顧名思義是將類比訊號轉換成數�
 # 正文
 首先一樣以 Nucleo-F446RE 做示範。
 
-首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 爲「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h`。
+首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h`。
 
 ## 完整程式
 ``` c
@@ -195,9 +195,9 @@ static void delay(uint32_t value);
 #include <libopencm3/stm32/usart.h>
 #include <libopencm3/cm3/nvic.h>
 ```
-除了基本的 `rcc.h` 和 `gpio.h` 及必要的 `adc.h` 外，因爲我要使用 USART 和 `printf()`，所以還會需要 `usart.h`、`stdio.h` 與 `errno.h`。
+除了基本的 `rcc.h` 和 `gpio.h` 及必要的 `adc.h` 外，因為我要使用 USART 和 `printf()`，所以還會需要 `usart.h`、`stdio.h` 與 `errno.h`。
 
-另外就是因爲要使用中斷功能，所以 `nvic.h` 也是必要的。
+另外就是因為要使用中斷功能，所以 `nvic.h` 也是必要的。
 
 > USART 和 `printf()` 的詳細用法請看[之前的文章](https://ziteh.github.io/2022/09/libopencm3-stm32-9/)。
 
@@ -232,13 +232,13 @@ static void adc_setup(void)
   delay(800000); /* Wait a bit. */
 }
 ```
-要使用 ADC 功能，首先要知道 ADC 的通道在哪些 GPIO 上，並將其設定爲類比輸入。
+要使用 ADC 功能，首先要知道 ADC 的通道在哪些 GPIO 上，並將其設定為類比輸入。
 
 接下來就是要設定 ADC。
-* `adc_disable_scan_mode()` 禁能多通道掃描模式，因爲本範例只需要讀取一個通道而已。
+* `adc_disable_scan_mode()` 禁能多通道掃描模式，因為本範例只需要讀取一個通道而已。
 * `adc_disable_external_trigger_regular()` 禁能外部觸發，我們將使用軟體觸發。
 * `adc_set_single_conversion_mode()` 設定成單一轉換模式，不連續轉換。
-* `adc_set_right_aligned()` 讓資料的對齊方式爲靠右對齊。
+* `adc_set_right_aligned()` 讓資料的對齊方式為靠右對齊。
 * `adc_set_sample_time_on_all_channels()` 設定所有通道的取樣時間，這裡使用 56 個 Cycle。
 * `adc_enable_eoc_interrupt()` 啓用 ADC 的轉換完成（EOC）中斷。
 * `nvic_enable_irq()` 啓用 NVIC 的 ADC IRQ。
@@ -291,7 +291,7 @@ int main(void)
 ## 多環境程式（F446RE + F103RB）
 由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。
 
-由於本例的差異比較大，爲了不佔版面這裡就不列出的，完整的程式請看 [GitHub repo](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/adc_interrupt)。
+由於本例的差異比較大，為了不佔版面這裡就不列出的，完整的程式請看 [GitHub repo](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/adc_interrupt)。
 
 # 小結
 但需要大量進行 ADC 轉換時，如何還是透過 Blocking 的方式讀取 EOC 或 JEOC 位元來等待 ADC 完成轉換的話會非常沒效率，因此本篇簡單介紹了 ADC 的中斷寫法，基本上和以往寫過的中斷一樣，應該不會太難。

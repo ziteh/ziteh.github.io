@@ -52,11 +52,11 @@ aliases: ["/2022/09/libopencm3-stm32-17/"]
 
 如果你真的照著上面的數字去按計算機的話，會發現結果不是 21.85，而是 87.38 ms。
 
-爲什麼？單純是因爲官方文件打錯了，在 2021 年[此問題就被提出](https://community.st.com/s/question/0D53W00000arBraSAE/wwdg-timeout-example-calculation-in-rm-incorrect)，官方看起來有收到此問題了，並有說後續更新文件時會修正。
+為什麼？單純是因為官方文件打錯了，在 2021 年[此問題就被提出](https://community.st.com/s/question/0D53W00000arBraSAE/wwdg-timeout-example-calculation-in-rm-incorrect)，官方看起來有收到此問題了，並有說後續更新文件時會修正。
 
 ![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiApCvsEK0-Kkmm-oRtXdXJD-OjPvMVWsUHu_pfZgSNRLIb_45VU20JQyPDdQBU0K0CS8qfhwEk77O-FTCSRCoIBzk--5d-R9biqCE7vzq3ay7oNpCe2aNw3I3srs4--9-AvryHwsPd8pkJnTu6Z5zZES_oHSjl3fQpi4kd4Ei97xhUG7g5P40FDACC/s16000/_1662527473515_0.png)
 
-可能有些人會覺得爲什麼計算公式中是 T[5:0] 而不是 T[6:0]，因爲第 6 位元 T6 實際上是用來指示是否該進行 Reset 的 Flag。
+可能有些人會覺得為什麼計算公式中是 T[5:0] 而不是 T[6:0]，因為第 6 位元 T6 實際上是用來指示是否該進行 Reset 的 Flag。
 
 當 T[6:0] 的值從 `0x40` 變成 `0x3F`——也就是從 `0100 0000b` 變成 `0011 1111b`——時，T6 位元從 `1` 變成 `0`，就會觸發 Reset。
 

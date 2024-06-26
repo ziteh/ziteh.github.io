@@ -23,7 +23,7 @@ aliases: ["/2022/09/libopencm3-stm32-8/"]
 # 正文
 首先一樣以 Nucleo-F446RE 做示範。
 
-首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 爲「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 檔案。
+首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 檔案。
 ## 完整程式
 ``` c
 /**
@@ -151,7 +151,7 @@ void exti15_10_isr(void)
 #define NVIC_BUTTON_IRQ (NVIC_EXTI15_10_IRQ)
 ```
 
-這次處理要定義 RCC 與腳位外，還一併設定了按鈕的 IRQ 與 EXTI 來源。因爲按鈕是 PC13，所以 IRQ 是 `NVIC_EXTI15_10_IRQ`，它負責處理 EXTI 15 \~ 10，而我們實際會觸發的是 `EXTI13`。
+這次處理要定義 RCC 與腳位外，還一併設定了按鈕的 IRQ 與 EXTI 來源。因為按鈕是 PC13，所以 IRQ 是 `NVIC_EXTI15_10_IRQ`，它負責處理 EXTI 15 \~ 10，而我們實際會觸發的是 `EXTI13`。
 
 ### 設定中斷
 ``` c
@@ -260,7 +260,7 @@ static void button_setup(void)
 # 小結
 這次簡單介紹了 EXTI 的實際程式。中斷是很基本也實用的功能，而外部中斷 EXTI 也是中斷中比較單純且常用的，希望大家看完後也會使用 EXTI 了。
 
-實際上 STM32 的中斷還要許多細節我沒寫到，因爲本篇主要還是希望大家可以最快速入門，因此就先省略了。
+實際上 STM32 的中斷還要許多細節我沒寫到，因為本篇主要還是希望大家可以最快速入門，因此就先省略了。
 
 # 參考資料
 * [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)

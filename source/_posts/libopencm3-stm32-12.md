@@ -25,7 +25,7 @@ Timer 計時器是各個 MCU 中都會有的基本功能。正如其名，當需
 # 正文
 首先一樣以 Nucleo-F446RE 做示範。
 
-首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 爲「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 檔案。
+首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 檔案。
 
 ## 完整程式
 ```c
@@ -117,7 +117,7 @@ void tim2_isr(void)
 #include <libopencm3/stm32/timer.h>
 #include <libopencm3/cm3/nvic.h>
 ```
-除了基本的 `rcc.h` 和 `gpio.h` 外，當然還有這次的重點——`timer.h`。因爲會用到中斷的功能，所以 `nvic.h` 也是必要的。
+除了基本的 `rcc.h` 和 `gpio.h` 外，當然還有這次的重點——`timer.h`。因為會用到中斷的功能，所以 `nvic.h` 也是必要的。
 
 ### Timer 頻率
 ```c
@@ -125,14 +125,14 @@ void tim2_isr(void)
 ```
 這裡以 `TIMER_CLOCK` 設定 Timer 的頻率。在上一篇得知要使用的 TIM2 頻率與 APB1 頻率及其預除頻值有關。
 
-我們後續的 RCC 設定會讓 APB1 的預除頻器不爲 `/1`，所以 TIM2 clock = 2* APB1 clock。定義 `TIMER_CLOCK` 爲 `rcc_apb1_frequency * 2`。其中 `rcc_apb1_frequency` 的實際數值會在後續的 RCC 步驟中由 LibOpenCM3 設定好，我們只需要直接調用就好了。
+我們後續的 RCC 設定會讓 APB1 的預除頻器不為 `/1`，所以 TIM2 clock = 2* APB1 clock。定義 `TIMER_CLOCK` 為 `rcc_apb1_frequency * 2`。其中 `rcc_apb1_frequency` 的實際數值會在後續的 RCC 步驟中由 LibOpenCM3 設定好，我們只需要直接調用就好了。
 
 ### PSC 暫存器（Counter 頻率）
 ```c
 #define COUNTER_CLOCK (1000000) /* f_counter (CK_CNT). */
 #define TIMER_PRESCALER (TIMER_CLOCK / COUNTER_CLOCK - 1) /* PSC */
 ```
-根據上一篇的內容可以知道 Counter 的頻率計算公式爲：
+根據上一篇的內容可以知道 Counter 的頻率計算公式為：
 `CK_CNT = CK_PSC / (PSC + 1)`
 所以
 `PSC = CK_PSC / CK_CNT - 1`
@@ -142,7 +142,7 @@ void tim2_isr(void)
 
 這裡我定義了一個 `COUNTER_CLOCK` 來設定 Counter 的計數頻率 `CK_CNT`，以供下面設定 PSC 時使用。這個值不是絕對或唯一的，基本上只要不會導致算出的 PSC 值大到超出其暫存器的上限都可以。
 
-我將預除頻值 PSC 以 `TIMER_PRESCALER` 爲名定義爲 `TIMER_CLOCK / COUNTER_CLOCK - 1`。這個值會存進 TIMx_PSC 暫存器。
+我將預除頻值 PSC 以 `TIMER_PRESCALER` 為名定義為 `TIMER_CLOCK / COUNTER_CLOCK - 1`。這個值會存進 TIMx_PSC 暫存器。
 
 ### ARR 暫存器
 ``` c
@@ -160,14 +160,14 @@ void tim2_isr(void)
 
 這裡以 `GOAL_FREQUENCY` 定義目標頻率 `f_overflow`。
 
-再來只要套用上面的公式去設定 ARR 的值就可以了。這裡以 `TIMER_PERIOD` 爲名定義 ARR 爲 `(TIMER_CLOCK / ((TIMER_PRESCALER + 1) * GOAL_FREQUENCY)) - 1`。這個值會存進 TIMx_ARR 暫存器。
+再來只要套用上面的公式去設定 ARR 的值就可以了。這裡以 `TIMER_PERIOD` 為名定義 ARR 為 `(TIMER_CLOCK / ((TIMER_PRESCALER + 1) * GOAL_FREQUENCY)) - 1`。這個值會存進 TIMx_ARR 暫存器。
 
 ### 確認數值
 雖然理論上只要照著上面的公式設定 PSC 與 ARR 就可以了，所以 PSC 與 ARR 的值會超多種組合，不過實際使用時要注意一下 PSC 與 ARR 的空間。
 
 TIM2_ARR 是 32 位元的暫存器，TIM2_PSC 是 16 位元的暫存器，所以 ARR 的值不能超過 2^32，而 PSC 的值不能超過 2^16。
 
-我們來驗證一下。在後續的 RCC 設定中 `rcc_apb1_frequency` 會被設定成 `42000000`，也就是 42 MHz，而 `GOAL_FREQUENCY` 爲 `5`。
+我們來驗證一下。在後續的 RCC 設定中 `rcc_apb1_frequency` 會被設定成 `42000000`，也就是 42 MHz，而 `GOAL_FREQUENCY` 為 `5`。
 ```
 TIMER_CLOCK = rcc_apb1_frequency * 2
             = 84M
@@ -188,7 +188,7 @@ CK_CNT = CK_PSC / (PSC + 1)
        = 1M
 ```
 
-Counter 的計數頻率是 1 MHz，也就是每秒數 1,000,000 次。而 ARR 值爲 `199999`，也就是 Counter 會從 0 數到 199,999（共計數 200,000 次）後發生 Overflow。
+Counter 的計數頻率是 1 MHz，也就是每秒數 1,000,000 次。而 ARR 值為 `199999`，也就是 Counter 會從 0 數到 199,999（共計數 200,000 次）後發生 Overflow。
 
 每計數 200 K 次就會發生 Overflow，1 秒會計數 1,000 K 次，所以每秒會發生 5 次 Overflow（5 Hz），正確無誤。
 
@@ -206,16 +206,16 @@ static void rcc_setup(void)
 ```
 這邊比較重要的是 `rcc_clock_setup_pll(&rcc_hse_8mhz_3v3[RCC_CLOCK_3V3_168MHZ])`
 
-這行的意思是指定時鐘源爲 HSE（High Speed External），且其頻率爲 8MHz，並將系統時鐘設定爲 168 MHz。這個函式也會一併設定好上面用到的 `rcc_apb1_frequency` 值，和決定 APB1 的預除頻值等各種與時鐘樹有關的設定。
+這行的意思是指定時鐘源為 HSE（High Speed External），且其頻率為 8MHz，並將系統時鐘設定為 168 MHz。這個函式也會一併設定好上面用到的 `rcc_apb1_frequency` 值，和決定 APB1 的預除頻值等各種與時鐘樹有關的設定。
 
 我們可以在 VSCode 中查看它實際設定了什麼，這些都定義在 `lib/stm32/f4/rcc.c` 中：
 ![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgVCeGcu0lJ90BFb9Ihp35aR9DKJ6v9zM7KKC8VWjoYp-lBSiAv1AqK6VHN70MZVCVZrkdZ7CTEryFtmznALpXNG7QXxizn2tngkXkOCsc2kmwf1Zg-SaDepWqncySXFWaynz3ndLAo_y9cL6KB6NlIHRk2hClp8Yik10zxNw8L6rmJGf8dI3fL--aU/s16000/Inkedimage_1662204158734_0.jpg)
 
 可能會有人覺得奇怪，Nucleo-F446RE 上面的 X3 根本就沒有裝石英振盪器，而 X2 是 32 KHz 的 LSE，那這個 8 MHz 的 HSE 是從哪來的？
 
-答案是從 ST-Link 來的。Nucleo 預設配置好 ST-Link 的 MCO（Microcontroller Clock Output），它會固定輸出 8 MHz。當然你也可以不使用 ST-Link 的 MCO 作爲 HSE 源，只要照著 UM1724 裡的說明調整即可。
+答案是從 ST-Link 來的。Nucleo 預設配置好 ST-Link 的 MCO（Microcontroller Clock Output），它會固定輸出 8 MHz。當然你也可以不使用 ST-Link 的 MCO 作為 HSE 源，只要照著 UM1724 裡的說明調整即可。
 
-![▲ Nucleo 預設使用 ST-Link MCO 做爲 HSE。取自 UM1724。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEixZDXvfWw2mKihuO-_u8VVdQZEG6rtalPjWVTRmfWbfpWCd0Ub8LYP7wnzzBhorCkKzcRKOyk5OLfsaHs0OJGvMRGNZcR4IG2uVTU9LCam3dCDu2Gxi5rxWrUZfoEsIH0mgbWxfC4dH0IbXd_6PNVD8UbJgHceQg97Cof4dOwplL6exuO28izs-c95/s16000/image_1662203775952_0.png)
+![▲ Nucleo 預設使用 ST-Link MCO 做為 HSE。取自 UM1724。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEixZDXvfWw2mKihuO-_u8VVdQZEG6rtalPjWVTRmfWbfpWCd0Ub8LYP7wnzzBhorCkKzcRKOyk5OLfsaHs0OJGvMRGNZcR4IG2uVTU9LCam3dCDu2Gxi5rxWrUZfoEsIH0mgbWxfC4dH0IbXd_6PNVD8UbJgHceQg97Cof4dOwplL6exuO28izs-c95/s16000/image_1662203775952_0.png)
 
 ### 設定 Timer
 ``` c
@@ -240,11 +240,11 @@ static void timer_setup(void)
 ```
 在這裡設定好 Timer 的相關參數，包含啓用中斷、設定 PSC（`timer_set_prescaler()`）與 ARR （`timer_set_period()`）的值等。
 
-`timer_set_mode()` 的 `TIM_CR1_CKD_CK_INT` 代表 TIMx_CR1（Control register 1） 的 CKD（Clock division） 會設爲 `00` 不分頻；`TIM_CR1_CMS_EDGE` 則是 CMS（Center-aligned mode selection）會設爲 `00`，設定爲邊緣對齊模式；`TIM_CR1_DIR_UP` 是設定 DIR（Direction）爲 `0` 以使用上數計數器模式。
+`timer_set_mode()` 的 `TIM_CR1_CKD_CK_INT` 代表 TIMx_CR1（Control register 1） 的 CKD（Clock division） 會設為 `00` 不分頻；`TIM_CR1_CMS_EDGE` 則是 CMS（Center-aligned mode selection）會設為 `00`，設定為邊緣對齊模式；`TIM_CR1_DIR_UP` 是設定 DIR（Direction）為 `0` 以使用上數計數器模式。
 
-`timer_disable_preload()` 會設定 TIMx_CR1 的 ARPE（Auto-reload preload enable）爲 `0`，以禁用 ARR 的 Preload 功能。
+`timer_disable_preload()` 會設定 TIMx_CR1 的 ARPE（Auto-reload preload enable）為 `0`，以禁用 ARR 的 Preload 功能。
 
-`timer_continuous_mode()` 會將 TIMx_CR1 的 OPM（One-pulse mode）設爲 `0`，令 Counter 在 Update event 之後也不會停止，可以一直計數。
+`timer_continuous_mode()` 會將 TIMx_CR1 的 OPM（One-pulse mode）設為 `0`，令 Counter 在 Update event 之後也不會停止，可以一直計數。
 
 > 有關 F446RE 的 TIMx_CR1 的詳細說明可以查看 [RM0390](https://www.st.com/resource/en/reference_manual/rm0390-stm32f446xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)。
 
@@ -301,7 +301,7 @@ static void led_setup(void)
 }
 ```
 ## 成果
-這是實際輸出的波形，D6 與 D7 分別爲設定目標頻率爲 5 Hz 與 100 Hz，可以看出相當精準。
+這是實際輸出的波形，D6 與 D7 分別為設定目標頻率為 5 Hz 與 100 Hz，可以看出相當精準。
 
 ![▲ 實際輸出的波形。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5o3NcAgk25oLDFsaOcEO11b51HYMcU2m9JhXHta_inIuWfPKrP3GYuanRhDQgb2bXZfOWk6RcSecayBrVnR5oQ-7JVr0qbjdtS2jpOORa6hGD9K76CEgdHluBofcJwdlk_fQSi30bEvECUqc7iuPZF0dmbDXM6NF_vymra8OY_XFHJeAODD0mOJUv/s16000/scope_2_1662209560342_0.png)
 

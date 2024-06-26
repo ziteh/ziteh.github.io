@@ -13,17 +13,17 @@ aliases: ["/2020/09/ime-weasel-fuzzypinyin/"]
 ---
 # 前言
 
-小狼毫輸入法（Weasel）是開源的[中州韻輸入法引擎（Rime 輸入法）](https://rime.im/)在 Windows 上的官方發行版。另外它在Linux上的發行版爲中州韻（ibus-rime）、macOS 爲鼠鬚管（Squirrel），也有許多第三方的版本。
+小狼毫輸入法（Weasel）是開源的[中州韻輸入法引擎（Rime 輸入法）](https://rime.im/)在 Windows 上的官方發行版。另外它在Linux上的發行版為中州韻（ibus-rime）、macOS 為鼠鬚管（Squirrel），也有許多第三方的版本。
 
-身爲開源軟體，其最大的特色就在於高度自訂的各種設定，想要什麼樣子或功能都可以自己修改。
+身為開源軟體，其最大的特色就在於高度自訂的各種設定，想要什麼樣子或功能都可以自己修改。
 
 <!--more-->
 
-我從高中二年級就開始使用漢語拼音輸入法，但漢語拼音的主要用戶爲中國大陸，而我又不太喜歡中國那裡較常見的幾款拼音輸入法（如搜狗、QQ），而 Windows 內建的我也覺得不好用，所以一直以來我都是使用 Google 拼音輸入法。
+我從高中二年級就開始使用漢語拼音輸入法，但漢語拼音的主要用戶為中國大陸，而我又不太喜歡中國那裡較常見的幾款拼音輸入法（如搜狗、QQ），而 Windows 內建的我也覺得不好用，所以一直以來我都是使用 Google 拼音輸入法。
 
 然而 Google 拼音輸入法老早就沒在更新了，有時運作起來也不穩定。故我開始找尋其它適合的拼音輸入法，便找到了小狼毫輸入法。
 
-而我當初會開始使用漢語拼音的原因就是因爲多數漢語拼音輸入法都有「模糊拼音」的功能，而小狼毫的拼音輸入法並未直接內建該功能，但是我們可以透過其強大的自訂功能來達成。
+而我當初會開始使用漢語拼音的原因就是因為多數漢語拼音輸入法都有「模糊拼音」的功能，而小狼毫的拼音輸入法並未直接內建該功能，但是我們可以透過其強大的自訂功能來達成。
 
 小狼毫也有內建注音輸入法，但是我現在已經沒有、也不太會打注音了，所以也不知道和其它輸入法比較起來如何。
 
@@ -47,13 +47,13 @@ aliases: ["/2020/09/ime-weasel-fuzzypinyin/"]
 
 到達用戶資料夾後應該會看到一些YAML檔，這些都是小狼毫的設定檔。
 
-這時要看各位所選擇使用的小狼毫輸入方案是那一種，像我是使用「朙月拼音」和「朙月拼音-臺灣正體」，而它們的設定檔分別爲「luna_pinyin.schema.yaml」和「luna_pinyin_tw.schema.yaml」。這兩個檔案可能會在`用戶資料夾/build/`裡。
+這時要看各位所選擇使用的小狼毫輸入方案是那一種，像我是使用「朙月拼音」和「朙月拼音-臺灣正體」，而它們的設定檔分別為「luna_pinyin.schema.yaml」和「luna_pinyin_tw.schema.yaml」。這兩個檔案可能會在`用戶資料夾/build/`裡。
 
 接着請到[我的 GitHub ](https://gist.github.com/ziteh/beac7b7038652b79864fbab7a7254183)下載設定檔。
 
-可以發現其檔名爲「luna_pinyin.custom.yaml」，對應了上述的「luna_pinyin.schema.yaml」。請將「luna_pinyin.custom.yaml」放到用戶資料夾中（不是`用戶資料夾/build/`）。
+可以發現其檔名為「luna_pinyin.custom.yaml」，對應了上述的「luna_pinyin.schema.yaml」。請將「luna_pinyin.custom.yaml」放到用戶資料夾中（不是`用戶資料夾/build/`）。
 
-另外因爲我還有選擇「朙月拼音-臺灣正體」方案，所以我將「luna_pinyin.custom.yaml」複製一份並修改檔名爲「luna_pinyin_tw.custom.yaml」。
+另外因為我還有選擇「朙月拼音-臺灣正體」方案，所以我將「luna_pinyin.custom.yaml」複製一份並修改檔名為「luna_pinyin_tw.custom.yaml」。
 
 ![▲ 加入設定檔的用戶資料夾。](https://1.bp.blogspot.com/-PM-9gfp0-ho/X172CCwKZHI/AAAAAAAACm8/U9OoEY-gKFEzN4b_ZaGeT5Kk0kg7hI5PwCPcBGAsYHg/s264/rime-%25E7%2594%25A8%25E6%2588%25B6%25E8%25B3%2587%25E6%2596%2599%25E5%25A4%25BE-1.png)
 

@@ -14,11 +14,11 @@ toc: false
 draft: false
 ---
 
-我最近開始製作一個名爲 MS60 的鍵盤，它的主要特色及設計目標是 60% 尺寸、左移佈局（2U Shift）、Cherry MX 軸熱插拔、分離 USB 子板。
+我最近開始製作一個名為 MS60 的鍵盤，它的主要特色及設計目標是 60% 尺寸、左移佈局（2U Shift）、Cherry MX 軸熱插拔、分離 USB 子板。
 
-左移佈局是爲了在 60% 的尺寸下可以有方向鍵。整體佈局會很類似 FILCO MINILA。
+左移佈局是為了在 60% 的尺寸下可以有方向鍵。整體佈局會很類似 FILCO MINILA。
 
-會想做這個鍵盤是因爲我的 Just60 已經有點舊了，而且它也不支援 [Vial](https://get.vial.today)，再加上現在金屬 CNC 加工的價格也變得很便宜了，所以想說做一款風格走向比較主流的 60% 鍵盤，也因此它被命名爲 ***M***ain ***S***equence，也就是天文學中的主序帶——它們是恆星演化中宇宙裡數量最多的恆星所在的階段。
+會想做這個鍵盤是因為我的 Just60 已經有點舊了，而且它也不支援 [Vial](https://get.vial.today)，再加上現在金屬 CNC 加工的價格也變得很便宜了，所以想說做一款風格走向比較主流的 60% 鍵盤，也因此它被命名為 ***M***ain ***S***equence，也就是天文學中的主序帶——它們是恆星演化中宇宙裡數量最多的恆星所在的階段。
 
 <!--more-->
 
@@ -34,7 +34,7 @@ draft: false
 
 ![PCB 背面渲染](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwF_1fy0jwO9W3YYuxLLkXzvYbfXahc8OcHYbmeSeFv5CeU9PxOP3Xm4WwG62WfuqRjNqe4Fyk8XheSeGXinIgohiua0CMxeEyQi0W96xu2B3RIKm4ToBkAJFTbFV0HAwWUsUgRI-qWFpfLmsPl3eNYiUFvx_Z5jzV2xo0-FAfZI5sGfqZd_3kbgRQTcQ/s16000/MS60-2.png)
 
-可以發現目前的 PCB 上還有正面的 RGB LED（SK6812MINI-E），但是因爲要支援多重佈局的關係，有些鍵位的 LED 會擺得歪歪的。這時我就重新思考設計理念是什麼？我想要它是一把內在優雅的鍵盤。
+可以發現目前的 PCB 上還有正面的 RGB LED（SK6812MINI-E），但是因為要支援多重佈局的關係，有些鍵位的 LED 會擺得歪歪的。這時我就重新思考設計理念是什麼？我想要它是一把內在優雅的鍵盤。
 
 雖然這些 LED 都確實可以塞進有限的空間內，但它們大概與核心價值牴觸了。雖然我也想過用 WS2812B 2020 這種更小的 RGB LED，但總覺得這樣佈出來還是沒辦法符合期待，所以之後應該會完全拔掉正面的 LED。至於背面的 RGB LED 可能可以保留。
 

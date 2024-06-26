@@ -22,11 +22,11 @@ aliases: ["/2020/06/diyqmkkeyboard-1/", "/posts/diyqmkkeyboard-1/"]
 
 # 編輯鍵盤佈局
 
-鍵盤 Layout，也就是各個按鍵的位置、尺寸及其數量。我們可以用線上工具 [Keyboard Layout Editor](http://www.keyboard-layout-editor.com/) 來進行設計，往後將其簡稱爲「KLE」。
+鍵盤 Layout，也就是各個按鍵的位置、尺寸及其數量。我們可以用線上工具 [Keyboard Layout Editor](http://www.keyboard-layout-editor.com/) 來進行設計，往後將其簡稱為「KLE」。
 
 ## 主頁面
 
-- 最上面爲功能列。
+- 最上面為功能列。
 - 左上角有藍色和紅色的按鈕，可以用來增加或刪除按鍵。旁邊還有一些編輯用的操作按鈕（回上一步、回下一步、剪下、複製、貼上）。
 - 中間是編輯區，可以看到它現在有一個數字鍵盤。
 - 下方是各種標籤頁

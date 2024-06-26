@@ -38,7 +38,7 @@ aliases: ["/2019/03/vnote-evernote/"]
 
 Markdown是一種自由格式的輕量級標示語言(Lightweight Markup Language)，還可以很輕鬆的和HTML互相轉換。
 
-我在找尋替代的筆記軟體時就是以支援Markdown的軟體為最優先的，因爲我想替換掉Evernote的根本原因就是不想被單一廠商束縛，所以最底層的檔案格式當然也是要用自由檔案格式。之後GitHub常見的Markdown格式就被我優先考慮了。
+我在找尋替代的筆記軟體時就是以支援Markdown的軟體為最優先的，因為我想替換掉Evernote的根本原因就是不想被單一廠商束縛，所以最底層的檔案格式當然也是要用自由檔案格式。之後GitHub常見的Markdown格式就被我優先考慮了。
 
 至於Markdown的用法和教學可以參考此網頁：[Markdown 基本语法](https://github.com/younghz/Markdown)
 另外介紹一個國產的超優質Markdown線上筆記網站：[HackMD](https://hackmd.io/)
@@ -55,7 +55,7 @@ Markdown是一種自由格式的輕量級標示語言(Lightweight Markup Languag
 
 
 
-這是VNote的基本界面。以下先簡單的介紹各個區域：(因爲這些區塊都是可以任意移動位置的，所以我以預設為例)
+這是VNote的基本界面。以下先簡單的介紹各個區域：(因為這些區塊都是可以任意移動位置的，所以我以預設為例)
 
 *   中間是筆記編輯/預覽區：就是用來打筆記的地方。
 *   上方是功能區：像是新筆記、儲存、預覽、加表格或加附件等相關功能都在這裡。
@@ -77,7 +77,7 @@ Markdown是一種自由格式的輕量級標示語言(Lightweight Markup Languag
 
 ## 加入圖片
 
-Markdown是純文字的檔案，它不像.doc、.odt之類的文件檔案可以直接插入圖片。但作爲一個筆記軟體，圖片要如何加入是非常重要的。
+Markdown是純文字的檔案，它不像.doc、.odt之類的文件檔案可以直接插入圖片。但作為一個筆記軟體，圖片要如何加入是非常重要的。
 
 VNote除了用網址的方式加入圖片外還支援直接按“Ctrl + V”貼上圖片，他會自動將圖片存到筆記本内的特定資料夾中(預設為*v*images)，只要將整個記事本都傳上雲端，就可以實現多裝置同步查看/編輯筆記了，這也是我在眾多Markdown軟體中選擇VNote的重要原因。
 

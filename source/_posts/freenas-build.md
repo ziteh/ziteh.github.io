@@ -24,17 +24,17 @@ aliases: ["/2020/12/freenas-build/"]
 
 而本文要介紹的就是現在在自組 NAS 中非常多人使用的作業系統——[FreeNAS](https://www.freenas.org/)。
 
-FreeNAS 是基於 FreeBSD 的開源 NAS 系統，作爲開源軟體，它也是免費的，因此世界上有非常多人在使用它，使用者社群可以說是非常完善，官方文件也很豐富。
+FreeNAS 是基於 FreeBSD 的開源 NAS 系統，作為開源軟體，它也是免費的，因此世界上有非常多人在使用它，使用者社群可以說是非常完善，官方文件也很豐富。
 
 <!--more-->
 
 # 硬體規格
 
-首先是硬體規格的部分。由於 FreeNAS 使用的檔案系統爲 ZFS，對硬體的要求與其它常見的 NAS 系統如 OpenMediaVault 是比較高的。
+首先是硬體規格的部分。由於 FreeNAS 使用的檔案系統為 ZFS，對硬體的要求與其它常見的 NAS 系統如 OpenMediaVault 是比較高的。
 
 根據[ FreeNAS 官方硬體需求手冊](https://www.freenas.org/hardware-requirements/)，建議你要有 64 位元的 CPU、至少 8GB 以上的硬碟來儲存作業系統、至少 8GB 以上的記憶體，甚至非常建議使用 ECC RAM。
 
-其中以 ECC RAM 這部分是比較麻煩的，因爲一般人的電腦不會用 ECC RAM，也不是所有的 CPU、MB 都支援 ECC RAM，通常是偏伺服器的零件才會支援、例如 Intel Xeon CPU。如果要使用 ECC RAM 的話，處了需要 ECC RAM 外，CPU 及 MB 也都要支援 ECC RAM 才可以。值得一提的是 AMD Ryzen CPU 全部都支援 ECC RAM，不過 MB 的部分就還是要再看看各產品是否有支援 ECC RAM。
+其中以 ECC RAM 這部分是比較麻煩的，因為一般人的電腦不會用 ECC RAM，也不是所有的 CPU、MB 都支援 ECC RAM，通常是偏伺服器的零件才會支援、例如 Intel Xeon CPU。如果要使用 ECC RAM 的話，處了需要 ECC RAM 外，CPU 及 MB 也都要支援 ECC RAM 才可以。值得一提的是 AMD Ryzen CPU 全部都支援 ECC RAM，不過 MB 的部分就還是要再看看各產品是否有支援 ECC RAM。
 
 不過我這臺就只是先拿一堆舊的零件來試用看看，所以就沒有使用 ECC RAM。以下的零件都是舊電腦換下來的，只有 CPU、CASE 和 其中一條 RAM 是又另外買的二手貨。價格方面就只是個參考。
 
@@ -57,7 +57,7 @@ FreeNAS 是基於 FreeBSD 的開源 NAS 系統，作爲開源軟體，它也是�
 
 ![▲ FreeNAS 安裝畫面](https://1.bp.blogspot.com/-aAMHiIQJI00/X8ieYsHKcHI/AAAAAAAACtM/gwPav_5ptBAOihi9AiSLqjlKOEjCtpXKQCPcBGAsYHg/s3877/IMG_20201029_235227.jpg)
 
-安裝過程中除了要設定 root 使用者的密碼外，沒有什麼特別要設定的，唯一要注意的就是在選擇要將系統安裝進哪一個（或多個）硬碟時，因爲被選擇作爲系統硬碟的該硬碟就只能儲存系統資料，也就是它不能用來出處其它的檔案，因此要注意系統碟要與資料碟分開，像是我就是拿了一個 16 GB 的隨身碟來當做系統碟。
+安裝過程中除了要設定 root 使用者的密碼外，沒有什麼特別要設定的，唯一要注意的就是在選擇要將系統安裝進哪一個（或多個）硬碟時，因為被選擇作為系統硬碟的該硬碟就只能儲存系統資料，也就是它不能用來出處其它的檔案，因此要注意系統碟要與資料碟分開，像是我就是拿了一個 16 GB 的隨身碟來當做系統碟。
 
 安裝完成後就可以將開機碟移除，以系統碟開機。如果你的 FreeNAS 主機有接螢幕與網路的話，在開機完成後它會顯示該 FreeNAS 的網路位置，只要在瀏覽器上輸入該網址就可以進入 FreeNAS 的管理介面，並以 root 帳號密碼登入就可以了。
 

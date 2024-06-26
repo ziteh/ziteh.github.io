@@ -29,7 +29,7 @@ aliases: ["/2022/10/libopencm3-stm32-28/"]
 
 如前言所述，GitHub 上最多的搜尋結果通常是 Arduino 的。Arduino 的 Library 基本上就是用 C++ 寫的，而且總會有幾個 repo 星星很多，代表這個 Library 可能很多人在用，所以它的 API 或功能應該比較完整，Bug 也比較少。這種就很適合拿來修改。
 
-再來還有一個很重要的是要確認該 Library 的授權許可（License），Open-Source License 有很多種，每一種的限制都不同，這部分一定要看清楚該 License 對於修改或再發佈等行爲的限制和要求是什麼。
+再來還有一個很重要的是要確認該 Library 的授權許可（License），Open-Source License 有很多種，每一種的限制都不同，這部分一定要看清楚該 License 對於修改或再發佈等行為的限制和要求是什麼。
 
 在這部分，選擇以 [MIT License](https://opensource.org/licenses/MIT) 發佈的 Library 基本上是最方便的。MIT License 是一個非常寬鬆的 License，基本上只有要求要明確註明著作權（Copyright）和 MIT License 就可以了。
 
@@ -58,7 +58,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-而在這裡，我選擇 [autowp/arduino-mcp2515](https://github.com/autowp/arduino-mcp2515) 作爲我要修改的 Library。它是以 MIT License 授權並發佈的 Arduino Library，目前有 447 顆星，算是滿熱門的 repo。
+而在這裡，我選擇 [autowp/arduino-mcp2515](https://github.com/autowp/arduino-mcp2515) 作為我要修改的 Library。它是以 MIT License 授權並發佈的 Arduino Library，目前有 447 顆星，算是滿熱門的 repo。
 
 這個 Library 主要有 3 個程式檔案：
 - `mcp2515.cpp`
@@ -169,7 +169,7 @@ void MCP2515::setRegister(const REGISTER reg, const uint8_t value)
 
 既然實作不在 Library 內，那我們現在不管用什麼平臺或框架都 ok，只要使用時再透過建構子將實作函式注入即可，這也就達成了 Platform Independent 的目的。
 
-具體的使用方式以 LibOpenCM3 爲例：
+具體的使用方式以 LibOpenCM3 為例：
 ```cpp
 void spiSelect(void)
 {
@@ -200,7 +200,7 @@ void mcp2515Init(void)
   mcp2515.setNormalMode();
 }
 ```
-實際修改完的 Library 爲 [ziteh/mcp2515-driver](https://github.com/ziteh/mcp2515-driver)。
+實際修改完的 Library 為 [ziteh/mcp2515-driver](https://github.com/ziteh/mcp2515-driver)。
 完整的範例程式可以看[這裡](https://github.com/ziteh/mcp2515-driver/blob/main/examples/stm32_main.cpp)。
 
 # 依賴反轉 DIP

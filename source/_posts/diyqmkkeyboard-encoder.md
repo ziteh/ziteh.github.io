@@ -26,7 +26,7 @@ aliases: ["/2020/11/diyqmkkeyboard-5/", "/posts/diyqmkkeyboard-5/"]
 
 # 修改程式碼
 
-以下個步驟將示範爲 QMK 加入編碼器的程式。詳細可以參考 [QMK 官方文件-Encoder](https://docs.qmk.fm/#/feature_encoders)。
+以下個步驟將示範為 QMK 加入編碼器的程式。詳細可以參考 [QMK 官方文件-Encoder](https://docs.qmk.fm/#/feature_encoders)。
 
 ## 修改 rules.mk
 
@@ -38,7 +38,7 @@ ENCODER_ENABLE = yes  # 致能編碼器
 
 ## 修改 config.h
 
-接著要定義腳位。每個編碼器都有 2 隻腳（通常分別稱爲 A 腳與 B 腳）需要接到你的微控制器（開發板）上。在 `config.h` 中加入以下之程式碼：
+接著要定義腳位。每個編碼器都有 2 隻腳（通常分別稱為 A 腳與 B 腳）需要接到你的微控制器（開發板）上。在 `config.h` 中加入以下之程式碼：
 
 ```c
 // 編碼器接腳定義
@@ -61,7 +61,7 @@ ENCODER_ENABLE = yes  # 致能編碼器
 #define ENCODER_DIRECTION_FLIP
 ```
 
-此外還可以改變其解析度（預設爲 4）:
+此外還可以改變其解析度（預設為 4）:
 
 ```c
 // 調整編碼器解析度
