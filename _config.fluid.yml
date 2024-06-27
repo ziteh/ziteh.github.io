@@ -1067,31 +1067,45 @@ static_prefix:
   internal_css: /css
   internal_img: /img
 
-  anchor: https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.1/
+  anchor:
+    url: https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.3.1/
+    integrity: sha512-zPB79j2C+3sFS9zcA3vg/z6bVKzJVEyu9pY5w89akQRys76zpAT2t6S3wZKla3QQ14O5l/Yt0RUQ/DHXx82Y5g==
 
   github_markdown: https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/
 
-  jquery: https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/
+  jquery:
+    url: https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/
+    integrity: sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==
 
-  bootstrap: https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/
+  bootstrap:
+    url: https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/
+    integrity: sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA==
 
   prismjs: https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/
 
-  tocbot: https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.20.1/
+  tocbot:
+    url: https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.20.1/
+    integrity: sha512-aeQPIoprk35kvJYUFH4nhvm+ASgaUHHBfJQLEfizXatcdcrWFIzNNpG/lf70ePbB1cplRQ2I5/XyMLMZJHFRzQ==
 
   typed: https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/
 
-  fancybox: https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/
+  fancybox:
+    url: https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/
+    integrity: sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==
 
   nprogress: https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/
 
-  mathjax: https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/
+  mathjax:
+    url: https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/
+    integrity: sha512-tiaNmAzpy3KcgtuiLwT9WSlSsqGqtDB5ylMwxoqG5ysNIyzkBw24k6UFTuXGgyXJLJ8aM/ho1h67NRKedPx++Q==
 
   katex: https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.2/
 
   busuanzi: https://busuanzi.ibruce.info/busuanzi/2.3/
 
-  clipboard: https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/
+  clipboard:
+    url: https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/
+    integrity: sha512-7O5pXpc0oCRrxk8RUfDYFgn0nO1t+jLuIOQdOMRp4APB7uZ4vSjspzp5y6YDtDs4VzUSTbWzBFZ/LKJhnyFOKw==
 
   mermaid: https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.14.0/
 

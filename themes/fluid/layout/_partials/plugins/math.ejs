@@ -1,6 +1,6 @@
 <% if(theme.post.math.engine === 'mathjax') { %>
   <%
-    var lazy = theme.lazyload.enable && require_version(theme.static_prefix.mathjax, '3.2.0')
+    var lazy = theme.lazyload.enable && require_version(theme.static_prefix.mathjax.url, '3.2.0')
 
     import_script(`
       <script>
@@ -43,7 +43,7 @@
       </script>
     `)
 
-    import_js(theme.static_prefix.mathjax.replace('es5/', ''), 'es5/tex-mml-chtml.js')
+    import_js(theme.static_prefix.mathjax.url.replace('es5/', ''), 'es5/tex-mml-chtml.js', '', theme.static_prefix.mathjax.integrity)
   %>
 
 <% } else if (theme.post.math.engine === 'katex') { %>

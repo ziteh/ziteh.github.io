@@ -2,11 +2,11 @@
 
 'use strict';
 
-hexo.extend.helper.register('import_js', function(base, relative, ex = '') {
+hexo.extend.helper.register('import_js', function(base, relative, ex = '', integrity = '') {
   if (!Array.isArray(this.page.script_snippets)) {
     this.page.script_snippets = [];
   }
-  this.page.script_snippets.push(this.js_ex(base, relative, ex));
+  this.page.script_snippets.push(this.js_ex(base, relative, ex, integrity));
 });
 
 hexo.extend.helper.register('import_script', function(snippet) {
