@@ -124,11 +124,18 @@ Fluid.utils = {
     }
   },
 
-  createScript: function(url, onload) {
+  createScript: function(url, onload, integrity='') {
     var s = document.createElement('script');
     s.setAttribute('src', url);
     s.setAttribute('type', 'text/javascript');
     s.setAttribute('charset', 'UTF-8');
+
+    if (integrity) {
+      s.setAttribute('integrity', integrity);
+      s.setAttribute('crossorigin', 'anonymous');
+      s.setAttribute('referrerpolicy', 'no-referrer');
+    }
+
     s.async = false;
     if (typeof onload === 'function') {
       if (window.attachEvent) {

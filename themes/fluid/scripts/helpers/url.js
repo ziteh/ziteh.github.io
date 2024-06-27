@@ -8,7 +8,10 @@ hexo.extend.helper.register('css_ex', function(base, relative, ex = '') {
   return `<link ${ex} rel="stylesheet" href="${this.url_for(urlJoin(base, relative))}" />`;
 });
 
-hexo.extend.helper.register('js_ex', function(base, relative, ex = '') {
+hexo.extend.helper.register('js_ex', function(base, relative, ex = '', integrity = '') {
+  if (integrity) {
+    ex += ` integrity="${integrity}" crossorigin="anonymous" referrerpolicy="no-referrer"`;
+  }
   return `<script ${ex} src="${this.url_for(urlJoin(base, relative))}" ></script>`;
 });
 
