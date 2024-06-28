@@ -116,12 +116,13 @@ gh repo list "$username" --limit 1000 | while read -r repo _; do
 done
 ```
 
-我們將此腳本命名為 `clone_github.sh`，接著就可以試著執行看看了。例如我要備份 [Neovim](https://github.com/neovim) 底下的所有 repo：
+這個腳本會使用 `gh repo list` 來取得目標用戶或組織的 repo 清單，如果本地目錄下沒有此 repo 的話會 `clone --mirror` 一份 Bare repo，如果已經 `clone` 過的話（資料夾已經存在），則會 `fetch`
+ 此 Bare repo 進行更新。我們將此腳本命名為 `clone_github.sh`，接著就可以試著執行看看了。例如我要備份 [Neovim](https://github.com/neovim) 底下的所有 repo：
 
 ```bash
 bash clone_github.sh neovim
 ```
 
-第一次執行此腳本的話會 `clone --mirror` repo，再次執行的話會 `fetch` 來更新已經存在的 repo。有了這個腳本，我們就不用每個 repo 都手動 clone 了。當然更進一步的話，可以把它包成 Docker，在 NAS 上定期執行。
+有了這個腳本，我們就不用每個 repo 都手動 clone 了。當然更進一步的話，可以把它包成 Docker，在 NAS 上定期執行。
 
 # 參考
