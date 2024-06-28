@@ -107,7 +107,7 @@ gh repo list "$username" --limit 1000 | while read -r repo _; do
   if [ -d "${repo}.git" ]; then
     # Already exists and is not an empty directory, fetch.
     echo "Fetch '$repo'"
-    git -C "${repo}.git" fetch
+    git -C "${repo}.git" fetch --prune --tags
   else
     # New repo, clone repo.
     echo "Clone '$repo'"
