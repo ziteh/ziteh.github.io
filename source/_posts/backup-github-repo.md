@@ -91,20 +91,28 @@ git clone neovim.git
 ```bash
 #!/bin/bash
 
-# Clone all repos from GitHub, using GitHub CLI
-# Usage: $ bash clone_github.sh <USER_NAME> [OPTION]
+# clone all repos from GitHub, using GitHub CLI
+# input arg1 for user or org name, arg2 for option
+# source: https://stackoverflow.com/questions/19576742/how-to-clone-all-repos-at-once-from-github
 
 if [ -z "$1" ]; then
-  echo "Usage: $0 <USER_NAME> [OPTION]"
+  echo "Usage: bash $0 <USERNAME> [OPTION]"
   exit 1
 fi
 
-USER_NAME=$1
-OPTION=$2
+username=$1
+option=$2
 
-gh repo list "$USER_NAME" --limit 1000 | while read -r repo _; do
-  echo "Clone: '$repo'"
-  gh repo clone "$repo" "$repo" -- --mirror $OPTION 2>/dev/null
+gh repo list "$username" --limit 1000 | while read -r repo _; do
+  if [ -d "${repo}.git" ]; then
+    # Already exists and is not an empty directory, fetch.
+    echo "Fetch '$repo'"
+    git -C "${repo}.git" fetch
+  else
+    # New repo, clone repo.
+    echo "Clone '$repo'"
+    gh repo clone "$repo" "${repo}.git" -- --mirror $option
+  fi
 done
 ```
 
@@ -114,6 +122,6 @@ done
 bash clone_github.sh neovim
 ```
 
-有了這個腳本，我們就不用每個 repo 都手動 clone 了。當然更進一步的話，可以把它包成 Docker，在 NAS 上定期執行。
+第一次執行此腳本的話會 `clone --mirror` repo，再次執行的話會 `fetch` 來更新已經存在的 repo。有了這個腳本，我們就不用每個 repo 都手動 clone 了。當然更進一步的話，可以把它包成 Docker，在 NAS 上定期執行。
 
 # 參考
