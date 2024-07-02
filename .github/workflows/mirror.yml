@@ -1,0 +1,23 @@
+name: Mirror
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - hexo/main
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for all tags and branches
+      - name: Push
+        uses: heussd/mirror-to-bitbucket-github-action@v2
+        with:
+          username: ziteh
+          spacename: ziteh
+          repository: ziteh.github.io
+          password: ${{ secrets.BITBUCKET_PASSWORD }}
