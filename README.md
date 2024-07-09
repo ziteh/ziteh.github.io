@@ -13,7 +13,7 @@ title: ""
 # description: ""
 tags: [""]
 # categories: [""]
-date: 2024-MM-DD HH:MM:00
+date: 2024-MM-DDTHH:MM:00
 # updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
