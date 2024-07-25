@@ -2,7 +2,7 @@
 title: "一種巧妙及噁心並具的 C 語言寫法：達夫裝置 (Duff's device)"
 subtitle: ""
 # description: ""
-tags: ["程式"]
+tags: ["程式","C/C++"]
 categories: []
 
 date: 2024-06-17T20:25:00+08:00

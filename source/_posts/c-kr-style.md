@@ -2,7 +2,7 @@
 title: "C 語言用 K&R Coding Style 的最大理由不是省行數"
 subtitle: "以實例分析使用 K&R 風格的優點"
 # description: ""
-tags: ["心得", "程式"]
+tags: ["心得", "程式","C/C++"]
 categories: []
 
 date: 2024-05-23T19:51:00+08:00

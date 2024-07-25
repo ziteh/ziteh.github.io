@@ -2,7 +2,7 @@
 title: "Rust 之我見"
 subtitle: "Rust Programming Language"
 # description: ""
-tags: ["心得","程式"]
+tags: ["心得","程式","Rust"]
 categories: []
 
 date: 2024-05-03T21:10:00+08:00

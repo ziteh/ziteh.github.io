@@ -5,6 +5,9 @@ tags:
   - 'STM32'
   - '電子電路'
   - '教學'
+  - C/C++
+  - 程式
+  - 嵌入式
 categories: ["LibOpenCM3 × STM32教學"]
 date: 2021-11-28 22:00:00
 comments: true
