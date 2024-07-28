@@ -28,6 +28,11 @@ about:
   title: '關於'
   subtitle: '關於'
 
+project:
+  menu: '作品'
+  title: '作品'
+  subtitle: '作品'
+
 links:
   menu: '連結'
   title: '交換連結'
