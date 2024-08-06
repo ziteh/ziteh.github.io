@@ -3,7 +3,7 @@ title: "Zig：延續了 C 使用者最喜歡的低級操作，再加上 Rust 的
 subtitle: "Zig 程式語言簡介"
 # description: ""
 tags: ["教學","程式","Zig"]
-categories: ["Zig 入門指南"]
+categories: ["Zig 入門指南（鐵人 24）"]
 date: 2024-MM-DDTHH:MM:00
 # updated: 2024-MM-DDTHH:MM:00
 comments: true
@@ -51,4 +51,4 @@ Zig 是一個靜態強型別的程序式編程（Procedural programming）語言
 [zig-top-paying]: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglM8dw4QJvFR-QTimBFyj4CuHgFbcPxcN4Vt-E3uvSFcYdT2JjydTQ-jPZxo8OQYuLLjmF_nkaHG9nRNAVzdoIpauXnMs_uiCaLYD9EuddV18HnNwAkhfQ4jgb7uXGKBBuaKVXhuZHqgd_m7P5OmQxbWC4EMi7acZRsSvmhQDaw8Yc24C3wM7Bjc11rJM/s16000/zig-top-paying.png
 [zig-salary-and-exp]: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjeFEfTfIvjq3Gz3yeqKVN1coC30NS7vTEtnxWD2Oh2UdOrVtVMJPMd13s9uw4r9GzSacYpZKi1Yac7eBwJcsLL6eHdm7MVICf83D99eaDJEn9WigQoKYWvqbJHJYaJE0zKVeWtsMDOmTeQOn_KHOGS-bGUvE8GjmPHHmGhe8VUPzLaK2k_w_tpnLVnO28/s16000/zig-salary-and-exp.png
 
-這次是我第二次參加鐵人賽，也是我開始工作後第一次參加。總之，我想利用這 30 天，**非常概略**地介紹 Zig 這門語言，特別會以 C 或 Rust 的使用者來看待和比較它，希望熟悉低階操作的你也會喜歡上 Zig。但是由於我接觸 Zig 的資歷也還非常淺，所以沒辦法分析中高階的內容，如果內容有誤，也請指正。謝謝。
+這次是我第二次參加 iThome 鐵人賽，也是我開始工作後第一次參加。總之，我想利用這 30 天，**非常概略**地介紹 Zig 這門語言，特別會以 C 或 Rust 的使用者來看待和比較它，希望熟悉低階操作的你也會喜歡上 Zig。但是由於我接觸 Zig 的資歷也還非常淺，所以沒辦法分析中高階的內容，如果內容有誤，也請指正。謝謝。
