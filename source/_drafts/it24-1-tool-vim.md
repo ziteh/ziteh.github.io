@@ -2,7 +2,7 @@
 title: "工具箱之無情的打字機器——Vim/Neovim"
 # subtitle: ""
 # description: ""
-tags: ["分享"]
+tags: ["分享","Vim"]
 categories: ["工具箱（鐵人 24）"]
 date: 2024-MM-DDTHH:MM:00
 # updated: 2024-MM-DDTHH:MM:00
