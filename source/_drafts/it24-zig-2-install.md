@@ -41,3 +41,9 @@ Zig 可以在其官網的 [Download](https://ziglang.org/download/) 直接下載
 5. 如果你使用 VS code 的話，可以安裝 Zig 的語言支援套件：[Zig Language](https://marketplace.visualstudio.com/items?itemName=ziglang.vscode-zig)
 
 這樣就完成了！
+
+# 參考
+
+- [Download ⚡ Zig Programming Language](https://ziglang.org/download/)
+- [Install Zig from a Package Manager · ziglang/zig Wiki](https://github.com/ziglang/zig/wiki/Install-Zig-from-a-Package-Manager)
+- [Installation | zig.guide](https://zig.guide/getting-started/installation)

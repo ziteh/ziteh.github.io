@@ -96,7 +96,7 @@ Value1: 12, Value2: 8
 
 # 明確捨棄回傳
 
-和 Rust 一樣，如果該函式有回傳值，但是你不需要用它的話，使用底線 `_` 來承接回傳值，以明確地捨棄它。但 Zig 比 Rust 更強制要求這點。
+和 Rust 一樣，如果該函式有回傳值，但是你不需要用它的話，使用底線 `_` 來承接回傳值，以明確地捨棄它。但 Zig 比 Rust 更強制要求這點。這是 Zig 的「沒有隱藏」的宗旨。
 
 ```zig
 const std = @import("std");
@@ -128,3 +128,9 @@ Zig 做爲 C 替代，當然也有函式指標：
 ```zig
 const opPtr = *const fn (a: u8, b: u8) u8;
 ```
+
+# 參考
+
+- [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#Functions)
+- [Functions | zig.guide](https://zig.guide/language-basics/functions)
+
