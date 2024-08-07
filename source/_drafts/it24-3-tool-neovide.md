@@ -65,4 +65,5 @@ end
 
 ---
 
-安裝：[Neovide](https://neovide.dev/)
+- 網站：[Neovide](https://neovide.dev/)
+- GitHub：[neovide/neovide: No Nonsense Neovim Client in Rust](https://github.com/neovide/neovide)

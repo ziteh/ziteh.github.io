@@ -25,4 +25,5 @@ Neovim 本身其實一個後台程序，它沒有直接的 UI，需要一個「�
 
 ---
 
-安裝 [VSCode Neovim - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=asvetliakov.vscode-neovim)
+- 網站：[VSCode Neovim - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=asvetliakov.vscode-neovim)
+- GitHub：[vscode-neovim/vscode-neovim: Vim mode for VSCode, powered by Neovim](https://github.com/vscode-neovim/vscode-neovim)
