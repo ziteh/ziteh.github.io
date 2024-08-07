@@ -100,7 +100,7 @@ local plugins = {
 require("lazy").setup(plugins)
 ```
 
-另外要注意一下，Lazy.nvim 和 [LazyVim](http://www.lazyvim.org/) 是不一樣的，後者是使用前者的 Neovim 配置，它可以讓你把 Neovim 從單純的文字編輯器變成完整功能的 IDE。
+另外要注意一下，Lazy.nvim 和 [LazyVim](http://www.lazyvim.org/) 是不一樣的，後者是使用前者的 Neovim 配置，它可以讓你把 Neovim 從單純的文字編輯器變成完整功能的 IDE。它們的作者是同一人。
 
 ---
 
