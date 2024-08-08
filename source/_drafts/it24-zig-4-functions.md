@@ -134,3 +134,4 @@ const opPtr = *const fn (a: u8, b: u8) u8;
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#Functions)
 - [Functions | zig.guide](https://zig.guide/language-basics/functions)
 
+> 本篇基於 Zig `0.13.0`

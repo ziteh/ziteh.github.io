@@ -59,3 +59,5 @@ pub fn main() !void {
 
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#Assignment)
 - [Assignment | zig.guide](https://zig.guide/language-basics/assignment)
+
+> 本篇基於 Zig `0.13.0`
