@@ -41,17 +41,17 @@ Zig 內建布林型別 `bool`，其值可以是 `true` 或 `false`。要特別�
 ```zig
 // 正確
 if (true) {
-    std.debug.print("true\n", .{});
+    std.debug.print("Ok", .{});
 }
 
 // 正確
 if (1 != 0) {
-    std.debug.print("true\n", .{});
+    std.debug.print("Ok", .{});
 }
 
 // 編譯錯誤 error: expected type 'bool', found 'comptime_int'
 if (1) {
-    std.debug.print("true\n", .{});
+    std.debug.print("Ok", .{});
 }
 ```
 

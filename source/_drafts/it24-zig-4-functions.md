@@ -20,7 +20,7 @@ Zig 身爲程序式編程（Procedural programming）語言，函式（Function�
 這是一個簡單的函式，它擁有兩個參數，和一個回傳值。參數名稱在前、型別後置，回傳值型別在最後。
 
 ```zig
-fn doSomething(a: u8, b: u8) u16 {
+fn add(a: u8, b: u8) u8 {
     return a + b;
 }
 ```
@@ -34,12 +34,17 @@ fn doSomething(a: u8, b: u8) u16 {
 Zig 的函式和 Rust 一樣，只有加上 `pub` 的函式才是公開的，可以被外部 `@import` 存取和呼叫。否則預設爲私有的，只能在定義它的模組內部使用。
 
 ```zig
-pub fn publicFunction() void {
-    privateFunction();
+const std = @import("std");
+
+pub fn main() void {
+    const value = add(10, 5);
+    std.debug.print("Value: {d}", .{value});
 }
 
-fn privateFunction() void {
+fn add(a: u8, b: u8) u8 {
+    return a + b;
 }
+
 ```
 
 # 一級公民
@@ -49,15 +54,16 @@ Zig 的函式是一級公民（First class），這意味著函式可以像變�
 ```zig
 const std = @import("std");
 
-fn myFun(a: u8) u8 {
+fn my_fun(a: u8) u8 {
     return a * 2;
 }
 
 pub fn main() !void {
-    const op = myFun;    // 賦值
+    const op = my_fun;    // 賦值
     const value = op(6);
     std.debug.print("Value {d}\n", .{value});
 }
+
 ```
 
 ```bash
@@ -78,15 +84,16 @@ fn sub(a: u8, b: u8) u8 {
     return a - b;
 }
 
-fn doSomething(a: u8, b: u8, op: fn (u8, u8) u8) u8 {
+fn do_something(a: u8, b: u8, op: fn (u8, u8) u8) u8 {
     return op(a, b);
 }
 
 pub fn main() !void {
-    const val1 = doSomething(10, 2, add);
-    const val2 = doSomething(10, 2, sub);
+    const val1 = do_something(10, 2, add);
+    const val2 = do_something(10, 2, sub);
     std.debug.print("Value1: {d}, Value2: {d}\n", .{ val1, val2 });
 }
+
 ```
 
 ```bash
@@ -101,14 +108,15 @@ Value1: 12, Value2: 8
 ```zig
 const std = @import("std");
 
-fn myFunc(a: u8) bool {
+fn my_func(a: u8) bool {
     std.debug.print("Value: {d}\n", .{a});
     return true;
 }
 
 pub fn main() !void {
-    _ = myFunc(100);
+    _ = my_func(100);
 }
+
 ```
 
 # 內聯
@@ -126,7 +134,7 @@ inline fn add(a: u8, b: u8) u8 {
 Zig 做爲 C 替代，當然也有函式指標：
 
 ```zig
-const opPtr = *const fn (a: u8, b: u8) u8;
+const op_ptr = *const fn (a: u8, b: u8) u8;
 ```
 
 # 參考
