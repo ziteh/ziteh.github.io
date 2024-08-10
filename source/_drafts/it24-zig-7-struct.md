@@ -44,7 +44,6 @@ pub fn main() void {
 ```
 
 ```bash
-$ zig build run
 X: 10, Y: 123.45
 ```
 
@@ -76,7 +75,6 @@ pub fn main() void {
 ```
 
 ```bash
-$ zig build run
 Add: 133.45
 ```
 
@@ -106,7 +104,6 @@ pub fn main() void {
 ```
 
 ```bash
-$ zig build run
 X: 20, Y: 3.5
 ```
 
@@ -131,7 +128,6 @@ pub fn main() void {
 ```
 
 ```bash
-$ zig build run
 X: 0, Y: 12.5
 X: 245.8, Y: 100
 ```
@@ -167,7 +163,6 @@ pub fn main() void {
 ```
 
 ```bash
-$ zig build run
 X: 10, Y: 12.5
 X: 20.2, Y: 110
 ```
