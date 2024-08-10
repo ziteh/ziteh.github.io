@@ -137,6 +137,20 @@ Zig 做爲 C 替代，當然也有函式指標：
 const op_ptr = *const fn (a: u8, b: u8) u8;
 ```
 
+# 內建函式
+
+Zig 用有一些特別的函式叫內建函式（builtin function），它們在編譯器實現，不用引用就可以直接調用。它們的名稱以 `@` 符號開頭。
+
+例如：
+
+- `@import()`：用來引用模組
+- `@sizeOf()`：用來取得目標型別或值所佔的大小（byte）
+- `@TypeOf()`：用來取得型別（注意大小寫！）
+- `@as()`：強制轉型
+- `@painc()`：引發執行期錯誤
+
+詳細的清單和用法可以參考：[Builtin Functions](https://ziglang.org/documentation/0.13.0/#Builtin-Functions)
+
 # 參考
 
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#Functions)

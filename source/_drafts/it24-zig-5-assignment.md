@@ -55,6 +55,28 @@ pub fn main() !void {
 
 在 C 中有時會使用 `static` 區域變數，讓該變數的生命週期變成整個程式，但一樣只有該函式可以存取它（因爲是區域的）。Zig 沒有相似的設計，如果需要變數數值在離開函式後依舊保持，直接使用全域變數，其生命週期會延續到整個模組。
 
+# 強制轉型
+
+有時會需要明確進行強制轉型。使用內建函式 `@as()` 達成。
+
+```zig
+const std = @import("std");
+
+pub fn main() !void {
+    const a: u8 = 5;
+    const b = @as(u16, a);
+    std.debug.print("Type a: {}\n", .{@TypeOf(a)});
+    std.debug.print("Type b: {}\n", .{@TypeOf(b)});
+}
+```
+
+```bash
+Type a: u8
+Type b: u16
+```
+
+> 在此例中，就算不用 `@as()`，直接打 `const b: u16 = a;` 也是可以通過編譯並正確執行。
+
 # 參考
 
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#Assignment)
