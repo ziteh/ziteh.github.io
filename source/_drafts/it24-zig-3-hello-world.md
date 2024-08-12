@@ -110,8 +110,14 @@ Run `zig build test` to run the tests.
 
 ## print
 
+這邊要先特別介紹一下 `print()`，因爲之後的範例會很常看到它。它用起來和 C 的差不多，每個 `{}` 都代表一個數值（就像 C 的 `%d`），後面的 `.{ var }`，則是實際的變數或常數，如果有多個的話，要以前寫在 `.{ }` 內，並用逗號 `,` 分隔。如果沒有要填入數值的話 `.{}` 內留空。
+
 ```zig
-std.debug.print("Value: {}\n", .{c});
+// Value: 5
+std.debug.print("Value: {}\n", .{5});
+
+// A: 5, B: 10
+std.debug.print("A: {}, B: {}\n", .{5, 10});
 ```
 
 # 測試
