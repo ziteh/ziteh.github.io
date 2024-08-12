@@ -108,6 +108,12 @@ All your codebase are belong to us.
 Run `zig build test` to run the tests.
 ```
 
+## print
+
+```zig
+std.debug.print("Value: {}\n", .{c});
+```
+
 # 測試
 
 以 `test "name" {}` 包圍的區塊是測試程式。你可以執行測試：
