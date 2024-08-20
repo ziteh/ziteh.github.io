@@ -1,5 +1,5 @@
 ---
-title: "Zig：可選（Optional）"
+title: "Zig：可選值（Optional）"
 # subtitle: ""
 # description: ""
 tags: ["教學","程式","Zig"]
