@@ -11,7 +11,7 @@ toc: true
 # RESERVE
 ---
 
-Vector 可以用來儲存一組相同型別的資料，支援 SIMD（Single instruction, multiple data）。
+Vector 可以用來儲存一組相同型別的資料，其長度和型別需在宣告時指定且不能變更，支援 SIMD（Single instruction, multiple data）。
 
 <!-- more -->
 
