@@ -50,6 +50,5 @@ Zig 可以在其官網的 [Download](https://ziglang.org/download/) 直接下載
 
 本文以 Zig `0.13.0` 爲主。並同時發佈在：
 
-- [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10346040)
-- [我的 Blog](https://ziteh.github.io/categories/Zig-入門指南（鐵人-24）/)
+- [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/users/20151756/ironman/7460)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24)
