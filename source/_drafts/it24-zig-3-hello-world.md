@@ -4,7 +4,7 @@ title: "執行與測試 Zig"
 # description: ""
 tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
-date: 2024-08-06T12:00:00
+date: 2024-08-26T06:40:00
 # updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
@@ -41,6 +41,11 @@ zig-hello
  └── build.zig.zon
 ```
 
+- `build.zig.zon` 是一個類似 JSON 格式的檔案，它就類似 `package.json`，會包含此專案的名稱、版本、依賴套件等資訊。
+- `build.zig` 是類似 Makefile 或 CMakeLists 的檔案，用來配置建構系統如何進行編譯和連結。
+- `main.zig` 就是主要執行程式。
+- `root.zig` 在這裡是一個範例函式庫。
+
 生成的專案沒有 `.gitignore`，你可以用這個：
 
 ```gitignore
@@ -56,11 +61,6 @@ zig-out/
 /build-*/
 /docgen_tmp/
 ```
-
-- `build.zig.zon` 是一個類似 JSON 格式的檔案，它就類似 `package.json`，會包含此專案的名稱、版本、依賴套件等資訊。
-- `build.zig` 是類似 Makefile 或 CMakeLists 的檔案，用來配置建構系統如何進行編譯和連結。
-- `main.zig` 就是主要執行程式。
-- `root.zig` 在這裡是一個範例函式庫。
 
 # 執行
 
@@ -144,6 +144,5 @@ error: the following build command failed with exit code 1:
 
 本文以 Zig `0.13.0` 爲主。並同時發佈在：
 
-- [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/users/20151756/ironman/7460)
-- [我的 Blog](https://ziteh.github.io/categories/Zig-入門指南（鐵人-24）/)
+- [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10346041)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24)
