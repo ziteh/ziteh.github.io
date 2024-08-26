@@ -4,7 +4,7 @@ title: "Zig：函式（Functions）"
 # description: ""
 tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
-date: 2024-MM-DDTHH:MM:00
+date: 2024-08-27T06:44:00
 # updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
@@ -67,7 +67,6 @@ pub fn main() !void {
 ```
 
 ```bash
-$ zig build run
 Value 12
 ```
 
@@ -97,13 +96,12 @@ pub fn main() !void {
 ```
 
 ```bash
-$ zig build run
 Value1: 12, Value2: 8
 ```
 
 # 明確捨棄回傳
 
-和 Rust 一樣，如果該函式有回傳值，但是你不需要用它的話，使用底線 `_` 來承接回傳值，以明確地捨棄它。但 Zig 比 Rust 更強制要求這點。這是 Zig 的「沒有隱藏」的宗旨。
+和 Rust 一樣，如果該函式有回傳值，但是你不需要用它的話，需使用底線 `_` 來承接回傳值，以明確地捨棄它。Zig 更強制要求這點。
 
 ```zig
 const std = @import("std");
@@ -158,6 +156,5 @@ Zig 用有一些特別的函式叫內建函式（builtin function），它們在
 
 本文以 Zig `0.13.0` 爲主。並同時發佈在：
 
-- [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/users/20151756/ironman/7460)
-- [我的 Blog](https://ziteh.github.io/categories/Zig-入門指南（鐵人-24）/)
-- 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24)
+- [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10346446)
+- 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/functions)
