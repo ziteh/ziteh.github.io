@@ -4,7 +4,7 @@ title: "Zig：賦值（Assignment）與運算子（Operator）"
 # description: ""
 tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
-date: 2024-MM-DDTHH:MM:00
+date: 2024-08-28T06:50:00
 # updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
@@ -22,7 +22,7 @@ toc: true
 - `const`：不可變的常數（immutable constant）
 - `var`：可變的變數（mutable variable）
 
-型別在後。無論是 `const` 還是 `var` 都要求一定要在宣告時給值。如果初始值爲止或想留空，明確地賦予 `undefined`，這是 Zig 的「沒有隱藏」的宗旨。
+型別在後。無論是 `const` 還是 `var` 都要求一定要在宣告時給值。如果初始值未知或想留空，明確地賦予 `undefined`，這是 Zig 的「沒有隱藏」的宗旨。
 
 ```zig
 pub fn main() !void {
@@ -151,6 +151,5 @@ Saturating: 255
 
 本文以 Zig `0.13.0` 爲主。並同時發佈在：
 
-- [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/users/20151756/ironman/7460)
-- [我的 Blog](https://ziteh.github.io/categories/Zig-入門指南（鐵人-24）/)
-- 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24)
+- [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10346602)
+- 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/assignment)
