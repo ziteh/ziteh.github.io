@@ -1,5 +1,5 @@
 ---
-title: "Zig：函式（Functions）"
+title: "[Day-4]Zig：函式（Functions）"
 # subtitle: ""
 # description: ""
 tags: ["教學","程式","Zig"]

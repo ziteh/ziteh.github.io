@@ -1,5 +1,5 @@
 ---
-title: "Zig：型別（Types）"
+title: "[Day-6]Zig：型別（Types）"
 # subtitle: ""
 # description: ""
 tags: ["教學","程式","Zig"]

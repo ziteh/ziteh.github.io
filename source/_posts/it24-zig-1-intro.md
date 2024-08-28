@@ -1,5 +1,5 @@
 ---
-title: "Zig：延續了 C 使用者最喜歡的低級操作，再加上 Rust 的現代特性"
+title: "[Day-1]Zig：延續了 C 使用者最喜歡的低級操作，再加上 Rust 的現代特性"
 subtitle: "Zig 程式語言簡介"
 # description: ""
 tags: ["教學","程式","Zig"]

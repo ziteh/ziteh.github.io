@@ -1,5 +1,5 @@
 ---
-title: "安裝 Zig"
+title: "[Day-2]安裝 Zig"
 # subtitle: ""
 # description: ""
 tags: ["教學","程式","Zig"]
