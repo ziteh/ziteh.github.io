@@ -4,7 +4,7 @@ title: "Zig：型別（Types）"
 # description: ""
 tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
-date: 2024-MM-DDTHH:MM:00
+date: 2024-08-29T07:00:00
 # updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
@@ -61,7 +61,7 @@ const value: f32 = 2.5e6;  // 2500000
 
 # 布林
 
-Zig 內建布林型別 `bool`，其值可以是 `true` 或 `false`。要特別注意的是，Zig 不允許隱式轉型，這包含將其它數值評估爲 `bool` 也不被允許。所以在使用 `if` 或 `while` 是，只能明確接受 `bool`，C 的那套「`0` 被評估爲 `false`、其它爲 `true`」在 Zig 不適用。
+Zig 內建布林型別 `bool`，其值可以是 `true` 或 `false`。要特別注意的是，Zig 不允許隱式轉型，這包含將其它數值評估爲 `bool` 也不被允許。所以在使用 `if` 或 `while` 時，只能明確接受 `bool`，C 的那套「`0` 被評估爲 `false`、其它爲 `true`」在 Zig 不適用。
 
 ```zig
 // 正確
@@ -98,6 +98,5 @@ Zig 當然也有 `enum`、`struct`、Array 等，接下來會在其它天的內�
 
 本文以 Zig `0.13.0` 爲主。並同時發佈在：
 
-- [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/users/20151756/ironman/7460)
-- [我的 Blog](https://ziteh.github.io/categories/Zig-入門指南（鐵人-24）/)
-- 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24)
+- [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10346758)
+- 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/types)
