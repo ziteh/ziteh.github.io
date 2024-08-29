@@ -1,5 +1,5 @@
 ---
-title: "Zig：結構（Struct）"
+title: "[Day-7]Zig：結構（Struct）"
 # subtitle: ""
 # description: ""
 tags: ["教學","程式","Zig"]
