@@ -15,7 +15,7 @@ toc: true
 
 <!-- more -->
 
-就會大多數的程式語言一樣，Zig 也有 `struct`，可以用來組合其它型別成爲一個新的型別。和 C 不同、但是和 Rust 類似的是，Zig 可以爲 `struct` 實作函式（在 Zig 中稱爲方法 method），這使得它很接近 OOP 中的 Class。
+就和大多數的程式語言一樣，Zig 也有 `struct`，可以用來組合其它型別成爲一個新的型別。和 C 不同、但是和 Rust 類似的是，Zig 可以爲 `struct` 實作函式（在 Zig 中稱爲方法 method），這使得它很接近 OOP 中的 Class。
 
 > 純 C 真的要包含函式的 `struct` 的話也可以用指標函式來達成，但這種做法不常見。
 
