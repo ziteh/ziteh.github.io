@@ -5,7 +5,7 @@ subtitle: "用來進行檔案版本控制，以及 Resticprofile 教學"
 tags: ["教學"]
 # categories: [""]
 date: 2024-07-08T19:39:00
-# updated: 2024-MM-DD HH:MM:00
+updated: 2024-09-01T12:07:00
 comments: true
 toc: true
 # RESERVE
@@ -156,6 +156,8 @@ Resticprofile 的[配置檔案](https://creativeprojects.github.io/resticprofile
 - `C:\resticprofile\`
 - `%USERPROFILE%\`
 
+> 也可以使用 `--config <PROFILES>` 或 `-c <PROFILES>` 手動指定路徑和檔名。
+
 它看起來大概是：
 
 ```yaml
@@ -235,3 +237,10 @@ resticprofile backup
 ```
 
 [restic-browser]: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYLTCSOA8VDnCHnsgllw2UV0OduOyhqkoNK4RbHmVpDT823CdV1mKSf9toWlUeR-1k9JJmuLhz0KhcLDpEy2pPJpl4BV6TGxWJAuqp6E7N5M1sensDCF-8CDxpPoo6G8TPXtlBv-f9k6cmGktzlXHIRoVvt7Xpd3UHPypPVHMLIBncrSUhJ1lvWShvGcA/s16000/restic-browser.png
+
+---
+
+###### 更新日誌
+
+- 2024/09/01
+  - 增加 Resticprofile 的 profile 檔案可以使用 `--config` 自訂的說明。
