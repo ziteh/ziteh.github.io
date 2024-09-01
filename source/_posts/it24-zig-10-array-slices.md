@@ -1,10 +1,10 @@
 ---
-title: "Zig：陣列（Array）和切片（Slices）"
+title: "[Day-10]Zig：陣列（Array）和切片（Slices）"
 # subtitle: ""
 # description: ""
 tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
-date: 2024-MM-DDTHH:MM:00
+date: 2024-09-02T07:20:00
 # updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
@@ -149,7 +149,7 @@ Slice type: *const [5]u8
 
 ## 傳遞
 
-因爲切片只是指標，所以很適合傳遞，而已它帶有長度資訊，所以可以不必另外傳遞長度。
+因爲切片只是指標，所以很適合傳遞，而且它帶有長度資訊，所以可以不必另外傳遞長度。
 
 ```zig
 const std = @import("std");
@@ -213,6 +213,7 @@ Type: *const [11:0]u8, Length: 11
 
 本文以 Zig `0.13.0` 爲主。並同時發佈在：
 
-- [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/users/20151756/ironman/7460)
-- [我的 Blog](https://ziteh.github.io/categories/Zig-入門指南（鐵人-24）/)
-- 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24)
+- [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10347403)
+- 範例程式 GitHub repo
+    - [Array](https://github.com/ziteh/zig-learn-it24/tree/main/array)
+    - [Slices](https://github.com/ziteh/zig-learn-it24/tree/main/slices)
