@@ -38,7 +38,7 @@ pub fn main() !void {
 
 ## 自動型別推斷
 
-Zig 擁有自動型別推斷，可以省略型別標記，但僅限於 `const`。
+Zig 擁有自動型別推斷，可以省略型別標記，但僅限於 `const` 和 `comptime var`，一般的 `var` 必須明確指定型別。
 
 ```zig
 pub fn main() !void {
