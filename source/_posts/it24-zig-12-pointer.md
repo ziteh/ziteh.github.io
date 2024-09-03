@@ -1,10 +1,10 @@
 ---
-title: "Zig：指標（Pointer）"
+title: "[Day-12]Zig：指標（Pointer）"
 # subtitle: ""
 # description: ""
 tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
-date: 2024-MM-DDTHH:MM:00
+date: 2024-09-04T07:14:00
 # updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
@@ -80,6 +80,5 @@ Value: 132
 
 本文以 Zig `0.13.0` 爲主。並同時發佈在：
 
-- [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/users/20151756/ironman/7460)
-- [我的 Blog](https://ziteh.github.io/categories/Zig-入門指南（鐵人-24）/)
-- 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24)
+- [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10347799)
+- 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/pointer)
