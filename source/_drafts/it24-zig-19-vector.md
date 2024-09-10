@@ -1,10 +1,10 @@
 ---
-title: "Zig：向量（Vector）"
+title: "[Day-19]Zig：向量（Vector）"
 # subtitle: ""
 # description: ""
 tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
-date: 2024-MM-DDTHH:MM:00
+date: 2024-09-11T06:41:00
 # updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
@@ -36,9 +36,9 @@ pub fn main() void {
 3, 6, -5
 ```
 
-# 乘法
+# 運算
 
-Vector 也可以用乘法。實際上它支援：
+Vector 支援各種運算：
 
 - 算數：`+`, `-`, `/`, `*`, `@divFloor`, `@sqrt`, `@ceil`, `@log`, etc.
 - 位元操作：`>>`, `<<`, `&`, `|`, `~`, etc.
@@ -113,6 +113,5 @@ pub fn main() void {
 
 本文以 Zig `0.13.0` 爲主。並同時發佈在：
 
-- [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/users/20151756/ironman/7460)
-- [我的 Blog](https://ziteh.github.io/categories/Zig-入門指南（鐵人-24）/)
-- 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24)
+- [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10349263)
+- 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/vector)
