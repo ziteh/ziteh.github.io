@@ -1,17 +1,17 @@
 ---
-title: "Zig：defer"
+title: "[Day-20]Zig：defer"
 # subtitle: ""
 # description: ""
 tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
-date: 2024-MM-DDTHH:MM:00
+date: 2024-09-12T06:38:00
 # updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
 # RESERVE
 ---
 
-`defer` 對於 C 和 Rust 的使用者是個比較模式的語法，它是用來在離開目前的作用域（Scope）時自動執行的表達式（expression）。
+`defer` 對於 C 和 Rust 的使用者是個比較陌生的語法，它是用來在離開目前的作用域（Scope）時自動執行表達式（expression）。
 
 <!-- more -->
 
@@ -121,6 +121,5 @@ X: 11
 
 本文以 Zig `0.13.0` 爲主。並同時發佈在：
 
-- [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/users/20151756/ironman/7460)
-- [我的 Blog](https://ziteh.github.io/categories/Zig-入門指南（鐵人-24）/)
-- 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24)
+- [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10349578)
+- 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/defer)
