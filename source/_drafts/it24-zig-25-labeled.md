@@ -75,9 +75,38 @@ Value: 3
 Break
 ```
 
+# Block
+
+Zig 的區塊 Block 可以作爲表達式回傳值。
+
+這個範例提供一個類似 C/C++ 的 `#ifdef` 預處理器條件編譯的寫法。
+
+```zig
+const print = @import("std").debug.print;
+
+const DEBUG = false;
+
+pub fn main() void {
+    const mode = blk: {
+        if (DEBUG) {
+            break :blk "Debug";
+        } else {
+            break :blk "Production";
+        }
+    };
+
+    print("Running in {s} mode", .{mode});
+}
+```
+
+```bash
+Running in Production mode
+```
+
 # 參考
 
 - [Labelled Loops | zig.guide](https://zig.guide/language-basics/labelled-loops)
+- [Labelled Blocks | zig.guide](https://zig.guide/language-basics/labelled-blocks)
 - [while: Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#Labeled-while)
 - [for: Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#Labeled-for)
 
