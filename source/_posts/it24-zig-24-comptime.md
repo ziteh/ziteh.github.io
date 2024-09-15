@@ -1,10 +1,10 @@
 ---
-title: "Zig：編譯期 Comptime"
+title: "[Day-24]Zig：編譯期 Comptime"
 # subtitle: ""
 # description: ""
 tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
-date: 2024-MM-DDTHH:MM:00
+date: 2024-09-16T07:28:00
 # updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
@@ -104,6 +104,5 @@ Result 2: 90
 
 本文以 Zig `0.13.0` 爲主。並同時發佈在：
 
-- [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/users/20151756/ironman/7460)
-- [我的 Blog](https://ziteh.github.io/posts/it24-zig-24-comptime)
+- [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10351749)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/comptime)
