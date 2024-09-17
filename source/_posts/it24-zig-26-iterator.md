@@ -1,10 +1,10 @@
 ---
-title: "Zig：迭代器（Iterator）"
+title: "[Day-26]Zig：迭代器（Iterator）"
 # subtitle: ""
 # description: ""
 tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
-date: 2024-MM-DDTHH:MM:00
+date: 2024-09-18T07:23:00
 # updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
@@ -38,7 +38,6 @@ pub fn main() void {
 ```
 
 ```bash
-$ zig run basic.zig
 C
 C++
 Python
@@ -87,7 +86,6 @@ pub fn main() void {
 ```
 
 ```bash
-$ zig run custom.zig
 1
 2
 3
@@ -107,6 +105,5 @@ $ zig run custom.zig
 
 本文以 Zig `0.13.0` 爲主。並同時發佈在：
 
-- [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/users/20151756/ironman/7460)
-- [我的 Blog](https://ziteh.github.io/posts/it24-zig-26-iterator)
+- [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10353330)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/iterator)
