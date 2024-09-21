@@ -4,7 +4,7 @@ title: "[Day-29]Zig：依賴套件管理"
 # description: ""
 tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
-date: 2024-MM-DDTHH:MM:00
+date: 2024-09-21T08:02:00
 # updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
@@ -159,6 +159,5 @@ Convert UNIX timestamp to human readable: https://www.unixtimestamp.com
 
 本文以 Zig `0.13.0` 爲主。並同時發佈在：
 
-- [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/users/20151756/ironman/7460)
-- [我的 Blog](https://ziteh.github.io/posts/it24-zig-29-package)
+- [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10355399)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/package_manager)
