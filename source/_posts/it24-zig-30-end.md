@@ -4,7 +4,7 @@ title: "[Day-30]完賽，再談談 Zig"
 # description: ""
 tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
-date: 2024-MM-DDTHH:MM:00
+date: 2024-09-22T08:01:00
 # updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
@@ -26,6 +26,8 @@ Zig 作爲 C 的取代者，保留了直接操作記憶體的指標、`asm volat
 
 雖然現在 Zig 還很年輕，有很多配套功能都還不完善，尤其是最爲人詬病的套件管理能力遠遠不如 Rust、JavaScript 和 Python。它現在還僅僅是一個單純的 Package manager，而非完整的 Dependency manager。但是它所展現的魅力已經讓我相當驚豔，也希望它未來可以變得更好。
 
+我個人的話是比較關注 Zig 在嵌入式上的發展，畢竟我現在會想要用 C 寫的也只有韌體了，相信 Zig 的編譯期和低階操作特性會和適合 MCU 專案。有個 [Zig Embedded Group](https://github.com/ZigEmbeddedGroup) 已經處理了一些 MCU 的支援，包含 STM32、RP2040、ESP 等 MCU 的 HAL，還有一些基礎函式庫例如 FAT、UF2、USB。
+
 希望這系列的入門文章可以讓你學到 Zig 的基礎，如果內容有誤的也歡迎指出。謝謝閱讀。
 
 # 參考
@@ -34,5 +36,4 @@ Zig 作爲 C 的取代者，保留了直接操作記憶體的指標、`asm volat
 - [Welcome | zig.guide](https://zig.guide/)
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/)
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/users/20151756/ironman/7460)
-- [我的 Blog](https://ziteh.github.io/posts/it24-zig-30-end)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24)
