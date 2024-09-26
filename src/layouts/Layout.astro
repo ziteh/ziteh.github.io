@@ -1,0 +1,175 @@
+---
+import { LOCALE, SITE } from "@config";
+import "@styles/base.css";
+import { ViewTransitions } from "astro:transitions";
+
+const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
+
+export interface Props {
+  title?: string;
+  author?: string;
+  profile?: string;
+  description?: string;
+  ogImage?: string;
+  canonicalURL?: string;
+  date?: Date;
+  updated?: Date | null;
+  scrollSmooth?: boolean;
+  enableToc?: boolean;
+  enableMath?: boolean;
+}
+
+const {
+  title = SITE.title,
+  author = SITE.author,
+  profile = SITE.profile,
+  description = SITE.desc,
+  ogImage = SITE.ogImage,
+  canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
+  date,
+  updated,
+  scrollSmooth = false,
+  enableToc = false,
+  enableMath = false,
+} = Astro.props;
+
+const socialImageURL = new URL(
+  ogImage ?? SITE.ogImage ?? "og.png",
+  Astro.url.origin
+).href;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: `${title}`,
+  image: `${socialImageURL}`,
+  datePublished: `${date?.toISOString()}`,
+  ...(updated && { dateModified: updated.toISOString() }),
+  author: [
+    {
+      "@type": "Person",
+      name: `${author}`,
+      url: `${profile}`,
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html
+  lang=`${LOCALE.lang ?? "en"}`
+  class={`${scrollSmooth && "scroll-smooth"}`}
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- General Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content={author} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={socialImageURL} />
+
+    <!-- Article Published/Modified time -->
+    {
+      date && (
+        <meta property="article:published_time" content={date.toISOString()} />
+      )
+    }
+    {
+      updated && (
+        <meta
+          property="article:modified_time"
+          content={updated.toISOString()}
+        />
+      )
+    }
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={socialImageURL} />
+
+    <!-- Google JSON-LD Structured data -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+    />
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300..800&family=Noto+Sans:wght@300..800&family=Fira+Mono:wght@400;700&display=swap"
+      rel="preload"
+      as="style"
+      onload="this.onload=null; this.rel='stylesheet';"
+      crossorigin
+    />
+
+    <meta name="theme-color" content="" />
+
+    {
+      // If PUBLIC_GOOGLE_SITE_VERIFICATION is set in the environment variable,
+      // include google-site-verification tag in the heading
+      // Learn more: https://support.google.com/webmasters/answer/9008080#meta_tag_verification&zippy=%2Chtml-tag
+      googleSiteVerification && (
+        <meta
+          name="google-site-verification"
+          content={googleSiteVerification}
+        />
+      )
+    }
+
+    <ViewTransitions />
+
+    <script is:inline src="/toggle-theme.js" async></script>
+
+    {
+      enableToc && (
+        <>
+          <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.29.0/tocbot.min.js"
+            integrity="sha512-+9XzRSJjnUN2OI106uAbbVZ3f+z1ncIRZFOr56hEdaxbQeZ8i1+B7OVjdF8tG4YhgxM/rWP73K2SiG93x6UJoQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+          />
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.29.0/tocbot.min.css"
+            integrity="sha512-4q0OX9NAYcRTFEfy9nTK0AV9N7MxM665neDXEW3CjAj1pXc6+8Bcd6ryXl6cY8mTBBXt0aXepnSDLLQZSuJRww=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+          />
+        </>
+      )
+    }
+
+    {
+      enableMath && (
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css"
+          integrity="sha512-fHwaWebuwA7NSF5Qg/af4UeDx9XqUpYpOGgubo3yWu+b2IQR4UeQwbb42Ti7gVAjNtVoI/I9TEoYeu9omwcC6g=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"
+        />
+      )
+    }
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

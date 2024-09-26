@@ -1,0 +1,40 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Main from "@layouts/Main.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import Pagination from "@components/Pagination.astro";
+import Card from "@components/Card";
+import { SITE } from "@config";
+import type { Page } from "astro";
+import type { CollectionEntry } from "astro:content";
+import { _t } from "lang/lang";
+import getDescription from "@utils/getDescription";
+
+export interface Props {
+  page: Page<CollectionEntry<"blog">>;
+}
+
+const { page } = Astro.props;
+---
+
+<Layout title={`${_t.posts} | ${SITE.title}`}>
+  <Header activeNav="posts" />
+  <Main pageTitle={_t.posts} pageDesc={_t.postsDesc}>
+    <ul>
+      {
+        page.data.map(({ data, slug, body }) => (
+          <Card
+            href={`/posts/${slug}/`}
+            frontmatter={data}
+            fallbackDescription={getDescription(body)}
+          />
+        ))
+      }
+    </ul>
+  </Main>
+
+  <Pagination {page} />
+
+  <Footer noMarginTop={page.lastPage > 1} />
+</Layout>
