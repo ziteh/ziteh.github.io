@@ -11,7 +11,7 @@ toc: true
 # RESERVE
 ---
 
-有時候會需要寫一些比較複雜的多層迴圈程式，但這時如何要使用 `break` 或 `continue` 時會沒辦法控制要對哪一層迴圈進行。對於這種情況，只要爲迴圈打上標籤，就可以明確指定了。
+有時候會需要寫一些比較複雜的多層迴圈程式，但這時如何要使用 `break` 或 `continue` 時會沒辦法控制要對哪一層迴圈進行。對於這種情況，只要為迴圈打上標籤，就可以明確指定了。
 
 <!-- more -->
 
@@ -77,7 +77,7 @@ Break
 
 # Block
 
-Zig 的區塊 Block 可以作爲表達式回傳值。
+Zig 的區塊 Block 可以作為表達式回傳值。
 
 這個範例提供一個類似 C/C++ 的 `#ifdef` 預處理器條件編譯的寫法。
 
@@ -110,7 +110,7 @@ Running in Production mode
 - [while: Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#Labeled-while)
 - [for: Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#Labeled-for)
 
-本文以 Zig `0.13.0` 爲主。並同時發佈在：
+本文以 Zig `0.13.0` 為主。並同時發佈在：
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10352652)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/labeled)

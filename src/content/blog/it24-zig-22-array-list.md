@@ -112,7 +112,7 @@ array_list.ArrayListAligned(i8,null)
 - [Learning Zig - Coding in Zig](https://www.openmymind.net/learning_zig/coding_in_zig/#arraylist)
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#toc-Zig-Standard-Library)
 
-本文以 Zig `0.13.0` 爲主。並同時發佈在：
+本文以 Zig `0.13.0` 為主。並同時發佈在：
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10350296)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/array_list)

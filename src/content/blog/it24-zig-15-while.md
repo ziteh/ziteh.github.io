@@ -17,7 +17,7 @@ toc: true
 
 # 基本
 
-Zig 的 `while` 語法和多數語言相同，和 `if` 一樣，普通的條件式需爲明確的 `bool` 型別（`true` 或 `false`），不支援其它數值隱式轉換。也就是說，無窮迴圈是 `while (true) {}`。
+Zig 的 `while` 語法和多數語言相同，和 `if` 一樣，普通的條件式需為明確的 `bool` 型別（`true` 或 `false`），不支援其它數值隱式轉換。也就是說，無窮迴圈是 `while (true) {}`。
 
 ```zig
 const print = @import("std").debug.print;
@@ -39,7 +39,7 @@ End
 
 # continue expression
 
-Zig 有個特別的 continue expression，會在每次 `while` 迴圈**繼續**進行後執行，語法爲 `while () : (CE) {}`，其中 `CE` 就是 continue expression。請比較這裡和上一個「基本」的輸出差異。
+Zig 有個特別的 continue expression，會在每次 `while` 迴圈**繼續**進行後執行，語法為 `while () : (CE) {}`，其中 `CE` 就是 continue expression。請比較這裡和上一個「基本」的輸出差異。
 
 ```zig
 const print = @import("std").debug.print;
@@ -146,7 +146,7 @@ End
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#while)
 - [While loops | zig.guide](https://zig.guide/language-basics/while-loops)
 
-本文以 Zig `0.13.0` 爲主。並同時發佈在：
+本文以 Zig `0.13.0` 為主。並同時發佈在：
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10348357)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/while)

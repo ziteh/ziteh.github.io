@@ -57,7 +57,7 @@ Length: 5
 
 ## 賦值
 
-如果是以 `var` 宣告的話，可以爲元素重新賦值。
+如果是以 `var` 宣告的話，可以為元素重新賦值。
 
 ```zig
 const std = @import("std");
@@ -149,7 +149,7 @@ Slice type: *const [5]u8
 
 ## 傳遞
 
-因爲切片只是指標，所以很適合傳遞，而且它帶有長度資訊，所以可以不必另外傳遞長度。
+因為切片只是指標，所以很適合傳遞，而且它帶有長度資訊，所以可以不必另外傳遞長度。
 
 ```zig
 const std = @import("std");
@@ -211,7 +211,7 @@ Type: *const [11:0]u8, Length: 11
 - [Slices: Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#Slices)
 - [Arrays | zig.guide](https://zig.guide/language-basics/arrays)
 
-本文以 Zig `0.13.0` 爲主。並同時發佈在：
+本文以 Zig `0.13.0` 為主。並同時發佈在：
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10347403)
 - 範例程式 GitHub repo

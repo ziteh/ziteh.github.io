@@ -15,7 +15,7 @@ toc: true
 
 我以前都是用 [Duplicati](https://github.com/duplicati/duplicati) 進行備份，不過有些資料久久才變化一次，並不需要定期排程，而是需要在每次變更後手動備份，但它的每個版本無法命名（無法像 git commit message），這樣我無法看出各個版本的主要變化到底是什麼（也就是說其實我更需要的是版本控制）。現在嘗試使用 Restic，算是有解決我的問題，用起來覺得滿不錯的。
 
-> 因爲檔案很大（數十上百 GB），因此不適合使用 git。
+> 因為檔案很大（數十上百 GB），因此不適合使用 git。
 
 <!-- more -->
 
@@ -28,7 +28,7 @@ toc: true
 - 直接下載：
     1. 從 [GitHub Releases](https://github.com/restic/restic/releases) 下載執行檔（例如 `
 restic_0.16.3_windows_amd64.zip`）。
-    2. 將其解壓縮，並將 `.exe` 執行檔重新命名爲 `restic.exe`。
+    2. 將其解壓縮，並將 `.exe` 執行檔重新命名為 `restic.exe`。
     3. 建立資料夾 `C:/restic/`，並將 `restic.exe` 複製進去。（此路徑和後續的 Resticprofile 有關）
     4. 修改環境變數，將上述路徑 `C:/restic/` 加入到 PATH 中。
 - 使用 [Chocolatey](https://community.chocolatey.org/) 安裝：
@@ -49,7 +49,7 @@ restic version
 
 ### 初始化
 
-Restic 將備份目的地稱爲 repo（repository）。首先我們要先建立 repo：
+Restic 將備份目的地稱為 repo（repository）。首先我們要先建立 repo：
 
 ```bash
 restic -r <repo路徑> init
@@ -145,7 +145,7 @@ restic -r <repo路徑> key passwd
 
 ## 配置檔案
 
-Resticprofile 的[配置檔案](https://creativeprojects.github.io/resticprofile/configuration/path/index.html#how-the-configuration-file-is-resolved)預設名稱爲 `profiles`，而副檔名根據你喜歡的格式，可以是：`.toml`、`.yaml`、`.json`、`.hcl`、`conf`。以下以 YAML 格式做示範（也就是 `profiles.yaml`）。
+Resticprofile 的[配置檔案](https://creativeprojects.github.io/resticprofile/configuration/path/index.html#how-the-configuration-file-is-resolved)預設名稱為 `profiles`，而副檔名根據你喜歡的格式，可以是：`.toml`、`.yaml`、`.json`、`.hcl`、`conf`。以下以 YAML 格式做示範（也就是 `profiles.yaml`）。
 
 `profiles.yaml` 可以放在以下路徑：
 
@@ -176,7 +176,7 @@ default:
       - "/home"
 ```
 
-`default` 就是一個備份配置，這邊是將 repo 路徑設爲目前路徑下的 `backup`，來源是 `home`。`global` 可以用來設定全域數值。
+`default` 就是一個備份配置，這邊是將 repo 路徑設為目前路徑下的 `backup`，來源是 `home`。`global` 可以用來設定全域數值。
 
 再來看另一個例子：
 

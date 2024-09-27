@@ -218,7 +218,7 @@ Const: 100
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#enum)
 - [Enums | zig.guide](https://zig.guide/language-basics/enums)
 
-本文以 Zig `0.13.0` 爲主。並同時發佈在：
+本文以 Zig `0.13.0` 為主。並同時發佈在：
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10347160)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/enum)

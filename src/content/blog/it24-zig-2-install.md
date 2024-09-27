@@ -13,7 +13,7 @@ toc: true
 
 這篇來介紹一下如何在電腦上安裝 Zig 及相關工具，讓你可以執行 Zig。
 
-> 注意，因爲 Zig 還很年輕，也還沒進入 Major 版號，各個版本之間的差異可能很大，本系列會以目前最新的 `0.13.0` 爲主，因此安裝時要注意版本。
+> 注意，因為 Zig 還很年輕，也還沒進入 Major 版號，各個版本之間的差異可能很大，本系列會以目前最新的 `0.13.0` 為主，因此安裝時要注意版本。
 
 <!-- more -->
 
@@ -25,7 +25,7 @@ Zig 可以在其官網的 [Download](https://ziglang.org/download/) 直接下載
    Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
    ```
 
-2. 安裝 Zig（指定爲 `0.13.0` 版）
+2. 安裝 Zig（指定為 `0.13.0` 版）
 
    ```ps
    choco install zig --version 0.13.0 -y
@@ -48,7 +48,7 @@ Zig 可以在其官網的 [Download](https://ziglang.org/download/) 直接下載
 - [Install Zig from a Package Manager · ziglang/zig Wiki](https://github.com/ziglang/zig/wiki/Install-Zig-from-a-Package-Manager)
 - [Installation | zig.guide](https://zig.guide/getting-started/installation)
 
-本文以 Zig `0.13.0` 爲主。並同時發佈在：
+本文以 Zig `0.13.0` 為主。並同時發佈在：
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/users/20151756/ironman/7460)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24)

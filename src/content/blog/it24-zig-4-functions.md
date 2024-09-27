@@ -11,7 +11,7 @@ toc: true
 # RESERVE
 ---
 
-Zig 身爲程序式編程（Procedural programming）語言，函式（Function）自然是一大重點（雖然這句話好像在 OOP 和 FP 上也適用...）。
+Zig 身為程序式編程（Procedural programming）語言，函式（Function）自然是一大重點（雖然這句話好像在 OOP 和 FP 上也適用...）。
 
 <!-- more -->
 
@@ -31,7 +31,7 @@ fn add(a: u8, b: u8) u8 {
 
 # 封裝
 
-Zig 的函式和 Rust 一樣，只有加上 `pub` 的函式才是公開的，可以被外部 `@import` 存取和呼叫。否則預設爲私有的，只能在定義它的模組內部使用。
+Zig 的函式和 Rust 一樣，只有加上 `pub` 的函式才是公開的，可以被外部 `@import` 存取和呼叫。否則預設為私有的，只能在定義它的模組內部使用。
 
 ```zig
 const std = @import("std");
@@ -129,7 +129,7 @@ inline fn add(a: u8, b: u8) u8 {
 
 # 函式指標
 
-Zig 做爲 C 替代，當然也有函式指標：
+Zig 做為 C 替代，當然也有函式指標：
 
 ```zig
 const op_ptr = *const fn (a: u8, b: u8) u8;
@@ -154,7 +154,7 @@ Zig 用有一些特別的函式叫內建函式（builtin function），它們在
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#Functions)
 - [Functions | zig.guide](https://zig.guide/language-basics/functions)
 
-本文以 Zig `0.13.0` 爲主。並同時發佈在：
+本文以 Zig `0.13.0` 為主。並同時發佈在：
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10346446)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/functions)

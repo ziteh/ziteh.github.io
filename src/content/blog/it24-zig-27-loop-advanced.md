@@ -17,7 +17,7 @@ toc: true
 
 # Loop as Expression
 
-Zig 的迴圈可以作爲表達式（Expression）以回傳值。將 `break` 當成 `return` 使用，在後面加上要回傳的值，並加上 `else` 分支，當迴圈到結束都沒有執行到 `break` 時會回傳 `else` 後接的值。
+Zig 的迴圈可以作為表達式（Expression）以回傳值。將 `break` 當成 `return` 使用，在後面加上要回傳的值，並加上 `else` 分支，當迴圈到結束都沒有執行到 `break` 時會回傳 `else` 後接的值。
 
 ```zig
 const print = @import("std").debug.print;
@@ -76,7 +76,7 @@ pub fn main() void {
     - [while: Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#inline-while)
     - [for: Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#inline-for)
 
-本文以 Zig `0.13.0` 爲主。並同時發佈在：
+本文以 Zig `0.13.0` 為主。並同時發佈在：
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10354071)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/loop_advanced)

@@ -11,7 +11,7 @@ toc: true
 # RESERVE
 ---
 
-型別系統是程式語言的一大重點，我認爲它也影響了該語言適用的領域和應用。
+型別系統是程式語言的一大重點，我認為它也影響了該語言適用的領域和應用。
 
 <!-- more -->
 
@@ -45,7 +45,7 @@ const oct_int: u8 = 0o201;
 const bin_int: u8 = 0b10000001;
 ```
 
-如果有需要，可以在數字間加上底線 `_` 作爲分隔符，提升可讀性：
+如果有需要，可以在數字間加上底線 `_` 作為分隔符，提升可讀性：
 
 ```zig
 const dec_int: u64 = 1_000_000_000;
@@ -61,7 +61,7 @@ const value: f32 = 2.5e6;  // 2500000
 
 # 布林
 
-Zig 內建布林型別 `bool`，其值可以是 `true` 或 `false`。要特別注意的是，Zig 不允許隱式轉型，這包含將其它數值評估爲 `bool` 也不被允許。所以在使用 `if` 或 `while` 時，只能明確接受 `bool`，C 的那套「`0` 被評估爲 `false`、其它爲 `true`」在 Zig 不適用。
+Zig 內建布林型別 `bool`，其值可以是 `true` 或 `false`。要特別注意的是，Zig 不允許隱式轉型，這包含將其它數值評估為 `bool` 也不被允許。所以在使用 `if` 或 `while` 時，只能明確接受 `bool`，C 的那套「`0` 被評估為 `false`、其它為 `true`」在 Zig 不適用。
 
 ```zig
 // 正確
@@ -96,7 +96,7 @@ Zig 當然也有 `enum`、`struct`、Array 等，接下來會在其它天的內�
 
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#Values)
 
-本文以 Zig `0.13.0` 爲主。並同時發佈在：
+本文以 Zig `0.13.0` 為主。並同時發佈在：
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10346758)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/types)

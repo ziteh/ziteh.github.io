@@ -110,7 +110,7 @@ pub fn main() void {
 
 # 賦值
 
-和 Rust 一樣，Zig 的 `switch` 可以作爲表達式，爲變數賦值。
+和 Rust 一樣，Zig 的 `switch` 可以作為表達式，為變數賦值。
 
 ```zig
 const print = @import("std").debug.print;
@@ -135,7 +135,7 @@ Value: 110
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#switch)
 - [Switch | zig.guide](https://zig.guide/language-basics/switch)
 
-本文以 Zig `0.13.0` 爲主。並同時發佈在：
+本文以 Zig `0.13.0` 為主。並同時發佈在：
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10348145)
 - [我的 Blog](https://ziteh.github.io/posts/it24-zig-14-switch)

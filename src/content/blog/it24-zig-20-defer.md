@@ -19,7 +19,7 @@ toc: true
 
 # 基礎
 
-語法爲 `defer expression`。在離開該 `defer` 所在的 Scope （例如 `{}` 或函式）時會自動執行所接的 expression。
+語法為 `defer expression`。在離開該 `defer` 所在的 Scope （例如 `{}` 或函式）時會自動執行所接的 expression。
 
 ```zig
 const print = @import("std").debug.print;
@@ -119,7 +119,7 @@ X: 11
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#defer)
 - [Defer | zig.guide](https://zig.guide/language-basics/defer)
 
-本文以 Zig `0.13.0` 爲主。並同時發佈在：
+本文以 Zig `0.13.0` 為主。並同時發佈在：
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10349578)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/defer)

@@ -49,13 +49,13 @@ pub fn main() !void {
 
 ## 全域變數
 
-在 Zig 中更精準的名稱可能是模組級變數（和常數），但我還是以 C 的習慣稱其全域變數。定義在函式以外的 `const` 和 `var` 會成爲全域變數，所有在此模組內的函式都可以直接存取。
+在 Zig 中更精準的名稱可能是模組級變數（和常數），但我還是以 C 的習慣稱其全域變數。定義在函式以外的 `const` 和 `var` 會成為全域變數，所有在此模組內的函式都可以直接存取。
 
-只有 `const` 可以加上 `pub` 關鍵字，使其成爲公開常數，讓其它模組 `@import` 時可以使用，就和 `pub fn` 是一樣的。`var` 不行加上 `pub`，Zig 不允許公開的變數。
+只有 `const` 可以加上 `pub` 關鍵字，使其成為公開常數，讓其它模組 `@import` 時可以使用，就和 `pub fn` 是一樣的。`var` 不行加上 `pub`，Zig 不允許公開的變數。
 
 ## static 區域變數
 
-在 C 中有時會使用 `static` 區域變數，讓該變數的生命週期變成整個程式，但一樣只有該函式可以存取它（因爲是區域的）。Zig 沒有相似的設計，如果需要變數數值在離開函式後依舊保持，直接使用全域變數，其生命週期會延續到整個模組。
+在 C 中有時會使用 `static` 區域變數，讓該變數的生命週期變成整個程式，但一樣只有該函式可以存取它（因為是區域的）。Zig 沒有相似的設計，如果需要變數數值在離開函式後依舊保持，直接使用全域變數，其生命週期會延續到整個模組。
 
 ## 強制轉型
 
@@ -77,7 +77,7 @@ Type a: u8
 Type b: u16
 ```
 
-> 在此例中，就算不用 `@as()`，直接打 `const b: u16 = a;` 也是可以通過編譯並正確執行，因爲有 Integer Widening。
+> 在此例中，就算不用 `@as()`，直接打 `const b: u16 = a;` 也是可以通過編譯並正確執行，因為有 Integer Widening。
 
 # 運算子
 
@@ -149,7 +149,7 @@ Saturating: 255
 - [Documentation - The Zig Programming Language: Operators](https://ziglang.org/documentation/0.13.0/#Operators)
 - [Assignment | zig.guide](https://zig.guide/language-basics/assignment)
 
-本文以 Zig `0.13.0` 爲主。並同時發佈在：
+本文以 Zig `0.13.0` 為主。並同時發佈在：
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10346602)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/assignment)

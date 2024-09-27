@@ -11,13 +11,13 @@ toc: true
 # RESERVE
 ---
 
-到目前爲止已經把基本的型別都介紹完了，這篇來介紹一下進階的型別用法。
+到目前為止已經把基本的型別都介紹完了，這篇來介紹一下進階的型別用法。
 
 <!-- more -->
 
 # packed
 
-`packed` 在 C 中不是標準的關鍵字，但是大多數的編譯器都有支援相關的擴充語法。在 Zig 中你可以直接使用 `packed` 來達成，改變型別的對齊行爲。
+`packed` 在 C 中不是標準的關鍵字，但是大多數的編譯器都有支援相關的擴充語法。在 Zig 中你可以直接使用 `packed` 來達成，改變型別的對齊行為。
 
 ## union
 
@@ -191,7 +191,7 @@ X: 100, Y: -10
 - [Anonymous Struct: Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#Anonymous-Struct-Literals)
 - [Anonymous Structs | zig.guide](https://zig.guide/language-basics/anonymous-structs/)
 
-本文以 Zig `0.13.0` 爲主。並同時發佈在：
+本文以 Zig `0.13.0` 為主。並同時發佈在：
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10349019)
 - [我的 Blog](https://ziteh.github.io/postss/it24-zig-18-complex)

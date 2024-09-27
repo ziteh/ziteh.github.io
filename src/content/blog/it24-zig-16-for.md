@@ -69,7 +69,7 @@ for (number_set, 0..) |_, index| {
 
 # 僅數值範圍
 
-如果只需要單純的數值範圍，可以直接使用範圍語法，不用另外建立陣列。範圍語法爲 `S..E`，爲從 `S` 開始遞增的到 `E`（不包含）。
+如果只需要單純的數值範圍，可以直接使用範圍語法，不用另外建立陣列。範圍語法為 `S..E`，為從 `S` 開始遞增的到 `E`（不包含）。
 
 ```zig
 const print = @import("std").debug.print;
@@ -94,7 +94,7 @@ pub fn main() void {
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#for)
 - [For loops | zig.guide](https://zig.guide/language-basics/for-loops)
 
-本文以 Zig `0.13.0` 爲主。並同時發佈在：
+本文以 Zig `0.13.0` 為主。並同時發佈在：
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10348358)
 - [我的 Blog](https://ziteh.github.io/posts/it24-zig-16-for)
