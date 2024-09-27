@@ -621,7 +621,7 @@ LineEnding: DeriveLF
 
 如果你使用的是 VS Code，也可以使用 key-value 格式直接設定（推薦設定在 `C_Cpp.clang_format_fallbackStyle` 內）：
 
-```text
+```json
 {BasedOnStyle: LLVM, Language: Cpp, TabWidth: 4, IndentWidth: 4, AccessModifierOffset: -4, ColumnLimit: 0, UseTab: Never, SortIncludes: Never, AlignAfterOpenBracket: BlockIndent, AlignArrayOfStructures: Left, AlignConsecutiveMacros: {Enabled: true, AcrossComments: true}, AlignEscapedNewlines: Left, AlignOperands: AlignAfterOperator, AllowShortBlocksOnASingleLine: Always, AllowShortFunctionsOnASingleLine: None, AllowShortIfStatementsOnASingleLine: AllIfsAndElse, AllowShortLoopsOnASingleLine: true, BinPackArguments: false, BinPackParameters: false, BitFieldColonSpacing: After, BreakBeforeBraces: Custom, BraceWrapping: {AfterCaseLabel: false, AfterClass: false, AfterControlStatement: Never, AfterEnum: false, AfterFunction: false, AfterNamespace: false, AfterObjCDeclaration: false, AfterStruct: false, AfterUnion: false, AfterExternBlock: true, BeforeCatch: false, BeforeElse: false, BeforeLambdaBody: false, BeforeWhile: false, IndentBraces: false, SplitEmptyFunction: true, SplitEmptyRecord: true, SplitEmptyNamespace: true}, BreakBeforeBinaryOperators: NonAssignment, CommentPragmas: '', IncludeIsMainRegex: '', IndentExternBlock: NoIndent, IndentPPDirectives: BeforeHash, InsertNewlineAtEOF: true, InsertTrailingCommas: Wrapped, KeepEmptyLinesAtTheStartOfBlocks: false, LineEnding: DeriveLF}
 ```
 

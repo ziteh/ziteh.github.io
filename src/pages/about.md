@@ -1,36 +1,35 @@
 ---
 layout: ../layouts/AboutLayout.astro
-title: "About"
+title: "關於我"
 ---
 
-AstroPaper is a minimal, responsive and SEO-friendly Astro blog theme. I designed and crafted this based on [my personal blog](https://satnaing.dev/blog).
+<img src="/favicon.svg" alt="ZiTe Logo" width="200" />
 
-This theme is aimed to be accessible out of the box. Light and dark mode are supported by
-default and additional color schemes can also be configured.
+我是 ZiTe，把 Blog 當成筆記寫。
 
-This theme is self-documented \_ which means articles/posts in this theme can also be considered as documentations. So, see the documentation for more info.
+若內容有誤，還請指正。若覺得有趣或有疑問，歡迎留言或聯絡。
 
-<div>
-  <img src="/assets/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
-</div>
+- Email: <honmonoh@gmail.com>
+- GitHub: [ziteh](https://github.com/ziteh)
+- YouTube: [@zite-h](https://www.youtube.com/@zite-h)
 
-## Tech Stack
+另外我還有一個 SideraKB，專門放我自己設計和製作的機械鍵盤。
 
-This theme is written in vanilla JavaScript (+ TypeScript for type checking) and a little bit of ReactJS for some interactions. TailwindCSS is used for styling; and Markdown is used for blog contents.
+- [網站](https://siderakb.github.io/)
+- GitHub: [siderakb](https://github.com/siderakb)
+- YouTube: [@siderakb](https://www.youtube.com/@siderakb)
 
-## Features
+---
 
-Here are certain features of this site.
+純硬體不太擅長  
+純軟體不太熟悉  
+韌體似乎可以取得平衡
 
-- fully responsive and accessible
-- SEO-friendly
-- light & dark mode
-- fuzzy search
-- super fast performance
-- draft posts
-- pagination
-- sitemap & rss feed
-- highly customizable
+純文學還難以理解  
+喜歡平凡且白話的字句  
+寫作還太顯尷尬
 
-If you like this theme, you can star/contribute to the [repo](https://github.com/satnaing/astro-paper).  
-Or you can even give any feedback via my [email](mailto:contact@satnaing.dev).
+---
+
+本網站所有內容除特別聲明外，均採用「[創用CC：姓名標示-非商業性-禁止改作](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hant)」授權。  
+分享時請註明作者 ZiTe 及出處為本站。

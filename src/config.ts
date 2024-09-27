@@ -1,12 +1,12 @@
 import type { Site, SocialObjects } from "./types";
 
 export const SITE: Site = {
-  website: "https://astro-paper.pages.dev/", // replace this with your deployed domain
-  author: "Sat Naing",
-  profile: "https://satnaing.dev/",
-  desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
-  title: "AstroPaper",
-  ogImage: "astropaper-og.jpg",
+  website: "https://blog.ziteh.dev/", // replace this with your deployed domain
+  author: "ZiTe",
+  profile: "https://github.com/ziteh",
+  desc: "一位在開源的世界中，慢步於程式與電路、韌體與網頁之人的學習記錄與分享",
+  title: "ZiTe 本物志",
+  ogImage: "og.jpg",
   lightAndDarkMode: true,
   postPerIndex: 3,
   postPerPage: 5,
@@ -14,11 +14,13 @@ export const SITE: Site = {
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
   genDescriptionCount: 100,
   enableTransitionName: false,
+  enableGenOgImage: false,
 };
 
 export const LOCALE = {
   lang: "zh", // html lang code. Set this empty and default will be "en"
   langTag: ["zh-TW"], // BCP 47 Language Tags. Set this empty [] to use the environment default
+  langOg: "zh_TW", // Open Graph locale tag, format 'language_TERRITORY'
 } as const;
 
 export const LOGO_IMAGE = {
@@ -31,8 +33,8 @@ export const LOGO_IMAGE = {
 export const SOCIALS: SocialObjects = [
   {
     name: "Github",
-    href: "https://github.com/satnaing/astro-paper",
-    linkTitle: ` ${SITE.title} on Github`,
+    href: "https://github.com/ziteh",
+    linkTitle: `Github`,
     active: true,
   },
   {
@@ -73,8 +75,8 @@ export const SOCIALS: SocialObjects = [
   },
   {
     name: "YouTube",
-    href: "https://github.com/satnaing/astro-paper",
-    linkTitle: `${SITE.title} on YouTube`,
+    href: "https://www.youtube.com/@siderakb",
+    linkTitle: `YouTube`,
     active: true,
   },
   {

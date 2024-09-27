@@ -3,8 +3,6 @@ title: DaVinci Resolve 15 小功能介紹
 author: ZiTe
 tags:
   - 教學
-
-  - ''
 categories: []
 date: 2018-08-20 10:38:00
 comments: true

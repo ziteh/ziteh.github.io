@@ -1,7 +1,6 @@
 ---
 title: 各種壓縮檔類型與設定之比較（WinRAR、7z）
 author: ZiTe
-categories: []
 date: 2017-08-15 08:49:00
 comments: true
 toc: true
