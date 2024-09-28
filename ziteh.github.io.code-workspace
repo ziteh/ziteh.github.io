@@ -2,11 +2,7 @@
 	"folders": [
 		{
 			"name": "Posts",
-			"path": "./source/_posts"
-		},
-		{
-			"name": "Draft",
-			"path": "./source/_drafts"
+			"path": "./src/content/blog"
 		},
 		{
 			"name": "Root",
@@ -17,6 +13,7 @@
 		"[markdown]": {
 			"editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
 			"editor.snippetSuggestions": "top",
+			"files.trimTrailingWhitespace": false
 			// "editor.quickSuggestions": {
 			// 	"other": true
 			// },
