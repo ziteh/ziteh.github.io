@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+  workflow_call:
+  workflow_dispatch:
+  push:
+    branches:
+      - astro-papers/main
+
+jobs:
+  build:
+    name: Code standards & build
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    steps:
+      - name: "☁️ Checkout repository"
+        uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: 9
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: "📦 Install dependencies"
+        run: pnpm install --frozen-lockfile
+
+      # - name: "🔎 Lint code"
+      #   run: pnpm run lint
+
+      # - name: "📝 Checking code format"
+      #   run: pnpm run format:check
+
+      - name: "🚀 Build the project"
+        run: pnpm run build

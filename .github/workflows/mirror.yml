@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - hexo/main
+      - astro-papers/main
 
 jobs:
   mirror:
@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Fetch all history for all tags and branches
+          fetch-depth: 0 # Fetch all history for all tags and branches
       - name: Push
         uses: heussd/mirror-to-bitbucket-github-action@v2
         with:
