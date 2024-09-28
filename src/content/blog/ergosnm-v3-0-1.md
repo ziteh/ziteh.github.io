@@ -13,6 +13,7 @@ header_img: ""
 comments: true
 toc: true
 draft: false
+featured: true
 ---
 
 ![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgxDiA1z2pniOgv1bDiH3zPjn0hJ4_R6NFFBTDMTE91p0erWxVLpsUfBb5CHRoKZ3b16wJ0898m219DMjvq-FvNgaRpMu19zy-9mlc2DuCRgIduudHsbHd6wKUQAb89eN6CRcPF43yDzJX8P-YawpRMRlTSn_GDwSKeDmV1QDS1P05hpAuC831zIJQpxps/s16000/PXL_20231230_033645973.jpg)

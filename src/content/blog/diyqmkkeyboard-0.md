@@ -12,6 +12,7 @@ date: 2023-04-17 20:17:00+08:00
 comments: true
 toc: true
 draft: false
+featured: true
 aliases: ["/2020/06/diyqmkkeyboard-0/"]
 ---
 
