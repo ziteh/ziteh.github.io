@@ -72,11 +72,19 @@ featured: true
 
 這是第一版的測試，可以看出延遲相當嚴重。
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/BIOsrYmRqe4?si=dvUb97Nf2RI7gblD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe
+  src="https://www.youtube.com/embed/BIOsrYmRqe4?si=dvUb97Nf2RI7gblD"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowfullscreen
+  style="width: 100%; height: 315px; border: 0; margin: 20px 0">
+</iframe>
+
 
 這個修改後的版本，延遲已經改善許多了。修改的部分主要是把 QMK 的 UART 接收程式從 `matrix_scan()` 改到 `pointing_device_task_kb()` 內。
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/EPGxoYIOgcI?si=n5n0IPBgmPbb8iIb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/EPGxoYIOgcI?si=n5n0IPBgmPbb8iIb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width: 100%; height: 315px; border: 0; margin: 20px 0"></iframe>
 
 # 後續
 

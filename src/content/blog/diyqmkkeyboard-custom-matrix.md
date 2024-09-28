@@ -456,7 +456,7 @@ state = 0;
 
 
 最終效果如影片所示：
-<iframe width="560" height="315" src="https://www.youtube.com/embed/L6DrpNg0moA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe style="width: 100%; height: 315px; border: 0; margin: 20px 0" src="https://www.youtube.com/embed/L6DrpNg0moA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # 結語
 

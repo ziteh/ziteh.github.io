@@ -67,7 +67,7 @@ draft: false
 
 # 組裝
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/1BXKdrCFn6c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe style="width: 100%; height: 315px; border: 0; margin: 20px 0" src="https://www.youtube.com/embed/1BXKdrCFn6c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 因為我有使用 PCBA 服務，所以大部分的零件都不用自己焊接，包含最麻煩的 QFN 封裝 RP2040。但是為了降低成本，有一些零件我還是選擇自己手工焊接，包含了：USB、LDO、保險絲、鍵軸熱插拔座、TRRS 座、FPC/FFC 連接器。另外拇指區和軌跡球的子電路板我沒有用 PCBA，所以這 2 片是完全自己焊的。
 
@@ -106,7 +106,7 @@ PCB 搞定後，就可以安裝外殼。我的外殼一樣是找 JLCPCB 訂，�
 1. 測試時我不小心燒壞一片 PCB 上的 RP2040，懷疑是熱插拔 TRRS 的關係（TRRS 不是設計用來帶電熱插拔的），這點也要再看看如何改善。
 1. 我本來就在用食指軌跡球，所以拇指球也很快就上手了，現在除了遊戲外應該都沒什麼問題。
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Lcm6xuI0GyE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe style="width: 100%; height: 315px; border: 0; margin: 20px 0" src="https://www.youtube.com/embed/Lcm6xuI0GyE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 # 開發過程
 
@@ -130,7 +130,7 @@ SNM 鍵盤計劃是我從 2020 年 6 月開始的，目標是設計並作出整�
 
 ![RP Micro](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj_QDbwCkGycWz7jqhNoBEsToF3LuoiPCt1CtaS74-8pH4P_P8f8lmBqErAOvXb7OzYyil8tu6KTulZ-jjWn2xWFCB-k_FBNUkSh31nAr_YDYSQbeNYMBLcBc9-PLtoeASmINjL7jhkZ65M22TTyjBM_MUNl9b2C-SnuYT1fe5OQU9xKnRUzIhcpCWw/s16000/68747470733a2f2f692e696d6775722e636f6d2f7356477152796b2e6a7067.jpg)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/CSA7Ih7nAls" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe style="width: 100%; height: 315px; border: 0; margin: 20px 0" src="https://www.youtube.com/embed/CSA7Ih7nAls" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 到了 2022 年 2 月 左右，我覺得這樣一直花錢和時間研究無線方案好像不是很好，而且其實也有比較確定的辦法了，所以我覺得開始正式做鍵盤的部分，想要先作出一個有線版本的測試鍵盤 Layout 與軌跡球等，當作階段性試驗，也就是現在的 ErgoSNM Rev 2.1。
 

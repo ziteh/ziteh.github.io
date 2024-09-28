@@ -103,7 +103,7 @@ CONNECTED LED (Blue)|P0.19|--|--
 
 # 效果展示
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/OKdwwEEPLHY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe style="width: 100%; height: 315px; border: 0; margin: 20px 0" src="https://www.youtube.com/embed/OKdwwEEPLHY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # 相關資訊
 
