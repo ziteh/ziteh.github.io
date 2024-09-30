@@ -17,6 +17,9 @@
 			// "editor.quickSuggestions": {
 			// 	"other": true
 			// },
+		},
+		"markdownlint.config": {
+			"single-h1": false
 		}
 	}
 }
