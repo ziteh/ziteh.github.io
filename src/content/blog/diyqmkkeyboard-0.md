@@ -26,7 +26,7 @@ aliases: ["/2020/06/diyqmkkeyboard-0/"]
 
 1. [編輯鍵盤佈局 (Layout)](/posts/diyqmkkeyboard-kle/)
 2. [如何選擇微控制器 MCU？](/posts/diyqmkkeyboard-mcu-sel/)
-3. [產生並編輯 QMK 韌體](/posts/diyqmkkeyboard-edit-qmk/)
+3. [產生並編輯 QMK 韌體](/posts/diyqmkkeyboard-firmware-0-24-8/)
 4. [編譯與燒錄](/posts/diyqmkkeyboard-build-flash-qmk/)
 5. [KiCAD 鍵盤 PCB 繪製教學 (上)](/posts/diyqmkkeyboard-pcb-layout-sch/)
 6. [KiCAD 鍵盤 PCB 繪製教學 (下)](/posts/diyqmkkeyboard-pcb-layout-layers/)
