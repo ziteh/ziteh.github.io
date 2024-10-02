@@ -62,7 +62,7 @@ draft: false
 
 # 自動生成鍵盤 PCB
 
-[Keyboard PCB Builder](https://kb.xyz.is/) 是一個自動工具，只要複製貼上 Keyboard Layout Editor 的 [raw data](/posts/diyqmkkeyboard-1/)，就可以幫你生成基本的 KiCad 專案。
+[Keyboard PCB Builder](https://kb.xyz.is/) 是一個自動工具，只要複製貼上 Keyboard Layout Editor 的 [raw data](/posts/diyqmkkeyboard-kle/)，就可以幫你生成基本的 KiCad 專案。
 
 將下載的 `.zip` 檔解壓縮，使用 KiCad 開啓 `keyboard.pro` 即可開啓專案。自動生成的專案檔包含了已經畫好鍵盤矩陣的 Schematic、擺好位置的 PCB 設計及各種鍵軸的 Footprint 庫。微控制器與其它部分還是必須要自己手動繪製。
 

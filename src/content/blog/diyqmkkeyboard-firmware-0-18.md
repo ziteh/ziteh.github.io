@@ -29,7 +29,7 @@ draft: false
 
 ---
 
-在[上一篇文章](/posts/diyqmkkeyboard-1/)中已經完成鍵盤的 Layout，這篇文章將會接續[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 3 步——生成並編輯 QMK 韌體。
+在[上一篇文章](/posts/diyqmkkeyboard-kle/)中已經完成鍵盤的 Layout，這篇文章將會接續[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 3 步——生成並編輯 QMK 韌體。
 
 # 自動產生韌體
 
@@ -39,7 +39,7 @@ draft: false
 
 ## 讀入鍵盤
 
-到 Keyboard Layout Editor 並載入你編輯好的鍵盤，複製其 [raw data](/posts/diyqmkkeyboard-1/#輸出) 並貼到 Keyboard Firmware Builder 中間的文字框，按下深藍色的「Import」按鈕。
+到 Keyboard Layout Editor 並載入你編輯好的鍵盤，複製其 [raw data](/posts/diyqmkkeyboard-kle/#輸出) 並貼到 Keyboard Firmware Builder 中間的文字框，按下深藍色的「Import」按鈕。
 
 ![▲ 在 Keyboard Firmware Builder 貼上 KLE 的 Raw data](https://1.bp.blogspot.com/-UTbRymD6jFo/Xu4uCFUmN4I/AAAAAAAACc4/Pun-2kS6qooDb3plao7F_e5sogqH_uHKQCK4BGAsYHg/s1903/%255B01%255DKeyboard%2BFirmware%2BBuilder_Import.png)
 

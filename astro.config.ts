@@ -61,6 +61,11 @@ export default defineConfig({
   },
   redirects: {
     "/archives": "/archives/page",
+    "/posts/diyqmkkeyboard-1": "/posts/diyqmkkeyboard-kle",
+    "/2017/08/macarm-1": "/posts/macarm-1",
+    "/2017/08/macarm-2": "/posts/macarm-2",
+    "/2020/03/just60-replaceswitches": "/posts/just60-replaceswitches",
+    "/2020/05/s6lite-vs-ipad2019": "/posts/s6lite-vs-ipad2019",
   },
   vite: {
     optimizeDeps: {

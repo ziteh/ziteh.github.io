@@ -15,7 +15,7 @@ draft: false
 aliases: ["/posts/diyqmkkeyboard-edit-qmk/", "/2020/06/diyqmkkeyboard-2/", "/posts/diyqmkkeyboard-2/"]
 ---
 
-在[上一篇文章](/posts/diyqmkkeyboard-1/)中已經完成鍵盤的 Layout，這篇文章將會接續[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 3 步——生成並編輯 QMK 韌體。
+在[上一篇文章](/posts/diyqmkkeyboard-kle/)中已經完成鍵盤的 Layout，這篇文章將會接續[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 3 步——生成並編輯 QMK 韌體。
 
 <!--more-->
 
@@ -209,7 +209,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 
 `matrix` 是設定該鍵在「鍵矩陣」中的行列位置，格式為 `[row, col]`。`x` 和 `y` 是設定該鍵的「物理」位置，也就是它擺在哪裡。另外還有 `w` 與 `h` 可以設定按鍵的寬度和高度，`label` 可以設定名稱。
 
-`layout` 的內容可以透過一些工具來幫忙，就不用完全自己手打。打開 [Convert KLE to QMK info.json](https://qmk.fm/converter/) 頁面，並將[上一篇文章](/posts/diyqmkkeyboard-1/#輸出) 最後的 Raw data 複製並貼到裡面就可以轉換。
+`layout` 的內容可以透過一些工具來幫忙，就不用完全自己手打。打開 [Convert KLE to QMK info.json](https://qmk.fm/converter/) 頁面，並將[上一篇文章](/posts/diyqmkkeyboard-kle/#輸出) 最後的 Raw data 複製並貼到裡面就可以轉換。
 
 例如我貼上：
 
@@ -258,7 +258,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 
 但是它還是缺少了 `matrix` 的資料，這部分我們要自己手動打。`matrix` 的部分我還沒找到比較好的方式可以自動產生，所以目前就只能自己手打，稍微有點麻煩。
 
-如果你不太知道 `matrix` 的座標要怎麼打的話，可以使用 [Keyboard Firmware Builder](https://kbfirmware.com/)，將 [上一篇文章](/posts/diyqmkkeyboard-1/#輸出) 最後的 Raw data 複製並貼到裡面。
+如果你不太知道 `matrix` 的座標要怎麼打的話，可以使用 [Keyboard Firmware Builder](https://kbfirmware.com/)，將 [上一篇文章](/posts/diyqmkkeyboard-kle/#輸出) 最後的 Raw data 複製並貼到裡面。
 
 ![▲ 在 Keyboard Firmware Builder 貼上 KLE 的 Raw data](https://1.bp.blogspot.com/-UTbRymD6jFo/Xu4uCFUmN4I/AAAAAAAACc4/Pun-2kS6qooDb3plao7F_e5sogqH_uHKQCK4BGAsYHg/s1903/%255B01%255DKeyboard%2BFirmware%2BBuilder_Import.png)
 
@@ -404,7 +404,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 
 這裡要修改的是 `const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {}` 的內容，也就是 Keymap。Keymap 的結構與行列數量必須要與剛剛在 `info.json` 中設定的 `layout` 中的 `matrix` 對應。
 
-這裡要手動修改的話也是有一點麻煩，所以一樣推薦使用 [Keyboard Firmware Builder](https://kbfirmware.com/)，將 [上一篇文章](/posts/diyqmkkeyboard-1/#輸出) 最後的 Raw data 複製並貼到裡面。到最後一個標籤頁「Compile」按下「Download .zip」按鈕來儲存它產生的 QMK 韌體原始檔（舊版）。
+這裡要手動修改的話也是有一點麻煩，所以一樣推薦使用 [Keyboard Firmware Builder](https://kbfirmware.com/)，將 [上一篇文章](/posts/diyqmkkeyboard-kle/#輸出) 最後的 Raw data 複製並貼到裡面。到最後一個標籤頁「Compile」按下「Download .zip」按鈕來儲存它產生的 QMK 韌體原始檔（舊版）。
 
 ![▲ 「Compile」標籤頁](https://1.bp.blogspot.com/-IbmnNoxPZ-s/Xu4uE8BFvvI/AAAAAAAACdg/khQpXPgiygkaVn409H394FOvf9RN8C-iACK4BGAsYHg/s800/%255B11%255DKeyboard%2BFirmware%2BBuilder_Compile.png)
 
