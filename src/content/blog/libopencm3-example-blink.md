@@ -17,8 +17,8 @@ aliases: ["/2021/11/libopencm3-example-blink/"]
 ---
 
 我在 2022 年 9 月重新寫了與本文內容相近的文章，建議可以觀看新文章：
-- [STM32 GPIO 簡介](https://ziteh.github.io/posts/libopencm3-stm32-3/)
-- [STM32 LibOpenCM3：GPIO 輸出](https://ziteh.github.io/posts/libopencm3-stm32-4/)
+- [STM32 GPIO 簡介](/posts/libopencm3-stm32-3/)
+- [STM32 LibOpenCM3：GPIO 輸出](/posts/libopencm3-stm32-4/)
 
 # 前言
 
@@ -32,7 +32,7 @@ aliases: ["/2021/11/libopencm3-example-blink/"]
 
 ## 環境與專案
 
-我使用的 IDE 為 [PlatformIO IDE for VSCode（Visual Studio Code）](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide)，並安裝了 [ST STM32](https://platformio.org/platforms/ststm32) `Ver 15.0.0` 平臺。有關 PlatformIO 的介紹可以看我寫的另一篇文章：[\[STM32學習記錄-6\] 在VS Code與PlatformIO上開發STM32](https://ziteh.github.io/2021/11/learningstm32-platformio/)。
+我使用的 IDE 為 [PlatformIO IDE for VSCode（Visual Studio Code）](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide)，並安裝了 [ST STM32](https://platformio.org/platforms/ststm32) `Ver 15.0.0` 平臺。有關 PlatformIO 的介紹可以看我寫的另一篇文章：[\[STM32學習記錄-6\] 在VS Code與PlatformIO上開發STM32](/posts/learningstm32-platformio/)。
 
 安裝完相關軟體後就可以建立一個 PlatformIO 專案。我示範使用的開發板為「ST Nucleo-F103RB（STM32F103RB）」，並選擇「Framework」為「libopencm3」。
 
@@ -157,7 +157,7 @@ int main(void)
 - `gpio_set_mode()` 會對指定的 GPIO 進行設定。
   - `LED_PORT` 是先前用 `#define` 所設定的 LED 所在腳位的 Port，也就是 Port-A。
   - `GPIO_MODE_OUTPUT_2_MHZ` 代表設定為輸出模式，且最高速度為 2 MHz。
-  - `GPIO_CNF_OUTPUT_PUSHPULL` 代表使用推輓式（Push-Pull）輸出。關於推輓式的介紹可以看我之前的[文章](https://ziteh.github.io/2018/08/learningstm32-02/#%E2%80%BB%E6%8E%A8%E6%8C%BD%E5%92%8C%E6%B1%B2%E6%A5%B5%E9%96%8B%E8%B7%AF)。
+  - `GPIO_CNF_OUTPUT_PUSHPULL` 代表使用推輓式（Push-Pull）輸出。關於推輓式的介紹可以看我之前的[文章](/posts/learningstm32-02/#%E2%80%BB%E6%8E%A8%E6%8C%BD%E5%92%8C%E6%B1%B2%E6%A5%B5%E9%96%8B%E8%B7%AF)。
   - `LED_PIN` 是先前用 `#define` 所設定的 LED 所在腳位的 Pin，也就是 Pin-5。可以使用 `|` 來同時選擇多個 Pin。
 - `gpio_toggle()` 會反轉指定的 GPIO 輸出，如果目前是輸出 High 的話就變成輸出 Low；如果現在是 Low 的話就變成 High。
 
@@ -169,5 +169,5 @@ int main(void)
 
 # 相關文章
 
-- [STM32 GPIO 簡介](https://ziteh.github.io/posts/libopencm3-stm32-3/)
-- [STM32 LibOpenCM3：GPIO 輸出](https://ziteh.github.io/posts/libopencm3-stm32-4/)
+- [STM32 GPIO 簡介](/posts/libopencm3-stm32-3/)
+- [STM32 LibOpenCM3：GPIO 輸出](/posts/libopencm3-stm32-4/)

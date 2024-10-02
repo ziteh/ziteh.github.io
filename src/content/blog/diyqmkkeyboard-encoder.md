@@ -108,7 +108,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
 
 ## 完成程式修改
 
-完成修改後就可以將程式編譯、燒錄。其方法請參考[\[自製QMK鍵盤-3\] 編譯並燒錄](/2020/06/diyqmkkeyboard-3/)。
+完成修改後就可以將程式編譯、燒錄。其方法請參考[\[自製QMK鍵盤-3\] 編譯並燒錄](/posts/diyqmkkeyboard-3/)。
 
 # 硬體
 

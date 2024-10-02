@@ -17,8 +17,8 @@ aliases: ["/2021/11/libopencm3-example-exti/"]
 ---
 
 我在 2022 年 9 月重新寫了與本文內容相近的文章，建議可以觀看新文章：
-- [STM32 EXTI 外部中斷](https://ziteh.github.io/posts/libopencm3-stm32-7/)
-- [STM32 LibOpenCM3：EXTI 外部中斷](https://ziteh.github.io/posts/libopencm3-stm32-8/)
+- [STM32 EXTI 外部中斷](/posts/libopencm3-stm32-7/)
+- [STM32 LibOpenCM3：EXTI 外部中斷](/posts/libopencm3-stm32-8/)
 
 # 前言
 
@@ -207,5 +207,5 @@ int main(void)
 
 # 相關文章
 
-- [STM32 EXTI 外部中斷](https://ziteh.github.io/posts/libopencm3-stm32-7/)
-- [STM32 LibOpenCM3：EXTI 外部中斷](https://ziteh.github.io/posts/libopencm3-stm32-8/)
+- [STM32 EXTI 外部中斷](/posts/libopencm3-stm32-7/)
+- [STM32 LibOpenCM3：EXTI 外部中斷](/posts/libopencm3-stm32-8/)

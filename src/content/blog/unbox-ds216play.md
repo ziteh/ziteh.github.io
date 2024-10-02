@@ -14,7 +14,7 @@ aliases: ["/2019/03/unbox-ds216play/"]
 ![](https://1.bp.blogspot.com/-jYSaiCvn1-0/XpnK9QVSHzI/AAAAAAAACFI/smUnduYZZWgRbdY4SwVIW_qkMSZwZ6j2wCPcBGAsYHg/s640/ZPH_0029.JPG)
 
 # 前言
-前幾天我寫了一篇關於檔案資料備份服務的文章([資料儲存備份方案比較 包含雲端空間、HDD硬碟、NAS、DAS和千年光碟](/2019/02/hddnasdas/))，而經過那次的比較後，我也決定選擇NAS的方案來進行備份。雖然NAS的方案是比較貴的，光是買NAS主機就不少錢了，更不用説HDD硬碟算是半個消耗品，但NAS對我的使用方式來説確實是最方便也最適合的，所以我就上網買了一個比較舊型號(窮學生...)的2Bay NAS，也就是這次的主角——DS216 Play。
+前幾天我寫了一篇關於檔案資料備份服務的文章([資料儲存備份方案比較 包含雲端空間、HDD硬碟、NAS、DAS和千年光碟](/posts/hddnasdas/))，而經過那次的比較後，我也決定選擇NAS的方案來進行備份。雖然NAS的方案是比較貴的，光是買NAS主機就不少錢了，更不用説HDD硬碟算是半個消耗品，但NAS對我的使用方式來説確實是最方便也最適合的，所以我就上網買了一個比較舊型號(窮學生...)的2Bay NAS，也就是這次的主角——DS216 Play。
 
 <!--more-->
 

@@ -15,7 +15,7 @@ aliases: ["/2022/09/libopencm3-stm32-17/"]
 ---
 
 # 前言
-在[上一篇](https://ziteh.github.io/2022/09/libopencm3-stm32-16/)中已經介紹了 WDG 看門狗計時器的用途以及 IWDG 與 WWDG 的差別，也示範了 IWDG 的基本用法。
+在[上一篇](/posts/libopencm3-stm32-16/)中已經介紹了 WDG 看門狗計時器的用途以及 IWDG 與 WWDG 的差別，也示範了 IWDG 的基本用法。
 
 這一篇要接著介紹 WWDG 窗口看門狗的基本概念。
 

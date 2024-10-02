@@ -10,7 +10,7 @@ date: 2022-09-15 11:04:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2022/09/libopencm3-stm32-2/"]
+aliases: ["/posts/libopencm3-stm32-2/"]
 ---
 
 # IDE 的尋覓過程

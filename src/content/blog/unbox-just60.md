@@ -205,7 +205,7 @@ Cherry MX 靜音紅軸|17|50|850
 
 # 相關文章
 
-*   [自組60%藍牙機械鍵盤-Just60 後續改軸](/2020/03/just60-replaceswitches/)
+*   [自組60%藍牙機械鍵盤-Just60 後續改軸](/posts/just60-replaceswitches/)
 
 
 # 參考文章

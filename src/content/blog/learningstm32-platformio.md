@@ -154,7 +154,7 @@ PlatformIO 的 GitHub 上也有一些範例程式可以看：[platformio/platfor
 
 我覺得不管是 VS Code、PlatformIO 還是 STM32 都是非常好用的東西，所以當他們整合在一起就令我感到非常滿意。
 
-在之前，我一直是使用 TrueSTUDIO 這個 由 ST 官方所維護的 IDE 進行 STM32 的開發，甚至還寫了一篇[文章](https://ziteh.github.io/2020/03/learningstm32-04/)來介紹它。後來隨著 VS Code 逐漸在程式圈流行，我越來越常使用 VS Code，也開始想要在 VS Code 上開發 STM32。但是開發環境的設置就讓我忙了好久，最後也沒搞定就放棄了。
+在之前，我一直是使用 TrueSTUDIO 這個 由 ST 官方所維護的 IDE 進行 STM32 的開發，甚至還寫了一篇[文章](/posts/learningstm32-04/)來介紹它。後來隨著 VS Code 逐漸在程式圈流行，我越來越常使用 VS Code，也開始想要在 VS Code 上開發 STM32。但是開發環境的設置就讓我忙了好久，最後也沒搞定就放棄了。
 
 就在幾個禮拜前，我無意間得知 PlatformIO，並且看到它也可以用來開發 STM32，而有支援 VS Code，我就馬上進行測試，而結果令我相當滿意，也就誕生了這篇文章，希望大家也可以試著透過 PlatformIO 與 VS Code 開發 STM32。
 

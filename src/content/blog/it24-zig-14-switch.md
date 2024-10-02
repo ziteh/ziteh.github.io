@@ -138,5 +138,5 @@ Value: 110
 本文以 Zig `0.13.0` 為主。並同時發佈在：
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10348145)
-- [我的 Blog](https://ziteh.github.io/posts/it24-zig-14-switch)
+- [我的 Blog](/posts/it24-zig-14-switch)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/switch)

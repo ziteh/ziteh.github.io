@@ -97,5 +97,5 @@ pub fn main() void {
 本文以 Zig `0.13.0` 為主。並同時發佈在：
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10348358)
-- [我的 Blog](https://ziteh.github.io/posts/it24-zig-16-for)
+- [我的 Blog](/posts/it24-zig-16-for)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/for)

@@ -13,7 +13,7 @@ date: 2022-10-06 09:14:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2022/10/libopencm3-stm32-23/"]
+aliases: ["/2022/10/posts/libopencm3-stm32-23/"]
 ---
 
 # 前言
@@ -26,7 +26,7 @@ ADC（Analog to Digital Converter）顧名思義是將類比訊號轉換成數�
 # 正文
 首先一樣以 Nucleo-F446RE 做示範。
 
-首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h`。
+首先[建立一個 PIO 的專案](/posts/libopencm3-stm32-2#建立專案)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h`。
 
 ## 完整程式
 ``` c
@@ -235,7 +235,7 @@ static void delay(uint32_t value);
 
 另外就是因為要使用中斷及 Timer，所以 `nvic.h` 和 `timer.h` 也是必要的。
 
-> USART 和 `printf()` 的詳細用法請看[之前的文章](https://ziteh.github.io/2022/09/libopencm3-stm32-9/)。
+> USART 和 `printf()` 的詳細用法請看[之前的文章](/posts/libopencm3-stm32-9/)。
 
 ### 設定 ADC
 ``` c
@@ -327,7 +327,7 @@ static void timer_setup(void)
 
 使用 `timer_set_master_mode()` 設定 Timer 在每次的 Update 事件都會產生 TRGO 訊號，以觸發 ADC。
 
-> Timer 的頻率設定請看[之前的文章](https://ziteh.github.io/2022/09/libopencm3-stm32-12/)。
+> Timer 的頻率設定請看[之前的文章](/posts/libopencm3-stm32-12/)。
 
 ## 多環境程式（F446RE + F103RB）
 由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。

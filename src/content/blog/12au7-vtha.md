@@ -68,4 +68,4 @@ aliases: ["/2019/02/12au7-vtha/"]
 
 # 相關文章
 
-* [真空管工作原理與結構介紹](/2019/03/vacuumtube/)
+* [真空管工作原理與結構介紹](/posts/vacuumtube/)

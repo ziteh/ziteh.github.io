@@ -194,5 +194,5 @@ X: 100, Y: -10
 本文以 Zig `0.13.0` 為主。並同時發佈在：
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10349019)
-- [我的 Blog](https://ziteh.github.io/postss/it24-zig-18-complex)
+- [我的 Blog](/postss/it24-zig-18-complex)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/complex)

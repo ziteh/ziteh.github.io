@@ -13,7 +13,7 @@ date: 2022-10-08 11:00:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2022/10/libopencm3-stm32-25/"]
+aliases: ["/2022/10/posts/libopencm3-stm32-25/"]
 ---
 
 # 前言
@@ -24,7 +24,7 @@ aliases: ["/2022/10/libopencm3-stm32-25/"]
 # 正文
 首先一樣以 Nucleo-F446RE 做示範。
 
-首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h` 檔案。
+首先[建立一個 PIO 的專案](/posts/libopencm3-stm32-2#建立專案)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h` 檔案。
 
 ## 完整程式
 ``` c
@@ -273,7 +273,7 @@ static void spi_setup(void)
   spi_enable(SPI1);
 }
 ```
-這部分與[設定 Master](https://ziteh.github.io/2022/10/libopencm3-stm32-24/) 時的類似。不過要注意的是，Master device 的 CS（NSS）腳不受 AF 控制，但 Slave device 的會，所以 CS 腳也要設為 AF。
+這部分與[設定 Master](/posts/posts/libopencm3-stm32-24/) 時的類似。不過要注意的是，Master device 的 CS（NSS）腳不受 AF 控制，但 Slave device 的會，所以 CS 腳也要設為 AF。
 
 SPI 本身的設定如 CPOL 與 CPHA 要與 Master 一致才可以正常通訊，這裡設為 CPOL=`0` CPHA=`1`。
 

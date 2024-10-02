@@ -13,7 +13,7 @@ date: 2022-10-10 09:18:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2022/10/libopencm3-stm32-27/"]
+aliases: ["/2022/10/posts/libopencm3-stm32-27/"]
 ---
 
 # 前言
@@ -26,7 +26,7 @@ CRC（Cyclic redundancy check）即循環冗餘校驗是一種雜湊函式，通
 # 正文
 首先一樣以 Nucleo-F446RE 做示範。
 
-首先[建立一個 PIO 的專案](https://ziteh.github.io/2022/09/libopencm3-stm32-2/#%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c`。
+首先[建立一個 PIO 的專案](/posts/libopencm3-stm32-2#建立專案)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c`。
 
 ## 完整程式
 ``` c

@@ -24,7 +24,7 @@ aliases: ["/2022/09/libopencm3-stm32-13/"]
 <!--more-->
 
 # CCR 暫存器
-當我們要使用 PWM 時，我們最在意的是 PWM 的頻率與 Duty Cycle。在 STM32 中，PWM 由 Timer 產生，其頻率的計算方式與 Timer 的部分一樣，這裡就不再贅述，可以參考[之前的文章](https://ziteh.github.io/2022/09/libopencm3-stm32-11/)。
+當我們要使用 PWM 時，我們最在意的是 PWM 的頻率與 Duty Cycle。在 STM32 中，PWM 由 Timer 產生，其頻率的計算方式與 Timer 的部分一樣，這裡就不再贅述，可以參考[之前的文章](/posts/libopencm3-stm32-11/)。
 而 Duty Cycle 由 CCR（Capture/Compare Register，捕獲/比較暫存器） 來控制。
 
 > The reference PWM signal OCxREF is high as long as TIMx_CNT < TIMx_CCRx else it becomes low.

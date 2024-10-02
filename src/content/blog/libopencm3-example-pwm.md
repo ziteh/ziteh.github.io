@@ -17,8 +17,8 @@ aliases: ["/2022/04/libopencm3-example-pwm/"]
 ---
 
 我在 2022 年 9 月重新寫了與本文內容相近的文章，建議可以觀看新文章：
-- [STM32 PWM 脈波寬度調變](https://ziteh.github.io/posts/libopencm3-stm32-13/)
-- [STM32 LibOpenCM3：PWM 脈波寬度調變](https://ziteh.github.io/posts/libopencm3-stm32-14/)
+- [STM32 PWM 脈波寬度調變](/posts/libopencm3-stm32-13/)
+- [STM32 LibOpenCM3：PWM 脈波寬度調變](/posts/libopencm3-stm32-14/)
 
 # 前言
 [LibOpenCM3](https://libopencm3.org/) 是一個 Open-Source 的 ARM Cortex-M3 微控制器底層硬體函式庫，支援包含 STM32 在內的多種微控制器。
@@ -243,8 +243,8 @@ int main(void)
 若有什麼問題或錯誤歡迎留言討論。
 
 # 相關連結
-- [STM32 PWM 脈波寬度調變](https://ziteh.github.io/posts/libopencm3-stm32-13/)
-- [STM32 LibOpenCM3：PWM 脈波寬度調變](https://ziteh.github.io/posts/libopencm3-stm32-14/)
+- [STM32 PWM 脈波寬度調變](/posts/libopencm3-stm32-13/)
+- [STM32 LibOpenCM3：PWM 脈波寬度調變](/posts/libopencm3-stm32-14/)
 - 參考資料
 	- [STM32F0 with libopencm3 - Part 1: Simple Timer - Collection of useful, and useless information](https://bdebyl.net/post/stm32-part1/)
 	- [Wiki - Pulse-Width Modulation (PWM)](http://wiki.csie.ncku.edu.tw/embedded/PWM)

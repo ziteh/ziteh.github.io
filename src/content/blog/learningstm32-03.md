@@ -15,7 +15,7 @@ toc: true
 draft: false
 aliases: ["/2018/09/learningstm32-03/"]
 ---
-先前已經介紹過[GPIO相關暫存器](/2018/08/learningstm32-02/)的用法了，現在我來介紹幾個最基本的輸出入程式寫法。
+先前已經介紹過[GPIO相關暫存器](/posts/learningstm32-02/)的用法了，現在我來介紹幾個最基本的輸出入程式寫法。
 
 由於我使用的開發板NUCLEO-F103RB上有内建LED燈（PA5）和按鈕（PC13），所以以下的程式我就直接使用這兩隻腳位。
 

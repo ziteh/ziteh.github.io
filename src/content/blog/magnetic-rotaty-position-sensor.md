@@ -46,5 +46,5 @@ aliases: ["/2022/11/magnetic-rotaty-position-sensor/"]
 
 # 參考資料
 - [各厂商磁编码器对比，AS5047、AS5048、AS5600、TLE5012、MA730_Mark_md的博客-CSDN博客_tle5120](https://blog.csdn.net/Mark_md/article/details/100181701)
-- [[STM32學習記錄-7] AS5047P 旋轉位置感測器/磁性編碼器使用教學 | ZiTe 本物誌](https://ziteh.github.io/2022/04/learningstm32-as5047p/)
+- [[STM32學習記錄-7] AS5047P 旋轉位置感測器/磁性編碼器使用教學 | ZiTe 本物誌](/posts/learningstm32-as5047p/)
 - [ams OSRAM 的角度感測器列表](https://ams.com/en/angle-position-on-axis)
