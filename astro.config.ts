@@ -9,6 +9,7 @@ import rehypeFigure from "@microflash/rehype-figure";
 import rehypePrettyCode from "rehype-pretty-code";
 import remarkRewrite from "rehype-rewrite";
 import type { Root, RootContent } from "hast";
+import compressor from "astro-compressor";
 // import { transformerCopyButton } from "@rehype-pretty/transformers";
 
 const rehypePrettyCodeOption = {
@@ -45,12 +46,12 @@ export default defineConfig({
   build: {
     format: "file", // Generate `page.html` instead of `page/index.html` during build
   },
-  integrations: [
-    tailwind({
-      applyBaseStyles: false,
-    }),
-    react(),
-    sitemap(),
+  integrations: [tailwind({
+    applyBaseStyles: false,
+  }),
+  react(),
+  sitemap(),
+  compressor(),
   ],
   markdown: {
     syntaxHighlight: false, // Use rehype-pretty-code
