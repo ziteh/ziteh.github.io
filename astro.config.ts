@@ -42,6 +42,9 @@ const rehypeRewriteOption = {
 export default defineConfig({
   site: SITE.website,
   trailingSlash: "never",
+  build: {
+    format: "file", // Generate `page.html` instead of `page/index.html` during build
+  },
   integrations: [
     tailwind({
       applyBaseStyles: false,
