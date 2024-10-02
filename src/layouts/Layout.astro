@@ -5,6 +5,17 @@ import { ViewTransitions } from "astro:transitions";
 
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 
+const getDefaultCanonicalUrl = () => {
+  let path = Astro.url.pathname;
+
+  // Remove trailing slash
+  if (path !== "/" && path.endsWith("/")) {
+    path = path.slice(0, -1);
+  }
+
+  return new URL(path, Astro.site).href;
+};
+
 export interface Props {
   title?: string;
   author?: string;
@@ -29,7 +40,7 @@ const {
   ogImage = SITE.ogImage,
   ogLocale = LOCALE.langOg,
   ogType = "website",
-  canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
+  canonicalURL = getDefaultCanonicalUrl(),
   date,
   updated,
   scrollSmooth = false,
@@ -169,6 +180,9 @@ const structuredData = {
   </head>
   <body>
     <slot />
-    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "35ee33a198af411bbfee050136764e95"}'></script>
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "35ee33a198af411bbfee050136764e95"}'></script>
   </body>
 </html>

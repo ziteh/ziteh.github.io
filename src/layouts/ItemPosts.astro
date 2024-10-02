@@ -39,7 +39,7 @@ const { page, item, itemName, pageTitle, pageDesc, activeNav } = Astro.props;
       {
         page.data.map(({ data, slug, body }) => (
           <Card
-            href={`/posts/${slug}/`}
+            href={`/posts/${slug}`}
             frontmatter={data}
             fallbackDescription={getDescription(body)}
           />

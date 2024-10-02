@@ -64,13 +64,13 @@ const { activeNav } = Astro.props;
             </a>
           </li> -->
           <li>
-            <a href="/tags/" class={activeNav === "tags" ? "active" : ""}>
+            <a href="/tags" class={activeNav === "tags" ? "active" : ""}>
               {_t.tags}
             </a>
           </li>
           <li>
             <a
-              href="/categories/"
+              href="/categories"
               class={activeNav === "categories" ? "active" : ""}
             >
               {_t.categories}
@@ -78,20 +78,20 @@ const { activeNav } = Astro.props;
           </li>
           <li>
             <a
-              href="/archives/page/"
+              href="/archives/page"
               class={activeNav === "posts" ? "active" : ""}
             >
               {_t.archives.title}
             </a>
           </li>
           <li>
-            <a href="/about/" class={activeNav === "about" ? "active" : ""}>
+            <a href="/about" class={activeNav === "about" ? "active" : ""}>
               {_t.about}
             </a>
           </li>
           <li>
             <LinkButton
-              href="/search/"
+              href="/search"
               className={`focus-outline p-3 sm:p-1 ${
                 activeNav === "search" ? "active" : ""
               } flex`}

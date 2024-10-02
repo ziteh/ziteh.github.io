@@ -5,6 +5,10 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import LinkButton from "@components/LinkButton.astro";
 import { _t } from "lang/lang";
+
+if (Astro.url.pathname !== "/" && Astro.url.pathname.endsWith("/")) {
+  return Astro.redirect(Astro.url.pathname.slice(0, -1)); // Remove trailing slash
+}
 ---
 
 <Layout title={`404 Not Found | ${SITE.title}`}>
@@ -17,12 +21,12 @@ import { _t } from "lang/lang";
       <p>{_t.page404.pageNotFound}</p>
 
       <div class="flex flex-row space-x-12">
-        <LinkButton href="/" className="my-6 text-lg hover:underline"
-          >{_t.page404.toHome}</LinkButton
-        >
-        <LinkButton href="/search/" className="my-6 text-lg hover:underline"
-          >{_t.page404.toSearch}</LinkButton
-        >
+        <LinkButton href="/" className="my-6 text-lg hover:underline">
+          {_t.page404.toHome}
+        </LinkButton>
+        <LinkButton href="/search/" className="my-6 text-lg hover:underline">
+          {_t.page404.toSearch}
+        </LinkButton>
       </div>
     </div>
   </main>

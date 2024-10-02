@@ -41,6 +41,7 @@ const rehypeRewriteOption = {
 // https://astro.build/config
 export default defineConfig({
   site: SITE.website,
+  trailingSlash: "never",
   integrations: [
     tailwind({
       applyBaseStyles: false,
