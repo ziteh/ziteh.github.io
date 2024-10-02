@@ -154,6 +154,13 @@ const structuredData = {
 
     <script is:inline src="/toggle-theme.js" async></script>
 
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={SITE.title}
+      href={new URL("rss.xml", Astro.site)}
+    />
+
     {
       enableToc && (
         <link
