@@ -106,6 +106,6 @@ featured: true
 - [我的 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - [QMK 官網](https://qmk.fm/)
 
-[pcb1]: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiw0T2rQe3xMGRjbR3m0vRb1SNpEGbmBaOet_fDdHSnGDVBqOsMpN5WXVYYqeeiiXZKlqO9I59hO_w0bMXe05qdpCloMinqCQE2-isTALfRyS8QTBoVyyLy3Z7x9o5pqAnBI0ZIgANqQZXsOp2Mpqwuvd3tYrXcn8k2ybm5H9ebus18W-x2J_ERd6n3MsI/s16000/a.webp
-[pcb2]: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgLupKdzF_QQz127ifyEoH2prlhIfYGKpX3X7jy2yqokIMNEsLYpiSAR5x4uPg59qEh8hSkjcBFOg6iBz8kuLTZO08Y_1eaawn2_A1N3ZSJ5-u2nWy0swUXLtal9ZO-jyqEYXq1u6Wf_yVoiaXSa8oten8mhy5jBDFXXVBRBqYD8M6nIGd3YwiznlBKAxQ/s16000/b.webp
-[layout]: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg2On2Ja62FlIK_wCv_VCP2KB23btA3jq9vXCscN5546cWQg8nNQg50naI8qYE7M8djdov1xvOWsjmgtO5NAwnx-blod03AvsDFzRJLuaUIUXhJXcEcqooPO3Kp8YDNTa5OxEpG4wwa4yGWx3pcafUPejssOYcD2WDFa889Wp8qDlyu3VXaxkJDhkWxWqY/s16000/c.webp
+[pcb1]: https://bucket.ziteh.dev/blog/ergosnm-v3-0-1/pcb1.webp
+[pcb2]: https://bucket.ziteh.dev/blog/ergosnm-v3-0-1/pcb2.webp
+[layout]: https://bucket.ziteh.dev/blog/ergosnm-v3-0-1/layout.webp
