@@ -13,6 +13,11 @@ const getDefaultCanonicalUrl = () => {
     path = path.slice(0, -1);
   }
 
+  // Remove .html
+  if (path.endsWith(".html")) {
+    path = path.slice(0, -5);
+  }
+
   return new URL(path, Astro.site).href;
 };
 
