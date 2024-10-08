@@ -138,12 +138,7 @@ const nextPost =
       }
     </ul>
     <a href={`/posts/${slug}`}>
-      <h1
-        transition:name={SITE.enableTransitionName
-          ? slugifyStr(title)
-          : undefined}
-        class="post-title"
-      >
+      <h1 class="post-title">
         {title}
       </h1>
     </a>

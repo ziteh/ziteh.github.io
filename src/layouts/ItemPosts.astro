@@ -29,10 +29,7 @@ const { page, item, itemName, pageTitle, pageDesc, activeNav } = Astro.props;
     titleTransition={item}
     pageDesc={pageDesc}
   >
-    <h1
-      slot="title"
-      transition:name={SITE.enableTransitionName ? item : undefined}
-    >
+    <h1 slot="title">
       {`Tag:${item}`}
     </h1>
     <ul>
