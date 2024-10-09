@@ -13,7 +13,7 @@ date: 2022-04-26 12:53:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2022/04/libopencm3-example-timer/"]
+# aliases: ["/2022/04/libopencm3-example-timer/"]
 ---
 
 我在 2022 年 9 月重新寫了與本文內容相近的文章，建議可以觀看新文章：

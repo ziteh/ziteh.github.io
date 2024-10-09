@@ -9,7 +9,7 @@ date: 2020-09-14 00:36:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2020/09/hh-andromedae/"]
+# aliases: ["/2020/09/hh-andromedae/"]
 ---
 雖然掛著皆盡人曉的大名  
 卻似無人相伴

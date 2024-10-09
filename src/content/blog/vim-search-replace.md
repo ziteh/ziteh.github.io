@@ -10,7 +10,7 @@ date: 2020-09-05 23:37:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2020/09/vim-search-replace/"]
+# aliases: ["/2020/09/vim-search-replace/"]
 ---
 # 前言
 

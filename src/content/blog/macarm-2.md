@@ -8,7 +8,7 @@ date: 2017-08-02 13:11:00
 comments: true
 toc: true
 draft: false
-aliases : ["/2017/08/macarm-2/"]
+# aliases : ["/2017/08/macarm-2/"]
 ---
 ![](https://1.bp.blogspot.com/-pZzLycJryec/XqYxoC3ETrI/AAAAAAAACJY/qQs2DI7qXLExB-SoIEq94KVOTDjgKoe5QCPcBGAsYHg/s320/1501167240592.jpg)
 

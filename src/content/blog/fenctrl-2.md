@@ -10,7 +10,7 @@ date: 2017-12-27 14:56:00
 comments: true
 toc: true
 draft: false
-aliases : ["/2017/12/fenctrl-2/"]
+# aliases : ["/2017/12/fenctrl-2/"]
 ---
 ![](https://1.bp.blogspot.com/-HdFGyfRgpCI/XqUx46khu6I/AAAAAAAACIE/ODfjLdGcWiATpEiAIsihhjISX9eLH2eiQCPcBGAsYHg/s320/DSC_0357.JPG)
 

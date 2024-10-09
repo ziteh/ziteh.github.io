@@ -8,7 +8,7 @@ date: 2019-03-03 23:14:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2019/03/vacuumtube/"]
+# aliases: ["/2019/03/vacuumtube/"]
 ---
 ![](https://1.bp.blogspot.com/-iB0ociK8_LY/XpnI0QMSUJI/AAAAAAAACE8/PPnFzlFjoEQyrNI15MU9EraVOseQCuJLwCPcBGAsYHg/s640/ZPH_0058.JPG)
 

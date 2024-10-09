@@ -9,7 +9,7 @@ date: 2020-05-10 14:26:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2020/05/unbox-sansunggalaxys6lite/"]
+# aliases: ["/2020/05/unbox-sansunggalaxys6lite/"]
 ---
 ![](https://1.bp.blogspot.com/-cQjRvWjr9-I/XreSQ-V3G8I/AAAAAAAACWs/vjWRAiRKk2o6wtk2E1oZUbtFGri0N5MVgCPcBGAsYHg/s640/ZPH_0313.JPG)
 

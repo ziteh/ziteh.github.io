@@ -12,7 +12,7 @@ date: 2023-04-27 22:17:00+08:00
 comments: true
 toc: true
 draft: false
-# aliases: []
+# # aliases: []
 ---
 
 到[上一篇文章](/posts/diyqmkkeyboard-3/)為止我們已經完成了鍵盤的韌體部分，接下來要進行硬體的部分。本篇要介紹的是[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 5 步——繪製 PCB。

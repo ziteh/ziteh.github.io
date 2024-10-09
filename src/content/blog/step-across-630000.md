@@ -9,7 +9,7 @@ date: 2021-11-14 22:22:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2021/11/step-across-630000/"]
+# aliases: ["/2021/11/step-across-630000/"]
 ---
 將距離化為時間的機器  
 讓思緒超越光筆直前進  

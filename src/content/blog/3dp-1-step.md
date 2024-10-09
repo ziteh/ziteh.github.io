@@ -9,7 +9,7 @@ date: 2017-03-25 13:04:00
 comments: true
 toc: true
 draft: false
-aliases : ["/2017/03/3dp-1-step/"]
+# aliases : ["/2017/03/3dp-1-step/"]
 ---
 ![](https://1.bp.blogspot.com/-yLX9tUKZ2EI/Xq0AMyYj-wI/AAAAAAAACKk/0y5YFIsiqIIhFeFGAvNYhZKxCM8P1Hv-QCPcBGAsYHg/s400/DSC_0084.JPG)
 

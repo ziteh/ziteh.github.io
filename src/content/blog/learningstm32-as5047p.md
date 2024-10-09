@@ -13,7 +13,7 @@ date: 2022-04-16 00:09:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2022/04/learningstm32-as5047p/"]
+# aliases: ["/2022/04/learningstm32-as5047p/"]
 ---
 
 # 前言

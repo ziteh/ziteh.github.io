@@ -9,7 +9,7 @@ date: 2023-02-10 23:10:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2023/02/calcite52-keyboard-1/"]
+# aliases: ["/2023/02/calcite52-keyboard-1/"]
 ---
 
 # 前言

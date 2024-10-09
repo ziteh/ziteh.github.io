@@ -10,7 +10,7 @@ date: 2022-01-09 22:11:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2022/01/diyqmkkeyboard-6/"]
+# aliases: ["/2022/01/diyqmkkeyboard-6/"]
 ---
 
 [Mitosis](https://github.com/qmk/qmk_firmware/tree/master/keyboards/mitosis) 是一款使用 [QMK](https://qmk.fm/) 作為韌體所開發的無線分離式鍵盤，它不僅僅是與電腦之間無線，它的左右兩部分之間也沒有實體連線，可謂是「真 • 無線」。就我所知，有許多基於 QMK 的無線分離式鍵盤都是受到 Mitosis 的啓發。

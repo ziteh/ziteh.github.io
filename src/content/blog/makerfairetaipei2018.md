@@ -8,7 +8,7 @@ date: 2019-02-21 09:37:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2019/02/makerfairetaipei2018/"]
+# aliases: ["/2019/02/makerfairetaipei2018/"]
 ---
 ![](https://1.bp.blogspot.com/-O55tzWNKOOM/XppbGfjNjhI/AAAAAAAACFw/5mg4H7oP5tobmbB7je5IJwFDpC0YsisRACPcBGAsYHg/s320/20181011_%25E9%2581%258A%25E6%2588%25B2%25E6%2596%25B9%25E5%2590%2591%25E7%259B%25A4%25E5%25AE%25A3%25E5%2582%25B3%25E7%2585%25A7-0046.jpg)
 

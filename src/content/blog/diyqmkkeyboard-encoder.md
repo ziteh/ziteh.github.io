@@ -11,7 +11,7 @@ date: 2020-11-21 17:39:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2020/11/diyqmkkeyboard-5/", "/posts/diyqmkkeyboard-5/"]
+# aliases: ["/2020/11/diyqmkkeyboard-5/", "/posts/diyqmkkeyboard-5/"]
 ---
 
 ![](https://1.bp.blogspot.com/--DVn7BXoSVM/X7jhXa4wzwI/AAAAAAAACrk/5-7dhQnH1kgKadvIJFRDvJypUmhe44QUACPcBGAsYHg/w640-h480/DSC_0020.JPG)

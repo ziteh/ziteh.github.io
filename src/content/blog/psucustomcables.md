@@ -9,7 +9,7 @@ date: 2019-02-22 09:26:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2019/02/psucustomcables/"]
+# aliases: ["/2019/02/psucustomcables/"]
 ---
 ![](https://1.bp.blogspot.com/-DWIH30NOyDI/XppYajhsUdI/AAAAAAAACFg/wPQROsxK1J0R6B1fgoHXJOisvhhVRSJDwCPcBGAsYHg/s640/ZPH_0309.JPG)
 

@@ -13,7 +13,7 @@ date: 2018-09-08 14:24:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2018/09/learningstm32-03/"]
+# aliases: ["/2018/09/learningstm32-03/"]
 ---
 先前已經介紹過[GPIO相關暫存器](/posts/learningstm32-02/)的用法了，現在我來介紹幾個最基本的輸出入程式寫法。
 

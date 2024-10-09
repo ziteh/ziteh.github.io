@@ -9,7 +9,7 @@ date: 2017-05-25 12:43:00
 comments: true
 toc: true
 draft: false
-aliases : ["/2017/05/3dp-3-gcode/"]
+# aliases : ["/2017/05/3dp-3-gcode/"]
 ---
 學會G-code是更深入使用3D列印機的基礎，只要看懂一些常見的G-code指令，就可以更自由且細微的調整3D列印機的動作。
 

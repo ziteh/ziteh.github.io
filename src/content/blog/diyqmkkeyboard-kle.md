@@ -11,7 +11,7 @@ date: 2023-04-18 21:14:00+08:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2020/06/diyqmkkeyboard-1/", "/posts/diyqmkkeyboard-kle/"]
+# aliases: ["/2020/06/diyqmkkeyboard-1/", "/posts/diyqmkkeyboard-kle/"]
 ---
 
 ![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh6xYCyGGGes8740UwynZ1-7vRgL-NiAbQG_wQ-84Qwpp0VnqNnTvhTym-9_GQemo3IWD31zfsRhwnsCjjuo6FY9YA1Uvzw6ewqC5ZQZuifOvxs-4imiPxjeBuYCJ_Y9Wc5nkBQqNQHFN03e8RHUQi6apUVahqwfScuck0SVJ-W_c6uGn1oYKgOFfgd/s16000/Screenshot%202023-04-18%20at%2020-31-36%20Keyboard%20Layout%20Editor.png)

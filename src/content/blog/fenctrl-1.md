@@ -9,7 +9,7 @@ date: 2017-11-25 15:30:00
 comments: true
 toc: true
 draft: false
-aliases : ["/2017/11/fenctrl-1/"]
+# aliases : ["/2017/11/fenctrl-1/"]
 ---
 # 前言
 

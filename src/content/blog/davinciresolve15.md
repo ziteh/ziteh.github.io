@@ -8,7 +8,7 @@ date: 2018-08-20 10:38:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2018/08/davinciresolve15/"]
+# aliases: ["/2018/08/davinciresolve15/"]
 ---
 以往我都是使用Adobe的Premiere Pro和After Effects來剪輯影片與製作特效，而最近剛好認識到Blackmagic Design公司的[DaVinci Resolve 15](https://www.blackmagicdesign.com/products/davinciresolve/)這套軟體，不但有免費版本，而且三大作業系統都有（之前在用Linux時才覺得軟體支援真的很重要，一直試Wine也不一定成功）。
 

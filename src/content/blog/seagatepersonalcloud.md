@@ -10,7 +10,7 @@ date: 2018-11-10 10:33:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2018/11/seagatepersonalcloud/"]
+# aliases: ["/2018/11/seagatepersonalcloud/"]
 ---
 前幾天我的Seagate Personal Cloud 3TB壞掉了，拆開來測試後發現是主機板掛了，而我就想說反正它也過保了，我也懶得送修，所以就想把它改成一般的USB外接硬碟，於是這篇文章就產生了。
 

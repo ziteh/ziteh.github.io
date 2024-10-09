@@ -12,7 +12,7 @@ date: 2023-07-02 10:50:00+08:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2020/06/diyqmkkeyboard-3/", "/posts/diyqmkkeyboard-3/"]
+# aliases: ["/2020/06/diyqmkkeyboard-3/", "/posts/diyqmkkeyboard-3/"]
 ---
 
 在[上一篇文章](/posts/diyqmkkeyboard-firmware-0-24-8)中我們已經有了 QMK 韌體原始檔，接下來就可以進行編譯和燒錄，也就是[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 4 步。

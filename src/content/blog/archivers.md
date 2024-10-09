@@ -5,7 +5,7 @@ date: 2017-08-15 08:49:00
 comments: true
 toc: true
 draft: false
-aliases : ["/2017/08/archivers/"]
+# aliases : ["/2017/08/archivers/"]
 ---
 # 實驗方式
 

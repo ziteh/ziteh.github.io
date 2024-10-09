@@ -13,7 +13,7 @@ comments: true
 toc: true
 draft: false
 featured: true
-aliases: ["/2020/06/diyqmkkeyboard-0/"]
+# aliases: ["/2020/06/diyqmkkeyboard-0/"]
 ---
 
 # 教學文列表

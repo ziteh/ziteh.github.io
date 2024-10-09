@@ -10,7 +10,7 @@ date: 2020-03-31 16:59:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2020/03/just60-replaceswitches/"]
+# aliases: ["/2020/03/just60-replaceswitches/"]
 ---
 ![](https://1.bp.blogspot.com/-MJaz0ArUBZE/XomfS_eOL2I/AAAAAAAACC8/Ho-R4rr6xTQu2M5y5ticJV4EHoG0_qlDgCKgBGAsYHg/s1600/ZPH_0116.jpg)
 

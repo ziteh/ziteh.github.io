@@ -13,7 +13,7 @@ date: 2020-04-02 15:40:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2020/04/learningstm32-05/"]
+# aliases: ["/2020/04/learningstm32-05/"]
 ---
 
 ***注意***，本文的內容過於老舊，不建議實際使用，僅保留以作為參考用。

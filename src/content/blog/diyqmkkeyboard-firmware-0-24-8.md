@@ -12,7 +12,7 @@ date: 2024-05-04 11:12:00+08:00
 comments: true
 toc: true
 draft: false
-aliases: ["/posts/diyqmkkeyboard-edit-qmk/", "/2020/06/diyqmkkeyboard-2/", "/posts/diyqmkkeyboard-2/"]
+# aliases: ["/posts/diyqmkkeyboard-edit-qmk/", "/2020/06/diyqmkkeyboard-2/", "/posts/diyqmkkeyboard-2/"]
 ---
 
 在[上一篇文章](/posts/diyqmkkeyboard-kle/)中已經完成鍵盤的 Layout，這篇文章將會接續[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 3 步——生成並編輯 QMK 韌體。

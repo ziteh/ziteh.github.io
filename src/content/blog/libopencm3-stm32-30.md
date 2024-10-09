@@ -11,7 +11,7 @@ date: 2022-10-13 08:50:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2022/10/libopencm3-stm32-30/"]
+# aliases: ["/2022/10/libopencm3-stm32-30/"]
 ---
 
 經過這說長不長、說短不短的 30 天，這次的 iT 鐵人賽終於要來到尾聲了。在這最後一篇中，我想回顧並分享一下前 29 天撰寫文章的心得。

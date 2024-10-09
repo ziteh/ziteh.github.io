@@ -5,7 +5,7 @@ date: 2018-02-06 00:01:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2018/02/googleshortcuts/"]
+# aliases: ["/2018/02/googleshortcuts/"]
 ---
 
 基本上這個擴充套件就是有一個按鈕，會有一個清單可以讓你快速的打開網頁，和書籤的功能差不多。（以下示範為Firefox版）

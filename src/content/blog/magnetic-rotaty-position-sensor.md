@@ -8,7 +8,7 @@ date: 2022-11-30 07:15:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2022/11/magnetic-rotaty-position-sensor/"]
+# aliases: ["/2022/11/magnetic-rotaty-position-sensor/"]
 ---
 
 # 正文

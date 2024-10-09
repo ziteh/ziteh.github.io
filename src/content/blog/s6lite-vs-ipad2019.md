@@ -8,7 +8,7 @@ date: 2020-05-10 14:27:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2020/05/s6lite-vs-ipad2019/"]
+# aliases: ["/2020/05/s6lite-vs-ipad2019/"]
 ---
 ![](https://3.bp.blogspot.com/-xDjyt9pUqb0/XreTf9cwHcI/AAAAAAAACYE/Ln0DcgwYPywK0Ep2ZHdA9dSKmRBaYfQTACPcBGAsYHg/s640/ZPH_0198.JPG)
 

@@ -13,7 +13,7 @@ date: 2021-11-28 22:00:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2021/11/libopencm3-example-exti/"]
+# aliases: ["/2021/11/libopencm3-example-exti/"]
 ---
 
 我在 2022 年 9 月重新寫了與本文內容相近的文章，建議可以觀看新文章：

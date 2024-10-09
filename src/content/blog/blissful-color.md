@@ -7,7 +7,7 @@ date: 2021-11-27 22:33:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2021/11/blissful-color/"]
+# aliases: ["/2021/11/blissful-color/"]
 ---
 
 如果幸福有顏色  
