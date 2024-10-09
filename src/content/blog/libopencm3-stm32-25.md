@@ -273,7 +273,7 @@ static void spi_setup(void)
   spi_enable(SPI1);
 }
 ```
-這部分與[設定 Master](/posts/posts/libopencm3-stm32-24/) 時的類似。不過要注意的是，Master device 的 CS（NSS）腳不受 AF 控制，但 Slave device 的會，所以 CS 腳也要設為 AF。
+這部分與[設定 Master](/posts/libopencm3-stm32-24) 時的類似。不過要注意的是，Master device 的 CS（NSS）腳不受 AF 控制，但 Slave device 的會，所以 CS 腳也要設為 AF。
 
 SPI 本身的設定如 CPOL 與 CPHA 要與 Master 一致才可以正常通訊，這裡設為 CPOL=`0` CPHA=`1`。
 

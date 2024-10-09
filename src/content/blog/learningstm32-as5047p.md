@@ -262,5 +262,5 @@ void as5047p_spi_deselect(void)
 
 # 相關連結
 
-- LibOpenCM3 STM32 SPI 教學：[STM32 LibOpenCM3：SPI (Master mode) ](/posts/posts/libopencm3-stm32-24/)
+- LibOpenCM3 STM32 SPI 教學：[STM32 LibOpenCM3：SPI (Master mode) ](/posts/libopencm3-stm32-24)
 - [AS5047P Datasheet](https://ams.com/documents/20143/36005/AS5047P_DS000324_3-00.pdf)

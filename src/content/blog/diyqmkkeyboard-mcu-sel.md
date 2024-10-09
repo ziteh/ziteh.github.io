@@ -82,7 +82,7 @@ draft: false
 
 ## ATmega32U4
 
-[官網](32u4)
+[官網][32u4]
 
 熟悉 Arduino 的人應該對「ATmega」這個名字很熟悉，ATmega32U4 是 Microchip（原本是 Atmel，已被前者併購）公司的一款 8-bit AVR MCU。與 RP2040 同為我推薦新手的其中一種 MCU。
 

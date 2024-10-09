@@ -16,7 +16,7 @@ draft: false
 
 ⚠ 由於最新的 [`0.21.3`](https://github.com/qmk/qmk_firmware/releases/tag/0.21.3) 版本的 QMK 在使用上的差異滿大的，這篇是針對舊版 [`0.18.3`](https://github.com/qmk/qmk_firmware/releases/tag/0.18.3) 的 QMK 教學，僅作為參考保留。
 
-[最新版的 QMK 教學](/posts/diyqmkkeyboard-edit-qmk/)。
+[新版的 QMK 教學](/posts/diyqmkkeyboard-firmware-0-21-3)。
 
 <!--more-->
 
@@ -118,7 +118,7 @@ QMK 可以設定的按鍵請看說明文件：[Keycodes Overview](https://docs.q
 
 在標籤頁「Settings」裡可以編輯一些其它的設定。包含名稱、Bootloader 大小、WS2812 LED 燈數量、背光等級。
 
-「Save Configuration」按鈕可以下載一個 JSON 檔，裡面儲存了目前為止的各種設定。在[一開始的頁面](/posts/diyqmkkeyboard-2/#讀入鍵盤)裡，上方有個「Upload」按鈕，將此 JSON 檔傳上後就可以繼續編輯或修改該鍵盤。**建議一定要儲存此 JSON 檔**，且重新命名以避免與 Keyboard Layout Editor 的 JSON 搞混。
+「Save Configuration」按鈕可以下載一個 JSON 檔，裡面儲存了目前為止的各種設定。在[一開始的頁面](#讀入鍵盤)裡，上方有個「Upload」按鈕，將此 JSON 檔傳上後就可以繼續編輯或修改該鍵盤。**建議一定要儲存此 JSON 檔**，且重新命名以避免與 Keyboard Layout Editor 的 JSON 搞混。
 
 ![▲ 「Settings」標籤頁](https://1.bp.blogspot.com/-Vdfp-gzx0uQ/Xu4uEo34ilI/AAAAAAAACdc/sRvlviZR_xUQEhy6Ma0oLsFQ9c_OW50hgCK4BGAsYHg/s800/%255B10%255DKeyboard%2BFirmware%2BBuilder_Settings.png)
 
@@ -351,7 +351,7 @@ RGBLIGHT_ENABLE ?= no
 
 ### 修改腳位
 
-在 `config.h` 裡有以下這幾行，用來修改鍵盤矩陣掃描所用的微控制器腳位。請注意，這裡的腳位名稱是微控制本身的腳位，不是開發板上的，可以回顧一下[腳位（Pins）](/posts/diyqmkkeyboard-2/#腳位pins)內的說明。
+在 `config.h` 裡有以下這幾行，用來修改鍵盤矩陣掃描所用的微控制器腳位。請注意，這裡的腳位名稱是微控制本身的腳位，不是開發板上的，可以回顧一下[腳位（Pins）](#腳位pins)內的說明。
 
 ```c
 /* key matrix pins */
@@ -423,7 +423,7 @@ RGBLIGHT_ENABLE ?= no
 ...
 ```
 
-> 如果你沒有改用 `#pragma once`，且你有更改鍵盤的名稱（不是 `#define PRODUCT` 的名稱，是預設為 kb 的[資料夾與檔案名稱](/posts/diyqmkkeyboard-2/#修改-rulesmk)），那原本的 `kb.h` 被修改成 `my_new_keyboard.h` 後，其內的 `KB_H` 要修改成 `MY_NEW_KEYBOARD_H`，即這裡也要改成你鍵盤的名稱且習慣全大寫。當然，如果你熟悉 C 的話可以用你喜歡的方式。
+> 如果你沒有改用 `#pragma once`，且你有更改鍵盤的名稱（不是 `#define PRODUCT` 的名稱，是預設為 kb 的[資料夾與檔案名稱](#修改-rulesmk)），那原本的 `kb.h` 被修改成 `my_new_keyboard.h` 後，其內的 `KB_H` 要修改成 `MY_NEW_KEYBOARD_H`，即這裡也要改成你鍵盤的名稱且習慣全大寫。當然，如果你熟悉 C 的話可以用你喜歡的方式。
 
 如果你使用的是 RP2040 的話，可以在 `config.h` 中加入：
 ```c
@@ -509,7 +509,7 @@ RGBLIGHT_ENABLE ?= no
 
 ### 改按鍵映射
 
-在[先前的段落](/posts/diyqmkkeyboard-2/#鍵映射keymap)有提到 Keyboard Firmware Builder 裡的「Keymap」標籤頁可以設定的按鍵並不完全，如果想要自行修改的話就要再此編輯。
+在[先前的段落](#鍵映射keymap)有提到 Keyboard Firmware Builder 裡的「Keymap」標籤頁可以設定的按鍵並不完全，如果想要自行修改的話就要再此編輯。
 
 在 `keymap.c` 裡你會看到許多像是這樣的內容：
 

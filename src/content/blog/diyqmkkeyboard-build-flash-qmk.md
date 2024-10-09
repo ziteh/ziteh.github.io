@@ -15,7 +15,7 @@ draft: false
 aliases: ["/2020/06/diyqmkkeyboard-3/", "/posts/diyqmkkeyboard-3/"]
 ---
 
-在[上一篇文章](/posts/diyqmkkeyboard-2/)中我們已經有了 QMK 韌體原始檔，接下來就可以進行編譯和燒錄，也就是[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 4 步。
+在[上一篇文章](/posts/diyqmkkeyboard-firmware-0-24-8)中我們已經有了 QMK 韌體原始檔，接下來就可以進行編譯和燒錄，也就是[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 4 步。
 
 編譯和燒錄的步驟對於不熟悉程式和開發板的人可能會覺得複雜，但是其實沒有這麼困難，只要仔細地遵循步驟應該是不會出什麼問題。
 

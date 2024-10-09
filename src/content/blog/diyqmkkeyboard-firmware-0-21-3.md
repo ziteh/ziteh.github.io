@@ -14,7 +14,7 @@ toc: true
 draft: false
 ---
 
-本文是舊版本的 QMK，如果需要新版本的教學請看[新版 QMK 教學](/posts/diyqmkkeyboard-edit-qmk/)。
+本文是舊版本的 QMK，如果需要新版本的教學請看[新版 QMK 教學](/posts/diyqmkkeyboard-firmware-0-24-8)。
 
 <!--more-->
 

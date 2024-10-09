@@ -18,32 +18,32 @@ aliases: ["/2020/06/diyqmkkeyboard-0/"]
 
 # 教學文列表
 
-[本系列文](/categories/自製QMK鍵盤/)預計會根據[製作步驟](#製作步驟)分別介紹各自的詳細內容。除了基本步驟外，我還會額外介紹其它的進階功能。文章不定期緩慢更新中。
+[本系列文](categories/自製qmk鍵盤)預計會根據[製作步驟](#製作步驟)分別介紹各自的詳細內容。除了基本步驟外，我還會額外介紹其它的進階功能。文章不定期緩慢更新中。
 
 <!--more-->
 
 ## 基礎內容
 
-1. [編輯鍵盤佈局 (Layout)](/posts/diyqmkkeyboard-kle/)
-2. [如何選擇微控制器 MCU？](/posts/diyqmkkeyboard-mcu-sel/)
-3. [產生並編輯 QMK 韌體](/posts/diyqmkkeyboard-firmware-0-24-8/)
-4. [編譯與燒錄](/posts/diyqmkkeyboard-build-flash-qmk/)
-5. [KiCAD 鍵盤 PCB 繪製教學 (上)](/posts/diyqmkkeyboard-pcb-layout-sch/)
-6. [KiCAD 鍵盤 PCB 繪製教學 (下)](/posts/diyqmkkeyboard-pcb-layout-layers/)
+1. [編輯鍵盤佈局 (Layout)](/posts/diyqmkkeyboard-kle)
+2. [如何選擇微控制器 MCU？](/posts/diyqmkkeyboard-mcu-sel)
+3. [產生並編輯 QMK 韌體](/posts/diyqmkkeyboard-firmware-0-24-8)
+4. [編譯與燒錄](/posts/diyqmkkeyboard-build-flash-qmk)
+5. [KiCAD 鍵盤 PCB 繪製教學 (上)](/posts/diyqmkkeyboard-pcb-layout-sch)
+6. [KiCAD 鍵盤 PCB 繪製教學 (下)](/posts/diyqmkkeyboard-pcb-layout-layers)
 
 ## 進階內容
 
-- [QMK 啓用 Vial 教學](/posts/diyqmkkeyboard-vial/)
-- [為 QMK 鍵盤加上 Bluetooth 藍牙無線功能](/posts/diyqmkkeyboard-ble/)
-- [Adafruit Bluefruit LE SPI Friend 韌體燒錄教學](/posts/diyqmkkeyboard-ble-module/)
-- [旋轉編碼器 (Encoder)](/posts/diyqmkkeyboard-encoder/)
-- [QMK 的基本架構與運作方式](/posts/diyqmkkeyboard-operate/)
-- [在 Custom Matrix 中使用 UART 與控制滑鼠遊標，並加上無線模組](/posts/diyqmkkeyboard-custom-matrix/)
+- [QMK 啓用 Vial 教學](/posts/diyqmkkeyboard-vial)
+- [為 QMK 鍵盤加上 Bluetooth 藍牙無線功能](/posts/diyqmkkeyboard-ble)
+- [Adafruit Bluefruit LE SPI Friend 韌體燒錄教學](/posts/diyqmkkeyboard-ble-module)
+- [旋轉編碼器 (Encoder)](/posts/diyqmkkeyboard-encoder)
+- [QMK 的基本架構與運作方式](/posts/diyqmkkeyboard-operate)
+- [在 Custom Matrix 中使用 UART 與控制滑鼠遊標，並加上無線模組](/posts/diyqmkkeyboard-custom-matrix)
 
 ## 封存
 
-- [0.21.3 版 QMK 韌體教學](/posts/diyqmkkeyboard-firmware-0-21-3/)
-- [0.18.3 版 QMK 韌體教學](/posts/diyqmkkeyboard-firmware-0-18/)
+- [0.21.3 版 QMK 韌體教學](/posts/diyqmkkeyboard-firmware-0-21-3)
+- [0.18.3 版 QMK 韌體教學](/posts/diyqmkkeyboard-firmware-0-18)
 
 ---
 
