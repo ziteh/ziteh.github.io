@@ -9,7 +9,7 @@ export const SITE: Site = {
   ogImage: "og.jpg",
   lightAndDarkMode: true,
   postPerIndex: 3,
-  postPerPage: 5,
+  postPerPage: 10,
   postPerArchive: 12,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
   genDescriptionCount: 100,
