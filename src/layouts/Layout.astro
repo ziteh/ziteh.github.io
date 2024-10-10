@@ -79,6 +79,7 @@ const structuredData = {
 <html
   lang=`${LOCALE.lang ?? "en"}`
   class={`${scrollSmooth && "scroll-smooth"}`}
+  transition:animate="initial"
 >
   <head>
     <meta charset="UTF-8" />
@@ -155,7 +156,7 @@ const structuredData = {
       )
     }
 
-    <ViewTransitions />
+    <ViewTransitions fallback="swap" />
 
     <script is:inline src="/toggle-theme.js" async></script>
 
