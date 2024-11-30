@@ -101,7 +101,7 @@ draft: false
   - 如果是單買 IC 本身，出廠大概不會幫你燒 Bootloader，你可能要另外用燒錄器燒。
 - 要注意的事：
   - 如果你編譯出來的韌體大小真的裝不進 32 KB 的 Flash 的話可以參考官方的文件：[Squeezing Space from AVR](https://docs.qmk.fm/#/squeezing_avr)。
-  - Pro Micro 分為紅色的「SparkFun 原廠」和藍色的「副廠/第三方」版，前者約 NT$ 600\~1000，後者約 NT$200\~400，都可以使用。
+  - Pro Micro 分為紅色的「SparkFun 原廠」和藍色的「副廠/第三方」版，前者約 NTD 600-1000，後者約 NTD 200-400，都可以使用。
   - 工作電壓為 5V 時 CPU 時脈可以到 16MHz；為 3.3V 時只能到 8MHz。
   - PCB Layout 時記得保留燒錄座。
 
