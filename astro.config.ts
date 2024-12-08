@@ -41,7 +41,7 @@ const rehypeRewriteOption = {
     if (node.type === "element" && node.tagName.startsWith("h")) {
       const headers = node.tagName.match(/h([1-6])/);
       if (headers === null) {
-        return
+        return;
       }
 
       const currentLevel = parseInt(headers[1], 10);
@@ -49,13 +49,27 @@ const rehypeRewriteOption = {
         node.properties = {
           ...node.properties,
           class: "italic",
-        }
-      }
-      else {
+        };
+      } else {
         const newLevel = Math.min(currentLevel + 1, 6);
         node.tagName = `h${newLevel}`;
       }
     }
+  },
+};
+
+const sitemapOption = {
+  serialize(item) {
+    if (/\/(tags|categories|archives|page|search)/.test(item.url)) {
+      item.priority = 0.2;
+    } else if (/\/posts\/\d+$/.test(item.url)) {
+      item.priority = 0.3;
+    } else if (/\/posts\//.test(item.url)) {
+      item.priority = 0.8;
+    } else {
+      item.priority = 0.5;
+    }
+    return item;
   },
 };
 
@@ -66,12 +80,13 @@ export default defineConfig({
   build: {
     format: "file", // Generate `page.html` instead of `page/index.html` during build
   },
-  integrations: [tailwind({
-    applyBaseStyles: false,
-  }),
-  react(),
-  sitemap(),
-  compressor(),
+  integrations: [
+    tailwind({
+      applyBaseStyles: false,
+    }),
+    react(),
+    sitemap(sitemapOption),
+    compressor(),
   ],
   markdown: {
     syntaxHighlight: false, // Use rehype-pretty-code
