@@ -41,7 +41,7 @@ error.OutOfRange
 
 # 超集
 
-Zig 會依據名稱爲每個 `error` 的成員建立一個不重複的 ID（預設以 `u16`），這意味著，只要是相同名稱，就算處於不同的 `error` 內，在程式上它們就是同一個。
+Zig 會依據名稱為每個 `error` 的成員建立一個不重複的 ID（預設以 `u16`），這意味著，只要是相同名稱，就算處於不同的 `error` 內，在程式上它們就是同一個。
 
 ```zig
 const print = @import("std").debug.print;
@@ -101,9 +101,9 @@ error.ErrorA1, error.ErrorB2
 
 # 錯誤聯合型別
 
-由於 Zig 採用類似 Rust 的錯誤處理機制，所以它也有類似 `Result<T, E>` 的用法，即錯誤聯合型別（Error union type），語法爲 `E!V`，其中 `E` 是錯誤型別，而 `V` 是其它型別。
+由於 Zig 採用類似 Rust 的錯誤處理機制，所以它也有類似 `Result<T, E>` 的用法，即錯誤聯合型別（Error union type），語法為 `E!V`，其中 `E` 是錯誤型別，而 `V` 是其它型別。
 
-使用 `catch` 在該值爲 `error` 時提供替代數值。
+使用 `catch` 在該值為 `error` 時提供替代數值。
 
 ```zig
 const print = @import("std").debug.print;
@@ -164,7 +164,7 @@ Error: error.OutOfRange
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#Errors)
 - [Errors | zig.guide](https://zig.guide/language-basics/errors)
 
-本文以 Zig `0.13.0` 爲主。並同時發佈在：
+本文以 Zig `0.13.0` 為主。並同時發佈在：
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10348743)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/error)

@@ -11,7 +11,7 @@ date: 2022-02-21 13:31:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2022/02/diyqmkkeyboard-8/", "/posts/diyqmkkeyboard-8/"]
+# aliases: ["/2022/02/diyqmkkeyboard-8/", "/posts/diyqmkkeyboard-8/"]
 ---
 
 現在的無線技術愈來愈發達，許多人更加喜歡無線的鍵盤與滑鼠，而我也是。QMK 已經有對部分藍牙（Bluetooth 或 BLE）模組的支援，只需要啓用就可以將 QMK 變成藍牙無線鍵盤。
@@ -103,7 +103,7 @@ CONNECTED LED (Blue)|P0.19|--|--
 
 # 效果展示
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/OKdwwEEPLHY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe style="width: 100%; height: 315px; border: 0; margin: 20px 0" src="https://www.youtube.com/embed/OKdwwEEPLHY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # 相關資訊
 

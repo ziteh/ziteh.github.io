@@ -13,7 +13,7 @@ date: 2018-08-26 10:47:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2018/08/learningstm32-02/"]
+# aliases: ["/2018/08/learningstm32-02/"]
 ---
 # 前言
 

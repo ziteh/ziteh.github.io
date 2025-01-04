@@ -110,7 +110,7 @@ Run `zig build test` to run the tests.
 
 ## print
 
-這邊要先特別介紹一下 `print()`，因爲之後的範例會很常看到它。它用起來和 C 的差不多，每個 `{}` 都代表一個數值（就像 C 的 `%d`），後面的 `.{ var }`，則是實際的變數或常數，如果有多個的話，要以前寫在 `.{ }` 內，並用逗號 `,` 分隔。如果沒有要填入數值的話 `.{}` 內留空。
+這邊要先特別介紹一下 `print()`，因為之後的範例會很常看到它。它用起來和 C 的差不多，每個 `{}` 都代表一個數值（就像 C 的 `%d`），後面的 `.{ var }`，則是實際的變數或常數，如果有多個的話，要以前寫在 `.{ }` 內，並用逗號 `,` 分隔。如果沒有要填入數值的話 `.{}` 內留空。
 
 ```zig
 // Value: 5
@@ -142,7 +142,7 @@ error: the following build command failed with exit code 1:
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#Hello-World)
 - [Hello World | zig.guide](https://zig.guide/getting-started/hello-world)
 
-本文以 Zig `0.13.0` 爲主。並同時發佈在：
+本文以 Zig `0.13.0` 為主。並同時發佈在：
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10346041)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24)

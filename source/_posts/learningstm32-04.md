@@ -13,7 +13,7 @@ date: 2020-03-31 15:18:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2020/03/learningstm32-04/"]
+# aliases: ["/2020/03/learningstm32-04/"]
 ---
 ![](https://1.bp.blogspot.com/-jpislKTRwlY/XomHrzCsbVI/AAAAAAAACCk/ambFVA1uD4guODQ_Zurcc9CNpkfhFiiQwCKgBGAsYHg/s640/Screenshot%2B%252811%2529.png)
 

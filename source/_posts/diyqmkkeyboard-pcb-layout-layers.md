@@ -22,6 +22,8 @@ draft: false
 
 <!--more-->
 
+<iframe style="width: 100%; height: 315px; border: 0; margin: 20px 0 margin: 20px 0"  src="https://www.youtube.com/embed/zhCffPA7798?si=CJOahXMvx64g7Qb0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 > 以下內容以 KiCad `v7.0.2` 作為示範。
 
 # PCB 基礎介紹

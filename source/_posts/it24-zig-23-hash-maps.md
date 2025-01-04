@@ -81,7 +81,7 @@ Default
 
 # String
 
-如果你想要使用 String 作爲 Key，可以直接使用 `std.StringHashMap(V)`。
+如果你想要使用 String 作為 Key，可以直接使用 `std.StringHashMap(V)`。
 
 ```zig
 const std = @import("std");
@@ -117,7 +117,7 @@ pub fn main() !void {
 - [Zig hashmaps explained | Hexops' devlog](https://devlog.hexops.com/2022/zig-hashmaps-explained/)
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#toc-Zig-Standard-Library)
 
-本文以 Zig `0.13.0` 爲主。並同時發佈在：
+本文以 Zig `0.13.0` 為主。並同時發佈在：
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10350822)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/hash_map)

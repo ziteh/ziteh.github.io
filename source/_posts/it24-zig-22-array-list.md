@@ -17,7 +17,7 @@ ArrayList 是一種動態的數組容器，可以儲存相同型別、不定長�
 
 # 基礎
 
-ArrayList 是由標準庫提供的。由於是動態分配的型別，所以要使用它的話需要透過 [Allocator](https://ziteh.github.io/posts/it24-zig-21-allocator/) 來分配，並且也需要 [defer](https://ziteh.github.io/posts/it24-zig-20-defer/) 做好釋放資源的處理。只要系統可以成功分配空間，ArrayList 的長度就可以一直加。使用 `items` 欄位存取成員。
+ArrayList 是由標準庫提供的。由於是動態分配的型別，所以要使用它的話需要透過 [Allocator](/posts/it24-zig-21-allocator/) 來分配，並且也需要 [defer](/posts/it24-zig-20-defer/) 做好釋放資源的處理。只要系統可以成功分配空間，ArrayList 的長度就可以一直加。使用 `items` 欄位存取成員。
 
 ```zig
 const std = @import("std");
@@ -112,7 +112,7 @@ array_list.ArrayListAligned(i8,null)
 - [Learning Zig - Coding in Zig](https://www.openmymind.net/learning_zig/coding_in_zig/#arraylist)
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#toc-Zig-Standard-Library)
 
-本文以 Zig `0.13.0` 爲主。並同時發佈在：
+本文以 Zig `0.13.0` 為主。並同時發佈在：
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10350296)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/array_list)

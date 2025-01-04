@@ -12,7 +12,7 @@ date: 2023-04-27 22:17:00+08:00
 comments: true
 toc: true
 draft: false
-# aliases: []
+# # aliases: []
 ---
 
 到[上一篇文章](/posts/diyqmkkeyboard-3/)為止我們已經完成了鍵盤的韌體部分，接下來要進行硬體的部分。本篇要介紹的是[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 5 步——繪製 PCB。
@@ -23,7 +23,7 @@ draft: false
 
 另有影片教學可以供參考：
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/DOluUYmqIs4?si=y68SmS6Z4g1ycMCW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe style="width: 100%; height: 315px; border: 0; margin: 20px 0" src="https://www.youtube.com/embed/DOluUYmqIs4?si=y68SmS6Z4g1ycMCW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 > 以下內容以 KiCad `v7.0.2` 作為示範。
 
@@ -62,7 +62,7 @@ draft: false
 
 # 自動生成鍵盤 PCB
 
-[Keyboard PCB Builder](https://kb.xyz.is/) 是一個自動工具，只要複製貼上 Keyboard Layout Editor 的 [raw data](/posts/diyqmkkeyboard-1/)，就可以幫你生成基本的 KiCad 專案。
+[Keyboard PCB Builder](https://kb.xyz.is/) 是一個自動工具，只要複製貼上 Keyboard Layout Editor 的 [raw data](/posts/diyqmkkeyboard-kle/)，就可以幫你生成基本的 KiCad 專案。
 
 將下載的 `.zip` 檔解壓縮，使用 KiCad 開啓 `keyboard.pro` 即可開啓專案。自動生成的專案檔包含了已經畫好鍵盤矩陣的 Schematic、擺好位置的 PCB 設計及各種鍵軸的 Footprint 庫。微控制器與其它部分還是必須要自己手動繪製。
 

@@ -81,14 +81,14 @@ pub fn build(b: *std.Build) void {
 
 ## 分段解析
 
-首先是建置目標（Target）和最佳化（Optimize）設定。使用 `standardTargetOptions()` 和 `standardOptimizeOption()` 會將目標設定爲本機原生（Native）及 debug Optimize。
+首先是建置目標（Target）和最佳化（Optimize）設定。使用 `standardTargetOptions()` 和 `standardOptimizeOption()` 會將目標設定為本機原生（Native）及 debug Optimize。
 
 ```zig
 const target = b.standardTargetOptions(.{});
 const optimize = b.standardOptimizeOption(.{});
 ```
 
-再來是設定函式庫。在此專案目錄下有個 `root.zig`，在這裡將其使用 `addStaticLibrary()` 連結爲靜態函式庫。使用 `installArtifact()` 將此函式庫增加到 install step。
+再來是設定函式庫。在此專案目錄下有個 `root.zig`，在這裡將其使用 `addStaticLibrary()` 連結為靜態函式庫。使用 `installArtifact()` 將此函式庫增加到 install step。
 
 ```zig
 const lib = b.addStaticLibrary(.{
@@ -114,7 +114,7 @@ const exe = b.addExecutable(.{
 b.installArtifact(exe);
 ```
 
-這裡使用 `addRunArtifact()` 來增加一個 Artifact `run_cmd`。使用 `dependOn(b.getInstallStep())` 將其設定依賴於 install step。使用 `addArgs()` 加入其它引數。使用 `step("run", "Run the app")` 新增一個名爲 `run` 的 step，`Run the app` 是說明文字，再將其用 `run_step.dependOn(&run_cmd.step)` 和 `run_cmd` 連結起來。這樣最後我們就會有個 `run` 的 step 可以使用。
+這裡使用 `addRunArtifact()` 來增加一個 Artifact `run_cmd`。使用 `dependOn(b.getInstallStep())` 將其設定依賴於 install step。使用 `addArgs()` 加入其它引數。使用 `step("run", "Run the app")` 新增一個名為 `run` 的 step，`Run the app` 是說明文字，再將其用 `run_step.dependOn(&run_cmd.step)` 和 `run_cmd` 連結起來。這樣最後我們就會有個 `run` 的 step 可以使用。
 
 ```zig
 const run_cmd = b.addRunArtifact(exe);
@@ -129,7 +129,7 @@ const run_step = b.step("run", "Run the app");
 run_step.dependOn(&run_cmd.step);
 ```
 
-這裡在建立另一個名爲 `test` 的 step 來執行測試。步驟和上面的 `run` 一樣。
+這裡在建立另一個名為 `test` 的 step 來執行測試。步驟和上面的 `run` 一樣。
 
 ```zig
 const lib_unit_tests = b.addTest(.{
@@ -199,7 +199,7 @@ Run `zig build test` to run the tests.
 - [Zig Build | zig.guide](https://zig.guide/build-system/zig-build/)
 - [Zig Build System ⚡ Zig Programming Language](https://ziglang.org/learn/build-system/)
 
-本文以 Zig `0.13.0` 爲主。並同時發佈在：
+本文以 Zig `0.13.0` 為主。並同時發佈在：
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10354747)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/build_project)

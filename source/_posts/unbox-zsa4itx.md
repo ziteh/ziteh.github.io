@@ -9,7 +9,7 @@ date: 2019-02-18 10:12:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2019/02/unbox-zsa4itx/"]
+# aliases: ["/2019/02/unbox-zsa4itx/"]
 ---
 ![](https://1.bp.blogspot.com/-Jek05an0SBQ/XppkUD8qVUI/AAAAAAAACGs/tE3_tc4nZ2oNFL2W3EV_sZyhHBe3NaZcQCPcBGAsYHg/s640/ZPH_0224.JPG)
 
@@ -116,4 +116,4 @@ Cryorig 快睿 C7的内容物有一包外六角螺絲、產品保固卡、用來
 
 # 相關文章
 
-* [自製電腦PSU模組線 (手殘沒有極限)](/2019/02/psucustomcables/)
+* [自製電腦PSU模組線 (手殘沒有極限)](/posts/psucustomcables/)

@@ -8,7 +8,7 @@ date: 2017-08-02 13:11:00
 comments: true
 toc: true
 draft: false
-aliases : ["/2017/08/macarm-2/"]
+# aliases : ["/2017/08/macarm-2/"]
 ---
 ![](https://1.bp.blogspot.com/-pZzLycJryec/XqYxoC3ETrI/AAAAAAAACJY/qQs2DI7qXLExB-SoIEq94KVOTDjgKoe5QCPcBGAsYHg/s320/1501167240592.jpg)
 
@@ -60,6 +60,6 @@ aliases : ["/2017/08/macarm-2/"]
 
 # 相關文章
 
-* [\[心得:機械手專題-1\] 電子機械手義肢製作過程](/2017/08/macarm-1/)
-* [\[心得:機械手專題-2\] 科展中的所見所聞](/2017/08/macarm-2/)(本篇)
-* [\[心得:機械手專題-3\] 這是科展，不是技藝競賽 — 我對科展的反思](/2017/08/macarm-3/)
+* [\[心得:機械手專題-1\] 電子機械手義肢製作過程](/posts/macarm-1/)
+* [\[心得:機械手專題-2\] 科展中的所見所聞](/posts/macarm-2/)(本篇)
+* [\[心得:機械手專題-3\] 這是科展，不是技藝競賽 — 我對科展的反思](/posts/macarm-3/)

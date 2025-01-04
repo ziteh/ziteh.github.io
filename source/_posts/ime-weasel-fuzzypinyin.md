@@ -9,7 +9,7 @@ date: 2020-09-14 12:54:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2020/09/ime-weasel-fuzzypinyin/"]
+# aliases: ["/2020/09/ime-weasel-fuzzypinyin/"]
 ---
 # 前言
 

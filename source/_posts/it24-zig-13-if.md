@@ -42,7 +42,7 @@ B
 
 # 三元運算子
 
-Zig 沒有 C 那樣的三元運算子（Ternary operation）`A ? T : F`，但是可以直接使用 `if-else` 來達成相同的效果，也就是說，Zig 的 `if` 可以作爲表達式（Expressions）。這樣的設計和 Python 有點類似。我個人覺得這樣的可讀性更好，因爲它更接近自然語言，而不是用符號代替意義。
+Zig 沒有 C 那樣的三元運算子（Ternary operation）`A ? T : F`，但是可以直接使用 `if-else` 來達成相同的效果，也就是說，Zig 的 `if` 可以作為表達式（Expressions）。這樣的設計和 Python 有點類似。我個人覺得這樣的可讀性更好，因為它更接近自然語言，而不是用符號代替意義。
 
 ```zig
 const std = @import("std");
@@ -63,7 +63,7 @@ B
 
 # 可選值
 
-除了 `bool` 型別，`if` 的括號內也可以填入可選型別（Optionals），它會變成判斷其值是否爲 `null`，並且可以搭配捕獲（Capture）語法來提取子數值。
+除了 `bool` 型別，`if` 的括號內也可以填入可選型別（Optionals），它會變成判斷其值是否為 `null`，並且可以搭配捕獲（Capture）語法來提取子數值。
 
 ```zig
 const std = @import("std");
@@ -95,7 +95,7 @@ Value: null
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#if)
 - [If Expressions | zig.guide](https://zig.guide/language-basics/if)
 
-本文以 Zig `0.13.0` 爲主。並同時發佈在：
+本文以 Zig `0.13.0` 為主。並同時發佈在：
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10347981)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/if)

@@ -10,7 +10,7 @@ date: 2020-10-09 18:23:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2020/10/deft-pro-switch/"]
+# aliases: ["/2020/10/deft-pro-switch/"]
 ---
 ![](https://1.bp.blogspot.com/-9817x0a1I90/X4A3oD4XlBI/AAAAAAAACpk/-420KmjCgEUmxf9xFTtO-YukexeJoBpEACPcBGAsYHg/s4315/DSC_0077.jpg)
 

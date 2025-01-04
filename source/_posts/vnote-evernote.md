@@ -1,14 +1,11 @@
 ---
 title: 免費開源的VNote如何取代Evernote
 author: ZiTe
-tags:
-
-categories: []
 date: 2019-03-31 22:57:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2019/03/vnote-evernote/"]
+# aliases: ["/2019/03/vnote-evernote/"]
 ---
 ![](https://1.bp.blogspot.com/-6qpzgyusXrI/XpnFL8rL1UI/AAAAAAAACEs/Ob5Z50NP0JcFMSaaDtU_8QKUdd8d6glXwCPcBGAsYHg/s640/Cover.png)
 

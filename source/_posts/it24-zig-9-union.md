@@ -46,7 +46,7 @@ Result: true
 
 # Tagged
 
-你可以爲 `union` 加上 `enum` 標記，這樣它會變成 Tagged union，隨後你可以使用其 `enum` 來判斷目前是那個型別在作用中。通常搭配 `switch` 和 Payload 語法使用。
+你可以為 `union` 加上 `enum` 標記，這樣它會變成 Tagged union，隨後你可以使用其 `enum` 來判斷目前是那個型別在作用中。通常搭配 `switch` 和 Payload 語法使用。
 
 ```zig
 const std = @import("std");
@@ -163,7 +163,7 @@ Name: int
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#union)
 - [Unions | zig.guide](https://zig.guide/language-basics/unions)
 
-本文以 Zig `0.13.0` 爲主。並同時發佈在：
+本文以 Zig `0.13.0` 為主。並同時發佈在：
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10347262)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/union)

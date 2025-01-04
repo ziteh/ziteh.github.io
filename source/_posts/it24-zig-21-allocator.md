@@ -143,7 +143,7 @@ Type: []u8, []f32, []i2
 - [zig/lib/std/heap/general_purpose_allocator.zig at master · ziglang/zig](https://github.com/ziglang/zig/blob/master/lib/std/heap/general_purpose_allocator.zig)
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#toc-Choosing-an-Allocator)
 
-本文以 Zig `0.13.0` 爲主。並同時發佈在：
+本文以 Zig `0.13.0` 為主。並同時發佈在：
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10349905)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/allocator)

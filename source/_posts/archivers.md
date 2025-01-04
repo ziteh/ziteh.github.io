@@ -1,13 +1,11 @@
 ---
 title: 各種壓縮檔類型與設定之比較（WinRAR、7z）
 author: ZiTe
-tags:
-categories: []
 date: 2017-08-15 08:49:00
 comments: true
 toc: true
 draft: false
-aliases : ["/2017/08/archivers/"]
+# aliases : ["/2017/08/archivers/"]
 ---
 # 實驗方式
 

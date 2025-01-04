@@ -50,7 +50,7 @@ Zig 不像 Rust 有 [crates.io](https://crates.io/) 或 Python 有 [PyPI](https:
 
 # 增加套件
 
-現在 `.dependencies` 的部分是空的。讓我們來新增一個套件，這裡用 [zul](https://github.com/karlseguin/zul) 爲例。這裡有兩種方式。
+現在 `.dependencies` 的部分是空的。讓我們來新增一個套件，這裡用 [zul](https://github.com/karlseguin/zul) 為例。這裡有兩種方式。
 
 ## 方法1-使用指令增加
 
@@ -63,7 +63,7 @@ info: resolved to commit 08c989bf6871e87807a4668232913ee245425863
 
 ## 方法2-手動增加
 
-首先要加入 `.url`，其值爲 `https://github.com/karlseguin/zul/archive/<TAG>.tar.gz`，其中的 `<TAG>` 要改成目標的版本，可以是 branch、tag、commit hash，這裡使用 `master` branch：
+首先要加入 `.url`，其值為 `https://github.com/karlseguin/zul/archive/<TAG>.tar.gz`，其中的 `<TAG>` 要改成目標的版本，可以是 branch、tag、commit hash，這裡使用 `master` branch：
 
 ```zig
 .{
@@ -157,7 +157,7 @@ Convert UNIX timestamp to human readable: https://www.unixtimestamp.com
 - [Zig Package Manager - WTF is Zon - Zig NEWS](https://zig.news/edyu/zig-package-manager-wtf-is-zon-558e)
 - [karlseguin/zul: zig utility library](https://github.com/karlseguin/zul)
 
-本文以 Zig `0.13.0` 爲主。並同時發佈在：
+本文以 Zig `0.13.0` 為主。並同時發佈在：
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10355399)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/package_manager)

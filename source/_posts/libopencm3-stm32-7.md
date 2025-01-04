@@ -11,7 +11,7 @@ date: 2022-09-20 12:00:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2022/09/libopencm3-stm32-7/"]
+# aliases: ["/2022/09/libopencm3-stm32-7/"]
 ---
 
 # 前言

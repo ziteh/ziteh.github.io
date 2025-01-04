@@ -34,7 +34,7 @@ toc: true
 
 # Config Tools 網路問題
 
-我的 [MCUXpresso Config Tools](https://www.nxp.com/design/design-center/software/development-software/mcuxpresso-software-and-tools-/mcuxpresso-config-tools-pins-clocks-and-peripherals:MCUXpresso-Config-Tools?&lang=en) 不知道爲何總是連不上網路，這會導致我建立新專案時一直跳出「the toolchain project detection failed in the specified directory, Detected ARM GCC project file, but parsing failed.」錯誤。後來我是參考「How to use MCUXpresso Config Tools on offline computer」這個 PDF 的內容，改使用離線的方式。
+我的 [MCUXpresso Config Tools](https://www.nxp.com/design/design-center/software/development-software/mcuxpresso-software-and-tools-/mcuxpresso-config-tools-pins-clocks-and-peripherals:MCUXpresso-Config-Tools?&lang=en) 不知道為何總是連不上網路，這會導致我建立新專案時一直跳出「the toolchain project detection failed in the specified directory, Detected ARM GCC project file, but parsing failed.」錯誤。後來我是參考「How to use MCUXpresso Config Tools on offline computer」這個 PDF 的內容，改使用離線的方式。
 
 在 [SDK Builder - MCUXpresso Config Tools data download](https://mcuxpresso.nxp.com/en/select_config_tools_data) 搜尋你的硬體（例如我是 FRDM-MCXN947） 並下載數據。
 

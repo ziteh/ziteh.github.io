@@ -9,7 +9,7 @@ date: 2016-03-17 13:10:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2016/03/repetierserver/"]
+# aliases: ["/2016/03/repetierserver/"]
 ---
 ![](https://1.bp.blogspot.com/-WSWJJKMLNUY/Xq0B2YDEbtI/AAAAAAAACKw/qQ71E0EYP186q4UbzQ4uBCUvtG9yHKzDACPcBGAsYHg/s400/_DSC0320.jpg)
 

@@ -10,13 +10,13 @@ date: 2020-03-31 16:59:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2020/03/just60-replaceswitches/"]
+# aliases: ["/2020/03/just60-replaceswitches/"]
 ---
 ![](https://1.bp.blogspot.com/-MJaz0ArUBZE/XomfS_eOL2I/AAAAAAAACC8/Ho-R4rr6xTQu2M5y5ticJV4EHoG0_qlDgCKgBGAsYHg/s1600/ZPH_0116.jpg)
 
 # 前言
 
-之前在[\[開箱\]自組60%藍牙機械鍵盤-Just60](/2020/03/unbox-just60/)一文中介紹了我組裝Just60的過程，在我使用到目前為止的3個多月下來都沒有什麼太大的問題。不過因為我的鍵位配列方案相當緊湊，尤其是左Shift從正常的2.25U變成只有1U的長度，使用起來還是多少有些不習慣，經常誤觸，甚至連帶著左Ctrl也變得容易按錯。
+之前在[\[開箱\]自組60%藍牙機械鍵盤-Just60](/posts/unbox-just60/)一文中介紹了我組裝Just60的過程，在我使用到目前為止的3個多月下來都沒有什麼太大的問題。不過因為我的鍵位配列方案相當緊湊，尤其是左Shift從正常的2.25U變成只有1U的長度，使用起來還是多少有些不習慣，經常誤觸，甚至連帶著左Ctrl也變得容易按錯。
 
 <!--more-->
 
@@ -66,4 +66,4 @@ aliases: ["/2020/03/just60-replaceswitches/"]
 
 # 相關文章
 
-*   [\[開箱\]自組60%藍牙機械鍵盤-Just60](/2020/03/unbox-just60/)
+*   [\[開箱\]自組60%藍牙機械鍵盤-Just60](/posts/unbox-just60/)

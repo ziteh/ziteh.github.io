@@ -15,7 +15,7 @@ toc: true
 
 <!-- more -->
 
-就和大多數的程式語言一樣，Zig 也有 `struct`，可以用來組合其它型別成爲一個新的型別。和 C 不同、但是和 Rust 類似的是，Zig 可以爲 `struct` 實作函式（在 Zig 中稱爲方法 method），這使得它很接近 OOP 中的 Class。
+就和大多數的程式語言一樣，Zig 也有 `struct`，可以用來組合其它型別成為一個新的型別。和 C 不同、但是和 Rust 類似的是，Zig 可以為 `struct` 實作函式（在 Zig 中稱為方法 method），這使得它很接近 OOP 中的 Class。
 
 > 純 C 真的要包含函式的 `struct` 的話也可以用指標函式來達成，但這種做法不常見。
 
@@ -49,7 +49,7 @@ X: 10, Y: 123.45
 
 # 方法
 
-可以爲 `struct` 定義 method：
+可以為 `struct` 定義 method：
 
 ```zig
 const std = @import("std");
@@ -172,7 +172,7 @@ X: 20.2, Y: 110
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#struct)
 - [Structs | zig.guide](https://zig.guide/language-basics/structs)
 
-本文以 Zig `0.13.0` 爲主。並同時發佈在：
+本文以 Zig `0.13.0` 為主。並同時發佈在：
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10346929)
 - 範例程式 [GitHub repo](https://github.com/ziteh/zig-learn-it24/tree/main/struct)

@@ -9,7 +9,7 @@ date: 2017-05-25 12:43:00
 comments: true
 toc: true
 draft: false
-aliases : ["/2017/05/3dp-3-gcode/"]
+# aliases : ["/2017/05/3dp-3-gcode/"]
 ---
 學會G-code是更深入使用3D列印機的基礎，只要看懂一些常見的G-code指令，就可以更自由且細微的調整3D列印機的動作。
 
@@ -40,6 +40,6 @@ aliases : ["/2017/05/3dp-3-gcode/"]
 
 # 相關文章
 
-* [\[教學:3D列印-1\] 使用3D列印機的步驟](/2017/03/3dp-1-step/)
-* [\[教學:3D列印-2\] Slic3r 切片軟體教學](/2017/05/3dp-2-slic3r/)
-* [\[教學:3D列印-3\] 常用G-code指令解讀](/2017/05/3dp-3-gcode/)(本篇)
+* [\[教學:3D列印-1\] 使用3D列印機的步驟](/posts/3dp-1-step/)
+* [\[教學:3D列印-2\] Slic3r 切片軟體教學](/posts/3dp-2-slic3r/)
+* [\[教學:3D列印-3\] 常用G-code指令解讀](/posts/3dp-3-gcode/)(本篇)

@@ -10,7 +10,7 @@ date: 2020-12-03 16:19:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2020/12/freenas-build/"]
+# aliases: ["/2020/12/freenas-build/"]
 ---
 ![](https://1.bp.blogspot.com/-gu_QKiKQcY8/X8ieYisKAXI/AAAAAAAACtM/oibWqubpBFocWo7czgWtGE7ai6VAk2i0wCPcBGAsYHg/s4544/IMG_20201103_225204.jpg)
 

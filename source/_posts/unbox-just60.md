@@ -11,7 +11,7 @@ date: 2020-03-08 17:38:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2020/03/unbox-just60/"]
+# aliases: ["/2020/03/unbox-just60/"]
 ---
 ![](https://1.bp.blogspot.com/-w0fao2bdCd0/XomqiW0jgWI/AAAAAAAACDY/1wlDE8Qf2L0khbeXGFc3ntvnL9kEorsvACKgBGAsYHg/s640/cover.JPG)
 
@@ -205,7 +205,7 @@ Cherry MX 靜音紅軸|17|50|850
 
 # 相關文章
 
-*   [自組60%藍牙機械鍵盤-Just60 後續改軸](/2020/03/just60-replaceswitches/)
+*   [自組60%藍牙機械鍵盤-Just60 後續改軸](/posts/just60-replaceswitches/)
 
 
 # 參考文章

@@ -8,7 +8,7 @@ date: 2017-08-14 08:58:00
 comments: true
 toc: true
 draft: false
-aliases : ["/2017/08/unbox-akgk550mk2/"]
+# aliases : ["/2017/08/unbox-akgk550mk2/"]
 ---
 <h3 style="text-align: center;"><span style="color: red;">
 此篇文章沒有聽感心得，還請想知道聲音表現的發燒友另尋文章，謝謝!
@@ -16,7 +16,7 @@ aliases : ["/2017/08/unbox-akgk550mk2/"]
 
 ![](https://1.bp.blogspot.com/-wRR3fSzS6U0/XqYu_MdJZhI/AAAAAAAACJA/sWbti4dEfWosVhCpNr0fyy2fqMFJ908gwCPcBGAsYHg/s400/AKG%2BK550%2BMK2-019.jpg)
 
-上次開[V90-HPA](/2017/08/unbox-v90hpa/)的時候才說要買K550，不到半個月的時間我就完成了這項預言。 
+上次開[V90-HPA](/posts/unbox-v90hpa/)的時候才說要買K550，不到半個月的時間我就完成了這項預言。 
 
 <!--more-->
 

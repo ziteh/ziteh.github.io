@@ -24,11 +24,11 @@ draft: false
 
 前者是「來自風平浪靜的明日（凪のあすから）」的 OP+ED 合集。其實我之前沒看過這部作品，但是因為太喜歡A叔的演奏，所以就很好奇原作是什麼樣的故事，之後才去看的。
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/1zKejX-up-k?si=edM5hBmN7IaD1llr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe style="width: 100%; height: 315px; border: 0; margin: 20px 0" src="https://www.youtube.com/embed/1zKejX-up-k?si=edM5hBmN7IaD1llr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 後者是「未來日記」的 OP1。我每次聽都覺得它有種詭異的氛圍。我當時也還沒看過這部作品，也是因為音樂聽太多後才回去看原作的。
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/drlB2RT_XiA?si=NCnHc5YhKQg8Gt3f" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe style="width: 100%; height: 315px; border: 0; margin: 20px 0" src="https://www.youtube.com/embed/drlB2RT_XiA?si=NCnHc5YhKQg8Gt3f" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 

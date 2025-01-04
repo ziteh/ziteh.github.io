@@ -9,7 +9,7 @@ date: 2019-02-18 09:59:00
 comments: true
 toc: true
 draft: false
-aliases: ["/2019/02/12au7-vtha/"]
+# aliases: ["/2019/02/12au7-vtha/"]
 ---
 ![](https://1.bp.blogspot.com/-lbg-gEN1IxM/XppfskTS_xI/AAAAAAAACGg/pkHxv9yG9tQX-e7VCSXuP-Wmu1jx6LmTwCPcBGAsYHg/s640/360%25E7%259C%259F%25E7%25A9%25BA%25E7%25AE%25A1%25E8%2580%25B3%25E6%2593%25B4.gif)
 
@@ -68,4 +68,4 @@ aliases: ["/2019/02/12au7-vtha/"]
 
 # 相關文章
 
-* [真空管工作原理與結構介紹](/2019/03/vacuumtube/)
+* [真空管工作原理與結構介紹](/posts/vacuumtube/)

@@ -32,7 +32,7 @@ toc: true
 
 ## 資料
 
-爲了保持 Vue 的響應性，資料要使用 `ref` 或 `reactive` 儲存。這兩著的差異不是很大，網路上的文章[^1][^2][^3]總結大概是：
+為了保持 Vue 的響應性，資料要使用 `ref` 或 `reactive` 儲存。這兩著的差異不是很大，網路上的文章[^1][^2][^3]總結大概是：
 
 - `ref`：可以是任何型別。取值和賦值時要使用 `.value` 屬性。只會監聽頂層成員的變化。
 - `reactive`：必須是 Object 或 Array。不能直接賦值（會失去響應性），真的要的話要用 `Object.assign()` [^4]。會監聽深層成員的變化。
@@ -525,7 +525,7 @@ function changeLanguage() {
 
 ## 路徑別名
 
-如果專案具一定的規模的話，在 `import` 時使用相對路徑會出現一堆 `../` 不太方便，為此我們可以設定路徑別名。常見的就是將 `src/` 設定爲別名 `@`。
+如果專案具一定的規模的話，在 `import` 時使用相對路徑會出現一堆 `../` 不太方便，為此我們可以設定路徑別名。常見的就是將 `src/` 設定為別名 `@`。
 
 修改 `tsconfig.json`。
 
@@ -556,7 +556,7 @@ import path from "path";
 export default defineConfig(async () => ({
   // 省略...
 
-  // 爲 Vite 增加別名。
+  // 為 Vite 增加別名。
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
@@ -943,7 +943,7 @@ async function openDirDialog() {
 
 # 前端語言
 
-我使用 TypeScript 而非 JavaScript。因爲我是寫 C/C++ 出身的，比較熟悉也喜歡靜態型別，而且我想（對於大部分的資料）靜態型別對程式的穩健性和可預期性也比較好，所以就直接選擇 TS。
+我使用 TypeScript 而非 JavaScript。因為我是寫 C/C++ 出身的，比較熟悉也喜歡靜態型別，而且我想（對於大部分的資料）靜態型別對程式的穩健性和可預期性也比較好，所以就直接選擇 TS。
 
 我以前剛開始寫 Python 時也被動態型別搞得很煩，後來裝了靜態型別檢查工具才覺得 Python 好用。
 
