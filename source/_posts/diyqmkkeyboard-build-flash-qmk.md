@@ -32,7 +32,7 @@ qmk compile -kb mytetstkb -km default
 ```
 
 > `qmk compile -kb <keyboard> -km <keymap>` 是 QMK 的編譯指令。
-> `<keyboard>` 代表了你要編譯的鍵盤，這裡的是 `kb`。`<keymap>` 是要編譯的鍵映射（Keymap），這裡是 `default`。
+> `<keyboard>` 代表了你要編譯的鍵盤，這裡的是 `mytetstkb`。`<keymap>` 是要編譯的鍵映射（Keymap），這裡是 `default`。
 
 如果有問題的話會顯示問題出在哪裡。如果都沒問題的話，應該會看到一整排的 `[OK]`，並且會告訴你編譯好的 `.hex` 檔儲存的路徑（Creating load file for flashing: .build/mytestkb_default.hex，參考路徑：`C:\Users\<USERNAME>\qmk_firmware\.build\mytestkb_default.hex`）。
 

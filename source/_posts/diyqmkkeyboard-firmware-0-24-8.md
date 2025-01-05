@@ -1,5 +1,5 @@
 ---
-title: '[自製QMK鍵盤-3] 產生並編輯QMK韌體'
+title: '[自製QMK鍵盤-番外] 0.24.8版QMK韌體'
 subtitle: '2024 QMK 韌體編輯教學'
 author: ZiTe
 tags:
@@ -19,7 +19,9 @@ draft: false
 
 <!--more-->
 
-> 本篇是以發文當時最新的 [`0.24.8`](https://github.com/qmk/qmk_firmware/releases/tag/0.24.8) 版本的 QMK 作為示範。目前 QMK 的最新版本請在[此處查看](https://github.com/qmk/qmk_firmware/tags)。本文的[前一個版本](/posts/diyqmkkeyboard-firmware-0-21-3/)是針對 `0.21.3` 版所撰寫的，舊版教學文僅作為參考保留。
+> 本篇是以舊的 [`0.24.8`](https://github.com/qmk/qmk_firmware/releases/tag/0.24.8) 版本的 QMK 作為示範。新版本的教學請查看：[產生並編輯 QMK 韌體](/posts/diyqmkkeyboard-firmware)。
+> 
+> 本文的[前一個版本](/posts/diyqmkkeyboard-firmware-0-21-3/)是針對 `0.21.3` 版所撰寫的，舊版教學文僅作為參考保留。
 >
 > 如果你想要切換 QMK 版本的話，可以使用下面的方法（需要先安裝好 QMK MSYS 環境）。
 >
