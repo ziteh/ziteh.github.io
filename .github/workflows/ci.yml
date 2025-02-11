@@ -46,3 +46,5 @@ jobs:
 
       - name: "🚀 Build the project"
         run: pnpm run build
+        env:
+          PUBLIC_GOOGLE_SITE_VERIFICATION: ${{ secrets.PUBLIC_GOOGLE_SITE_VERIFICATION }}
