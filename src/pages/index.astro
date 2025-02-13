@@ -79,7 +79,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
             <ul>
               {featuredPosts.map(({ data, slug }) => (
                 <Card
-                  href={`/posts/${slug}/`}
+                  href={`/posts/${slug}`}
                   frontmatter={data}
                   secHeading={false}
                 />
@@ -100,7 +100,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
               ({ data, slug, body }, index) =>
                 index < SITE.postPerIndex && (
                   <Card
-                    href={`/posts/${slug}/`}
+                    href={`/posts/${slug}`}
                     frontmatter={data}
                     secHeading={false}
                     fallbackDescription={getDescription(body)}

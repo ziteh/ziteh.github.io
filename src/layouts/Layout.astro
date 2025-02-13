@@ -9,12 +9,8 @@ const getDefaultCanonicalUrl = () => {
   let path = Astro.url.pathname;
 
   // Remove trailing slash
-  // if (path !== "/" && path.endsWith("/")) {
-  //   path = path.slice(0, -1);
-  // }
-
-  if (path !== "/" && !path.endsWith("/")) {
-    path = `${path}/`;
+  if (path !== "/" && path.endsWith("/")) {
+    path = path.slice(0, -1);
   }
 
   // Remove .html
