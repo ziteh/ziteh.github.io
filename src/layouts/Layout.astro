@@ -35,6 +35,7 @@ export interface Props {
   scrollSmooth?: boolean;
   enableToc?: boolean;
   enableMath?: boolean;
+  metaRefresh?: string;
 }
 
 const {
@@ -51,6 +52,7 @@ const {
   scrollSmooth = false,
   enableToc = false,
   enableMath = false,
+  metaRefresh,
 } = Astro.props;
 
 const socialImageURL = new URL(
@@ -83,6 +85,11 @@ const structuredData = {
 >
   <head>
     <meta charset="UTF-8" />
+    {
+      metaRefresh && (
+        <meta http-equiv="refresh" content={`0; url=${metaRefresh}`} />
+      )
+    }
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalURL} />
