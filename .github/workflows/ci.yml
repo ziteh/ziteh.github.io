@@ -9,9 +9,9 @@ on:
       - reopened
   workflow_call:
   workflow_dispatch:
-  push:
-    branches:
-      - astro-papers/main
+  # push:
+  #   branches:
+  #     - astro-papers/main
 
 jobs:
   build:
