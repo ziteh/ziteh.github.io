@@ -40,7 +40,7 @@ RMK 有兩種開發方式：Cloud compilation 和 Local compilation。前者是�
 
 對於 Windows 使用者來說就是下載並使用 `rustup` 這個工具安裝，此外還要下載 Visual Studio 並安裝「Desktop Development with C++」工作負載。詳細的教學可以查看[安裝教學 - Rust 程式設計語言](https://rust-lang.tw/book-tw/ch01-01-installation.html)、[rustup.rs](https://rustup.rs/) 或 [新手入門 - Rust 程式設計語言](https://www.rust-lang.org/zh-TW/learn/get-started)。
 
-![Windows 記得還要使用 Visual Studio 安裝 Desktop Development with C++](https://bucket.ziteh.dev/blog/rmk-fw-intro/install-rust-vscpp.png)
+![Windows 記得還要使用 Visual Studio 安裝 Desktop Development with C++](https://bucket.ziteh.dev/blog/rmk-fw-intro/install-rust-vscpp.webp)
 
 安裝完成後可以開啓 PowerShell（由於後續的部分命令會用到 PowerShell 的指令，因此本文的終端機皆以 PowerShell 為主），並輸入以下指令：
 
@@ -482,7 +482,7 @@ nRF MCU 要使用藍牙功能的話會需要 [SoftDevice](https://docs.nordicsem
 
 在 Programmer 的左上角可以選擇你的燒錄器（或開發板），使用「Add file」選擇你要燒錄的 SoftDevice 和 RMK 韌體，確認「File memory layout」內各區域沒有重疊衝突，按下「Erase & write」進行燒錄即可。燒錄完成後記得再點一下左上方的三角形「Disconnect device」按鈕退出。
 
-![nRF Programmer 燒錄示意圖](https://bucket.ziteh.dev/blog/rmk-fw-intro/nrf-programmer.png)
+![nRF Programmer 燒錄示意圖](https://bucket.ziteh.dev/blog/rmk-fw-intro/nrf-programmer.webp)
 
 以上圖為例，我用「Add file」加入了兩個檔案，分別是 SoftDevice `s140_nrf52_7.3.0_softdevice.hex` 和 RMK 韌體 `my-rmk-kb.hex`。其中綠色的部分是我們的 RMK 韌體，可以確認其起始位置是 `0x00027000`，沒有和 SoftDevice 重疊。而藍色的區域就是 SoftDevice，我燒錄的是 S140 `v7.3.0`。最下面的橘色是 MBR 開機資訊區域。
 
