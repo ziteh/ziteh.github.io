@@ -26,7 +26,7 @@ Rust 的特色網路上已經有很多文章在討論了，這裡就不在贅述
 
 在我測試後覺得 RMK 的開發體驗相當好，我甚至都有點不太想用 QMK 和 ZMK 了。因此這篇文章來簡單的介紹一下如何用 RMK 從頭到尾建立一個鍵盤韌體。
 
-> 本文是以發文當下最新的版本 `v0.5.2` 撰寫。
+> 本文是以發文當下最新的 RMK 版本 `v0.5.2` 撰寫。
 >
 > 本文會以 Windows 為主。
 
@@ -324,7 +324,7 @@ scrolllock = { pin = "P1_10", low_active = true }
 
 ### [storage]
 
-`[storage]` 定義儲存設定，RMK 會將 Keymap 資料和 BLE 連線資訊儲存在 Flash 中的特定位置。預設情況下它是啓用的，並且會使用 MCU 的最後 2 個 section 儲存資料。
+`[storage]` 定義儲存設定，RMK 會將 Keymap 資料和 BLE 連線資訊儲存在 Flash 中的特定位置。預設情況下它是啓用的，並且會使用 MCU 的最後 2 個 sector 儲存資料。
 
 一般來說不需要修改這裡的設定，但是有些 Bootloader（例如 [Adafruit nRF52 Bootloader](https://github.com/adafruit/Adafruit_nRF52_Bootloader)）會和此預設位置衝突，這時就需要修改這邊的 `start_addr` 設定了，例如將其設為 `start_addr = 0x000A0000`。
 
@@ -338,7 +338,7 @@ clear_storage = false # 設為 true 的話每次鍵盤開機都會清空，通�
 
 ### [ble]
 
-`[ble」` 設定無線藍牙的相關功能。部分功能如 `battery_adc_pin` 和充電狀態目前僅 nRF52840 支援。
+`[ble]` 設定無線藍牙的相關功能。部分功能如 `battery_adc_pin` 和充電狀態目前僅 nRF52840 支援。
 
 ```toml
 [ble]
