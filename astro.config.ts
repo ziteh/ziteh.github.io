@@ -55,6 +55,26 @@ const rehypeRewriteOption = {
         node.tagName = `h${newLevel}`;
       }
     }
+
+    // Add target="_blank" and rel="noopener noreferrer" to external links
+    if (
+      node.type === "element" &&
+      node.tagName === "a" &&
+      node.properties?.href
+    ) {
+      const href = node.properties.href;
+      if (
+        typeof href === "string" &&
+        !href.startsWith("/") &&
+        !href.startsWith(SITE.website)
+      ) {
+        node.properties = {
+          ...node.properties,
+          target: "_blank",
+          rel: "noopener noreferrer",
+        };
+      }
+    }
   },
 };
 
