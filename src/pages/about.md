@@ -12,6 +12,7 @@ title: "關於我"
 - Email: <honmonoh@gmail.com>
 - GitHub: [ziteh](https://github.com/ziteh)
 - YouTube: [@zite-h](https://www.youtube.com/@zite-h)
+- 一些我喜歡用的應用程式: [Awesome App](https://awesome.ziteh.dev/)
 
 另外我還有一個 SideraKB，專門放我自己設計和製作的機械鍵盤。
 
