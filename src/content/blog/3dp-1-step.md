@@ -33,18 +33,18 @@ draft: false
 
 第一種最簡單,什麼都不用買,什麼都不用學,只要花點時間上網找自己想要的就好了.以下我列出幾個自己覺得很不錯的3D模型分享網站.
 
-* [Thingiverse](http://www.thingiverse.com/) (我自己最常用的網站)
-* [Cults](https://cults3d.com/)
-* [Pinshape](https://pinshape.com/)
-* [Instructables](http://www.instructables.com/)
+- [Thingiverse](http://www.thingiverse.com/) (我自己最常用的網站)
+- [Cults](https://cults3d.com/)
+- [Pinshape](https://pinshape.com/)
+- [Instructables](http://www.instructables.com/)
 
 但有時候網路上都找不到自己想要的模型怎麽辦?這時就只好自己畫啦.現在市面上有許多3D繪圖軟體,也有很多是免費使用的,一下列出幾項常見的3D繪圖軟體.
 
-* [SketchUp](https://www.sketchup.com/zh-TW) (Google的軟體.有**免費**的版本,也有免下載的**網頁版**.使用簡單,功能豐富.**是我第一個會用的3D繪圖軟體**)
-* [Blender](https://www.blender.org/) (**免費開源**的自由軟體.由於是開源軟體,其功能其實已經遠遠超過單純的3D繪圖軟體了,可以做到渲染.動畫.物理模擬等功能,可以說是最強大的免費3D繪圖軟題)
-* [123D](http://www.123dapp.com/) (由世界知名的Autodesk公司開發的**免費線上**軟體,可以說是入門的最佳選擇)
-* [Inventor](https://www.autodesk.com/products/inventor/overview) (一樣是由世界知名的Autodesk公司開發,功能強大的**付費專業**軟體)
-* [SolidWorks](http://www.solidworks.com/) (由Dassault Systemes旗下的SolidWorks公司開發.和Inventor一樣是**付費專業**軟體,功能非常強大)
+- [SketchUp](https://www.sketchup.com/zh-TW) (Google的軟體.有**免費**的版本,也有免下載的**網頁版**.使用簡單,功能豐富.**是我第一個會用的3D繪圖軟體**)
+- [Blender](https://www.blender.org/) (**免費開源**的自由軟體.由於是開源軟體,其功能其實已經遠遠超過單純的3D繪圖軟體了,可以做到渲染.動畫.物理模擬等功能,可以說是最強大的免費3D繪圖軟題)
+- [123D](http://www.123dapp.com/) (由世界知名的Autodesk公司開發的**免費線上**軟體,可以說是入門的最佳選擇)
+- [Inventor](https://www.autodesk.com/products/inventor/overview) (一樣是由世界知名的Autodesk公司開發,功能強大的**付費專業**軟體)
+- [SolidWorks](http://www.solidworks.com/) (由Dassault Systemes旗下的SolidWorks公司開發.和Inventor一樣是**付費專業**軟體,功能非常強大)
 
 ![我使用SolidWorks進行我高中專題的模型繪製](https://bucket.ziteh.dev/blog/3dp-1-step/9fe16961.webp)
 
@@ -54,9 +54,9 @@ draft: false
 
 由於3D列印機的成型方式就是將許多的2D平面堆疊起來,最後形成3D模型,所以要有一個軟體幫忙把3D模型切成一層一層,一片一片的,而這種軟體就叫做切片軟體.以下列出幾項常見的切片軟體.(**皆免費**)
 
-* [Slic3r](http://slic3r.org/) (目前我最喜歡也最熟悉的切片軟體)
-* [Cura](https://ultimaker.com/en/products/cura-software) (我第二熟悉的切片軟體)
-* [KISSlicer](http://www.kisslicer.com/) (我目前還沒深入研究的切片軟體)
+- [Slic3r](http://slic3r.org/) (目前我最喜歡也最熟悉的切片軟體)
+- [Cura](https://ultimaker.com/en/products/cura-software) (我第二熟悉的切片軟體)
+- [KISSlicer](http://www.kisslicer.com/) (我目前還沒深入研究的切片軟體)
 
 ![切片軟體-Slic3r](https://bucket.ziteh.dev/blog/3dp-1-step/e5c3ba06.webp)
 
@@ -75,6 +75,6 @@ draft: false
 
 # 相關文章
 
-* [\[教學:3D列印-1\] 使用3D列印機的步驟](/posts/3dp-1-step/)(本篇)
-* [\[教學:3D列印-2\] Slic3r 切片軟體教學](/posts/3dp-2-slic3r/)
-* [\[教學:3D列印-3\] 常用G-code指令解讀](/posts/3dp-3-gcode/)
+- [\[教學:3D列印-1\] 使用3D列印機的步驟](/posts/3dp-1-step/)(本篇)
+- [\[教學:3D列印-2\] Slic3r 切片軟體教學](/posts/3dp-2-slic3r/)
+- [\[教學:3D列印-3\] 常用G-code指令解讀](/posts/3dp-3-gcode/)

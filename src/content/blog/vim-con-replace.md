@@ -17,6 +17,7 @@ draft: false
 <!--more-->
 
 例如我要把以下的 `IndexOri` 和 `IndexSource` 取代成 `IndexWithLongLongLongLongLongLongName`。
+
 ```c
 int IndexWithLongLongLongLongLongLongName = 0;
 

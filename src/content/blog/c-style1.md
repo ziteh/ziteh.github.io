@@ -272,56 +272,56 @@ void function(int param) {
     4. 複雜（內有邏輯處理）的巨集**應該**使用 `do-while(0)` 包圍，確保讓編譯器將其解釋為一個獨立的 Block。
     5. **可以**加上強制轉型（Casting）作為型別標記。
 
-```c
-// OK
-#define UART_RX_PIN   (GPIO5)
-#define UART_BAUDRATE ((uint16_t)19200)
-
-#define ADD2(a, b)          ((a) + (b))
-#define FOO_BAR(foo_bar)    (foo_bar++)
-
-// Wrong
-#define UART_RX_PIN  GPIO5           // 遺失括號包圍
-#define ADD2(a, b)          (a + b)  // 參數遺失括號包圍
-```
+    ```c
+    // OK
+    #define UART_RX_PIN   (GPIO5)
+    #define UART_BAUDRATE ((uint16_t)19200)
+    
+    #define ADD2(a, b)          ((a) + (b))
+    #define FOO_BAR(foo_bar)    (foo_bar++)
+    
+    // Wrong
+    #define UART_RX_PIN  GPIO5           // 遺失括號包圍
+    #define ADD2(a, b)          (a + b)  // 參數遺失括號包圍
+    ```
 
 3. `#endif` 後**不應該**加上用於標註其對應的開頭的註解。
 4. 所有 `.h` 標頭檔皆**必須**有引用保護（Include Guard）。
     1. 若使用的編譯器支援 `#pragma once` 則優先使用，否則使用預處理器達成，其格式為：
 
-```c
-/// @file my_file.h
-
-#ifndef MY_FILE_H
-#define MY_FILE_H
-
-// Your code
-
-#endif
-```
+    ```c
+    /// @file my_file.h
+    
+    #ifndef MY_FILE_H
+    #define MY_FILE_H
+    
+    // Your code
+    
+    #endif
+    ```
 
 5. 視情況而定，**可以**加入 C++ 檢查。格式為：
 
-```c
-/// @file my_file.h
-
-#ifndef MY_FILE_H
-#define MY_FILE_H
-
-#include "something.h"
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-// Your code
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif
-```
+    ```c
+    /// @file my_file.h
+    
+    #ifndef MY_FILE_H
+    #define MY_FILE_H
+    
+    #include "something.h"
+    
+    #ifdef __cplusplus
+    extern "C" {
+    #endif
+    
+    // Your code
+    
+    #ifdef __cplusplus
+    }
+    #endif
+    
+    #endif
+    ```
 
 # H. 註解
 
@@ -447,10 +447,10 @@ int main(void) {
 
 讓我節錄一些看法：
 
-> Refactorability. If all your branches end with break or return, you can reorder them without changing the meaning. This makes it less likely for such a reordering to introduce a regression.
+> Refactorability. If all your branches end with break or return, you can reorder them without changing the meaning. This makes it less likely for such a reordering to introduce a regression.  
 > -- From @tdammers [Break on default case in switch](https://softwareengineering.stackexchange.com/a/201786)
 
-> As a matter of good form, put a break after the last case (the default here) even though it's logically unnecessary. Some day when another case gets added at the end, this bit of defensive programming will save you.
+> As a matter of good form, put a break after the last case (the default here) even though it's logically unnecessary. Some day when another case gets added at the end, this bit of defensive programming will save you.  
 > -- From *The C Programming Language, 2/e*, [Should we break the default case in switch statement?](https://stackoverflow.com/a/26139061)
 
 ### 為何使用花括號的 `switch-case` 的 `break` 要在其外？

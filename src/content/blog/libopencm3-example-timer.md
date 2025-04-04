@@ -17,6 +17,7 @@ draft: false
 ---
 
 我在 2022 年 9 月重新寫了與本文內容相近的文章，建議可以觀看新文章：
+
 - [STM32 Timer 計時器](/posts/libopencm3-stm32-11/)
 - [STM32 LibOpenCM3：Timer 計時器](/posts/libopencm3-stm32-12/)
 
@@ -126,6 +127,7 @@ void tim2_isr(void)
 ### 引入函式庫 #include
 
 要使用 Timer，需要以下這些函式庫：
+
 - `stm32/rcc.h`：Reset and Clock Controller，基本的時鐘設定。
 - `stm32/gpio.h`：General-Purpose Input/Output，通用功能 IO 的相關功能。
 - `stm32/timer.h`：計時器的相關功能。
@@ -165,17 +167,20 @@ void led_setup(void)
 而要精確設定 Timer 的頻率就需要進行計算：
 
 首先：
-```
+
+```text
 f_int = f_tim / [(PRS + 1) * (PER + 1)]
 ```
 
 所以：
-```
+
+```text
 PER = {f_tim / [(PRS + 1) * f_int]} - 1
 ```
 
 其中：
--  `f_int`: Interrupt frequency，中斷觸發頻率.
+
+- `f_int`: Interrupt frequency，中斷觸發頻率.
 - `f_tim`: Timer frequency， Timer 的原始頻率.
 - `PRS`:   Timer prescaler，Timer 的預除頻器數值.
 - `PER`:   Timer period，Timer 的週期數值.

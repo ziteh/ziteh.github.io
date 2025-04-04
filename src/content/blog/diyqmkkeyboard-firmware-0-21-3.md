@@ -43,11 +43,13 @@ draft: false
 完成後會有一行 `QMK is ready to go`。往上滾動一些會看到一行 `Repo version: 0.21.3` 代表目前的 QMK 版本。
 
 準備好環境後，可以先編譯其它鍵盤作為測試。在 QMK MSYS 中執行：
+
 ```cmd
 qmk compile -kb clueboard/66/rev3 -km default
 ```
 
 若環境沒問題的話，稍微等待後你應該會看到一排 `[OK]`，及類似這樣的結尾：
+
 ```cmd
 Linking: .build/clueboard_66_rev3_default.elf                          [OK]
 Creating load file for flashing: .build/clueboard_66_rev3_default.hex  [OK]
@@ -66,11 +68,13 @@ Checking file size of clueboard_66_rev3_default.hex                    [OK]
 # 創建新鍵盤
 
 在 QMK MSYS 中執行：
+
 ```cmd
 qmk new-keyboard
 ```
 
 這時你可能會看到這樣的回應：
+
 ```cmd
 Generating a new QMK keyboard directory
 
@@ -96,6 +100,7 @@ Keyboard Name?
 ![▲ 選擇基底佈局與微控制器](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware/2f34c4d4.webp)
 
 完成後會顯示類似這樣的訊息：
+
 ```cmd
 Created a new keyboard called mytestkb.
 To start working on things, 'cd' into keyboards/mytestkb,
@@ -112,9 +117,10 @@ And build with qmk compile -kb mytestkb -km default.
 使用文字編輯器（例如我使用 [VSCode](https://code.visualstudio.com/)）打開剛剛建立的新鍵盤的資料夾。QMK 預設的路徑是在 `C:\Users\<USERNAME>\qmk_firmware\`，而我們剛剛建立的鍵盤在其中的 `keyboards\mytestkb\`。
 
 這時你會看到 `mytestkb` 下有這些檔案：
+
 - `keymaps\`
-  - `default\`
-    - `keymap.c`
+    - `default\`
+        - `keymap.c`
 - `info.json`
 - `config.h`
 - `rules.mk`
@@ -140,6 +146,7 @@ MCU 與 Bootloader 的設定是要互相配合的，要依照你使用的 MCU �
 首先看到 `processor` 的部分，這裡要選擇使用的 MCU。由於我們剛剛選擇的是 Pro Micro，所以這裡目前是 `atmega32u4` 沒錯，如果你使用的是別的 MCU 就請修改。QMK 支援的 MCU 可以參考 [Compatible Microcontrollers](https://docs.qmk.fm/#/compatible_microcontrollers)。
 
 再來是 `bootloader` 的部分，由於我們是 Pro Micro，所以這裡要是 `caterina`。如果你使用的是不同的 MCU，那 bootloader 也要改，具體的對照為：
+
 | 微控制器/開發板 | Bootloader     |
 | :-------------: | :------------- |
 |    Pro Micro    | `caterina`     |
@@ -174,6 +181,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 > USB VID 與 PID 是 USB 設備的識別號，正常來說是要向 USB 協會申請/購買，但是我們只是要自己做鍵盤的話通常都自行設定就好。要注意的是，如果一臺電腦同時接了多個相同 VID 和 PID 的裝置，那這些裝置可能無法運作。
 
 例如可以使用：
+
 ```json
 "usb": {
     "vid": "0xC1ED",
@@ -189,6 +197,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 `LAYOUT_65_ansi` 就是我們剛剛選擇的基底佈局，內部的 `layout` 就是要設定每一個按鍵的位置，包含了物理上的實際位置和在鍵矩陣中的行列位置。我這裡把 `LAYOUT_65_ansi` 這個名稱改成 `LAYOUT`。
 
 看其中兩個鍵：
+
 ```json
 {"matrix": [0, 0], "x": 0, "y": 0},
 {"matrix": [0, 1], "x": 1, "y": 0},
@@ -199,6 +208,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 `layout` 的內容可以透過一些工具來幫忙，就不用完全自己手打。打開 [Convert KLE to QMK info.json](https://qmk.fm/converter/) 頁面，並將[上一篇文章](/posts/diyqmkkeyboard-kle/#輸出) 最後的 Raw data 複製並貼到裡面就可以轉換。
 
 例如我貼上：
+
 ```json
 ["Num Lock","/","*","-"],
 ["7\nHome","8\n↑","9\nPgUp",{h:2},"+"],
@@ -208,6 +218,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 ```
 
 轉換後會得到：
+
 ```json
 {
   "keyboard_name": "",
@@ -256,6 +267,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 它提供的接線圖就很清楚地表達了每個鍵的鍵矩陣位置，請以此為依據來編輯每個鍵的 `matrix` 內容。
 
 修改完成後：
+
 ```json
 "layouts": {
   "LAYOUT": {
@@ -304,6 +316,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 ![▲ Pro Micro 腳位對應圖(取自SparkFun)](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware/3e97fdee.webp)
 
 例如我可以這樣設定：
+
 ```json
 "diode_direction": "COL2ROW",
 "matrix_pins": {
@@ -319,10 +332,10 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 
 這部分的官方文件請參考 [Matrix Pins](https://docs.qmk.fm/#/reference_info_json?id=matrix-pins)。
 
-
 ### 修改完成
 
 完成的完整 `info.json` 大概長這樣：
+
 ```json
 {
   "keyboard_name": "mytestkb",
@@ -398,6 +411,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 你所需要做的就是把該按鍵的代號（如 `KC_P7`）放在對的位置就好了，之後你按下這個位置的按鍵就會是輸出這個鍵值。QMK 鍵盤支援多層 Keymap 設定，而每一塊 `[n] = LAYOUT()` 代表的是一層，最上面的是第 0 層，往下是第 1、2...n 層。
 
 修改完的 `keymap.c` 大概長這樣：
+
 ```c
 #include QMK_KEYBOARD_H
 
@@ -422,6 +436,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ```
 
 有些人會加上一些圖案來讓 `LAYOUT()` 更容易閱讀：
+
 ```c
 [0] = LAYOUT(
 // ┌────────┬─────────┬──────────┬─────────┐
@@ -444,12 +459,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ## 修改 `rules.mk`
 
 如果你使用的是 Pro Micro 的話，Pro Micro 一般會分 16MHz/5V 和 8MHz/3.3V 這兩種版本，若你使用的是後者，那請在 `rules.mk` 中加入：
+
 ```mk
 # Processor frequency
 F_CPU = 8000000
 ```
 
 另外如果 MCU 是 Atmel AVR 的話（包含 ATmega32U4 和 Pro Micro），還可以再加一行設定來降低韌體的大小，避免發生韌體太大無法燒錄的情況：
+
 ```mk
 # Link time optimization, enable to reduce the compiled size of firmware
 LTO_ENABLE = yes
@@ -476,8 +493,8 @@ LTO_ENABLE = yes
 - [Qwiic Pro Micro USB-C (ATmega32U4) Hookup Guide - SparkFun Learn](https://learn.sparkfun.com/tutorials/qwiic-pro-micro-usb-c-atmega32u4-hookup-guide/all)
 - [本篇的舊版（0.18.3）內容](/posts/diyqmkkeyboard-firmware-0-18/)
 - QMK相關
-  - [QMK 官方網站](https://qmk.fm/)
-  - [QMK 官方文件](https://docs.qmk.fm/#/)
-  - [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)
+    - [QMK 官方網站](https://qmk.fm/)
+    - [QMK 官方文件](https://docs.qmk.fm/#/)
+    - [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)
 
 > 本文最早發佈於 2020-06-21，於 2023-04-21 重新編排並更新內容，再於 2023-07-02 更新為 QMK 0.21.3 版。

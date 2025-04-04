@@ -70,7 +70,7 @@ ENCODER_ENABLE = yes  # 致能編碼器
 
 ## 修改 keymap.c
 
-最後要來設定觸發編碼器時要按下的按鍵，需要在 `keymap.c` 中加入該程式碼。下面程式中的 `KC_PGDN`、`KC_PGUP` 就分別是編碼器在順/逆時鐘轉動時會按下的按鍵，請自行修改成自己想要的按鍵，至於 QMK 的按鍵代碼（Keycodes）請參考[ QMK 官方文件-Keycodes](https://docs.qmk.fm/#/keycodes)。
+最後要來設定觸發編碼器時要按下的按鍵，需要在 `keymap.c` 中加入該程式碼。下面程式中的 `KC_PGDN`、`KC_PGUP` 就分別是編碼器在順/逆時鐘轉動時會按下的按鍵，請自行修改成自己想要的按鍵，至於 QMK 的按鍵代碼（Keycodes）請參考[QMK 官方文件-Keycodes](https://docs.qmk.fm/#/keycodes)。
 
 ```c
 // 編碼器程式
@@ -124,6 +124,6 @@ void encoder_update_user(uint8_t index, bool clockwise) {
 
 - [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - QMK 相關
-	- [QMK 官方網站](https://qmk.fm/)
-	- [QMK 官方說明文件](https://docs.qmk.fm/#/)
-	- [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)
+    - [QMK 官方網站](https://qmk.fm/)
+    - [QMK 官方說明文件](https://docs.qmk.fm/#/)
+    - [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)

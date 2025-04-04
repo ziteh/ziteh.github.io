@@ -25,6 +25,7 @@ draft: false
 # 藍牙模組
 
 根據 [QMK 文件](https://docs.qmk.fm/#/feature_bluetooth)的說明，目前 QMK 正式支援的藍牙模組只有 2 種：
+
 1. Roving Networks RN-42：支援傳統藍牙（Bluetooth Classic）
 2. [Adafruit Bluefruit LE SPI Friend](https://www.adafruit.com/product/2633)：支援藍牙低功耗（Bluetooth Low Energy，BLE）
 
@@ -62,6 +63,7 @@ NKRO_ENABLE = no
 ## config.h
 
 再來就是可以在 `config.h` 中加入以下的 SPI 腳位定義（可修改）：
+
 ```c
 #define ADAFRUIT_BLE_RST_PIN  D4
 #define ADAFRUIT_BLE_CS_PIN   B4
@@ -80,18 +82,18 @@ NKRO_ENABLE = no
 
 實際上要連接的線有 6 條訊號，再加 2 條電源（Vcc、GND）。
 
-Adafruit Bluefruit LE SPI Friend | nRF51822 | ATmega32U4 | Pro Micro
-:-:|:-:|:-:|:-:
-SCK|P0.21|PB1|D15
-MISO|P0.22|PB3|D14
-MOSI|P0.23|PB2|D16
-CS|P0.24|PB4|D8/A8
-IRQ|P0.25|PE6|D7
-RST(SWDIO)|SWDIO/NRESET|PD4|D4/A4
-DFU|P0.07|--|--
-FACTORYRST|P0.16|--|--
-MODE LED (Red)|P0.18|--|--
-CONNECTED LED (Blue)|P0.19|--|--
+| Adafruit Bluefruit LE SPI Friend |   nRF51822   | ATmega32U4 | Pro Micro |
+| :------------------------------: | :----------: | :--------: | :-------: |
+|               SCK                |    P0.21     |    PB1     |    D15    |
+|               MISO               |    P0.22     |    PB3     |    D14    |
+|               MOSI               |    P0.23     |    PB2     |    D16    |
+|                CS                |    P0.24     |    PB4     |   D8/A8   |
+|               IRQ                |    P0.25     |    PE6     |    D7     |
+|            RST(SWDIO)            | SWDIO/NRESET |    PD4     |   D4/A4   |
+|               DFU                |    P0.07     |     --     |    --     |
+|            FACTORYRST            |    P0.16     |     --     |    --     |
+|          MODE LED (Red)          |    P0.18     |     --     |    --     |
+|       CONNECTED LED (Blue)       |    P0.19     |     --     |    --     |
 
 > 要注意 nRF51822 本身的 IO 都是 3.3V 的，不是 5V。官方的 Adafruit BLE 上已經有邏輯電平轉換電路。
 
@@ -109,12 +111,12 @@ CONNECTED LED (Blue)|P0.19|--|--
 
 - QMK 版本：`0.15.13`
 - [Adafruit Bluefruit LE Firmware](https://github.com/adafruit/Adafruit_BluefruitLE_Firmware)
-	- 韌體版本：`0.8.1`
-	- SoftDevice 版本：`8.0.0`
-	- Bootloader 版本：`2`
+    - 韌體版本：`0.8.1`
+    - SoftDevice 版本：`8.0.0`
+    - Bootloader 版本：`2`
 - 藍牙模組開發板：[Raytac MDBT40-DB Bluetooth Module Demo Board Kit](https://www.raytac.com/product/ins.php?index_id=84)
-	- MDBT40-256RV3
-	- nRF51822-xxAC
+    - MDBT40-256RV3
+    - nRF51822-xxAC
 
 # 相關文章
 

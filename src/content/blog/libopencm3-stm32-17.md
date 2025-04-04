@@ -15,6 +15,7 @@ draft: false
 ---
 
 # 前言
+
 在[上一篇](/posts/libopencm3-stm32-16/)中已經介紹了 WDG 看門狗計時器的用途以及 IWDG 與 WWDG 的差別，也示範了 IWDG 的基本用法。
 
 這一篇要接著介紹 WWDG 窗口看門狗的基本概念。
@@ -22,11 +23,14 @@ draft: false
 <!--more-->
 
 # 基本概念
+
 在啓用 WWDG 時有兩種情況會造成它觸發 System Reset：
+
 1. 當 WWDG 下數計數器的值變得小於 `0x40`。
 2. 在時間窗口（Window）外時下數計數器被重新裝載（Reload）。
 
 > Conditional reset
+>
 > - Reset (if watchdog activated) when the downcounter value becomes less than 0x40
 > - Reset (if watchdog activated) if the downcounter is reloaded outside the window
 
@@ -45,6 +49,7 @@ draft: false
 ![▲ WWDG 的系統方塊圖。取自 RM0390 Rev 6 P.647。](https://bucket.ziteh.dev/blog/libopencm3-stm32-17/8229f9f9.webp)
 
 # Timeout 計算
+
 ![▲ WWDG 的 Timeout 計算公式。取自 RM0390 Rev 6 P.648。](https://bucket.ziteh.dev/blog/libopencm3-stm32-18/6b84f3fc.webp)
 
 由於 WWDG 位於 APB1 底下，其時鐘會先經過一個固定除 4096 的除頻器，再經過一個可程式設定的 WDG 預除頻器。而計算公式也是相當簡單好理解，來看一下範例：
@@ -64,15 +69,17 @@ draft: false
 這部分可以參考上面的 WWDG 的系統方塊圖， T6 位反相後接到一個 OR 閘，而此 OR 閘的輸出就是 Reset。所以實際的計數公式只有 T0~T5，不包含 T6。
 
 # 小結
+
 這次接續 IWDG 的內容，繼續介紹 WWDG 的用法。
 
 相比於 IWDG，WWDG 多了 Windows 的概念，所以在計算 Timeout 時會多一個要計算的值，但計算的過程相信不會太複雜。
 
 # 參考資料
-* [STM32 Window Watchdog (WWDG) - Hackster.io](https://www.hackster.io/vasam2230/stm32-window-watchdog-wwdg-dda290)
-* [STM32F446RE datasheet (DS10693)](https://www.st.com/resource/en/datasheet/stm32f446re.pdf)
-* [STM32F446xx reference manual (RM0390)](https://www.st.com/resource/en/reference_manual/rm0390-stm32f446xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)
-* [STM32F103RB datasheet (DS5319)](https://www.st.com/resource/en/datasheet/stm32f103rb.pdf)
-* [STM32 Nucleo-64 board user manual (UM1724)](https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf)
 
-> 本文同步發表於[ iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10299454)。
+- [STM32 Window Watchdog (WWDG) - Hackster.io](https://www.hackster.io/vasam2230/stm32-window-watchdog-wwdg-dda290)
+- [STM32F446RE datasheet (DS10693)](https://www.st.com/resource/en/datasheet/stm32f446re.pdf)
+- [STM32F446xx reference manual (RM0390)](https://www.st.com/resource/en/reference_manual/rm0390-stm32f446xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)
+- [STM32F103RB datasheet (DS5319)](https://www.st.com/resource/en/datasheet/stm32f103rb.pdf)
+- [STM32 Nucleo-64 board user manual (UM1724)](https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf)
+
+> 本文同步發表於[iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10299454)。

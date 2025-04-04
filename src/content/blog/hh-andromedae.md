@@ -48,6 +48,6 @@ draft: false
 距離地球大約10.3光年，也就是說光從它傳到地球需要10.3年的時間。
 或者說，我們目前所觀測到的實為10.3年前的仙女座HH。
 
-
 # 參考資料
-* [羅斯248 - 維基百科](https://zh.wikipedia.org/wiki/%E7%BD%97%E6%96%AF248)
+
+- [羅斯248 - 維基百科](https://zh.wikipedia.org/wiki/%E7%BD%97%E6%96%AF248)

@@ -61,6 +61,7 @@ PlatformIO 支援許多平臺（Platforms），例如 Atmel AVR、Espressif 8266
 接下來就可以建立專案了。在 PIO Home 的左側欄位中點擊「Projects」，再頁面中點擊「+ Create New Project」。
 
 在創建專案頁面（Project Wizard）中有幾個欄位需要填寫：
+
 - **Name**：專案名稱。
 - **Board**：選擇你要使用的開發板。例如我使用的「ST Nucleo F103RB」。
 - **Framework**：框架。各種開發板都有各自可以使用的框架，例如 ST Nucleo F103RB 有以下幾種。
@@ -70,7 +71,7 @@ PlatformIO 支援許多平臺（Platforms），例如 Atmel AVR、Espressif 8266
     - **libopencm3**：開源的 ARM Cortex-M 函式庫。
     - **STM32Cube**：相信很多人剛入門 STM32 都是使用 STM32Cube，包括我之前使用 TrueSTUDIO 也是使用 STM32Cude。
     - **Zephyr RTOS**：一個 Linux 基金會主導的開源小型即時作業系統（RTOS）， 常用於 IoT 應用。
- - **Location**：專案的路徑。
+- **Location**：專案的路徑。
 
 ![▲ 建立專案。](https://bucket.ziteh.dev/blog/learningstm32-platformio/671bb637.webp)
 
@@ -120,7 +121,6 @@ framework = stm32cube
     - 框架為「STM32Cube」（`framework = stm32cube`）。
 
 不難看出 PlatformIO 可以在一個專案中設定多種不同的環境，以配合不同的開發需求，這也是我認為 PlatformIO 好用的一大重點。
-
 
 ## 編寫程式
 

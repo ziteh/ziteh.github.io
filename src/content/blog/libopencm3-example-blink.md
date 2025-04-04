@@ -17,6 +17,7 @@ draft: false
 ---
 
 我在 2022 年 9 月重新寫了與本文內容相近的文章，建議可以觀看新文章：
+
 - [STM32 GPIO 簡介](/posts/libopencm3-stm32-3/)
 - [STM32 LibOpenCM3：GPIO 輸出](/posts/libopencm3-stm32-4/)
 
@@ -39,6 +40,7 @@ draft: false
 ## 程式全文
 
 在「src」資料夾中新增檔案「main.c」，並在加入以下的程式：
+
 ```c
 /**
  * @file   main.c
@@ -130,6 +132,7 @@ void delay(unsigned int value)
 > 如果想要把 Delay 函數放在主程式 `main()` 之後，記得要宣告函數原型或使用標頭檔。
 
 ### 主程式 `main()`
+
 ```c
 int main(void)
 {
@@ -155,10 +158,10 @@ int main(void)
 
 - `rcc_periph_clock_enable()` 會致能特定功能的 Clock。在這裡我們啟用的是 `RCC_LED_PORT`，也就是先前用 `#define` 所設定的 LED 所在腳位的 Port（Port-A）的Clock。
 - `gpio_set_mode()` 會對指定的 GPIO 進行設定。
-  - `LED_PORT` 是先前用 `#define` 所設定的 LED 所在腳位的 Port，也就是 Port-A。
-  - `GPIO_MODE_OUTPUT_2_MHZ` 代表設定為輸出模式，且最高速度為 2 MHz。
-  - `GPIO_CNF_OUTPUT_PUSHPULL` 代表使用推輓式（Push-Pull）輸出。關於推輓式的介紹可以看我之前的[文章](/posts/learningstm32-02/#%E2%80%BB%E6%8E%A8%E6%8C%BD%E5%92%8C%E6%B1%B2%E6%A5%B5%E9%96%8B%E8%B7%AF)。
-  - `LED_PIN` 是先前用 `#define` 所設定的 LED 所在腳位的 Pin，也就是 Pin-5。可以使用 `|` 來同時選擇多個 Pin。
+    - `LED_PORT` 是先前用 `#define` 所設定的 LED 所在腳位的 Port，也就是 Port-A。
+    - `GPIO_MODE_OUTPUT_2_MHZ` 代表設定為輸出模式，且最高速度為 2 MHz。
+    - `GPIO_CNF_OUTPUT_PUSHPULL` 代表使用推輓式（Push-Pull）輸出。關於推輓式的介紹可以看我之前的[文章](/posts/learningstm32-02/#%E2%80%BB%E6%8E%A8%E6%8C%BD%E5%92%8C%E6%B1%B2%E6%A5%B5%E9%96%8B%E8%B7%AF)。
+    - `LED_PIN` 是先前用 `#define` 所設定的 LED 所在腳位的 Pin，也就是 Pin-5。可以使用 `|` 來同時選擇多個 Pin。
 - `gpio_toggle()` 會反轉指定的 GPIO 輸出，如果目前是輸出 High 的話就變成輸出 Low；如果現在是 Low 的話就變成 High。
 
 # 結語

@@ -24,12 +24,13 @@ draft: false
 首先，Mitosis 是擁有並需要自製的專用接收器，而 QMK 實際上只在此接收器上運作。
 
 Mitosis 的架構中，主要擁有這些硬體：
+
 - 1 個 Pro Micro（ATmega32U4）。接收器的一部分，QMK 實際上只在 Pro Micro 上運作，以 USB 線連接電腦。
 - 3 個 nRF51822。這是一個整合了 BLE（Bluetooth Low Energy，藍牙低功耗）等無線功能的 SoC（System On Chip）。
-	- 第 1 個 nRF51822 作為接收器的一部分，負責接收來自左右兩部分鍵盤的訊號，並將其透過 UART 傳給 Pro Micro。
-	- 第 2、3 個 nRF51822 分別在左右兩鍵盤上，負責讀取鍵盤上的按鍵狀態，並將其透過 Gazell 傳給接收器的 nRF51822。
+    - 第 1 個 nRF51822 作為接收器的一部分，負責接收來自左右兩部分鍵盤的訊號，並將其透過 UART 傳給 Pro Micro。
+    - 第 2、3 個 nRF51822 分別在左右兩鍵盤上，負責讀取鍵盤上的按鍵狀態，並將其透過 Gazell 傳給接收器的 nRF51822。
 
-```
+```text
              PC
               |
             <USB>
@@ -58,12 +59,14 @@ Mitosis 的架構中，主要擁有這些硬體：
 ## 左右手鍵盤（nRF51822）
 
 首先，這部分的程式在：[reversebias/mitosis/mitosis-keyboard-basic/](https://github.com/reversebias/mitosis/tree/master/mitosis-keyboard-basic)。主要有：
+
 - `main.c` 是主程式。
 - `config/mitosis.h` 是包含了腳位設定的標頭檔。
 
 左右手鍵盤上 nRF51822 的程式是同一個，僅透過 `#define COMPILE_RIGHT` 或 `#define COMPILE_LEFT` 來切換不同的腳位設定和通道編號（Pipe number）而已。
 
 在這裡有幾個重要的函數（僅列出函數名稱）：
+
 - `read_keys()`
 - `send_data()`
 - `handler_maintenance()`
@@ -71,7 +74,7 @@ Mitosis 的架構中，主要擁有這些硬體：
 
 ### handler_debounce()
 
-先看到 [`handler_debounce()` ](https://github.com/reversebias/mitosis/blob/f2bb956f8565762212d361a42f830390ef5c6845/mitosis-keyboard-basic/main.c#L115) 這個函數，它負責處理按鍵防彈跳（Debounce）。內容如下：
+先看到 [`handler_debounce()`](https://github.com/reversebias/mitosis/blob/f2bb956f8565762212d361a42f830390ef5c6845/mitosis-keyboard-basic/main.c#L115) 這個函數，它負責處理按鍵防彈跳（Debounce）。內容如下：
 
 ```c
 // 1000Hz debounce sampling
@@ -132,7 +135,6 @@ static void handler_debounce(nrf_drv_rtc_int_type_t int_type)
 
 一旦開始防彈跳，它就會一直確認快照與目前的按鍵狀態是否一樣，一旦不一樣就停止防彈跳，若累計達到設定的防彈跳次數就會承認快照的按鍵狀態，並將快照的值給目前的鍵值 `keys`，並呼叫 `send_data()` 開始傳送。
 
-
 ### handler_maintenance()
 
 ```c
@@ -146,6 +148,7 @@ static void handler_maintenance(nrf_drv_rtc_int_type_t int_type)
 此函數的功能顯而易見，就是以 8 Hz 的頻率次數呼叫 `send_data()` 傳送資料。此函數[由 RTC0 處理](https://github.com/reversebias/mitosis/blob/f2bb956f8565762212d361a42f830390ef5c6845/mitosis-keyboard-basic/main.c#L179)。
 
 ### send_data()
+
 ```c
 // Assemble packet and send to receiver
 static void send_data(void)
@@ -185,7 +188,7 @@ static void send_data(void)
 
 `PIPE_NUMBER` 的值左右鍵盤不同（在 [`mitosis.h`](https://github.com/reversebias/mitosis/blob/f2bb956f8565762212d361a42f830390ef5c6845/mitosis-keyboard-basic/config/mitosis.h) 中定義），接收器藉此判斷收到的資料是來自左還是右鍵盤。
 
-###  read_keys()
+### read_keys()
 
 ```c
 // Return the key states, masked with valid key pins
@@ -202,9 +205,11 @@ static uint32_t read_keys(void)
 ## 接收器（nRF51822）
 
 這部分的程式在：[reversebias/mitosis/mitosis-receiver-basic/](https://github.com/reversebias/mitosis/tree/master/mitosis-receiver-basic)。主要有：
+
 - `main.c` 是主程式。
 
 其中有幾個重要的函數（僅列出函數名稱）：
+
 - `nrf_gzll_host_rx_data_ready()`
 - `main()`
 
@@ -245,6 +250,7 @@ void nrf_gzll_host_rx_data_ready(uint32_t pipe, nrf_gzll_host_rx_info_t rx_info)
 ### main()
 
 以下省略一些不重要的程式：
+
 ```c
 int main(void)
 {
@@ -344,6 +350,7 @@ int main(void)
 ## QMK / 接收器（Pro Micro）
 
 這部分的程式在：[qmk/qmk_firmware/keyboards/mitosis](https://github.com/qmk/qmk_firmware/tree/master/keyboards/mitosis)。主要有：
+
 - `rules.mk`
 - `config.h`
 - `matrix.c`
@@ -396,6 +403,7 @@ SRC += matrix.c serial_uart.c
 `matrix.c` 是為了使用 QMK 的「[Custom Matrix](https://docs.qmk.fm/#/custom_matrix)」功能所必要的檔案。
 
 重點在 `matrix_scan()`：
+
 ```c
 uint8_t matrix_scan(void)
 {
@@ -446,12 +454,13 @@ uint8_t matrix_scan(void)
 本次簡單地介紹 Mitosis 鍵盤是如和達成無線的，但我其實沒用過 nRF51822，對 QMK 的瞭解也還很粗淺，很多細節沒辦法講解，而如果上述內容有任何錯誤也請指正。
 
 撰寫本文時的 Mitosis 相關 repo 資訊：
+
 - [reversebias/mitosis](https://github.com/reversebias/mitosis)
-	- nRF51822 的程式
-	- commit：[`f2bb956f8565762212d361a42f830390ef5c6845`](https://github.com/reversebias/mitosis/commit/f2bb956f8565762212d361a42f830390ef5c6845)
+    - nRF51822 的程式
+    - commit：[`f2bb956f8565762212d361a42f830390ef5c6845`](https://github.com/reversebias/mitosis/commit/f2bb956f8565762212d361a42f830390ef5c6845)
 - [qmk/qmk_firmware](https://github.com/qmk/qmk_firmware/tree/master/keyboards/mitosis)
-	- QMK 程式
-	- commit：[`f718a10889e6adf33f3fc2f41b61cad7fe9e0c2e`](https://github.com/qmk/qmk_firmware/commit/f718a10889e6adf33f3fc2f41b61cad7fe9e0c2e)
+    - QMK 程式
+    - commit：[`f718a10889e6adf33f3fc2f41b61cad7fe9e0c2e`](https://github.com/qmk/qmk_firmware/commit/f718a10889e6adf33f3fc2f41b61cad7fe9e0c2e)
 
 > 文章修改記錄 2022/02/23：原本寫的各個 nRF51822 之間的通訊方式是 BLE，但應該是 Gazell，故更新內容。
 

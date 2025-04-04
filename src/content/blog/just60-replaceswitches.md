@@ -66,4 +66,4 @@ draft: false
 
 # 相關文章
 
-*   [\[開箱\]自組60%藍牙機械鍵盤-Just60](/posts/unbox-just60/)
+- [\[開箱\]自組60%藍牙機械鍵盤-Just60](/posts/unbox-just60/)

@@ -188,9 +188,9 @@ draft: false
 
 總之，對我來說，S6 Lite確實比較適合我。
 
-* iPad測試時的iPadOS版本為13.3.1
-* S6 Lite測試時的Android版本為10
+- iPad測試時的iPadOS版本為13.3.1
+- S6 Lite測試時的Android版本為10
 
 # 相關文章
 
-* [[開箱] 三星 Tab S6 Lite 方便做筆記的平板](/posts/unbox-sansunggalaxys6lite/)
+- [[開箱] 三星 Tab S6 Lite 方便做筆記的平板](/posts/unbox-sansunggalaxys6lite/)

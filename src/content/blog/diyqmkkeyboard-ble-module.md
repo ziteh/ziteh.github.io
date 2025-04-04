@@ -27,6 +27,7 @@ draft: false
 另外，為了燒錄，還需要準備一個 Segger J-Link 或 STLink/V2 燒錄器，雖然也可以使用 Raspberry Pi 作為燒錄器，但這比較麻煩。
 
 ## nRF51822
+
 首先，Adafruit Bluefruit LE 是一系列的產品，Adafruit Bluefruit LE SPI Friend 只是該系列中的一個 SPI 介面的模組。其核心 SoC 就是 Nordic Semi 的 [nRF51822](https://www.nordicsemi.com/products/nrf51822)。
 
 在 Adafruit Bluefruit LE Firmware 的 [GitHub repo](https://github.com/adafruit/Adafruit_BluefruitLE_Firmware#firmwareboard-compatibility-chart) 中的說明有提到，`0.6.0` 及之後的韌體版本只適用於 32KB SRAM 的 nRF51822，而 16KB SRAM 的 nRF51822 只能使用 `0.5.0` 及之前的韌體版本。
@@ -38,6 +39,7 @@ draft: false
 > 依照命名規則看，只有 nRF51822-***xxAC*** 是 32KB SRAM \ 256KB Flash 的版本，後綴為 ***xxAA*** 或 ***xxAB*** 的 SRAM 大小都是 16KB（xxAA 與 xxAB 的差異是前者的 Flash 是128 KB，而後者是256 KB）。
 
 ## MDBT40
+
 雖然 Adafruit BLE 使用的是 nRF51822 SoC，但它並不是直接搭載該晶片，而是搭載了勁達 Raytac 的 [MDBT40](https://www.raytac.com/product/index.php?index_m1_id=74) 模組。
 
 MDBT40 是搭載了 nRF51822 的模組，並且整合了天線及一些週邊元件。上面有提到 nRF51822 有一些不同的版本，MDBT40 也有其相對應的細部型號。
@@ -51,26 +53,29 @@ Adafruit 有提供他們所使用的燒錄工具：[Adafruit nRF51822 Flasher](h
 ## 需求
 
 要使用這個工具，需要：
+
 - 下列的其中一個 SWD 燒錄器，並安裝好它們的驅動程式
-	- Segger J-Link（本文以 J-Link 為例）
-	- STLink/V2
-	- Raspberry Pi
+    - Segger J-Link（本文以 J-Link 為例）
+    - STLink/V2
+    - Raspberry Pi
 - 安裝好 [Python](https://www.python.org/)
 - 安裝好 [Adafruit Adalink](https://github.com/adafruit/Adafruit_Adalink)
-	- `git clone https://github.com/adafruit/Adafruit_Adalink.git`
-	- `python setup.py develop` （Windows）；`sudo python setup.py develop`（Linux and MacOS）
+    - `git clone https://github.com/adafruit/Adafruit_Adalink.git`
+    - `python setup.py develop` （Windows）；`sudo python setup.py develop`（Linux and MacOS）
 - 安裝好 Python library [Click](https://click.palletsprojects.com/en/4.x/)
-	- 安裝好 Python Pip
-	- `sudo pip install click`
+    - 安裝好 Python Pip
+    - `sudo pip install click`
 
 ## 下載
 
 將燒錄工具 Git clone 下來。注意，因為這個 repo 含有 submodule，所以記得加上 `--recursive`：
+
 ```git
 git clone --recursive git@github.com:adafruit/Adafruit_nRF51822_Flasher.git
 ```
 
 如果你在上一個步驟忘記加上 `--recursive`，或 `Adafruit_BluefruitLE_Firmware` 資料夾是空的，那需要再執行這這指令：
+
 ```git
 git submodule update --init --recursive
 ```
@@ -80,6 +85,7 @@ git submodule update --init --recursive
 將你的 nRF51822 或 MDBT40 連接上你的 SWD 燒錄器（J-Link、STLink/V2 或 RPi），依照你使用的硬體而定，SWD 燒錄器可能不會提供電源給 nRF51822 或 MDBT40，如果是這樣的話記得好要接好電源。
 
 接著，就可以執行指令以使用  Adafruit nRF51822 Flasher 進行燒錄。燒錄指令有這些參數：
+
 - `--jtag` `TEXT`：選擇你使用的燒錄器，只能是 `jlink`、`stlink` 或 `rpigpio` 的其中一種。
 - `--softdevice` `TEXT`：選擇 SoftDevice 版本，例如 `8.0.0`。這個 SoftDevice 是 nRF51822 的東西。
 - `--bootloader` `INTEGER`：Bootloader 版本，例如 `0` 或 `2`。
@@ -93,6 +99,7 @@ python flash.py --jtag=jlink --board=blespifriend --softdevice=8.0.0 --bootloade
 ```
 
 燒錄完成後會顯示：
+
 ```cmd
 Flash OK
 ```
@@ -104,6 +111,7 @@ Flash OK
 # 燒錄後重置
 
 根據 [Adafruit 的說明](https://learn.adafruit.com/introducing-the-adafruit-bluefruit-spi-breakout/device-recovery)，燒錄完韌體後，還要進行一次 Factory Reset，其步驟如下：
+
 1. 當板子接上電源時，將 DFU 腳（nRF51822 的 P0.07）接 GND。
 2. 保持 DFU 與 GND 之間的連線並等待數秒，直到藍色 LED (CONNECTED state LED，nRF51822 的 P0.19) 開始閃爍。
 3. 移除 DFU 與 GND 之間的連線。
@@ -111,19 +119,19 @@ Flash OK
 
 # 腳位對應
 
-Bluefruit LE SPI Friend | MDBT40 (nRF51822)
--|-
-SCK|P0.21
-MISO|P0.22
-MOSI|P0.23
-CS (有上拉電阻)|P0.24
-IRQ|P0.25
-DFU|P0.07
-FACTORYRST|P0.16
-MODE LED (紅色)|P0.18
-CONNECTED LED (藍色)|P0.19
-SWDIO/RST|SWDIO/NRESET
-SWCLK|SWCLK
+| Bluefruit LE SPI Friend | MDBT40 (nRF51822) |
+| ----------------------- | ----------------- |
+| SCK                     | P0.21             |
+| MISO                    | P0.22             |
+| MOSI                    | P0.23             |
+| CS (有上拉電阻)         | P0.24             |
+| IRQ                     | P0.25             |
+| DFU                     | P0.07             |
+| FACTORYRST              | P0.16             |
+| MODE LED (紅色)         | P0.18             |
+| CONNECTED LED (藍色)    | P0.19             |
+| SWDIO/RST               | SWDIO/NRESET      |
+| SWCLK                   | SWCLK             |
 
 另外需要注意的是，nRF51822 的 IO 是 1.8 V 或 3.3 V 的。還有 P0.03 是接地的（雖然我試過不接地好像也沒什麼影響）。
 

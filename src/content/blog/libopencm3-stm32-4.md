@@ -17,17 +17,21 @@ draft: false
 ---
 
 # 前言
+
 終於要開始實際寫程式了，接續上一篇的內容，這次要教最基本的 LibOpenCM3 的 GPIO 輸出用法，會控制一個 LED 燈使其閃爍。
 
 <!--more-->
 
 # 正文
+
 先以 Nucleo-F446RE 做示範。
 
 首先[建立一個 PIO 的專案](/posts/libopencm3-stm32-2#建立專案)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 檔案。
+
 ## 完整程式
 
 先把完整的程式打出來：
+
 ``` c
 /**
  * @file   main.c
@@ -76,7 +80,9 @@ int main(void)
   return 0;
 }
 ```
+
 ## 分段說明
+
 ### Include
 
 ``` c
@@ -85,9 +91,9 @@ int main(void)
 ```
 
 如同其它的程式，首先要將需要用到的功能 Include 進來。本例中有兩個檔案要引入：
-* `rcc.h`：RCC 是 Reset and Clock Controller 的意思，由於基本上所有的 STM32 功能都需要 Clock，因此 RCC 通常是一定會用到的。
-* `gpio.h`：如如同它的名字，這就是包含了 GPIO 的各種功能。
 
+- `rcc.h`：RCC 是 Reset and Clock Controller 的意思，由於基本上所有的 STM32 功能都需要 Clock，因此 RCC 通常是一定會用到的。
+- `gpio.h`：如如同它的名字，這就是包含了 GPIO 的各種功能。
 
 > LibOpenCM3 的這些檔案 PIO 都會幫我們處理好，所以不用另外下載或設定路徑，直接 `#include` 就可以了。
 
@@ -123,6 +129,7 @@ static void delay(uint32_t value)
 其中的 `__asm__("nop")` 代表嵌入組合語言的「nop」指令，也就是無操作（No operation）。
 
 ### 主程式
+
 ``` c
 int main(void)
 {
@@ -151,29 +158,31 @@ int main(void)
 }
 ```
 
-* `rcc_periph_clock_enable()`：這個函式會致能指定功能的 Clock。在這裡我們要啓用 LED 所在的 GPIO Port 的 Clock。
-* `gpio_mode_setup()`：為指定的 GPIO 設定模式。
-	* `GPIO_LED_PORT`：要設定的 GPIO Port。
-	* `GPIO_MODE_OUTPUT`：設定為「General Purpose Output」 模式。
-	* `GPIO_PUPD_NONE`：設定為不使用上下拉電阻。
-	* `GPIO_LED_PIN`：要設定的 GPIO Pin，若要在同一個 Port 中設定多個 Pin，各個 Pin 可以用 `|` 來複選。
+- `rcc_periph_clock_enable()`：這個函式會致能指定功能的 Clock。在這裡我們要啓用 LED 所在的 GPIO Port 的 Clock。
+- `gpio_mode_setup()`：為指定的 GPIO 設定模式。
+    - `GPIO_LED_PORT`：要設定的 GPIO Port。
+    - `GPIO_MODE_OUTPUT`：設定為「General Purpose Output」 模式。
+    - `GPIO_PUPD_NONE`：設定為不使用上下拉電阻。
+    - `GPIO_LED_PIN`：要設定的 GPIO Pin，若要在同一個 Port 中設定多個 Pin，各個 Pin 可以用 `|` 來複選。
 
-* `gpio_set_output_options()`：為指定的 GPIO 設定輸出選項。
-	* `GPIO_LED_PORT`：要設定的 GPIO Port。
-	* `GPIO_OTYPE_PP`：設定輸出電路組態為「Push-Pull（推挽）」 。
-	* `GPIO_OSPEED_2MHZ`：設定速度。
-	* `GPIO_LED_PIN`：要設定的 GPIO Pin，若要在同一個 Port 中設定多個 Pin，各個 Pin 可以用 `|` 來複選。
+- `gpio_set_output_options()`：為指定的 GPIO 設定輸出選項。
+    - `GPIO_LED_PORT`：要設定的 GPIO Port。
+    - `GPIO_OTYPE_PP`：設定輸出電路組態為「Push-Pull（推挽）」 。
+    - `GPIO_OSPEED_2MHZ`：設定速度。
+    - `GPIO_LED_PIN`：要設定的 GPIO Pin，若要在同一個 Port 中設定多個 Pin，各個 Pin 可以用 `|` 來複選。
 
-* `gpio_toggle()`：反轉該 GPIO 的輸出值。如果目前是輸出 `High`，那就變成輸出 `Low`，反之亦然。
+- `gpio_toggle()`：反轉該 GPIO 的輸出值。如果目前是輸出 `High`，那就變成輸出 `Low`，反之亦然。
 
 ### 編譯與燒錄/上傳
+
 打完程式後，可以在 VS Code 左下方找到編譯（Build）和燒錄（Upload）的按鈕。也可以用快捷鍵「`Ctrl`+`Alt`+`B`」、「`Ctrl`+`Alt`+`U`」。
 
 ![](https://bucket.ziteh.dev/blog/libopencm3-stm32-4/52ccf469.webp)
 ![▲ PIO 的 Build 與 Upload 按鈕在 VS Code 的左下。](https://bucket.ziteh.dev/blog/libopencm3-stm32-4/8c111b56.webp)
 
 編譯完成後 PIO 會顯示佔用的資源：
-```
+
+```text
 RAM: 0.0% (used 0 bytes from 131072 bytes)
 Flash: 0.1% (used 764 bytes from 524288 bytes)
 ```
@@ -183,6 +192,7 @@ Flash: 0.1% (used 764 bytes from 524288 bytes)
 ![▲ 成果。](https://bucket.ziteh.dev/blog/libopencm3-stm32-4/49da3c87.webp)
 
 ## F103RB
+
 STM32F1 系列的部分程式寫法不一樣，所以在此也提供 Nucleo-F103RB 的程式範例。主要差異只有 GPIO 的設定函式不同，STM32F1 用的是 `gpio_set_mode()`，而非 `gpio_mode_setup()` 與 `gpio_set_output_options()`。
 
 ``` c
@@ -229,12 +239,15 @@ int main(void)
 }
 
 ```
+
 ## PIO 環境
+
 如果你的程式會需要在 F1 或 F4 等其它 STM32 系列上運作，那每次用 F1 時 GPIO 的寫法不同，或是有 Pin 腳不同的情況會很麻煩，所以這裡簡單介紹如何用 PIO 設定多個專案環境，方便切換。
 
 ![▲ 設定好的環境可以在 VS Code 下方進行切換。](https://bucket.ziteh.dev/blog/libopencm3-stm32-4/dd8f02ba.webp)
 
 ### 主程式
+
 ``` c
 /**
  * @file   main.c
@@ -296,7 +309,8 @@ int main(void)
 
 ```
 
-### PIO 專案設定檔 `platformio.ini`：
+### PIO 專案設定檔 `platformio.ini`
+
 ``` ini
 [platformio]
 default_envs = nucleo_f103rb
@@ -316,14 +330,16 @@ build_flags = -D NUCLEO_F446RE
 ```
 
 # 小結
+
 這次簡單介紹了 LibOpenCM3 的 GPIO 輸出用法，這部分只要有搞懂 STM32 的 GPIO 模式應該不會太難。
 
 # 參考資料
-* [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
-* [platformio/platform-ststm32](https://github.com/platformio/platform-ststm32)
-* [STM32F446RE datasheet (DS10693)](https://www.st.com/resource/en/datasheet/stm32f446re.pdf)
-* [STM32F103RB datasheet (DS5319)](https://www.st.com/resource/en/datasheet/stm32f103rb.pdf)
-* [STM32 Nucleo-64 board user manual (UM1724)](https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf)
+
+- [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
+- [platformio/platform-ststm32](https://github.com/platformio/platform-ststm32)
+- [STM32F446RE datasheet (DS10693)](https://www.st.com/resource/en/datasheet/stm32f446re.pdf)
+- [STM32F103RB datasheet (DS5319)](https://www.st.com/resource/en/datasheet/stm32f103rb.pdf)
+- [STM32 Nucleo-64 board user manual (UM1724)](https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf)
 
 > 本文的程式也都放在 [GitHub](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/blink) 上。
 > 本文同步發表於 [iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10291071)。

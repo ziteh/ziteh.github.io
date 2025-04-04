@@ -20,7 +20,6 @@ draft: false
 
 為了避免被僞造 commit（雖然我不知道有誰會想來假冒我），你可以設定驗證金鑰和為 commit 加上簽名，來讓 GitHub 確認那些 commit 確實是你提交的。
 
-
 > 本文以 Windows 11 為主。
 
 # 安裝工具

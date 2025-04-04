@@ -111,88 +111,89 @@ int main(void)
 
 RCC\_APB2PeriphClockCmd
 
-*   函數原型：void RCC\_APB2PeriphClockCmd(uint32\_t RCC\_APB2Periph, FunctionalState NewState)
-*   功能：致能（使用）或禁能（關閉）APB2外圍設備時鐘。
-*   輸出參數1：RCC\_APB2Periph，選擇要設定的外圍設備（詳細用法請見下方表格整理）。
-*   輸入參數2：NewState，選擇要使用還是關閉時鐘（詳細用法請見下方表格整理）。
-*   輸出參數：無
-*   返回值：無
-*   先決條件：無
-*   被調用函數：無
+- 函數原型：void RCC\_APB2PeriphClockCmd(uint32\_t RCC\_APB2Periph, FunctionalState NewState)
+- 功能：致能（使用）或禁能（關閉）APB2外圍設備時鐘。
+- 輸出參數1：RCC\_APB2Periph，選擇要設定的外圍設備（詳細用法請見下方表格整理）。
+- 輸入參數2：NewState，選擇要使用還是關閉時鐘（詳細用法請見下方表格整理）。
+- 輸出參數：無
+- 返回值：無
+- 先決條件：無
+- 被調用函數：無
 
 <br/>
 
 GPIO\_Init
 
-*   函數原型：void GPIO\_Init(GPIO\_TypeDef\* GPIOx, GPIO\_InitTypeDef\* GPIO\_InitStruct)
-*   功能：設定GPIO的模式，也就是設定CRH、CRL暫存器。
-*   輸入參數1：GPIOx，選擇GPIO。
-*   輸入參數2：GPIO\_InitStruct，選擇GPIO模式。為指向GPIO\_InitTypeDef的指標。GPIO\_InitTypeDef類型的結構有以下3個成員（詳細用法請見下方表格整理）。
-	*   GPIO\_Pin
-	*   GPIO\_Speed
-	*   GPIO\_Mode
-*   輸出參數：無
-*   返回值：無
-*   先決條件：無
-*   被調用函數：無
+- 函數原型：void GPIO\_Init(GPIO\_TypeDef\* GPIOx, GPIO\_InitTypeDef\* GPIO\_InitStruct)
+- 功能：設定GPIO的模式，也就是設定CRH、CRL暫存器。
+- 輸入參數1：GPIOx，選擇GPIO。
+- 輸入參數2：GPIO\_InitStruct，選擇GPIO模式。為指向GPIO\_InitTypeDef的指標。GPIO\_InitTypeDef類型的結構有以下3個成員（詳細用法請見下方表格整理）。
+    - GPIO\_Pin
+    - GPIO\_Speed
+    - GPIO\_Mode
+- 輸出參數：無
+- 返回值：無
+- 先決條件：無
+- 被調用函數：無
 
 <br/>
 
 GPIO\_ReadInputDataBit
 
-*   函數原型：uint8\_t GPIO\_ReadInputDataBit(GPIO\_TypeDef\* GPIOx, uint16\_t GPIO\_Pin)
-*   功能：讀取指定端口的輸入值。
-*   輸入參數1：GPIOx，選擇GPIO（詳細用法請見下方表格整理）。
-*   輸入參數2：GPIO\_Pin，選擇GPIO\_Pin（詳細用法請見下方表格整理）。
-*   輸出參數：無
-*   返回值：端口的輸入值，1或是0。
-*   先決條件：無
-*   被調用函數：無
+- 函數原型：uint8\_t GPIO\_ReadInputDataBit(GPIO\_TypeDef\* GPIOx, uint16\_t GPIO\_Pin)
+- 功能：讀取指定端口的輸入值。
+- 輸入參數1：GPIOx，選擇GPIO（詳細用法請見下方表格整理）。
+- 輸入參數2：GPIO\_Pin，選擇GPIO\_Pin（詳細用法請見下方表格整理）。
+- 輸出參數：無
+- 返回值：端口的輸入值，1或是0。
+- 先決條件：無
+- 被調用函數：無
 
 <br/>
 
 GPIO\_SetBits
 
-*   函數原型：void GPIO\_SetBits(GPIO\_TypeDef\* GPIOx, uint16\_t GPIO\_Pin)
-*   功能：將端口設置為1。
-*   輸入參數1：GPIOx，選擇GPIO（詳細用法請見下方表格整理）。
-*   輸入參數2：GPIO\_Pin，選擇GPIO\_Pin（詳細用法請見下方表格整理）。
-*   輸出參數：無
-*   返回值：無
-*   先決條件：無
-*   被調用函數：無
+- 函數原型：void GPIO\_SetBits(GPIO\_TypeDef\* GPIOx, uint16\_t GPIO\_Pin)
+- 功能：將端口設置為1。
+- 輸入參數1：GPIOx，選擇GPIO（詳細用法請見下方表格整理）。
+- 輸入參數2：GPIO\_Pin，選擇GPIO\_Pin（詳細用法請見下方表格整理）。
+- 輸出參數：無
+- 返回值：無
+- 先決條件：無
+- 被調用函數：無
 
 <br/>
 
 GPIO\_ResetBits
 
-*   函數原型：void GPIO\_ResetBits(GPIO\_TypeDef\* GPIOx, uint16\_t GPIO\_Pin)
-*   功能：將端口重置為0。
-*   輸入參數1：GPIOx，選擇GPIO（詳細用法請見下方表格整理）。
-*   輸入參數2：GPIO\_Pin，選擇GPIO\_Pin（詳細用法請見下方表格整理）。
-*   輸出參數：無
-*   返回值：無
-*   先決條件：無
-*   被調用函數：無
+- 函數原型：void GPIO\_ResetBits(GPIO\_TypeDef\* GPIOx, uint16\_t GPIO\_Pin)
+- 功能：將端口重置為0。
+- 輸入參數1：GPIOx，選擇GPIO（詳細用法請見下方表格整理）。
+- 輸入參數2：GPIO\_Pin，選擇GPIO\_Pin（詳細用法請見下方表格整理）。
+- 輸出參數：無
+- 返回值：無
+- 先決條件：無
+- 被調用函數：無
 
 <br/>
 
-|RCC_APB2Periph|描述|
-|-|-|
-|RCC_APB2Periph_AFIO|复用功能|
-|RCC_APB2Periph_GPIOA|GPIO A|
-|RCC_APB2Periph_GPIOB|GPIO B|
-|RCC_APB2Periph_GPIOC|GPIO C|
-|RCC_APB2Periph_GPIOD|GPIO D|
-|RCC_APB2Periph_GPIOE|GPIO E|
-|RCC_APB2Periph_ADC1|ADC1|
-|RCC_APB2Periph_ADC2|ADC2|
-|RCC_APB2Periph_TIM1|TIM1|
-|RCC_APB2Periph_SPI1|SPI1|
-|RCC_APB2Periph_USART1|USART1|
-|RCC_APB2Periph_ALL|全部|
+| RCC_APB2Periph        | 描述     |
+| --------------------- | -------- |
+| RCC_APB2Periph_AFIO   | 复用功能 |
+| RCC_APB2Periph_GPIOA  | GPIO A   |
+| RCC_APB2Periph_GPIOB  | GPIO B   |
+| RCC_APB2Periph_GPIOC  | GPIO C   |
+| RCC_APB2Periph_GPIOD  | GPIO D   |
+| RCC_APB2Periph_GPIOE  | GPIO E   |
+| RCC_APB2Periph_ADC1   | ADC1     |
+| RCC_APB2Periph_ADC2   | ADC2     |
+| RCC_APB2Periph_TIM1   | TIM1     |
+| RCC_APB2Periph_SPI1   | SPI1     |
+| RCC_APB2Periph_USART1 | USART1   |
+| RCC_APB2Periph_ALL    | 全部     |
 
 備註：可以用“|”符號（也就是OR運算）一次選取多個功能。例如：
+
 ```c
 // 啟用Port-A、C時鐘
 RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA |
@@ -200,49 +201,50 @@ RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA |
                        ENABLE);
 ```
 
-NewState|描述
--|-
-ENABLE|致能（使用）
-DISABLE|禁能（關閉）
+| NewState | 描述         |
+| -------- | ------------ |
+| ENABLE   | 致能（使用） |
+| DISABLE  | 禁能（關閉） |
 
-GPIO_Pin|描述
--|-
-GPIO_Pin_0|選擇Pin_0
-GPIO_Pin_1|選擇Pin_1
-GPIO_Pin_2|選擇Pin_2
-GPIO_Pin_3|選擇Pin_3
-GPIO_Pin_4|選擇Pin_4
-GPIO_Pin_5|選擇Pin_5
-GPIO_Pin_6|選擇Pin_6
-GPIO_Pin_7|選擇Pin_7
-GPIO_Pin_8|選擇Pin_8
-GPIO_Pin_9|選擇Pin_9
-GPIO_Pin_10|選擇Pin_10
-GPIO_Pin_11|選擇Pin_11
-GPIO_Pin_12|選擇Pin_12
-GPIO_Pin_13|選擇Pin_13
-GPIO_Pin_14|選擇Pin_14
-GPIO_Pin_15|選擇Pin_15
-GPIO_Pin_All|選擇全部
+| GPIO_Pin     | 描述       |
+| ------------ | ---------- |
+| GPIO_Pin_0   | 選擇Pin_0  |
+| GPIO_Pin_1   | 選擇Pin_1  |
+| GPIO_Pin_2   | 選擇Pin_2  |
+| GPIO_Pin_3   | 選擇Pin_3  |
+| GPIO_Pin_4   | 選擇Pin_4  |
+| GPIO_Pin_5   | 選擇Pin_5  |
+| GPIO_Pin_6   | 選擇Pin_6  |
+| GPIO_Pin_7   | 選擇Pin_7  |
+| GPIO_Pin_8   | 選擇Pin_8  |
+| GPIO_Pin_9   | 選擇Pin_9  |
+| GPIO_Pin_10  | 選擇Pin_10 |
+| GPIO_Pin_11  | 選擇Pin_11 |
+| GPIO_Pin_12  | 選擇Pin_12 |
+| GPIO_Pin_13  | 選擇Pin_13 |
+| GPIO_Pin_14  | 選擇Pin_14 |
+| GPIO_Pin_15  | 選擇Pin_15 |
+| GPIO_Pin_All | 選擇全部   |
 
 備註：可以用“|”符號一次選取多個功能。例如：
+
 ```c
 GPIO_SetBits(GPIOA, GPIO_Pin_10 | GPIO_Pin_15); // 將PA10、PA15設置為1
 ```
 
-GPIO_Speed|描述
--|-
-GPIO_Speed_10MHz|設定最高輸出頻率為10MHz
-GPIO_Speed_2MHz|設定最高輸出頻率為2MHz
-GPIO_Speed_50MHz|設定最高輸出頻率為50MHz
+| GPIO_Speed       | 描述                    |
+| ---------------- | ----------------------- |
+| GPIO_Speed_10MHz | 設定最高輸出頻率為10MHz |
+| GPIO_Speed_2MHz  | 設定最高輸出頻率為2MHz  |
+| GPIO_Speed_50MHz | 設定最高輸出頻率為50MHz |
 
-GPIO_Mode|描述
--|-
-GPIO_Mode_AIN|類比輸入
-GPIO_Mode_IN_FLOATING|浮空輸入
-GPIO_Mode_IPD|下拉輸入
-GPIO_Mode_IPU|上拉輸入
-GPIO_Mode_Out_OD|汲極開路通用輸出
-GPIO_Mode_Out_PP|推挽通用輸出
-GPIO_Mode_AF_OD|汲極開路复用輸出
-GPIO_Mode_AF_PP|推挽复用輸出
+| GPIO_Mode             | 描述             |
+| --------------------- | ---------------- |
+| GPIO_Mode_AIN         | 類比輸入         |
+| GPIO_Mode_IN_FLOATING | 浮空輸入         |
+| GPIO_Mode_IPD         | 下拉輸入         |
+| GPIO_Mode_IPU         | 上拉輸入         |
+| GPIO_Mode_Out_OD      | 汲極開路通用輸出 |
+| GPIO_Mode_Out_PP      | 推挽通用輸出     |
+| GPIO_Mode_AF_OD       | 汲極開路复用輸出 |
+| GPIO_Mode_AF_PP       | 推挽复用輸出     |

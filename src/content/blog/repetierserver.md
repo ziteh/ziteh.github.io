@@ -28,33 +28,31 @@ draft: false
 2. 建議可以開啓SSH和遠端功能，方便日後連線使用。
 3. 詳細查詢IP位置的方法請參考[葉難](http://yehnan.blogspot.tw/search/label/Raspberry%20Pi)老師網站的教學。使用SSH和遠端的方法請參考[硬Pi製作](https://sites.google.com/site/raspberrypidiy/home)網站的教學。
 
-
 # 步驟3-下載並安裝Repetier-Server
 
 1. 在LXTerminal文字指令視窗中鍵入以下指令並等待Raspberry Pi下載完成。
-```
-wget http://download.repetier.com/files/server/debian-armel/Repetier-Server-0.80.0-Linux.deb
-```
-2. 在LXTerminal文字指令視窗中後鍵入以下指令並等待Raspberry Pi安裝完成。(可能需要一段時間)
-```
-sudo dpkg -i Repetier-Server-0.80.0-Linux.deb
-```
 
+    ```bash
+    wget http://download.repetier.com/files/server/debian-armel/Repetier-Server-0.80.0-Linux.deb
+    ```
+
+2. 在LXTerminal文字指令視窗中後鍵入以下指令並等待Raspberry Pi安裝完成。(可能需要一段時間)
+
+    ```bash
+    sudo dpkg -i Repetier-Server-0.80.0-Linux.deb
+    ```
 
 # 步驟4-在網頁上連接Repetier-Server
 
 1. 將Raspberry Pi使用USB接上你的3D列印機。
 2. 在瀏覽器上打上步驟2找到的Raspberry Pi的IP位置，並在尾端加上\[:3344\]。
-    * Ex : 192.168.16.101:3344
+    - Ex : 192.168.16.101:3344
 3. 在頁面中選擇\[+添加新打印機\]，並照著步驟新增你的3D列印機。
 4. 其中\[設備/端口\]要選擇到你連接3D列印機的USB端口。
-    * Ex : /dev/serial/by-id/usb-Arduino\_\_www.arduino.cc\_\_0042\_754393334353512002D2-if00
+    - Ex : /dev/serial/by-id/usb-Arduino\_\_<www.arduino.cc\_\_0042\_754393334353512002D2-if00>
 5. 等設定步驟都完成後就可以開始在網頁上控制與列印。
 
-
 ![](https://bucket.ziteh.dev/blog/repetierserver/cf13d153.webp)
-
-
 
 # 步驟5-在Repetier-Host上連接Repetier-Server
 
@@ -68,10 +66,9 @@ sudo dpkg -i Repetier-Server-0.80.0-Linux.deb
 8. 選擇一種\[列印機設定\]，按下\[OK\]完成設定。
 9. 在Repetier-Host主頁面按下左上角的\[連線\]，等待3D列印機連線完成即可控制與列印。
 
-
 ![](https://bucket.ziteh.dev/blog/repetierserver/c0654186.webp)
 
-# 相關網站：
+# 相關網站
 
 1. [Raspberry Pi官方網站](https://www.raspberrypi.org/)
 2. [台灣Raspberry Pi](https://www.raspberrypi.com.tw/)

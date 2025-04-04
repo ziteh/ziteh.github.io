@@ -21,3 +21,7 @@ no-trailing-spaces:
 no-hard-tabs:
   code_blocks: true
   spaces_per_tab: 4
+table-pipe-style:
+  style: leading_and_trailing
+no-emphasis-as-heading: false
+no-blanks-blockquote: false

@@ -90,11 +90,11 @@ draft: false
 
 ## 電子機械手義肢相關資料下載
 
-1.  [作品說明書](https://drive.google.com/file/d/1zd2PWH0bIP4IHQUnNhcAyapQXLunEQno/view?usp=sharing)
-2.  [完整程式、3D模型與電路檔案](https://drive.google.com/file/d/1dCmUrsjqtGno23lvRdPM4k_bl11wRBxb/view?usp=sharing) (Ver1.0的資料夾是我在比北二區科展時的資料；Ver2.0的資料是比全國科展時的資料)
+1. [作品說明書](https://drive.google.com/file/d/1zd2PWH0bIP4IHQUnNhcAyapQXLunEQno/view?usp=sharing)
+2. [完整程式、3D模型與電路檔案](https://drive.google.com/file/d/1dCmUrsjqtGno23lvRdPM4k_bl11wRBxb/view?usp=sharing) (Ver1.0的資料夾是我在比北二區科展時的資料；Ver2.0的資料是比全國科展時的資料)
 
 # 相關文章
 
-* [\[心得:機械手專題-1\] 電子機械手義肢製作過程](/posts/macarm-1/)(本篇)
-* [\[心得:機械手專題-2\] 科展中的所見所聞](/posts/macarm-2/)
-* [\[心得:機械手專題-3\] 這是科展，不是技藝競賽 — 我對科展的反思](/posts/macarm-3/)
+- [\[心得:機械手專題-1\] 電子機械手義肢製作過程](/posts/macarm-1/)(本篇)
+- [\[心得:機械手專題-2\] 科展中的所見所聞](/posts/macarm-2/)
+- [\[心得:機械手專題-3\] 這是科展，不是技藝競賽 — 我對科展的反思](/posts/macarm-3/)

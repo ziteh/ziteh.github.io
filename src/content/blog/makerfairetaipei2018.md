@@ -12,7 +12,6 @@ draft: false
 ---
 ![](https://bucket.ziteh.dev/blog/makerfairetaipei2018/111f0c0d.webp)
 
-
 # 前言
 
 在2018年的11月(期中考前...)我和我們學校的同伴一起去參加Maker Faire Taipei 2018 (臺北華山創客嘉年華)。這是我第一次參加Maker Faire，因為我們有攤位，需要一些作品來展示，所以我從暑假時就開始規劃要做些什麽作品，最後在學長的提議下選擇了這個游戲方向盤。而這件作品是參考以下的影片（目前原影片似乎已遺失了）。
@@ -41,13 +40,12 @@ draft: false
 
 油門剎車的部分有連桿式和拉線式2種。由於搖桿的按鍵行程大概是5mm，但如果用腳踩5mm的距離會很難控制半踩，所以我們要利用機構設計將實際踩踏板的行程變成約10cm。
 
-
 ![▲連桿式的設計](https://bucket.ziteh.dev/blog/makerfairetaipei2018/3e998505.webp)
 
 然而這些機械結構説實在沒有相關背景，還真不容易設計，最後也因為怕來不及完成，所以並沒有做搖桿式的部分，有些可惜。
 
-
 # 鍵鼠式
+
 由於鍵鼠式的設計沒有複雜的機械構造，所以我們決定在腦海中進行構思，並直接在木板上丈量尺寸與設計，然後進行加工。我們先將所有零件在木板上畫好樣子後使用手持線鋸機進行切割，待所有零件都已經切割好後我們再將它們進行組合。
 
 組合的方式有膠合、鎖螺絲和兩者並用三種。膠合是指在兩木板之間塗上白膠，再以C型夾夾緊，等白膠乾後就完成了；鎖螺絲就是使用自攻螺絲固定或先鑽孔後使用一般螺絲與螺帽固定；兩者並用就是先進行膠合再鎖螺絲，可以提供最強的固定能力。
@@ -62,9 +60,7 @@ draft: false
 
 ![▲油門和刹車](https://bucket.ziteh.dev/blog/makerfairetaipei2018/6f380856.webp)
 
-
 ![▲放上鍵盤的樣子](https://bucket.ziteh.dev/blog/makerfairetaipei2018/5672895d.webp)
-
 
 ![▲油門和刹車](https://bucket.ziteh.dev/blog/makerfairetaipei2018/45cec155.webp)
 
@@ -86,20 +82,15 @@ draft: false
 
 在大家的幫忙下，這個游戲方向盤終於在展出前完成了，而當然我們要來試玩一下，所以就找了學校的同學來玩看看。游玩的游戲是Project Cars 2。
 
-
 ![](https://bucket.ziteh.dev/blog/makerfairetaipei2018/ff30ef32.webp)
-
 
 ![](https://bucket.ziteh.dev/blog/makerfairetaipei2018/aab1a382.webp)
 
-
 ![](https://bucket.ziteh.dev/blog/makerfairetaipei2018/6dac6bdf.webp)
-
 
 <div style="clear: both; text-align: center;">
 <iframe style="width: 100%; height: 315px; border: 0; margin: 20px 0" src="https://www.youtube.com/embed/LqzdGxMLNnI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-
 
 # 結論
 

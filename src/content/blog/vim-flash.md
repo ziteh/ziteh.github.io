@@ -90,7 +90,6 @@ Flash 還有其它功能和設定我就不一一細講了。
 
 還有一個 [vim-sneak](https://github.com/justinmk/vim-sneak) 也是可以達成類似 Easy Motion 的操作，不過它好像只能限定向下或上搜尋，沒辦法全螢幕搜尋（Flash 的 `s`），所以我試用一下後就改成用 Flash 了。
 
-
 附帶一提，如果有人想看我的完整 Neovim 配置，可以參考 [ziteh/vim-config](https://github.com/ziteh/vim-config)，透過 branch 切換。
 
 [op-s]: https://bucket.ziteh.dev/blog/vim-flash/6f14eacd.webp

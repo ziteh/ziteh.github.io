@@ -32,7 +32,7 @@ FreeNAS 是基於 FreeBSD 的開源 NAS 系統，作為開源軟體，它也是�
 
 首先是硬體規格的部分。由於 FreeNAS 使用的檔案系統為 ZFS，對硬體的要求與其它常見的 NAS 系統如 OpenMediaVault 是比較高的。
 
-根據[ FreeNAS 官方硬體需求手冊](https://www.freenas.org/hardware-requirements/)，建議你要有 64 位元的 CPU、至少 8GB 以上的硬碟來儲存作業系統、至少 8GB 以上的記憶體，甚至非常建議使用 ECC RAM。
+根據[FreeNAS 官方硬體需求手冊](https://www.freenas.org/hardware-requirements/)，建議你要有 64 位元的 CPU、至少 8GB 以上的硬碟來儲存作業系統、至少 8GB 以上的記憶體，甚至非常建議使用 ECC RAM。
 
 其中以 ECC RAM 這部分是比較麻煩的，因為一般人的電腦不會用 ECC RAM，也不是所有的 CPU、MB 都支援 ECC RAM，通常是偏伺服器的零件才會支援、例如 Intel Xeon CPU。如果要使用 ECC RAM 的話，處了需要 ECC RAM 外，CPU 及 MB 也都要支援 ECC RAM 才可以。值得一提的是 AMD Ryzen CPU 全部都支援 ECC RAM，不過 MB 的部分就還是要再看看各產品是否有支援 ECC RAM。
 
@@ -41,6 +41,7 @@ FreeNAS 是基於 FreeBSD 的開源 NAS 系統，作為開源軟體，它也是�
 機殼的話我選了一個套裝機的舊機殼，這種套裝機殼的特色就是會有許多免工具拆裝的設計。而我選的這個殼的其中一個很重要的原因是它有 4 個 3.5” 與 2 個 5.25" 槽，可以裝最多 4+3 個 3.5“ 硬碟，對於 NAS 的機殼來說可以裝多少硬碟是很重要的。
 
 ▼ 硬體零件列表
+
 | 項目 | 型號                                       | 價格($NT) |
 | ---- | ------------------------------------------ | --------- |
 | CPU  | Intel Pentium G3260 3.3GHz 2C2T (1150腳位) | 300       |

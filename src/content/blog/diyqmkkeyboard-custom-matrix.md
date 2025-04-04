@@ -89,13 +89,13 @@ OPT_DEFS += -DBOOTLOADER_SIZE=4096
 # Build Options
 #   comment out to disable the options.
 #
-BOOTMAGIC_ENABLE ?= yes	# Virtual DIP switch configuration(+1000)
-MOUSEKEY_ENABLE ?= yes	# Mouse keys(+4700)
-EXTRAKEY_ENABLE ?= yes	# Audio control and System control(+450)
-CONSOLE_ENABLE ?= no	# Console for debug(+400)
+BOOTMAGIC_ENABLE ?= yes # Virtual DIP switch configuration(+1000)
+MOUSEKEY_ENABLE ?= yes # Mouse keys(+4700)
+EXTRAKEY_ENABLE ?= yes # Audio control and System control(+450)
+CONSOLE_ENABLE ?= no # Console for debug(+400)
 COMMAND_ENABLE ?= no    # Commands for debug and configuration
 SLEEP_LED_ENABLE ?= no  # Breathing sleep LED during USB suspend
-NKRO_ENABLE ?= yes		# USB Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
+NKRO_ENABLE ?= yes  # USB Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
 BACKLIGHT_ENABLE ?= no  # Enable keyboard backlight functionality
 AUDIO_ENABLE ?= no
 RGBLIGHT_ENABLE ?= no
@@ -276,6 +276,7 @@ uint8_t matrix_key_count(void) {
 ```
 
 上面這段程式比較重要的有幾點：
+
 - `#include "uart.h"`：引用 QMK 的 UART 功能，否則會編譯錯誤。
 - `uart_init(9600)`：在 `matrix_init()` 中初始化 UART，並將鮑率（Baud Rate）設定為 9600 bps。
 - `uart_available()`：有用過 Arduino 的 Serial Port 的人應該都看得懂這一段，就是只要 UART 的接收緩衝區有值（有接收到資料），就使用 `uart_read()` 將收到的資料讀出，在透過 `switch-case` 來處理並改寫 `matrix[]` 的值，以完成按鍵狀態的更新。
@@ -307,6 +308,7 @@ uint8_t matrix_scan(void) {
 ```
 
 其中，`report_mouse_t` 就是 QMK 中滑鼠遊標的 Data type，其原型為：
+
 ```c
 // File：qmk_firmware/tmk_core/protocol/report.h
 // URL：https://github.com/qmk/qmk_firmware/blob/master/tmk_core/protocol/report.h
@@ -453,7 +455,6 @@ state = 0;
   return 0;
 }
 ```
-
 
 最終效果如影片所示：
 <iframe style="width: 100%; height: 315px; border: 0; margin: 20px 0" src="https://www.youtube.com/embed/L6DrpNg0moA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

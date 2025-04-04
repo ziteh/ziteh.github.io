@@ -29,9 +29,10 @@ draft: false
 # SPI
 
 AS5047P 透過 SPI 進行通訊。其對 SPI 的要求為：
+
 - Mode = 1（CPOL = 0，CPHA = 1）
-	- 空閒時，SCK 時鐘訊號為低電平（0）。
-	- 資料在第二個邊緣取樣（即負緣）。
+    - 空閒時，SCK 時鐘訊號為低電平（0）。
+    - 資料在第二個邊緣取樣（即負緣）。
 - CSn （Chip select）為低電平有效。
 - 資料長度為 16 個位元。其中 MSB 為偶同位（Even parity）位元。
 - 位元順序為 MSB 在前（MSB first）。
@@ -39,6 +40,7 @@ AS5047P 透過 SPI 進行通訊。其對 SPI 的要求為：
 - 只支援從機模式（Slave operation mode）。
 
 設定範例：
+
 ```c
 static void SPI_Init(void)
 {
@@ -70,31 +72,31 @@ AS5047P 有 3 種 SPI 訊框格式。
 
 ## Command Frame
 
-Bit | Name | 描述
--|-|-
-15|PARC|偶同位（Even parity），使整個訊框的 `1` 為偶數個。
-14|R/W|`0` 代表要寫入。`1` 代表要讀取。
-13:0|ADDR| 要讀寫的暫存器位置。
+| Bit  | Name | 描述                                               |
+| ---- | ---- | -------------------------------------------------- |
+| 15   | PARC | 偶同位（Even parity），使整個訊框的 `1` 為偶數個。 |
+| 14   | R/W  | `0` 代表要寫入。`1` 代表要讀取。                   |
+| 13:0 | ADDR | 要讀寫的暫存器位置。                               |
 
 > 讀取「NOP (`0x0000`)」暫存器等同一個 `nop`（no operation，無操作）指令。
 
 ## Read Data Frame
 
-Bit | Name | 描述
--|-|-
-15|PARC|偶同位（Even parity），使整個訊框的 `1` 為偶數個。
-14|EF|`0` 代表沒有錯誤發生。`1` 代表有錯誤發生。
-13:0|DATA| 資料。
+| Bit  | Name | 描述                                               |
+| ---- | ---- | -------------------------------------------------- |
+| 15   | PARC | 偶同位（Even parity），使整個訊框的 `1` 為偶數個。 |
+| 14   | EF   | `0` 代表沒有錯誤發生。`1` 代表有錯誤發生。         |
+| 13:0 | DATA | 資料。                                             |
 
 要讀取資料時，先使用「Command Frame」傳輸要讀取的位置，AS5047P 會在 CS 上拉並重新下拉後的下一個讀取指令時，在 MISO 上傳輸「Read Data Frame」。
 
 ## Write Data Frame
 
-Bit | Name | 描述
--|-|-
-15|PARC|偶同位（Even parity），使整個訊框的 `1` 為偶數個。
-14|0|永遠為 `0`。
-13:0|DATA| 資料。
+| Bit  | Name | 描述                                               |
+| ---- | ---- | -------------------------------------------------- |
+| 15   | PARC | 偶同位（Even parity），使整個訊框的 `1` 為偶數個。 |
+| 14   | 0    | 永遠為 `0`。                                       |
+| 13:0 | DATA | 資料。                                             |
 
 要寫入資料時，先使用「Command Frame」傳輸要寫入的位置，再使用「Write Data Frame」傳輸要寫入的資料。
 
@@ -104,14 +106,16 @@ Bit | Name | 描述
 
 完整的程式可以到 [GitHub:  ziteh/as5047p_driver](https://github.com/ziteh/as5047p_driver/tree/main/lib/AS5047P) 查看。
 
-#### 位元操作
+## 位元操作
+
 ```c
 #define BIT_MODITY(src, n, val) ((src) ^= (-(val) ^ (src)) & (1UL << (n)))
 #define BIT_READ(src, n) (((src) >> (n)&1U))
 #define BIT_TOGGLE(src, n) ((src) ^= 1UL << (n))
 ```
 
-#### 傳輸「Command Frame」
+## 傳輸「Command Frame」
+
 ```c
 void as5047p_send_command(bool is_read_cmd, uint16_t address)
 {
@@ -130,7 +134,8 @@ void as5047p_send_command(bool is_read_cmd, uint16_t address)
 }
 ```
 
-#### 寫入資料到指定的暫存器
+## 寫入資料到指定的暫存器
+
 ```c
 void as5047p_send_data(uint16_t address, uint16_t data)
 {
@@ -150,7 +155,8 @@ void as5047p_send_data(uint16_t address, uint16_t data)
 }
 ```
 
-#### 讀取資料自指定的暫存器
+## 讀取資料自指定的暫存器
+
 ```c
 uint16_t as5047p_read_data(uint16_t address)
 {
@@ -160,9 +166,10 @@ uint16_t as5047p_read_data(uint16_t address)
 }
 ```
 
-#### 讀取角度資訊，可選擇是否啟用動態角度誤差補償（DAEC）
+## 讀取角度資訊，可選擇是否啟用動態角度誤差補償（DAEC）
 
 讀取「ANGLECOM (`0x3FFF`)」可取得有 DAEC 的角度數值，讀取「ANGLEUNC (`0x3FFE`)」可取得無 DAEC 的角度資訊。
+
 ```c
 int as5047p_get_angle(bool with_daec, float *angle_degree)
 {
@@ -188,7 +195,8 @@ int as5047p_get_angle(bool with_daec, float *angle_degree)
 }
 ```
 
-#### 偶同位計算
+## 偶同位計算
+
 ```c
 bool is_even_parity(uint16_t data)
 {
@@ -202,7 +210,8 @@ bool is_even_parity(uint16_t data)
 }
 ```
 
-#### SPI 通訊
+## SPI 通訊
+
 ```c
 void as5047p_spi_transmit(uint16_t data)
 {
@@ -262,5 +271,5 @@ void as5047p_spi_deselect(void)
 
 # 相關連結
 
-- LibOpenCM3 STM32 SPI 教學：[STM32 LibOpenCM3：SPI (Master mode) ](/posts/libopencm3-stm32-24)
+- LibOpenCM3 STM32 SPI 教學：[STM32 LibOpenCM3：SPI (Master mode)](/posts/libopencm3-stm32-24)
 - [AS5047P Datasheet](https://ams.com/documents/20143/36005/AS5047P_DS000324_3-00.pdf)

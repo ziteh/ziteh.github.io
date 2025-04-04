@@ -67,6 +67,7 @@ featured: true
 其中微控制器（MCU）是比較重要的部分，它是鍵盤的運作核心，鍵盤能有多豐富的功能幾乎通通取決或受限於它。
 
 現在常見用於鍵盤的微控制器有：
+
 - [ATmega32U4](https://www.microchip.com/en-us/product/ATmega32U4)
 - [RP2040](https://www.raspberrypi.com/products/rp2040/)
 - [STM32 系列](https://www.st.com/en/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus.html)
@@ -79,6 +80,7 @@ featured: true
 韌體（Firmware）可能就不是每個人都聽過了。簡單來說，韌體就是燒錄在晶片（如微控制器）裡的程式，也就是程式碼的部分。
 
 當前較主流的開源鍵盤韌體有：
+
 - [QMK](https://github.com/qmk/qmk_firmware) / [Vial QMK](https://github.com/vial-kb/vial-qmk)
 - [ZMK](https://github.com/zmkfirmware/zmk)
 - [KMK](https://github.com/KMKfw/kmk_firmware)
@@ -114,25 +116,25 @@ QMK 韌體的功能眾多、使用簡單、擴展方便，相關的工具及文�
 這裡順便附上一些製作鍵盤時可能會用到的網站。
 
 - 工具
-	- [Keyboard Layout Editor (KLE)](http://www.keyboard-layout-editor.com/)：鍵盤佈局編輯器
-	- [Keyboard Firmware Builder](https://kbfirmware.com/)：鍵盤韌體產生器
-	- [Keyboard PCB Builder](https://kb.xyz.is/)：鍵盤 PCB 產生器
-	- 鍵盤定位板產生器
-	  - [ai03 Plate Generator](https://kbplate.ai03.com/)
-	  - [Keebio Plate Generator](https://plate.keeb.io/)
-	  - [Plate & Case Builder](http://builder.swillkb.com/)
-	  - [Keyboard Plate Generator](https://eswai.github.io/plategen/plategen.html)
-	- [Convert KLE to QMK info.json](https://qmk.fm/converter/)：將鍵盤佈局編輯器的資料轉換成 QMK `info.json`
-	- [KiCAD KLE Placer](https://github.com/zykrah/kicad-kle-placer)：根據鍵盤佈局編輯器的資料自動擺放鍵軸的 KiCAD 插件
+    - [Keyboard Layout Editor (KLE)](http://www.keyboard-layout-editor.com/)：鍵盤佈局編輯器
+    - [Keyboard Firmware Builder](https://kbfirmware.com/)：鍵盤韌體產生器
+    - [Keyboard PCB Builder](https://kb.xyz.is/)：鍵盤 PCB 產生器
+    - 鍵盤定位板產生器
+        - [ai03 Plate Generator](https://kbplate.ai03.com/)
+        - [Keebio Plate Generator](https://plate.keeb.io/)
+        - [Plate & Case Builder](http://builder.swillkb.com/)
+        - [Keyboard Plate Generator](https://eswai.github.io/plategen/plategen.html)
+    - [Convert KLE to QMK info.json](https://qmk.fm/converter/)：將鍵盤佈局編輯器的資料轉換成 QMK `info.json`
+    - [KiCAD KLE Placer](https://github.com/zykrah/kicad-kle-placer)：根據鍵盤佈局編輯器的資料自動擺放鍵軸的 KiCAD 插件
 - 其它
-  - QMK 相關
-  	- [QMK 官方網站](https://qmk.fm/)
-  	- [QMK 官方文件](https://docs.qmk.fm/#/)
-  	- [QMK 的 GitHub repo](https://github.com/qmk/qmk_firmware)
-  - 鍵盤清單
-    - [MechKey.Org - All about keyboard](https://mechkey.org/)
-    - [Staggered Keyboards - Keebfolio](https://keebfolio.netlify.app/en/staggered/)
-    - [KeymapDB - Database of keymaps for programmable keyboards](https://keymapdb.com/)
-  - [Zykrah's PCB Guide](https://guide.zykrah.me/)：Zykrah 的 PCB 設計指南。
+    - QMK 相關
+        - [QMK 官方網站](https://qmk.fm/)
+        - [QMK 官方文件](https://docs.qmk.fm/#/)
+        - [QMK 的 GitHub repo](https://github.com/qmk/qmk_firmware)
+    - 鍵盤清單
+        - [MechKey.Org - All about keyboard](https://mechkey.org/)
+        - [Staggered Keyboards - Keebfolio](https://keebfolio.netlify.app/en/staggered/)
+        - [KeymapDB - Database of keymaps for programmable keyboards](https://keymapdb.com/)
+    - [Zykrah's PCB Guide](https://guide.zykrah.me/)：Zykrah 的 PCB 設計指南。
 
 > 本文最早發佈於 2020-06-21，於 2023 重新編排並更新內容。

@@ -122,7 +122,6 @@ QMK 可以設定的按鍵請看說明文件：[Keycodes Overview](https://docs.q
 
 ![▲ 「Settings」標籤頁](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware-0-18/9822a247.webp)
 
-
 ## 編譯（Compile）
 
 最後一個標籤頁「Compile」可以透過「Download .hex」按鈕，讓它幫我們完成編譯的工作，並直接進行燒錄的步驟。
@@ -166,10 +165,10 @@ OPT_DEFS += -DINTERRUPT_CONTROL_ENDPOINT
 OPT_DEFS += -DBOOTLOADER_SIZE=4096
 
 # Build Options
-BOOTMAGIC_ENABLE ?= yes	# Virtual DIP switch configuration(+1000)
-MOUSEKEY_ENABLE ?= yes	# Mouse keys(+4700)
-EXTRAKEY_ENABLE ?= yes	# Audio control and System control(+450)
-CONSOLE_ENABLE ?= no	# Console for debug(+400)
+BOOTMAGIC_ENABLE ?= yes # Virtual DIP switch configuration(+1000)
+MOUSEKEY_ENABLE ?= yes # Mouse keys(+4700)
+EXTRAKEY_ENABLE ?= yes # Audio control and System control(+450)
+CONSOLE_ENABLE ?= no # Console for debug(+400)
 COMMAND_ENABLE ?= no    # Commands for debug and configuration
 SLEEP_LED_ENABLE ?= no  # Breathing sleep LED during USB suspend
 NKRO_ENABLE ?= yes      # USB Nkey Rollover
@@ -227,14 +226,15 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 ### 其它功能
 
 `rules.mk` 底下還有一段 Build Options：
+
 ```mk
 # Build Options
 #   comment out to disable the options.
 #
-BOOTMAGIC_ENABLE ?= yes	# Virtual DIP switch configuration(+1000)
-MOUSEKEY_ENABLE ?= yes	# Mouse keys(+4700)
-EXTRAKEY_ENABLE ?= yes	# Audio control and System control(+450)
-CONSOLE_ENABLE ?= no	# Console for debug(+400)
+BOOTMAGIC_ENABLE ?= yes # Virtual DIP switch configuration(+1000)
+MOUSEKEY_ENABLE ?= yes # Mouse keys(+4700)
+EXTRAKEY_ENABLE ?= yes # Audio control and System control(+450)
+CONSOLE_ENABLE ?= no # Console for debug(+400)
 COMMAND_ENABLE ?= no    # Commands for debug and configuration
 SLEEP_LED_ENABLE ?= no  # Breathing sleep LED during USB suspend
 NKRO_ENABLE ?= yes      # USB Nkey Rollover
@@ -278,10 +278,10 @@ OPT_DEFS += -DINTERRUPT_CONTROL_ENDPOINT
 OPT_DEFS += -DBOOTLOADER_SIZE=4096
 
 # Build Options
-BOOTMAGIC_ENABLE ?= yes	# Virtual DIP switch configuration(+1000)
-MOUSEKEY_ENABLE ?= yes	# Mouse keys(+4700)
-EXTRAKEY_ENABLE ?= yes	# Audio control and System control(+450)
-CONSOLE_ENABLE ?= no	# Console for debug(+400)
+BOOTMAGIC_ENABLE ?= yes # Virtual DIP switch configuration(+1000)
+MOUSEKEY_ENABLE ?= yes # Mouse keys(+4700)
+EXTRAKEY_ENABLE ?= yes # Audio control and System control(+450)
+CONSOLE_ENABLE ?= no # Console for debug(+400)
 COMMAND_ENABLE ?= no    # Commands for debug and configuration
 SLEEP_LED_ENABLE ?= no  # Breathing sleep LED during USB suspend
 NKRO_ENABLE ?= yes      # USB Nkey Rollover
@@ -301,10 +301,10 @@ MCU = RP2040
 BOOTLOADER = rp2040
 
 # Build Options
-BOOTMAGIC_ENABLE ?= yes	# Virtual DIP switch configuration(+1000)
-MOUSEKEY_ENABLE ?= yes	# Mouse keys(+4700)
-EXTRAKEY_ENABLE ?= yes	# Audio control and System control(+450)
-CONSOLE_ENABLE ?= no	# Console for debug(+400)
+BOOTMAGIC_ENABLE ?= yes # Virtual DIP switch configuration(+1000)
+MOUSEKEY_ENABLE ?= yes # Mouse keys(+4700)
+EXTRAKEY_ENABLE ?= yes # Audio control and System control(+450)
+CONSOLE_ENABLE ?= no # Console for debug(+400)
 COMMAND_ENABLE ?= no    # Commands for debug and configuration
 SLEEP_LED_ENABLE ?= no  # Breathing sleep LED during USB suspend
 NKRO_ENABLE ?= yes      # USB Nkey Rollover
@@ -339,6 +339,7 @@ RGBLIGHT_ENABLE ?= no
 ***請注意***，原本有一行 `#define DESCRIPTION`，但新版的 QMK 已經不使用，請將此行刪除。
 
 例如我可以改成：
+
 ```c
 #define VENDOR_ID       0x5A69  /* ASCII "Zi" */
 #define PRODUCT_ID      0xE000
@@ -360,6 +361,7 @@ RGBLIGHT_ENABLE ?= no
 ```
 
 如果你用的是 RP2040 的話，腳位名稱使用的是 `GPx`，可以參考 [RP2040 Pin nomenclature](https://docs.qmk.fm/#/platformdev_rp2040?id=pin-nomenclature)。例如：
+
 ```c
 #define MATRIX_ROW_PINS { GP0, GP1, GP2, GP3, GP4 }
 #define MATRIX_COL_PINS { GP10, GP11, GP12, GP13 }
@@ -405,6 +407,7 @@ RGBLIGHT_ENABLE ?= no
 但新版的 QMK 已經不使用 `PREVENT_STUCK_MODIFIERS`，請將該行刪除。詳見 [Issue #2518 · qmk/qmk_firmware](https://github.com/qmk/qmk_firmware/issues/2518)。
 
 另外，原本的 `config.h`（及其它 `.h` 檔案） 的 Include Guard 是使用傳統的預處理器寫法，你可以將其改成較先進的 `#pragma once`。例如：
+
 ```c
 /* 舊 */
 #ifndef CONFIG_H
@@ -416,6 +419,7 @@ RGBLIGHT_ENABLE ?= no
 ```
 
 改成以下
+
 ```c
 /* 新 */
 #pragma once
@@ -426,6 +430,7 @@ RGBLIGHT_ENABLE ?= no
 > 如果你沒有改用 `#pragma once`，且你有更改鍵盤的名稱（不是 `#define PRODUCT` 的名稱，是預設為 kb 的[資料夾與檔案名稱](#修改-rulesmk)），那原本的 `kb.h` 被修改成 `my_new_keyboard.h` 後，其內的 `KB_H` 要修改成 `MY_NEW_KEYBOARD_H`，即這裡也要改成你鍵盤的名稱且習慣全大寫。當然，如果你熟悉 C 的話可以用你喜歡的方式。
 
 如果你使用的是 RP2040 的話，可以在 `config.h` 中加入：
+
 ```c
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
 ```
@@ -435,6 +440,7 @@ RGBLIGHT_ENABLE ?= no
 ### 修改完成
 
 修改完成的 `config.h` 範例：
+
 ```c
 #pragma once
 
@@ -515,11 +521,11 @@ RGBLIGHT_ENABLE ?= no
 
 ```c
 KEYMAP(
-	KC_NLCK, KC_SLSH, KC_ASTR, KC_MINS,
-	KC_P7,   KC_P8,   KC_F9,
-	KC_P4,   KC_P5,   KC_P6,   KC_PLUS,
-	KC_P1,   KC_P2,   KC_P3,
-	KC_P0,   MO(1),   KC_PENT),
+ KC_NLCK, KC_SLSH, KC_ASTR, KC_MINS,
+ KC_P7,   KC_P8,   KC_F9,
+ KC_P4,   KC_P5,   KC_P6,   KC_PLUS,
+ KC_P1,   KC_P2,   KC_P3,
+ KC_P0,   MO(1),   KC_PENT),
 ```
 
 這些就代表了鍵盤各個鍵位的按鍵功能。像是 `KC_P7` 代表了 <kbd>Numpad7</kbd>（數字鍵盤的 7），而詳細的按鍵名稱請參考 QMK 的說明文件：[Keycodes Overview](https://docs.qmk.fm/#/keycodes?id=keycodes-overview)。
@@ -546,8 +552,8 @@ KEYMAP(
 - [RESET key not working with pro micro #3091](https://github.com/qmk/qmk_firmware/issues/3091)
 - [Replace Pro Micro bootloader with QMK DFU](https://www.reddit.com/r/olkb/comments/8sxgzb/replace_pro_micro_bootloader_with_qmk_dfu/)
 - QMK相關
-  - [QMK 官方網站](https://qmk.fm/)
-  - [QMK 官方文件](https://docs.qmk.fm/#/)
-  - [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)
+    - [QMK 官方網站](https://qmk.fm/)
+    - [QMK 官方文件](https://docs.qmk.fm/#/)
+    - [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)
 
 > 本文最早發佈於 2020-06-21，於 2023 重新編排並更新內容。

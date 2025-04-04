@@ -51,12 +51,13 @@ draft: false
 ## 組成
 
 PCB 上大概會有幾種東西：
+
 - 走線（Track）：用來連接各個零件的導線。
 - 焊盤（Pad）：阻焊層沒有覆蓋、讓零件可以焊接到板子上的地方。
 - [孔（Hole）](https://www.researchmfg.com/2015/06/pth-npth-via/)
-  - 電鍍通孔（PTH，Plating through hole）：通常用於焊接 DIP 插板零件。因為孔壁有電鍍，可以導電，所以同時會連接上下兩層銅箔層。
-  - 非電鍍通孔（NPTH，Non plating through hole）：不能導電的鑽孔，通常用來鎖螺絲或插入零件的固定插銷等。
-  - Via：也算一種 PTH，只是通常會很小，不能插入零件接腳，只用來導通各個銅層。
+    - 電鍍通孔（PTH，Plating through hole）：通常用於焊接 DIP 插板零件。因為孔壁有電鍍，可以導電，所以同時會連接上下兩層銅箔層。
+    - 非電鍍通孔（NPTH，Non plating through hole）：不能導電的鑽孔，通常用來鎖螺絲或插入零件的固定插銷等。
+    - Via：也算一種 PTH，只是通常會很小，不能插入零件接腳，只用來導通各個銅層。
 - 鋪銅區（Filled zone）：大面積的銅箔區域，可以當作超粗的走線，也可以藉由其大表面積來幫助散熱，在一些情況下也有訊號屏蔽等功能。視情況而定，通常會連接 GND 走線網路。
 - 絲印（Silkscreen）：供焊接人員或使用者辨識的標識性圖樣或文字，通常用來指示各零件的擺位及其代號。例如綠色 PCB 上通常用白色的絲印。
 - [阻焊層（Solder mask）](https://www.researchmfg.com/2017/07/soldermask/)：俗稱「綠漆」，是一種絕緣塗料。PCB 上除了要焊接零件的焊盤與 PTH、要散熱的地方及要敷錫的地方外，都會覆蓋阻焊層，以避免短路，也更方便焊接。現在的阻焊層有各種顏色可以選，甚至有所謂的「透明阻焊層+黑色 FR4 基板」的設計，顏色基本上和性能無關。
@@ -79,6 +80,7 @@ HASL 比較便宜，但是其平整度較差，且放太久後會不易吃錫焊
 # PCB Laout
 
 進行 PCB Layout 時，我通常會遵循以下的步驟：
+
 1. 設定 PCB 設計參數。
 1. 從 Schematic 更新 PCB。
 1. 調整零件 Footprint 的位置。
@@ -99,16 +101,17 @@ HASL 比較便宜，但是其平整度較差，且放太久後會不易吃錫焊
 PCB 設計參數是用來規範設計的。每一家 PCB 工廠的製作能力都不同，容許的生產規格也不同，甚至不同種類的 PCB 允許的規格也不同。為了避免畫出工廠做不出來的 PCB，所以要設定一些參數限制。這些參數也會作為 DRC（Design rule check） 的檢查依據。
 
 在 KiCad 的專案頁面雙擊 `<Project_Name.kicad_pcb>` 以開啓 PCB 編輯器。點擊上方工具列「File > Board Setup > Design Rules > Constraints」，這裡可以調整基本的設計約束。就像上面說的一樣，每個工廠的製造能力都不同，所以請參考你預計使用的生產商所提供的資訊調整這裡的數值（[JLCPCB 製作能力](https://jlcpcb.com/capabilities/pcb-capabilities)、[PCBWay 製造能力](https://www.pcbway.com/capabilities.html)）。通常最重要的有：
+
 - Copper
-  - Minimum clearance: 最小間距
-  - Minimum track width: 最小線寬
-  - Minimum annular width: 最小焊盤環型寬度
-  - Minimum via diameter: 最小的 via 直徑（不是鑽孔）
-  - Copper to hole clearance: 銅箔到孔的間距
-  - Copper to edge clearance: 銅箔到邊緣的間距
+    - Minimum clearance: 最小間距
+    - Minimum track width: 最小線寬
+    - Minimum annular width: 最小焊盤環型寬度
+    - Minimum via diameter: 最小的 via 直徑（不是鑽孔）
+    - Copper to hole clearance: 銅箔到孔的間距
+    - Copper to edge clearance: 銅箔到邊緣的間距
 - Holes
-  - Minimum through hole: 最小鑽孔直徑
-  - Hole to hole clearance: 孔到孔距離
+    - Minimum through hole: 最小鑽孔直徑
+    - Hole to hole clearance: 孔到孔距離
 
 如果非必要，或你對 PCB 製作不是很熟悉的話，不太建議將這些數值設定與工廠提供的極限一樣，而是稍微寬容一點，畢竟生產還是有可能出現做壞的。如果你不是很確定要怎麼設定這些值的話，可以參考下圖，這是我用 JLCPCB 時的設定，這邊的參數比較保守、沒有設到極限。
 
@@ -117,6 +120,7 @@ PCB 設計參數是用來規範設計的。每一家 PCB 工廠的製作能力�
 另外，你可能會想為特定的走線設定特殊的規格，這時可以到「File > Board Setup > Design Rules > Net Classes」中設定。最常見的是把電源單獨設定得走線粗一點、Via 大一點；或設定 USB D+/- 差分訊號走線以符合阻抗匹配。
 
 我通常使用的設定為：
+
 - 一般：走線 0.2mm 寬/間距；Via Size 0.8mm，Via Hole 0.4mm。
 - 電源：走線 0.35mm 寬/間距；Via Size 0.8mm，Via Hole 0.4mm。
 - 細線：走線 0.15mm 寬/間距；Via Size 0.56mm，Via Hole 0.3mm。
@@ -125,7 +129,6 @@ PCB 設計參數是用來規範設計的。每一家 PCB 工廠的製作能力�
 ![為不同走線網路單獨設定樣式](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/95f1f607.webp)
 
 如果你想要更詳細地設定 DRC 的話，可以到「File > Board Setup > Design Rules > Custom Rules」中設定。這裡是比較進階的用法，我自己也不是完全熟悉這邊的設定，但是可以大概參考一下我之前使用的設定：[KiCad custom rules for JLCPCB](https://gist.github.com/ziteh/0d88f3ad4d2d7f4b38755af364208a6e)
-
 
 ## 更新 PCB
 
@@ -170,6 +173,7 @@ PCB 設計參數是用來規範設計的。每一家 PCB 工廠的製作能力�
 ![電容要儘量靠近 IC](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/d402a9a1.webp)
 
 如果你對這部分毫無頭緒的話，可以看看我畫的 PCB，雖然我也不是專門學 PCB Layout 的，但是這些 PCB 都是實際生產並可以工作的。
+
 - [ergo-snm-keyboard](https://github.com/ziteh/ergo-snm-keyboard)
 - [calcite](https://github.com/ziteh/calcite)
 - [rp-micro](https://github.com/ziteh/rp-micro)
@@ -191,6 +195,7 @@ PCB 設計參數是用來規範設計的。每一家 PCB 工廠的製作能力�
 ![在 KLE 上幫各個按鍵加上順序編號](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/96d80e7f.webp)
 
 要使 KiCAD KLE Placer 可以工作的話，Schematic 有一些需要注意的地方。
+
 1. 鍵軸的代號（Annotate, Reference, Designator）需要以「Sort symbols by Y position」的順序進行排列。其實就是照著上面說到 KLE 的順序排。
 2. 有衛星軸的話，衛星軸的代號要和該鍵軸的代號一樣。例如 `KEY16` 有衛星軸，那它的衛星軸代號要是 `S16`。
 
@@ -323,6 +328,7 @@ PCB 全部完成後就可以輸出工廠生產用的 Gerber 檔了。
 這樣就完成 Gerber 檔的輸出，可以在 `gerber` 資料夾中看到輸出的檔案。建議使用 Gerber 檢視軟體再次查看生成的 Gerber 檔是否正確。將整個 `gerber` 資料夾壓縮成 `.zip` 壓縮檔。
 
 常見的 Gerber 檢視器有：
+
 - [gerbv](http://gerbv.geda-project.org/)
 - [tracespace view](https://tracespace.io/view/)（線上）
 - [Reference Gerber Viewer](https://gerber.ucamco.com/)（線上）
@@ -343,7 +349,6 @@ PCB 全部完成後就可以輸出工廠生產用的 Gerber 檔了。
 |      U       | 點選一條走線後，分段選取                |
 | ` (ESC 下方) | 高亮顯示同一條走線網路                  |
 
-
 # 相關網頁
 
 - [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
@@ -352,18 +357,19 @@ PCB 全部完成後就可以輸出工廠生產用的 Gerber 檔了。
 - [PCBWay Plug-In for KiCad](https://www.pcbway.com/blog/News/PCBWay_Plug_In_for_KiCad_3ea6219c.html)
 - [KiCad 官方文件](https://docs.kicad.org/7.0/zh/getting_started_in_kicad/getting_started_in_kicad.html)
 - QMK相關
-	- [QMK 官方網站](https://qmk.fm/)
-	- [QMK 官方文件](https://docs.qmk.fm/#/)
-	- [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)
+    - [QMK 官方網站](https://qmk.fm/)
+    - [QMK 官方文件](https://docs.qmk.fm/#/)
+    - [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)
 
 參考資料：
+
 - [電子製造，工作狂人(ResearchMFG)](https://www.researchmfg.com/)
 - JLCPCB
-  - [PCB Manufacturing & Assembly Capabilities - JLCPCB](https://jlcpcb.com/capabilities/pcb-capabilities)
-  - [How to generate Gerber and Drill files in KiCad 6 - JLCPCB Help Center](https://jlcpcb.com/help/article/16-How-to-generate-Gerber-and-Drill-files-in-KiCad-6)
+    - [PCB Manufacturing & Assembly Capabilities - JLCPCB](https://jlcpcb.com/capabilities/pcb-capabilities)
+    - [How to generate Gerber and Drill files in KiCad 6 - JLCPCB Help Center](https://jlcpcb.com/help/article/16-How-to-generate-Gerber-and-Drill-files-in-KiCad-6)
 - PCBWay
-  - [PCB Capabilities - Custom PCB Prototype the Easy Way - PCBWay](https://www.pcbway.com/capabilities.html)
-  - [Generate Gerber file from Kicad 5.1.6 - Help Center - PCBway](https://www.pcbway.com/blog/help_center/Generate_Gerber_file_from_Kicad_5_1_6.html)
+    - [PCB Capabilities - Custom PCB Prototype the Easy Way - PCBWay](https://www.pcbway.com/capabilities.html)
+    - [Generate Gerber file from Kicad 5.1.6 - Help Center - PCBway](https://www.pcbway.com/blog/help_center/Generate_Gerber_file_from_Kicad_5_1_6.html)
 
 ---
 

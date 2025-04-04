@@ -15,6 +15,7 @@ draft: false
 ---
 
 # 前言
+
 GPIO（General Purpose Input/Output）可以說是微控制器最基本的功能，因此第一堂當然要先教 GPIO 的使用方式。
 
 在本文中，將會介紹 STM32 的基本輸出與輸入的設定及模式。
@@ -22,6 +23,7 @@ GPIO（General Purpose Input/Output）可以說是微控制器最基本的功能
 <!--more-->
 
 # STM32 的 GPIO 簡介
+
 相比於 Arduino，STM32 在使用 GPIO 時，要設定和注意的地方有很多，因此我先簡單介紹一下 STM32 的 GPIO。
 
 首先最基本的，在設定 GPIO 時除了可以指定這個 Pin 腳是要是「General Purpose」的 Input 還是 Output 外，還有所謂的「Alternate Function（AF，復用功能）」，也可以設定是否啓用 STM32 內建的 上/下拉電阻（Pull-Up/Down Resistor）。
@@ -31,16 +33,19 @@ GPIO（General Purpose Input/Output）可以說是微控制器最基本的功能
 如果是 Input 的話則有「類比（Analog）」與「浮接（Floating）」輸入，使用浮接輸入時也常常搭配 STM32 內建的上/下拉電阻使用。
 
 功能模式：
-* General Purpose（通用功能）：一般的控制模式，由使用者透過程式碼直接控制該 Pin 腳要輸出 `High` 還是 `Low`，也可以由程式碼直接讀取該 Pin 腳的值。
-* Alternate Function（復用功能）：使用該 Pin 腳所擁有的特殊功能（例如：UART、PWM、I2C），使用者沒辦法用程式碼直接控制該 Pin 腳的 `High` 或 `Low`，而是由指定的特殊功能來控制。
+
+- General Purpose（通用功能）：一般的控制模式，由使用者透過程式碼直接控制該 Pin 腳要輸出 `High` 還是 `Low`，也可以由程式碼直接讀取該 Pin 腳的值。
+- Alternate Function（復用功能）：使用該 Pin 腳所擁有的特殊功能（例如：UART、PWM、I2C），使用者沒辦法用程式碼直接控制該 Pin 腳的 `High` 或 `Low`，而是由指定的特殊功能來控制。
 
 輸出電路組態：
-* [Push-Pull（推挽）](https://zh.wikipedia.org/zh-tw/%E6%8E%A8%E6%8C%BD%E8%BE%93%E5%87%BA)：由一對互補的電晶體組成，可以直接輸出 `High` 或  `Low` 電位。
-* [Open-Drain（汲極開路）](https://zh.wikipedia.org/zh-tw/%E9%9B%86%E7%94%B5%E6%9E%81%E5%BC%80%E8%B7%AF)：FET 版的 Open-Collector。由一個 N 通道 FET 構成，只能輸出 `Low（GND）` 或 `Open（開路）`狀態，因此要外加一上拉電阻才能使其輸出的 `Open` 狀態變成 `High`，而 `High` 狀態的實際電壓根據上拉電阻所接的電源而定，可以高或低於 IC 本身的電壓值。擁有線接及閘（Wired AND）的特性。
+
+- [Push-Pull（推挽）](https://zh.wikipedia.org/zh-tw/%E6%8E%A8%E6%8C%BD%E8%BE%93%E5%87%BA)：由一對互補的電晶體組成，可以直接輸出 `High` 或  `Low` 電位。
+- [Open-Drain（汲極開路）](https://zh.wikipedia.org/zh-tw/%E9%9B%86%E7%94%B5%E6%9E%81%E5%BC%80%E8%B7%AF)：FET 版的 Open-Collector。由一個 N 通道 FET 構成，只能輸出 `Low（GND）` 或 `Open（開路）`狀態，因此要外加一上拉電阻才能使其輸出的 `Open` 狀態變成 `High`，而 `High` 狀態的實際電壓根據上拉電阻所接的電源而定，可以高或低於 IC 本身的電壓值。擁有線接及閘（Wired AND）的特性。
 
 輸入模式：
-* Analog（類比）：用於使用 ADC 讀取類比的數值時。需要分配為 ADC Channel 的 Pin 腳上才能正常使用。
-* Floating（浮接）：一般的讀取模式。若不啓用 STM32 內部的上/下拉電阻，使用時外部電路應要有上/下拉電阻，否則該 Pin 腳浮空時可能無法正確讀值（或你保證它不會有浮空的情況）。
+
+- Analog（類比）：用於使用 ADC 讀取類比的數值時。需要分配為 ADC Channel 的 Pin 腳上才能正常使用。
+- Floating（浮接）：一般的讀取模式。若不啓用 STM32 內部的上/下拉電阻，使用時外部電路應要有上/下拉電阻，否則該 Pin 腳浮空時可能無法正確讀值（或你保證它不會有浮空的情況）。
 
 上面的內容涉及一些基本電學或電子學的知識，以上僅簡單介紹。
 
@@ -63,6 +68,7 @@ GPIO（General Purpose Input/Output）可以說是微控制器最基本的功能
 ![▲ GPIO 與 AF 功能的對應表。取自 DS10693 Rev10 P.57。](https://bucket.ziteh.dev/blog/libopencm3-stm32-9/4cfda474.webp)
 
 # 小結
+
 今天簡單說明了 STM32 GPIO 的模式，這些算是基本中的基本，只要弄清楚，未來在使用時就會輕鬆很多，明天終於要正式寫程式了。
 
 另外，在 STM32 中，STM32F1 是一個比較特別的系列，它的一些設計及用法和其它系列不同（例如 AF 的設定、GPIO Remap），這點可以多注意一下。
@@ -70,9 +76,10 @@ GPIO（General Purpose Input/Output）可以說是微控制器最基本的功能
 > p.s. 我其實一直不確定要怎麼翻譯「Alternate Function」比較貼切，只好先使用簡體圈常見的用詞。
 
 # 參考資料
-* [【Cary-生活筆記】: Open-Drain 與 Push-Pull輸出方式有什麼不一樣？](http://cary1120.blogspot.com/2013/11/open-drain-push-pull.html)
-* [推輓輸出 - 維基百科，自由的百科全書](https://zh.wikipedia.org/zh-tw/%E6%8E%A8%E6%8C%BD%E8%BE%93%E5%87%BA)
-* [集電極開路 - 維基百科，自由的百科全書](https://zh.wikipedia.org/wiki/%E9%9B%86%E7%94%B5%E6%9E%81%E5%BC%80%E8%B7%AF)
-* [ST Wiki: GPIO internal peripheral](https://wiki.st.com/stm32mpu/wiki/GPIO_internal_peripheral)
+
+- [【Cary-生活筆記】: Open-Drain 與 Push-Pull輸出方式有什麼不一樣？](http://cary1120.blogspot.com/2013/11/open-drain-push-pull.html)
+- [推輓輸出 - 維基百科，自由的百科全書](https://zh.wikipedia.org/zh-tw/%E6%8E%A8%E6%8C%BD%E8%BE%93%E5%87%BA)
+- [集電極開路 - 維基百科，自由的百科全書](https://zh.wikipedia.org/wiki/%E9%9B%86%E7%94%B5%E6%9E%81%E5%BC%80%E8%B7%AF)
+- [ST Wiki: GPIO internal peripheral](https://wiki.st.com/stm32mpu/wiki/GPIO_internal_peripheral)
 
 > 本文同步發表於 [iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10290881)。

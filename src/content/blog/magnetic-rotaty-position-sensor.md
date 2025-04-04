@@ -34,6 +34,7 @@ draft: false
 | [MA702](https://www.monolithicpower.com/en/ma702.html)                                                                                    | 12           | 60k        | SPI (25MHz) | ✔ (10 bit)  | ❌       | ✔ (12 bit) | 3.3              | QFN-16 (3x3mm)        |
 | [MT6816](https://www.magntek.com.cn/en/list/177/517.htm)                                                                                  | 14           | 25k        | SPI (16MHz) | ✔           | ✔        | ✔ (12 bit) | 3.3~5.0          | SOP-8                 |
 | [MT6701](https://www.magntek.com.cn/en/list/177/559.htm)                                                                                  | 14           | 55k        | SSI or I2C  | ✔           | ✔        | ✔ (12 bit) | 3.3~5.0          | SOP-8, QFN-16 (3x3mm) |
+
 > 上表僅供參考，請以官方資料為準。
 
 - `TLE5012B` 是一個系列，其中 `TLE5012B E1000` 是有 Encoder ABI (IIF) 輸出的版本，不同版本有不同的輸出方式。
@@ -45,6 +46,7 @@ draft: false
 - `AS5x47` 系列與 `MA730` 滿多人用的，採購方便。`AS5600`相當便宜且容易購買。
 
 # 參考資料
+
 - [各厂商磁编码器对比，AS5047、AS5048、AS5600、TLE5012、MA730_Mark_md的博客-CSDN博客_tle5120](https://blog.csdn.net/Mark_md/article/details/100181701)
 - [[STM32學習記錄-7] AS5047P 旋轉位置感測器/磁性編碼器使用教學 | ZiTe 本物誌](/posts/learningstm32-as5047p/)
 - [ams OSRAM 的角度感測器列表](https://ams.com/en/angle-position-on-axis)

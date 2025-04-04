@@ -27,6 +27,7 @@ draft: false
 # 編譯
 
 在上一篇我們已經準備好 QMK MSYS 的環境了，可以直接進行編譯，在 QMK MSYS 中執行：
+
 ```cmd
 qmk compile -kb mytetstkb -km default
 ```
@@ -103,6 +104,7 @@ QMK 有個官方的燒錄工具——[QMK Toolbox](https://github.com/qmk/qmk_to
 ### DFU 模式
 
 RP2040 進入 DFU 模式的方法主要有以下幾種：
+
 - RP2040 接上電腦，快速雙擊 Reset 按鈕。需已燒錄有啓用 [Double-tap Reset](https://docs.qmk.fm/#/platformdev_rp2040?id=double-tap) 的 QMK 韌體才能用此方法。
 - RP2040 接上電腦，先按著 Boot 按鈕不放，單擊 Reset 按鈕後放開 Boot 按鈕。
 - RP2040 先不接電腦，按著 Boot 按鈕不放，接上電腦後放開 Boot 按鈕。
@@ -112,6 +114,7 @@ RP2040 進入 DFU 模式的方法主要有以下幾種：
 ### 進行燒錄
 
 RP2040 可以透過以下任一種方式燒錄韌體：
+
 - 複製 `.uf2` 檔案。
   1. 編譯韌體以生成 `.uf2` 檔。
   2. 進入 DFU 模式。
@@ -141,14 +144,14 @@ RP2040 可以透過以下任一種方式燒錄韌體：
 
 - [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - 參考資料
-	- [\[2020\] 新版 QMK 教學](https://ergotaiwan.tw/install-qmk-tutorials-2020/)
-	- [SparkFun Pro Micro: Reset to Bootloader](https://learn.sparkfun.com/tutorials/pro-micro--fio-v3-hookup-guide/troubleshooting-and-faq#ts-reset)
-	- [Trouble flashing QMK - No device present](https://www.keebtalk.com/t/trouble-flashing-qmk-no-device-present/5871/21)
-	- [Installing an Arduino Bootloader](https://learn.sparkfun.com/tutorials/installing-an-arduino-bootloader)
-	- [Replace Pro Micro bootloader with QMK DFU](https://www.reddit.com/r/olkb/comments/8sxgzb/replace_pro_micro_bootloader_with_qmk_dfu/)
+    - [\[2020\] 新版 QMK 教學](https://ergotaiwan.tw/install-qmk-tutorials-2020/)
+    - [SparkFun Pro Micro: Reset to Bootloader](https://learn.sparkfun.com/tutorials/pro-micro--fio-v3-hookup-guide/troubleshooting-and-faq#ts-reset)
+    - [Trouble flashing QMK - No device present](https://www.keebtalk.com/t/trouble-flashing-qmk-no-device-present/5871/21)
+    - [Installing an Arduino Bootloader](https://learn.sparkfun.com/tutorials/installing-an-arduino-bootloader)
+    - [Replace Pro Micro bootloader with QMK DFU](https://www.reddit.com/r/olkb/comments/8sxgzb/replace_pro_micro_bootloader_with_qmk_dfu/)
 - QMK相關
-	- [QMK 官方網站](https://qmk.fm/)
-	- [QMK 官方文件](https://docs.qmk.fm/#/)
-	- [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)
+    - [QMK 官方網站](https://qmk.fm/)
+    - [QMK 官方文件](https://docs.qmk.fm/#/)
+    - [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)
 
 > 本文最早發佈於 2020-06-21，於 2023 重新編排並更新內容。

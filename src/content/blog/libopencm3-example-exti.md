@@ -17,6 +17,7 @@ draft: false
 ---
 
 我在 2022 年 9 月重新寫了與本文內容相近的文章，建議可以觀看新文章：
+
 - [STM32 EXTI 外部中斷](/posts/libopencm3-stm32-7/)
 - [STM32 LibOpenCM3：EXTI 外部中斷](/posts/libopencm3-stm32-8/)
 
@@ -100,6 +101,7 @@ int main(void)
 ## 程式說明
 
 ### 引入函式庫
+
 ```c
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/gpio.h>
@@ -127,6 +129,7 @@ void led_setup(void)
 ```
 
 函數 `led_setup()` 負責設定 LED。
+
 - `rcc_periph_clock_enable()` 用來致能目標 LED 所在 GPIO Port-A 的 Clock。
 - `gpio_set_mode()` 設定 LED 所在的 PA5 為最高速度 2 MHz 的推輓式（Push-Pull）輸出。
 
@@ -152,6 +155,7 @@ void button_setup(void)
 ```
 
 函數 `button_setup()` 負責按鈕的相關設定。
+
 - RCC
     - `rcc_periph_clock_enable(RCC_GPIOC)` 致能按鈕本身所在的 GPIO Port-C 的 Clock。
     - `rcc_periph_clock_enable(RCC_AFIO)` 致能 Alternate function I/O（AFIO） 的 Clock。使用外部中斷必須啟用 AFIO。

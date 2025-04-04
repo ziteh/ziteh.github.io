@@ -32,4 +32,4 @@ draft: false
 
 最後，感謝讀者們。若對我先前的教學文章有疑問，或覺得有地方寫錯的話，都歡迎提出。
 
-> 本文同步發表於[ iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10306888)。
+> 本文同步發表於[iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10306888)。

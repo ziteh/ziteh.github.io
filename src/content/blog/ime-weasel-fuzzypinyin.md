@@ -49,7 +49,7 @@ draft: false
 
 這時要看各位所選擇使用的小狼毫輸入方案是那一種，像我是使用「朙月拼音」和「朙月拼音-臺灣正體」，而它們的設定檔分別為「luna_pinyin.schema.yaml」和「luna_pinyin_tw.schema.yaml」。這兩個檔案可能會在`用戶資料夾/build/`裡。
 
-接着請到[我的 GitHub ](https://gist.github.com/ziteh/beac7b7038652b79864fbab7a7254183)下載設定檔。
+接着請到[我的 GitHub](https://gist.github.com/ziteh/beac7b7038652b79864fbab7a7254183)下載設定檔。
 
 可以發現其檔名為「luna_pinyin.custom.yaml」，對應了上述的「luna_pinyin.schema.yaml」。請將「luna_pinyin.custom.yaml」放到用戶資料夾中（不是`用戶資料夾/build/`）。
 
@@ -62,6 +62,7 @@ draft: false
 以文字編輯軟體打開「luna_pinyin.custom.yaml」。你會看到有許多行，其中每一行都是一種模糊音的規則。如果你想啓用該模糊音規則，就請將改行前的`#`（井號）刪除；反之要停用的話就在該行前加上井號。
 
 例如以下示範啓用規則「zh, ch, sh => z, c, s」、「z, c, s => zh, ch, sh」，並停用規則「n => l」、「l => n」。
+
 ```yaml
 - derive/^([zcs])h/$1/             # zh, ch, sh => z, c, s
 - derive/^([zcs])([^h])/$1h$2/     # z, c, s => zh, ch, sh
@@ -81,9 +82,10 @@ draft: false
 而設定檔內的那些模糊音規則使用的是 Perl 正規表示式，可以參考[正規表示式 - 維基百科](https://zh.wikipedia.org/wiki/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F#PCRE%E8%A1%A8%E9%81%94%E5%BC%8F%E5%85%A8%E9%9B%86)
 
 # 相關文章與資源
-* [RIME | 中州韻輸入法引擎](https://rime.im/)
-* [GitHub · rime/home Wiki](https://github.com/rime/home/wiki)
-* [Rime 定製指南](https://github.com/rime/home/wiki/CustomizationGuide#%E6%9C%99%E6%9C%88%E6%8B%BC%E9%9F%B3%E6%A8%A1%E7%B3%8A%E9%9F%B3%E5%AE%9A%E8%A3%BD%E6%A8%A1%E6%9D%BF)
-* [Rime 設定項手冊](https://github.com/LEOYoon-Tsaw/Rime_collections/blob/master/Rime_description.md)
-* [【朙月拼音】模糊音定製模板](https://gist.github.com/lotem/2320943)
-* [正規表示式 - 維基百科](https://zh.wikipedia.org/wiki/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F#PCRE%E8%A1%A8%E9%81%94%E5%BC%8F%E5%85%A8%E9%9B%86)
+
+- [RIME | 中州韻輸入法引擎](https://rime.im/)
+- [GitHub · rime/home Wiki](https://github.com/rime/home/wiki)
+- [Rime 定製指南](https://github.com/rime/home/wiki/CustomizationGuide#%E6%9C%99%E6%9C%88%E6%8B%BC%E9%9F%B3%E6%A8%A1%E7%B3%8A%E9%9F%B3%E5%AE%9A%E8%A3%BD%E6%A8%A1%E6%9D%BF)
+- [Rime 設定項手冊](https://github.com/LEOYoon-Tsaw/Rime_collections/blob/master/Rime_description.md)
+- [【朙月拼音】模糊音定製模板](https://gist.github.com/lotem/2320943)
+- [正規表示式 - 維基百科](https://zh.wikipedia.org/wiki/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F#PCRE%E8%A1%A8%E9%81%94%E5%BC%8F%E5%85%A8%E9%9B%86)

@@ -18,12 +18,9 @@ draft: false
 
 以下Premiere Pro簡稱為Pr；After Effects簡稱為Ae；DaVinci Resolve 15簡稱為DaVinci Resolve。
 
-
 # 1.避免連續的圖片被讀成影片
 
-
 我發現加入媒體庫時，如果是檔名連續的圖片會被當成影片檔，如果要把這些圖片檔分開來加入媒體庫的話，只要在【Media Storage】右上角的3個點處將【Show Individual Frames】打勾，它就會獨立顯示每一張圖片，而不是將它們當成一個影片。
-
 
 ![▲ 獨立顯示每一幀](https://bucket.ziteh.dev/blog/davinciresolve15/f8c670df.webp)
 
@@ -39,10 +36,10 @@ draft: false
 ![▲ 直接輸入時間來移動播放頭](https://bucket.ziteh.dev/blog/davinciresolve15/84903ab8.webp)
 
 # 3.開啓關鍵影格時間軸
+
 在Pr中關鍵影格的時間軸在Effect Controls中，而DaVinci Resolve是直接顯示在主要時間軸中。只要按下有加入關鍵影格的素材右下方的按鈕就可以開啓關鍵影格時間軸。
 
 ![▲ 開啓關鍵影格時間軸](https://bucket.ziteh.dev/blog/davinciresolve15/282adedb.webp)
-
 
 而按鈕有2種，左邊波形樣式的按鈕會以波形的方式顯示；而右邊菱形樣式的按鈕只會顯示關鍵影格的位置。
 ![▲ 波形樣式按鈕](https://bucket.ziteh.dev/blog/davinciresolve15/7c2cd386.webp)
@@ -51,11 +48,9 @@ draft: false
 
 而且我們也可以直接在關鍵影格時間軸上編輯關鍵影格，還可以加入不同的轉變方式。
 
-
 ![▲ 在關鍵影格時間軸上編輯關鍵影格](https://bucket.ziteh.dev/blog/davinciresolve15/6846b683.webp)
 
 而波形樣式關鍵影格時間軸最左邊的按鈕可以選擇要顯示的不同特效的關鍵影格波形。
-
 
 ![▲ 顯示選單按鈕](https://bucket.ziteh.dev/blog/davinciresolve15/76492da0.webp)
 

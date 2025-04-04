@@ -21,11 +21,11 @@ MCU控制最基本的就是輸入與輸出，此篇就來簡單介紹最基本�
 
 首先我們要來認識STM32F10x和輸出入有關的暫存器。每個GPIO有：(以下x為Port名稱，也就是A，B，C，D或E)
 
-1.  兩個32位元的設置暫存器（GPIOx\_CRH、GPIOx\_CRL）
-2.  兩個32位元的資料暫存器（GPIOx\_IDR、GPIOx\_ODR）
-3.  一個32位元的位元設定/重置暫存器（GPIOx\_BSRR）
-4.  一個16位元的位元重置暫存器（GPIOx\_BRR）
-5.  一個32位元的設置鎖定暫存器（GPIOx\_LCKR）
+1. 兩個32位元的設置暫存器（GPIOx\_CRH、GPIOx\_CRL）
+2. 兩個32位元的資料暫存器（GPIOx\_IDR、GPIOx\_ODR）
+3. 一個32位元的位元設定/重置暫存器（GPIOx\_BSRR）
+4. 一個16位元的位元重置暫存器（GPIOx\_BRR）
+5. 一個32位元的設置鎖定暫存器（GPIOx\_LCKR）
 
 <!--more-->
 
@@ -40,6 +40,7 @@ CRH和CRL分別是Configuration Register High與Configuration Register Low的縮
 ![](https://bucket.ziteh.dev/blog/learningstm32-02/511aa80b.webp)
 
 範例：
+
 ```c
 GPIOB->CRH = 0x004411EE;
 // 將Port B的15、14腳設為類比輸入,
@@ -54,41 +55,42 @@ GPIOA->CRL = 0x22222222;
 至於各個輸出入模式有什麼差別，我簡單的以我找到的資料說明一下：
 
 ### ※推挽和汲極開路
+
 這兩者根本的差異在於電路結構不同。
 
-*   推挽（Push-Pull）使用一對互補的電晶體，輸出可以直接是高或低準位，不用再外加電路，並且能夠灌電流（Sink current）與拉電流（Sourcing current）。
-*   汲極開路（Open-Drain，OD）是MOSFET版的集極開路（ Open-Collector，OC），基本上只有開路（浮接）和接地這兩種狀態，所以如果要輸出高低準位的話要外加一個上拉電阻（提升電阻，Pull-up resistor），也因為可以使用上拉電阻，所以上拉的電源電壓可以自己決定，可以當作邏輯電壓轉換，且可以提供大於晶片本身能提供的電流，因為電源已經獨立出來了。而一般情況只能灌電流（Sink current），外加上拉電阻後才行拉電流（Sourcing current）。而將多隻OD輸出接在一起後加上一上拉電阻，會形成所謂的“線接及閘（Wired AND）”
+- 推挽（Push-Pull）使用一對互補的電晶體，輸出可以直接是高或低準位，不用再外加電路，並且能夠灌電流（Sink current）與拉電流（Sourcing current）。
+- 汲極開路（Open-Drain，OD）是MOSFET版的集極開路（ Open-Collector，OC），基本上只有開路（浮接）和接地這兩種狀態，所以如果要輸出高低準位的話要外加一個上拉電阻（提升電阻，Pull-up resistor），也因為可以使用上拉電阻，所以上拉的電源電壓可以自己決定，可以當作邏輯電壓轉換，且可以提供大於晶片本身能提供的電流，因為電源已經獨立出來了。而一般情況只能灌電流（Sink current），外加上拉電阻後才行拉電流（Sourcing current）。而將多隻OD輸出接在一起後加上一上拉電阻，會形成所謂的“線接及閘（Wired AND）”
 
 如果以上還是不瞭解的話，一般就用推挽輸出就好了。詳細可以觀看：
 
-1.  [【Cary-生活筆記】Open-Drain 與 Push-Pull輸出方式有什麼不一樣？](http://cary1120.blogspot.com/2013/11/open-drain-push-pull.html)
-2.  [【CSND】open drain和push pull](https://blog.csdn.net/tanli20090506/article/details/77450905)
-3.  [【Wiki維基百科】集電極開路](https://zh.wikipedia.org/wiki/%E9%9B%86%E7%94%B5%E6%9E%81%E5%BC%80%E8%B7%AF)
+1. [【Cary-生活筆記】Open-Drain 與 Push-Pull輸出方式有什麼不一樣？](http://cary1120.blogspot.com/2013/11/open-drain-push-pull.html)
+2. [【CSND】open drain和push pull](https://blog.csdn.net/tanli20090506/article/details/77450905)
+3. [【Wiki維基百科】集電極開路](https://zh.wikipedia.org/wiki/%E9%9B%86%E7%94%B5%E6%9E%81%E5%BC%80%E8%B7%AF)
 
 <br/>
 
 ### ※通用輸出與复用輸出
 
-*   通用輸出就是一般的輸出模式，我們可以直接透過ODR暫存器來指定要輸出高或低準位。
-*   复用輸出就是讓該腳位作為第二功能（如STM32F103RB的PB10腳的第二功能是I2C\_SCL。詳細可以查Datasheet）的輸出模式，觀察表一可以發現，复用輸出模式沒辦法透過編輯ODR暫存器來控制該腳位的準位。
+- 通用輸出就是一般的輸出模式，我們可以直接透過ODR暫存器來指定要輸出高或低準位。
+- 复用輸出就是讓該腳位作為第二功能（如STM32F103RB的PB10腳的第二功能是I2C\_SCL。詳細可以查Datasheet）的輸出模式，觀察表一可以發現，复用輸出模式沒辦法透過編輯ODR暫存器來控制該腳位的準位。
 
 如果以上還是不瞭解的話，一般就用通用輸出就好了。詳細可以觀看：
 
-1.  [挽输出、开漏输出、复用开漏输出、复用推挽输出 以及上拉输入、下拉输入、浮空输入、模拟输入的区别](http://www.voidcn.com/article/p-ktxryirx-wh.html)
+1. [挽输出、开漏输出、复用开漏输出、复用推挽输出 以及上拉输入、下拉输入、浮空输入、模拟输入的区别](http://www.voidcn.com/article/p-ktxryirx-wh.html)
 
 <br/>
 
 ### ※四種輸入模式
 
-*   類比輸入就如同字面上的意思，是用來輸入類比訊號的，當然要輸入類比訊號的話，該腳位要有支援才可以。
-*   浮空輸入就是指晶片內部沒有上/下拉電阻，是浮接的狀態，所以一般的使用情形會要外加上/下拉電阻才可以讀取高低準位。
-*   上拉輸入就是晶片內部有一個上拉電阻，所以不用再外加上拉電阻。
-*   下拉輸入和上拉輸入概念相同，只是把上拉電阻變成下拉電阻。要比較注意到是，上/下拉輸入模式還要搭配ODR暫存器使用。
+- 類比輸入就如同字面上的意思，是用來輸入類比訊號的，當然要輸入類比訊號的話，該腳位要有支援才可以。
+- 浮空輸入就是指晶片內部沒有上/下拉電阻，是浮接的狀態，所以一般的使用情形會要外加上/下拉電阻才可以讀取高低準位。
+- 上拉輸入就是晶片內部有一個上拉電阻，所以不用再外加上拉電阻。
+- 下拉輸入和上拉輸入概念相同，只是把上拉電阻變成下拉電阻。要比較注意到是，上/下拉輸入模式還要搭配ODR暫存器使用。
 
 如果以上還是不瞭解的話，一般就用浮接輸入，然後自己外加上/下拉電阻就好了。詳細可以觀看：
 
-1.  [大家来说说自己对GPIO 浮空输入的理解(已解决)](http://www.openedv.com/thread-424-1-1.html)
-2.  [stm32的输入分浮空，上拉，下拉。帮忙教教我这是啥意思。](https://zhidao.baidu.com/question/307988354.html)
+1. [大家来说说自己对GPIO 浮空输入的理解(已解决)](http://www.openedv.com/thread-424-1-1.html)
+2. [stm32的输入分浮空，上拉，下拉。帮忙教教我这是啥意思。](https://zhidao.baidu.com/question/307988354.html)
 
 <br/>
 
@@ -99,6 +101,7 @@ ODR與IDR分別是Output Data Register和Input Data Register的縮寫。這兩�
 ![](https://bucket.ziteh.dev/blog/learningstm32-02/771c653f.webp)
 
 範例：
+
 ```c
 GPIOB->ODR = 0x0000;        // 將Port B的0到15腳都輸出為低準位
 GPIOC->ODR = 0xF8A1;        // 將Port C的15到11、7、5和0號腳設為高準位，其餘為低準位
@@ -121,6 +124,7 @@ BSRR與BRR分別是Bit Set/Reset Register和Bit Reset Register的縮寫。BSRR�
 ![](https://bucket.ziteh.dev/blog/learningstm32-02/5d24c468.webp)
 
 範例：
+
 ```c
 GPIOB->BSRR = 0x30000A00; // 將Port B的13和12腳重置為0；11和9腳設置為1
 GPIOB->BRR = 0xFFFF;      // 將Port B的所有腳位重置為0
@@ -136,7 +140,7 @@ LCKR是Configuration Lock Register的縮寫。其中15到0位元分別控制15�
 
 而LCKR的寫法比較特別，我也還不是很清楚，只知道要照著以下的格式進行寫入。日後如果有找到寫法的話我再來更新。
 
-```
+```text
 WR LCKR[16] = ‘1’ + LCKR[15:0]
 WR LCKR[16] = ‘0’ + LCKR[15:0]
 WR LCKR[16] = ‘1’ + LCKR[15:0]
@@ -153,6 +157,7 @@ APB2ENR是APB2 Peripheral Clock Enable Register的縮寫。每個位元都代表
 ![](https://bucket.ziteh.dev/blog/learningstm32-02/06ea8a8d.webp)
 
 而我們寫APB2ENR時通常使用OR的方式，請看範例：
+
 ```c
 RCC->APB2ENR = RCC->APB2ENR | 0x0004;   // 開啟Port A的時鐘
 RCC->APB2ENR |= 0x0004;                 // 同上行

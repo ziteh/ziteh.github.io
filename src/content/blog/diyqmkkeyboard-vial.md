@@ -41,6 +41,7 @@ draft: false
 ![依照鍵矩陣的物理位置編輯 KLE 的各鍵標記](https://bucket.ziteh.dev/blog/diyqmkkeyboard-vial/1a80cde7.webp)
 
 編輯完成後就下載此 KLE 的 JSON 檔。以我的例子，它的內容大概是：
+
 ```json
 [
   [
@@ -71,6 +72,7 @@ draft: false
 ## 建立定義檔
 
 使用以下的樣板格式建立一個新的 JSON 檔，命名為 `vial.json`：
+
 ```json
 {
     "name": "Calcite52",
@@ -85,6 +87,7 @@ draft: false
 ```
 
 其中，`keymap` 要填入上一步在 KLE 下載的 JSON 檔內容，包含最外圍的方括號。例如：
+
 ```json
 {
     "name": "Calcite52",
@@ -148,7 +151,6 @@ git clone https://github.com/vial-kb/vial-qmk
 
 > 如果你不太熟悉 git，或想要 GUI 的話，可以用 [GitHub Desktop](https://desktop.github.com/) 或 [GitKraken](https://www.gitkraken.com/)。
 
-
 ## 準備環境
 
 打開你的 QMK 環境（例如 QMK MSYS），用 `cd` 指令導航到你剛剛下載的 `vial-qmk` 資料夾下，然後 clone git submoduels。
@@ -161,13 +163,15 @@ vial-qmk$ make git-submodule
 ![使用 QMK MSYS 準備環境](https://bucket.ziteh.dev/blog/diyqmkkeyboard-vial/963188ba.webp)
 
 完成後可以進行一下簡單的驗證：
-```
+
+```bash
 qmk doctor
 ```
 
 你可能會看到「The official repository does not seem to be configured as git remote "upstream"」警告訊息，這很正常，因為這是 Vial QMK，確實不是官方 QMK。
 
 接下來你可以進行一下編譯測試，例如：
+
 ```cmd
 make vial_example/vial_atmega32u4:default
 ```
@@ -183,6 +187,7 @@ make vial_example/vial_atmega32u4:default
 在 `keymaps` 資料夾底下新增一個資料夾 `vial`，複製 `keymaps/default` 資料夾內的所有內容（應該只會有一個 `keymap.c`），貼上到剛剛新增的 `vial` 資料夾底下。
 
 在 `keymaps/vial` 內新增一個 `rules.mk`，並增加以下內容：
+
 ```mk
 VIA_ENABLE = yes
 VIAL_ENABLE = yes
@@ -193,16 +198,19 @@ VIAL_ENABLE = yes
 ## 生成識別碼
 
 接下來要為你的鍵盤生成唯一的識別 ID。用 `cd` 指令回到 `vial-qmk` 的根目錄並執行：
+
 ```cmd
 python3 util/vial_generate_keyboard_uid.py
 ```
 
 它應該會回傳類似這樣的內容：
+
 ```cmd
 #define VIAL_KEYBOARD_UID {0xXX, 0xXX, 0xXX, 0xXX, 0xXX, 0xXX, 0xXX, 0xXX}
 ```
 
 在 `keymaps/vial` 內新增一個 `config.h`，並增加以下內容：
+
 ```c
 /* SPDX-License-Identifier: GPL-2.0-or-later */
 
@@ -218,6 +226,7 @@ python3 util/vial_generate_keyboard_uid.py
 Vial 必須要你設定一個安全解鎖組合鍵，以避免惡意軟體寫入你的鍵盤中。詳細請參考 [Security](https://get.vial.today/docs/security.html)。
 
 在 `keymaps/vial/config.h` 中的 `VIAL_KEYBOARD_UID` 下方增加：
+
 ```c
 #define VIAL_UNLOCK_COMBO_ROWS { 0, 3 }
 #define VIAL_UNLOCK_COMBO_COLS { 0, 11 }
@@ -232,12 +241,14 @@ Vial 必須要你設定一個安全解鎖組合鍵，以避免惡意軟體寫入
 ## 確認檔案
 
 完成上面的步驟後，你的 `keymaps/vial` 資料夾底下應該會有這些檔案：
+
 - `keymap.c`
 - `rules.mk`
 - `config.h`
 - `vial.json`
 
 其中 `config.h` 大概會有以下的內容：
+
 ```c
 /* SPDX-License-Identifier: GPL-2.0-or-later */
 
@@ -256,6 +267,7 @@ Vial 必須要你設定一個安全解鎖組合鍵，以避免惡意軟體寫入
 都完成後就可以進行編譯了。
 
 編譯與燒錄的方式基本上和官方 QMK 一樣，只是要記得 Keymap 要選擇 vial。到 `vial-qmk` 根目錄，執行 `make path/keyboard:vial` 指令。例如：
+
 ```cmd
 make zite/calcite52:vial
 ```

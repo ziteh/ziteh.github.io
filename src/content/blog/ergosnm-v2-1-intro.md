@@ -50,6 +50,7 @@ draft: false
 # 零件
 
 整個鍵盤的 PCB 分成 4 個部分：
+
 - 左半主 PCB
 - 右半主 PCB
 - 拇指區子板（Thumb cluster）

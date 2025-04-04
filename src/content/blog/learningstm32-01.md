@@ -90,10 +90,11 @@ draft: false
 ![](https://bucket.ziteh.dev/blog/learningstm32-01/5de52b9c.webp)
 
 2.在User資料夾中新增一個txt檔，並改名為\[main.c\]。然後將【一、下載Library】部分中的Project\\STM32F10x\_StdPeriph\_Template裡以下4個檔案直接複製過來。
-* system\_stm32f10x.c
-* stm32f10x\_it.c
-* stm32f10x\_it.h
-* stm32f10x\_conf.h
+
+- system\_stm32f10x.c
+- stm32f10x\_it.c
+- stm32f10x\_it.h
+- stm32f10x\_conf.h
 
 ![](https://bucket.ziteh.dev/blog/learningstm32-01/c9174255.webp)
 
@@ -121,12 +122,13 @@ draft: false
 
 10.點選要加入檔案的Group。
 11.按左下方的\[Add Files\]加入檔案（注意選擇路徑視窗下方的檔案類型，不然會看不到所有檔案）。
-* 在\[Startup\]中加入\[startup\_stm32f10x\_hd.s\]。（參考路徑：Libraries\\CMSIS\\CM3\\DeviceSupport\\ST\\STM32F10x\\startup\\arm）
-* 在\[CMSIS\]中加入\[core\_cm3.c\]與\[core\_cm3.h\]。（參考路徑：Libraries\\CMSIS\\CM3\\CoreSupport）
-* 在\[CMSIS\]中加入\[system\_stm32f10x.c\]、\[system\_stm32f10x.h\]與\[stm32f10x.h\]。（參考路徑： Libraries\\CMSIS\\CM3\\DeviceSupport\\ST\\STM32F10x）
-* 在\[FWLib\]中加入\[src\]中所有檔案。（參考路徑： Libraries\\STM32F10x\_StdPeriph\_Driver\\src）
-* 在\[User\]中加入\[main.c\]與\[stm32f10x\_it.c\]。（參考路徑：步驟1中新增的User）
-* 在\[Doc\]中加入\[Readme.txt\]。（參考路徑：步驟1中新增的Doc）
+
+- 在\[Startup\]中加入\[startup\_stm32f10x\_hd.s\]。（參考路徑：Libraries\\CMSIS\\CM3\\DeviceSupport\\ST\\STM32F10x\\startup\\arm）
+- 在\[CMSIS\]中加入\[core\_cm3.c\]與\[core\_cm3.h\]。（參考路徑：Libraries\\CMSIS\\CM3\\CoreSupport）
+- 在\[CMSIS\]中加入\[system\_stm32f10x.c\]、\[system\_stm32f10x.h\]與\[stm32f10x.h\]。（參考路徑： Libraries\\CMSIS\\CM3\\DeviceSupport\\ST\\STM32F10x）
+- 在\[FWLib\]中加入\[src\]中所有檔案。（參考路徑： Libraries\\STM32F10x\_StdPeriph\_Driver\\src）
+- 在\[User\]中加入\[main.c\]與\[stm32f10x\_it.c\]。（參考路徑：步驟1中新增的User）
+- 在\[Doc\]中加入\[Readme.txt\]。（參考路徑：步驟1中新增的Doc）
 
 ![](https://bucket.ziteh.dev/blog/learningstm32-01/701758a2.webp)
 
@@ -147,11 +149,12 @@ draft: false
 ![](https://bucket.ziteh.dev/blog/learningstm32-01/76161beb.webp)
 
 18.在開啟的\[Folder Setup\]視窗中點擊右上方的\[New\]按鈕新增以下路徑。(參考用，請依照個人電腦進行修正調整)
-* \\Libraries\\CMSIS
-* \\Libraries\\STM32F10x\_StdPeriph\_Driver\\inc
-* \\Libraries\\STM32F10x\_StdPeriph\_Driver\\src
-* \\User
-* C:\\Keil\_v5\\ARM\\PACK\\ARM\\CMSIS\\5.3.0\\CMSIS\\Include
+
+- \\Libraries\\CMSIS
+- \\Libraries\\STM32F10x\_StdPeriph\_Driver\\inc
+- \\Libraries\\STM32F10x\_StdPeriph\_Driver\\src
+- \\User
+- C:\\Keil\_v5\\ARM\\PACK\\ARM\\CMSIS\\5.3.0\\CMSIS\\Include
 
 ![](https://bucket.ziteh.dev/blog/learningstm32-01/bf413504.webp)
 

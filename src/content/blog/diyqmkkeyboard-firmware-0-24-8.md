@@ -20,7 +20,7 @@ draft: false
 <!--more-->
 
 > 本篇是以舊的 [`0.24.8`](https://github.com/qmk/qmk_firmware/releases/tag/0.24.8) 版本的 QMK 作為示範。新版本的教學請查看：[產生並編輯 QMK 韌體](/posts/diyqmkkeyboard-firmware)。
-> 
+>
 > 本文的[前一個版本](/posts/diyqmkkeyboard-firmware-0-21-3/)是針對 `0.21.3` 版所撰寫的，舊版教學文僅作為參考保留。
 >
 > 如果你想要切換 QMK 版本的話，可以使用下面的方法（需要先安裝好 QMK MSYS 環境）。
@@ -126,8 +126,8 @@ Project Location: C:/Users/USERNAME/qmk_firmware/keyboards/mytestkb,
 這時你會看到 `mytestkb` 下有這些檔案：
 
 - `keymaps\`
-  - `default\`
-    - `keymap.c`
+    - `default\`
+        - `keymap.c`
 - `info.json`
 - `config.h`
 - `rules.mk`
@@ -153,6 +153,7 @@ MCU 與 Bootloader 的設定是要互相配合的，要依照你使用的 MCU �
 首先看到 `processor` 的部分，這裡要選擇使用的 MCU。由於我們剛剛選擇的是 Pro Micro，所以這裡目前是 `atmega32u4` 沒錯，如果你使用的是別的 MCU 就請修改。QMK 支援的 MCU 可以參考 [Compatible Microcontrollers](https://docs.qmk.fm/#/compatible_microcontrollers)。
 
 再來是 `bootloader` 的部分，由於我們是 Pro Micro，所以這裡要是 `caterina`。如果你使用的是不同的 MCU，那 bootloader 也要改，具體的對照為：
+
 | 微控制器/開發板 | Bootloader     |
 | :-------------: | :------------- |
 |    Pro Micro    | `caterina`     |
@@ -502,10 +503,10 @@ LTO_ENABLE = yes
 - [Keyboard Firmware Builder](https://kbfirmware.com/)
 - [Qwiic Pro Micro USB-C (ATmega32U4) Hookup Guide - SparkFun Learn](https://learn.sparkfun.com/tutorials/qwiic-pro-micro-usb-c-atmega32u4-hookup-guide/all)
 - 本篇的舊版內容
-  - [0.21.3 版](/posts/diyqmkkeyboard-firmware-0-21-3/)
-  - [0.18.3 版](/posts/diyqmkkeyboard-firmware-0-18/)
+    - [0.21.3 版](/posts/diyqmkkeyboard-firmware-0-21-3/)
+    - [0.18.3 版](/posts/diyqmkkeyboard-firmware-0-18/)
 - QMK相關
-  - [QMK 官方網站](https://qmk.fm/)
-  - [QMK 官方文件](https://docs.qmk.fm/#/)
-  - [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)
+    - [QMK 官方網站](https://qmk.fm/)
+    - [QMK 官方文件](https://docs.qmk.fm/#/)
+    - [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)
 - 撰寫本文時的 QMK MSYS 版本：`1.9.0`

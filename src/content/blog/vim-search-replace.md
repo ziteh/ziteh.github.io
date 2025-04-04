@@ -26,11 +26,11 @@ draft: false
 
 以下範例皆為將SSS取代成RRR，只是差在作用範圍不同。
 
-* `:%s/SSS/RRR/g`：所有行。
-* `:s/SSS/RRR/g`：目前游標所在行。
-* `:5,12s/SSS/RRR/g`：從第5行到第12行（包括）。
-* `:1,$s/SSS/RRR/g`：從第一行（`1`）到最後一行（`$`）。
-* `:.,+2s/SSS/RRR/g`：從目前游標所在行（`.`）到下2行（`+2`）。
+- `:%s/SSS/RRR/g`：所有行。
+- `:s/SSS/RRR/g`：目前游標所在行。
+- `:5,12s/SSS/RRR/g`：從第5行到第12行（包括）。
+- `:1,$s/SSS/RRR/g`：從第一行（`1`）到最後一行（`$`）。
+- `:.,+2s/SSS/RRR/g`：從目前游標所在行（`.`）到下2行（`+2`）。
 
 參考：[Search and replace | Vim Tips Wiki | Fandom](https://vim.fandom.com/wiki/Search_and_replace)
 
@@ -44,6 +44,7 @@ draft: false
 參考：[Search and replace in a visual selection | Vim Tips Wiki | Fandom](https://vim.fandom.com/wiki/Search_and_replace_in_a_visual_selection)
 
 # 使用Visual mode選擇搜尋並取代
+
 1. 按下<kbd>v</kbd>、<kbd>V</kbd>或<kbd>Ctrl</kbd>+<kbd>v</kbd>進入Visual mode，並選取欲搜尋之內容。
 2. 按下<kbd>y</kbd>（yank）將選取的內容複製進"暫存器。
 3. 使用指令（如`:%s/SSS/RRR/g`）並搭配<kbd>Ctrl</kbd>+<kbd>r</kbd> <kbd>"</kbd>貼上"暫存器的內容。
@@ -72,7 +73,7 @@ draft: false
 
 # 相關文章與資源
 
-* [Search and replace | Vim Tips Wiki | Fandom](https://vim.fandom.com/wiki/Search_and_replace)
-* [Search and replace in a visual selection | Vim Tips Wiki | Fandom](https://vim.fandom.com/wiki/Search_and_replace_in_a_visual_selection)
-* [How to search for selected text in Vim? - Super User](https://superuser.com/questions/41378/how-to-search-for-selected-text-in-vim)
-* [使用gn操作增强Vim的搜索 - 晴耕雨讀](http://0x3f.org/post/enhance-search-with-gn-in-vim/)
+- [Search and replace | Vim Tips Wiki | Fandom](https://vim.fandom.com/wiki/Search_and_replace)
+- [Search and replace in a visual selection | Vim Tips Wiki | Fandom](https://vim.fandom.com/wiki/Search_and_replace_in_a_visual_selection)
+- [How to search for selected text in Vim? - Super User](https://superuser.com/questions/41378/how-to-search-for-selected-text-in-vim)
+- [使用gn操作增强Vim的搜索 - 晴耕雨讀](http://0x3f.org/post/enhance-search-with-gn-in-vim/)

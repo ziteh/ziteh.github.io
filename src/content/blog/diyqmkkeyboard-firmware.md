@@ -463,7 +463,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 ```
 
-> `clang-format off` 與 `clang-format on` 是讓 VS Code 的 Clang-format 格式化工具不用美化該區域的內容，和功能無關可以不加。  
+> `clang-format off` 與 `clang-format on` 是讓 VS Code 的 Clang-format 格式化工具不用美化該區域的內容，和功能無關可以不加。
 >
 > 如果你稍微懂一點 C 語言的話，`LAYOUT()` 就是是 `#define` 巨集 Macro。
 
@@ -890,7 +890,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 ```
 
-> `clang-format off` 與 `clang-format on` 是讓 VS Code 的 Clang-format 格式化工具不用美化該區域的內容，和功能無關可以不加。  
+> `clang-format off` 與 `clang-format on` 是讓 VS Code 的 Clang-format 格式化工具不用美化該區域的內容，和功能無關可以不加。
 >
 > 如果你稍微懂一點 C 語言的話，`LAYOUT()` 就是是 `#define` 巨集 Macro。
 

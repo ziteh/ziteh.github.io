@@ -23,9 +23,9 @@ draft: false
 
 有3個可以選擇的設定：
 
-*   第一個設定開啓後，打開的網站不會新開分頁，而是取代目前的分頁。
-*   第二個設定我不確定是什麽功能。
-*   第三個設定是改變清單的顯示模式。
+- 第一個設定開啓後，打開的網站不會新開分頁，而是取代目前的分頁。
+- 第二個設定我不確定是什麽功能。
+- 第三個設定是改變清單的顯示模式。
 
 下面也有4個不同的按鈕圖樣可以選擇。
 
@@ -36,12 +36,12 @@ draft: false
 
 ![▲可以匯入與匯出設定值](https://bucket.ziteh.dev/blog/googleshortcuts/e741292b.webp)
 
-# Google Shortcuts 擴充套件網址：
+# Google Shortcuts 擴充套件網址
 
-*   [Firefox版](https://addons.mozilla.org/zh-TW/firefox/addon/google-shortcuts-all-google-se/)
-*   [Google Chrome版](https://chrome.google.com/webstore/detail/shortcuts-for-google/baohinapilmkigilbbbcccncoljkdpnd?utm_source=plus)
+- [Firefox版](https://addons.mozilla.org/zh-TW/firefox/addon/google-shortcuts-all-google-se/)
+- [Google Chrome版](https://chrome.google.com/webstore/detail/shortcuts-for-google/baohinapilmkigilbbbcccncoljkdpnd?utm_source=plus)
 
-# 相關連結：
+# 相關連結
 
-*   [作者網站](https://outgoing.prod.mozaws.net/v1/e9c84cc3de9363f645c4307679cf1ecdea8b2cf1c7ba1f51afb54191d3713a99/https%3A//apps.jeurissen.co/)
-*   [我的Firefox擴充套件收藏集](https://addons.mozilla.org/zh-TW/firefox/collections/ZiTe/zite%E7%9A%84%E6%94%B6%E8%97%8F%E9%9B%86/)
+- [作者網站](https://outgoing.prod.mozaws.net/v1/e9c84cc3de9363f645c4307679cf1ecdea8b2cf1c7ba1f51afb54191d3713a99/https%3A//apps.jeurissen.co/)
+- [我的Firefox擴充套件收藏集](https://addons.mozilla.org/zh-TW/firefox/collections/ZiTe/zite%E7%9A%84%E6%94%B6%E8%97%8F%E9%9B%86/)

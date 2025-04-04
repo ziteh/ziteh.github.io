@@ -19,17 +19,17 @@ draft: false
 
 # VNote簡介
 
-1.  使用Markdown語法
-2.  在編輯模式下原地預覽圖片、圖表和公式
-3.  分類方式有筆記本、無限層級的資料夾和標簽
-4.  可以直接貼上圖片
-5.  模糊搜尋
-6.  MIT開源協議
-7.  由Qt和C++建構而成
-8.  Windows、macOS和Linux都有
-9.  高度可制定的外觀樣式(畢竟是開源的
-10.  UML圖表、流程圖、時序圖和數學公式。支援語法：Mermaid、 Flowchart.js、 MathJax、 WaveDrom、PlantUML 和 Graphviz
-11.  更詳細介紹請見[網站](https://tamlok.github.io/vnote/zh_cn/#!index.md)和[GitHub](https://github.com/tamlok/vnote)
+1. 使用Markdown語法
+2. 在編輯模式下原地預覽圖片、圖表和公式
+3. 分類方式有筆記本、無限層級的資料夾和標簽
+4. 可以直接貼上圖片
+5. 模糊搜尋
+6. MIT開源協議
+7. 由Qt和C++建構而成
+8. Windows、macOS和Linux都有
+9. 高度可制定的外觀樣式(畢竟是開源的
+10. UML圖表、流程圖、時序圖和數學公式。支援語法：Mermaid、 Flowchart.js、 MathJax、 WaveDrom、PlantUML 和 Graphviz
+11. 更詳細介紹請見[網站](https://tamlok.github.io/vnote/zh_cn/#!index.md)和[GitHub](https://github.com/tamlok/vnote)
 
 # 什麽是Markdown ?
 
@@ -44,33 +44,27 @@ Markdown是一種自由格式的輕量級標示語言(Lightweight Markup Languag
 
 ![▲Markdown語法示範(編輯界面)](https://bucket.ziteh.dev/blog/vnote-evernote/0361d00e.webp)
 
-
-#  界面導覽
+# 界面導覽
 
 ![▲主畫面](https://bucket.ziteh.dev/blog/vnote-evernote/5b0736b2.webp)
 
-
-
-
 這是VNote的基本界面。以下先簡單的介紹各個區域：(因為這些區塊都是可以任意移動位置的，所以我以預設為例)
 
-*   中間是筆記編輯/預覽區：就是用來打筆記的地方。
-*   上方是功能區：像是新筆記、儲存、預覽、加表格或加附件等相關功能都在這裡。
-*   左方是分類區：
-    *   筆記本：列出筆記本和資料夾，在下方會列出各自的筆記，以方便開啓。
-    *   歷史：顯示瀏覽筆記的歷史記錄。
-    *   瀏覽器：就是檔案總管。
-    *   標簽：列出標簽，在下方會列出各自的筆記，以方便開啓。
-*   右上是工具：
-    *   大綱：以筆記的標題自動列出大綱，點擊各標題可以跳至標題處。
-    *   片段：可以加入一些自己常用的詞，以快速打進筆記。
-    *   小推車：應該是類似快速集合的地方。
-*   右下是搜尋：可以用來搜尋筆記、筆記本、内文...等等。
-*   下方是標簽和字數統計：編輯標簽和顯示字數統計。
+- 中間是筆記編輯/預覽區：就是用來打筆記的地方。
+- 上方是功能區：像是新筆記、儲存、預覽、加表格或加附件等相關功能都在這裡。
+- 左方是分類區：
+    - 筆記本：列出筆記本和資料夾，在下方會列出各自的筆記，以方便開啓。
+    - 歷史：顯示瀏覽筆記的歷史記錄。
+    - 瀏覽器：就是檔案總管。
+    - 標簽：列出標簽，在下方會列出各自的筆記，以方便開啓。
+- 右上是工具：
+    - 大綱：以筆記的標題自動列出大綱，點擊各標題可以跳至標題處。
+    - 片段：可以加入一些自己常用的詞，以快速打進筆記。
+    - 小推車：應該是類似快速集合的地方。
+- 右下是搜尋：可以用來搜尋筆記、筆記本、内文...等等。
+- 下方是標簽和字數統計：編輯標簽和顯示字數統計。
 
-
-
-#  重點功能
+# 重點功能
 
 ## 加入圖片
 
@@ -80,17 +74,15 @@ VNote除了用網址的方式加入圖片外還支援直接按“Ctrl + V”貼�
 
 而且VNote的圖片支援編輯時及時原地預覽功能。
 
-
 ![▲用貼上的方式加入圖片](https://bucket.ziteh.dev/blog/vnote-evernote/2400912e.webp)
 
 ## 智慧表格
 
 剛開始用Markdown語法時可能會覺得它的表格不是很好打，會弄得很亂，但VNote的表格會自動依照内容長度進行調整，相當方便。
 
-
 ![▲智慧表格](https://bucket.ziteh.dev/blog/vnote-evernote/7ba5e1b7.webp)
 
-#  更多功能
+# 更多功能
 
 ## MathJax
 
@@ -133,8 +125,8 @@ st->op1->cond
 cond(yes)->io->e
 cond(no)->sub1(right)->op1
 ```
-![▲Flowchart.js示範](https://bucket.ziteh.dev/blog/vnote-evernote/e442b992.webp)
 
+![▲Flowchart.js示範](https://bucket.ziteh.dev/blog/vnote-evernote/e442b992.webp)
 
 ## PlantUML
 
@@ -151,9 +143,8 @@ Bob --> Alice: Authentication Response
 Alice -> Bob: Another authentication Request
 Alice <-- Bob: another authentication Response
 ```
+
 ![▲PlantUML示範](https://bucket.ziteh.dev/blog/vnote-evernote/765bc538.webp)
-
-
 
 ## Graphviz
 
@@ -173,7 +164,6 @@ digraph G
 
 ![▲Graphviz示範](https://bucket.ziteh.dev/blog/vnote-evernote/33187776.webp)
 
-
 ## Mermaid
 
 Mermaid可以讓你用簡單的語法繪製圖表。不過目前不支援編輯時及時原地預覽功能，要右鍵開啓「圖表實時預覽」畫面。
@@ -189,9 +179,8 @@ A-->C;
 B-->D;
 C-->D;
 ```
+
 ![▲Mermaid示範](https://bucket.ziteh.dev/blog/vnote-evernote/81833ecf.webp)
-
-
 
 ## WaveDrom
 
@@ -210,9 +199,10 @@ WaveDrom是一個基於JavaScript的時序圖編寫語法，對於電機電子�
   {name: 'Port-2', wave: 'x4....x' , data: ['輸出高位置']},
 ]}
 ```
+
 ![▲WaveDrom示範](https://bucket.ziteh.dev/blog/vnote-evernote/2b1e746a.webp)
 
-#  結論
+# 結論
 
 VNote的功能非常多，如過在使用上有任何問題，都可以向打開上方工具列 >幫助(H) > Markdown指南(M) 來查看官方的教學文件。
 

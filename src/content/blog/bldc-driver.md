@@ -77,6 +77,7 @@ draft: false
 [azmat-bilal]: https://github.com/azmat-bilal/bldc_motor_controller_pcb
 
 此外，還有一些評估/開發/參考工具：
+
 - [TIDA-00774][ti-tida-00774]: 18V/1kW, 160A Peak, >98% Efficient, High Power Density Brushless Motor Drive Reference Design
 - [TIDA-01516][ti-tida-01516]: Single Microcontroller 18-V/600-W BLDC Motor Control Reference Design With Bluetooth® Low Energy 5.0
 - [B-G431B-ESC1][st-b-g431b-esc1]: Discovery kit with STM32G431CB MCU
@@ -109,6 +110,7 @@ draft: false
 |   [TMC4671][tmc4671]     | 硬體 FOC controller                                  | QFN-76 10.5x6.5mm   |
 
 STSPIN32 SiP
+
 | STSPIN32          | F0               | F0A              | F0B              | G4               |
 | ----------------- | ---------------- | ---------------- | ---------------- | ---------------- |
 | MCU               | STM32F031C6      | STM32F031C6      | STM32F031C6      | STM32G431VB      |

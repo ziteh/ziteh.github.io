@@ -188,7 +188,6 @@ void Pin_Mod(u8 PortPin, u8 INout, u8 Mode, u8 Speed)
 #undef S50M
 ```
 
-
 可以看到裡面就是增加了“void Pin\_Mod(u8 PortPin, u8 INout, u8 Mode, u8 Speed)”此一函式。其用法如下：
 
 ```c
@@ -386,7 +385,6 @@ Pin_Mod(PA3, IN, FL, S50M);  // PA3: USART2_RX
 
 /********************************END OF FILE***********************************/
 ```
-
 
 # 結語
 

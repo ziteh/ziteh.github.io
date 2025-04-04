@@ -32,6 +32,7 @@ draft: false
 # 鍵盤 PCB
 
 一個鍵盤的 PCB 上基本會有這些部分：
+
 - 鍵盤矩陣掃描電路
 - 微控制器電路
 - 電源供應電路
@@ -80,7 +81,7 @@ draft: false
 
 目前最新的版本是 `7.0.2`，但是 `7.x.x` 是最近才更新的，可能有些插件還沒更新並支援新版，如果有這種情況的話建議先使用 `6.0.8` 版。本文是以 `7.0.2` 做示範。
 
-> 要用較舊版本的 KiCad `6.0.8` 可以到[這個頁面](https://downloads.kicad.org/kicad/windows/explore/stable)或 [GitHub](https://github.com/KiCad/kicad-source-mirror/releases/tag/6.0.8) 中，下載 ` kicad-6.0.8-x86_64.exe`。
+> 要用較舊版本的 KiCad `6.0.8` 可以到[這個頁面](https://downloads.kicad.org/kicad/windows/explore/stable)或 [GitHub](https://github.com/KiCad/kicad-source-mirror/releases/tag/6.0.8) 中，下載 `kicad-6.0.8-x86_64.exe`。
 
 # KiCad 基礎教學
 
@@ -97,6 +98,7 @@ draft: false
 ![選擇存放位置並輸入專案名稱](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/a1f46c67.webp)
 
 建立完專案後會出現 3 個檔案：
+
 - `<project_name>.kicad_pro`：專案檔
 - `<project_name>.kicad_sch`：Schematic 電路圖
 - `<project_name>.kicad_pcb`：PCB 設計檔
@@ -187,7 +189,7 @@ Footprint 瀏覽頁面左側有兩個清單，在最左側的清單找種類，�
 
 至於要怎麼選擇 Footprint？這個牽涉到許多因素，首先是該零件要有，例如 RT9013-33GB 的封裝就是 SOT-23-5，那當然是選用「Package_TO_SOT_SMD:SOT-23-5」。但是像電容或電阻選擇就很多了，這時可以考慮焊接方式，要手工焊接的話，除非你手很穩（或有其它工具）可以焊 0201 尺寸的元件，不然通常會選 0805、0603 或 0402 的，同時你也可以考慮購買容易度；如果你打算使用 PCBA 的話，那可以考慮工廠那邊的報價。當然，封裝也和元件的功率和耐壓等電氣規格有關，但鍵盤的電路比較不需要擔心這點。
 
-> 一般說的 0603、0402 或 0201 封裝是英制尺寸，0603 就代表其尺寸長寬為 0.06 * 0.03 inch。但是還有公制（Metric）表示法，公制 0603 代表的是長寬 0.6 * 0.3 mm。而英制 0402 等於公制 1005；英制 0201 等於公制 0603，所以一定不要搞混了。
+> 一般說的 0603、0402 或 0201 封裝是英制尺寸，0603 就代表其尺寸長寬為 0.06 *0.03 inch。但是還有公制（Metric）表示法，公制 0603 代表的是長寬 0.6* 0.3 mm。而英制 0402 等於公制 1005；英制 0201 等於公制 0603，所以一定不要搞混了。
 > KiCad 中的「C_0402_1005Metric」前面的「0402」是指英制尺寸，後面的「1005Metric」是指公制尺寸。所以這個 Footprint 就是我們一般習慣稱呼的 0402 封裝。
 
 ### 更新元件代號
@@ -213,7 +215,6 @@ Schematic 頁面右下角有一些資訊可以填寫。
 要修改這些資訊的話，可以到上方工具列「File > Page Settings」中設定。
 
 ![修改 Schemaric 頁面資訊](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/ca8951db.webp)
-
 
 # 開始繪製鍵盤
 
@@ -272,6 +273,7 @@ Schematic 頁面右下角有一些資訊可以填寫。
 電源電路主要是提供穩定的電源給微控制器。現在的微控制通常使用 3.3V 或 5.0V 的電壓，而 USB 的電源電壓是 5.0V，若需要將 USB 的 5.0V 變成 3.3V 的話，就需要降壓電路。降壓電路通常有分 DC-DC（Buck converter）和 LDO（Low-dropout regulator）兩種，一般來說 DC-DC 的功率較大、效率較高，但週邊電路較複雜，因為鍵盤其實不太耗電，所以比較沒必要使用 DC-DC 電路，大家通常都會選擇用 LDO。
 
 LDO 的型號有非常多種，其規格可能都不太一樣，且還有分可調輸出或固定輸出型。若是需要 固定輸出 3.3V 的話，我常使用的 LDO 型號為：
+
 - [RT9013-33GB](https://www.digikey.tw/zh/products/detail/richtek-usa-inc/RT9013-33GB/2546347)：500mA，SOT-23-5（個人最常用）
 - [XC6220B331MR-G](https://www.digikey.tw/zh/products/detail/torex-semiconductor-ltd/XC6220B331MR-G/2138177?s=N4IgTCBcDaIBoGEBsYwAYBCBmLBGAsgEoC0A4iALoC%2BQA)：1A，SOT-23-5
 - [AMS1117-3.3](https://www.digikey.tw/zh/products/detail/umw/AMS1117-3-3/17635254)：1A，SOT-223
@@ -313,6 +315,7 @@ USB 差分訊號「D+」與「D-」各 2 腳，將相同的接在一起，然後
 微控制器電路是最複雜的部分，且每種微控制器都不同。想要知道一個微控制需要哪些週邊元件的話，最好的方式就算找現成的電路參考，ATmega32U4 可以參考 [Pro Micro 的電路](https://cdn.sparkfun.com/datasheets/Dev/Arduino/Boards/Pro_Micro_v13b.pdf)；RP2040 可以參考官方的[範例電路](https://www.raspberrypi.com/documentation/microcontrollers/rp2040.html#design-files)。為了方便起見，我也為微控制器電路新增一個名為「mcu」的子頁面。
 
 我這裡以較複雜的 RP2040 為例。RP2040 所需的外圍元件有：
+
 - 石英振盪器。可以使用元件「Crystal_GND24」，將數值改成「12MHz」。
 - 外接 QSPI Flash。這裡使用 16MB 的 「W25Q128JVS」。Flash 也有自己的週邊電路元件。
 - USB 終端串聯電阻，阻值 27Ω。
@@ -395,7 +398,6 @@ jlcpcb/
 keyautoplace.log
 ```
 
-
 # 相關網頁
 
 - [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
@@ -403,6 +405,6 @@ keyautoplace.log
 - [KiCad 官方文件](https://docs.kicad.org/7.0/zh/getting_started_in_kicad/getting_started_in_kicad.html)
 - [KiCAD – Create a new Symbol](https://www.studiopieters.nl/kicad-create-a-new-symbol/)
 - QMK相關
-	- [QMK 官方網站](https://qmk.fm/)
-	- [QMK 官方文件](https://docs.qmk.fm/#/)
-	- [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)
+    - [QMK 官方網站](https://qmk.fm/)
+    - [QMK 官方文件](https://docs.qmk.fm/#/)
+    - [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)

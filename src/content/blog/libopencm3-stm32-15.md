@@ -17,6 +17,7 @@ draft: false
 ---
 
 # 前言
+
 在前面的篇章中，我們已經學會使用 Timer 來精確定時了，而在使用 MCU 的過程中最常會需要精確定時的莫過於 `delay()` 函式，在此之前我都是單純的讓 MCU 空跑一定的次數，但這樣很難知道它實際上到底 delay 了多久的時間，而已同樣的數值在不同的 Clock Tree 設定下 delay 的長度也不同，因此我們可以使用 Timer 來做出一個更好的 `delay()`。
 
 但是如果只是要實現 `delay()` 功能的話，並不用像之前的 Timer 那樣計算並設定一大堆數值，因為 ARM Cortex M3 有一個特殊的計時器——SysTick，我們可以使用它來完成 `delay()` 函式。
@@ -26,11 +27,13 @@ draft: false
 <!--more-->
 
 # 正文
+
 首先一樣以 Nucleo-F446RE 做示範。
 
 首先[建立一個 PIO 的專案](/posts/libopencm3-stm32-2#建立專案)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 檔案。
 
 ## 完整程式
+
 ``` c
 /**
  * @file   main.c
@@ -105,17 +108,22 @@ void sys_tick_handler(void)
   }
 }
 ```
+
 ## 分段說明
+
 ### Include
+
 ``` c
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/gpio.h>
 #include <libopencm3/cm3/systick.h>
 #include <libopencm3/cm3/nvic.h>
 ```
+
 重點在於要記得引入 `systick.h`。值得注意的是如果不引入 `nvic.h` 的話，程式應該也可以完成編譯甚至執行，但 SysTick 的 ISR 函式原型其實是宣告在這裡面的，所以我還是把它加入。
 
 ### 設定 SysTick
+
 ``` c
 static void systick_setup(void)
 {
@@ -126,6 +134,7 @@ static void systick_setup(void)
   systick_interrupt_enable();
 }
 ```
+
 SysTick（System tick timer）是 ARM Cortex M3 系列內建的功能，這是一個 24 位元的下數計數器，擁有自動裝載與中斷功能。
 
 從 Clock Tree 中可以看到 SysTick 在 AHB 底下，並且前面有一個可程式設定的預分頻器（圖上雖然看起來是固定 `/8`，但根據我實測的結果與 STM32CubeMX 中顯示的設定，這應該是可以選擇 `/1` 或 `/8`）。
@@ -146,6 +155,7 @@ SysTick（System tick timer）是 ARM Cortex M3 系列內建的功能，這是�
 > RVR 是一個 24 位元的暫存器，它的容許範圍為 `0x000001` \~ `0xFFFFFF`，實際在設定時要注意一下。[官方說明](https://developer.arm.com/documentation/dui0552/a/cortex-m3-peripherals/system-timer--systick/systick-reload-value-register)
 
 ### Delay 與 SysTick ISR
+
 ``` c
 static volatile uint32_t systick_delay = 0;
 
@@ -169,6 +179,7 @@ void sys_tick_handler(void)
   }
 }
 ```
+
 首先宣告一個全域變數 `systick_delay`，並加上 `volatile` 以防止編譯器優化它。
 
 `delay_ms()` 要做的就是把其參數 `ms` 傳遞給 `systick_delay`，然後等待 `sys_tick_handler()` 將 `systick_delay` 的值減到 0。
@@ -176,9 +187,11 @@ void sys_tick_handler(void)
 而 `sys_tick_handler()` 是 SysTick 的 ISR，它只要負責每次都把 `systick_delay` 減 1 即可。
 
 ## 多環境程式（F446RE + F103RB）
+
 由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。
 
 以下列出主要的差異部分。完整的程式請看 [GitHub repo](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/systick)。
+
 ``` c
 static void rcc_setup(void)
 {
@@ -207,6 +220,7 @@ static void led_setup(void)
 #endif
 }
 ```
+
 ## 成果
 
 這裡使用兩個 STM32，並分別設定 LED 開關的 delay 為 500ms 和 5ms，結果也是滿精準的。
@@ -220,13 +234,14 @@ static void led_setup(void)
 `delay_ms()` 是在用 MCU 時非常常用到的功能，而這次介紹如何使用 SysTick 來實現它，這樣就可以得到一個相對精準的 delay，也不用大費周章去設定一般的 Timer。
 
 # 參考資料
-* [Cortex-M3 Devices Generic User Guide](https://developer.arm.com/documentation/dui0552/a/cortex-m3-peripherals/system-timer--systick/systick-control-and-status-register?lang=en)
-* [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
-* [platformio/platform-ststm32](https://github.com/platformio/platform-ststm32)
-* [STM32F446RE datasheet (DS10693)](https://www.st.com/resource/en/datasheet/stm32f446re.pdf)
-* [STM32F446xx reference manual (RM0390)](https://www.st.com/resource/en/reference_manual/rm0390-stm32f446xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)
-* [STM32F103RB datasheet (DS5319)](https://www.st.com/resource/en/datasheet/stm32f103rb.pdf)
-* [STM32 Nucleo-64 board user manual (UM1724)](https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf)
+
+- [Cortex-M3 Devices Generic User Guide](https://developer.arm.com/documentation/dui0552/a/cortex-m3-peripherals/system-timer--systick/systick-control-and-status-register?lang=en)
+- [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
+- [platformio/platform-ststm32](https://github.com/platformio/platform-ststm32)
+- [STM32F446RE datasheet (DS10693)](https://www.st.com/resource/en/datasheet/stm32f446re.pdf)
+- [STM32F446xx reference manual (RM0390)](https://www.st.com/resource/en/reference_manual/rm0390-stm32f446xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)
+- [STM32F103RB datasheet (DS5319)](https://www.st.com/resource/en/datasheet/stm32f103rb.pdf)
+- [STM32 Nucleo-64 board user manual (UM1724)](https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf)
 
 > 本文的程式也有放在 [GitHub](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/systick) 上。
-> 本文同步發表於[ iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10298985)。
+> 本文同步發表於[iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10298985)。

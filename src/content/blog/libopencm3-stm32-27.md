@@ -17,6 +17,7 @@ draft: false
 ---
 
 # 前言
+
 CRC（Cyclic redundancy check）即循環冗餘校驗是一種雜湊函式，通常用於通訊，用以讓接收方確認資料是否正確。
 
 多數的 STM32 家族都有內建 CRC 計算單元，本篇要來介紹如何使用。
@@ -24,11 +25,13 @@ CRC（Cyclic redundancy check）即循環冗餘校驗是一種雜湊函式，通
 <!--more-->
 
 # 正文
+
 首先一樣以 Nucleo-F446RE 做示範。
 
 首先[建立一個 PIO 的專案](/posts/libopencm3-stm32-2#建立專案)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c`。
 
 ## 完整程式
+
 ``` c
 /**
  * @file   main.c
@@ -127,7 +130,9 @@ void usart2_isr(void)
 ```
 
 ## 分段說明
+
 ### CRC 計算
+
 ``` c
 /**
  * @brief USART2 Interrupt service routine.
@@ -155,6 +160,7 @@ void usart2_isr(void)
   usart_enable_rx_interrupt(USART2);
 }
 ```
+
 CRC 計算單元的使用方式很單純，因此我直接寫在 USART2 的 ISR 中。
 
 但 ISR 執行後，先禁能 USART2 的中斷，以方便之後連續讀取 4 Byte 的資料。
@@ -165,8 +171,8 @@ CRC 計算單元的使用方式很單純，因此我直接寫在 USART2 的 ISR 
 
 最後再將結果用 USART2 傳出，再重新致能其中斷以等待下次接收。
 
-
 ## 多環境程式（F446RE + F103RB）
+
 由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。
 
 以下列出主要的差異部分，也就是 GPIO 的部分。完整的程式請看 [GitHub repo](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/crc)。
@@ -204,6 +210,7 @@ static void usart_setup(void)
 從 RM0390 或 AN4187 中可以得知，STM32 使用的多項式是 `0x4C1 1DB7`（部分系列可修改），初始值為 `0xFFFF FFFF`。
 
 我依序輸入 32 位元的資料並各別得到其結果：
+
 - 輸入 `0x9D 12 3A D4` 得到 `0xC9 68 5F 5E`。
 - 輸入 `0x00 00 00 00` 得到 `0xC7 04 DD 7B`。
 - 輸入 `ABCD` (ASCII) 得到 `0xAB CF 9A 63`。
@@ -215,16 +222,19 @@ static void usart_setup(void)
 ![▲ STM32 各系列的 CRC 單元功能比較。取自 AN4187 Rev1 P.13。](https://bucket.ziteh.dev/blog/libopencm3-stm32-27/5d9e2b69.webp)
 
 # 小結
+
 CRC 的使用還是滿單純的，就只要致能 RCC 後呼叫計算函式，將要計算的資料傳入後就可以得到結果了。
 
 # 參考資料
-* [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
-* [platformio/platform-ststm32](https://github.com/platformio/platform-ststm32)
-* [STM32 CRC application note (AN4187)](https://www.st.com/resource/en/application_note/an4187-using-the-crc-peripheral-in-the-stm32-family-stmicroelectronics.pdf)
-* [STM32F446RE datasheet (DS10693)](https://www.st.com/resource/en/datasheet/stm32f446re.pdf)
-* [STM32F446xx reference manual (RM0390)](https://www.st.com/resource/en/reference_manual/rm0390-stm32f446xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)
-* [STM32F103RB datasheet (DS5319)](https://www.st.com/resource/en/datasheet/stm32f103rb.pdf)
-* [STM32 Nucleo-64 board user manual (UM1724)](https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf)
+
+- [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
+
+- [platformio/platform-ststm32](https://github.com/platformio/platform-ststm32)
+- [STM32 CRC application note (AN4187)](https://www.st.com/resource/en/application_note/an4187-using-the-crc-peripheral-in-the-stm32-family-stmicroelectronics.pdf)
+- [STM32F446RE datasheet (DS10693)](https://www.st.com/resource/en/datasheet/stm32f446re.pdf)
+- [STM32F446xx reference manual (RM0390)](https://www.st.com/resource/en/reference_manual/rm0390-stm32f446xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)
+- [STM32F103RB datasheet (DS5319)](https://www.st.com/resource/en/datasheet/stm32f103rb.pdf)
+- [STM32 Nucleo-64 board user manual (UM1724)](https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf)
 
 > 本文的程式也有放在 [GitHub](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/crc) 上。
-> 本文同步發表於[ iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10306443)。
+> 本文同步發表於[iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10306443)。

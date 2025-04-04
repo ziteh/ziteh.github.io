@@ -17,6 +17,7 @@ draft: false
 ---
 
 # 前言
+
 SPI（Serial Peripheral Interface）是一種常見的同步序列通訊協定，為主從式架構。有許多感測器或模組都使用 SPI 進行通訊。
 
 這次的範例要實現 USART 與 SPI (Master mode) 的轉發器——把 USART 接收到的資料由 SPI 發送出去，而 SPI 收到的資料由 USART 發送。並且有一個 EXTI 的外部請求接腳。
@@ -24,19 +25,22 @@ SPI（Serial Peripheral Interface）是一種常見的同步序列通訊協定�
 <!--more-->
 
 最典型的 SPI 有 4 條線：
-* SCK：Serial clock
-* MOSI：Master output, slave input
-* MISO：Master input, slave output
-* SS：Slave select，或 CS(Chip select)
+
+- SCK：Serial clock
+- MOSI：Master output, slave input
+- MISO：Master input, slave output
+- SS：Slave select，或 CS(Chip select)
 
 關於 SPI 本身我並不打算詳細介紹，若讀者還不熟悉 SPI 的基本概念的話，建議先另外查詢相關文章。我覺得「[Day 13：SPI (Part 1) - 原來是 Shift Register 啊！我還以為是 SPI 呢！](https://ithelp.ithome.com.tw/articles/10245910)」與「[SPI (Serial Peripheral Interface) 串列 (序列) 週邊介面](https://magicjackting.pixnet.net/blog/post/164725144)」這兩篇寫得就很不錯。
 
 # 正文
+
 首先一樣以 Nucleo-F446RE 做示範。
 
 首先[建立一個 PIO 的專案](/posts/libopencm3-stm32-2#建立專案)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h`。
 
 ## 完整程式
+
 ``` c
 /**
  * @file   main.c
@@ -261,8 +265,11 @@ static void spi_deselect(void);
 
 #endif /* MAIN_H. */
 ```
+
 ## 分段說明
+
 ### Include
+
 ``` c
 // main.h
 #include <libopencm3/stm32/rcc.h>
@@ -272,9 +279,11 @@ static void spi_deselect(void);
 #include <libopencm3/stm32/exti.h>
 #include <libopencm3/cm3/nvic.h>
 ```
+
 除了基本的 `rcc.h`、`gpio.h`，這次的 `spi.h`、`usart.h`、`nvic.h` 外，我希望此 SPI 有一個獨立的 EXTI 請求接腳，所以還會用到 `exti.h`。
 
 ### 設定 SPI
+
 ``` c
 
 static void spi_setup(void)
@@ -325,6 +334,7 @@ static void spi_setup(void)
   spi_enable(SPI1);
 }
 ```
+
 首先要設定 SPI 的 GPIO。除了 CS 腳設定為通用功能 Push-Pull 輸出模式外，SCK、MOSI 與 MISO 都設定成 Alternate function Push-Pull。
 
 再來是設定 SPI 本身。在使用 SPI 通訊時有幾個比較重要的設定要注意，首先是 SPI Mode，也就是 CPOL（Clock Polarity） 與 CPHA（Clock Phase） 的設定。
@@ -349,6 +359,7 @@ CPOL 決定了 SPI 閒置時 SCK 要為 `Low`（CPOL = `0`） 還是 `High`（CP
 ![▲ Standard multi-slave communication 的 SPI 接線圖。取自 RM0390 Rev6 P.852](https://bucket.ziteh.dev/blog/libopencm3-stm32-24/1ac9641f.webp)
 
 ### SPI CS 選擇/反選擇
+
 ``` c
 static void spi_select(void)
 {
@@ -360,9 +371,11 @@ static void spi_deselect(void)
   gpio_set(GPIO_SPI_CS_PORT, GPIO_SPI_CS_PIN);
 }
 ```
+
 CS 的控制就是一般的 GPIO 輸出，將其寫成函式以方便操作。
 
 ### USART ISR
+
 ``` c
 /**
  * @brief USART2 Interrupt service routine.
@@ -386,15 +399,18 @@ void usart2_isr(void)
   USART_SR(USART2) &= ~USART_SR_RXNE;
 }
 ```
+
 由於目標功能是 USART-SPI 的轉發器，所以在 USART 接收到資料後，要將接收到的資料透過 SPI 傳送出去。
 
 這裡的 SPI 傳送步驟為：
+
 1. 選擇 Slave device（CS 輸出 `Low`）。
 2. 使用 `spi_send()` 將要傳送的資料寫入 SPI_DR 暫存器中。此函式會先等待目前的傳輸已經結束後（`SPI_SR_TXE` flag）才將資料寫入資料暫存器。
 3. 讀取 `SPI_SR_TXE`（傳送緩衝器為空） 與 `SPI_SP_BSY`（忙碌） flag，以等待 SPI 完成傳輸。
 4. 取消選擇 Slave device（CS 輸出 `High`）。
 
 ### EXTI ISR
+
 ``` c
 /**
  * @brief EXTI9~5 Interrupt service routine.
@@ -416,16 +432,19 @@ void exti9_5_isr(void)
   usart_send_blocking(USART2, indata);
 }
 ```
+
 當 RQ 請求腳被觸發（`Low` 觸發）時，代表 Slave device 想發起通訊，因此 Master device 要拉低 CS 腳以選擇 Slave device，並讀取 MISO 的資料。
 
 要注意的是 SPI slave device 不會自己產生 SCK 時脈訊號，SCK 是由 Master device 產生的，而在這裡單純呼叫 `spi_read()` 也不會讓 Master device 產生 SCK 訊號，因此要呼叫 `spi_send()` 並傳送一個假資料（這裡為 `0x00`）讓 SCK 產生。
 
 ## 多環境程式（F446RE + F103RB）
+
 由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。
 
 由於這次程式較長，所以完整的程式請看 [GitHub repo](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/spi_master)。
 
 ## 成果
+
 由於下一篇才會寫 SPI slave，因此這次就先只以邏輯分析儀查看 SPI 的輸出。
 
 ![](https://bucket.ziteh.dev/blog/libopencm3-stm32-24/afaef3df.webp)
@@ -435,18 +454,20 @@ void exti9_5_isr(void)
 我傳送的資料是 `0xA7`，也就是 `1010 0111b`，以 SCK 的負緣對照 MOSI 訊號也是正確的。
 
 # 小結
+
 SPI 是許多感測器及模組在使用的通訊介面，會使用 SPI 才能使用這些外部元件，因此 SPI 也是很重要的功能。這次介紹了最基本的 SPI 用法，應該已經足夠應付基本的使用了。
 
 # 參考資料
-* [Day 13：SPI (Part 1) - 原來是 Shift Register 啊！我還以為是 SPI 呢！](https://ithelp.ithome.com.tw/articles/10245910)
-* [SPI (Serial Peripheral Interface) 串列 (序列) 週邊介面](https://magicjackting.pixnet.net/blog/post/164725144)
-* [SPI using Registers in STM32](https://controllerstech.com/spi-using-registers-in-stm32/)
-* [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
-* [platformio/platform-ststm32](https://github.com/platformio/platform-ststm32)
-* [STM32F446RE datasheet (DS10693)](https://www.st.com/resource/en/datasheet/stm32f446re.pdf)
-* [STM32F446xx reference manual (RM0390)](https://www.st.com/resource/en/reference_manual/rm0390-stm32f446xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)
-* [STM32F103RB datasheet (DS5319)](https://www.st.com/resource/en/datasheet/stm32f103rb.pdf)
-* [STM32 Nucleo-64 board user manual (UM1724)](https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf)
+
+- [Day 13：SPI (Part 1) - 原來是 Shift Register 啊！我還以為是 SPI 呢！](https://ithelp.ithome.com.tw/articles/10245910)
+- [SPI (Serial Peripheral Interface) 串列 (序列) 週邊介面](https://magicjackting.pixnet.net/blog/post/164725144)
+- [SPI using Registers in STM32](https://controllerstech.com/spi-using-registers-in-stm32/)
+- [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
+- [platformio/platform-ststm32](https://github.com/platformio/platform-ststm32)
+- [STM32F446RE datasheet (DS10693)](https://www.st.com/resource/en/datasheet/stm32f446re.pdf)
+- [STM32F446xx reference manual (RM0390)](https://www.st.com/resource/en/reference_manual/rm0390-stm32f446xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)
+- [STM32F103RB datasheet (DS5319)](https://www.st.com/resource/en/datasheet/stm32f103rb.pdf)
+- [STM32 Nucleo-64 board user manual (UM1724)](https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf)
 
 > 本文的程式也有放在 [GitHub](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/spi_master) 上。
-> 本文同步發表於[ iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10302235)。
+> 本文同步發表於[iT 邦幫忙-2022 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10302235)。
