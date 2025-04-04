@@ -15,4 +15,10 @@
     // Handle by markdownlint MD009
     "files.trimTrailingWhitespace": false,
   },
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  }
 }

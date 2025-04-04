@@ -9,8 +9,8 @@
     "preview": "astro preview",
     "sync": "astro sync",
     "astro": "astro",
-    "format:check": "prettier --check . --plugin=prettier-plugin-astro",
-    "format": "prettier --write . --plugin=prettier-plugin-astro",
+    "format:check": "prettier --check . --plugin=prettier-plugin-astro && markdownlint-cli2 ./src/content/blog/*.md",
+    "format": "prettier --write . --plugin=prettier-plugin-astro && markdownlint-cli2 --fix ./src/content/blog/*.md",
     "lint": "eslint ."
   },
   "dependencies": {

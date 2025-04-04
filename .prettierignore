@@ -11,3 +11,6 @@
 !.prettierrc
 !eslint.config.mjs
 !README.md
+
+# Posts handle by markdownlint
+/src/content/blog/*.md
