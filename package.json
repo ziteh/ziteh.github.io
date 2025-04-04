@@ -11,7 +11,8 @@
     "astro": "astro",
     "format:check": "prettier --check . --plugin=prettier-plugin-astro && markdownlint-cli2 ./src/content/blog/*.md",
     "format": "prettier --write . --plugin=prettier-plugin-astro && markdownlint-cli2 --fix ./src/content/blog/*.md",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "prepare": "husky"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.3",
@@ -45,6 +46,8 @@
     "eslint": "^9.11.1",
     "eslint-plugin-astro": "^1.2.4",
     "globals": "^15.10.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.0",
     "markdownlint-cli2": "^0.17.2",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
@@ -52,5 +55,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "typescript-eslint": "^8.8.0"
+  },
+  "lint-staged": {
+    "**/*.*": "prettier --write --ignore-unknown"
   }
 }
