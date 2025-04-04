@@ -616,7 +616,6 @@ InsertNewlineAtEOF: true
 InsertTrailingCommas: Wrapped
 KeepEmptyLinesAtTheStartOfBlocks: false
 LineEnding: DeriveLF
-...
 ```
 
 如果你使用的是 VS Code，也可以使用 key-value 格式直接設定（推薦設定在 `C_Cpp.clang_format_fallbackStyle` 內）：
