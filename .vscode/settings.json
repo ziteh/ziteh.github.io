@@ -1,0 +1,18 @@
+{
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "[markdown]": {
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    },
+    // Handle by markdownlint MD009
+    "files.trimTrailingWhitespace": false,
+  },
+}

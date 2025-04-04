@@ -1,25 +1,12 @@
 {
-	"folders": [
-		{
-			"name": "Posts",
-			"path": "./src/content/blog"
-		},
-		{
-			"name": "Root",
-			"path": "."
-		}
-	],
-	"settings": {
-		"[markdown]": {
-			"editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
-			"editor.snippetSuggestions": "top",
-			"files.trimTrailingWhitespace": false
-			// "editor.quickSuggestions": {
-			// 	"other": true
-			// },
-		},
-		"markdownlint.config": {
-			"single-h1": false
-		}
-	}
+  "folders": [
+    {
+      "name": "Posts",
+      "path": "./src/content/blog"
+    },
+    {
+      "name": "Root",
+      "path": "."
+    }
+  ],
 }
