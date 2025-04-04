@@ -21,4 +21,4 @@ toc: false
 
 總之我覺得用起來很不錯，未來如果還有其它動畫要製作的話，應該也還是會使用它。
 
-該動畫的專案 repo 在這：[siderakb/ergosnm-animate](https://github.com/siderakb/ergosnm-animate)。不過因爲我偷懶，所以裡面的程式真寫的滿醜的。
+該動畫的專案 repo 在這：[siderakb/ergosnm-animate](https://github.com/siderakb/ergosnm-animate)。不過因為我偷懶，所以裡面的程式真寫的滿醜的。

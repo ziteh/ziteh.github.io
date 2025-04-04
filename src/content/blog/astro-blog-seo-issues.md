@@ -17,7 +17,7 @@ toc: true
 
 <!-- more -->
 
-首先各個頁面的 Lighthouse 都很正常甚至是接近滿分，使用一些第三方 SEO 分析工具也顯示各頁面、Sitemap 和 Meta tag 都沒什麼問題。但是 Google Search Console 顯示爲「已建立索引」的頁面卻超級少，甚至還一直下降。
+首先各個頁面的 Lighthouse 都很正常甚至是接近滿分，使用一些第三方 SEO 分析工具也顯示各頁面、Sitemap 和 Meta tag 都沒什麼問題。但是 Google Search Console 顯示為「已建立索引」的頁面卻超級少，甚至還一直下降。
 
 ![][google-search-console]
 
@@ -25,6 +25,6 @@ toc: true
 
 由於我本身實在也不是網路或網頁相關領域的人，所以只好先暫時換回 Hexo 和 GitHub Pages，儘可能回到原本的情況，看看 SEO 會不會改善，再看看新 Blog 到底是那裡出了問題。
 
-希望可以儘快找到並接近這個 SEO 的問題，因爲我相信原本新的 Blog 的閱讀和瀏覽體驗對讀者來說是更好的。
+希望可以儘快找到並接近這個 SEO 的問題，因為我相信原本新的 Blog 的閱讀和瀏覽體驗對讀者來說是更好的。
 
 [google-search-console]: https://bucket.ziteh.dev/blog/astro-blog-seo-issues/google-search-console.webp

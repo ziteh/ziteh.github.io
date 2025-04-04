@@ -59,7 +59,7 @@ QMK 的檔案預設會在：`C:/Users/<USERNAME>/qmk_firmware`。上面這個訊
 
 環境建立好後就可以編輯一些設定了。[如何選擇微控制器 MCU](/posts/diyqmkkeyboard-mcu-sel/) 一文中已經說明了如何挑選適合的 MCU，這時你應該已經決定好要用什麼 MCU 來製作了。
 
-如果你對嵌入式不是很熟悉的話，我只推薦 RP2040 和 ATmega32U4（Pro Micro），而 RP2040 是我目前認爲製作 QMK 鍵盤的**首選**，因爲它價格便宜、性能很好、功能完善、空間充足、購買方便、使用者也多。如果沒有特殊原因的話建議使用 RP2040。以下將分別介紹 RP2040 和 Pro Micro 的步驟。
+如果你對嵌入式不是很熟悉的話，我只推薦 RP2040 和 ATmega32U4（Pro Micro），而 RP2040 是我目前認為製作 QMK 鍵盤的**首選**，因為它價格便宜、性能很好、功能完善、空間充足、購買方便、使用者也多。如果沒有特殊原因的話建議使用 RP2040。以下將分別介紹 RP2040 和 Pro Micro 的步驟。
 
 # RP2040
 
@@ -83,7 +83,7 @@ https://docs.qmk.fm/#/hardware_keyboard_guidelines?id=naming-your-keyboardprojec
 Keyboard Name?
 ```
 
-這時請輸入你想要的鍵盤名稱後按 Enter，例如我使用「0_my_kb_rp2040」做示範。命名規則請參考 [Naming Your Keyboard/Project](https://docs.qmk.fm/hardware_keyboard_guidelines#naming-your-keyboard-project)。名稱以「0」開頭單純是因爲名稱排序下比較好找資料夾。
+這時請輸入你想要的鍵盤名稱後按 Enter，例如我使用「0_my_kb_rp2040」做示範。命名規則請參考 [Naming Your Keyboard/Project](https://docs.qmk.fm/hardware_keyboard_guidelines#naming-your-keyboard-project)。名稱以「0」開頭單純是因為名稱排序下比較好找資料夾。
 
 再來它回問你 Username 及 Real Name，這部分就打你自己想要的名稱即可（之後也還可以改），例如我兩者都打「ziteh」。
 
@@ -103,7 +103,7 @@ Your Real Name?  [ziteh]
 
 接著會問你基礎佈局，你可以選一個和你預計要做的鍵盤較為類似的佈局，這樣後續要改的東西就會比較少。例如常見的 60% 鍵盤為「11. 65_ansi」，那就輸入其編號「11」後按 Enter。我這裡就選擇「none of the above」表示不使用現成的特定 Layout。
 
-> 實際編號可能會因爲版本而不同，請以選項名稱和你看到的為主。
+> 實際編號可能會因為版本而不同，請以選項名稱和你看到的為主。
 
 然後會問你是否使用現成的開發板「Using a Development Board?」，對於 RP2040 即使你確實是使用現成的開發板，我也建議在這裡回答「n」以使用基於 MCU 的設定，這樣如果未來你的鍵盤想要變更不同的 RP2040 開發板也不會需要修改 GPIO，靈活度會比較高。
 
@@ -499,7 +499,7 @@ https://docs.qmk.fm/#/hardware_keyboard_guidelines?id=naming-your-keyboardprojec
 Keyboard Name?
 ```
 
-這時請輸入你想要的鍵盤名稱後按 Enter，例如我使用「0_my_kb_promicro」做示範。命名規則請參考 [Naming Your Keyboard/Project](https://docs.qmk.fm/hardware_keyboard_guidelines#naming-your-keyboard-project)。名稱以「0」開頭單純是因爲名稱排序下比較好找資料夾。
+這時請輸入你想要的鍵盤名稱後按 Enter，例如我使用「0_my_kb_promicro」做示範。命名規則請參考 [Naming Your Keyboard/Project](https://docs.qmk.fm/hardware_keyboard_guidelines#naming-your-keyboard-project)。名稱以「0」開頭單純是因為名稱排序下比較好找資料夾。
 
 再來它回問你 Username 及 Real Name，這部分就打你自己想要的名稱即可（之後也還可以改），例如我兩者都打「ziteh」。
 
@@ -519,7 +519,7 @@ Your Real Name?  [ziteh]
 
 接著會問你基礎佈局，你可以選一個和你預計要做的鍵盤較為類似的佈局，這樣後續要改的東西就會比較少。例如常見的 60% 鍵盤為「11. 65_ansi」，那就輸入其編號「11」後按 Enter。我這裡就選擇「none of the above」表示不使用現成的特定 Layout。
 
-> 實際編號可能會因爲版本而不同，請以選項名稱和你看到的為主。
+> 實際編號可能會因為版本而不同，請以選項名稱和你看到的為主。
 
 然後會問你是否使用現成的開發板「Using a Development Board?」，這裡回答「y」，然後它會再問你用的是什麼開發板，回答「promicro」。
 
@@ -563,9 +563,9 @@ Now update the config files to match the hardware!
 
 MCU 與 Bootloader 的設定是要互相配合的，要依照你使用的 MCU 來選擇正確的 Bootloader。但是由於我們已經選擇使用開發板 `"development_board": "promicro"` 所以應該不會有什麼問題，也不用設定 `processor` 和 `bootloader`。
 
-> 特別說明一下，Pro Micro 的 MCU 是 ATmega32U4，而它的 Bootloader *基本上*是 `caterina`。很久以前我在學習 QMK 時因爲 Bootloader 選錯所以一直失敗，如果你在使用 Pro Micro 遇到了一些問題的話，可能可以試試明確指定 `"bootloader": "caterina"`。
+> 特別說明一下，Pro Micro 的 MCU 是 ATmega32U4，而它的 Bootloader *基本上*是 `caterina`。很久以前我在學習 QMK 時因為 Bootloader 選錯所以一直失敗，如果你在使用 Pro Micro 遇到了一些問題的話，可能可以試試明確指定 `"bootloader": "caterina"`。
 
-這裡簡單的整理了一些 MCU 和 Bootloader 的對應表作爲參考。
+這裡簡單的整理了一些 MCU 和 Bootloader 的對應表作為參考。
 
 | 微控制器/開發板 | Bootloader     |
 | :-------------: | :------------- |
