@@ -10,7 +10,7 @@ toc: true
 draft: false
 # aliases : ["/2017/08/macarm-2/"]
 ---
-![](https://1.bp.blogspot.com/-pZzLycJryec/XqYxoC3ETrI/AAAAAAAACJY/qQs2DI7qXLExB-SoIEq94KVOTDjgKoe5QCPcBGAsYHg/s320/1501167240592.jpg)
+![](https://bucket.ziteh.dev/blog/macarm-2/726d7838.webp)
 
 全國科展的行程很簡單 : 第一天報到、佈置與晚上的開幕典禮；第二天是作品安全檢查；第三天是第一次比賽；第四天是第二次比賽、開放展覽和晚上的園遊會；第五天是頒獎典禮。
 
@@ -22,7 +22,7 @@ draft: false
 
 這時就可以看到和自己比賽的人的作品內容是什麼了，但我參加的是工程學科(一)，這個科別包含的類型太多了，除了我的資訊電子外，還有機械、電機和一些我完全不懂的科系參加，所以很多作品我是有看沒有懂。
 
-![開幕典禮前](https://1.bp.blogspot.com/-4zgPMxCj48s/XqYxoHj6BeI/AAAAAAAACJY/jsk5gYZ-wE4IuVOds9tK-yY21ILgYBpMQCPcBGAsYHg/s1600/DSC_0405.JPG)
+![開幕典禮前](https://bucket.ziteh.dev/blog/macarm-2/aad32a2f.webp)
 
 # 第二天
 
@@ -48,7 +48,7 @@ draft: false
 
 聊一聊又到了離場的時候了。 這天的下午是開放民眾參觀展覽4小時，而作者要在自己的作品前親自介紹。我們科的就在介紹之餘聊天，4小時真的很累，還好旁邊都有人可以聊，至少不會無聊。
 
-![晚上還有一個小園遊會，每人有200元禮卷可以買東西。](https://1.bp.blogspot.com/-SgoulXJ8tEg/XqYxoH2xxEI/AAAAAAAACJY/SJO5oJ8SuhEOU8aC8-uKiZnBlcOpVwFHACPcBGAsYHg/s1600/DSC_0414.JPG)
+![晚上還有一個小園遊會，每人有200元禮卷可以買東西。](https://bucket.ziteh.dev/blog/macarm-2/3ecffd15.webp)
 
 # 第五天
 
@@ -56,7 +56,7 @@ draft: false
 
 然而比賽結果比我想的還好，除了大會獎的佳作外，我還有2個特別獎，分別是康寧創新特優獎和微軟少年英雄獎，我還上台2次，相當的開心。 頒完獎後我和老師就啟程回家了。
 
-![頒獎典禮](https://1.bp.blogspot.com/-Wf4OJtjAHE4/XqYxoBhtIuI/AAAAAAAACJY/iTyKIawZlA0xYySMvJQOf77e5PcMNn0NACPcBGAsYHg/s1600/DSC_0419.JPG)
+![頒獎典禮](https://bucket.ziteh.dev/blog/macarm-2/24e40b85.webp)
 
 # 相關文章
 

@@ -44,7 +44,7 @@ GPIO（General Purpose Input/Output）可以說是微控制器最基本的功能
 
 上面的內容涉及一些基本電學或電子學的知識，以上僅簡單介紹。
 
-![▲ GPIO 內部架構圖。取自 ST Wiki: GPIO internal peripheral。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhaPgVXld6m8H6bdFlCS8p2p1Qatn2PVDH2VBMzcyoO7i1FzXOf_Mwt3E8eJ2eKL_oK7gspo2X7AiYDcOAVmmrOnRjTOjFjdaKvZwwAB4XXSJj0-sfuEJYXQcPoRMnGXQL2TChNd_b8TeXqHQ-y-butpBBAGzfeJN8EYBO2yUJjecL9VrEe-iZvETyu/s16000/IO_port.png)
+![▲ GPIO 內部架構圖。取自 ST Wiki: GPIO internal peripheral。](https://bucket.ziteh.dev/blog/libopencm3-stm32-3/ba48abfc.webp)
 
 剛開始使用 STM32 時可能會搞不太懂上面這些，尤其是 AF 的部分，簡單來說，「General Purpose」就是可以單純地人為控制輸出 `High/Low`，而使用「Alternate Function」則會將控制 `High/Low` 的權利和責任交給指定的特殊功能，例如指定該 Pin 腳為 UART-Tx，那我就沒辦法直接設定它要 `High` 還是 `Low`，因為 UART-Tx 的 `High/Low` 要依據其通訊協定和資料來決定，我們只能告訴 UART 要傳送的資料是什麼，再由 UART 來依據此資料自動控制該 Pin 腳的 `High/Low` 以完成通訊。
 
@@ -60,7 +60,7 @@ GPIO（General Purpose Input/Output）可以說是微控制器最基本的功能
 
 例如要把 PA2 及 PA3 腳當成 USART2 的 Tx 與 Rx 使用的話，要設定這兩腳要啓用的 AF 為「AF7」。
 
-![▲ GPIO 與 AF 功能的對應表。取自 DS10693 Rev10 P.57。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj72ewJ_VwsOl1dP04dVnK3d0_gQgeee_F--bjtTCwmkcl6OZTakXSoeTtcYou17UQgHYwZvFe-Mf6jKQCVp_L5apdSxokQz2_58K3fSawxfjjMyu0s0ydjxmkxJ0EyR1dQ5a4lZeAMUEM0KfBjuQsl9FLQC07cwiLG_xfm9BtumOkWG-AIKIqZDxSL/s16000/Screenshot_2022-09-15_115823_1663214323550_0.png)
+![▲ GPIO 與 AF 功能的對應表。取自 DS10693 Rev10 P.57。](https://bucket.ziteh.dev/blog/libopencm3-stm32-9/4cfda474.webp)
 
 # 小結
 今天簡單說明了 STM32 GPIO 的模式，這些算是基本中的基本，只要弄清楚，未來在使用時就會輕鬆很多，明天終於要正式寫程式了。

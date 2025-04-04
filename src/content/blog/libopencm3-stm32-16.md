@@ -234,7 +234,7 @@ static void led_setup(void)
 
 可以看到左邊的 STM32 可以一直運作，而右邊的因為來不及 Refresh 所以一直在 Reset。
 
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiAyWPGZfScHMRKg2AUp4-syulcKDCuEWl1GgOjWdlEewFwb8sI7TwdQnd3AvPH_jOHXyKoPmhDB4VOGnV4SdU_4nfIKoMnLwsg4NK4zleMNhzSIhdjbStZmpoSRM4kH3uUoXv8j-K6TZkexnCzSneRWWuxdRodgVEUK_oHwVDBT7WDsmDpEFmm1ma4/s16000/ezgif.com-gif-maker.gif)
+![](https://bucket.ziteh.dev/blog/libopencm3-stm32-16/2cb22142.webp)
 
 # 小結
 WDG 在簡單的非正式專案中可能不太會用到，但它設定簡單、使用方便，稍微瞭解一下也很值得。

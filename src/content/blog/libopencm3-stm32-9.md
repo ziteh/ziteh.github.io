@@ -155,7 +155,7 @@ STM32 Nucleo 開發板上其實已經設計 USART 的硬體線路好了，以我
 
 記得除了 STM32F1 系列外，AF 功能還要設定是「AF 幾？」。根據 F446RE Datasheet ([DS10693](https://www.st.com/resource/en/datasheet/stm32f446re.pdf)) 的「Table 11. Alternate function」我們可以知道我們所使用的「USART2」是 「AF7」，因此使用 `GPIO_USART_AF` 指定要使用的是 `GPIO_AF7`。
 
-![▲ AF 對照表，取自 DS10693。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj72ewJ_VwsOl1dP04dVnK3d0_gQgeee_F--bjtTCwmkcl6OZTakXSoeTtcYou17UQgHYwZvFe-Mf6jKQCVp_L5apdSxokQz2_58K3fSawxfjjMyu0s0ydjxmkxJ0EyR1dQ5a4lZeAMUEM0KfBjuQsl9FLQC07cwiLG_xfm9BtumOkWG-AIKIqZDxSL/s16000/Screenshot_2022-09-15_115823_1663214323550_0.png)
+![▲ AF 對照表，取自 DS10693。](https://bucket.ziteh.dev/blog/libopencm3-stm32-9/4cfda474.webp)
 
 ### USART 設定
 ``` c
@@ -244,7 +244,7 @@ static void usart_setup(void)
 
 可以使用 PIO 內建的 Serial Monitor 查看。
 
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiBR-Oe7CmaVN3FBpKa2ejwVBQ4OObMmO-Dl0axYofYtwgyZBinFBHStgHMejeAMVEnaUwMhPJ0yT1DcVM6xkA-f1d9kVtwc1Z5ROLOEo5dzM8GbvjHHfK9JcIJtk5ON7_U6WcQmLED6YTTilVnmxgNQz03tgmFAq_K1B5GD9U2P-fpty27HDPHrWwy/s16000/usart_printf.gif)
+![](https://bucket.ziteh.dev/blog/libopencm3-stm32-9/6f76bc41.webp)
 
 # 小結
 這次介紹了 USART 的發送功能寫法，還一併實現了透過 `printf()` 來使用 USART。USART 是很基本且常用的功能，如果運作起來不正常的話還是先再次確定通訊的設定是否正確。

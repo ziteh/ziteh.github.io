@@ -346,7 +346,7 @@ CPOL 決定了 SPI 閒置時 SCK 要為 `Low`（CPOL = `0`） 還是 `High`（CP
 
 > NSS pin is not used on master side at this configuration. It has to be managed internally (SSM=1, SSI=1) to prevent any MODF error. 參考自 RM0390 Rev6 P.852。
 
-![▲ Standard multi-slave communication 的 SPI 接線圖。取自 RM0390 Rev6 P.852](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg3q5zGTwKUgtoHk9VA_u2Zudc2cCPIHnlo76N3BOs5V6gK_uZOmrFNWMR2xH_hSWokrT2OpEiSCGisnUedcldrwULizln5y2gf4r1M_PBNVAtlzcbXNrRFxlELkI8JOh2oGSL_tqdV-RxRLoQDcRLbz5cPmcmG0Kd0GUeiq65dENCr8U1cSk6BASrz/s16000/1.png)
+![▲ Standard multi-slave communication 的 SPI 接線圖。取自 RM0390 Rev6 P.852](https://bucket.ziteh.dev/blog/libopencm3-stm32-24/1ac9641f.webp)
 
 ### SPI CS 選擇/反選擇
 ``` c
@@ -428,7 +428,7 @@ void exti9_5_isr(void)
 ## 成果
 由於下一篇才會寫 SPI slave，因此這次就先只以邏輯分析儀查看 SPI 的輸出。
 
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhPybNvt9IvLtpR2_YSS13vsCV1R0BhmUsGVljptvTiVLLtZDsRxvKXOnRy8Y9Ws7JW2H1TSTB_S3v77jRs3ZYvt7UI9Vt2AZEWMKKLrQAvD4hcTJVxKj3OcfLr4aphcPdhQ-VSFqZTEEVVrZeqAZgz8YbBRTzSznCmcSK7sJXbhJmeG4VfjfmQca2I/s16000/spi_master_1_1662702192720_0.png)
+![](https://bucket.ziteh.dev/blog/libopencm3-stm32-24/afaef3df.webp)
 
 訊號波形由上而下是 CS（D4）、SCK（D7）、MOSI（D5）與 MISO（D6）。
 

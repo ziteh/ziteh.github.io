@@ -168,9 +168,9 @@ static void rcc_setup(void)
 1. 當 WWDG 下數計數器的值 T[6:0] 變得小於 `0x40`，即 T6 位元變成 `0`。
 2. 在時間窗口（Window）外（即 T[6:0] > W[6:0]）時下數計數器被重新裝載（Reload）。
 
-![▲ WWDG 的 Window 示意圖。取自 RM0390 Rev 6 P.648。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi95ZGURIwumO5WY3GiuIpFNpwEI6zJKUZs8cggiZBgqOSoEvA9zeDnp_PwH-9Rw-bU9dzsMxStwm4YhffS6XIKYMm3uLHAwaRV5SQhuLPsnd89kdX3EoPfKNPODTTRrj4uCPP5Qr62Fbo_WSmnTAWt6PIt7gWErprcFJOqBdEGWxAV6ef8nN9oVlFd/s16000/image_1662526244380_0.png)
+![▲ WWDG 的 Window 示意圖。取自 RM0390 Rev 6 P.648。](https://bucket.ziteh.dev/blog/libopencm3-stm32-18/30c7d67d.webp)
 
-![▲ WWDG 的 Timeout 計算公式。取自 RM0390 Rev 6 P.648。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhLJOd0kVjLvFREZbFgal7bDN2U64qtQ-WLzdNKhhXWNb71g6BUun3GBzPMFvsQ5OTS4t9REMhuriMs7w_mpvu7mVXgY4jcr9K8pY5qt4so7qC6nbFE052ja_M2o2Uc-kIPrIo-ecWW1OGhKyc2sI5NMEodpXIAZprXzIPo161v6detq6bYW67FytKj/s16000/image_1662526953782_0.png)
+![▲ WWDG 的 Timeout 計算公式。取自 RM0390 Rev 6 P.648。](https://bucket.ziteh.dev/blog/libopencm3-stm32-18/6b84f3fc.webp)
 
 只要參考上面的公式就可以計算 WWDG 的 Timeout 長度。
 
@@ -278,11 +278,11 @@ static void led_setup(void)
 ## 成果
 這次使用 PlatformIO 的 Debug 功能來測試 WWDG 的運作。
 
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhh_tAv7bqya8JkSHhhN20GaB2PWFl-iPxCtEvmQkMWOU7gR9RbB5vdfOKKb_ZvXzUUMGlnx2-XlwqMzKhjdkbJIz49BwD7T4EfQjuXfbkBLV1lfTEwmGgWrMZ4ZSWi_im9gAiPgxqhD5XwxnzOTg3aQbW5Sp3iQu9y3o9PEFhiGCsHELCg5HVvA9ae/s16000/1.png)
+![](https://bucket.ziteh.dev/blog/libopencm3-stm32-18/9af2c28e.webp)
 
 可以看到 Refresh 前，T[6:0] 的值數到 `0x5F`，已經不大於 W[6:0] 了（條件 2），所以這時 Refresh 不會觸發 Reset。
 
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgbYzUCOUKgvXVSQFV5fr20F_JNozWhzhZ_vFc_c-WOKUYVO6uuKP1S89jCRRF5UuiFOj1s1MQHYybG8yiBH1CnRFykDGCsui0lFCoThkJn6s0QBRl5tij11uZP2ocwSAW-n-bAZeGaX3lKTqRIN5ZHIQSXTHLzp8dfFynEnrfTTWT3vSGVDdbjF4Jj/s16000/2.png)
+![](https://bucket.ziteh.dev/blog/libopencm3-stm32-18/0c50fa47.webp)
 
 在 Refresh 前，T[6:0] 的值為 `0x40`，還沒到下限 `0x3F`（條件 1），所以這時還來得及 Refresh 而不會觸發 Reset。
 

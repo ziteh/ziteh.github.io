@@ -154,7 +154,7 @@ void tim2_isr(void)
 #define TIMER_PERIOD (((TIMER_CLOCK) / ((TIMER_PRESCALER + 1) * GOAL_FREQUENCY)) - 1) /* ARR */
 ```
 複習一下上一篇的公式：
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6tOm8rGApz9SgH1ruhwO4JK_q2qoWaD1oXlHwpZLz0_sJH309rcAbSVSaHvWWfI_7Sneh-DQ63Yd0-r0OuGYWVzYcxKb6UFbOjN3CoYodhQRV6BeWOvJBjJTB2IW_b1YPcW_HADLoc2g7aDVP-F8WD3K38Gk0yeRV7LBjIXGwADGUmxu28CY83SmW/s16000/5.png)
+![](https://bucket.ziteh.dev/blog/libopencm3-stm32-12/87a9ca9f.webp)
 * `f_overflow`：Overflow 的發生頻率，也就是我們的目標頻率。
 * `f_counter`：Counter 的計數頻率，也就是上面的 `CK_CNT`。
 * `f_timer`：Timer 的頻率，也就是上面的 `CK_PSC`。
@@ -212,13 +212,13 @@ static void rcc_setup(void)
 這行的意思是指定時鐘源為 HSE（High Speed External），且其頻率為 8MHz，並將系統時鐘設定為 168 MHz。這個函式也會一併設定好上面用到的 `rcc_apb1_frequency` 值，和決定 APB1 的預除頻值等各種與時鐘樹有關的設定。
 
 我們可以在 VSCode 中查看它實際設定了什麼，這些都定義在 `lib/stm32/f4/rcc.c` 中：
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgVCeGcu0lJ90BFb9Ihp35aR9DKJ6v9zM7KKC8VWjoYp-lBSiAv1AqK6VHN70MZVCVZrkdZ7CTEryFtmznALpXNG7QXxizn2tngkXkOCsc2kmwf1Zg-SaDepWqncySXFWaynz3ndLAo_y9cL6KB6NlIHRk2hClp8Yik10zxNw8L6rmJGf8dI3fL--aU/s16000/Inkedimage_1662204158734_0.jpg)
+![](https://bucket.ziteh.dev/blog/libopencm3-stm32-12/2b9f2bd0.webp)
 
 可能會有人覺得奇怪，Nucleo-F446RE 上面的 X3 根本就沒有裝石英振盪器，而 X2 是 32 KHz 的 LSE，那這個 8 MHz 的 HSE 是從哪來的？
 
 答案是從 ST-Link 來的。Nucleo 預設配置好 ST-Link 的 MCO（Microcontroller Clock Output），它會固定輸出 8 MHz。當然你也可以不使用 ST-Link 的 MCO 作為 HSE 源，只要照著 UM1724 裡的說明調整即可。
 
-![▲ Nucleo 預設使用 ST-Link MCO 做為 HSE。取自 UM1724。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEixZDXvfWw2mKihuO-_u8VVdQZEG6rtalPjWVTRmfWbfpWCd0Ub8LYP7wnzzBhorCkKzcRKOyk5OLfsaHs0OJGvMRGNZcR4IG2uVTU9LCam3dCDu2Gxi5rxWrUZfoEsIH0mgbWxfC4dH0IbXd_6PNVD8UbJgHceQg97Cof4dOwplL6exuO28izs-c95/s16000/image_1662203775952_0.png)
+![▲ Nucleo 預設使用 ST-Link MCO 做為 HSE。取自 UM1724。](https://bucket.ziteh.dev/blog/libopencm3-stm32-12/8768070a.webp)
 
 ### 設定 Timer
 ``` c
@@ -306,7 +306,7 @@ static void led_setup(void)
 ## 成果
 這是實際輸出的波形，D6 與 D7 分別為設定目標頻率為 5 Hz 與 100 Hz，可以看出相當精準。
 
-![▲ 實際輸出的波形。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5o3NcAgk25oLDFsaOcEO11b51HYMcU2m9JhXHta_inIuWfPKrP3GYuanRhDQgb2bXZfOWk6RcSecayBrVnR5oQ-7JVr0qbjdtS2jpOORa6hGD9K76CEgdHluBofcJwdlk_fQSi30bEvECUqc7iuPZF0dmbDXM6NF_vymra8OY_XFHJeAODD0mOJUv/s16000/scope_2_1662209560342_0.png)
+![▲ 實際輸出的波形。](https://bucket.ziteh.dev/blog/libopencm3-stm32-12/d15b5f2b.webp)
 
 > 注意，我們在程式中設定的目標頻率是「切換頻率」，而示波器量測的是「波形頻率」，GPIO 的輸出要切換 2 次才是一個完整的波形，所以示波器上顯示的頻率才會是程式設定的一半。
 

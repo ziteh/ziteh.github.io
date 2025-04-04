@@ -15,7 +15,7 @@ toc: true
 draft: false
 # aliases: ["/2021/11/learningstm32-platformio/"]
 ---
-![](https://blogger.googleusercontent.com/img/a/AVvXsEitW-RvmJa7RDSr_52UGweZc-G7pHkN0GECSLKrNoD0olnhbHNcsn0ogqQtQo1iBYTdPskq7LNuMicgjj_PQj_JQAMtZc5uKaiq-kIqjZHO36tTTcIcLKR7DL_jqpZENUUZTbuAsey8m4klKbUhXVoxQ4yTiy872IhnfLmTQ6Tmdysq2dFZQ6czBWwd=s1920)
+![](https://bucket.ziteh.dev/blog/learningstm32-platformio/e2356017.webp)
 
 # 前言
 
@@ -43,10 +43,10 @@ draft: false
 
 VS Code 的安裝沒什麼特別的，就不再贅述。安裝完 VS Code 後只要去擴充功能（Extensions）處搜尋並安裝 [PlatformIO IDE](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide)，並等待其安裝完成就可以了，超級簡單。
 
-![▲ 安裝 PlatformIO IDE。](https://blogger.googleusercontent.com/img/a/AVvXsEiqHeJoDrG_Hv24rT50Ivj5zfVs1oBYr-j5Lo_YbFPPLJrRhgTGTqvNqRLOpdJ4U3JOT0ckyXPWNhJ4SRB4apVZ32OYnVB8EQJWRdM5IgUEvZOanfoXfHroRhTwfcqh4EPxEfnSJ3I6rQ1XNl4fSDF6-Ha8BllKyBGxUmSGI5h1RKcYvAa7nDXkgGCF=s1920)
+![▲ 安裝 PlatformIO IDE。](https://bucket.ziteh.dev/blog/learningstm32-platformio/4c1c50f9.webp)
 
 安裝完成後就可以看到 VS Code 的側邊多了 PlatformIO 的 Icon，點擊它並點選「QUICK ACCESS > PIO Home > Open」就可以進入其主要畫面——PIO Home。
-![▲ PIO Home。](https://blogger.googleusercontent.com/img/a/AVvXsEitW-RvmJa7RDSr_52UGweZc-G7pHkN0GECSLKrNoD0olnhbHNcsn0ogqQtQo1iBYTdPskq7LNuMicgjj_PQj_JQAMtZc5uKaiq-kIqjZHO36tTTcIcLKR7DL_jqpZENUUZTbuAsey8m4klKbUhXVoxQ4yTiy872IhnfLmTQ6Tmdysq2dFZQ6czBWwd=s1920)
+![▲ PIO Home。](https://bucket.ziteh.dev/blog/learningstm32-platformio/e2356017.webp)
 
 ## 安裝 ST STM32 平臺
 
@@ -54,7 +54,7 @@ PlatformIO 支援許多平臺（Platforms），例如 Atmel AVR、Espressif 8266
 
 在 PIO Home 的左側欄位點擊「Platforms」，點擊上方的「Embedded」頁面並搜尋「ST STM32」，找到後就可以點擊「Install」進行安裝，安裝可能需要花一點時間。完成後就可以在「Installed」頁面中看到「ST STM32」。
 
-![▲ 安裝 ST STM32 平臺。](https://blogger.googleusercontent.com/img/a/AVvXsEh2T6vNQ2_GQ6Dn83CetGVlEzM09CdTwpbAjcKOOi0qUvWiAlBs1OGTq72oay6cXq8-mSqIovIMNTyDGTLdof2h1E9wqUT_MYpxV8rbsLm1OdG8CMoveYKh6qetbNv2K3U7d8UNUu9-WV3Vh2FP811liegqR1-klUKVFZlXPYbapQzXIXA-1uLvYNND=s1498)
+![▲ 安裝 ST STM32 平臺。](https://bucket.ziteh.dev/blog/learningstm32-platformio/2de23170.webp)
 
 ## 建立專案
 
@@ -72,7 +72,7 @@ PlatformIO 支援許多平臺（Platforms），例如 Atmel AVR、Espressif 8266
     - **Zephyr RTOS**：一個 Linux 基金會主導的開源小型即時作業系統（RTOS）， 常用於 IoT 應用。
  - **Location**：專案的路徑。
 
-![▲ 建立專案。](https://blogger.googleusercontent.com/img/a/AVvXsEiGYQPhKPuGKSftjNuManasaGjwcDjDs3cy3sqc3Tuy89YlKSXt2KCr0CQ3iSKz9yoW0PY3O16K3fyoZxs-rChRPaVa_mpjEHIVg0WQda-nbs9wYBg5qfeVrcZ8e05mzPbaV1WzY6FskWzf8hhHmFq7BlRBz32zL5n8NS5leERudgm-R6TTltHTmVHh=s550)
+![▲ 建立專案。](https://bucket.ziteh.dev/blog/learningstm32-platformio/671bb637.webp)
 
 剛開始接觸比較會有問題的應該是「Framework」的選擇。依據我的經驗，有關 STM32 市面上的書和網路上的教學通常使用的就是「STM32Cube」，所以如果你剛入門 STM32 對它的使用不是這麼熟悉的話就選「STM32Cube」，這樣出問題時會有比較多的資源可以參考。
 
@@ -138,15 +138,15 @@ PlatformIO 的 GitHub 上也有一些範例程式可以看：[platformio/platfor
 
 點擊 VS Code 左側欄位的 PlatformIO Icon，並點擊「PROJECT TASKS」中對應環境的「Build」進行建置。本範例只有一個環境「nucleo_f103rb」，故點擊「nucleo_f103rb > Gereral > Build」。也可以點擊下方狀態條的「PlatformIO: Build」按鈕。
 
-![▲ Build 與 Upload 按鈕。](https://blogger.googleusercontent.com/img/a/AVvXsEhCLowlJe9yhNqMX2RsozYFQksf-pzfmMYKB69xWsvMkFkWv1j60fUOOc4HN9ZnkHwVI5YuDBPCjugQaq1vqCkK1LSg17GETqe0DId_2BARwXfbH7K25_TB0U6ohK87FWg2Wf7U9sN_fmSAresx-MIOnIQXIzTmlb9YiU6sTQk3LXx7GteMxufohvQq=s1920)
+![▲ Build 與 Upload 按鈕。](https://bucket.ziteh.dev/blog/learningstm32-platformio/618c18cb.webp)
 
 如果都沒問題的話會在終端機看到「SUCCESS」，那就可以接上開發板繼續進行燒錄了。如果你是使用 ST-Link 的話，記得要安裝 [ST-Link 的驅動程式](https://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-utilities/stsw-link009.html)。
 
-![▲ 建置（Build）成功訊息。](https://blogger.googleusercontent.com/img/a/AVvXsEgGhzAC5lP1xILR8xKpE5nFkb0GT_PsCSjljKyGG2J87rhX1iPsptB5a-z1LJN8thNJdrQ-Vw4K_KykHNZz7tIjzeGTOthZPYtaoXSCxGZTfIAKO-zB11P6JfBmbrI4kxP9YUe-MSSwN93LDSlz1wU2lgBaPPqCFT7MgTknwuclp5K96KdYAzY4iOWC=w640-h356)
+![▲ 建置（Build）成功訊息。](https://bucket.ziteh.dev/blog/learningstm32-platformio/5a5ecda1.webp)
 
 燒錄（上傳）的按鈕和建置在相同的地方，按下「Upload」就可以進行燒錄了，同樣也可以點擊下方狀態條的「PlatformIO: Upload」按鈕。第一次可能會花比較久的時間，看到終端機顯示「SUCCESS」就代表程式燒錄成功。
 
-![▲ 燒錄（Upload）成功訊息。](https://blogger.googleusercontent.com/img/a/AVvXsEjGDrZX0XtCx70I_hP0wUfyJMG9qUoAIks-00OFRMdOBjNuDmi3Yb9v2Y06i-57eilCO_7YR1XfN46SltBgqxa0h07qKbN4d1b8NAbKjDx8Tjzw-8WpQb5qYJpwOq3651pGUU9ulwXEMIn6bv76o1sCscrefup4RZPr3bq_rF3Uup6Ydb736w06dNoB=s1388)
+![▲ 燒錄（Upload）成功訊息。](https://bucket.ziteh.dev/blog/learningstm32-platformio/acdfd0c8.webp)
 
 # 結語
 

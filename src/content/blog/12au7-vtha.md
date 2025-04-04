@@ -11,7 +11,7 @@ toc: true
 draft: false
 # aliases: ["/2019/02/12au7-vtha/"]
 ---
-![](https://1.bp.blogspot.com/-lbg-gEN1IxM/XppfskTS_xI/AAAAAAAACGg/pkHxv9yG9tQX-e7VCSXuP-Wmu1jx6LmTwCPcBGAsYHg/s640/360%25E7%259C%259F%25E7%25A9%25BA%25E7%25AE%25A1%25E8%2580%25B3%25E6%2593%25B4.gif)
+![](https://bucket.ziteh.dev/blog/12au7-vtha/f75f6344.webp)
 
 
 # 前言
@@ -32,35 +32,35 @@ draft: false
 
 雖然知道了真空管的運作原理，但要直接設計出完整實際可用的電路對我來説還是有點難，畢竟電路是有很多東西需要考慮的。所以我就上網找了些別人設計好的電路來參考。最後我找到了這篇文章：[NP-100v12：12AU7(ECC82) / IRF510 Headphone Amp](http://diyaudioprojects.com/Solid/12AU7-IRF510-LM317-Headamp/)。然後我就照著它的電路圖來用Altium Designer 17開始繪製電路。
 
-![](https://1.bp.blogspot.com/-17xn8Q69cDo/XppfsowdAaI/AAAAAAAACGg/IpAGZPHxYHMyLAmsZX3L8X3l7oO0deNVACPcBGAsYHg/s1600/Screenshot%2B%252846%2529.png)
+![](https://bucket.ziteh.dev/blog/12au7-vtha/ab8ee615.webp)
 
 這是系統電路圖(原理圖)的部分，基本上就是照著上述文章中的電路複製重繪一次，只是我把兩聲道的電路都話出來了。
 
 這張圖的可變電阻-開關(VR-SW1)的VR部分**其實是畫反的**，一般來説是順時針轉VR要越大聲，但我這裡畫反了，所以如果有要參考的話要在多注意一下。
 
-![](https://1.bp.blogspot.com/-j6Co2pwj9nE/XppfsgCF5LI/AAAAAAAACGg/TRaL66T5CYwbTXtbeFrIXP6-aL4IrMhvgCPcBGAsYHg/s1600/Screenshot%2B%252847%2529.png)
+![](https://bucket.ziteh.dev/blog/12au7-vtha/b97fd4ec.webp)
 
-![](https://1.bp.blogspot.com/-DEULRvFaDvo/XppfstrgZGI/AAAAAAAACGg/xuPunToCDu8aZKs0KiTvnSqVsfDASVpHwCPcBGAsYHg/s640/12AU7-VTHPA_Ver1.1%2528PCB%2BLayout%2529.png)
+![](https://bucket.ziteh.dev/blog/12au7-vtha/e4b7f024.webp)
 
 再來就是PCB電路圖，也就是Layout佈線的部分了。由於我只使用Bottom Layer，但有2條零件面跳線，分別在U1和U2的Pin3。然後U2那邊的跳線會和R7交叉到，是我當初設計的失誤。
 
-![](https://1.bp.blogspot.com/-PXLeHrYzzfM/Xppfsqi9DnI/AAAAAAAACGg/Gk1damJugNMgmPkByA2xyxXUI-aX8NojQCPcBGAsYHg/s1600/DSC05877.jpg)
+![](https://bucket.ziteh.dev/blog/12au7-vtha/2969a6c2.webp)
 
 然後就是把電路板洗出來然後將零件焊接上去了，做完試聽一下確定有聲音。
 
 # 照片
 
-![](https://1.bp.blogspot.com/-E4OpgvbjNaY/XppfsiOWrCI/AAAAAAAACGg/IACSZgjKNGYLrucQCr8r3_j8k3ewUbRZACPcBGAsYHg/s1600/12AU7-VTNPA-0038.jpg)
+![](https://bucket.ziteh.dev/blog/12au7-vtha/c34abe08.webp)
 
-![](https://1.bp.blogspot.com/-MhTLZsE3C9g/XppfskxZ8lI/AAAAAAAACGg/8tzInUcyomcA3RozG0Fst-cIkhH9MQ74ACPcBGAsYHg/s1600/12AU7-VTNPA-0041.jpg)
+![](https://bucket.ziteh.dev/blog/12au7-vtha/6f05451d.webp)
 
-![](https://1.bp.blogspot.com/-FwKj5O8j_5g/XppfsgxN1rI/AAAAAAAACGg/w6boNxC0sfQxVgDB2bC2niEElSrZKfNLQCPcBGAsYHg/s1600/12AU7-VTNPA-0066.jpg)
+![](https://bucket.ziteh.dev/blog/12au7-vtha/f8da7ab3.webp)
 
-![](https://1.bp.blogspot.com/-tTBygku660w/Xppfsom5AFI/AAAAAAAACGg/1e30I9N72gwgx6EBh56zAao37oc1RKTxQCPcBGAsYHg/s1600/12AU7-VTNPA-0069.jpg)
+![](https://bucket.ziteh.dev/blog/12au7-vtha/8437af23.webp)
 
-![](https://1.bp.blogspot.com/-g1d8Kc1fyPU/Xppfsm-TxWI/AAAAAAAACGg/c6irPN6BOGssWDi9Y5CazyI29rRsaLuaQCPcBGAsYHg/s1600/12AU7-VTNPA-0099.jpg)
+![](https://bucket.ziteh.dev/blog/12au7-vtha/6740cac2.webp)
 
-![](https://1.bp.blogspot.com/-GKjiCbkx3HM/XppfsutmSnI/AAAAAAAACGg/78vJnPZfif0BEyorVhLridkBtpUf1coRgCPcBGAsYHg/s1600/12AU7-VTNPA-0073.jpg)
+![](https://bucket.ziteh.dev/blog/12au7-vtha/9844ff38.webp)
 
 最後附上此作業我打的結果報告，裡面有很多我找到的真空管相關資料，有需要者可以參考看看。我將此PDF檔放在我的雲端上：[Google雲端硬碟](https://drive.google.com/file/d/1H40-AUMELtlNLMlD_a0G0DIxzHOKnHU3/view?usp=sharing)
 

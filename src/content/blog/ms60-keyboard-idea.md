@@ -24,15 +24,15 @@ draft: false
 
 目前還在初期開發階段，我連要採用的 MCU 方案都還沒確定要 RP2040 還是 nRF52840、韌體要 QMK 還是 ZMK。MS60 不算是我的主要專案，所以進度大概會很慢。
 
-![目前的佈局設計](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgfJ6cW1EPagZ49IN1ymWgi6cg7N_HWEhQ0FuNY52EbyQ-iN3TyAgUXRWUL_Q8uVzqLm2AQZ0igwn0VMDXZW-5i914QfEY-NCUei3P4MIhZj2_hj3ZgJVPfNKPtgGSsBTPfcsCcZgZxvZAf7mhjVwGFsAh_hpeDu4XPeBBViagwToN_VGue9Mn6ye-tjgo/s16000/Screenshot%202023-07-10%20at%2021-45-03%20Keyboard%20Layout%20Editor.png)
+![目前的佈局設計](https://bucket.ziteh.dev/blog/ms60-keyboard-idea/12859669.webp)
 
-![Keymap 設計](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjqBGICruSlEePRD5SDk75K5gnA2BRJ3QgS6NsitYsW5BhTqEhzczkDBUsTgVBZS_8Wk1tM8LPJA_72M_Lzv_axmuQyoFUGRjnXkGiddqoZ051NvPpcAN7p5IDJwpKfMFKKMeOmhNa-c-AMc5CNkKi79MDijsU4E8J6HsHON2dJ8Q33qBjBD9k-XMxnZWk/s16000/Screenshot%202023-07-10%20at%2021-37-17%20Keyboard%20Layout%20Editor.png)
+![Keymap 設計](https://bucket.ziteh.dev/blog/ms60-keyboard-idea/61c9aa28.webp)
 
-![PCB](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwVpG-8bR3I3tMy_hNtYiOMRWqwN0msE2KbBcoUJ7A86ag6lioYw8KhykSpNf-a2o6_wg-JG_MQ7r1Ag6OBN9pEamCw8GbL3FIqJ9pib-XizDgQRiIMM3VUHXMqUJtOu1nOgOPEkus-yCN0SzImcd9I6vlWBl3CwLMarnzl93QjYBe4fCu9uAuoUlgfNA/s16000/Screenshot%202023-07-10%20214728.png)
+![PCB](https://bucket.ziteh.dev/blog/ms60-keyboard-idea/8ef6527f.webp)
 
-![PCB 正面渲染](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjUvx_Wh7ZnqZ8u3-__5gNaB0GwEUB-xPevnntyoYrmYHJx-99UuE5bkx4-rVxJZ-EvBmkidFf9LWyTtBosNjjLlU3j-HPTgqBKun64oOrVDGK1eYURuPpUsqM4Nnf7kiBFa-QzsR4msl4FTCq7dpH4_FaH_43ivwvDem2LfddUC51WfsxRDABkUmmCmfg/s16000/MS60.png)
+![PCB 正面渲染](https://bucket.ziteh.dev/blog/ms60-keyboard-idea/998b3170.webp)
 
-![PCB 背面渲染](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwF_1fy0jwO9W3YYuxLLkXzvYbfXahc8OcHYbmeSeFv5CeU9PxOP3Xm4WwG62WfuqRjNqe4Fyk8XheSeGXinIgohiua0CMxeEyQi0W96xu2B3RIKm4ToBkAJFTbFV0HAwWUsUgRI-qWFpfLmsPl3eNYiUFvx_Z5jzV2xo0-FAfZI5sGfqZd_3kbgRQTcQ/s16000/MS60-2.png)
+![PCB 背面渲染](https://bucket.ziteh.dev/blog/ms60-keyboard-idea/8f4657ca.webp)
 
 可以發現目前的 PCB 上還有正面的 RGB LED（SK6812MINI-E），但是因為要支援多重佈局的關係，有些鍵位的 LED 會擺得歪歪的。這時我就重新思考設計理念是什麼？我想要它是一把內在優雅的鍵盤。
 

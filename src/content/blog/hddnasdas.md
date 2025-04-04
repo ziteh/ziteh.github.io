@@ -10,7 +10,7 @@ toc: true
 draft: false
 # aliases: ["/2019/02/hddnasdas/"]
 ---
-![](https://1.bp.blogspot.com/-cV0dFgZPWAg/XppmO8WAZFI/AAAAAAAACG8/8M8Q9oJp_jcgiTlR0X7qLgL1KnQ0pc-XwCPcBGAsYHg/s640/DSC_0045.jpg)
+![](https://bucket.ziteh.dev/blog/hddnasdas/7cf6bf7e.webp)
 
 
 # 前言

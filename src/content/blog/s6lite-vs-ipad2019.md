@@ -10,7 +10,7 @@ toc: true
 draft: false
 # aliases: ["/2020/05/s6lite-vs-ipad2019/"]
 ---
-![](https://3.bp.blogspot.com/-xDjyt9pUqb0/XreTf9cwHcI/AAAAAAAACYE/Ln0DcgwYPywK0Ep2ZHdA9dSKmRBaYfQTACPcBGAsYHg/s640/ZPH_0198.JPG)
+![](https://bucket.ziteh.dev/blog/s6lite-vs-ipad2019/c565434e.webp)
 
 # 前言
 
@@ -24,19 +24,19 @@ draft: false
 
 雖然看起來S6 Lite好像比較小，但其實它的螢幕比iPad大了o.2吋（iPad為10.2吋；S6 Lite為10.4吋），但因為圓角的關係，實際上也差異不大。而螢幕比例也不同，S6 Lite比較扁長，看16:9的影片比較適合。
 
-![▲ 左iPad；右S6 Lite。](https://1.bp.blogspot.com/-3TNpO__MzXQ/XreTf206-6I/AAAAAAAACYE/cQ9RTIwKor4OM-F08iYJiOPU693GDJ_BQCPcBGAsYHg/s1600/ZPH_0200.JPG)
+![▲ 左iPad；右S6 Lite。](https://bucket.ziteh.dev/blog/s6lite-vs-ipad2019/f630f5db.webp)
 
-![▲ iPad無全貼合螢幕，看起來有斷差。](https://3.bp.blogspot.com/-qLZ_xY9pCaw/XreTf3MneDI/AAAAAAAACYE/b6xKTPPs4CYS3zX4qpy9bFg6NRwvshDSACPcBGAsYHg/s1600/ZPH_0209.JPG)
+![▲ iPad無全貼合螢幕，看起來有斷差。](https://bucket.ziteh.dev/blog/s6lite-vs-ipad2019/88298fa6.webp)
 
-![▲ S6 Lite看起來無明顯斷差。](https://4.bp.blogspot.com/-U86VpxGucJs/XreTf2I0PBI/AAAAAAAACYE/2lKbRkOQwv40KKrQmWro1mSOcyE6-G6hACPcBGAsYHg/s1600/ZPH_0210.JPG)
+![▲ S6 Lite看起來無明顯斷差。](https://bucket.ziteh.dev/blog/s6lite-vs-ipad2019/2a3ee73f.webp)
 
-![▲ iPad因斷差，故感覺筆頭和畫面有距離。](https://1.bp.blogspot.com/-AvfswG0X5KU/XreTf9wo3cI/AAAAAAAACYE/uQ1SCSyhmokQgT1LHNd8B8GLodfsEas2ACPcBGAsYHg/s1600/ZPH_0212.JPG)
+![▲ iPad因斷差，故感覺筆頭和畫面有距離。](https://bucket.ziteh.dev/blog/s6lite-vs-ipad2019/485f86d6.webp)
 
-![▲ iPad的斷差。](https://1.bp.blogspot.com/-nVTE0K3Rb3g/XreTf7Z7NJI/AAAAAAAACYE/bwmzTQdOBeoTlncR3lCCiFWsqt8QAz9BgCPcBGAsYHg/s1600/imgonline-com-ua-twotoone-NbL27b6QweFvO.jpg)
+![▲ iPad的斷差。](https://bucket.ziteh.dev/blog/s6lite-vs-ipad2019/2f9436e1.webp)
 
-![▲ S6 Lite無斷差，感覺筆頭是“寫在”畫面上。](https://4.bp.blogspot.com/-DC4WwoOrKQ4/XreTf6tdjnI/AAAAAAAACYE/ugmPkg2FX6w8ibU10NS7nOFlaKJBGouHgCPcBGAsYHg/s1600/ZPH_0216.JPG)
+![▲ S6 Lite無斷差，感覺筆頭是“寫在”畫面上。](https://bucket.ziteh.dev/blog/s6lite-vs-ipad2019/683d795a.webp)
 
-![▲ S6 Lite無斷差。](https://1.bp.blogspot.com/-8Xn_Z9jvQDs/XreTf6lw2KI/AAAAAAAACYE/1vNHi0366kQAOPjJXs8omKvwpjusJ1NJgCPcBGAsYHg/s1600/imgonline-com-ua-twotoone-xrUbbhEqszexdbc.jpg)
+![▲ S6 Lite無斷差。](https://bucket.ziteh.dev/blog/s6lite-vs-ipad2019/90620274.webp)
 
 # 比較表
 

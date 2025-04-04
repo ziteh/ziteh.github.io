@@ -12,7 +12,7 @@ toc: true
 draft: false
 # aliases : ["/2017/08/macarm-1/"]
 ---
-![](https://3.bp.blogspot.com/-a1H0Poj7P-E/XqY2wqNljhI/AAAAAAAACJk/VVi0FlUmY1s8Cn8DFY7u0RTMGbuZe-v2wCPcBGAsYHg/s400/DSC_0421.JPG)
+![](https://bucket.ziteh.dev/blog/macarm-1/2b7566cb.webp)
 
 # 起源
 
@@ -20,7 +20,7 @@ draft: false
 
 <!--more-->
 
-![我在Evernote上進行專題製作的規劃](https://2.bp.blogspot.com/-C0HAyHcElm8/XqY2wicxB-I/AAAAAAAACJk/1paKGlkhEUE3tzT6-Dv2HmWnyEY1Il6wwCPcBGAsYHg/s1600/%25E8%259E%25A2%25E5%25B9%2595%25E6%2593%25B7%25E5%258F%2596%25E7%2595%25AB%25E9%259D%25A2%2B%25281%2529.png)
+![我在Evernote上進行專題製作的規劃](https://bucket.ziteh.dev/blog/macarm-1/809f8362.webp)
 
 # 主控晶片
 
@@ -28,7 +28,7 @@ draft: false
 
 但馬上就發現問題了，我使用的PIC18F4550的CCP(PWM)只有2個，但我的機械手至少要5個PWM輸出才能分別控制5個手指的伺服馬達，雖然我後來有找到PCA9685-I2C通訊的16路PWM輸出晶片，但我用來2個禮拜的時間都沒辦法成功使用I2C。這時我也已經在準備工業類技藝競賽了，所以我就想直接用CPLD/FPGA當主控就好了，PWM輸出要幾個就寫幾個，多方便呀!
 
-![我使用的FPGA-EP3C16Q240C8N](https://3.bp.blogspot.com/-DaoyMW_TFMs/XqY2wmUHArI/AAAAAAAACJk/A_hs_4y25OkQ8UHSUygb1hFoq88iRoWsgCPcBGAsYHg/s1600/DSC_0010.JPG)
+![我使用的FPGA-EP3C16Q240C8N](https://bucket.ziteh.dev/blog/macarm-1/63c0479e.webp)
 
 # 類比訊號
 
@@ -38,9 +38,9 @@ draft: false
 
 製作時比較麻煩的是輪掃的速度，太慢的話機械手會動得卡卡的，太快的話會超過CD4067切換的最高操作頻率，造成動作不正確。再來就是我要將ADC讀到的電壓轉換為PWM訊號，這種數學的東西我實在不是很擅長，想了很久才列出一個可以完美轉換的公式出來。
 
-![上面的IC是CD4067B，下面的是ADC0804](https://4.bp.blogspot.com/-ecA2RqOjk8o/XqY2wng896I/AAAAAAAACJk/0b71jY_L64s9Ei4v5ZgV2V-LMIEzThB4ACPcBGAsYHg/s1600/DSC_0191.JPG)
+![上面的IC是CD4067B，下面的是ADC0804](https://bucket.ziteh.dev/blog/macarm-1/960b038b.webp)
 
-![輪掃輸入資料架構圖](https://2.bp.blogspot.com/-90d38FLYXPs/XqY2wkksL6I/AAAAAAAACJk/OQ8wiswQmt43n4sLdpu_ZwpURwUmIvYUACPcBGAsYHg/s1600/01-2.png)
+![輪掃輸入資料架構圖](https://bucket.ziteh.dev/blog/macarm-1/48108f92.webp)
 
 # 手掌模型
 
@@ -48,9 +48,9 @@ draft: false
 
 畫好後就要開始進行3D列印了，我的手都使用科內的Fika印的，然而零件非常的多，所以我就一邊印一邊深入了解3D列印的知識。從一開始一根手指要印1小時到後來能用15分鐘就印出相同品質的成品出來。雖然說後來我還是硬給它加速，讓我的手印得很醜，但Fika其實可以印得很好也比很多機器要快很多了。
 
-![使用Solidworks畫手掌](https://3.bp.blogspot.com/-nZm2IAJFK3o/XqY2wvx7_XI/AAAAAAAACJk/IWZ3e9uB4rwuJ2XDRxHudbxXycuqhms0wCPcBGAsYHg/s1600/%25E8%259E%25A2%25E5%25B9%2595%25E6%2593%25B7%25E5%258F%2596%25E7%2595%25AB%25E9%259D%25A2%2B%252811%2529.png)
+![使用Solidworks畫手掌](https://bucket.ziteh.dev/blog/macarm-1/9b460c38.webp)
 
-![我用Fika 3DP印出我畫出來的模型](https://1.bp.blogspot.com/--S6cfCC1Tc8/XqY2wuciW9I/AAAAAAAACJk/VJqQzbqpZxARY-IjSZetKYrCwTAsP829gCPcBGAsYHg/s1600/DSC_0065.JPG)
+![我用Fika 3DP印出我畫出來的模型](https://bucket.ziteh.dev/blog/macarm-1/52a6fe20.webp)
 
 # PCB電路板
 
@@ -58,9 +58,9 @@ draft: false
 
 但電路雕刻機的操作步驟比較複雜且麻煩，錯一步就刻不出來，而且也很難知道是錯哪一步，後來向科主任請求幫忙後，主任表示會請之前學校唯一會用雕刻機的老師回來教我。而這位老師就是許老師，老師教完我雕刻機的使用方式後還順便給了我一些參加科展的建議。
 
-![使用Altium Designer設計電路板](https://2.bp.blogspot.com/-anW5W-SJ0nI/XqY2wh75_TI/AAAAAAAACJk/ekZYM0FpfSEReyKOBpbv3B6toVnRrAgowCPcBGAsYHg/s1600/%25E8%259E%25A2%25E5%25B9%2595%25E6%2593%25B7%25E5%258F%2596%25E7%2595%25AB%25E9%259D%25A2%2B%252827%2529.png)
+![使用Altium Designer設計電路板](https://bucket.ziteh.dev/blog/macarm-1/cc83af53.webp)
 
-![使用電路雕刻機製作電路板](https://4.bp.blogspot.com/-ley8gWsz504/XqY2wtguVrI/AAAAAAAACJk/aos_QdqHtlg-JO3ad8gXyHK-4L7fcNC8gCPcBGAsYHg/s1600/DSC_0217.JPG)
+![使用電路雕刻機製作電路板](https://bucket.ziteh.dev/blog/macarm-1/af317fdd.webp)
 
 # 組合
 
@@ -68,13 +68,13 @@ draft: false
 
 我以為CPLD和FPGA在編譯與程式編寫上沒有差異，但在後來研究編譯錯誤的原因後發現，CPLD只適合用來做簡單的組合邏輯電路，時序邏輯電路只要稍微多一點或複雜一些就會有問題，所以現在主控晶片都是FPGA了，而我也不可能改程式了，當時只好馬上重新畫一個PCB後刻出來，然後將所有東西組合起來再測試調整一下。
 
-![全部組合起來進行測試](https://1.bp.blogspot.com/-a1_4GbBg_94/XqY2wvotBAI/AAAAAAAACJk/Mdd81OxJJL4Cx4SAT0rgateUckHBUSgbwCPcBGAsYHg/s1600/DSC_0287.JPG)
+![全部組合起來進行測試](https://bucket.ziteh.dev/blog/macarm-1/18fddb00.webp)
 
 # OLED顯示
 
 這時我已經比完北二區的科展，要為全國科展做準備，我就想了很多可以加入的新功能，而OLED是我覺得比較容易做到的，因為只要把技藝競賽的程式複製過來就好了，而我只要改變顯示的內容就好了，所以我就趁著統測完到畢業的這段時間完成這個功能。OLED顯示的是GUI(圖形使用者介面)，因為我希望不要只是用LED來顯示，而是有文字和圖形的操作介面，這樣才方便，一目了然。
 
-![使用OLED顯示操作介面，並且用4個按鈕控制](https://1.bp.blogspot.com/-t-zIdhGLmyQ/XqY2wppXSHI/AAAAAAAACJk/77HLyBv6k10Jsnl3kMY3C6HNFVEQrptVQCPcBGAsYHg/s1600/DSC_0356.JPG)
+![使用OLED顯示操作介面，並且用4個按鈕控制](https://bucket.ziteh.dev/blog/macarm-1/33f35480.webp)
 
 # 成品展示
 

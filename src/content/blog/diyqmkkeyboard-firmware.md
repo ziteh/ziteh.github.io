@@ -99,7 +99,7 @@ Used for maintainer, copyright, etc
 Your Real Name?  [ziteh]
 ```
 
-![▲ 使用指令建立新鍵盤](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEipRq6B074RdBe4t0Uc5qIZajM0j3dS-lwJiel-cEGdwrgVwFBNWHkSDjBokQI7N9364L2eQS3B76_HAbcgsMVklbBPCllBSvPRhwkurRY7zW37mGWr9xHy45LYGZhKvf4_5H8WnezV1XLlVYv6JDWDXGkTmCSksXUbO2h7pkZ_FZtD-vOIUkRB-q7wug4/s16000/2023-07-01%2022-10-24.mkv_20230702_095338.927.jpg)
+![▲ 使用指令建立新鍵盤](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware/b5aa9bec.webp)
 
 接著會問你基礎佈局，你可以選一個和你預計要做的鍵盤較為類似的佈局，這樣後續要改的東西就會比較少。例如常見的 60% 鍵盤為「11. 65_ansi」，那就輸入其編號「11」後按 Enter。我這裡就選擇「none of the above」表示不使用現成的特定 Layout。
 
@@ -109,7 +109,7 @@ Your Real Name?  [ziteh]
 
 最後會問你所使用的 MCU（Microcontroller），這裡就選擇「RP2040」。
 
-![▲ 選擇基底佈局與微控制器示意。這裡是舊版的圖，編號請以實際為主](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTN8nyl-WGZQDeSTBAFr7o2-FVoNBfXDcSmoQvBaDw-ABHSI-kEHleAzx7MduwvqTKRlGnP04BQ3-kKpBmTM-pAN5s6fht8CHbQDzlVIzdTJJbKIRH19N1P4fq7WqL0Bu3F2YPKa9gup2i9TwPvlwhEKDbe9asl487Yzbw85lB1jYVjtwuQmbX7uGTEbU/s16000/Unnamed.png)
+![▲ 選擇基底佈局與微控制器示意。這裡是舊版的圖，編號請以實際為主](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware/2f34c4d4.webp)
 
 完成後會顯示類似這樣的訊息：
 
@@ -262,13 +262,13 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 
 如果你不太知道 `matrix` 的座標要怎麼打的話，可以使用 [Keyboard Firmware Builder](https://kbfirmware.com/)，將 [上一篇文章](/posts/diyqmkkeyboard-kle/#輸出) 最後的 Raw data 複製並貼到裡面。
 
-![▲ 在 Keyboard Firmware Builder 貼上 KLE 的 Raw data](https://1.bp.blogspot.com/-UTbRymD6jFo/Xu4uCFUmN4I/AAAAAAAACc4/Pun-2kS6qooDb3plao7F_e5sogqH_uHKQCK4BGAsYHg/s1903/%255B01%255DKeyboard%2BFirmware%2BBuilder_Import.png)
+![▲ 在 Keyboard Firmware Builder 貼上 KLE 的 Raw data](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware/adea4962.webp)
 
 在標籤頁「Wiring」裡，你看到的是鍵盤的鍵矩陣接線圖。它會自動幫你生成一個可行的接線方式，如果你不喜歡的話也可以手動修改。
 
-![▲ 接線頁面](https://1.bp.blogspot.com/-9pJYrEjmaXU/Xu4uCdp4PEI/AAAAAAAACc8/p8MMZuiSBUMSpTjsN0f0Xa78Turt48kzwCK4BGAsYHg/s1903/%255B02%255DKeyboard%2BFirmware%2BBuilder_Wiring_1.png)
+![▲ 接線頁面](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware/e35af54c.webp)
 
-![▲ 接線圖和 Matrix 的對應關係](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh99UeiWYdyky-hZedrvxTovnjqjoeXQg2b2nYZkCG7fIvJS5kOdSyhxP5YzMR3x7MOMoicCb6okM89xIcLfbuSmaJ3zgJoFcT2RQMg0bXmGaoRXV6pNtBOw2l9e8GmFENw_JYKeWlvF3bz2kzGefg_tD-Udxw5MTlHtRQ8VjQH2laiJI5GSOSCh9Vvd_c/s16000/mt2.png)
+![▲ 接線圖和 Matrix 的對應關係](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware/e0bf62be.webp)
 
 它提供的接線圖就很清楚地表達了每個鍵的鍵矩陣位置，請以此為依據來編輯每個鍵的 `matrix` 內容。
 
@@ -323,7 +323,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 
 又或者你用的是 RP2040-Zero，那就是看下圖的**綠色的名稱**。
 
-![▲ RP2040-Zero 腳位對應圖(取自WaveShare)](https://www.waveshare.net/photo/development-board/RP2040-Zero/RP2040-Zero-details-7.jpg)
+![▲ RP2040-Zero 腳位對應圖(取自WaveShare)](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware/f5a6b21e.webp)
 
 例如我可以這樣設定：
 
@@ -410,7 +410,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 
 這裡要手動修改的話也是有一點麻煩，所以一樣推薦使用 [Keyboard Firmware Builder](https://kbfirmware.com/)，將 [上一篇文章](/posts/diyqmkkeyboard-kle/#輸出) 最後的 Raw data 複製並貼到裡面。到最後一個標籤頁「Compile」按下「Download .zip」按鈕來儲存它產生的 QMK 韌體原始檔（舊版）。
 
-![▲ 「Compile」標籤頁](https://1.bp.blogspot.com/-IbmnNoxPZ-s/Xu4uE8BFvvI/AAAAAAAACdg/khQpXPgiygkaVn409H394FOvf9RN8C-iACK4BGAsYHg/s800/%255B11%255DKeyboard%2BFirmware%2BBuilder_Compile.png)
+![▲ 「Compile」標籤頁](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware/0ff41c43.webp)
 
 將下載的 `.zip` 檔解壓縮，打開其中的 `qmk_firmware\keyboards\kb\keymaps\default\keymap.c`。你會看到和我們所需要的 `const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {}` 的內容，可以把複製到我們的鍵盤的 `keymap.c` 中。
 
@@ -515,7 +515,7 @@ Used for maintainer, copyright, etc
 Your Real Name?  [ziteh]
 ```
 
-![▲ 使用指令建立新鍵盤](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEipRq6B074RdBe4t0Uc5qIZajM0j3dS-lwJiel-cEGdwrgVwFBNWHkSDjBokQI7N9364L2eQS3B76_HAbcgsMVklbBPCllBSvPRhwkurRY7zW37mGWr9xHy45LYGZhKvf4_5H8WnezV1XLlVYv6JDWDXGkTmCSksXUbO2h7pkZ_FZtD-vOIUkRB-q7wug4/s16000/2023-07-01%2022-10-24.mkv_20230702_095338.927.jpg)
+![▲ 使用指令建立新鍵盤](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware/b5aa9bec.webp)
 
 接著會問你基礎佈局，你可以選一個和你預計要做的鍵盤較為類似的佈局，這樣後續要改的東西就會比較少。例如常見的 60% 鍵盤為「11. 65_ansi」，那就輸入其編號「11」後按 Enter。我這裡就選擇「none of the above」表示不使用現成的特定 Layout。
 
@@ -523,7 +523,7 @@ Your Real Name?  [ziteh]
 
 然後會問你是否使用現成的開發板「Using a Development Board?」，這裡回答「y」，然後它會再問你用的是什麼開發板，回答「promicro」。
 
-![▲ 選擇基底佈局與微控制器示意。這裡是舊版的圖，編號請以實際為主](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTN8nyl-WGZQDeSTBAFr7o2-FVoNBfXDcSmoQvBaDw-ABHSI-kEHleAzx7MduwvqTKRlGnP04BQ3-kKpBmTM-pAN5s6fht8CHbQDzlVIzdTJJbKIRH19N1P4fq7WqL0Bu3F2YPKa9gup2i9TwPvlwhEKDbe9asl487Yzbw85lB1jYVjtwuQmbX7uGTEbU/s16000/Unnamed.png)
+![▲ 選擇基底佈局與微控制器示意。這裡是舊版的圖，編號請以實際為主](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware/2f34c4d4.webp)
 
 完成後會顯示類似這樣的訊息：
 
@@ -676,13 +676,13 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 
 如果你不太知道 `matrix` 的座標要怎麼打的話，可以使用 [Keyboard Firmware Builder](https://kbfirmware.com/)，將 [上一篇文章](/posts/diyqmkkeyboard-kle/#輸出) 最後的 Raw data 複製並貼到裡面。
 
-![▲ 在 Keyboard Firmware Builder 貼上 KLE 的 Raw data](https://1.bp.blogspot.com/-UTbRymD6jFo/Xu4uCFUmN4I/AAAAAAAACc4/Pun-2kS6qooDb3plao7F_e5sogqH_uHKQCK4BGAsYHg/s1903/%255B01%255DKeyboard%2BFirmware%2BBuilder_Import.png)
+![▲ 在 Keyboard Firmware Builder 貼上 KLE 的 Raw data](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware/adea4962.webp)
 
 在標籤頁「Wiring」裡，你看到的是鍵盤的鍵矩陣接線圖。它會自動幫你生成一個可行的接線方式，如果你不喜歡的話也可以手動修改。
 
-![▲ 接線頁面](https://1.bp.blogspot.com/-9pJYrEjmaXU/Xu4uCdp4PEI/AAAAAAAACc8/p8MMZuiSBUMSpTjsN0f0Xa78Turt48kzwCK4BGAsYHg/s1903/%255B02%255DKeyboard%2BFirmware%2BBuilder_Wiring_1.png)
+![▲ 接線頁面](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware/e35af54c.webp)
 
-![▲ 接線圖和 Matrix 的對應關係](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh99UeiWYdyky-hZedrvxTovnjqjoeXQg2b2nYZkCG7fIvJS5kOdSyhxP5YzMR3x7MOMoicCb6okM89xIcLfbuSmaJ3zgJoFcT2RQMg0bXmGaoRXV6pNtBOw2l9e8GmFENw_JYKeWlvF3bz2kzGefg_tD-Udxw5MTlHtRQ8VjQH2laiJI5GSOSCh9Vvd_c/s16000/mt2.png)
+![▲ 接線圖和 Matrix 的對應關係](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware/e0bf62be.webp)
 
 它提供的接線圖就很清楚地表達了每個鍵的鍵矩陣位置，請以此為依據來編輯每個鍵的 `matrix` 內容。
 
@@ -733,7 +733,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 
 請參考下圖，Pro Micro 開發板上的 `D16`（綠色） 其實是 ATmega32U4 的 `PB2`（藍紫色），在 QMK 中要打 `B2`。如果是 `D2`（綠色）腳的話，它的原始腳位是 `PD1`（藍紫色），所以 QMK 中要打 `D1`。這邊小心不要搞混了，簡單來說就是**要看藍紫色的腳位**。
 
-![▲ Pro Micro 腳位對應圖(取自SparkFun)](https://1.bp.blogspot.com/-UqmjvTbo7Uo/Xu4yajqMXKI/AAAAAAAACeE/AEfdjtlknrcRsjSYvmRz5B0IxY4RIiQegCK4BGAsYHg/s1166/ProMicroPin.png)
+![▲ Pro Micro 腳位對應圖(取自SparkFun)](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware/3e97fdee.webp)
 
 例如我可以這樣設定：
 
@@ -837,7 +837,7 @@ LTO 是 Link-Time Optimization（連接時間最佳化）的意思，它可以�
 
 這裡要手動修改的話也是有一點麻煩，所以一樣推薦使用 [Keyboard Firmware Builder](https://kbfirmware.com/)，將 [上一篇文章](/posts/diyqmkkeyboard-kle/#輸出) 最後的 Raw data 複製並貼到裡面。到最後一個標籤頁「Compile」按下「Download .zip」按鈕來儲存它產生的 QMK 韌體原始檔（舊版）。
 
-![▲ 「Compile」標籤頁](https://1.bp.blogspot.com/-IbmnNoxPZ-s/Xu4uE8BFvvI/AAAAAAAACdg/khQpXPgiygkaVn409H394FOvf9RN8C-iACK4BGAsYHg/s800/%255B11%255DKeyboard%2BFirmware%2BBuilder_Compile.png)
+![▲ 「Compile」標籤頁](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware/0ff41c43.webp)
 
 將下載的 `.zip` 檔解壓縮，打開其中的 `qmk_firmware\keyboards\kb\keymaps\default\keymap.c`。你會看到和我們所需要的 `const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {}` 的內容，可以把複製到我們的鍵盤的 `keymap.c` 中。
 

@@ -36,9 +36,9 @@ draft: false
 
 總之我就在 4 月 14 號這天搭高鐵南下高雄，從南港到左營。這也是我人生第一次的獨自旅遊。當天還滿熱的。
 
-![衛武營音樂廳外](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHdYJsmITm8MPX2vEksWxXFFmOxLDn5MwvRGCZVJBvIi5h_IGjdkFkSkyza4hbuwoNtDM5ey8NqkPhIl_cASQzOGag4CcqLeOCDJPnqDyUUhZNeR9YU1HC25VoCwOUr0ddv4a96suPZBGMwjV-z3XGgCNPJAuYfXhbK0hKZBeXz7_9B2PXImZn5D7X9ls/s16000/1%20-%20nFHiWcQ.jpg)
+![衛武營音樂廳外](https://bucket.ziteh.dev/blog/animenz-2024/52ae5155.webp)
 
-![亞洲最大的管風琴](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgc294ErUZNr3BYOcF4c0UvZY6MfnuOmsRR2rtBwRTCB8u2geltKwMFv2SwFG5q-er6jdvu0XhOYwG8fnrxrGId-WXNDHPmRg6eBv2XZIK-0VeIXPbo-ee1yNZY3KkXV-CXprpy5hizmoFXv4JW3rvt7Znxz21I6Bqc0KIJ2uf5I6huZNS3Fh8VjuWXAFI/s16000/2%20-%20mPySShU.jpg)
+![亞洲最大的管風琴](https://bucket.ziteh.dev/blog/animenz-2024/b18f8b32.webp)
 
 音樂會下午 7:30開始。演奏也是相當棒，我已經很久沒有聽真正的鋼琴了，當第一個音下去時真的有起雞皮疙瘩。A叔本人也是相當有趣，在音樂會時有和我們分享一些小故事，講到激動處還會把英文日文中文全部噴出來。
 

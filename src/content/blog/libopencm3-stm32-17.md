@@ -34,7 +34,7 @@ draft: false
 
 條件 2 是 WWDG 與 IWDG 最大的不同，如果還沒到 Window 內就 Refresh 的話也會觸發 Reset。這也是 Window 的上限，可以由使用者調整。
 
-![▲ WWDG 的 Window 示意圖。取自 RM0390 Rev 6 P.648。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi95ZGURIwumO5WY3GiuIpFNpwEI6zJKUZs8cggiZBgqOSoEvA9zeDnp_PwH-9Rw-bU9dzsMxStwm4YhffS6XIKYMm3uLHAwaRV5SQhuLPsnd89kdX3EoPfKNPODTTRrj4uCPP5Qr62Fbo_WSmnTAWt6PIt7gWErprcFJOqBdEGWxAV6ef8nN9oVlFd/s16000/image_1662526244380_0.png)
+![▲ WWDG 的 Window 示意圖。取自 RM0390 Rev 6 P.648。](https://bucket.ziteh.dev/blog/libopencm3-stm32-18/30c7d67d.webp)
 
 在上圖中，WWDG 下數計數器的當前計數值是 T[6:0]，而 Window 的值是 W[6:0]（上限）。
 
@@ -42,20 +42,20 @@ draft: false
 
 但是在 T[6:0] > W[6:0] 時是在 Window 外，是「Refresh not allowed」的區段，在這個區段內進行 Refresh 也會觸發 Reset（條件 2）。
 
-![▲ WWDG 的系統方塊圖。取自 RM0390 Rev 6 P.647。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiu7DJwBpxMecTTFoUX6_b463B4cBxyV_pqtqi49nwg2tCEwgBgsYlhAmuDe15KWaExiTIiALhg6-lik1CTnTdrosXW9kkN2OHzv1f0ytKGlZaqjjMXwW_hDXcb37zFn2Kvd5IhGgFs4OZJ6hnZgkYF_xDVPOJRuTL7rSRJ0NwmujuTttDDQzEA8k2Y/s16000/image_1662527020990_0.png)
+![▲ WWDG 的系統方塊圖。取自 RM0390 Rev 6 P.647。](https://bucket.ziteh.dev/blog/libopencm3-stm32-17/8229f9f9.webp)
 
 # Timeout 計算
-![▲ WWDG 的 Timeout 計算公式。取自 RM0390 Rev 6 P.648。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhLJOd0kVjLvFREZbFgal7bDN2U64qtQ-WLzdNKhhXWNb71g6BUun3GBzPMFvsQ5OTS4t9REMhuriMs7w_mpvu7mVXgY4jcr9K8pY5qt4so7qC6nbFE052ja_M2o2Uc-kIPrIo-ecWW1OGhKyc2sI5NMEodpXIAZprXzIPo161v6detq6bYW67FytKj/s16000/image_1662526953782_0.png)
+![▲ WWDG 的 Timeout 計算公式。取自 RM0390 Rev 6 P.648。](https://bucket.ziteh.dev/blog/libopencm3-stm32-18/6b84f3fc.webp)
 
 由於 WWDG 位於 APB1 底下，其時鐘會先經過一個固定除 4096 的除頻器，再經過一個可程式設定的 WDG 預除頻器。而計算公式也是相當簡單好理解，來看一下範例：
 
-![▲ WWDG 的 Timeout 計算範例（結果錯誤）。取自 RM0390 Rev 6 P.649。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZkpPZfWX2VwZZe3zYmpaNf5S0mwSHXbyEwxNUDbjALZiRhfSQdIHuiWORpAeqn_bYnkgIMoYleOt8dgsYkdQffiPoqGTGany_KFJdIBi_2GIgsdN_-MRmVtFTU7GfPMwjlTh_lpd0-ruxJ4lnyIufwXyS_RKB_c-kkZdBKC-D8SnpYigd8znIWanw/s16000/image_1662527383678_0.png)
+![▲ WWDG 的 Timeout 計算範例（結果錯誤）。取自 RM0390 Rev 6 P.649。](https://bucket.ziteh.dev/blog/libopencm3-stm32-17/af715bd5.webp)
 
 如果你真的照著上面的數字去按計算機的話，會發現結果不是 21.85，而是 87.38 ms。
 
 為什麼？單純是因為官方文件打錯了，在 2021 年[此問題就被提出](https://community.st.com/s/question/0D53W00000arBraSAE/wwdg-timeout-example-calculation-in-rm-incorrect)，官方看起來有收到此問題了，並有說後續更新文件時會修正。
 
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiApCvsEK0-Kkmm-oRtXdXJD-OjPvMVWsUHu_pfZgSNRLIb_45VU20JQyPDdQBU0K0CS8qfhwEk77O-FTCSRCoIBzk--5d-R9biqCE7vzq3ay7oNpCe2aNw3I3srs4--9-AvryHwsPd8pkJnTu6Z5zZES_oHSjl3fQpi4kd4Ei97xhUG7g5P40FDACC/s16000/_1662527473515_0.png)
+![](https://bucket.ziteh.dev/blog/libopencm3-stm32-17/65f41a5b.webp)
 
 可能有些人會覺得為什麼計算公式中是 T[5:0] 而不是 T[6:0]，因為第 6 位元 T6 實際上是用來指示是否該進行 Reset 的 Flag。
 

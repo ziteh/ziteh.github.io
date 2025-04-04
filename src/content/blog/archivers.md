@@ -13,7 +13,7 @@ draft: false
 
 <!--more-->
 
-![測試資料夾內容](https://3.bp.blogspot.com/-pGtcdMEDDto/XqYsT6_z_PI/AAAAAAAACI0/Gnt9kcsD5iQVktaYdO-E-EF2t_1ROyYuACPcBGAsYHg/s1600/%25E8%259E%25A2%25E5%25B9%2595%25E6%2593%25B7%25E5%258F%2596%25E7%2595%25AB%25E9%259D%25A2%2B%252815%2529.png)
+![測試資料夾內容](https://bucket.ziteh.dev/blog/archivers/9606656a.webp)
 
 # 實驗記錄
 

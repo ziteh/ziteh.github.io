@@ -93,5 +93,5 @@ Flash 還有其它功能和設定我就不一一細講了。
 
 附帶一提，如果有人想看我的完整 Neovim 配置，可以參考 [ziteh/vim-config](https://github.com/ziteh/vim-config)，透過 branch 切換。
 
-[op-s]: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhsmKKhFqR0JYDZRZHeOXDHXqUacfTUG6CfT5tVXN0KRMYn3kKoxQZxwXaSm-dO9FLtdWn7RQCg3f5QzFENFr8tq0mxfBTaNdNpsKB6VlxNGINOOfbv2etEFmF90kg6ykWj5AmXOjQwCKa8Xqw7PueLB6IRgRmIvbG8zhbXbjycrjJnbcD661XnIQGBk0A/s16000/op-s.png
-[op-f]: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhcErCEr_JSKjS5fb0OyXvWj4OvihMl7PGoxKBGKngt74UHe5hyyfJLAbm23sQcXvbqTGjvaqgjSJ8nGuXKljvE8iWJYdFZdDU0PRZYYL0p4poHhcNczkl2PfY5Rr1Uq7KdFrKBoCHMRPoo86olNEmQGtt66xB4LfQM9aVfdTo4HsDu3G-hLqSVW6n1exE/s16000/op-f.png
+[op-s]: https://bucket.ziteh.dev/blog/vim-flash/6f14eacd.webp
+[op-f]: https://bucket.ziteh.dev/blog/vim-flash/e85b715f.webp

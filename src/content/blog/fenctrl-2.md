@@ -12,7 +12,7 @@ toc: true
 draft: false
 # aliases : ["/2017/12/fenctrl-2/"]
 ---
-![](https://1.bp.blogspot.com/-HdFGyfRgpCI/XqUx46khu6I/AAAAAAAACIE/ODfjLdGcWiATpEiAIsihhjISX9eLH2eiQCPcBGAsYHg/s320/DSC_0357.JPG)
+![](https://bucket.ziteh.dev/blog/fenctrl-2/95df2e58.webp)
 
 # 前言
 
@@ -28,7 +28,7 @@ draft: false
 
 然後是傳輸界面，SSD1306共有3種通訊方式可以用，但我這次只介紹I2C的部分，因為我也沒用過其他通訊界面。
 
-![▲ 取自Data Sheet P.6](https://1.bp.blogspot.com/-Vus4lU_2mhk/XqUx4xe6ziI/AAAAAAAACIE/FB4mCvhqngsyGbj77PZO6TSaGucYuMIBQCPcBGAsYHg/s1600/OLED-Power.png)
+![▲ 取自Data Sheet P.6](https://bucket.ziteh.dev/blog/fenctrl-2/22b66979.webp)
 
 再來是I2C的部分，文中有講到，**SDA與SCL兩支接腳都要接提升電阻**(上拉電阻)，而我平常都是用4.7KΩ的電阻，上接到電源3.3V的地方。基本上任何I2C零件的SDA與SCL就是要接提升電阻，因為這是I2C原廠設計並規定的，有興趣的話可以查查I2C的Data Sheet，裡面有更詳細的I2C規格與使用。
 
@@ -38,11 +38,11 @@ draft: false
 
 想要更詳細了解I2C的話，可以來看這篇文章 : [I2C: Inter-Integrated Circuit - 成大資工Wiki](http://wiki.csie.ncku.edu.tw/embedded/I2C)
 
-![▲ 取自Data Sheet P.19](https://1.bp.blogspot.com/-aPxLHDc29VY/XqUx4__yVjI/AAAAAAAACIE/CDWH3Y0kDqs04nUPtC-idcvPuOti75mewCPcBGAsYHg/s1600/I2C%25E8%25A6%258F%25E6%25A0%25BC.jpg)
+![▲ 取自Data Sheet P.19](https://bucket.ziteh.dev/blog/fenctrl-2/9752ae3d.webp)
 
 下面這張圖是I2C的傳輸格式，資料一定要照著這樣的格式才行，基本上這個格式是所有I2C零件都通用的。
 
-![▲ 取自Data Sheet P.20](https://1.bp.blogspot.com/-VWS0UUarM2E/XqUx43tkwGI/AAAAAAAACIE/RitqiAn7N1A-5q4ujK2_kyd5ieRKnaZEwCPcBGAsYHg/s1600/I2C%25E5%2582%25B3%25E8%25BC%25B8%25E8%25A6%258F%25E6%25A0%25BC.jpg)
+![▲ 取自Data Sheet P.20](https://bucket.ziteh.dev/blog/fenctrl-2/119d4b5c.webp)
 
 # 運作方式
 
@@ -54,9 +54,9 @@ SSD1306的圖形顯示資料記憶體(GDDRAM)由上而下可以分為第0頁~第
 
 所以當你想要用SSD1306顯示一個圖案、文字或任何樣式時，只要宣告一個128\*64的二維陣列，並將'1'與'0'排列成它的樣子，然後每一頁每一排一個一個傳進SSD1306就可以成功顯示了。
 
-![](https://1.bp.blogspot.com/-NRn-OHJHdSQ/XqUx4-u_VKI/AAAAAAAACIE/GtLeVmPX3qgexfVkEaD90B_q6EFENi_VQCPcBGAsYHg/s1600/OLED-Page-1.png)
+![](https://bucket.ziteh.dev/blog/fenctrl-2/3e6dec5d.webp)
 
-![▲ 取自 Data Sheet P.29](https://1.bp.blogspot.com/-qyutGh_tkdE/XqUx4wtzecI/AAAAAAAACIE/LFob3m3Xn0Evd2_DM3MLQHg_VmtapLz5QCPcBGAsYHg/s1600/OLED-Page-2.png)
+![▲ 取自 Data Sheet P.29](https://bucket.ziteh.dev/blog/fenctrl-2/a717d29f.webp)
 
 # 指令功能
 
@@ -74,11 +74,11 @@ SSD1306的圖形顯示資料記憶體(GDDRAM)由上而下可以分為第0頁~第
   * (AE)h : 關閉顯示(睡眠模式)，此時OLED不會顯示任何東西。
   * (AF)h : 開啟顯示(正常模式)，此時OLED會依照GDDRAM或是其他指令來顯示。
 
-![▲ 取自Data Sheet P.28](https://1.bp.blogspot.com/-4-fpQZQO2fo/XqUx42TnoyI/AAAAAAAACIE/Iz3q3W1GH9UW_RWO8Ue1Dc6S23H8wSBKQCPcBGAsYHg/s1600/OLED-Command.png)
+![▲ 取自Data Sheet P.28](https://bucket.ziteh.dev/blog/fenctrl-2/24516e67.webp)
 
 最後則是廠商附上的初始化步驟，也就是在SSD1306一開始啟動時設定一些基本的功能，只要照著下表達步驟丟指令就可以了。
 
-![▲ 取自Data Sheet-Application Note P.5](https://1.bp.blogspot.com/-1wjmZn1XG6s/XqUx4z8hZLI/AAAAAAAACIE/qBHTNl5xcbYq5r9hybfM5IXQO2DvnHDVgCPcBGAsYHg/s1600/OLED-In.png)
+![▲ 取自Data Sheet-Application Note P.5](https://bucket.ziteh.dev/blog/fenctrl-2/8c4427b2.webp)
 
 
 # 參考資料: 

@@ -64,7 +64,7 @@ FPGA我選擇使用Altera Cyclone II EP2C5T144C8N TQFP-144。核心電壓(VCCI
 
 這個部分我覺得比較會有問題的是電路設計的部分，因為我之前都是用現成的FPGA實驗板來做東西，第一次自己設計FPGA的完整電路，可能有很多電氣的觀念要注意。還有就是我之前也沒有用過FPGA的配置晶片，但配置晶片的可以參考的電路有很多，只要照著Data Sheet內的電路做應該就沒問題了。
 
-![▲ EPCSxx AS模式接線圖。出自原廠Data Sheet P.4-8](https://1.bp.blogspot.com/-_z6wF1bGvPk/XqU9VsHukvI/AAAAAAAACIQ/sBOHtZP4b943GplE-Fv078OiH7xfVhIzwCPcBGAsYHg/s1600/EPCSxx-AS.jpg)
+![▲ EPCSxx AS模式接線圖。出自原廠Data Sheet P.4-8](https://bucket.ziteh.dev/blog/fenctrl-1/43cc47ad.webp)
 
 ## 繼電器部分
 
@@ -73,7 +73,7 @@ FPGA我選擇使用Altera Cyclone II EP2C5T144C8N TQFP-144。核心電壓(VCCI
 
 繼電器的電路應該不會有什麼問題，可能要比較注意的是電晶體和耐壓的部分。
 
-![▲ LEG-12 繼電器電路](https://1.bp.blogspot.com/-JPalLluSf-4/XqU9Vmvjx0I/AAAAAAAACIQ/P2kRCuOvz6waD4NgMXer7_flv_Dn06nHQCPcBGAsYHg/s1600/%25E8%259E%25A2%25E5%25B9%2595%25E6%2593%25B7%25E5%258F%2596%25E7%2595%25AB%25E9%259D%25A2%2B%25284%2529.png)
+![▲ LEG-12 繼電器電路](https://bucket.ziteh.dev/blog/fenctrl-1/d45cfca6.webp)
 
 ## 穩壓晶片部分
 
@@ -83,7 +83,7 @@ FPGA我選擇使用Altera Cyclone II EP2C5T144C8N TQFP-144。核心電壓(VCCI
 
 穩壓晶片我之前也沒有用過，但照著網路上找到的電路接應該就可以了，穩壓晶片的電路都很簡單，就幾個電容而已，但可能要注意的就是電容的規格。
 
-![▲ LM1117S的固定電壓電路。出自原廠Data Sheet P.2](https://1.bp.blogspot.com/-JzMDgTaj7jE/XqU9VuiTtmI/AAAAAAAACIQ/l31GSXBDfVwC_a4AWMRfBeMETlzaJV6agCPcBGAsYHg/s1600/LM1117S.jpg)
+![▲ LM1117S的固定電壓電路。出自原廠Data Sheet P.2](https://bucket.ziteh.dev/blog/fenctrl-1/83d20040.webp)
 
 # 參考資料
 

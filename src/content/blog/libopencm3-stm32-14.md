@@ -207,7 +207,7 @@ static void pwm_setup(void)
 我使用兩組開發板並分別設定為頻率 `1kHz`, Duty Cycle `72.5%` 以及頻率 `2kHz`, Duty Cycle `15.0%`。
 可以看到 PWM 的輸出結果是相當精準的。
 
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOn_sfqobeIN5fd6t3YzeHgUqWPUcpKCv0rEsTLt0UZLSM4ajE4QotX185KoVKkUVnGJMPa32G5Yt2vgXxYap2fxN_kzshZFhyHudJ5okK9OL4w_nhmeR0BSd7jRALq5fJdZkYmqZjClsU7WJpr-0y9MphcnPmL8NxiN9lrdlSAqBDAoxr7_rLM7Xo/s16000/pwm_1662278743101_0.png)
+![](https://bucket.ziteh.dev/blog/libopencm3-stm32-14/eb3dd8ed.webp)
 
 # 小結
 

@@ -14,7 +14,7 @@ draft: false
 
 # 前言
 
-![](https://blogger.googleusercontent.com/img/a/AVvXsEiDjgnopDdC_Tneeb-yHz95lpySZi5OC5dVayCmAD7d_-lyDiigpjfZfSSV_76folSZweujFPW_Ztq6I6dEe1BKyDylzPKqbLpAKbdLXvzKhxGvcaooOmnpEGWu9ipsWpGljXghNlBDZGQUXNaSGLQpYyLbE5w1C3y3NGJPXjThavvuCR-_BiEwp2u9=s16000)
+![](https://bucket.ziteh.dev/blog/calcite52-keyboard-1/e0d61ba2.webp)
 
 前陣子無意間得知 [Home row mods](https://precondition.github.io/home-row-mods) 和 [ARTSEY](https://artsey.io/) 這兩個鍵盤操作系統。
 
@@ -36,13 +36,13 @@ PCB 基本上一下就畫好了。以往比較麻煩的是要把按鍵和二極�
 
 因為這把鍵盤想用矮軸，我選擇的鍵軸種類是 Kailh Choc (PG1350)。正交（Ortholinear）的佈局也是必要的。
 
-![▲ PCB 渲染](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEikdfMDvGMBbeyubopnGmEdvAsqMoRYKlinSg_swXpWuJnRyoEnrmzMNCaSNbEvTSrd7WkL1ke-EWzbn0UwgHoozA_IJ8-FUWAy8iQWEjWVPnunQrR_PBqa2hrjXjXm071fCRLIj2KBIMmTYL7BaI0F_wQpsOsjSVgg4FkJ2F1yyMECzoBTCS4WUEUb/s16000/l.jpg)
+![▲ PCB 渲染](https://bucket.ziteh.dev/blog/calcite52-keyboard-1/84494bdb.webp)
 
-![▲ PCB Layers](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5NtBILxDnwc-sdAUgrVPwGR2ptUVPelBlQUiXgUv8YFAPWsgcTpTTmsP0wScYJUtgNfXFJk3oja7-thCMCc2xvJDjqmZVWybHj67emk0u7EhaZlj00qYwYvwXqO-n6nWBgn7SnF04i_RGzAoGHUapJsPmdPLXGhbCAssf_VNdoxaTp8mnKABXP7N8/s16000/b.jpg)
+![▲ PCB Layers](https://bucket.ziteh.dev/blog/calcite52-keyboard-1/eae498ae.webp)
 
 這把鍵盤取名為「Calcite52」，「52」就代表有 52 鍵，而「Calcite」是方解石/冰州石，方解石結晶時常為方塊狀，感覺和 Kailh Choc 滿合的。
 
-![▲ Keymap](https://blogger.googleusercontent.com/img/a/AVvXsEiDjgnopDdC_Tneeb-yHz95lpySZi5OC5dVayCmAD7d_-lyDiigpjfZfSSV_76folSZweujFPW_Ztq6I6dEe1BKyDylzPKqbLpAKbdLXvzKhxGvcaooOmnpEGWu9ipsWpGljXghNlBDZGQUXNaSGLQpYyLbE5w1C3y3NGJPXjThavvuCR-_BiEwp2u9=s16000)
+![▲ Keymap](https://bucket.ziteh.dev/blog/calcite52-keyboard-1/e0d61ba2.webp)
 
 比較特別的是：
 - ASDF、JKL: 鍵融合修飾鍵（Home row mods）。

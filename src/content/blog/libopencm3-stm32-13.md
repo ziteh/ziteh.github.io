@@ -31,7 +31,7 @@ draft: false
 
 在邊緣對齊、上數模式及 PWM mode 1 下，只要 Counter 的計數值 CNT < CCR，那 PWM 就會輸出 `High`，否則輸出 `Low`。而 PWM mode 2 模式可以視為 mode 1 的反相——只要 Counter 的計數值 CNT < CCR，那 PWM 就會輸出 `Low`，否則輸出 `High`。
 
-![▲ PWM 的波形範例，上數 PWM mode 1 模式。取自 RM0390。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIKVkj3NgvUUj5ZZvegkFmet7d3aC_Y8CQg8Uo010RhlIKGCVW0qNN_yQuE8rGa9J9dUcdU-7Ij8QHcHJCCGVHgUJ3S596Lktihw0tdbHqE7kbJ6qkloKggNSj4bXMcwElSwNw6gGNzd1qnHjPX-zR6MuMXG0fgOjlB-HD7MjaPJ0wKasLpJTZmy7p/s16000/image_1662216176986_0.png)
+![▲ PWM 的波形範例，上數 PWM mode 1 模式。取自 RM0390。](https://bucket.ziteh.dev/blog/libopencm3-stm32-13/02a0954a.webp)
 
 若 ARR = 9，CCR = 5，在 CNT = 0\~4（共 5 次計數） 時會是 `High`，CNT = 5\~9（共 5 次計數） 時會是 `Low`，此時的 Duty Cycle 是 50%。
 

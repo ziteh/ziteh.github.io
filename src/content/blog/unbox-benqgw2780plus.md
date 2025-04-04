@@ -11,7 +11,7 @@ toc: true
 draft: false
 # aliases: ["/2020/05/unbox-benqgw2780plus/"]
 ---
-![](https://1.bp.blogspot.com/-Yt9q3oVyt3w/Xq6qG1YpZeI/AAAAAAAACSU/3G9o-BC0H7c54ZmU1ojwrkxvPFR5wJFBQCPcBGAsYHg/s400/BenQ%2BGW2780%2BPlus_15.JPG)
+![](https://bucket.ziteh.dev/blog/unbox-benqgw2780plus/61fdece5.webp)
 
 # 前言
 
@@ -31,37 +31,37 @@ draft: false
 
 GW2780 Plus沒有什麼特別的規格，就是一款中規中矩的螢幕。頂多也就色彩位元為原生8bit，還有就是它標榜的光智慧護眼功能了吧。我買的時候剛好有特價，NTD 5000 $有找。
 
-![▲ 外箱。](https://1.bp.blogspot.com/-IsG9RGUQpWw/Xq6iBG4c7VI/AAAAAAAACR0/M-XRzPaRiKwd45cK2QE6tATusGvkl59ygCPcBGAsYHg/s1600/BenQ%2BGW2780%2BPlus_01.JPG)
+![▲ 外箱。](https://bucket.ziteh.dev/blog/unbox-benqgw2780plus/26794aeb.webp)
 
-![▲ 首先看到的是配件。](https://1.bp.blogspot.com/-vZqTEV1yWZA/Xq6iBFv6hoI/AAAAAAAACR0/apawLZELHRIl_oFKxQqca5UhU8i-eeaWACPcBGAsYHg/s1600/BenQ%2BGW2780%2BPlus_02.JPG)
+![▲ 首先看到的是配件。](https://bucket.ziteh.dev/blog/unbox-benqgw2780plus/6acee7d2.webp)
 
-![▲ 螢幕本體。](https://4.bp.blogspot.com/-3-7qbIbLpgk/Xq6iBAhlS5I/AAAAAAAACR0/O8NUj8zjVjYDKNUa1OdXZyAJbib5gccmgCPcBGAsYHg/s1600/BenQ%2BGW2780%2BPlus_03.JPG)
+![▲ 螢幕本體。](https://bucket.ziteh.dev/blog/unbox-benqgw2780plus/7a7f7c4c.webp)
 
-![▲ 附的腳架。](https://3.bp.blogspot.com/-gj_oSBk0fA8/Xq6iBHIf51I/AAAAAAAACR0/Um4xgkWAi-8rrWjQ3MzoWs4fVCYICE3NACPcBGAsYHg/s1600/BenQ%2BGW2780%2BPlus_04.JPG)
+![▲ 附的腳架。](https://bucket.ziteh.dev/blog/unbox-benqgw2780plus/c68b56f4.webp)
 
-![▲ 腳架上的紋路。](https://3.bp.blogspot.com/-1ih-E1ViPa4/Xq6iBH_zyvI/AAAAAAAACR0/-w9ec_DxYOcNEtRr1CjixT3frHWLgFxjACPcBGAsYHg/s1600/BenQ%2BGW2780%2BPlus_05.JPG)
+![▲ 腳架上的紋路。](https://bucket.ziteh.dev/blog/unbox-benqgw2780plus/e46d7dea.webp)
 
-![▲ 腳架透過底部的手轉螺絲就可以固定。](https://2.bp.blogspot.com/-P-bcXB-pg-w/Xq6iBMk1tmI/AAAAAAAACR0/9RaGDp0Elk0BlcJVF-hf1Eur89N7h8bGgCPcBGAsYHg/s1600/BenQ%2BGW2780%2BPlus_06.JPG)
+![▲ 腳架透過底部的手轉螺絲就可以固定。](https://bucket.ziteh.dev/blog/unbox-benqgw2780plus/f2a4befc.webp)
 
-![▲ 腳架背後的蓋板拆下後可以看到內部有走線空間。](https://3.bp.blogspot.com/-t2Ajc-I3sNQ/Xq6iBFHEagI/AAAAAAAACR0/vTytHuZSqTYWan0aHdGT-InuGHEcxoWDgCPcBGAsYHg/s1600/BenQ%2BGW2780%2BPlus_07.JPG)
+![▲ 腳架背後的蓋板拆下後可以看到內部有走線空間。](https://bucket.ziteh.dev/blog/unbox-benqgw2780plus/bafe536a.webp)
 
-![▲ 附1條HDMI、1條電源線和說明文件。](https://4.bp.blogspot.com/-J6j2yWqFL0c/Xq6iBG9Ov8I/AAAAAAAACR0/khc7p0-OM-4UXAeUc4qoMQNes9bqprIwwCPcBGAsYHg/s1600/BenQ%2BGW2780%2BPlus_08.JPG)
+![▲ 附1條HDMI、1條電源線和說明文件。](https://bucket.ziteh.dev/blog/unbox-benqgw2780plus/ea3f18ce.webp)
 
-![▲ 螢幕本體背部有VESA壁掛鎖孔（100×100）。](https://1.bp.blogspot.com/-mo_i8UOgCwA/Xq6iBNlSV3I/AAAAAAAACR0/SxKEQksxJh0s-g4flD2E9pbH3FnSafKLgCPcBGAsYHg/s1600/BenQ%2BGW2780%2BPlus_09.JPG)
+![▲ 螢幕本體背部有VESA壁掛鎖孔（100×100）。](https://bucket.ziteh.dev/blog/unbox-benqgw2780plus/c675a504.webp)
 
-![▲ 左至右為：DisplayPort、HDMI v1.4、D-sub、聲音進、耳機。](https://3.bp.blogspot.com/-hrVZ539Z8u4/Xq6iBMRMOtI/AAAAAAAACR0/Lei-VEoBQUMsaToZPWy_hVjDKWOMIMOoQCPcBGAsYHg/s1600/BenQ%2BGW2780%2BPlus_10.JPG)
+![▲ 左至右為：DisplayPort、HDMI v1.4、D-sub、聲音進、耳機。](https://bucket.ziteh.dev/blog/unbox-benqgw2780plus/da2e343d.webp)
 
-![▲ 電源是一般的品字頭。](https://1.bp.blogspot.com/-sYA6CQ_wrSo/Xq6iBKFj9oI/AAAAAAAACR0/Kp9XP_uh5e88YzcysmizBSBHg2mCAUeIQCPcBGAsYHg/s1600/BenQ%2BGW2780%2BPlus_11.JPG)
+![▲ 電源是一般的品字頭。](https://bucket.ziteh.dev/blog/unbox-benqgw2780plus/75d16b60.webp)
 
-![▲ 實體按鍵與喇叭。](https://2.bp.blogspot.com/-Pm-znxYPUIU/Xq6iBAx6rlI/AAAAAAAACR0/LD6iX4rfW44io3XXNXDciQiMwja9cmdvQCPcBGAsYHg/s1600/BenQ%2BGW2780%2BPlus_12.JPG)
+![▲ 實體按鍵與喇叭。](https://bucket.ziteh.dev/blog/unbox-benqgw2780plus/39196cbd.webp)
 
-![▲ 腳架卡扣。](https://1.bp.blogspot.com/-UHVk27_P-ss/Xq6iBC9rZ8I/AAAAAAAACR0/te9PApuLI3gnlkL_WC95GGHI8aPw7MNwwCPcBGAsYHg/s1600/BenQ%2BGW2780%2BPlus_13.JPG)
+![▲ 腳架卡扣。](https://bucket.ziteh.dev/blog/unbox-benqgw2780plus/791df537.webp)
 
-![▲ 滑進去就可以了。](https://3.bp.blogspot.com/-H9_xwDhqnh0/Xq6iBJebQJI/AAAAAAAACR0/9dv1QNZWFM8TvxC0ZXWIEU4OHqvZiSMfgCPcBGAsYHg/s1600/BenQ%2BGW2780%2BPlus_14.JPG)
+![▲ 滑進去就可以了。](https://bucket.ziteh.dev/blog/unbox-benqgw2780plus/cf7cac81.webp)
 
-![▲ 立起來的樣子-正面。](https://3.bp.blogspot.com/-tf_6mlRJW6s/Xq6iBDIsd0I/AAAAAAAACR0/kinNSpbRw_Ad1suu_a2ZHcVae1T1566nwCPcBGAsYHg/s1600/BenQ%2BGW2780%2BPlus_15.JPG)
+![▲ 立起來的樣子-正面。](https://bucket.ziteh.dev/blog/unbox-benqgw2780plus/7e769aa6.webp)
 
-![▲ 立起來的樣子-背面。](https://4.bp.blogspot.com/-nl4UyZJmqKI/Xq6iBJFQXgI/AAAAAAAACR0/-a-pZa45Sn0eIcWdnK6xrtAWUFAC8uefQCPcBGAsYHg/s1600/BenQ%2BGW2780%2BPlus_16.JPG)
+![▲ 立起來的樣子-背面。](https://bucket.ziteh.dev/blog/unbox-benqgw2780plus/7d4c50b8.webp)
 
 當然我沒有要用原廠腳架，拍完照就拆了。
 
@@ -69,6 +69,6 @@ GW2780 Plus沒有什麼特別的規格，就是一款中規中矩的螢幕。頂
 
 後來把GW2780 Plus裝上我自己的螢幕架後，調整完角度就OK了，
 
-![▲ 裝好的樣子。左邊的是舊螢幕23.5吋的VZ2350HM。](https://2.bp.blogspot.com/-yaivZLxS12M/Xq6iBLO6SiI/AAAAAAAACR0/15gmH_n9URUJ_MLFlqsUEYwEwM4_zemvgCPcBGAsYHg/s1600/BenQ%2BGW2780%2BPlus_17.JPG)
+![▲ 裝好的樣子。左邊的是舊螢幕23.5吋的VZ2350HM。](https://bucket.ziteh.dev/blog/unbox-benqgw2780plus/6b24e84b.webp)
 
 用習慣多螢幕後就回不去了呢，現在沒有至少2個螢幕都會覺得效率很差。

@@ -169,8 +169,8 @@ int main(void)
 ### 編譯與燒錄/上傳
 打完程式後，可以在 VS Code 左下方找到編譯（Build）和燒錄（Upload）的按鈕。也可以用快捷鍵「`Ctrl`+`Alt`+`B`」、「`Ctrl`+`Alt`+`U`」。
 
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizY1PwXEygVlten-Xw0pYWRQyWeyDAwjZb82O7pA8lVuxNhaMrJM4uFWLES0oohDgs7QDHZ0VmKE4OPpwu4nA4pGJSY1Otx_00pk9ub-OqoX7MgVUxzbUAvsPULwLk6Z4lhZp2JagxpuxtZCl7QBZtDtkl8dz1ZjmbSsfJokKRtl49kNyKbsp332VP/s16000/image_1661323482106_0.png)
-![▲ PIO 的 Build 與 Upload 按鈕在 VS Code 的左下。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj3Z98WFhCacUPwZgd5_zvMJKh-COp6J9q1QVAM4kFxZPuzSwyR_kXPt-625RYZaFkMlw31sUozLcCb7uQNP-R-FRxEPmVy0aMThBOSsZnLHonfV6_QaC9QlxnivDrJFBsMYRbsymPobFqYeg3plJiakANzjlMfZ3rV7uUkRyUDrXZvSmG2mcXkZ8Ot/s16000/image_1661323323482_0.png)
+![](https://bucket.ziteh.dev/blog/libopencm3-stm32-4/52ccf469.webp)
+![▲ PIO 的 Build 與 Upload 按鈕在 VS Code 的左下。](https://bucket.ziteh.dev/blog/libopencm3-stm32-4/8c111b56.webp)
 
 編譯完成後 PIO 會顯示佔用的資源：
 ```
@@ -180,7 +180,7 @@ Flash: 0.1% (used 764 bytes from 524288 bytes)
 
 記得燒錄前要用 USB 線接上 Nucleo，並安裝 [ST-Link 的驅動程式](https://www.st.com/en/development-tools/stsw-link009.html)，否則會報錯。
 
-![▲ 成果。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiW0QFWgpiAwKjVHzIn-BbOkrNDnuHXJiE1cstfRKarW9jSpKk0xiYcPzE8JLnooanLMoEL7X_zThKR3ac7KLxFzukCkd6Ck_lXkuSpeoz_28bJcr4NFbUkPCA-nHiiZWF3FVAJErU8EEv78dBlyOqb0sjHgccGfzE0NyVM34Ki1mUesipxYtvPfCiQ/s16000/blinking%20led.gif)
+![▲ 成果。](https://bucket.ziteh.dev/blog/libopencm3-stm32-4/49da3c87.webp)
 
 ## F103RB
 STM32F1 系列的部分程式寫法不一樣，所以在此也提供 Nucleo-F103RB 的程式範例。主要差異只有 GPIO 的設定函式不同，STM32F1 用的是 `gpio_set_mode()`，而非 `gpio_mode_setup()` 與 `gpio_set_output_options()`。
@@ -232,7 +232,7 @@ int main(void)
 ## PIO 環境
 如果你的程式會需要在 F1 或 F4 等其它 STM32 系列上運作，那每次用 F1 時 GPIO 的寫法不同，或是有 Pin 腳不同的情況會很麻煩，所以這裡簡單介紹如何用 PIO 設定多個專案環境，方便切換。
 
-![▲ 設定好的環境可以在 VS Code 下方進行切換。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhNYiLu1EJaxrVmb5FOwm68yhHQe8-gfpFrnRaoK8l3FJ3WYe9c8efLFPbSF2pkevQD69mrNe5fxzVYvGUWiwxNh_fcHmhjz2nMXCjIerwPjBObxIMSWBWuLRTlZZddhXU-EK3SR1t8kVbPcSUd5VNhqPja_13RJRST45Sh_yM-cpwEX_FZo8Mx2EPm/s16000/image_1661325700936_0.png)
+![▲ 設定好的環境可以在 VS Code 下方進行切換。](https://bucket.ziteh.dev/blog/libopencm3-stm32-4/dd8f02ba.webp)
 
 ### 主程式
 ``` c

@@ -11,7 +11,7 @@ toc: true
 draft: false
 # aliases: ["/2016/03/repetierserver/"]
 ---
-![](https://1.bp.blogspot.com/-WSWJJKMLNUY/Xq0B2YDEbtI/AAAAAAAACKw/qQ71E0EYP186q4UbzQ4uBCUvtG9yHKzDACPcBGAsYHg/s400/_DSC0320.jpg)
+![](https://bucket.ziteh.dev/blog/repetierserver/d0ce207e.webp)
 
 以Raspberry Pi-樹莓派來用區域網路控制遠處的3D列印機進行列印工作
 
@@ -52,7 +52,7 @@ sudo dpkg -i Repetier-Server-0.80.0-Linux.deb
 5. 等設定步驟都完成後就可以開始在網頁上控制與列印。
 
 
-![](https://3.bp.blogspot.com/-0GQ1UJAOIdI/Xq0B2Sqb8AI/AAAAAAAACKw/r8iThmv55dg8_64m_Y2Zds-uLFgEuwDXwCPcBGAsYHg/s1600/DSC_0126.JPG)
+![](https://bucket.ziteh.dev/blog/repetierserver/cf13d153.webp)
 
 
 
@@ -69,7 +69,7 @@ sudo dpkg -i Repetier-Server-0.80.0-Linux.deb
 9. 在Repetier-Host主頁面按下左上角的\[連線\]，等待3D列印機連線完成即可控制與列印。
 
 
-![](https://1.bp.blogspot.com/-39PlgH-Yccc/Xq0B2Vob6rI/AAAAAAAACKw/_y419lTcZRMQDJERkMcD8cuOXsrf4rFEACPcBGAsYHg/s1600/%25E8%259E%25A2%25E5%25B9%2595%25E6%2593%25B7%25E5%258F%2596%25E7%2595%25AB%25E9%259D%25A2%2B%25287%2529.png)
+![](https://bucket.ziteh.dev/blog/repetierserver/c0654186.webp)
 
 # 相關網站：
 

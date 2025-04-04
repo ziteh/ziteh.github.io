@@ -335,7 +335,7 @@ void usart2_isr(void)
 ## 成果
 我使用兩塊 STM32 Nucleo 板分別當作 Master 與 Slave。將線都接好後就可以讓兩者互相溝通了，記得要共地。
 
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQWxce05Q7hVidOerp87jGm3OdbFC2Z6R4fT8o7EljCvE50yJ360QFM87wZq7DYdsORGyXTv_Hm7Ujjtrdhl9a9U5j0sPhTLAEehmcv-Ey53StAYgbEO_WVBDiUF5DEnAEI_jBuwArcBKY_myZj_CiiYOZZLFbCFGxnYpCGCdiE369_P9nS2cinnnW/s16000/spi_new.gif)
+![](https://bucket.ziteh.dev/blog/libopencm3-stm32-25/febc06b1.webp)
 
 # 小結
 這次接續上次的 SPI Master，寫了 Slave 的操作介紹。其實用法基本上是差不多的，相信不會太難。

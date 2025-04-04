@@ -11,7 +11,7 @@ toc: true
 draft: false
 # aliases : ["/2017/03/3dp-1-step/"]
 ---
-![](https://1.bp.blogspot.com/-yLX9tUKZ2EI/Xq0AMyYj-wI/AAAAAAAACKk/0y5YFIsiqIIhFeFGAvNYhZKxCM8P1Hv-QCPcBGAsYHg/s400/DSC_0084.JPG)
+![](https://bucket.ziteh.dev/blog/3dp-1-step/72099a29.webp)
 
 使用3D列印機的步驟主要有3項:
 
@@ -46,7 +46,7 @@ draft: false
 * [Inventor](https://www.autodesk.com/products/inventor/overview) (一樣是由世界知名的Autodesk公司開發,功能強大的**付費專業**軟體)
 * [SolidWorks](http://www.solidworks.com/) (由Dassault Systemes旗下的SolidWorks公司開發.和Inventor一樣是**付費專業**軟體,功能非常強大)
 
-![我使用SolidWorks進行我高中專題的模型繪製](https://2.bp.blogspot.com/-DRYqrZ8eTQM/Xq0AM2wsKcI/AAAAAAAACKk/yav1v8efY0Yn2UjABhAuKvnVlNaleuecQCPcBGAsYHg/s1600/%25E8%259E%25A2%25E5%25B9%2595%25E6%2593%25B7%25E5%258F%2596%25E7%2595%25AB%25E9%259D%25A2%2B%252811%2529.png)
+![我使用SolidWorks進行我高中專題的模型繪製](https://bucket.ziteh.dev/blog/3dp-1-step/9fe16961.webp)
 
 還有一種是使用3D掃描機實體物件掃描成3D模型檔案,但這部分需要有相關設備,所以暫時先不討論.
 
@@ -58,7 +58,7 @@ draft: false
 * [Cura](https://ultimaker.com/en/products/cura-software) (我第二熟悉的切片軟體)
 * [KISSlicer](http://www.kisslicer.com/) (我目前還沒深入研究的切片軟體)
 
-![切片軟體-Slic3r](https://1.bp.blogspot.com/-HHCmE1juXrU/Xq0AM3_9iuI/AAAAAAAACKk/bEf7eQFFEs8QAf3hH7ZK5ZzHe88gbsH0ACPcBGAsYHg/s1600/%25E8%259E%25A2%25E5%25B9%2595%25E6%2593%25B7%25E5%258F%2596%25E7%2595%25AB%25E9%259D%25A2%2B%25288%2529.png)
+![切片軟體-Slic3r](https://bucket.ziteh.dev/blog/3dp-1-step/e5c3ba06.webp)
 
 # 第三步-開始列印
 
@@ -67,7 +67,7 @@ draft: false
 1. 使用USB與電腦進行連接,再用控制軟體進行控制,並將要列印的檔案傳輸給3D列印機.控制軟體通常是[Repetier-Host](https://www.repetier.com/documentation/repetier-host/).(**Fika就是這種)**
 2. 用3D列印機上的操控界面進行控制,並將要列印的檔案放在SD記憶卡中插入3D列印機的讀卡槽.
 
-![](https://4.bp.blogspot.com/-uxd2isu8kyQ/Xq0AM55yoqI/AAAAAAAACKk/Qbvoef1C1HANE-vuWRpMYEwf8qkOo8BjwCPcBGAsYHg/s1600/DSC_0194.JPG)
+![](https://bucket.ziteh.dev/blog/3dp-1-step/9c74f8fc.webp)
 
 當然市面上也有這兩種方法都可以使用的3D列印機.(像我自己的Graber i3)
 

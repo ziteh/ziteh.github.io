@@ -100,14 +100,14 @@ Fluid 本來就很簡潔了，所以我要調整的東西不會很多。
 
 ![Fluid][footer_fluid]
 
-[home_landscape]: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgiPJ_Ut5YVfePYPEB5wibQ9PrnIk2WEEzSfCuWq041kweo6luKjvDWO0su6KAUkjVA6Gf09zpsjU3HMUwTZsu8yQj4Z9inBhjRAXqhO74TEkS2baAQ_-Dc2FvtEn4JRr167fQhKyDNUYmqQJXJ2N0VEvVg7OEWPTqS0POgr1pmNbAaYVf6enU6i5uysDI/s16000/home_landscape.png
-[home_next]: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjAT_LwamIwZdrzQyyu1HaL0XZUr2iwt9fiicff2M3OI3TrLwyu17WH2-dkomwH-evQVCN4wqdPjhNqa5PXC1zaFRn_xqaLBc5GCCXFuuyJEBgXAuHCYSV7PsRcSZqEqSarjKyKyy1vAqm8YxWPPhqTFP6gtxq-7E_YGcsHvBjKgnCcledYzTbNtY5TTsQ/s16000/home_next.png
-[home_fluid]: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgY9xypjmiSDmeSRo5vBzsnjEcjbjE0IA8LihP1wqi9S1PwxEIF17tfGuwJJ891cKGfGFfJowmA-4ByYSGGv1Y2fC5e2ZD11xb7C-ARfYcTw9xfavjWIxY6vdvSA4edP4reGVa1OnVl-fahchTET5sDk-bR1FKYLiBRVfsCR7Na6JMR-yD-FvagicrUqps/s16000/home_fluid.png
+[home_landscape]: https://bucket.ziteh.dev/blog/new-theme-2024/3bf97df4.webp
+[home_next]: https://bucket.ziteh.dev/blog/new-theme-2024/57dc886f.webp
+[home_fluid]: https://bucket.ziteh.dev/blog/new-theme-2024/9d2e2529.webp
 
-[title_landscape]: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhVLKVRJdQDtaUcTlK2GTWNifgfvaD9tgAex4NG1JIQQ-ibN0ZeD9QeyYHozSdIIRGZC7n631UNxi-OWENadvoRmKxMYNwix37npHRigqajk1fGcEYzp1lFNt0hLI8D-uS0VRU7cfDalrFOLkd27sbKRK8WUTWjtaAsFC9vYAELpo0CW8kPQXg_zXTJHU0/s16000/title_landscape.png
-[title_next]: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-mQwY_Qwvqo2EQL1EkE2tZYBUP4w271budbd_lyz6miU1GhK-FGy6VbVj6sQOCsPwOwsNhsCoUgRZDI3r5q3Q7cT84_mwI-gW99i3F4Lz1NBLhpgDFyiwRSnsWYDZkELjv7KAwzSP4qHlktx8Z6NiLXSgNdgA6Y6KMeddC03IKNjG3Fs1138Rd3e3hSU/s16000/title_next.png
-[title_fluid]: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgs2TYwwBrRaT_a6NeK6KyNvkGR_60jCu6ccK1EcFkjGIrLSALiadydAK-SVPobOT7AvcPZ4gtqgy5MgyEASqi-te2UwOJeaWU_4xd2gqRX5d0-TFRl-qsVK1IBiqBrA4cvbSwSPn-T1a4kppoyL87zXyL112e8CznoA7WvIxEImJ6ktCUd-ZXtyludtP4/s16000/title_fluid.png
+[title_landscape]: https://bucket.ziteh.dev/blog/new-theme-2024/addf20f9.webp
+[title_next]: https://bucket.ziteh.dev/blog/new-theme-2024/2cff0e83.webp
+[title_fluid]: https://bucket.ziteh.dev/blog/new-theme-2024/70e0b340.webp
 
-[footer_landscape]: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgR9nFe5ZduzPx4ndA3TaYmym7zWeBGS0ozcHq6vQT6V9sDEX0Z3M5aqGOkM3pTScYCgY9cnJ3HW_DYgtcllQwvw-sjL7NlmZ-9BhWV1yANPriDQISNOm0kWS84CFRyzwNWStwJUrabpCBt2hezTaSFGqpKbmC6hDNjpWDAs5itbcLvkhgHeva1jamYIq4/s16000/fotter_landscape.png
-[footer_next]: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhfJ0wWPJ4HwSZo19W13PLQTUzAARpjLvpwm5G_a-UQSoN5RSgUW1QQCX_tXzbUiF3hxpoEFfIs2sPsvJvlQ18JzHWFcTORgEQ535pji_GrOjnfkRoUNHrkreVuGbxhwU07yglJQO5Abg8dG2fx6oGt9CpBU9RBHNiYvMa266ZnedKeptkTzddwvWKHZcI/s16000/footer_next.png
-[footer_fluid]: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEimINxvevj5gFZOegg1rKj0FpTvi0rmGCqfG8yY9gosGvXeZt18VaiR-OAaYbX0BofReEII6MAfbjQKyxc7sRpRAqfNmmmg_TLQdc3obcB7D0nq32JUKZZGUL4_jqVIfAOH4qLaE7Vzh_V-298w6j7vG42s34DoXr3A1o8n-aavoG52pc134_N9NIDmvw8/s16000/footer_fluid.png
+[footer_landscape]: https://bucket.ziteh.dev/blog/new-theme-2024/32b89f50.webp
+[footer_next]: https://bucket.ziteh.dev/blog/new-theme-2024/179db425.webp
+[footer_fluid]: https://bucket.ziteh.dev/blog/new-theme-2024/d32ed843.webp

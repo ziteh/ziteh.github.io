@@ -277,7 +277,7 @@ int main(void)
 
 這是輸出的波形。
 
-![▲ 波形圖](https://i.imgur.com/bjGkUuG.png)
+![▲ 波形圖](https://bucket.ziteh.dev/blog/libopencm3-example-timer/12d7e120.webp)
 
 值得注意的一點是，我們在程式中設定的頻率是 5 Hz，但示波器上量測的是 2.5 Hz。之所以頻率會變一半是因為，5 Hz 是 Timer 中斷的觸發頻率，也就是每秒觸發 5 次 ISR，即每秒反轉 5 次 LED 的 ON/OFF。
 

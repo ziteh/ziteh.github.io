@@ -16,7 +16,7 @@ toc: true
 draft: false
 ---
 
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiKm5YevuV_KIbJUCILuzB1_1jl_IttPrKgmzhFeJyo61ee6dWGH0-5PJqbqN1pe5Jby-jsUf7dkk-Fko_dKERc72ugLOs-Pmhnful-jaXOzQxAIMZtDjpup8Z_97G2PotA1SOclV0eTKU3Q8dqLjVONAoNF7zHXinC-ZMmUFIW0qMg9uCjOAVxH2ce/s16000/image.png)
+![](https://bucket.ziteh.dev/blog/diyqmkkeyboard-vial/6f687248.webp)
 
 [Vial](https://get.vial.today/) 是一個可以讓你隨時修改 QMK 鍵盤的各種設定的軟體，其中就包含可以即時編輯 Keymap（也就是改鍵位）。如果要自製 QMK 鍵盤的話，加入 Vial 絕對會方便很多。
 
@@ -38,7 +38,7 @@ draft: false
 
 接著，你需要在 KLE 中的各個鍵上標註此鍵的鍵矩陣掃描行列。以 `row,column` 的格式將其標記在左上，編號由 0 開始。例如 row1-col0 的鍵要標註為 `1,0`。
 
-![依照鍵矩陣的物理位置編輯 KLE 的各鍵標記](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmGmK-I0FxhPe0YjU61k0yghJYEcoYZTxGoFfwPn5VaUhtwbhB891raKLTWgmyJLFZLHWjZ4eFOU903iyHjp8vb7rHDa8dbRE9Qsjzrw8TEsx0OYRjuAZLzkDAENqVF5SbYRo0toVkiwtazgkN2YVx99tgj0eT5tg7JRWL1amIVKK3-_A2-DkZ00-B/s16000/c.jpg)
+![依照鍵矩陣的物理位置編輯 KLE 的各鍵標記](https://bucket.ziteh.dev/blog/diyqmkkeyboard-vial/1a80cde7.webp)
 
 編輯完成後就下載此 KLE 的 JSON 檔。以我的例子，它的內容大概是：
 ```json
@@ -130,7 +130,7 @@ draft: false
 
 打開 Vial 軟體，於上方工具列 File > Load dummy JSON 並選擇你的 `vial.json`，你應該會看到一個與你在 KLE 上一樣的鍵盤 Layout。
 
-![載入 vial.json](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjW2wdMdBjUa_JKNz1uzibGiYa-7kv3Db6cKCkTBFpvwx_RXpinY5d5NeKVawY4KjODhwqtAwj8rph3IP7kGkz_sVhUDFDoRrh6T7XLGe_o4bkmaNfVasMlnE4flep2FGylDOZMjwt_EhbrxoAkF3Cs3UeGQc6qiMHlyajW7JPyuY9LuKaQ2NiDjr66/s16000/vial.jpg)
+![載入 vial.json](https://bucket.ziteh.dev/blog/diyqmkkeyboard-vial/c0219f09.webp)
 
 # 移植到 Vial
 
@@ -158,7 +158,7 @@ git clone https://github.com/vial-kb/vial-qmk
 vial-qmk$ make git-submodule
 ```
 
-![使用 QMK MSYS 準備環境](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggMAGuJtrEFViq0hb2CzDZpsZFm5AR7gLsbVdLy5t2zE9IpwPSoOqCZhzWlcTyKlpGXV3BaJNpg0C0kiHlvttOx--ltQjRqBUgmgji_opAYNTjWvuDLn3VWC4J_o6atZVfEI5bzSSsH3HacUd9mlmTcLwv-oyeuTRWS8XUJ1zVD6SajaxH17YF4rnq/s16000/vial-env.jpg)
+![使用 QMK MSYS 準備環境](https://bucket.ziteh.dev/blog/diyqmkkeyboard-vial/963188ba.webp)
 
 完成後可以進行一下簡單的驗證：
 ```
@@ -227,7 +227,7 @@ Vial 必須要你設定一個安全解鎖組合鍵，以避免惡意軟體寫入
 
 > 如果你不想要這個功能，可以在 `keymaps/vial/rules.mk` 中增加一行 `VIAL_INSECURE = yes`。但增加這行的鍵盤不會被允許提交並合併進 vial-qmk 的 repo 中。
 
-![設定 row0-col0 與 row3-col11 為解鎖組合鍵](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiewtmovfv3rZfXMVOrWBdN3027MZVp0Vxfc47FuMFisgZXSweLn6awXprFMQjwAI6aPXnXKmgI4a1IHacKDKiyr1_k4f2qrGfeFCjaBp_vrSD6JXbZQt4OZnMZbiLYwz2g5GxvJf5HqIGDuDcGPdts0teKKFvJ4B6SZEqB3_iUPXWSmSlyXAGyKhlx/s16000/Screenshot%202023-04-28%20at%2022-55-09%20Keyboard%20Layout%20Editor.png)
+![設定 row0-col0 與 row3-col11 為解鎖組合鍵](https://bucket.ziteh.dev/blog/diyqmkkeyboard-vial/ba765ef1.webp)
 
 ## 確認檔案
 

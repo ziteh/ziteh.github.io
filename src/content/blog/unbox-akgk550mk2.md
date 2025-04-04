@@ -14,7 +14,7 @@ draft: false
 此篇文章沒有聽感心得，還請想知道聲音表現的發燒友另尋文章，謝謝!
 </span></span></h3>
 
-![](https://1.bp.blogspot.com/-wRR3fSzS6U0/XqYu_MdJZhI/AAAAAAAACJA/sWbti4dEfWosVhCpNr0fyy2fqMFJ908gwCPcBGAsYHg/s400/AKG%2BK550%2BMK2-019.jpg)
+![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/5bbbba3f.webp)
 
 上次開[V90-HPA](/posts/unbox-v90hpa/)的時候才說要買K550，不到半個月的時間我就完成了這項預言。 
 
@@ -26,36 +26,36 @@ draft: false
 
 然而聲音聽感什麼的還是別為難我這個木耳了，這篇文就當作我的拍照練習好了。
 
-![](https://1.bp.blogspot.com/-F8iV08kI8cI/XqYu_GZO0gI/AAAAAAAACJA/87-WfsBtp0MeQ9KDNI6yUpvZni4qa_0mQCPcBGAsYHg/s1600/AKG%2BK550%2BMK2-003.jpg)
+![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/2e19886c.webp)
 
-![](https://1.bp.blogspot.com/-EXkD-3EeYf0/XqYu_G933hI/AAAAAAAACJA/K9uicSjXtXA4RwbR2kDsCnfor252cZx3QCPcBGAsYHg/s1600/AKG%2BK550%2BMK2-002.jpg)
+![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/80560cc5.webp)
 
-![](https://1.bp.blogspot.com/-a6CnR83hBnU/XqYu_LDeY5I/AAAAAAAACJA/y3pdGbYQA1gn7GKTijPPtwE4JRivmQyQACPcBGAsYHg/s1600/AKG%2BK550%2BMK2-004.jpg)
+![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/2736a2cf.webp)
 
-![](https://1.bp.blogspot.com/-xQFqquoxWtE/XqYu_EAZgSI/AAAAAAAACJA/SoWMxlf3WX0GENuM8kirasRwhiWRvkH3ACPcBGAsYHg/s1600/AKG%2BK550%2BMK2-012.jpg)
+![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/216fc2ca.webp)
 
-![](https://1.bp.blogspot.com/-kJNEetpLD7Y/XqYu_I5gG6I/AAAAAAAACJA/3DF93Z5ME48YDr2Y255jEiyb2kxvnRepACPcBGAsYHg/s1600/AKG%2BK550%2BMK2-016.jpg)
+![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/a6c8cd9b.webp)
 
-![](https://1.bp.blogspot.com/-wio4ZgCi_7k/XqYu_OvPZ_I/AAAAAAAACJA/btjGT5VqwpkyyW8wuZR1-Mq4iBTbfRyuwCPcBGAsYHg/s1600/AKG%2BK550%2BMK2-014.jpg)
+![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/0fa27ede.webp)
 
-![](https://1.bp.blogspot.com/-28zM4w0mCTo/XqYu_FlRp9I/AAAAAAAACJA/DpY4uqs0xD09C5udrP-tWfBM49JUimQswCPcBGAsYHg/s1600/AKG%2BK550%2BMK2-006.jpg)
+![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/abd06830.webp)
 
-![](https://1.bp.blogspot.com/-5-F10mWbM2Q/XqYu_EozR0I/AAAAAAAACJA/B-fiu0dvQ3waw3W0rWQvDtPyG8aBj0VeACPcBGAsYHg/s1600/AKG%2BK550%2BMK2-011.jpg)
+![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/7de25f8f.webp)
 
-![](https://1.bp.blogspot.com/-47Sj_3NFp1c/XqYu_AO2AsI/AAAAAAAACJA/2MLuSZkhunQuzSVzeHc54_8ue91PD6yLQCPcBGAsYHg/s1600/AKG%2BK550%2BMK2-017.jpg)
+![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/bf28d387.webp)
 
-![](https://1.bp.blogspot.com/-VDS0psxfzK4/XqYu_JTYw_I/AAAAAAAACJA/LBqDLMujkhMNGek393l_7vlYxPG6bOnIQCPcBGAsYHg/s1600/AKG%2BK550%2BMK2-007.jpg)
+![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/4c917733.webp)
 
-![](https://1.bp.blogspot.com/-O9PGbkMQOdY/XqYu_LSyAxI/AAAAAAAACJA/IU1hjOTLPREvU7CUNUnpS0MiobBviTPOwCPcBGAsYHg/s1600/AKG%2BK550%2BMK2-009.jpg)
+![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/2f84fb1a.webp)
 
-![](https://1.bp.blogspot.com/-zKUc6N293PY/XqYu_E_cuoI/AAAAAAAACJA/4s4bjM5MCkcntqFIZYNzJvhnDj-NmOgQACPcBGAsYHg/s1600/AKG%2BK550%2BMK2-010.jpg)
+![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/255e247e.webp)
 
-![](https://1.bp.blogspot.com/-bL6WSvppbgU/XqYu_JwdA9I/AAAAAAAACJA/XrPOAMm2P9wCCjdk_pWuKFC1Ji_pYZTAQCPcBGAsYHg/s1600/AKG%2BK550%2BMK2-015.jpg)
+![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/d261b7d1.webp)
 
-![](https://1.bp.blogspot.com/-VapGs0mOD8A/XqYu_NtQ6FI/AAAAAAAACJA/fmqGPLxiS3gHmvcAg8upU9OPK6owhvw4gCPcBGAsYHg/s1600/AKG%2BK550%2BMK2-022.jpg)
+![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/449819bd.webp)
 
-![](https://1.bp.blogspot.com/-mtKzgzjklag/XqYu_GuhriI/AAAAAAAACJA/-pYOatjpiiQPcAJgvaY87Ezl3U2ivFTcgCPcBGAsYHg/s1600/AKG%2BK550%2BMK2-021.jpg)
+![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/f6c4f480.webp)
 
-![](https://1.bp.blogspot.com/-iA1sRAp0H-U/XqYu_LGVNNI/AAAAAAAACJA/Ci1lruQjW50tS9nJ5YG0Kk-lnq0WdYXEwCPcBGAsYHg/s1600/AKG%2BK550%2BMK2-018.jpg)
+![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/5f54498a.webp)
 
 如果喜歡這些照片的話還請到我的[Flickr](https://flic.kr/s/aHsm6zhXfp)觀看，謝謝!

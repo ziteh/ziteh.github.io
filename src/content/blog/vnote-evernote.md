@@ -7,7 +7,7 @@ toc: true
 draft: false
 # aliases: ["/2019/03/vnote-evernote/"]
 ---
-![](https://1.bp.blogspot.com/-6qpzgyusXrI/XpnFL8rL1UI/AAAAAAAACEs/Ob5Z50NP0JcFMSaaDtU_8QKUdd8d6glXwCPcBGAsYHg/s640/Cover.png)
+![](https://bucket.ziteh.dev/blog/vnote-evernote/1829a82f.webp)
 
 # 前言
 
@@ -40,14 +40,14 @@ Markdown是一種自由格式的輕量級標示語言(Lightweight Markup Languag
 至於Markdown的用法和教學可以參考此網頁：[Markdown 基本语法](https://github.com/younghz/Markdown)
 另外介紹一個國產的超優質Markdown線上筆記網站：[HackMD](https://hackmd.io/)
 
-![▲Markdown語法示範(編輯界面)](https://1.bp.blogspot.com/-mSRKhkiedNA/XpnFL1NVfPI/AAAAAAAACEs/XRpVW4ycUHUPefjJ_mJKtksy-rq4PH-ygCPcBGAsYHg/s1600/MD-01.png)
+![▲Markdown語法示範(編輯界面)](https://bucket.ziteh.dev/blog/vnote-evernote/aca75914.webp)
 
-![▲Markdown語法示範(編輯界面)](https://1.bp.blogspot.com/-lco_Qii2fMc/XpnFL8vxFlI/AAAAAAAACEs/ZtCFYNswyMMDFflSBoqC4iFvJjx_togVACPcBGAsYHg/s1600/MD-02.png)
+![▲Markdown語法示範(編輯界面)](https://bucket.ziteh.dev/blog/vnote-evernote/0361d00e.webp)
 
 
 #  界面導覽
 
-![▲主畫面](https://1.bp.blogspot.com/-I24rC57jTlY/XpnFL3-q34I/AAAAAAAACEs/0b82q5pnc-8THTMvwvIq-Qc9jIZGaEWBQCPcBGAsYHg/s1600/%25E4%25B8%25BB%25E7%2595%25AB%25E9%259D%25A2-01.png)
+![▲主畫面](https://bucket.ziteh.dev/blog/vnote-evernote/5b0736b2.webp)
 
 
 
@@ -81,14 +81,14 @@ VNote除了用網址的方式加入圖片外還支援直接按“Ctrl + V”貼�
 而且VNote的圖片支援編輯時及時原地預覽功能。
 
 
-![▲用貼上的方式加入圖片](https://1.bp.blogspot.com/-vHH1Cj7-dRA/XpnFLxlEUlI/AAAAAAAACEs/OXMAyoFuv3k-YlEGy1KGMYvGuOc3FR4OACPcBGAsYHg/s1600/%25E5%258A%25A0%25E5%2585%25A5%25E5%259C%2596%25E7%2589%2587.gif)
+![▲用貼上的方式加入圖片](https://bucket.ziteh.dev/blog/vnote-evernote/2400912e.webp)
 
 ## 智慧表格
 
 剛開始用Markdown語法時可能會覺得它的表格不是很好打，會弄得很亂，但VNote的表格會自動依照内容長度進行調整，相當方便。
 
 
-![▲智慧表格](https://1.bp.blogspot.com/-Su-KLGKLv54/XpnFL01DQWI/AAAAAAAACEs/VWmodzWRMwca0HoVPFs4k6BZMz1TExYbwCPcBGAsYHg/s640/Table-01.gif)
+![▲智慧表格](https://bucket.ziteh.dev/blog/vnote-evernote/7ba5e1b7.webp)
 
 #  更多功能
 
@@ -108,9 +108,9 @@ V\_N ({1 \\over Z\_0} + {3 \\over Z\_\\phi}) = {{V\_{a'n}+V\_{b'n}+V\_{c'n}} \\o
 $$
 ```
 
-![▲MathJax示範(編輯界面)](https://1.bp.blogspot.com/-qpQ6MubQrGM/XpnFLyrDkSI/AAAAAAAACEs/aDNVc80wrVsDbhphWfqgl9fo5Gf1luNIgCPcBGAsYHg/s1600/MathJax-01.png)
+![▲MathJax示範(編輯界面)](https://bucket.ziteh.dev/blog/vnote-evernote/61aae962.webp)
 
-![▲MathJax示範(檢視界面)](https://1.bp.blogspot.com/-SWfAMPmI9d4/XpnFL8XkCZI/AAAAAAAACEs/fSw93zoMMvo24kbjcaKyM6uPv_dvmsFAQCPcBGAsYHg/s1600/MathJax-02.png)
+![▲MathJax示範(檢視界面)](https://bucket.ziteh.dev/blog/vnote-evernote/6825f9c4.webp)
 
 ## Flowchart.js
 
@@ -133,7 +133,7 @@ st->op1->cond
 cond(yes)->io->e
 cond(no)->sub1(right)->op1
 ```
-![▲Flowchart.js示範](https://1.bp.blogspot.com/-jfLaL2vtefY/XpnFL3qDzDI/AAAAAAAACEs/hhLO2vcR4oEzBWSwVEWq4exdIIu0jL_9QCPcBGAsYHg/s1600/Flowchart.js-01.png)
+![▲Flowchart.js示範](https://bucket.ziteh.dev/blog/vnote-evernote/e442b992.webp)
 
 
 ## PlantUML
@@ -151,7 +151,7 @@ Bob --> Alice: Authentication Response
 Alice -> Bob: Another authentication Request
 Alice <-- Bob: another authentication Response
 ```
-![▲PlantUML示範](https://1.bp.blogspot.com/-nUaIcjn26L4/XpnFL25NCNI/AAAAAAAACEs/M-HTcld03PUpx-FlyzWcjJJQbGlxMifkgCPcBGAsYHg/s1600/PlantUML-01.png)
+![▲PlantUML示範](https://bucket.ziteh.dev/blog/vnote-evernote/765bc538.webp)
 
 
 
@@ -171,7 +171,7 @@ digraph G
 }
 ```
 
-![▲Graphviz示範](https://1.bp.blogspot.com/-3SxC9zj2ktM/XpnFL2ZGWYI/AAAAAAAACEs/K0qT7Eg-CkE6STMBbaykfUKTmh961Vy2QCPcBGAsYHg/s1600/Graphviz-01.png)
+![▲Graphviz示範](https://bucket.ziteh.dev/blog/vnote-evernote/33187776.webp)
 
 
 ## Mermaid
@@ -189,7 +189,7 @@ A-->C;
 B-->D;
 C-->D;
 ```
-![▲Mermaid示範](https://1.bp.blogspot.com/-MjMDisgkpS0/XpnFL1gWCDI/AAAAAAAACEs/40pxY-I2Q0wJ12Q0yjJq-rl4waBN6JctwCPcBGAsYHg/s1600/Mermaid-01.png)
+![▲Mermaid示範](https://bucket.ziteh.dev/blog/vnote-evernote/81833ecf.webp)
 
 
 
@@ -210,7 +210,7 @@ WaveDrom是一個基於JavaScript的時序圖編寫語法，對於電機電子�
   {name: 'Port-2', wave: 'x4....x' , data: ['輸出高位置']},
 ]}
 ```
-![▲WaveDrom示範](https://1.bp.blogspot.com/-zEgAcsZysvE/XpnFL2r7diI/AAAAAAAACEs/MP6YdmyR2WYAfL-6apItxqc1giGzxabYgCPcBGAsYHg/s1600/WaveDrom-01.png)
+![▲WaveDrom示範](https://bucket.ziteh.dev/blog/vnote-evernote/2b1e746a.webp)
 
 #  結論
 

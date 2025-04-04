@@ -10,7 +10,7 @@ toc: true
 draft: false
 # aliases : ["/2017/08/unbox-v90hpa/"]
 ---
-![](https://3.bp.blogspot.com/-bPMIFfBMRkA/Xqz5qcICTJI/AAAAAAAACKE/D5Qrzh-gc980LMg3Jg_3zbFga-1fmfl8gCPcBGAsYHg/s320/20170802_%25E8%2580%25B3%25E6%25A9%259F%25E8%25A8%25AD%25E5%2582%2599-12.jpg)
+![](https://bucket.ziteh.dev/blog/unbox-v90hpa/398c8cda.webp)
 
 老早就想添購些家用的耳機系統，趁著暑假太無聊，上網查東查西，在AA論壇看到有人在討論這台Musical Fidelity V90-HPA，查了一下，價格近萬元，對木耳的我來說還是有些下不了手，但就在這時，我看到加煒在露天賣這台的展示機，價格直接砍半，當下我馬上和店員確認後就下標了。 
 
@@ -22,12 +22,12 @@ draft: false
 
 因為我是個超級木耳，連mp3和FLAC都要很仔細的聽很多遍才能勉強分出差別的人，所以我玩耳機的重點自然不是聲音方面的，什麽堂音圍繞、音場遼闊、音色冷暖、音染好壞、高音清晰、低音彈性這些我都不在意、也感受不到；但設備器材不一樣，它們就在我眼前。
 
-![](https://2.bp.blogspot.com/-usQ52mZh9Q4/Xqz5qYna8-I/AAAAAAAACKE/JtTvOf4uLvkCFNJyvrYmt5J0iV3aVhFZwCPcBGAsYHg/s1600/20170802_%25E8%2580%25B3%25E6%25A9%259F%25E8%25A8%25AD%25E5%2582%2599-15.jpg)
+![](https://bucket.ziteh.dev/blog/unbox-v90hpa/0cbad639.webp)
 
 雖然說這是開箱文，但我也沒有什麼好介紹的，就是一台家用DAC/耳機擴大機。輸入有數位的USB和類比的RCA，輸出有背面RCA和正面6.3mm & 3.5mm TRS耳機孔，接頭數算還行。 
 
 我的耳機是SONY MDR-7506監聽耳罩式、魔聲的MTPG和MTPC入耳式。一開始用7506接上去聽，一開聲，我完全嚇到，人聲整個往前靠且變得清晰很多，背景細節不用說，一定變多，我非常驚艷! MTPG & MTPC的話，低音變得很多，但因為此耳機本身的設計就是低音較多，所以低音已經多到嚴重蓋過其他聲音了，看來V90-HPA不適合它們。
 
-![我的隨身設備](https://4.bp.blogspot.com/-e0cpOWlJmIU/Xqz5qRCINBI/AAAAAAAACKE/nd0ytkkjVzE02KxtCQHLbC278zlpwdG1wCPcBGAsYHg/s1600/20170802_%25E8%2580%25B3%25E6%25A9%259F%25E8%25A8%25AD%25E5%2582%2599-4.jpg)
+![我的隨身設備](https://bucket.ziteh.dev/blog/unbox-v90hpa/c7ce8b41.webp)
 
 接下來我想買電源相關的東西，像線性電源給V90-HPA用，或是直接整個設備上隔離變壓器或電源濾波器之類的，的還要在研究一下。還有家用大耳罩:[AKG K550](https://zite-honmono.blogspot.com/2017/08/akg-k550-mk2-3.html)，第一次聽的時候是3年前，念念不忘的好耳機，戴起來非常舒服，設計非常好看，聲音也是沒話說。

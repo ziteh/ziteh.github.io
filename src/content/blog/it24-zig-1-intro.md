@@ -13,7 +13,7 @@ toc: true
 
 ![][zig-logo]
 
-[zig-logo]: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDIzO_N019K6RXkxJu-iDAbbcTfYkK6Qho6bId246ayGFMVPNPmDLMHC5tZAQ9ntsjFMAMPK7G4877j0tTm4bOXNi-0rnCSP0swQ9xbLnyq5f4KY5NDe-YThChesfkjJ2JYvy8zMWuA9VeBANgtIrbwR13Mr9-atZotQghIxhso6gQFXpSYShuPlV8AJA/s16000/zig-logo.png
+[zig-logo]: https://bucket.ziteh.dev/blog/it24-zig-1-intro/b05ce4db.webp
 
 [Zig](https://ziglang.org/) 是一個通用功能程式語言及工具鏈（Toolchain），主打**強健**、**最佳化**和**重複利用**。
 
@@ -35,7 +35,7 @@ Zig 是一個靜態強型別的程序式編程（Procedural programming）語言
 
 ![這是我看完 Zig 後的第一個想法][you-low]
 
-[you-low]: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg60A47naXk_Vkl1KGIUZ0cv4qSUBZHngA2t2l1eFGZzVllKrOei0dzy33ocT7goVEuHy0ATFKgj-g2TnIYFr0tVMzqqoSeMuYVSKFOeXyZWZ0fi5eOMIIbbBXR81-bTUZYODdKk7SSr-vAIHKSNdqzaof22pYk4oJgTsVojQxdjRe5SLZ9bxuUJvY4gw0/s16000/you-low.png
+[you-low]: https://bucket.ziteh.dev/blog/it24-zig-1-intro/3349bd9d.webp
 
 使用 Zig 的專案中比較有名的應該是 [Bun](https://bun.sh/)，這是一個強調速度的 JavaScript 運行環境（runtime），號稱擁有比 Node 和 Deno 更好的處理量和效能。
 
@@ -48,8 +48,8 @@ Zig 是一個靜態強型別的程序式編程（Procedural programming）語言
 
 ![StackOverflow 2023 Survey - Salary and experience by language][zig-salary-and-exp]
 
-[zig-top-paying]: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglM8dw4QJvFR-QTimBFyj4CuHgFbcPxcN4Vt-E3uvSFcYdT2JjydTQ-jPZxo8OQYuLLjmF_nkaHG9nRNAVzdoIpauXnMs_uiCaLYD9EuddV18HnNwAkhfQ4jgb7uXGKBBuaKVXhuZHqgd_m7P5OmQxbWC4EMi7acZRsSvmhQDaw8Yc24C3wM7Bjc11rJM/s16000/zig-top-paying.png
-[zig-salary-and-exp]: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjeFEfTfIvjq3Gz3yeqKVN1coC30NS7vTEtnxWD2Oh2UdOrVtVMJPMd13s9uw4r9GzSacYpZKi1Yac7eBwJcsLL6eHdm7MVICf83D99eaDJEn9WigQoKYWvqbJHJYaJE0zKVeWtsMDOmTeQOn_KHOGS-bGUvE8GjmPHHmGhe8VUPzLaK2k_w_tpnLVnO28/s16000/zig-salary-and-exp.png
+[zig-top-paying]: https://bucket.ziteh.dev/blog/it24-zig-1-intro/34b509d3.webp
+[zig-salary-and-exp]: https://bucket.ziteh.dev/blog/it24-zig-1-intro/14adfe10.webp
 
 這次是我第二次參加 iThome 鐵人賽（第一次是 2022 年），也是我開始工作後第一次參加。總之，我想利用這 30 天，**非常概略**地介紹 Zig 這門語言，特別會以 C 或 Rust 的使用者來看待和比較它，所以需要對 C 有基本的瞭解再看本系列會比較適合，希望熟悉低階操作的你也會喜歡上 Zig。但是由於我接觸 Zig 的資歷也還非常淺，所以沒辦法分享中高階的內容，如果內容有誤，也請指正。謝謝。
 

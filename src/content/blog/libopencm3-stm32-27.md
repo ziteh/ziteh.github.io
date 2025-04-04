@@ -210,9 +210,9 @@ static void usart_setup(void)
 
 可以到一些線上的 CRC 計算機（如[這個](https://crccalc.com/?crc=9D%2012%203A%20D4&method=CRC-32/MPEG-2&datatype=hex&outtype=0)）驗證其結果是正確的（算法選擇「CRC-32/MPEG-2」）。
 
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTB1JUYk01LWrq9SkXyDnTWBqR2Y13DoYuRtasxiWT0hecVBqLGljUTx3wOp4CO-xHuj-lybXSbU8V6kgUMRtbfjq40ds1I7UnQ_X2DfTSouKfWTS6CFpWiOcxSXIvcuTjOvV-FqV2LUexwB--Nwul7-zgGF64mQVPbIDrq4Bt_-RfrbGX8nNL3XIm/s16000/CRC.png)
+![](https://bucket.ziteh.dev/blog/libopencm3-stm32-27/73a0ddcc.webp)
 
-![▲ STM32 各系列的 CRC 單元功能比較。取自 AN4187 Rev1 P.13。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgSpgzxyQogU3pWHzk8Wv82Vie6PPeTy0dNVVSlkATIqoEjjzTOCfQCw7gZtN2rAOlJksQnSytiBwFRHbxVWWNRBO9HlKAq9hDnuC5Ca3ycFpZRyEKKjcXDEGKFsN9yyQP61A8KOCd5hEdSp9pjwNcSo9gFIBQvEs-MwgQg-5cLXKCSDj_YmAhLa6Tb/s16000/crc%E2%80%94%E2%80%942.png)
+![▲ STM32 各系列的 CRC 單元功能比較。取自 AN4187 Rev1 P.13。](https://bucket.ziteh.dev/blog/libopencm3-stm32-27/5d9e2b69.webp)
 
 # 小結
 CRC 的使用還是滿單純的，就只要致能 RCC 後呼叫計算函式，將要計算的資料傳入後就可以得到結果了。

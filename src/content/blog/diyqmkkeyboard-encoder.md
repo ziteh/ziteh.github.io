@@ -14,7 +14,7 @@ draft: false
 # aliases: ["/2020/11/diyqmkkeyboard-5/", "/posts/diyqmkkeyboard-5/"]
 ---
 
-![](https://1.bp.blogspot.com/--DVn7BXoSVM/X7jhXa4wzwI/AAAAAAAACrk/5-7dhQnH1kgKadvIJFRDvJypUmhe44QUACPcBGAsYHg/w640-h480/DSC_0020.JPG)
+![](https://bucket.ziteh.dev/blog/diyqmkkeyboard-encoder/87b675aa.webp)
 
 在之前的文章中我們已經完成了 QMK 的基本操作，已經可以作出一個基本鍵盤。
 

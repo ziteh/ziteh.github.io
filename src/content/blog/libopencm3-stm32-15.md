@@ -130,7 +130,7 @@ SysTick（System tick timer）是 ARM Cortex M3 系列內建的功能，這是�
 
 從 Clock Tree 中可以看到 SysTick 在 AHB 底下，並且前面有一個可程式設定的預分頻器（圖上雖然看起來是固定 `/8`，但根據我實測的結果與 STM32CubeMX 中顯示的設定，這應該是可以選擇 `/1` 或 `/8`）。
 
-![▲ SysTick 的時鐘源。取自 RM0390。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgVy0ddkXOGgBvgTb2fp0pYGGXxCuNUE0BODLoYido2400V2_OWev7rSIktKLzKhNeI8dyPfoQtwREg2R3R8qrpC5-u_w3RrgxkBO28fV4VUz-8k0GZbJmG3_ckhEaV8igVGVcnlMUPFS7I_WvAK2CcAwvgiJax5a3_Vxz7pOzE6uINKDFyHaYBYyVW/s16000/image_1662288150837_0.png)
+![▲ SysTick 的時鐘源。取自 RM0390。](https://bucket.ziteh.dev/blog/libopencm3-stm32-15/4e5a8cda.webp)
 
 這裡使用 `systick_set_clocksource()` 來指定 SysTick 時鐘源為 AHB 並啓用 `/8` 預分頻器，因此目前的 SysTick 頻率為 `rcc_ahb_frequency / 8`。
 
@@ -213,7 +213,7 @@ static void led_setup(void)
 
 > 請注意 LED 要切換 2 次才是一個完整的波形。
 
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi1oDElh7QVdLnp0dBHirtYj0soQpKlO9mdaDhkBDHdpHKfDPbsg1OZ4XFpEIioKv-ULOZd2z009SHox0fwk4TkcnBr3AFFWIdThHNeNGc2Nyk6Kzynyly8ZBmVVIQtk63vH-Y9XOCaQxgWU76elGfqKsl5WqNM6tLYt3RQumN_MAdR4DaYGCrrCxpZ/s16000/SysTick_1662287817519_0.png)
+![](https://bucket.ziteh.dev/blog/libopencm3-stm32-15/d2a84e01.webp)
 
 # 小結
 

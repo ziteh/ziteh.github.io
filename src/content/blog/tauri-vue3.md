@@ -15,8 +15,8 @@ toc: true
 
 主要得力於 Vue 的易用性，所以我這個不是網頁技術棧的人也可以簡單寫出一個還像樣的 Tauri UI。
 
-![範例](https://i.imgur.com/i6ihU9o.png)
-![範例](https://i.imgur.com/Ukpo0BN.png)
+![範例](https://bucket.ziteh.dev/blog/tauri-vue3/27ba48b8.webp)
+![範例](https://bucket.ziteh.dev/blog/tauri-vue3/99be048c.webp)
 
 > 注意，本人非網頁前後端出身，也沒有仔細的看過教學，這篇文章的內容只是個人經驗僅供參考。若有錯歡迎指出。
 > 以下的範例只是用法參考，不具實際意義。

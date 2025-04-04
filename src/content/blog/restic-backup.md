@@ -236,7 +236,7 @@ resticprofile init
 resticprofile backup
 ```
 
-[restic-browser]: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYLTCSOA8VDnCHnsgllw2UV0OduOyhqkoNK4RbHmVpDT823CdV1mKSf9toWlUeR-1k9JJmuLhz0KhcLDpEy2pPJpl4BV6TGxWJAuqp6E7N5M1sensDCF-8CDxpPoo6G8TPXtlBv-f9k6cmGktzlXHIRoVvt7Xpd3UHPypPVHMLIBncrSUhJ1lvWShvGcA/s16000/restic-browser.png
+[restic-browser]: https://bucket.ziteh.dev/blog/restic-backup/2f167993.webp
 
 ---
 

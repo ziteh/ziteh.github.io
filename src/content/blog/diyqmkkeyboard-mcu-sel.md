@@ -106,7 +106,7 @@ draft: false
 
 我自己畫的 RP2040 開發板：[RP Micro](https://github.com/siderakb/rp-micro)
 
-![RP Micro：RP2040 開發板](https://i.imgur.com/sVGqRyk.jpg)
+![RP Micro：RP2040 開發板](https://bucket.ziteh.dev/blog/diyqmkkeyboard-mcu-sel/c2824c56.webp)
 
 ## ATmega32U4
 

@@ -233,7 +233,7 @@ int main(void)
 
 # 成果
 
-![▲ 輸出波形圖](https://i.imgur.com/GanKqb1.png)
+![▲ 輸出波形圖](https://bucket.ziteh.dev/blog/libopencm3-example-pwm/1efa4c55.webp)
 
 可以看到輸出的波形誤差很小（設定值為：Duty Cycle 72.5%，頻率 1 kHz）。
 

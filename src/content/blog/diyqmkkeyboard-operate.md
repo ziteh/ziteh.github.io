@@ -206,7 +206,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 傳入`LAYOUT()`巨集的引數為：
 
-![](https://1.bp.blogspot.com/-Eh75tH4zEmg/XvK8bBXn6qI/AAAAAAAACiw/Y3g378GMICIR1w71Brk4mAN94EYH3GnGgCK4BGAsYHg/w2383-h208/%25E6%2589%25B9%25E6%25B3%25A8%2B2020-06-24%2B103457.png)
+![](https://bucket.ziteh.dev/blog/diyqmkkeyboard-operate/7a5da2fe.webp)
 
 以上的引數透過位置來對應到以下`LAYOUT()`巨集的前半部分。
 

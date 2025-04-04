@@ -14,7 +14,7 @@ draft: false
 # aliases: ["/2020/06/diyqmkkeyboard-1/", "/posts/diyqmkkeyboard-kle/"]
 ---
 
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh6xYCyGGGes8740UwynZ1-7vRgL-NiAbQG_wQ-84Qwpp0VnqNnTvhTym-9_GQemo3IWD31zfsRhwnsCjjuo6FY9YA1Uvzw6ewqC5ZQZuifOvxs-4imiPxjeBuYCJ_Y9Wc5nkBQqNQHFN03e8RHUQi6apUVahqwfScuck0SVJ-W_c6uGn1oYKgOFfgd/s16000/Screenshot%202023-04-18%20at%2020-31-36%20Keyboard%20Layout%20Editor.png)
+![](https://bucket.ziteh.dev/blog/diyqmkkeyboard-kle/a8a04e75.webp)
 
 根據第一篇所提的[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)，當你確定完鍵盤的整體設計（要多少按鍵？標準、Ortho 或 Alice 佈局？等）後，就可以開始編輯鍵盤佈局（Layout）了。
 
@@ -37,15 +37,15 @@ draft: false
   - **Summary**：鍵盤概要。
   - **Tools**：一些編輯按鍵可以用的功能工具。
 
-![▲ KLE 頁面](https://1.bp.blogspot.com/-tNaDVTpZNkg/Xu4t__IgDhI/AAAAAAAACcY/eLwPgAw9jpQ5hLNTgKLmSL27edMDQhYpACK4BGAsYHg/s1908/%255B01%255DKeyboard%2BLayout%2BEditor_%25E9%25A6%2596%25E9%25A0%2581.png)
+![▲ KLE 頁面](https://bucket.ziteh.dev/blog/diyqmkkeyboard-kle/d77d985c.webp)
 
 最上面的功能列那邊有個「Preset」按鈕，可以匯入一些常見的鍵盤佈局，再進行修改。
 
-![▲ 「Preset」按鈕](https://1.bp.blogspot.com/-KJ9BtlpHxkc/Xu4uAKgEj2I/AAAAAAAACcc/_q6_t2f8k6g_b4AvA_qcbPnK92Zmme1DQCK4BGAsYHg/s704/%255B02%255DKeyboard%2BLayout%2BEditor_Preset.png)
+![▲ 「Preset」按鈕](https://bucket.ziteh.dev/blog/diyqmkkeyboard-kle/09faf638.webp)
 
 例如以下匯入了「ANSI 104」的鍵盤佈局。
 
-![▲ 匯入「ANSI 104」](https://1.bp.blogspot.com/-hGR7m05B_Bc/Xu4uASKVfNI/AAAAAAAACcg/6Y2GJFGtcH4-vNz2CK8Bv_fvCwRvAzF2wCK4BGAsYHg/s1908/%255B03%255DKeyboard%2BLayout%2BEditor_Preset-ANSI%2B104.png)
+![▲ 匯入「ANSI 104」](https://bucket.ziteh.dev/blog/diyqmkkeyboard-kle/f6240bd2.webp)
 
 ## 編輯按鍵
 
@@ -64,11 +64,11 @@ draft: false
 - **Y**：Y軸位置。後面的第2個數字是非長方形鍵帽用的。
 - **Rotation**：旋轉角度。
 
-![▲ 按鍵編輯區](https://1.bp.blogspot.com/-JA0T6CoKpUQ/Xu4uAj2uGiI/AAAAAAAACck/THOzxCPzfhMyQVE-4rIkk_NK4z7BqP3JQCK4BGAsYHg/s742/%255B04%255DKeyboard%2BLayout%2BEditor_Key_Properties.png)
+![▲ 按鍵編輯區](https://bucket.ziteh.dev/blog/diyqmkkeyboard-kle/a9a8b610.webp)
 
 可以透過方向鍵來移動按鍵。按鍵內的文字可以設定各自的大小和顏色。
 
-![▲ 按鍵文字樣式](https://1.bp.blogspot.com/-yhzg5EnWmCc/Xu4uA5Xq1KI/AAAAAAAACco/XNep3M3gpd8FtkYBbdyBcu9RMEKQlTR_ACK4BGAsYHg/s546/%255B05%255DKeyboard%2BLayout%2BEditor_Key_Properties-text.png)
+![▲ 按鍵文字樣式](https://bucket.ziteh.dev/blog/diyqmkkeyboard-kle/ca765cbe.webp)
 
 下方還有許多不同的標籤頁可以進行不同的設定（如作者名字或鍵盤名稱），在此就不多做介紹。
 
@@ -86,17 +86,17 @@ draft: false
 [{w:2},"0\nIns",".\nDel"]
 ```
 
-![▲ 輸出 Layout](https://1.bp.blogspot.com/-u-4BtExCj9Y/Xu4uBOltJ8I/AAAAAAAACcs/Gb5Yc6Tv_cg4X7R7KIMCBIi1QcFouQB0ACK4BGAsYHg/s1908/%255B06%255DKeyboard%2BLayout%2BEditor_Raw_Data.png)
+![▲ 輸出 Layout](https://bucket.ziteh.dev/blog/diyqmkkeyboard-kle/0c5d69ad.webp)
 
 畫面右上角有個綠色的「Download」可以下載各種圖片檔和 JSON 檔。下載的 JSON 檔內容其實就是上面的 raw data。儲存成 JSON 檔下次還可以重新上傳並繼續編輯。
 
 建議**一定要儲存 JSON 檔**並保管好，並且標記好這是 KLE 的 JSON，避免與其它工具的 JSON 檔搞混。
 
-![▲ 右上角的「Download」可以下載各種格式](https://1.bp.blogspot.com/-qydXM4etOsI/Xu4uBi6MegI/AAAAAAAACcw/MWvyrL-TyLw-v4WjefzfLY3lCcILlWP0gCK4BGAsYHg/s406/%255B07%255DKeyboard%2BLayout%2BEditor_DL_1.png)
+![▲ 右上角的「Download」可以下載各種格式](https://bucket.ziteh.dev/blog/diyqmkkeyboard-kle/79379541.webp)
 
 要上傳 JSON 檔的話，在「Raw data」標籤頁的右下角有個綠色的「Upload JSON」，一旁的「Download JSON」同樣也可以下載 JSON 檔。
 
-![▲ 在「Raw data」標籤頁的右下角可以載入 JSON 檔](https://1.bp.blogspot.com/-m-eRyos_xAU/Xu4uBp2_njI/AAAAAAAACc0/gFa3j9BQlu8fIry-IRA-nLbmnpughQ60gCK4BGAsYHg/s356/%255B07%255DKeyboard%2BLayout%2BEditor_DL_2.png)
+![▲ 在「Raw data」標籤頁的右下角可以載入 JSON 檔](https://bucket.ziteh.dev/blog/diyqmkkeyboard-kle/e06885f2.webp)
 
 # 相關網站
 

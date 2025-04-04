@@ -24,9 +24,9 @@ STM32 中的 ADC 功能相當多樣，也造成它的使用有一定程度的複
 # 基本介紹
 STM32F446RE 擁有三個 12-bit 的 ADC，且擁有 19 個通道，其中包含 16 個來自外部、2 個來自內部，還有一個是 `V_BAT` 通道。ADC 的輸入電壓範圍為 `V_REF-` \~ `V_REF+`，也就是最大 `0` \~ `3.6` V。
 
-![▲ ADC 容許電壓範圍。取自 DS106893 Rev10 P.139。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhuWWHI4rT9elX1Q6tVOq6ihHGnvlt0Nw63soBztR2k6zU2yCfZmtkdZnZXYkdF-uyh94ru_NNA-hX-VT9EmstBHldvGbAZeWLuV1lSZNrrvlaJBzuKKauU8hat2q5xfeiIvhRBjCoNjcVr1wwuc8s6DFmGtzAxgqibYBrcBuHr8s3PB4xlk1PCTOti/s16000/image_1664365176174_0.png)
+![▲ ADC 容許電壓範圍。取自 DS106893 Rev10 P.139。](https://bucket.ziteh.dev/blog/libopencm3-stm32-19/7acce509.webp)
 
-![▲ 單一 ADC 的方塊圖。取自 RM0390 Rev6 P.356。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj9ap5_i4X5FTeUcZtJVWPF4PaMDRQIpMnTBl94o8bVIIAFRZ3CQBpDjj0ZCgVtCBuWwZWjYnBBTYKQPamB5kvbd1WLzJ7q9htO0ZoCh1VXME9nbOXCiNth-xJ3sW9HA7iggds_Z6_TWl5tNX1Vi6-NRYelHUFSpERWZj5JOJYdf0xs2spD0IB8QCwi/s16000/image_1664363794814_0.png)
+![▲ 單一 ADC 的方塊圖。取自 RM0390 Rev6 P.356。](https://bucket.ziteh.dev/blog/libopencm3-stm32-19/baeb199c.webp)
 
 ADC 有兩個 Clock：
 * 類比電路時鐘：所有 ADC 皆相同。此時鐘訊號來自 APB2，經過一個可程式的預除頻器（\2、\4、\6 或 \8）。此時鐘頻率的上限為 18 MHz（`V_DDA` = 1.7 ~ 2.4 V）或 36 MHz（`V_DDA` = 2.4 ~ 3.6 V）。參考 DS10693 的 Table 74. ADC characteristics。

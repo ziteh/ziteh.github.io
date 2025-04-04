@@ -26,7 +26,7 @@ Timer 計時器是各個 MCU 中都會有的基本功能。正如其名，當需
 # 時鐘樹
 時鐘樹（Clock tree）是學習並使用 STM32 及各微控制器時很重要的事，因為各個功能都有自己的運作頻率，在使用 Timer 前最好有一定的認識。
 
-![▲ STM32F446xx 的 Clock tree。取自 RM0390 Figure 14。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijleZb6WVH51OOoRINJGebKISLgDroPJWmEwctdUpZofGFjJli0o0ZHns7XbxlGgGg3xqbRL3l9MeX9oMCz6b60m0kkgFPCrASFtKo8EAiDCG6ku0kV7LE38vbLNarerzwIxRTwaMqpkIbPm_7nxCL-YWpZSDmjNWXyaiUdRhGntJT5dcOq6G6n1Rq/s16000/ct.jpg)
+![▲ STM32F446xx 的 Clock tree。取自 RM0390 Figure 14。](https://bucket.ziteh.dev/blog/libopencm3-stm32-11/9fc52cfa.webp)
 
 上圖即為 STM32F446xx 的時鐘樹。時鐘樹的看法基本上是由左至右——左為輸入、右為輸出（到各個 Peripheral）。時鐘訊號會從原始的時鐘源開始，經過一系列的多工器、倍頻器或分頻器變成系統時鐘（SYSCLK），之後再透過 AHB 或 APB 等分頻器輸出給各各外圍設備。
 
@@ -49,12 +49,12 @@ Timer 計時器是各個 MCU 中都會有的基本功能。正如其名，當需
 
 根據 DS10693 的 Figure 3 可以知道 TIM2 在 APB1 （Advanced Peripheral Bus 1）底下。
 
-![▲ STM32F446xC/E 的功能方塊圖。取自 DS10693 Figure 3。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj8XEh5OYupQ-3-JVsxY4sW1tWx8ZqJUhO1oenC2Yh6RuooigxKdbAmZ7wwniZZgfKVMmSj5dz492cbANOnoml1fUYGek7Qs-9rCtCERqPk3LjtxuzinSoXWc1BbQJoh2yxtVHaaXsM-ZPfhd8V7tL_u_9NIHf_FCRXBXq5JcQywR5Mbc-Sq74RE2Jf/s16000/1.png)
+![▲ STM32F446xC/E 的功能方塊圖。取自 DS10693 Figure 3。](https://bucket.ziteh.dev/blog/libopencm3-stm32-11/fa20d772.webp)
 
 
 從 STM32F446RE 的 Clock tree 還可以知道，當 APB1 的預除頻器設定為 `/1` 時，APB1 timer  clock = APB1 clock，而 APB1 的預除頻器設定為 `/1` 以外時，APB1 timer clock = 2* APB1 clock。
 
-![▲ STM32F446xx 的部分 Clock tree。取自 RM0390 Figure 14。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhQMwCBOiY0kUEnYnyx-j6eZy9dEzhdc7Qqpa-cJF_d66O3lFPX7svRDGe7evlGih2Mx5Sv6OQr1r5bN7jRJUhncOvoDwMCHitRsOBhtjhexXiL6d0Ii5jcX5cTBgDMMBbFH3_niSvyIuvx8Vsfh-pkEyvV0BjmqV_thSEfOy0quqwUdvt07K2d5SKi/s16000/2.png)
+![▲ STM32F446xx 的部分 Clock tree。取自 RM0390 Figure 14。](https://bucket.ziteh.dev/blog/libopencm3-stm32-11/9e81b4ed.webp)
 
 
 # PSC 暫存器
@@ -66,7 +66,7 @@ PSC 是 Prescaler 的意思，它用來設定各 Timer 自己的預除頻值。
 * `CK_PSC`：預除頻器的輸入頻率，也就是 Timer 頻率。
 * `PSC`：TIMx_PSC 暫存器的值（除頻值）。
 
-![▲ Counter 的頻率公式。取自 RM0390。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj749vqCdyvJCuFI3OBUkU2qVAYVTRKhyT2o5MuoM4dSJXNO8TVa_dlfL-VoxQoauY1OE_Xbqz-HThxpHLdr06Okk_wUO5R0gDb0YFtl8xCozfBEOuTajgGGplEB4vZpvBvKDEXo3xKkWTYDmutRsjTFGnop58wv0dehLYdeSFQ8iRGEXwd8K8CDGQ1/s16000/3.png)
+![▲ Counter 的頻率公式。取自 RM0390。](https://bucket.ziteh.dev/blog/libopencm3-stm32-11/8b79516a.webp)
 
 # ARR 暫存器
 接下來還要計算自動裝載暫存器（Auto-Reload Register，ARR）的值。ARR 暫存器的功能我們可以從 RM0390 中得知：
@@ -74,7 +74,7 @@ PSC 是 Prescaler 的意思，它用來設定各 Timer 自己的預除頻值。
 
 在上數模式時，Counter 會從 0 數到 ARR 值，然後重新從 0 開始數並產生 Overflow 及 Update 事件（包含 Update 中斷）。
 
-![▲ 上數模式下的 TIM2 行為範例，ARR=0x36。取自 RM0390。](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhF3xphTAy7Ilwm-lYcI-j8WBflXxeNHNIIZ36-O11JIsNGPAfxB0kznVcvEpNicphzRFXKrNrSnUHW9GP6MGojyA_95GMTaM6A84V4SyDcql6m_HtzWcq-KDPVtWCe7xH2ZIu-2BUnV1m7xwiIxejgRbCMc1j0TcepXS0eafuBpf7_OoZdAdL_zz0L/s16000/4.png)
+![▲ 上數模式下的 TIM2 行為範例，ARR=0x36。取自 RM0390。](https://bucket.ziteh.dev/blog/libopencm3-stm32-11/8a89948f.webp)
 
 
 所以如果 ARR = `0` 的話，每次 Counter 計數後都會發生 Overflow，此時 Overflow 的發生頻率和 Counter 的計數頻率一樣；當 ARR = `2` 時，Counter 會數：
@@ -87,7 +87,7 @@ PSC 是 Prescaler 的意思，它用來設定各 Timer 自己的預除頻值。
 `Timer 頻率 --[Timer 預除頻器]--> Counter 頻率 --[ARR]--> Overflow 頻率`
 
 寫成公式：
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6tOm8rGApz9SgH1ruhwO4JK_q2qoWaD1oXlHwpZLz0_sJH309rcAbSVSaHvWWfI_7Sneh-DQ63Yd0-r0OuGYWVzYcxKb6UFbOjN3CoYodhQRV6BeWOvJBjJTB2IW_b1YPcW_HADLoc2g7aDVP-F8WD3K38Gk0yeRV7LBjIXGwADGUmxu28CY83SmW/s16000/5.png)
+![](https://bucket.ziteh.dev/blog/libopencm3-stm32-12/87a9ca9f.webp)
 
 * `f_overflow`：Overflow 的發生頻率，也就是我們的目標頻率。
 * `f_counter`：Counter 的計數頻率，也就是上面的 `CK_CNT`。

@@ -435,7 +435,7 @@ static void i2c_setup(void)
 
 最後再次寫入 `0xCD` 到 `0x0000`（`00 00 00 CD`），再讀取它（`01 00 00`）得到 `0xCD`。
 
-![](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqvGt56uqNr0GtoYtYM1rEO1IyzK8SsMALMEGjy6W8qtvwYFYdo0YN212yqefT1_hczl28WRviThZ5OFhsXi8TVu3gt_XPdgP0vbkccrIxsw-oFjEXH1hXWkVvMsy6-KI5D-bK4AdKe-vKV-MGY1ykFIWr_PkW4xiFDt44son1IW4HPcrK7hbIBsM1/s16000/i2c.png)
+![](https://bucket.ziteh.dev/blog/libopencm3-stm32-26/01b2cbce.webp)
 
 # 小結
 這次介紹了 I2C 的程式寫法。SPI 與 I2C 是各種電路模組或 IC 會使用的通訊協定，只要會使用 SPI 與 I2C，那基本上常見的模組都可以使用了，因此 I2C 是一個很重要的功能，還好 STM32 本身的硬體及 LibOpenCM3 都把那些複雜的設定做好了，因此要使用 I2C 相當容易。

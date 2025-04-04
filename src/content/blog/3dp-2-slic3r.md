@@ -19,7 +19,7 @@ draft: false
 
 首先要更改模式為Expert 將\[Mode\]中的\[Simple\]改為\[Expert\]。打開設定選單，點選左上角的\[File\] > \[Preferences\]
 
-![](https://2.bp.blogspot.com/-GTTo62P_3n4/Xqz-jre9fjI/AAAAAAAACKY/vgm5JioIARQb2eXSzUhyvbvcTv5JUtPKwCPcBGAsYHg/s1600/Expert%2B%25E6%25A8%25A1%25E5%25BC%258F-2.png)
+![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/7e4a72a0.webp)
 
 # 列印機設定：點選\[Printer Settings\]標簽
 
@@ -42,7 +42,7 @@ draft: false
     * Pressure advance :
     * Vibration limit (deprecated) :
 
-![](https://1.bp.blogspot.com/-Sw3WqrCe29U/Xqz-jlMemLI/AAAAAAAACKY/ozkM-4898H0f6mGp6w06nenvLC6N015_wCPcBGAsYHg/s1600/1-1.png)
+![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/abdb1298.webp)
 
 
 ## 2.Custom G-code
@@ -53,7 +53,7 @@ draft: false
 * After layer change G-code : 換層後時要執行的G-code指令
 * Tool change G-code :
 
-![](https://1.bp.blogspot.com/-4LSrZ_ohJoQ/Xqz-jvtCJKI/AAAAAAAACKY/sYxDDZk6kvwzJOIcfudv8c3G6_md_yMPwCPcBGAsYHg/s1600/1-2.png)
+![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/cd27c296.webp)
 
 
 ## 3.Extruder 1
@@ -74,7 +74,7 @@ draft: false
     * Length :
     * Extra length on restart :
 
-![](https://2.bp.blogspot.com/-vH_5IvnHihs/Xqz-jmDUZ-I/AAAAAAAACKY/pWty8J2u0ywiYiRqDuzbp1umuiVEJrL2QCPcBGAsYHg/s1600/1-3.png)
+![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/72feb606.webp)
 
 # 材料設定: 點選\[Filament Settings\]標簽
 
@@ -92,7 +92,7 @@ draft: false
     *  First layer : 列印第一層時的熱床溫度。由於第一層需要與列印平面有較好的接觸，所以第一層的溫度可以高一點
     * Other layers : 列印其他層時的熱床溫度
 
-![](https://3.bp.blogspot.com/-HSC7etsWyzQ/Xqz-jtL2gOI/AAAAAAAACKY/o4YGvVuUaA0PSDkBfKNkCrgbFcnpKknHACPcBGAsYHg/s1600/2-1.png)
+![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/38616f98.webp)
 
 
 ## 2.Cooling
@@ -111,7 +111,7 @@ draft: false
     * Slow down if layer print time is below :
     * Min Print speed :
 
-![](https://1.bp.blogspot.com/-v_MjifqO6lA/Xqz-jgblLbI/AAAAAAAACKY/jhfNny8-C4M50jwz9PxmymWiZoFuSQKiQCPcBGAsYHg/s1600/2-2.png)
+![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/844a7e64.webp)
 
 # 列印參數設定: 點選\[Print Settings\]標簽
 
@@ -136,7 +136,7 @@ draft: false
     * Seam position : 接縫位置。選擇列印兩不相鄰列印件時，每次開始列印不同列印件的位置。通常設定為Aligned來增加列印件美觀或Nearent來減少列印時間
     * External perimeters firs : 印外殼時，先印最外圈。通常不會使用
 
-![](https://4.bp.blogspot.com/-MF8VogEfByQ/Xqz-jomDxfI/AAAAAAAACKY/SlWlJSNn1V8ou4k29AfmkNwybvi39zWeQCPcBGAsYHg/s1600/3-1.png)
+![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/ba5726e0.webp)
 
 
 ## 2.Infill
@@ -155,7 +155,7 @@ draft: false
     * Only retract when crossing perimeters :
     * Infill before perimeters : 每一層先印填充，再印外殼，通常不用
 
-![](https://1.bp.blogspot.com/-MZ1A5s4jTkk/Xqz-jgH_HyI/AAAAAAAACKY/QBNMKYxyVcUCRHEOZDrTBWodigpNg7ZfQCPcBGAsYHg/s1600/3-2.png)
+![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/e0c4c00c.webp)
 
 
 ## 3.Skirt and brim
@@ -168,7 +168,7 @@ draft: false
 * Brim
     * Brim width : 裙邊的寬度。增加裙邊可以讓列印件不容易發生翹曲的狀況，也可以當地基
 
-![](https://2.bp.blogspot.com/-OwLfPZeCbUY/Xqz-jjqChRI/AAAAAAAACKY/cW8oI6DqLVwdVJ0KuhVTh9X3Hxz6oD0OwCPcBGAsYHg/s1600/3-3.png)
+![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/0c24393f.webp)
 
 ## 4.Support material
 
@@ -187,7 +187,7 @@ draft: false
     * Interface pattern spacing :
     * Don't support bridges : 搭橋的部分不要進行支撐
 
-![](https://1.bp.blogspot.com/-S2lq4oWWU4g/Xqz-jm5QJ1I/AAAAAAAACKY/8A8y2Fukzy8QSHTqlMh8hD4dvZVXwpybACPcBGAsYHg/s1600/3-4.png)
+![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/eaf48b21.webp)
 
 
 ## 5.Speed
@@ -217,7 +217,7 @@ draft: false
     * Max print speed :
     * Max volumetric speed :
 
-![](https://3.bp.blogspot.com/-ydZ2-vd-Nnw/Xqz-jnvvJzI/AAAAAAAACKY/5P-qETglka4mWHrhOvqoiszqHIkM97YPwCPcBGAsYHg/s1600/3-5.png)
+![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/ac3d4244.webp)
 
 
 ## 6.Multiple Extruders
@@ -234,7 +234,7 @@ draft: false
 * Advanced
     * Interface shells :
 
-![](https://2.bp.blogspot.com/-sF8KyRKZ8Jw/Xqz-jh_IBJI/AAAAAAAACKY/TwEOVcNjdU4V2h_CR5LKuJ1Smt1cBrFCgCPcBGAsYHg/s1600/3-6.png)
+![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/f25b9f86.webp)
 
 
 ## 7.Advanced
@@ -257,7 +257,7 @@ draft: false
     * Threads : 切片時要使用多少個電腦的執行緒進行運算
     * Resolution : 切片前先降低模型的解析度。0為不降低解析度
 
-![](https://1.bp.blogspot.com/-rpCch09vuS8/Xqz-jhQodyI/AAAAAAAACKY/ipaxIQxrcmUn36PTT0nwroK1_G96ZXbBACPcBGAsYHg/s1600/3-7.png)
+![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/58fc5b04.webp)
 
 
 ## 8.Output options
@@ -272,13 +272,13 @@ draft: false
     * Output filename format : 輸出檔案的檔名
 * Post-processing scripts : 後處理腳本
 
-![](https://1.bp.blogspot.com/-CpBgcnZ0ws4/Xqz-jg82wyI/AAAAAAAACKY/30dqcypJGF8fcBkkTmg0g5SyJIru0wkjQCPcBGAsYHg/s1600/3-8.png)
+![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/dce83dec.webp)
 
 ## 9.Notes 筆記
 
 * Notes：可以在此做些筆記提醒自己。
 
-![本文使用的Slic3r版本](https://1.bp.blogspot.com/-CpBgcnZ0ws4/Xqz-jg82wyI/AAAAAAAACKY/30dqcypJGF8fcBkkTmg0g5SyJIru0wkjQCPcBGAsYHg/s1600/3-8.png)
+![本文使用的Slic3r版本](https://bucket.ziteh.dev/blog/3dp-2-slic3r/dce83dec.webp)
 
 此文章還有些地方沒有完成，未來有空再更新。
 
