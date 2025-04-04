@@ -171,7 +171,7 @@ Rev 2.0 其實和最後的 Rev 2.1 已經幾乎沒有差別了，幾乎只差在
 # 相關網站
 
 - [ErgoSNM GitHub repo](https://github.com/siderakb/ergo-snm-keyboard)
-- [ErgoSNM 文件](https://siderakb.github.io/docs/category/ergosnm)
+- [ErgoSNM 文件](https://siderakb.ziteh.dev/docs/ergosnm/intro)
 - [ErgoSNM YouTube 播放清單](https://youtube.com/playlist?list=PL1kBTdTo-vGbdUH9_YovZvkGXuNMB03fa)
 - [我的 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - [QMK 官網](https://qmk.fm/)

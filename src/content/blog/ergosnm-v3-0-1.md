@@ -24,7 +24,7 @@ featured: true
 
 <!--more-->
 
-更多資訊請看[ErgoSNM——有軌跡球的分離式人體工學QMK鍵盤 (v2.1)](/posts/ergosnm-v2-1-intro/) 與 [ErgoSNM Keyboard | SideraKB](https://siderakb.github.io/docs/category/ergosnm)。
+更多資訊請看[ErgoSNM——有軌跡球的分離式人體工學QMK鍵盤 (v2.1)](/posts/ergosnm-v2-1-intro/) 與 [ErgoSNM Keyboard | SideraKB](https://siderakb.ziteh.dev/docs/ergosnm/intro)。
 
 # 架構
 
@@ -100,7 +100,7 @@ featured: true
 # 相關連結
 
 - [ErgoSNM——有軌跡球的分離式人體工學QMK鍵盤 (v2.1)](/posts/ergosnm-v2-1-intro/)
-- [ErgoSNM Keyboard | SideraKB](https://siderakb.github.io/docs/category/ergosnm)
+- [ErgoSNM Keyboard | SideraKB](https://siderakb.ziteh.dev/docs/ergosnm/intro)
 - [ErgoSNM GitHub repo](https://github.com/siderakb/ergo-snm-keyboard)
 - [ErgoSNM YouTube 播放清單](https://youtube.com/playlist?list=PL1kBTdTo-vGbdUH9_YovZvkGXuNMB03fa)
 - [我的 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)

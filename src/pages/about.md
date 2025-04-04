@@ -16,7 +16,7 @@ title: "關於我"
 
 另外我還有一個 SideraKB，專門放我自己設計和製作的機械鍵盤。
 
-- [網站](https://siderakb.github.io/)
+- [網站](https://siderakb.ziteh.dev/)
 - GitHub: [siderakb](https://github.com/siderakb)
 - YouTube: [@siderakb](https://www.youtube.com/@siderakb)
 
