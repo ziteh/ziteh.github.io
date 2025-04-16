@@ -3,8 +3,8 @@ name: Deploy to GitHub Pages
 on:
   # Trigger the workflow every time you push to the `main` branch
   # Using a different branch name? Replace `main` with your branch’s name
-  # push:
-  #   branches: [astro-papers/main]
+  push:
+    branches: [astro-papers/main]
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
 
@@ -19,6 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PUBLIC_GOOGLE_SITE_VERIFICATION: ${{ secrets.PUBLIC_GOOGLE_SITE_VERIFICATION }}
+      PUBLIC_MIGRATION_NOTICE: "true"
+
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4

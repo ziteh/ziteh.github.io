@@ -4,6 +4,7 @@ import "@styles/base.css";
 import { ViewTransitions } from "astro:transitions";
 
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
+const showMigrationNotice = import.meta.env.PUBLIC_MIGRATION_NOTICE === "true";
 
 const getDefaultCanonicalUrl = () => {
   let path = Astro.url.pathname;
@@ -199,6 +200,19 @@ const structuredData = {
     }
   </head>
   <body>
+    {
+      showMigrationNotice && (
+        <div class="bg-yellow-100 p-4 text-center text-sm font-bold text-yellow-800">
+          📢 本站網址已經遷移至{" "}
+          <a
+            href={canonicalURL}
+            class="font-semibold underline hover:text-yellow-900"
+          >
+            https://blog.ziteh.dev
+          </a>
+        </div>
+      )
+    }
     <slot />
     <script
       defer
