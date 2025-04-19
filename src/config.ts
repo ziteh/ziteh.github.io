@@ -157,4 +157,10 @@ export const SOCIALS: SocialObjects = [
     linkTitle: "RSS Feed",
     active: true,
   },
+  {
+    name: "Awesome",
+    href: "https://awesome.ziteh.dev/",
+    linkTitle: "Awesome List",
+    active: true,
+  },
 ];
