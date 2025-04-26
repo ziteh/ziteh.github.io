@@ -22,7 +22,10 @@ export interface Props {
 const { page, item, itemName, pageTitle, pageDesc, activeNav } = Astro.props;
 ---
 
-<Layout title={`${pageTitle}${itemName} | ${SITE.title}`}>
+<Layout
+  title={`${pageTitle}${itemName} | ${SITE.title}`}
+  robots="noindex, follow"
+>
   <Header activeNav={activeNav} />
   <Main
     pageTitle={[pageTitle, itemName]}

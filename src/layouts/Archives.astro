@@ -17,7 +17,7 @@ export interface Props {
 const { page } = Astro.props;
 ---
 
-<Layout title={`${_t.archives.title} | ${SITE.title}`}>
+<Layout title={`${_t.archives.title} | ${SITE.title}`} robots="noindex, follow">
   <Header activeNav="posts" />
   <Main pageTitle={_t.archives.title} pageDesc={_t.archives.desc}>
     <ul>

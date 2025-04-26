@@ -13,7 +13,7 @@ const posts = await getCollection("blog");
 let categories = getUniqueCategories(posts);
 ---
 
-<Layout title={`${_t.categories} | ${SITE.title}`}>
+<Layout title={`${_t.categories} | ${SITE.title}`} robots="noindex, follow">
   <Header activeNav="categories" />
   <Main pageTitle={_t.categories} pageDesc={_t.categoriesDesc}>
     <ul class="flex flex-col space-y-6">
