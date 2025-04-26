@@ -1,7 +1,15 @@
 import type { Site, SocialObjects } from "./types";
+import { loadEnv } from "vite";
+
+// https://docs.astro.build/en/guides/environment-variables/#in-the-astro-config-file
+const { SITE_DOMAIN } = loadEnv(
+  process.env.NODE_ENV || "development",
+  process.cwd(),
+  ""
+);
 
 export const SITE: Site = {
-  website: "https://blog.ziteh.dev/", // replace this with your deployed domain
+  website: SITE_DOMAIN, // replace this with your deployed domain
   author: "ZiTe",
   profile: "https://github.com/ziteh",
   desc: "一位在開源的世界中，慢步於程式與電路、韌體與網頁之人的學習記錄與分享",
