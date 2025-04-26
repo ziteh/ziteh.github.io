@@ -105,7 +105,7 @@ const structuredData = {
     <meta name="title" content={title} />
     <meta name="description" content={description} />
     <meta name="author" content={author} />
-    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="sitemap" href={new URL("/sitemap-index.xml", Astro.site).href} />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content={title} />
