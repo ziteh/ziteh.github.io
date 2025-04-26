@@ -18,8 +18,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
+      SITE_DOMAIN: "https://ziteh.github.io/"
       PUBLIC_GOOGLE_SITE_VERIFICATION: ${{ secrets.PUBLIC_GOOGLE_SITE_VERIFICATION }}
-      PUBLIC_MIGRATION_NOTICE: "true"
+      PUBLIC_MIGRATION_NOTICE: "false"
+      PUBLIC_BAN_GOOGLEBOT: "false"
 
     steps:
       - name: Checkout your repository using git
