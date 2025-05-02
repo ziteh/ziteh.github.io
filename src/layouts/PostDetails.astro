@@ -17,7 +17,7 @@ export interface Props {
   posts: CollectionEntry<"blog">[];
 }
 
-const showMigrationNotice = import.meta.env.PUBLIC_MIGRATION_NOTICE === "true";
+const migrationTo = import.meta.env.PUBLIC_MIGRATION_TO;
 
 const { post, posts } = Astro.props;
 
@@ -236,7 +236,7 @@ const nextPost =
 
     <!-- Comments -->
     {
-      comments && !showMigrationNotice && (
+      comments && !migrationTo && (
         <div class="comments my-8">
           <p class="mb-6 text-center text-sm">
             留言可能不會立即顯示。若過了幾天仍未出現，請{" "}
