@@ -14,7 +14,12 @@
     "lint": "eslint .",
     "spell": "pnpm dlx cspell --config cspell.yaml .",
     "md:check": "pnpm dlx markdownlint-cli2 ./src/data/blog/**",
-    "md:fix": "pnpm dlx markdownlint-cli2 --fix ./src/data/blog/**"
+    "md:fix": "pnpm dlx markdownlint-cli2 --fix ./src/data/blog/**",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "**/*.md": "markdownlint-cli2 --fix",
+    "**/*.*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.11",
@@ -49,11 +54,15 @@
     "eslint": "^9.27.0",
     "eslint-plugin-astro": "^1.3.1",
     "globals": "^16.1.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.0",
+    "markdownlint-cli2": "^0.18.1",
     "pagefind": "^1.3.0",
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.32.1"
-  }
+  },
+  "packageManager": "pnpm@10.10.0"
 }
