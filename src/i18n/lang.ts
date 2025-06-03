@@ -4,6 +4,7 @@ import type dayjs from "dayjs";
 // https://day.js.org/docs/en/display/format
 
 // English
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const en = {
   archives: {
     title: "Archives",
@@ -74,7 +75,6 @@ const en = {
 };
 
 // 繁體中文
-/*
 const zhHant: typeof en = {
   archives: {
     title: "歸檔",
@@ -142,7 +142,6 @@ const zhHant: typeof en = {
     recentPosts: "最新文章",
   },
 };
-*/
 
 // 日本語 (machine translation)
 /*
@@ -291,4 +290,4 @@ const es: typeof en = {
 
 // Select the language you want to use
 // export const _t = zhHant;
-export const _t = en;
+export const _t = zhHant;

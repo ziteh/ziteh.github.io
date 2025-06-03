@@ -1,7 +1,12 @@
 ---
+import { SITE } from "@/config";
 import Hr from "./Hr.astro";
 import Socials from "./Socials.astro";
-import { _t } from "@/i18n/lang";
+// import { _t } from "@/i18n/lang";
+import IconCc from "@/assets/icons/IconCc.svg";
+import IconCcBy from "@/assets/icons/IconCcBy.svg";
+import IconCcNc from "@/assets/icons/IconCcNc.svg";
+import IconCcNd from "@/assets/icons/IconCcNd.svg";
 
 const currentYear = new Date().getFullYear();
 
@@ -18,10 +23,35 @@ const { noMarginTop = false } = Astro.props;
     class="flex flex-col items-center justify-between py-6 sm:flex-row-reverse sm:py-4"
   >
     <Socials centered />
-    <div class="my-2 flex flex-col items-center whitespace-nowrap sm:flex-row">
-      <span>{_t.license.copyright} &#169; {currentYear}</span>
-      <span class="hidden sm:inline">&nbsp;|&nbsp;</span>
-      <span>{_t.license.statement}</span>
+
+    <div
+      class="my-2 flex flex-col items-center text-sm whitespace-nowrap sm:flex-row"
+    >
+      <a
+        class="flex items-center hover:text-accent"
+        href="/about"
+        aria-label="About page"
+        title="CC BY-NC-ND 4.0"
+      >
+        <IconCc class="inline-block scale-75" />
+        <IconCcBy class="inline-block scale-75" />
+        <IconCcNc class="inline-block scale-75" />
+        <IconCcNd class="inline-block scale-75" />
+        <span class="ml-2">{SITE.author} &#169; {currentYear}</span>
+      </a>
+      <span class="separator">&nbsp;|&nbsp;</span>
+      <span
+        >Powered by <a
+          class="hover:text-accent"
+          href="https://github.com/ziteh/astro-paper-s"
+          target="_blank"
+          aria-label="AstroPaperS GitHub repo">AstroPaperS</a
+        ></span
+      >
+
+      <!-- <span>{_t.license.copyright} &#169; {currentYear}</span> -->
+      <!-- <span class="hidden sm:inline">&nbsp;|&nbsp;</span> -->
+      <!-- <span>{_t.license.statement}</span> -->
     </div>
   </div>
 </footer>

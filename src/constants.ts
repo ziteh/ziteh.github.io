@@ -1,38 +1,59 @@
 import IconMail from "@/assets/icons/IconMail.svg";
 import IconGitHub from "@/assets/icons/IconGitHub.svg";
 import IconBrandX from "@/assets/icons/IconBrandX.svg";
-import IconLinkedin from "@/assets/icons/IconLinkedin.svg";
+// import IconLinkedin from "@/assets/icons/IconLinkedin.svg";
 import IconWhatsapp from "@/assets/icons/IconWhatsapp.svg";
 import IconFacebook from "@/assets/icons/IconFacebook.svg";
 import IconTelegram from "@/assets/icons/IconTelegram.svg";
 import IconPinterest from "@/assets/icons/IconPinterest.svg";
-import { SITE } from "@/config";
+import IconYouTube from "@/assets/icons/IconYouTube.svg";
+import IconRss from "@/assets/icons/IconRss.svg";
+import IconSunGlasses from "@/assets/icons/IconSunGlasses.svg";
+// import { SITE } from "@/config";
 
 export const SOCIALS = [
   {
+    name: "RSS",
+    href: "/rss.xml",
+    linkTitle: `RSS Feed`,
+    icon: IconRss,
+  },
+  {
+    name: "Awesome",
+    href: "https://awesome.ziteh.dev/",
+    linkTitle: `Awesome List`,
+    icon: IconSunGlasses,
+  },
+  {
+    name: "YouTube",
+    href: "https://www.youtube.com/@siderakb",
+    linkTitle: `YouTube Channel`,
+    icon: IconYouTube,
+  },
+  {
     name: "Github",
-    href: "https://github.com/ziteh/astro-paper-s",
-    linkTitle: ` ${SITE.title} on Github`,
+    href: "https://github.com/ziteh",
+    linkTitle: `Github`,
     icon: IconGitHub,
   },
-  {
-    name: "X",
-    href: "https://x.com/username",
-    linkTitle: `${SITE.title} on X`,
-    icon: IconBrandX,
-  },
-  {
-    name: "LinkedIn",
-    href: "https://www.linkedin.com/in/username/",
-    linkTitle: `${SITE.title} on LinkedIn`,
-    icon: IconLinkedin,
-  },
-  {
-    name: "Mail",
-    href: "mailto:yourmail@gmail.com",
-    linkTitle: `Send an email to ${SITE.title}`,
-    icon: IconMail,
-  },
+  // {
+  //   name: "X",
+  //   href: "https://x.com/username",
+  //   linkTitle: `${SITE.title} on X`,
+  //   icon: IconBrandX,
+  // },
+  // {
+  //   name: "LinkedIn",
+  //   href: "https://www.linkedin.com/in/username/",
+  //   linkTitle: `${SITE.title} on LinkedIn`,
+  //   icon: IconLinkedin,
+  // },
+  // {
+  //   name: "Mail",
+  //   href: "mailto:yourmail@gmail.com",
+  //   linkTitle: `Send an email to ${SITE.title}`,
+  //   icon: IconMail,
+  // },
 ] as const;
 
 export const SHARE_LINKS = [
