@@ -2,6 +2,7 @@
   "$schema": "https://frontmatter.codes/frontmatter.schema.json",
   "frontMatter.framework.id": "astro",
   "frontMatter.preview.host": "http://localhost:4321",
+  "frontMatter.preview.trailingSlash": false,
   "frontMatter.content.publicFolder": "public",
   "frontMatter.content.pageFolders": [
     {
@@ -9,37 +10,96 @@
       "path": "[[workspace]]/src/data/blog"
     }
   ],
+  "frontMatter.content.autoUpdateDate": false,
+  "frontMatter.taxonomy.dateFormat": "YYYY-MM-DD'T'hh:mm:ssxxxxx",
+  // "frontMatter.taxonomy.commaSeparatedFields": [
+  //   "categories"
+  // ],
   "frontMatter.taxonomy.contentTypes": [
     {
       "name": "default",
       "pageBundle": false,
-      "previewPath": "'blog'",
+      "previewPath": "posts",
       "filePrefix": null,
       "clearEmpty": true,
       "fields": [
         {
-          "title": "Title",
-          "name": "title",
+          "title": "Author",
+          "name": "author",
           "type": "string",
           "single": true
         },
         {
-          "title": "Description",
+          "title": "Title",
+          "name": "title",
+          "type": "string",
+          "required": true,
+          "single": true
+        },
+        {
+          "title": "Subtitle",
+          "name": "subtitle",
+          "type": "string",
+          "single": true
+        },
+        {
+          "title": "description",
           "name": "description",
           "type": "string"
         },
         {
           "title": "Publishing date",
-          "name": "pubDate",
+          "name": "date",
           "type": "datetime",
-          "default": "{{now}}",
-          "isPublishDate": true
+          "isPublishDate": true,
+          "default": "{{now}}"
         },
         {
-          "title": "Content preview",
-          "name": "heroImage",
-          "type": "image",
-          "isPreviewImage": true
+          "title": "Last modified date",
+          "name": "updated",
+          "type": "datetime",
+          "isModifiedDate": true
+        },
+        {
+          "title": "tags",
+          "name": "tags",
+          "type": "tags"
+        },
+        {
+          "title": "categories",
+          "name": "categories",
+          "type": "categories"
+        },
+        {
+          "title": "Featured",
+          "name": "featured",
+          "type": "boolean"
+        },
+        {
+          "title": "Canonical URL",
+          "name": "canonicalURL",
+          "type": "string"
+        },
+        {
+          "title": "toc",
+          "name": "toc",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "title": "comments",
+          "name": "comments",
+          "type": "boolean"
+        },
+        {
+          "title": "Math",
+          "name": "math",
+          "type": "boolean"
+        },
+        {
+          "title": "draft",
+          "name": "draft",
+          "type": "draft"
         }
       ]
     }
