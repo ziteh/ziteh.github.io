@@ -10,10 +10,10 @@ date: 2022-09-15 11:04:00
 comments: true
 toc: true
 draft: false
-# aliases: ["/posts/libopencm3-stm32-2/"]
+## aliases: ["/posts/libopencm3-stm32-2/"]
 ---
 
-# IDE 的尋覓過程
+## IDE 的尋覓過程
 
 在開發 STM32 等 ARM 架構的 MCU 時，[Keil MDK](https://www2.keil.com/mdk5) 是很多人會使用的 IDE。筆者我最一開始學 STM32 時也是照著書上的教學，從用 Keil MDK 建工作環境開始學起，但是一段時間後我總用不習慣 Keil MDK，後來我就轉而使用 [Eclipse](https://www.eclipse.org/downloads/)，再之後發現了 ST 版本的 [TrueSTUDO](https://www.st.com/en/development-tools/truestudio.html)。
 
@@ -23,7 +23,7 @@ draft: false
 
 <!--more-->
 
-# PlatformIO
+## PlatformIO
 
 對我來說，PIO 集結了眾多優點：
 
@@ -35,7 +35,7 @@ draft: false
 - 可以 Debugging
 - 開源
 
-## 在 VS Code 上安裝 PlatformIO
+### 在 VS Code 上安裝 PlatformIO
 
 要在 VS Code 上安裝並使用 PIO 相當簡單，只要在 VS Code 的擴充功能（Extensions）頁面搜尋並安裝 [PlatformIO IDE](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide) 就可以了。由於 PIO 的[核心](https://github.com/platformio/platformio-core)是由 Python 寫成，因此安裝過程中可能會需要再安裝 Python。此外，PIO 不只可以在 VS Code 上使用，其它平臺的安裝方式可以參考[這份官方文件](https://docs.platformio.org/en/latest/integration/ide/index.html)。
 
@@ -43,7 +43,7 @@ draft: false
 
 ![▲ PIO 的 Home 畫面。 ](https://bucket.ziteh.dev/blog/libopencm3-stm32-2/c478d4da.webp)
 
-## 為 PlatformIO 安裝 STM32 平臺
+### 為 PlatformIO 安裝 STM32 平臺
 
 PIO 支援許多不同的平臺（Platforms），如 Atmel AVR、ESP、nRF5 等，而我們要安裝 [ST STM32 平臺](https://registry.platformio.org/platforms/platformio/ststm32)。
 
@@ -51,7 +51,7 @@ PIO 支援許多不同的平臺（Platforms），如 Atmel AVR、ESP、nRF5 等�
 
 ![▲ ST STM32 平臺頁面。](https://bucket.ziteh.dev/blog/libopencm3-stm32-2/c33c3f7f.webp)
 
-## 建立專案
+### 建立專案
 
 你可以點擊 PIO Home 右上的 Quick Access，或 Projects 頁面的「+ New Project」按鈕建立新專案。
 
@@ -66,7 +66,7 @@ PIO 支援許多不同的平臺（Platforms），如 Atmel AVR、ESP、nRF5 等�
 
 ![▲ 專案建立頁面。](https://bucket.ziteh.dev/blog/libopencm3-stm32-2/b4b0916d.webp)
 
-## 專案結構
+### 專案結構
 
 PIO 新建立的專案結構大概如下：
 
@@ -77,7 +77,7 @@ PIO 新建立的專案結構大概如下：
 - `lib/`：存放要調用的 Library，PIO 會自動處理。
 - `test/`：存放單元測試（Unit Testing）的程式。
 
-# 結語
+## 結語
 
 本篇簡單介紹了 PIO 的使用方式，但還沒教 PIO 要如何編譯和燒錄，這部分會等到下一篇要寫程式時再一併介紹。
 

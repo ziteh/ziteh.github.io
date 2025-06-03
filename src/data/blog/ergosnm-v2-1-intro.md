@@ -1,7 +1,7 @@
 ---
 title: "ErgoSNM——有軌跡球的分離式人體工學QMK鍵盤 (v2.1)"
 subtitle: "An split ergonomic keyboard with trackball"
-# description: ""
+## description: ""
 tags:
   - DIY
   - 3C
@@ -25,7 +25,7 @@ draft: false
 
 為了做成這把鍵盤，我開始研究 [QMK](https://github.com/qmk/qmk_firmware)，所以我才會寫了一系列的 [QMK 教學文](/posts/diyqmkkeyboard-0/)。而現在，第一個可以正式當作鍵盤使用的 `Rev 2.1` 版完成了，因此來介紹一下。
 
-# 特色與規格
+## 特色與規格
 
 - 全部 64 鍵。其中左側（有拇指區）有 29+6 鍵，右側（有軌跡球）有29鍵。
 - 軌跡球用於移動滑鼠遊標及滾輪滾動，使用 [PixArt PMW3360DM-T2QU](https://www.pixart.com/products-detail/10/PMW3360DM-T2QU) 光學感測器。
@@ -47,7 +47,7 @@ draft: false
 
 預設在切換到 Layer 1 時，軌跡球會變成滑鼠滾輪的功能。滑鼠按鍵可以直接分配到特定的鍵上，而我使用 [QMK Combos](https://docs.qmk.fm/#/feature_combo) 功能，設定同時按 <kbd>J</kbd>+<kbd>K</kbd> 鍵時是左鍵；<kbd>K</kbd>+<kbd>L</kbd> 鍵時是右鍵；<kbd>J</kbd>+<kbd>L</kbd> 鍵時是中鍵（滾輪按下）。
 
-# 零件
+## 零件
 
 整個鍵盤的 PCB 分成 4 個部分：
 
@@ -66,7 +66,7 @@ draft: false
 
 ![軌跡球子板](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/de3e4a41.webp)
 
-# 組裝
+## 組裝
 
 <iframe style="width: 100%; height: 315px; border: 0; margin: 20px 0" src="https://www.youtube.com/embed/1BXKdrCFn6c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -96,7 +96,7 @@ PCB 搞定後，就可以安裝外殼。我的外殼一樣是找 JLCPCB 訂，�
 
 ![可以使用 Vial](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/34ff9524.webp)
 
-# 使用
+## 使用
 
 分享一下我親自使用約 3 週的想法。
 
@@ -109,9 +109,9 @@ PCB 搞定後，就可以安裝外殼。我的外殼一樣是找 JLCPCB 訂，�
 
 <iframe style="width: 100%; height: 315px; border: 0; margin: 20px 0" src="https://www.youtube.com/embed/Lcm6xuI0GyE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-# 開發過程
+## 開發過程
 
-## 早期
+### 早期
 
 SNM 鍵盤計劃是我從 2020 年 6 月開始的，目標是設計並作出整合鼠標裝置的鍵盤。
 
@@ -135,7 +135,7 @@ SNM 鍵盤計劃是我從 2020 年 6 月開始的，目標是設計並作出整�
 
 到了 2022 年 2 月 左右，我覺得這樣一直花錢和時間研究無線方案好像不是很好，而且其實也有比較確定的辦法了，所以我覺得開始正式做鍵盤的部分，想要先作出一個有線版本的測試鍵盤 Layout 與軌跡球等，當作階段性試驗，也就是現在的 ErgoSNM Rev 2.1。
 
-## Rev 1.0
+### Rev 1.0
 
 Rev 1.0 的 PCB 主要是測試鍵盤 Layout 與[我自己畫的鍵軸 Footprint](https://github.com/ziteh/key-switches.pretty) 是否有問題。
 
@@ -143,7 +143,7 @@ Rev 1.0 的 PCB 主要是測試鍵盤 Layout 與[我自己畫的鍵軸 Footprint
 
 ![ErgoSNM v1.0](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/f2834788.webp)
 
-## Rev 2.0
+### Rev 2.0
 
 Rev 2.0 其實和最後的 Rev 2.1 已經幾乎沒有差別了，幾乎只差在子板的連接器由 JST GH1.25 改成 FPC/FFC，Rev 1.0 的問題都修正了。
 
@@ -165,11 +165,11 @@ Rev 2.0 其實和最後的 Rev 2.1 已經幾乎沒有差別了，幾乎只差在
 
 ![測試軌跡球的軸承和滾輪](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/32a7f62b.webp)
 
-# 結語
+## 結語
 
 總之，隨著 Rev 2.1 的完成，ErgoSNM 總算是有點階段性的成果，接下來會再想辦法慢慢地改善它。
 
-# 相關網站
+## 相關網站
 
 - [ErgoSNM GitHub repo](https://github.com/siderakb/ergo-snm-keyboard)
 - [ErgoSNM 文件](https://siderakb.ziteh.dev/docs/ergosnm/intro)

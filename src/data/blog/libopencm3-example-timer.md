@@ -13,7 +13,7 @@ date: 2022-04-26 12:53:00
 comments: true
 toc: true
 draft: false
-# aliases: ["/2022/04/libopencm3-example-timer/"]
+## aliases: ["/2022/04/libopencm3-example-timer/"]
 ---
 
 我在 2022 年 9 月重新寫了與本文內容相近的文章，建議可以觀看新文章：
@@ -21,7 +21,7 @@ draft: false
 - [STM32 Timer 計時器](/posts/libopencm3-stm32-11/)
 - [STM32 LibOpenCM3：Timer 計時器](/posts/libopencm3-stm32-12/)
 
-# 前言
+## 前言
 
 [LibOpenCM3](https://libopencm3.org/) 是一個 Open-Source 的 ARM Cortex-M3 微控制器底層硬體函式庫，支援包含 STM32 在內的多種微控制器。
 
@@ -29,13 +29,13 @@ draft: false
 
 <!--more-->
 
-# 正文
+## 正文
 
 計時器可以用來精確的計時，或設定每過一段時間就觸發中斷，以執行特定的中斷服務程序。
 
 本次的程式範例功能是每個一段時間將切換 LED On/Off，使其閃爍。這個程式也有放在 [GitHub](https://github.com/ziteh/stm32-examples) 上。
 
-## 程式全文
+### 程式全文
 
 ```c
 #include <libopencm3/stm32/rcc.h>
@@ -122,9 +122,9 @@ void tim2_isr(void)
 
 ```
 
-## 程式說明
+### 程式說明
 
-### 引入函式庫 #include
+#### 引入函式庫 #include
 
 要使用 Timer，需要以下這些函式庫：
 
@@ -140,7 +140,7 @@ void tim2_isr(void)
 #include <libopencm3/cm3/nvic.h>
 ```
 
-### 設定 LED led_setup()
+#### 設定 LED led_setup()
 
 這部分就是設定好 LED，將其 GPIO 設定成推輓式（Push-Pull）輸出模式。
 
@@ -160,7 +160,7 @@ void led_setup(void)
 }
 ```
 
-### 設定計時器 timer_setup()
+#### 設定計時器 timer_setup()
 
 這裡設置了 Timer 的相關設定，包含了用來決定計數的預除頻器（Prascaler）與週期（Period），並且啟用中斷功能（`nvic_enable_irq(NVIC_TIM2_IRQ)` 與 `timer_enable_irq(TIM2, TIM_DIER_CC1IE)`），`timer_enable_counter(TIM2)` 會讓指定的 Timer 開始計數。
 
@@ -223,7 +223,7 @@ void timer_setup(void)
 }
 ```
 
-### 中斷服務程序 ISR tim2_isr()
+#### 中斷服務程序 ISR tim2_isr()
 
 中斷服務程序（Interrupt service routine，ISR）是當中斷發生時會執行的程式，在這裡也就是每此計時器達到指定的時間後會執行的程式。
 
@@ -253,7 +253,7 @@ void tim2_isr(void)
 }
 ```
 
-### 主程式 main()
+#### 主程式 main()
 
 首先依序設定好 LED 與 Timer，接著就直接進入一個無限空迴圈，等待 Timer 觸發。
 
@@ -278,7 +278,7 @@ int main(void)
 }
 ```
 
-# 成果
+## 成果
 
 這是輸出的波形。
 
@@ -290,11 +290,11 @@ int main(void)
 
 所以實際上 Timer 確實是以 5 Hz 的頻率觸發中斷並執行 ISR，與示波器上顯示的不同是因為程式裡的頻率和示波器量測的頻率定義不同，前者為切換/變化頻率，後者為 High-Low 頻率。
 
-# 結語
+## 結語
 
 本次文章內介紹的程式我也有放在 [GitHub](https://github.com/ziteh/stm32-examples) 上，可以直接載下來並使用 PlatformIO 開始專案。
 
-# 相關連結
+## 相關連結
 
 - [STM32 Timer 計時器](/posts/libopencm3-stm32-11/)
 - [STM32 LibOpenCM3：Timer 計時器](/posts/libopencm3-stm32-12/)

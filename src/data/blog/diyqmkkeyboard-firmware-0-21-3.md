@@ -32,7 +32,7 @@ draft: false
 > 本篇是以發文當時最新的 [`0.21.3`](https://github.com/qmk/qmk_firmware/releases/tag/0.21.3) 版本的 QMK 作為示範。
 > 本文的[前一個版本](/posts/diyqmkkeyboard-firmware-0-18/)是針對 `0.18.3` 版所撰寫的，已經不適合最新版的 QMK，故更新本文內容，舊版教學文僅作為參考保留。
 
-# 準備環境
+## 準備環境
 
 首先要[準備 QMK 環境](https://docs.qmk.fm/#/newbs_getting_started?id=set-up-your-environment)，現在這一步已經相當簡單。請執行以下步驟：
 
@@ -65,7 +65,7 @@ Checking file size of clueboard_66_rev3_default.hex                    [OK]
 3. 更新 Tag：執行 `git fetch --all --tags --prune`
 4. 切換到指定的版本 Tag（以`0.21.3`為例）：執行 `git checkout tags/0.21.3`
 
-# 創建新鍵盤
+## 創建新鍵盤
 
 在 QMK MSYS 中執行：
 
@@ -110,7 +110,7 @@ And build with qmk compile -kb mytestkb -km default.
 
 這樣我們的新鍵盤就在 QMK 的目錄底下建立完成了。
 
-# 編輯韌體
+## 編輯韌體
 
 現在要打開我們剛剛建立的鍵盤檔案，為細部功能做調整。
 
@@ -126,20 +126,20 @@ And build with qmk compile -kb mytestkb -km default.
 - `rules.mk`
 - `readme.md`
 
-## 修改 `info.json`
+### 修改 `info.json`
 
 `info.json` 是最主要的設定檔，大部分的設定都在這裡調整。有關它的詳細說明請參考 [info.json Format](https://docs.qmk.fm/#/reference_info_json) 及 [Data Driven Configuration](https://docs.qmk.fm/#/data_driven_config)。
 
 > [舊版 QMK](/posts/diyqmkkeyboard-firmware-0-18/) 在 `rules.mk` 和 `config.h` 中的設定現在多數都移到 `info.json` 中了。
 
-### 鍵盤資訊
+#### 鍵盤資訊
 
 - `keyboard_name`：鍵盤名稱。這裡目前是剛剛輸入的 `mytestkb`。
 - `url`：可以填該鍵盤的相關說明網址。可以留空。
 - `manufacturer`：製造商，可以打你的名字。
 - `maintainer`：維護者，一樣可以打你的名字。
 
-### MCU 與 Bootloader
+#### MCU 與 Bootloader
 
 MCU 與 Bootloader 的設定是要互相配合的，要依照你使用的 MCU 來選擇正確的 Bootloader。
 
@@ -159,7 +159,7 @@ MCU 與 Bootloader 的設定是要互相配合的，要依照你使用的 MCU �
 
 QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的話，請自行參考 QMK 文件。更詳細的說明可以看 [Flashing Instructions and Bootloader Information](https://docs.qmk.fm/#/flashing?id=flashing-instructions-and-bootloader-information) 。
 
-### 功能
+#### 功能
 
 `features` 中可以設定要啓用的功能，像是 `nkro` 是 N 鍵防衝突（USB N-Key Rollover），`mousekey` 是滑鼠按鍵支援。更詳細的設定請參考 [Config Options](https://docs.qmk.fm/#/config_options?id=configuring-qmk)。
 
@@ -174,7 +174,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 },
 ```
 
-### USB
+#### USB
 
 `usb` 底下會設定一些 USB 相關的資料。有 `vid`、`pid` 及 `device_version` 這三個，分別代表 Vendor ID、Product ID 和 Device version。可以保持不變，也可以改成自己喜歡的。官方文件請參考 [USB](https://docs.qmk.fm/#/reference_info_json?id=usb)。
 
@@ -190,7 +190,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 }
 ```
 
-### 佈局
+#### 佈局
 
 一把鍵盤可以設定多個佈局（Layout），但這裡我們就僅簡單示範單一佈局。官方文件請參考 [Layout Format](https://docs.qmk.fm/#/reference_info_json?id=layout-format)。
 
@@ -300,7 +300,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 
 > 注意這裡 `matrix` 設定的鍵矩陣行列大小要和下面的 `matrix_pins` 中的 `cols` 與 `rows` 數量是一致的。
 
-### 鍵矩陣
+#### 鍵矩陣
 
 一般來說，鍵盤的按鍵數都大於微控制器的 GPIO 接腳數，所以會使用鍵盤矩陣掃描（Keyboard Matrix Scanning）技術。如果不是很懂鍵盤矩陣掃描的話，最好先找一些資料瞭解一下，這裡就不贅述。
 
@@ -332,7 +332,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 
 這部分的官方文件請參考 [Matrix Pins](https://docs.qmk.fm/#/reference_info_json?id=matrix-pins)。
 
-### 修改完成
+#### 修改完成
 
 完成的完整 `info.json` 大概長這樣：
 
@@ -392,7 +392,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 }
 ```
 
-## 修改 `keymap.c`
+### 修改 `keymap.c`
 
 `keymaps` 資料夾內可以放多種不同的鍵映射（Keymap），但是至少有有一個名為 `default` 的預設 Keymap。現在已經自動產生這個預設 keymap 了。打開 `keymaps\default\keymap.c` 。
 
@@ -456,37 +456,37 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 > `clang-format off` 與 `clang-format on` 是讓 VSCode 的 Clang-format 格式化工具不用美化該區域的內容。
 > 如果你稍微懂一點 C 語言的話，`LAYOUT()` 其實是 Macro。
 
-## 修改 `rules.mk`
+### 修改 `rules.mk`
 
 如果你使用的是 Pro Micro 的話，Pro Micro 一般會分 16MHz/5V 和 8MHz/3.3V 這兩種版本，若你使用的是後者，那請在 `rules.mk` 中加入：
 
 ```mk
-# Processor frequency
+## Processor frequency
 F_CPU = 8000000
 ```
 
 另外如果 MCU 是 Atmel AVR 的話（包含 ATmega32U4 和 Pro Micro），還可以再加一行設定來降低韌體的大小，避免發生韌體太大無法燒錄的情況：
 
 ```mk
-# Link time optimization, enable to reduce the compiled size of firmware
+## Link time optimization, enable to reduce the compiled size of firmware
 LTO_ENABLE = yes
 ```
 
 > 請注意 `rules.mk` 中的各行結尾不能有空白，否則會導致編譯錯誤：`Compiling: .build/obj_mytestkb/src/default_keyboard.c    avr-gcc.exe: error: UL: No such file or directory`。
 
-## 完成修改
+### 完成修改
 
 `config.h` 的內容可以保持不變，`readme.md` 是說明文件，只要修改完 `info.json`、`keymap.c` 和 `rules.mk` 就算是完成韌體的修改了。
 
 > 如果你使用的 MCU 是 RP2040 的話，建議在 `config.h` 中加入一行 `#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET` 來啓用 [Double-tap Reset](https://docs.qmk.fm/#/platformdev_rp2040?id=double-tap)，未來燒錄時會比較方便。
 
-# 結語
+## 結語
 
 到此為止，QMK 韌體原始檔的基本編輯就完成了，接下來就要準備進行編譯。
 
 這一篇的內容可能比較複雜，且 QMK 也一直再更新，如果有我寫得不夠清楚或是有誤的地方，歡迎提出。
 
-# 相關網站及參考資料
+## 相關網站及參考資料
 
 - [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - [Keyboard Firmware Builder](https://kbfirmware.com/)

@@ -1,14 +1,14 @@
 ---
 title: "[Day-16]Zig：for 迴圈"
-# subtitle: ""
-# description: ""
+## subtitle: ""
+## description: ""
 tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
 date: 2024-09-08T15:43:00
-# updated: 2024-MM-DDTHH:MM:00
+## updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
-# RESERVE
+## RESERVE
 ---
 
 `for` 是一種基於可迭代（Iterate）陣列的迴圈。
@@ -17,7 +17,7 @@ toc: true
 
 Zig 的 `for` 是比較接近如 Python 這種直接針對可迭代的迴圈，而不是傳統 C 的那種針對數值範圍及條件的 `for`。
 
-# 基本
+## 基本
 
 `for` 可以直接使用陣列或切片迭代，並且使用 Capture `|v|` 來取得值。
 
@@ -37,7 +37,7 @@ pub fn main() void {
 1, 3, 4, 5, 7, 8,
 ```
 
-# 包含 Index
+## 包含 Index
 
 如果除了數值還需要索引值 Index，可以這樣寫：
 
@@ -67,7 +67,7 @@ for (number_set, 0..) |_, index| {
 }
 ```
 
-# 僅數值範圍
+## 僅數值範圍
 
 如果只需要單純的數值範圍，可以直接使用範圍語法，不用另外建立陣列。範圍語法為 `S..E`，為從 `S` 開始遞增的到 `E`（不包含）。
 
@@ -85,11 +85,11 @@ pub fn main() void {
 1, 2, 3, 4, 5,
 ```
 
-# break 和 continue
+## break 和 continue
 
 `for` 和 `while` 一樣支援 `break` 和 `continue`，其用法效果也相同，這裡就不多贅述了。
 
-# 參考
+## 參考
 
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#for)
 - [For loops | zig.guide](https://zig.guide/language-basics/for-loops)

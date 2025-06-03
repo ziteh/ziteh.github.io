@@ -13,7 +13,7 @@ date: 2021-11-26 21:17:00
 comments: true
 toc: true
 draft: false
-# aliases: ["/2021/11/libopencm3-example-blink/"]
+## aliases: ["/2021/11/libopencm3-example-blink/"]
 ---
 
 我在 2022 年 9 月重新寫了與本文內容相近的文章，建議可以觀看新文章：
@@ -21,7 +21,7 @@ draft: false
 - [STM32 GPIO 簡介](/posts/libopencm3-stm32-3/)
 - [STM32 LibOpenCM3：GPIO 輸出](/posts/libopencm3-stm32-4/)
 
-# 前言
+## 前言
 
 [LibOpenCM3](https://libopencm3.org/) 是一個 Open-Source（LGPL） 的 ARM Cortex-M3 微控制器底層硬體函式庫，支援包含 STM32、NXP LPC1000、Atmel SAM3U 等各種微控制器。
 
@@ -29,15 +29,15 @@ draft: false
 
 <!--more-->
 
-# 正文
+## 正文
 
-## 環境與專案
+### 環境與專案
 
 我使用的 IDE 為 [PlatformIO IDE for VSCode（Visual Studio Code）](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide)，並安裝了 [ST STM32](https://platformio.org/platforms/ststm32) `Ver 15.0.0` 平臺。有關 PlatformIO 的介紹可以看我寫的另一篇文章：[\[STM32學習記錄-6\] 在VS Code與PlatformIO上開發STM32](/posts/learningstm32-platformio/)。
 
 安裝完相關軟體後就可以建立一個 PlatformIO 專案。我示範使用的開發板為「ST Nucleo-F103RB（STM32F103RB）」，並選擇「Framework」為「libopencm3」。
 
-## 程式全文
+### 程式全文
 
 在「src」資料夾中新增檔案「main.c」，並在加入以下的程式：
 
@@ -84,11 +84,11 @@ int main(void)
 }
 ```
 
-## 程式說明
+### 程式說明
 
 接下來會依序介紹各部分程式。
 
-### 引入函式庫
+#### 引入函式庫
 
 ```c
 #include <libopencm3/stm32/rcc.h>
@@ -101,7 +101,7 @@ int main(void)
 
 > PlatformIO 在建立專案的時候就會依照設定來準備好 LibOpenCM3 的相關檔案了，因此不用另外下載和設定，直接打 `#include` 就可以了。
 
-### 設定接腳
+#### 設定接腳
 
 ```c
 #define RCC_LED_PORT (RCC_GPIOA)
@@ -113,7 +113,7 @@ int main(void)
 
 我使用的 Nucleo-F103RB 的板載 LED 位於「PA5」，因此需要設定 Port 與 Pin 為 `GPIOA` 及 `GPIO5`。另外 RCC 也會需要 Port 的設定，因為一併設定一個 `RCC_GPIOA`。
 
-### Delay 函數 `delay()`
+#### Delay 函數 `delay()`
 
 ```c
 void delay(unsigned int value)
@@ -131,7 +131,7 @@ void delay(unsigned int value)
 
 > 如果想要把 Delay 函數放在主程式 `main()` 之後，記得要宣告函數原型或使用標頭檔。
 
-### 主程式 `main()`
+#### 主程式 `main()`
 
 ```c
 int main(void)
@@ -164,13 +164,13 @@ int main(void)
     - `LED_PIN` 是先前用 `#define` 所設定的 LED 所在腳位的 Pin，也就是 Pin-5。可以使用 `|` 來同時選擇多個 Pin。
 - `gpio_toggle()` 會反轉指定的 GPIO 輸出，如果目前是輸出 High 的話就變成輸出 Low；如果現在是 Low 的話就變成 High。
 
-# 結語
+## 結語
 
 本次文章內介紹的程式我也有放在 [GitHub](https://github.com/ziteh/stm32-examples) 上，可以直接載下來並使用 PlatformIO 開始專案。
 
 各位也可以參考 [PlatformIO 所提供的範例](https://github.com/platformio/platform-ststm32/blob/develop/examples/libopencm3-blink/src/main.c)。
 
-# 相關文章
+## 相關文章
 
 - [STM32 GPIO 簡介](/posts/libopencm3-stm32-3/)
 - [STM32 LibOpenCM3：GPIO 輸出](/posts/libopencm3-stm32-4/)

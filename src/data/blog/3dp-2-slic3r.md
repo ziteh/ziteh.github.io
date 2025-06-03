@@ -21,9 +21,9 @@ draft: false
 
 ![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/7e4a72a0.webp)
 
-# 列印機設定：點選\[Printer Settings\]標簽
+## 列印機設定：點選\[Printer Settings\]標簽
 
-## 1.General
+### 1.General
 
 - Size and coordinates
     - Bed shape : 設定3D列印機的可列印範圍與原點
@@ -44,7 +44,7 @@ draft: false
 
 ![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/abdb1298.webp)
 
-## 2.Custom G-code
+### 2.Custom G-code
 
 - Start G-code : 開始列印時要執行的G-code指令
 - End G-code : 結束列印時要執行的G-code指令
@@ -54,7 +54,7 @@ draft: false
 
 ![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/cd27c296.webp)
 
-## 3.Extruder 1
+### 3.Extruder 1
 
 - Size
     - Nozzle diameter : 設定3D列印機的擠出頭孔徑(直徑)。當層高(Layer height)大於擠出頭孔徑(Nozzle diameter)時會造成切片錯誤。
@@ -74,9 +74,9 @@ draft: false
 
 ![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/72feb606.webp)
 
-# 材料設定: 點選\[Filament Settings\]標簽
+## 材料設定: 點選\[Filament Settings\]標簽
 
-## 1.Filament
+### 1.Filament
 
 - Filament
     - Color : 列印材料的顔色
@@ -92,7 +92,7 @@ draft: false
 
 ![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/38616f98.webp)
 
-## 2.Cooling
+### 2.Cooling
 
 - Enable
     - Keep fan always on : 風扇永遠開啓
@@ -110,9 +110,9 @@ draft: false
 
 ![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/844a7e64.webp)
 
-# 列印參數設定: 點選\[Print Settings\]標簽
+## 列印參數設定: 點選\[Print Settings\]標簽
 
-## 1.Layers and perimeters
+### 1.Layers and perimeters
 
 - Layer height
     - Layer height : 層高，每一層列印出的材料高度，通常3D列印機的解析度就是指這個數值。當層高(Layer height)大於擠出頭孔徑(Nozzle diameter)時會造成切片錯誤。
@@ -135,7 +135,7 @@ draft: false
 
 ![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/ba5726e0.webp)
 
-## 2.Infill
+### 2.Infill
 
 - Infill
     - Fill density : 一般填充的百分比。通常設定15%~65%就好
@@ -153,7 +153,7 @@ draft: false
 
 ![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/e0c4c00c.webp)
 
-## 3.Skirt and brim
+### 3.Skirt and brim
 
 - Skirt
     - Loops (minimum) : 預擠外框的最小圈數。為了確保列印時出料正常，會先在列印件外圍進行預擠，可以藉由觀察預擠外框來判斷出料的正確
@@ -165,7 +165,7 @@ draft: false
 
 ![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/0c24393f.webp)
 
-## 4.Support material
+### 4.Support material
 
 - Support material
     - Generate support material : 開啓支撐架
@@ -184,7 +184,7 @@ draft: false
 
 ![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/eaf48b21.webp)
 
-## 5.Speed
+### 5.Speed
 
 - Speed for print moves
     - Perimeters : 外殼的列印速度。此速度可以快一些，能大量減少列印時間，因為每一層都要印外殼
@@ -213,7 +213,7 @@ draft: false
 
 ![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/ac3d4244.webp)
 
-## 6.Multiple Extruders
+### 6.Multiple Extruders
 
 - Extruders
     - Perimeter extruder :
@@ -229,7 +229,7 @@ draft: false
 
 ![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/f25b9f86.webp)
 
-## 7.Advanced
+### 7.Advanced
 
 - Extrusion width
     - Default extrusion width : 默認的擠出線寬。通常設定為擠出頭孔徑(Nozzle diameter)
@@ -251,7 +251,7 @@ draft: false
 
 ![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/58fc5b04.webp)
 
-## 8.Output options
+### 8.Output options
 
 - Sequential printing
     - Complete individual objects :
@@ -265,7 +265,7 @@ draft: false
 
 ![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/dce83dec.webp)
 
-## 9.Notes 筆記
+### 9.Notes 筆記
 
 - Notes：可以在此做些筆記提醒自己。
 
@@ -273,7 +273,7 @@ draft: false
 
 此文章還有些地方沒有完成，未來有空再更新。
 
-# 相關文章
+## 相關文章
 
 - [\[教學:3D列印-1\] 使用3D列印機的步驟](/posts/3dp-1-step/)
 - [\[教學:3D列印-2\] Slic3r 切片軟體教學](/posts/3dp-2-slic3r/)(本篇)

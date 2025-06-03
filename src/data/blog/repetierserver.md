@@ -9,7 +9,7 @@ date: 2016-03-17 13:10:00
 comments: true
 toc: true
 draft: false
-# aliases: ["/2016/03/repetierserver/"]
+## aliases: ["/2016/03/repetierserver/"]
 ---
 ![](https://bucket.ziteh.dev/blog/repetierserver/d0ce207e.webp)
 
@@ -17,18 +17,18 @@ draft: false
 
 <!--more-->
 
-# 步驟1-下載並燒錄系統映像檔
+## 步驟1-下載並燒錄系統映像檔
 
 1. 到[Raspberry Pi官網](https://www.raspberrypi.org/)下載Raspbian映像檔，並以[Win32diskimager](https://sourceforge.net/projects/win32diskimager/)軟體燒錄映像檔至MicroSD卡内。
 2. 詳細燒錄教學請參考[硬Pi製作](https://sites.google.com/site/raspberrypidiy/home)網站的教學。
 
-# 步驟2-基本Raspbian系統設定與連上網路
+## 步驟2-基本Raspbian系統設定與連上網路
 
 1. 將燒好的SD卡插入Raspberry Pi，並將Raspberry Pi接上鍵盤、滑鼠、螢幕、網路線和電源，開機後等待進入X-Windows(GUI)畫面，確定好Raspberry Pi的IP位置。
 2. 建議可以開啓SSH和遠端功能，方便日後連線使用。
 3. 詳細查詢IP位置的方法請參考[葉難](http://yehnan.blogspot.tw/search/label/Raspberry%20Pi)老師網站的教學。使用SSH和遠端的方法請參考[硬Pi製作](https://sites.google.com/site/raspberrypidiy/home)網站的教學。
 
-# 步驟3-下載並安裝Repetier-Server
+## 步驟3-下載並安裝Repetier-Server
 
 1. 在LXTerminal文字指令視窗中鍵入以下指令並等待Raspberry Pi下載完成。
 
@@ -42,7 +42,7 @@ draft: false
     sudo dpkg -i Repetier-Server-0.80.0-Linux.deb
     ```
 
-# 步驟4-在網頁上連接Repetier-Server
+## 步驟4-在網頁上連接Repetier-Server
 
 1. 將Raspberry Pi使用USB接上你的3D列印機。
 2. 在瀏覽器上打上步驟2找到的Raspberry Pi的IP位置，並在尾端加上\[:3344\]。
@@ -54,7 +54,7 @@ draft: false
 
 ![](https://bucket.ziteh.dev/blog/repetierserver/cf13d153.webp)
 
-# 步驟5-在Repetier-Host上連接Repetier-Server
+## 步驟5-在Repetier-Host上連接Repetier-Server
 
 1. 按下Repetier-Host中的\[列印機設定\]。
 2. 在\[連線方式\]中選擇\[Repetier-Server 伺服器\]。
@@ -68,7 +68,7 @@ draft: false
 
 ![](https://bucket.ziteh.dev/blog/repetierserver/c0654186.webp)
 
-# 相關網站
+## 相關網站
 
 1. [Raspberry Pi官方網站](https://www.raspberrypi.org/)
 2. [台灣Raspberry Pi](https://www.raspberrypi.com.tw/)

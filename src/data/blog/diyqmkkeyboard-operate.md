@@ -11,7 +11,7 @@ date: 2020-06-23 23:53:00
 comments: true
 toc: true
 draft: false
-# aliases: ["/2020/06/diyqmkkeyboard-4/", "/posts/diyqmkkeyboard-4/"]
+## aliases: ["/2020/06/diyqmkkeyboard-4/", "/posts/diyqmkkeyboard-4/"]
 ---
 
 如果要深入修改 QMK 的話，最好還是要瞭解一下 QMK 的架構及其運作方式。這可能會有點無聊，但擁有足夠的知識總是可以讓我們少走一點冤枉路。
@@ -20,27 +20,27 @@ draft: false
 
 <!--more-->
 
-# 鍵盤的運作
+## 鍵盤的運作
 
 本節內容譯自 QMK 官方說明文件：[How Keys Are Registered, and Interpreted by Computers](https://docs.qmk.fm/#/how_keyboards_work)。
 
-## 1.按下按鍵
+### 1.按下按鍵
 
 當使用者按下一個按鍵時，鍵盤的韌體就會登記一個事件。該事件可以在按下（pressed）、按住（held）或釋放（released）時被登記。
 
 這些事通常在定期的鍵盤掃描中發生，其速度通常受限於機械鍵軸的反映時間、傳輸按鍵的協定（在這裡指USB HID）和使用的軟體。
 
-## 2.韌體傳送了什麼
+### 2.韌體傳送了什麼
 
 [HID](https://www.usb.org/sites/default/files/documents/hut1_12v2.pdf)規範了鍵盤可以透過USB發送、且有機會被正確識別的內容。這包含了掃描碼（scancodes）的預定義列表（pre-defined list），這些掃描碼是從`0x00`到`0xE7`（0到231）的簡單數字。韌體將掃描碼分配給鍵盤的每個鍵。
 
 韌體並不會直接傳送實際的字母或字符，只會傳送掃描碼。所以修改韌體時，你只能修改通過USB傳送的按鍵掃描碼。
 
-## 3.輸入事件/內核的作用
+### 3.輸入事件/內核的作用
 
 掃描碼映射（mapped）到依賴於[60-keyboard.hwdb](https://github.com/systemd/systemd/blob/master/hwdb.d/60-keyboard.hwdb)的鍵碼（Keycode）。如果沒有此映射關係，作業系統無法收到有效的鍵碼，也無法對該按鍵執行任何有用的操作。
 
-## 4.作業系統做了什麼
+### 4.作業系統做了什麼
 
 當鍵碼傳送到作業系統時，某個軟體會依照鍵盤佈局（Layout）來配對一個字符。例如QWERTY佈局的配對表如下：
 
@@ -54,7 +54,7 @@ draft: false
 | 0x1D | z/Z  |
 | ...  | ...  |
 
-# 鍵盤項目結構
+## 鍵盤項目結構
 
 本節內容譯自QMK官方說明文件：[Introduction](https://docs.qmk.fm/#/getting_started_introduction)。
 
@@ -74,11 +74,11 @@ draft: false
 
 更詳細的結構介紹可以看QMK官方說明文件：[QMK Keyboard Guidelines](https://docs.qmk.fm/#/hardware_keyboard_guidelines)。
 
-# 瞭解QMK的程式碼
+## 瞭解QMK的程式碼
 
 本節內容譯自QMK官方說明文件：[Understanding QMK’s Code](https://docs.qmk.fm/#/understanding_qmk?id=process-record)。
 
-## 開始
+### 開始
 
 你可以認為QMK和任何其它的電腦程式沒有什麼不同。它開始、執行、然後結束。
 
@@ -88,7 +88,7 @@ draft: false
 
 以下將重點放在使用「lufa」平台上的AVR微控制器。你可以在[tmk_core/protocol/lufa/lufa.c](https://github.com/qmk/qmk_firmware/blob/e1203a222bb12ab9733916164a000ef3ac48da93/tmk_core/protocol/lufa/lufa.c#L1028)中找到`main()`函數。瀏覽該函數可以發現它會初始化已配置的硬體（包含了主機的USB），然後在[`while(1)`](https://github.com/qmk/qmk_firmware/blob/e1203a222bb12ab9733916164a000ef3ac48da93/tmk_core/protocol/lufa/lufa.c#L1069)中開始核心的部分。這是所謂的「主迴圈（Main loop）」。
 
-## 主迴圈
+### 主迴圈
 
 主迴圈的程式負責永遠地重複執行同一組指令。這是QMK分配令鍵盤執行它應該做的所有事情的地方。雖然它看起來包含了很多功能，但多數情況下它們會被`#define`給禁用（disable）。
 
@@ -102,7 +102,7 @@ draft: false
 - 可視化器
 - 鍵盤狀態LED燈（大寫鎖定、數字鎖定和滾動鎖定（Scroll Lock））
 
-### 矩陣掃描
+#### 矩陣掃描
 
 矩陣掃描（Matrix scanning）是鍵盤韌體的核心功能。這是檢測目前按下了那些按鍵的過程，鍵盤每秒鐘都會執行很多次此功能。不誇張地說，韌體有99%的CPU時間都在做矩陣掃描。
 
@@ -122,7 +122,7 @@ draft: false
 
 矩陣掃描的精確速度並不一定，但通常每秒至少執行10次，以避免明顯的延遲（lag）。
 
-#### 矩陣到物理佈局映射
+##### 矩陣到物理佈局映射
 
 一旦得知鍵盤上每個按鍵的狀態，就必須將其映射（map）到鍵碼（Keycode）。在QMK中，這是透過C語言的巨集（macro）來完成的，這讓我們可以將物理佈局和鍵碼定義分開來。如果你不是很熟係C語言的巨集功能，[這篇文章](http://catforcode.com/define-and-macro/)或許可以幫助到你。
 
@@ -150,7 +150,7 @@ draft: false
 
 你也可以利用此巨集來處理不常見的矩陣佈局，例如[Clueboard rev2](https://github.com/qmk/qmk_firmware/blob/e1203a222bb12ab9733916164a000ef3ac48da93/keyboards/clueboard/66/rev2/rev2.h)。在此不為其多做說明。
 
-#### 鍵碼分配
+##### 鍵碼分配
 
 在鍵盤映射層次，我們利用上面的`LAYOUT()`巨集將鍵碼映射到物理位置，再映射到矩陣位置。像是這樣：
 
@@ -243,7 +243,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 | KC_P1   | KC_P2   | KC_P3   | KC_PENT |
 | KC_P0   | *KC_NO*   | KC_PDOT | *KC_NO*   |
 
-#### 檢測狀態變化
+##### 檢測狀態變化
 
 上面講述了矩陣掃描可以告訴我們某一時刻的矩陣狀態，但是電腦只想知道狀態的變化，而不是目前的狀態。QMK會儲存最後一次矩陣掃描的結果，並透過比較來確認何時按下或釋放了什麼按鍵。
 
@@ -273,11 +273,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 透過比對鍵盤映射，我們知道按下的按鍵是`KC_NLCK`。這裡我們調用`process_record`函數集。
 
-#### Process Record
+##### Process Record
 
 `process_record()` 是通往 QMK 各個層級功能的入口（gateway）。[這裡](https://docs.qmk.fm/#/understanding_qmk?id=process-record)列出了一系列的事件與詳細的介紹。
 
-# 相關文章與資源
+## 相關文章與資源
 
 - [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - [【C/C++】define用法整理|macro巨集小技巧](http://catforcode.com/define-and-macro/)

@@ -1,7 +1,7 @@
 ---
 title: "C 語言用 K&R Coding Style 的最大理由不是省行數"
 subtitle: "以實例分析使用 K&R 風格的優點"
-# description: ""
+## description: ""
 tags: ["心得", "程式","C/C++"]
 categories: []
 
@@ -24,7 +24,7 @@ draft: false
 
 所以我想藉由這篇文章，來說明我是如何在寫草稿時還是忠實的 Allman 用戶，突然就變成 K&R 支持者。當然還有一點很重要的是，Coding style 還是有不少主觀因素在內，你完全可以不認同我的任何看法和感覺。這只是一個分享而已。
 
-# 定義
+## 定義
 
 首先在討論各個 Coding style 前，我想先定義一下我認為的好的 style 是什麼樣子的，有了統一的標準才有比較的依據。以下按權重排序：
 
@@ -33,9 +33,9 @@ draft: false
 2. **使用方便**。當然沒人想被風格影響實際功能和 Coding 效率。
 3. **規則簡單且明確**。規則越簡單、例外越少就越容易遵守。明確的規則就可以不用再花時間思考。
 
-# 實例比較
+## 實例比較
 
-## A. typedef
+### A. typedef
 
 ```c
 // A
@@ -64,7 +64,7 @@ foo_bar_t;
 - B：雖然左右花括號的換行行為不一致，但看起還是不錯，實際上這種風格也很常見。可是如果右花括號不換行的話，那 `if-else` 的右花括號也不換行嗎？還是它們的右花括號行為也要不一致？
 - C：我是沒看過這種風格。如果左右花括號都換行的話，那 `do-while` 也是嗎？
 
-## B. 初始化 struct
+### B. 初始化 struct
 
 ```c
 // A
@@ -103,7 +103,7 @@ foo_bar_t fb = {
 >
 > 這裡的 4 指的是我用 4 的空白做縮排為例，實際上到底是多少都不影響。
 
-## C. 統一初始化陣列
+### C. 統一初始化陣列
 
 ```c
 // A
@@ -121,7 +121,7 @@ int arr[1024] =
 
 > 這裡同樣也適用於初始化簡單到可以寫成一行的 `struct` 的情況。
 
-## D. if-else
+### D. if-else
 
 ```c
 // A
@@ -167,7 +167,7 @@ if (fb)
 
 這個例子可能不是非常好，至少我在寫類似的程式時，會加一些空白行來分隔，不會讓它們就這樣黏著。但是在不加空白行的情況下，A 應該稍微更容易區分各個 `if-else` 的開頭和結尾。注意，A 的規則還是左右花括號都換行，但是這是指同一個語句（Statement），不同的 `if-else` 不會疊在一起。
 
-## E. 宣告函式原型
+### E. 宣告函式原型
 
 你現在已經先打好了一個函數，考慮現在要幫 `foobar()` 宣告函數原型...
 
@@ -212,7 +212,7 @@ uint16_t foobar4(int a, int b, const int *c)
 
 不知道你覺得哪個操作比較快，我自己是更加熟悉 B 的那套操作，而且實際上要按的鍵數也比較少。看來這次是 B 的勝利。不過對於 Vim 的使用者來說，這個差距不是很大。
 
-# Coding Style
+## Coding Style
 
 讓我們來看一下主流的 Coding style 長什麼樣。首先要注意的是，一般說的 K&R 有兩種：
 
@@ -315,7 +315,7 @@ int main(void)
 
 很明顯，llvm-K&R 的規則最簡單且毫無例外。linux-K&R 的規則比 llvm-K&R 多了一個唯一的例外。Allman 的規則就複雜多了。
 
-# 總結
+## 總結
 
 在實例比較時，我認為風格 A——*所有的左右花括號都不換行*——在多數情況下都是最好看、自然且直覺的，除了「宣告函式原型」的地方，因為它的操作要更多一點。而且風格 A 的規則也是最少的。
 
@@ -328,7 +328,7 @@ int main(void)
 
 另外也可以看看我自己的完整規範：[C 語言 Coding Style 規範](/posts/c-style1/)
 
-# 參考
+## 參考
 
 - [Linux kernel coding style — The Linux Kernel documentation](https://www.kernel.org/doc/html/v4.10/process/coding-style.html)
 - [The C Programming Language - Wikipedia](https://en.wikipedia.org/wiki/The_C_Programming_Language)

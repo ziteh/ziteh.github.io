@@ -1,21 +1,21 @@
 ---
 title: "[Day-28]Zig：建置 build.zig"
-# subtitle: ""
-# description: ""
+## subtitle: ""
+## description: ""
 tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
 date: 2024-09-20T07:01:00
-# updated: 2024-MM-DDTHH:MM:00
+## updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
-# RESERVE
+## RESERVE
 ---
 
 Zig 使用一個 `build.zig` 來配置建置，有點類似 Makefile。
 
 <!-- more -->
 
-# build.zig
+## build.zig
 
 使用 `zig init` 建立的預設專案中會有一個 `build.zig` 檔案，Zig 會使用這個檔案來建置你的程式。
 
@@ -79,7 +79,7 @@ pub fn build(b: *std.Build) void {
 }
 ```
 
-## 分段解析
+### 分段解析
 
 首先是建置目標（Target）和最佳化（Optimize）設定。使用 `standardTargetOptions()` 和 `standardOptimizeOption()` 會將目標設定為本機原生（Native）及 debug Optimize。
 
@@ -153,7 +153,7 @@ test_step.dependOn(&run_lib_unit_tests.step);
 test_step.dependOn(&run_exe_unit_tests.step);
 ```
 
-# 執行
+## 執行
 
 使用 `--help` 會有類似這樣的回應：
 
@@ -194,7 +194,7 @@ All your codebase are belong to us.
 Run `zig build test` to run the tests.
 ```
 
-# 參考
+## 參考
 
 - [Zig Build | zig.guide](https://zig.guide/build-system/zig-build/)
 - [Zig Build System ⚡ Zig Programming Language](https://ziglang.org/learn/build-system/)

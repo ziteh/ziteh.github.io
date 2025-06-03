@@ -13,11 +13,11 @@ date: 2020-03-31 15:18:00
 comments: true
 toc: true
 draft: false
-# aliases: ["/2020/03/learningstm32-04/"]
+## aliases: ["/2020/03/learningstm32-04/"]
 ---
 ![](https://bucket.ziteh.dev/blog/learningstm32-04/4f2b34ab.webp)
 
-# 前言
+## 前言
 
 我之前搭配STM32使用的IDE為Keil uVision 5，但用了一段時間後實在是無法習慣它的操作。後來又上網找了許多不同的IDE來用，最後我就找到了今天的主角——[Atollic TrueSTUDIO for STM32](https://atollic.com/truestudio/)。
 
@@ -27,7 +27,7 @@ TrueSTUDIO是一套由意法半導體（STMicroelectronics）公司專門為STM3
 
 熟悉Java的人可能有聽過甚至用過[Eclipse](https://www.eclipse.org/)，TrueSTUDIO就是基於Eclipse框架進行開發的，所以其界面和Eclipse基本上是一模一樣，自然也傳承了它的靈活性。
 
-# 開始使用
+## 開始使用
 
 首先到其[官網下載](https://atollic.com/resources/download/)軟體（需填寫用戶資料），目前有Windows與Linux版。安裝過程沒什麼特別的，在此就不贅述了。安裝完成後就可以執行了。
 
@@ -53,7 +53,7 @@ TrueSTUDIO是一套由意法半導體（STMicroelectronics）公司專門為STM3
 
 ![▲ 我實際使用的界面樣式。](https://bucket.ziteh.dev/blog/learningstm32-04/c79ed360.webp)
 
-# 結語
+## 結語
 
 我使用TrueSTUDIO來進行STM32的開發已經超過半年了，沒有什麼太大的問題。不過如果真的要說的話，它的“程式碼自動補全”功能對C\\C++的支援度不高，必須要使用者自己按下快捷鍵才行。不過這部分或許有插件可以補全，但我目前還沒發現。
 

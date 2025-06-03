@@ -13,10 +13,10 @@ date: 2022-10-10 09:18:00
 comments: true
 toc: true
 draft: false
-# aliases: ["/2022/10/posts/libopencm3-stm32-27/"]
+## aliases: ["/2022/10/posts/libopencm3-stm32-27/"]
 ---
 
-# 前言
+## 前言
 
 CRC（Cyclic redundancy check）即循環冗餘校驗是一種雜湊函式，通常用於通訊，用以讓接收方確認資料是否正確。
 
@@ -24,13 +24,13 @@ CRC（Cyclic redundancy check）即循環冗餘校驗是一種雜湊函式，通
 
 <!--more-->
 
-# 正文
+## 正文
 
 首先一樣以 Nucleo-F446RE 做示範。
 
 首先[建立一個 PIO 的專案](/posts/libopencm3-stm32-2#建立專案)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c`。
 
-## 完整程式
+### 完整程式
 
 ``` c
 /**
@@ -129,9 +129,9 @@ void usart2_isr(void)
 }
 ```
 
-## 分段說明
+### 分段說明
 
-### CRC 計算
+#### CRC 計算
 
 ``` c
 /**
@@ -171,7 +171,7 @@ CRC 計算單元的使用方式很單純，因此我直接寫在 USART2 的 ISR 
 
 最後再將結果用 USART2 傳出，再重新致能其中斷以等待下次接收。
 
-## 多環境程式（F446RE + F103RB）
+### 多環境程式（F446RE + F103RB）
 
 由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。
 
@@ -205,7 +205,7 @@ static void usart_setup(void)
 }
 ```
 
-## 成果
+### 成果
 
 從 RM0390 或 AN4187 中可以得知，STM32 使用的多項式是 `0x4C1 1DB7`（部分系列可修改），初始值為 `0xFFFF FFFF`。
 
@@ -221,11 +221,11 @@ static void usart_setup(void)
 
 ![▲ STM32 各系列的 CRC 單元功能比較。取自 AN4187 Rev1 P.13。](https://bucket.ziteh.dev/blog/libopencm3-stm32-27/5d9e2b69.webp)
 
-# 小結
+## 小結
 
 CRC 的使用還是滿單純的，就只要致能 RCC 後呼叫計算函式，將要計算的資料傳入後就可以得到結果了。
 
-# 參考資料
+## 參考資料
 
 - [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
 

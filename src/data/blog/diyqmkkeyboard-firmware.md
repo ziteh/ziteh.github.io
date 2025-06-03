@@ -29,7 +29,7 @@ draft: false
 > 5. 可以忽略提示「detached HEAD」狀態。
 > 6. 確認：`git status`。可能會看到類似 `HEAD detached at 0.27.5` 的回應，就代表目前已經切換到 `0.27.5` 版了。
 
-# 準備環境
+## 準備環境
 
 首先要[準備 QMK 環境](https://docs.qmk.fm/#/newbs_getting_started?id=set-up-your-environment)，現在這一步已經相當簡單。請執行以下步驟：
 
@@ -61,9 +61,9 @@ QMK 的檔案預設會在：`C:/Users/<USERNAME>/qmk_firmware`。上面這個訊
 
 如果你對嵌入式不是很熟悉的話，我只推薦 RP2040 和 ATmega32U4（Pro Micro），而 RP2040 是我目前認為製作 QMK 鍵盤的**首選**，因為它價格便宜、性能很好、功能完善、空間充足、購買方便、使用者也多。如果沒有特殊原因的話建議使用 RP2040。以下將分別介紹 RP2040 和 Pro Micro 的步驟。
 
-# RP2040
+## RP2040
 
-## 創建新鍵盤
+### 創建新鍵盤
 
 在 QMK MSYS 中執行：
 
@@ -132,20 +132,20 @@ Now update the config files to match the hardware!
 - `keyboard.json`
 - `readme.md`
 
-## 修改 `keyboard.json`
+### 修改 `keyboard.json`
 
 這是最主要的設定檔（也就是舊版的 `info.json`），大部分的設定都在這裡調整。有關它的詳細說明請參考 [info.json Format](https://docs.qmk.fm/#/reference_info_json) 及 [Data Driven Configuration](https://docs.qmk.fm/#/data_driven_config)。以下各個項目無需按照順序，請以名稱為主，但是在編輯時要注意 [JSON 禁止尾逗號](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Trailing_commas#json_%E4%B8%AD%E7%9A%84%E5%B0%BE%E5%90%8E%E9%80%97%E5%8F%B7)。
 
 > [舊版 QMK](/posts/diyqmkkeyboard-firmware-0-18/) 在 `rules.mk` 和 `config.h` 中的設定現在多數都移到 `keyboard.json` 中了。
 
-### 鍵盤資訊
+#### 鍵盤資訊
 
 - `keyboard_name`：鍵盤名稱。這裡目前是剛剛輸入的 `0_my_kb_rp2040`。這個無強硬格式規範。
 - `manufacturer`：製造商，通常可以打你的名字。
 - `maintainer`：維護者，通常可以打你的名字。
 - `url`：可以填該鍵盤的相關說明網址。可以留空。
 
-### MCU 與 Bootloader
+#### MCU 與 Bootloader
 
 MCU 與 Bootloader 的設定是要互相配合的，要依照你使用的 MCU 來選擇正確的 Bootloader。
 
@@ -165,7 +165,7 @@ MCU 與 Bootloader 的設定是要互相配合的，要依照你使用的 MCU �
 
 QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的話，請自行參考 QMK 文件。更詳細的說明可以看 [Flashing Instructions and Bootloader Information](https://docs.qmk.fm/#/flashing?id=flashing-instructions-and-bootloader-information) 。
 
-### 功能
+#### 功能
 
 `features` 中可以設定要啓用的功能，像是 `nkro` 是 N 鍵防衝突（USB N-Key Rollover），`mousekey` 是滑鼠按鍵支援。更詳細的設定請參考 [Config Options](https://docs.qmk.fm/#/config_options?id=configuring-qmk)。
 
@@ -180,7 +180,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 },
 ```
 
-### USB
+#### USB
 
 `usb` 底下會設定一些 USB 相關的資料。有 `vid`、`pid` 及 `device_version` 這三個，分別代表 Vendor ID、Product ID 和 Device version，`vid`，`pid` 為十六進制數值。可以保持不變，也可以改成自己喜歡的。官方文件請參考 [USB](https://docs.qmk.fm/#/reference_info_json?id=usb)。
 
@@ -196,7 +196,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 }
 ```
 
-### 佈局 Layouts
+#### 佈局 Layouts
 
 一把鍵盤可以設定多個佈局（Layout），但這裡我們就僅簡單示範單一佈局。官方文件請參考 [Layout Format](https://docs.qmk.fm/#/reference_info_json?id=layout-format)。
 
@@ -308,7 +308,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 
 > 注意這裡 `matrix` 設定的鍵矩陣行列大小要和下面的 `matrix_pins` 中的 `cols` 與 `rows` 數量是一致的。
 
-### 鍵矩陣
+#### 鍵矩陣
 
 一般來說，鍵盤的按鍵數都大於微控制器的 GPIO 接腳數，所以會使用鍵盤矩陣掃描（Keyboard Matrix Scanning）技術。如果不是很懂鍵盤矩陣掃描的話，最好先找一些資料瞭解一下，這裡就不贅述。
 
@@ -339,7 +339,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 
 這部分的官方文件請參考 [Matrix Pins](https://docs.qmk.fm/reference_info_json#matrix)。
 
-### 修改完成
+#### 修改完成
 
 完成的完整 `keyboard.json` 大概長這樣：
 
@@ -402,7 +402,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 
 你會注意到我這裡多了一行 `$schema`，這個是用來設定這個 JSON 的欄位格式。如果你是使用 VS Code 的話還會有自動補全和提示的功能。假如你怕自己編輯 JSON 檔案的格式或拼字有錯，可以多加這行，讓文字編輯器幫你做檢查，不然不加也可以，不會影響 QMK 的功能。
 
-## 修改 `keymap.c`
+### 修改 `keymap.c`
 
 `keymaps` 資料夾內可以放多種不同的鍵映射（Keymap），但是至少有有一個名為 `default` 的預設 Keymap。現在已經自動產生這個預設 keymap 了。打開 `keymaps\default\keymap.c` 。
 
@@ -467,7 +467,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 >
 > 如果你稍微懂一點 C 語言的話，`LAYOUT()` 就是是 `#define` 巨集 Macro。
 
-## 修改 `config.h`
+### 修改 `config.h`
 
 原始建立的檔案中沒有這個檔案，我們自行新增即可，放在和 `keyboard.json` 同一個層級。
 
@@ -477,9 +477,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
 ```
 
-# Pro Micro (ATmega32U4)
+## Pro Micro (ATmega32U4)
 
-## 創建新鍵盤
+### 創建新鍵盤
 
 在 QMK MSYS 中執行：
 
@@ -546,20 +546,20 @@ Now update the config files to match the hardware!
 - `keyboard.json`
 - `readme.md`
 
-## 修改 `keyboard.json`
+### 修改 `keyboard.json`
 
 這是最主要的設定檔（也就是舊版的 `info.json`），大部分的設定都在這裡調整。有關它的詳細說明請參考 [info.json Format](https://docs.qmk.fm/#/reference_info_json) 及 [Data Driven Configuration](https://docs.qmk.fm/#/data_driven_config)。以下各個項目無需按照順序，請以名稱為主，但是在編輯時要注意 [JSON 禁止尾逗號](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Trailing_commas#json_%E4%B8%AD%E7%9A%84%E5%B0%BE%E5%90%8E%E9%80%97%E5%8F%B7)。
 
 > [舊版 QMK](/posts/diyqmkkeyboard-firmware-0-18/) 在 `rules.mk` 和 `config.h` 中的設定現在多數都移到 `keyboard.json` 中了。
 
-### 鍵盤資訊
+#### 鍵盤資訊
 
 - `keyboard_name`：鍵盤名稱。這裡目前是剛剛輸入的 `0_my_kb_promicro`。這個無強硬格式規範。
 - `manufacturer`：製造商，通常可以打你的名字。
 - `maintainer`：維護者，通常可以打你的名字。
 - `url`：可以填該鍵盤的相關說明網址。可以留空。
 
-### 開發板
+#### 開發板
 
 MCU 與 Bootloader 的設定是要互相配合的，要依照你使用的 MCU 來選擇正確的 Bootloader。但是由於我們已經選擇使用開發板 `"development_board": "promicro"` 所以應該不會有什麼問題，也不用設定 `processor` 和 `bootloader`。
 
@@ -579,7 +579,7 @@ MCU 與 Bootloader 的設定是要互相配合的，要依照你使用的 MCU �
 
 QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的話，請自行參考 QMK 文件。更詳細的說明可以看 [Flashing Instructions and Bootloader Information](https://docs.qmk.fm/#/flashing?id=flashing-instructions-and-bootloader-information) 。
 
-### 功能
+#### 功能
 
 `features` 中可以設定要啓用的功能，像是 `nkro` 是 N 鍵防衝突（USB N-Key Rollover），`mousekey` 是滑鼠按鍵支援。更詳細的設定請參考 [Config Options](https://docs.qmk.fm/#/config_options?id=configuring-qmk)。
 
@@ -594,7 +594,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 },
 ```
 
-### USB
+#### USB
 
 `usb` 底下會設定一些 USB 相關的資料。有 `vid`、`pid` 及 `device_version` 這三個，分別代表 Vendor ID、Product ID 和 Device version，`vid`，`pid` 為十六進制數值。可以保持不變，也可以改成自己喜歡的。官方文件請參考 [USB](https://docs.qmk.fm/#/reference_info_json?id=usb)。
 
@@ -610,7 +610,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 }
 ```
 
-### 佈局 layouts
+#### 佈局 layouts
 
 一把鍵盤可以設定多個佈局（Layout），但這裡我們就僅簡單示範單一佈局。官方文件請參考 [Layout Format](https://docs.qmk.fm/#/reference_info_json?id=layout-format)。
 
@@ -722,7 +722,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 
 > 注意這裡 `matrix` 設定的鍵矩陣行列大小要和下面的 `matrix_pins` 中的 `cols` 與 `rows` 數量是一致的。
 
-### 鍵矩陣
+#### 鍵矩陣
 
 一般來說，鍵盤的按鍵數都大於微控制器的 GPIO 接腳數，所以會使用鍵盤矩陣掃描（Keyboard Matrix Scanning）技術。如果不是很懂鍵盤矩陣掃描的話，最好先找一些資料瞭解一下，這裡就不贅述。
 
@@ -752,7 +752,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 
 這部分的官方文件請參考 [Matrix Pins](https://docs.qmk.fm/reference_info_json#matrix)。
 
-### LTO
+#### LTO
 
 LTO 是 Link-Time Optimization（連接時間最佳化）的意思，它可以幫助減少最終燒錄檔案的大小。由於 ATmega32U4 的 ROM 容量真的很小，可能功能開多一點就爆錶了，所以一般來說會建議開啓這個功能。更多減少燒錄檔大小的說明請參考：[Squeezing the most out of AVR](https://docs.qmk.fm/squeezing_avr)
 
@@ -764,7 +764,7 @@ LTO 是 Link-Time Optimization（連接時間最佳化）的意思，它可以�
 
 > 在舊版 QMK 中，這個設定是在 `rules.mk` 中的 `LTO_ENABLE = yes`。
 
-### 修改完成
+#### 修改完成
 
 完成的完整 `keyboard.json` 大概長這樣：
 
@@ -829,7 +829,7 @@ LTO 是 Link-Time Optimization（連接時間最佳化）的意思，它可以�
 
 你會注意到我這裡多了一行 `$schema`，這個是用來設定這個 JSON 的欄位格式。如果你是使用 VS Code 的話還會有自動補全和提示的功能。假如你怕自己編輯 JSON 檔案的格式或拼字有錯，可以多加這行，讓文字編輯器幫你做檢查，不然不加也可以，不會影響 QMK 的功能。
 
-## 修改 `keymap.c`
+### 修改 `keymap.c`
 
 `keymaps` 資料夾內可以放多種不同的鍵映射（Keymap），但是至少有有一個名為 `default` 的預設 Keymap。現在已經自動產生這個預設 keymap 了。打開 `keymaps\default\keymap.c` 。
 
@@ -894,7 +894,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 >
 > 如果你稍微懂一點 C 語言的話，`LAYOUT()` 就是是 `#define` 巨集 Macro。
 
-## 修改 `rules.mk`
+### 修改 `rules.mk`
 
 Pro Micro 一般會分 16MHz/5V 和 8MHz/3.3V 這兩種版本，若你使用的是後者才需要執行這個修改 `rules.mk` 的步驟。
 
@@ -903,7 +903,7 @@ Pro Micro 一般會分 16MHz/5V 和 8MHz/3.3V 這兩種版本，若你使用的�
 請在 `rules.mk` 中加入：
 
 ```mk
-# Processor frequency
+## Processor frequency
 F_CPU = 8000000
 ```
 
@@ -911,7 +911,7 @@ F_CPU = 8000000
 >
 > 請注意 `rules.mk` 中的各行結尾不能有空白，否則可能會導致奇怪的編譯錯誤，例如：`Compiling: .build/obj_mytestkb/src/default_keyboard.c    avr-gcc.exe: error: UL: No such file or directory`。
 
-# 結語
+## 結語
 
 到此為止，QMK 韌體原始檔的基本編輯就完成了，接下來就要準備進行編譯。
 
@@ -919,7 +919,7 @@ F_CPU = 8000000
 
 ⭐ [本文的完整範例檔案](https://github.com/siderakb/qmk-example)
 
-# 相關網站及參考資料
+## 相關網站及參考資料
 
 - [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - [Keyboard Firmware Builder](https://kbfirmware.com/)

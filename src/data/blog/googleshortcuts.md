@@ -5,7 +5,7 @@ date: 2018-02-06 00:01:00
 comments: true
 toc: true
 draft: false
-# aliases: ["/2018/02/googleshortcuts/"]
+## aliases: ["/2018/02/googleshortcuts/"]
 ---
 
 基本上這個擴充套件就是有一個按鈕，會有一個清單可以讓你快速的打開網頁，和書籤的功能差不多。（以下示範為Firefox版）
@@ -36,12 +36,12 @@ draft: false
 
 ![▲可以匯入與匯出設定值](https://bucket.ziteh.dev/blog/googleshortcuts/e741292b.webp)
 
-# Google Shortcuts 擴充套件網址
+## Google Shortcuts 擴充套件網址
 
 - [Firefox版](https://addons.mozilla.org/zh-TW/firefox/addon/google-shortcuts-all-google-se/)
 - [Google Chrome版](https://chrome.google.com/webstore/detail/shortcuts-for-google/baohinapilmkigilbbbcccncoljkdpnd?utm_source=plus)
 
-# 相關連結
+## 相關連結
 
 - [作者網站](https://outgoing.prod.mozaws.net/v1/e9c84cc3de9363f645c4307679cf1ecdea8b2cf1c7ba1f51afb54191d3713a99/https%3A//apps.jeurissen.co/)
 - [我的Firefox擴充套件收藏集](https://addons.mozilla.org/zh-TW/firefox/collections/ZiTe/zite%E7%9A%84%E6%94%B6%E8%97%8F%E9%9B%86/)

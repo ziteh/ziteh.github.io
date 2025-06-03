@@ -11,7 +11,7 @@ date: 2023-04-18 21:14:00+08:00
 comments: true
 toc: true
 draft: false
-# aliases: ["/2020/06/diyqmkkeyboard-1/", "/posts/diyqmkkeyboard-kle/"]
+## aliases: ["/2020/06/diyqmkkeyboard-1/", "/posts/diyqmkkeyboard-kle/"]
 ---
 
 ![](https://bucket.ziteh.dev/blog/diyqmkkeyboard-kle/a8a04e75.webp)
@@ -20,11 +20,11 @@ draft: false
 
 <!--more-->
 
-# 編輯鍵盤佈局
+## 編輯鍵盤佈局
 
 鍵盤 Layout，也就是各個按鍵的位置、尺寸及其數量。我們可以用線上工具 [Keyboard Layout Editor](http://www.keyboard-layout-editor.com/) 來進行設計，往後將其簡稱為「KLE」。
 
-## 主頁面
+### 主頁面
 
 - 最上面為功能列。
 - 左上角有藍色和紅色的按鈕，可以用來增加或刪除按鍵。旁邊還有一些編輯用的操作按鈕（回上一步、回下一步、剪下、複製、貼上）。
@@ -47,7 +47,7 @@ draft: false
 
 ![▲ 匯入「ANSI 104」](https://bucket.ziteh.dev/blog/diyqmkkeyboard-kle/f6240bd2.webp)
 
-## 編輯按鍵
+### 編輯按鍵
 
 在下方選擇「Properties」標籤頁。點選一或多個按鍵，就可以在下方進行按鍵的設定。其中比較常用的是由上而下的是：
 
@@ -72,7 +72,7 @@ draft: false
 
 下方還有許多不同的標籤頁可以進行不同的設定（如作者名字或鍵盤名稱），在此就不多做介紹。
 
-## 輸出
+### 輸出
 
 編輯完成後就可以輸出 Layout 了。
 
@@ -98,7 +98,7 @@ draft: false
 
 ![▲ 在「Raw data」標籤頁的右下角可以載入 JSON 檔](https://bucket.ziteh.dev/blog/diyqmkkeyboard-kle/e06885f2.webp)
 
-# 相關網站
+## 相關網站
 
 - [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - [ijprest/keyboard-layout-editor](https://github.com/ijprest/keyboard-layout-editor)：KLE 的 GitHub repo。

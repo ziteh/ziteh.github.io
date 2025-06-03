@@ -11,7 +11,7 @@ date: 2020-11-21 17:39:00
 comments: true
 toc: true
 draft: false
-# aliases: ["/2020/11/diyqmkkeyboard-5/", "/posts/diyqmkkeyboard-5/"]
+## aliases: ["/2020/11/diyqmkkeyboard-5/", "/posts/diyqmkkeyboard-5/"]
 ---
 
 ![](https://bucket.ziteh.dev/blog/diyqmkkeyboard-encoder/87b675aa.webp)
@@ -24,11 +24,11 @@ draft: false
 
 <!--more-->
 
-# 修改程式碼
+## 修改程式碼
 
 以下個步驟將示範為 QMK 加入編碼器的程式。詳細可以參考 [QMK 官方文件-Encoder](https://docs.qmk.fm/#/feature_encoders)。
 
-## 修改 rules.mk
+### 修改 rules.mk
 
 首先要在 `rules.mk` 檔案中啓用編碼器。在該檔案中加入以下之程式碼:
 
@@ -36,7 +36,7 @@ draft: false
 ENCODER_ENABLE = yes  # 致能編碼器
 ```
 
-## 修改 config.h
+### 修改 config.h
 
 接著要定義腳位。每個編碼器都有 2 隻腳（通常分別稱為 A 腳與 B 腳）需要接到你的微控制器（開發板）上。在 `config.h` 中加入以下之程式碼：
 
@@ -68,7 +68,7 @@ ENCODER_ENABLE = yes  # 致能編碼器
 #define ENCODER_RESOLUTION 4
 ```
 
-## 修改 keymap.c
+### 修改 keymap.c
 
 最後要來設定觸發編碼器時要按下的按鍵，需要在 `keymap.c` 中加入該程式碼。下面程式中的 `KC_PGDN`、`KC_PGUP` 就分別是編碼器在順/逆時鐘轉動時會按下的按鍵，請自行修改成自己想要的按鍵，至於 QMK 的按鍵代碼（Keycodes）請參考[QMK 官方文件-Keycodes](https://docs.qmk.fm/#/keycodes)。
 
@@ -106,21 +106,21 @@ void encoder_update_user(uint8_t index, bool clockwise) {
 }
 ```
 
-## 完成程式修改
+### 完成程式修改
 
 完成修改後就可以將程式編譯、燒錄。其方法請參考[\[自製QMK鍵盤-3\] 編譯並燒錄](/posts/diyqmkkeyboard-3/)。
 
-# 硬體
+## 硬體
 
 硬體的部分就只有接線。編碼器通常有 3 個接腳，照順序分別是 A、Gnd、B。將編碼器 Gnd 與微控制器的 Gnd 接起來，而 A、B 就接到上面在 `config.h` 中設定的腳位。這樣就完成硬體的部分了。
 
 值得注意的是有些編碼器會整合一個按鈕，所以可能會有 5 個接腳，使用時還請確認清楚。
 
-# 結語
+## 結語
 
 這次簡單地介紹了在 QMK 中加入編碼器功能的方法，接下來我還會繼續增加更多不同零件的介紹，盡情期待。
 
-# 相關文章與資源
+## 相關文章與資源
 
 - [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - QMK 相關

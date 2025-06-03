@@ -1,14 +1,14 @@
 ---
 title: "Restic 跨平台開源備份軟體基本教學"
 subtitle: "用來進行檔案版本控制，以及 Resticprofile 教學"
-# description: ""
+## description: ""
 tags: ["教學"]
-# categories: [""]
+## categories: [""]
 date: 2024-07-08T19:39:00
 updated: 2024-09-01T12:07:00
 comments: true
 toc: true
-# RESERVE
+## RESERVE
 ---
 
 [Restic](https://restic.net/) 是一個跨平台的開源（Open source）增量備份工具，可以用來備份各種檔案。除了本地外，也可以備份到像是 Amazon S3、Google Cloud Storage 或 Minio 伺服器上。
@@ -19,9 +19,9 @@ toc: true
 
 <!-- more -->
 
-# Restic 基本用法
+## Restic 基本用法
 
-## 安裝
+### 安裝
 
 安裝方式可以參考[官方文件](https://restic.readthedocs.io/en/stable/020_installation.html)。在 Windows 上的話可以參考這 2 種方式之一：
 
@@ -43,11 +43,11 @@ restic version
 
 它應該會回覆類似 `restic 0.16.3 compiled with go1.21.6 on windows/amd64` 這樣的訊息。
 
-## 操作
+### 操作
 
 官方文件請參考：[Restic Documentation — restic 0.16.4 documentation](https://restic.readthedocs.io/en/stable/index.html)
 
-### 初始化
+#### 初始化
 
 Restic 將備份目的地稱為 repo（repository）。首先我們要先建立 repo：
 
@@ -59,7 +59,7 @@ restic -r <repo路徑> init
 
 建立 repo 時會要求建立密碼（不可留空），後續所有操作都會要求輸入密碼。請**務必妥善管理此密碼**，若遺失的話，你的備份資料將永久失效、不可存取。如果覺得每次都有輸入密碼太麻煩的話，可以設置 `RESTIC_PASSWORD` 或 `RESTIC_PASSWORD_FILE` 環境變數，請參考官方文件：[How can I specify encryption passwords automatically?](https://restic.readthedocs.io/en/stable/faq.html#how-can-i-specify-encryption-passwords-automatically)。
 
-### 備份
+#### 備份
 
 從*來源*備份並建立一個快照（Snapshot）：
 
@@ -69,7 +69,7 @@ restic -r <repo路徑> backup <來源路徑>
 
 另外可以加上 `--tag <TAG>` 來標記此快照，我就是使用此功能來描述此版本的快照的變更。
 
-### 列出快照
+#### 列出快照
 
 ```bash
 restic -r <repo路徑> snapshots
@@ -77,7 +77,7 @@ restic -r <repo路徑> snapshots
 
 會列出目前所有的快照，這也是查詢快照 ID 的方式。
 
-### 還原
+#### 還原
 
 ```bash
 restic -r <repo路徑> restore <快照ID> -t <還原路徑>
@@ -85,13 +85,13 @@ restic -r <repo路徑> restore <快照ID> -t <還原路徑>
 
 > 最後一個快照的 ID 也可以用 `latest` 代替。
 
-### 比較差異
+#### 比較差異
 
 ```bash
 restic -r <repo路徑> diff <快照ID 1> <快照ID 2>
 ```
 
-### 刪除快照
+#### 刪除快照
 
 ```bash
 restic -r <repo路徑> forget <快照ID>
@@ -99,13 +99,13 @@ restic -r <repo路徑> forget <快照ID>
 
 預設之後刪除快照，加上 `--prune` 的話會刪除未參照的實際檔案。
 
-### 檢查
+#### 檢查
 
 ```bash
 restic -r <repo路徑> check
 ```
 
-### 查看內部檔案
+#### 查看內部檔案
 
 確認快照內部的檔案：
 
@@ -115,7 +115,7 @@ restic -r <repo路徑> ls <快照ID>
 
 它會像 `ls` 指令一樣，列出檔案結構。
 
-### 加上 Tag
+#### 加上 Tag
 
 如果在 `backup` 階段忘記加上 tag，也可以後續補上。先使用上述的 `snapshots` 指令查看要加上 tag 的快照 ID 是多少。再來使用：
 
@@ -123,27 +123,27 @@ restic -r <repo路徑> ls <快照ID>
 restic -r <repo路徑> tag --add <TAG> <快照ID>
 ```
 
-### 變更密碼
+#### 變更密碼
 
 ```bash
 restic -r <repo路徑> key passwd
 ```
 
-# GUI 工具
+## GUI 工具
 
 如果常常需要比較各個快照版本的內容的話，可以使用 [Restic Browser](https://github.com/emuell/restic-browser) GUI 工具來輔助。
 
 ![Restic Browser][restic-browser]
 
-# 進階：Resticprofile
+## 進階：Resticprofile
 
 單純的 Restic 只能進行備份，並沒有設定檔管理和排程功能等，如果每次要備份都有大一大串難記的路徑的話就太累了，而且備份工作應該要足夠簡單觸發，這樣我們才會勤於備份。為此可以使用 [Resticprofile](https://creativeprojects.github.io/resticprofile/) 來達成，它基本上就是一個 Restic 的 wrapper，讓我們可以更方便地使用 Restic 進行備份任務。
 
-## 安裝
+### 安裝
 
 可以參考[官方文件](https://creativeprojects.github.io/resticprofile/installation/windows/index.html)進行安裝。我個人是從 [GitHub](https://github.com/creativeprojects/resticprofile/releases) 下載執行檔（例如 `resticprofile_0.26.0_windows_amd64.zip`），將其解壓縮、重新命名成 `resticprofile.exe` 後再放到和 `restic.exe` 相同的路徑。
 
-## 配置檔案
+### 配置檔案
 
 Resticprofile 的[配置檔案](https://creativeprojects.github.io/resticprofile/configuration/path/index.html#how-the-configuration-file-is-resolved)預設名稱為 `profiles`，而副檔名根據你喜歡的格式，可以是：`.toml`、`.yaml`、`.json`、`.hcl`、`conf`。以下以 YAML 格式做示範（也就是 `profiles.yaml`）。
 
@@ -161,11 +161,11 @@ Resticprofile 的[配置檔案](https://creativeprojects.github.io/resticprofile
 它看起來大概是：
 
 ```yaml
-# profiles.yaml
+## profiles.yaml
 version: "1"
 
 global:
-#   restic-binary: "C:/restic/restic.exe"
+##   restic-binary: "C:/restic/restic.exe"
   priority: normal
 
 default:
@@ -181,7 +181,7 @@ default:
 再來看另一個例子：
 
 ```yaml
-# profiles.yaml
+## profiles.yaml
 version: "1"
 
 global:
@@ -220,7 +220,7 @@ dropbox:
 
 要排程的話，使用 `schedule` 進行設定。詳細的官方文件請參考：[Schedule Configuration](https://creativeprojects.github.io/resticprofile/schedules/configuration/index.html)。
 
-## 執行
+### 執行
 
 例如我要執行上面的 `dropbox` 配置，一樣要先 `init` repo，然後再執行 `backup`。
 
@@ -240,7 +240,7 @@ resticprofile backup
 
 ---
 
-# 更新日誌
+## 更新日誌
 
 - 2024/09/01
     - 增加 Resticprofile 的 profile 檔案可以使用 `--config` 自訂的說明。

@@ -11,10 +11,10 @@ date: 2022-10-02 12:00:00
 comments: true
 toc: true
 draft: false
-# aliases: ["/2022/10/libopencm3-stm32-19/"]
+## aliases: ["/2022/10/libopencm3-stm32-19/"]
 ---
 
-# 前言
+## 前言
 
 ADC（Analog to Digital Converter）顧名思義是將類比訊號轉換成數位訊號的元件，現今多數 MCU 都會內建 ADC，而這也是相當基本且常用的功能。
 
@@ -22,7 +22,7 @@ STM32 中的 ADC 功能相當多樣，也造成它的使用有一定程度的複
 
 <!--more-->
 
-# 基本介紹
+## 基本介紹
 
 STM32F446RE 擁有三個 12-bit 的 ADC，且擁有 19 個通道，其中包含 16 個來自外部、2 個來自內部，還有一個是 `V_BAT` 通道。ADC 的輸入電壓範圍為 `V_REF-` \~ `V_REF+`，也就是最大 `0` \~ `3.6` V。
 
@@ -35,7 +35,7 @@ ADC 有兩個 Clock：
 - 類比電路時鐘：所有 ADC 皆相同。此時鐘訊號來自 APB2，經過一個可程式的預除頻器（\2、\4、\6 或 \8）。此時鐘頻率的上限為 18 MHz（`V_DDA` = 1.7 ~ 2.4 V）或 36 MHz（`V_DDA` = 2.4 ~ 3.6 V）。參考 DS10693 的 Table 74. ADC characteristics。
 - 數位介面時鐘：用於相關暫存器的讀寫操作。此時鐘等同 APB2，可以透過設定 RCC 來單獨致/禁能特定的 ADC。
 
-# 通道分組
+## 通道分組
 
 在 STM32 中，ADC 通道可分為 Regular（常規）和 Injected（注入）兩組。組，或著說序列（Sequence）是由一到數個 ADC 通道以任一順序組成。
 
@@ -50,15 +50,15 @@ Regular 與 Injected 的主要差異除了上面列的外，還有就是 Injecte
 
 > Regular 比較常見翻譯成「規則」通道，但在此我認為翻成「常規」比較能夠區分其與 Injected 的功能差異。
 
-# 內部通道
+## 內部通道
 
 F446RE 中有 3 個內部通道：溫度感測器、內部參考電壓 `V_REFINT` 與電池 `V_BAT`。
 
 其中，溫度感測器與 `V_BAT` 共用 ADC1_IN18 通道。它們無法同時使用，若同時被啓用，那只有 `V_BAT` 的轉換會運作。而 `V_REFINT` 使用 ADC1_IN17 通道。
 
-# 轉換模式
+## 轉換模式
 
-## Single conversion mode 單次轉換模式
+### Single conversion mode 單次轉換模式
 
 在此模式下，每次觸發 ADC 都只會進行一次轉換，轉換完成後就停止。
 
@@ -70,7 +70,7 @@ F446RE 中有 3 個內部通道：溫度感測器、內部參考電壓 `V_REFINT
 - 將 ADC_CR2 的 JSWSTART 位元設為 `1`，即軟體觸發轉換。僅限 Injected 通道。
 - 外部觸發（如 Timer 或 EXTI）。Regular 及 Injected 通道皆適用。
 
-## Continuous conversion mode 連續轉換模式
+### Continuous conversion mode 連續轉換模式
 
 在此模式下，ADC 在完成一次轉換後會儘快開始另一次新的轉換。
 
@@ -83,9 +83,9 @@ F446RE 中有 3 個內部通道：溫度感測器、內部參考電壓 `V_REFINT
 
 > Injected 通道無法使用連續轉換，除非設定 JAUTO 位元以啓用 Auto-injection，在此就不詳細說明。
 
-# 其它模式
+## 其它模式
 
-## Scan mode 掃描模式
+### Scan mode 掃描模式
 
 此模式用來以組為單位，為多個 ADC 通道進行轉換。Regular 和 Injected 通道都適用。
 
@@ -95,7 +95,7 @@ F446RE 中有 3 個內部通道：溫度感測器、內部參考電壓 `V_REFINT
 
 此模式透過設定 ADC_CR1 中的 SCAN 位元來啓用。
 
-## Discontinuous mode 不連續模式
+### Discontinuous mode 不連續模式
 
 此模式的概念是可以將組（或序列 Sequence）再分成更短的小組，當觸發轉換時，會以小組為單位進行轉換，也就是可以不一次轉換組內的全部通道，而是分批掃描。
 
@@ -112,11 +112,11 @@ F446RE 中有 3 個內部通道：溫度感測器、內部參考電壓 `V_REFINT
 > Auto-injected 與 Discontinuous mode 無法同時使用。
 > Discontinuous mode 與 Continuous conversion mode 雖然名稱相近但其「連續」的意義不同。前者是可以將組再細分成小組，後者是在每次轉換完成後自動觸發下一次的轉換。
 
-# 小結
+## 小結
 
 ADC 的功能相當複雜與多元，以上也只是簡單介紹最基本的概念，還有很多進階的功能沒有提到，像是 ADC watchdog、Multi ADC 或電池監控等，這些進階的功能可以參考 RM0390（STM32F446RE）。
 
-# 參考資料
+## 參考資料
 
 - [STM32 ADC Tutorial - Complete Guide With Examples - DMA / Interrupt](https://deepbluembedded.com/stm32-adc-tutorial-complete-guide-with-examples/)
 - [How to use ADC with STM32? - The Engineering Projects](https://www.theengineeringprojects.com/2021/11/how-to-use-adc-with-stm32.html)

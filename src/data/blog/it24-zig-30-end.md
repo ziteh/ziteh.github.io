@@ -1,14 +1,14 @@
 ---
 title: "[Day-30]完賽，再談談 Zig"
-# subtitle: ""
-# description: ""
+## subtitle: ""
+## description: ""
 tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
 date: 2024-09-22T08:01:00
-# updated: 2024-MM-DDTHH:MM:00
+## updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
-# RESERVE
+## RESERVE
 ---
 
 總算是到最後一天了。在先前的內容中，我們從安裝 Zig 開始，一步步介紹 Zig 的各種基本語法和特性，我也是一邊寫文章、一邊寫程式一同學習 Zig。
@@ -32,7 +32,7 @@ Zig 作為 C 的取代者，保留了直接操作記憶體的指標、`asm volat
 
 希望這系列的入門文章可以讓你學到 Zig 的基礎，如果內容有誤的也歡迎指出。謝謝閱讀。
 
-# 參考
+## 參考
 
 - [ziglang/zig: General-purpose programming language and toolchain for maintaining robust, optimal, and reusable software.](https://github.com/ziglang/zig)
 - [Welcome | zig.guide](https://zig.guide/)

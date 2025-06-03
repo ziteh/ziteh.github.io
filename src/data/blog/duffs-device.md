@@ -1,7 +1,7 @@
 ---
 title: "一種巧妙及噁心並具的 C 語言寫法：達夫裝置 (Duff's device)"
 subtitle: ""
-# description: ""
+## description: ""
 tags: ["程式","C/C++"]
 categories: []
 
@@ -45,7 +45,7 @@ register count;
 
 看！我第一次知道 `case` 可以打破並穿插在同一個 block 之間，在裡面像 `goto` 一樣跳轉。
 
-# 參考
+## 參考
 
 - [達夫裝置 - 維基百科，自由的百科全書](https://zh.wikipedia.org/zh-tw/%E8%BE%BE%E5%A4%AB%E8%AE%BE%E5%A4%87)
 - [Tom Duff on Duff's Device](http://www.lysator.liu.se/c/duffs-device.html)

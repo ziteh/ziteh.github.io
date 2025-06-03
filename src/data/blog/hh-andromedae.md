@@ -9,7 +9,7 @@ date: 2020-09-14 00:36:00
 comments: true
 toc: true
 draft: false
-# aliases: ["/2020/09/hh-andromedae/"]
+## aliases: ["/2020/09/hh-andromedae/"]
 ---
 雖然掛著皆盡人曉的大名  
 卻似無人相伴
@@ -32,7 +32,7 @@ draft: false
 
 ---
 
-# 說明
+## 說明
 
 仙女座HH（HH Andromedae），也稱為羅斯248（Ross 248）。
 
@@ -48,6 +48,6 @@ draft: false
 距離地球大約10.3光年，也就是說光從它傳到地球需要10.3年的時間。
 或者說，我們目前所觀測到的實為10.3年前的仙女座HH。
 
-# 參考資料
+## 參考資料
 
 - [羅斯248 - 維基百科](https://zh.wikipedia.org/wiki/%E7%BD%97%E6%96%AF248)

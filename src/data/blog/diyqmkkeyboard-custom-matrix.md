@@ -11,7 +11,7 @@ date: 2022-02-05 21:40:00
 comments: true
 toc: true
 draft: false
-# aliases: ["/2022/02/diyqmkkeyboard-7/", "/posts/diyqmkkeyboard-7/"]
+## aliases: ["/2022/02/diyqmkkeyboard-7/", "/posts/diyqmkkeyboard-7/"]
 ---
 
 在[這篇文章](/posts/mitosis-keyboard-intro)中我簡單地介紹了 Mitosis 這個基於 QMK 的無線分離式人體工學鍵盤，而在這篇文章中，我將參考其架構來做出一個我自己的無線分離式鍵盤的雛形。
@@ -22,73 +22,73 @@ draft: false
 
 <!--more-->
 
-# 在 QMK 中使用 Custom Matrix 與 UART
+## 在 QMK 中使用 Custom Matrix 與 UART
 
 由於 Mitosis 不是和一般的鍵盤一樣透過按鍵掃描來取得按鍵狀態，而是藉由 UART 通訊，所以我們需要改變 QMK 的掃描程式，改成使用 UART 取得按鍵狀態。以下將會說明要如何達成。
 
-## rules.mk
+### rules.mk
 
 首先，要完整地啓用「[Custom Matrix](https://docs.qmk.fm/#/custom_matrix)」功能的話，要在 `rules.mk` 中增加 `CUSTOM_MATRIX = yes` 與 `SRC += matrix.c`，並在鍵盤資料夾中增加 `matrix.c` 檔案。而自定的掃描程式就要按照格式寫在 `matrix.c` 中。
 
 然後，因為我們還會需要使用 UART 功能，所以在 `rules.mk` 中還要增加 `SRC += uart.c` 。因此，`rules.mk` 大概會長這樣：
 
 ```mk
-# MCU name
+## MCU name
 MCU = atmega32u4
 
-# Processor frequency.
-#     This will define a symbol, F_CPU, in all source code files equal to the
-#     processor frequency in Hz. You can then use this symbol in your source code to
-#     calculate timings. Do NOT tack on a 'UL' at the end, this will be done
-#     automatically to create a 32-bit value in your source code.
-#
-#     This will be an integer division of F_USB below, as it is sourced by
-#     F_USB after it has run through any CPU prescalers. Note that this value
-#     does not *change* the processor frequency - it should merely be updated to
-#     reflect the processor speed set externally so that the code can use accurate
-#     software delays.
+## Processor frequency.
+##     This will define a symbol, F_CPU, in all source code files equal to the
+##     processor frequency in Hz. You can then use this symbol in your source code to
+##     calculate timings. Do NOT tack on a 'UL' at the end, this will be done
+##     automatically to create a 32-bit value in your source code.
+##
+##     This will be an integer division of F_USB below, as it is sourced by
+##     F_USB after it has run through any CPU prescalers. Note that this value
+##     does not *change* the processor frequency - it should merely be updated to
+##     reflect the processor speed set externally so that the code can use accurate
+##     software delays.
 F_CPU = 8000000
 
-#
-# LUFA specific
-#
-# Target architecture (see library "Board Types" documentation).
+##
+## LUFA specific
+##
+## Target architecture (see library "Board Types" documentation).
 ARCH = AVR8
 
-# Input clock frequency.
-#     This will define a symbol, F_USB, in all source code files equal to the
-#     input clock frequency (before any prescaling is performed) in Hz. This value may
-#     differ from F_CPU if prescaling is used on the latter, and is required as the
-#     raw input clock is fed directly to the PLL sections of the AVR for high speed
-#     clock generation for the USB and other AVR subsections. Do NOT tack on a 'UL'
-#     at the end, this will be done automatically to create a 32-bit value in your
-#     source code.
-#
-#     If no clock division is performed on the input clock inside the AVR (via the
-#     CPU clock adjust registers or the clock division fuses), this will be equal to F_CPU.
+## Input clock frequency.
+##     This will define a symbol, F_USB, in all source code files equal to the
+##     input clock frequency (before any prescaling is performed) in Hz. This value may
+##     differ from F_CPU if prescaling is used on the latter, and is required as the
+##     raw input clock is fed directly to the PLL sections of the AVR for high speed
+##     clock generation for the USB and other AVR subsections. Do NOT tack on a 'UL'
+##     at the end, this will be done automatically to create a 32-bit value in your
+##     source code.
+##
+##     If no clock division is performed on the input clock inside the AVR (via the
+##     CPU clock adjust registers or the clock division fuses), this will be equal to F_CPU.
 F_USB = $(F_CPU)
 
-# Bootloader selection
-#   Teensy       halfkay
-#   Pro Micro    caterina
-#   Atmel DFU    atmel-dfu
-#   LUFA DFU     lufa-dfu
-#   QMK DFU      qmk-dfu
-#   ATmega32A    bootloadHID
-#   ATmega328P   USBasp
+## Bootloader selection
+##   Teensy       halfkay
+##   Pro Micro    caterina
+##   Atmel DFU    atmel-dfu
+##   LUFA DFU     lufa-dfu
+##   QMK DFU      qmk-dfu
+##   ATmega32A    bootloadHID
+##   ATmega328P   USBasp
 BOOTLOADER = caterina
 
-# Interrupt driven control endpoint task(+60)
+## Interrupt driven control endpoint task(+60)
 OPT_DEFS += -DINTERRUPT_CONTROL_ENDPOINT
 
 
-# Boot Section Size in *bytes*
+## Boot Section Size in *bytes*
 OPT_DEFS += -DBOOTLOADER_SIZE=4096
 
 
-# Build Options
-#   comment out to disable the options.
-#
+## Build Options
+##   comment out to disable the options.
+##
 BOOTMAGIC_ENABLE ?= yes # Virtual DIP switch configuration(+1000)
 MOUSEKEY_ENABLE ?= yes # Mouse keys(+4700)
 EXTRAKEY_ENABLE ?= yes # Audio control and System control(+450)
@@ -106,7 +106,7 @@ CUSTOM_MATRIX = yes
 SRC += matrix.c uart.c
 ```
 
-## matrix.c
+### matrix.c
 
 自行新增的程式檔案 `matrix.c` 是用來放自定的掃描程式的，我們要在掃描程式中使用 UART 進行通訊。
 
@@ -178,7 +178,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <stdint.h>
 #include <stdbool.h>
 #if defined(__AVR__)
-#    include <avr/io.h>
+##    include <avr/io.h>
 #endif
 #include "wait.h"
 #include "print.h"
@@ -190,20 +190,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#include "quantum.h"
 
 #if (MATRIX_COLS <= 8)
-#    define print_matrix_header() print("\nr/c 01234567\n")
-#    define print_matrix_row(row) print_bin_reverse8(matrix_get_row(row))
-#    define matrix_bitpop(i) bitpop(matrix[i])
-#    define ROW_SHIFTER ((uint8_t)1)
+##    define print_matrix_header() print("\nr/c 01234567\n")
+##    define print_matrix_row(row) print_bin_reverse8(matrix_get_row(row))
+##    define matrix_bitpop(i) bitpop(matrix[i])
+##    define ROW_SHIFTER ((uint8_t)1)
 #elif (MATRIX_COLS <= 16)
-#    define print_matrix_header() print("\nr/c 0123456789ABCDEF\n")
-#    define print_matrix_row(row) print_bin_reverse16(matrix_get_row(row))
-#    define matrix_bitpop(i) bitpop16(matrix[i])
-#    define ROW_SHIFTER ((uint16_t)1)
+##    define print_matrix_header() print("\nr/c 0123456789ABCDEF\n")
+##    define print_matrix_row(row) print_bin_reverse16(matrix_get_row(row))
+##    define matrix_bitpop(i) bitpop16(matrix[i])
+##    define ROW_SHIFTER ((uint16_t)1)
 #elif (MATRIX_COLS <= 32)
-#    define print_matrix_header() print("\nr/c 0123456789ABCDEF0123456789ABCDEF\n")
-#    define print_matrix_row(row) print_bin_reverse32(matrix_get_row(row))
-#    define matrix_bitpop(i) bitpop32(matrix[i])
-#    define ROW_SHIFTER ((uint32_t)1)
+##    define print_matrix_header() print("\nr/c 0123456789ABCDEF0123456789ABCDEF\n")
+##    define print_matrix_row(row) print_bin_reverse32(matrix_get_row(row))
+##    define matrix_bitpop(i) bitpop32(matrix[i])
+##    define ROW_SHIFTER ((uint32_t)1)
 #endif
 
 /* matrix state(1:on, 0:off) */
@@ -281,7 +281,7 @@ uint8_t matrix_key_count(void) {
 - `uart_init(9600)`：在 `matrix_init()` 中初始化 UART，並將鮑率（Baud Rate）設定為 9600 bps。
 - `uart_available()`：有用過 Arduino 的 Serial Port 的人應該都看得懂這一段，就是只要 UART 的接收緩衝區有值（有接收到資料），就使用 `uart_read()` 將收到的資料讀出，在透過 `switch-case` 來處理並改寫 `matrix[]` 的值，以完成按鍵狀態的更新。
 
-## 利用 QMK 移動滑鼠遊標
+### 利用 QMK 移動滑鼠遊標
 
 因為我要做的無線分離式鍵盤上預計裝有軌跡球，所以我也一併測試了 QMK 要如何控制滑鼠遊標。
 
@@ -329,7 +329,7 @@ typedef struct {
 - `v` 與 `h` 代表滑鼠滾輪垂直與水平滾動的距離，範圍是 `-128 ~ 127`。
 - `buttons` 代表各個滑鼠按鈕按下的情況。
 
-# LoRa 無線通訊模組 HC-12
+## LoRa 無線通訊模組 HC-12
 
 因為我手邊沒有其它適合的無線通訊模組，所以就先拿「HC-12」這款 LoRa 模組來使用。
 
@@ -459,13 +459,13 @@ state = 0;
 最終效果如影片所示：
 <iframe style="width: 100%; height: 315px; border: 0; margin: 20px 0" src="https://www.youtube.com/embed/L6DrpNg0moA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-# 結語
+## 結語
 
 這次簡單地分享了 QMK 使用 Custom Matrix、UART 和控制滑鼠遊標的方法，有些功能我自己也是找了不少資料才知道要怎麼做，並且也測試了很多次。
 
 然而對 QMK 的瞭解也還很粗淺，很多細節沒辦法講解，而如果上述內容有任何錯誤也請指正。
 
-# 相關文章
+## 相關文章
 
 - [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - [Mitosis 無線分離式鍵盤介紹](/posts/mitosis-keyboard-intro)

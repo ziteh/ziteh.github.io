@@ -8,7 +8,7 @@ date: 2020-09-03 01:24:00
 comments: true
 toc: true
 draft: false
-# aliases: ["/2020/09/literature-phalaenopsis/"]
+## aliases: ["/2020/09/literature-phalaenopsis/"]
 ---
 ![](https://bucket.ziteh.dev/blog/literature-phalaenopsis/6eda02e0.webp)
 

@@ -8,11 +8,11 @@ date: 2020-05-10 14:27:00
 comments: true
 toc: true
 draft: false
-# aliases: ["/2020/05/s6lite-vs-ipad2019/"]
+## aliases: ["/2020/05/s6lite-vs-ipad2019/"]
 ---
 ![](https://bucket.ziteh.dev/blog/s6lite-vs-ipad2019/c565434e.webp)
 
-# 前言
+## 前言
 
 上一篇[文章](/posts/unbox-sansunggalaxys6lite/)說到我把iPad賣掉，換成S6 Lite。不過我買S6 Lite時iPad其實還沒賣出，所以就來簡單比較一下我個人比較在意的幾點。
 
@@ -20,7 +20,7 @@ draft: false
 
 <!--more-->
 
-# 正文
+## 正文
 
 雖然看起來S6 Lite好像比較小，但其實它的螢幕比iPad大了o.2吋（iPad為10.2吋；S6 Lite為10.4吋），但因為圓角的關係，實際上也差異不大。而螢幕比例也不同，S6 Lite比較扁長，看16:9的影片比較適合。
 
@@ -38,7 +38,7 @@ draft: false
 
 ![▲ S6 Lite無斷差。](https://bucket.ziteh.dev/blog/s6lite-vs-ipad2019/90620274.webp)
 
-# 比較表
+## 比較表
 
 <table>
 <tbody>
@@ -180,7 +180,7 @@ draft: false
 </tbody>
 </table>
 
-# 結語
+## 結語
 
 我並不是要抨擊誰很爛，那個好。我只是就我使用下來的感覺做出比較。當然我也知道這種東西習慣很重要。像我可能就是不太習慣Apple和iPad的操作模式。
 
@@ -191,6 +191,6 @@ draft: false
 - iPad測試時的iPadOS版本為13.3.1
 - S6 Lite測試時的Android版本為10
 
-# 相關文章
+## 相關文章
 
 - [[開箱] 三星 Tab S6 Lite 方便做筆記的平板](/posts/unbox-sansunggalaxys6lite/)

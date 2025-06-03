@@ -13,16 +13,16 @@ comments: true
 toc: true
 draft: false
 featured: true
-# aliases: ["/2020/06/diyqmkkeyboard-0/"]
+## aliases: ["/2020/06/diyqmkkeyboard-0/"]
 ---
 
-# 教學文列表
+## 教學文列表
 
 [本系列文](categories/自製qmk鍵盤)預計會根據[製作步驟](#製作步驟)分別介紹各自的詳細內容。除了基本步驟外，我還會額外介紹其它的進階功能。文章不定期緩慢更新中。
 
 <!--more-->
 
-## 基礎內容
+### 基礎內容
 
 1. [編輯鍵盤佈局 (Layout)](/posts/diyqmkkeyboard-kle)
 2. [如何選擇微控制器 MCU？](/posts/diyqmkkeyboard-mcu-sel)
@@ -31,7 +31,7 @@ featured: true
 5. [KiCAD 鍵盤 PCB 繪製教學 (上)](/posts/diyqmkkeyboard-pcb-layout-sch)
 6. [KiCAD 鍵盤 PCB 繪製教學 (下)](/posts/diyqmkkeyboard-pcb-layout-layers)
 
-## 進階內容
+### 進階內容
 
 - [QMK 啓用 Vial 教學](/posts/diyqmkkeyboard-vial)
 - [為 QMK 鍵盤加上 Bluetooth 藍牙無線功能](/posts/diyqmkkeyboard-ble)
@@ -40,7 +40,7 @@ featured: true
 - [QMK 的基本架構與運作方式](/posts/diyqmkkeyboard-operate)
 - [在 Custom Matrix 中使用 UART 與控制滑鼠遊標，並加上無線模組](/posts/diyqmkkeyboard-custom-matrix)
 
-## 封存
+### 封存
 
 - [0.24.8 版 QMK 韌體教學](/posts/diyqmkkeyboard-firmware-0-24-8)
 - [0.21.3 版 QMK 韌體教學](/posts/diyqmkkeyboard-firmware-0-21-3)
@@ -56,11 +56,11 @@ featured: true
 
 <!--more-->
 
-# 鍵盤的組成
+## 鍵盤的組成
 
 一把鍵盤主要有兩大部分：硬體和韌體。
 
-## 硬體
+### 硬體
 
 硬體（Hardware）大家應該都知道，就是 PCB 電路板、鍵軸和微控制器等，甚至外殼、定位板和鍵帽也可以算在內。
 
@@ -75,7 +75,7 @@ featured: true
 
 至於這些 MCU 有何差異、要如何挑選，以及 PCB 要如何繪製詳細內容等，請看[教學文](#教學文列表)。
 
-## 韌體
+### 韌體
 
 韌體（Firmware）可能就不是每個人都聽過了。簡單來說，韌體就是燒錄在晶片（如微控制器）裡的程式，也就是程式碼的部分。
 
@@ -93,7 +93,7 @@ QMK（Quantum Mechanical Keyboard）是由 TMK 衍生而來的，在其基礎上
 
 QMK 韌體的功能眾多、使用簡單、擴展方便，相關的工具及文件也是非常的豐富，最重要的是社群相當龐大且活躍。
 
-# 製作步驟
+## 製作步驟
 
 既然知道了一把鍵盤有哪些要件，那接下來就可以按步驟一一完成了。我自己習慣的製作步驟為：
 
@@ -111,7 +111,7 @@ QMK 韌體的功能眾多、使用簡單、擴展方便，相關的工具及文�
 
 根據我自己製作 [Calcite52](https://github.com/ziteh/calcite) 的經驗，如果此鍵盤沒有什麼特別的功能且先不論美觀的話，步驟 2~7 甚至可以在一個週末——兩天內——完成（當然我是對整個流程和工具都有一定的經驗才有辦法）。
 
-# 相關網站
+## 相關網站
 
 這裡順便附上一些製作鍵盤時可能會用到的網站。
 

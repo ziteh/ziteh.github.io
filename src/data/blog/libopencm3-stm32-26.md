@@ -13,10 +13,10 @@ date: 2022-10-09 12:00:00
 comments: true
 toc: true
 draft: false
-# aliases: ["/2022/10/posts/libopencm3-stm32-26/"]
+## aliases: ["/2022/10/posts/libopencm3-stm32-26/"]
 ---
 
-# 前言
+## 前言
 
 在上一篇中，我簡單介紹了 SPI 的用法，而除了 SPI 外還有另一種非常常見的通訊協定——I²C（以下稱 I2C）。
 
@@ -28,13 +28,13 @@ I2C 和 SPI 一樣是主從式架構，I2C 的主要特色就是無論有多少 
 
 <!--more-->
 
-# 正文
+## 正文
 
 首先一樣以 Nucleo-F446RE 做示範。
 
 首先[建立一個 PIO 的專案](/posts/libopencm3-stm32-2#建立專案)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h`。
 
-## 完整程式
+### 完整程式
 
 ``` c
 /**
@@ -216,9 +216,9 @@ static void usart_setup(void);
 #endif /* MAIN_H. */
 ```
 
-## 分段說明
+### 分段說明
 
-### Include
+#### Include
 
 ``` c
 // main.h
@@ -231,7 +231,7 @@ static void usart_setup(void);
 
 除了基本的 `rcc.h` 和 `gpio.h` 及這次的 `i2c.h` 外，因為我要使用 USART 和中斷功能，所以還會需要 `usart.h` 與 `nvic.h`。
 
-### 設定 I2C
+#### 設定 I2C
 
 ``` c
 static void i2c_setup(void)
@@ -276,7 +276,7 @@ static void i2c_setup(void)
 
 這裡我選擇使用「Fast mode」。以 `i2c_set_speed()` 函式進行設定，此函式的第二個引數 `i2c_speed_fm_400k` 就代表要使用「Fast mode」，而第三個引數要給的是 I2C 的時脈，對於 F446RE 或大多數的 STM32，這個速度等同 APB1。
 
-### USART ISQ
+#### USART ISQ
 
 ```c
 /**
@@ -389,7 +389,7 @@ i2c_transfer7(I2C1,
 usart_send_blocking(USART2, i2c_rx_data[0]);
 ```
 
-## 多環境程式（F446RE + F103RB）
+### 多環境程式（F446RE + F103RB）
 
 由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。
 
@@ -442,7 +442,7 @@ static void i2c_setup(void)
 }
 ```
 
-## 成果
+### 成果
 
 我首先將 `0xAB` 寫入 `0x0000` (`00 00 00 AB`)，再寫入 `0x39` 到 `0x0001`（`00 00 01 39`）。
 
@@ -452,11 +452,11 @@ static void i2c_setup(void)
 
 ![](https://bucket.ziteh.dev/blog/libopencm3-stm32-26/01b2cbce.webp)
 
-# 小結
+## 小結
 
 這次介紹了 I2C 的程式寫法。SPI 與 I2C 是各種電路模組或 IC 會使用的通訊協定，只要會使用 SPI 與 I2C，那基本上常見的模組都可以使用了，因此 I2C 是一個很重要的功能，還好 STM32 本身的硬體及 LibOpenCM3 都把那些複雜的設定做好了，因此要使用 I2C 相當容易。
 
-# 參考資料
+## 參考資料
 
 - [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
 

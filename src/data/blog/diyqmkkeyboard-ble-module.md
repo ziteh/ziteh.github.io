@@ -11,7 +11,7 @@ date: 2022-02-22 18:42:00
 comments: true
 toc: true
 draft: false
-# aliases: ["/2022/02/diyqmkkeyboard-9/", "/posts/diyqmkkeyboard-9/"]
+## aliases: ["/2022/02/diyqmkkeyboard-9/", "/posts/diyqmkkeyboard-9/"]
 ---
 
 在[上一篇文章中](/posts/diyqmkkeyboard-ble/)，我們使用 [Adafruit Bluefruit LE SPI Friend](https://www.adafruit.com/product/2633)（以下簡稱 Adafruit BLE）藍牙模組為 QMK 添加了藍牙的功能。
@@ -20,13 +20,13 @@ draft: false
 
 <!--more-->
 
-# 硬體選擇
+## 硬體選擇
 
 先講結論，**一定要**選用 32KB SRAM 版本的 nRF51822-**xxAC**，例如 [MDBT40-256**R**V3](https://www.raytac.com/product/ins.php?index_id=74) 。本文接下來也將使用 MDBT40-256**R**V3（[MDBT40-DB](https://www.raytac.com/product/ins.php?index_id=84)）作為示範。
 
 另外，為了燒錄，還需要準備一個 Segger J-Link 或 STLink/V2 燒錄器，雖然也可以使用 Raspberry Pi 作為燒錄器，但這比較麻煩。
 
-## nRF51822
+### nRF51822
 
 首先，Adafruit Bluefruit LE 是一系列的產品，Adafruit Bluefruit LE SPI Friend 只是該系列中的一個 SPI 介面的模組。其核心 SoC 就是 Nordic Semi 的 [nRF51822](https://www.nordicsemi.com/products/nrf51822)。
 
@@ -38,7 +38,7 @@ draft: false
 
 > 依照命名規則看，只有 nRF51822-***xxAC*** 是 32KB SRAM \ 256KB Flash 的版本，後綴為 ***xxAA*** 或 ***xxAB*** 的 SRAM 大小都是 16KB（xxAA 與 xxAB 的差異是前者的 Flash 是128 KB，而後者是256 KB）。
 
-## MDBT40
+### MDBT40
 
 雖然 Adafruit BLE 使用的是 nRF51822 SoC，但它並不是直接搭載該晶片，而是搭載了勁達 Raytac 的 [MDBT40](https://www.raytac.com/product/index.php?index_m1_id=74) 模組。
 
@@ -46,11 +46,11 @@ MDBT40 是搭載了 nRF51822 的模組，並且整合了天線及一些週邊元
 
 我們要的是 32KB SRAM / 256KB Flash 的 nRF51822-xxAC，所以要選用 MDBT40-256**R**V3 或 MDBT40-**P**256**R**V3（這兩個的差異是前者為陶瓷天線，後者為 PCB 天線）。實際上 Adafruit Bluefruit LE 系列所使用的基本上就是 MDBT40-256**R**V3。
 
-# 燒錄工具
+## 燒錄工具
 
 Adafruit 有提供他們所使用的燒錄工具：[Adafruit nRF51822 Flasher](https://github.com/adafruit/Adafruit_nRF51822_Flasher)
 
-## 需求
+### 需求
 
 要使用這個工具，需要：
 
@@ -66,7 +66,7 @@ Adafruit 有提供他們所使用的燒錄工具：[Adafruit nRF51822 Flasher](h
     - 安裝好 Python Pip
     - `sudo pip install click`
 
-## 下載
+### 下載
 
 將燒錄工具 Git clone 下來。注意，因為這個 repo 含有 submodule，所以記得加上 `--recursive`：
 
@@ -80,7 +80,7 @@ git clone --recursive git@github.com:adafruit/Adafruit_nRF51822_Flasher.git
 git submodule update --init --recursive
 ```
 
-## 使用
+### 使用
 
 將你的 nRF51822 或 MDBT40 連接上你的 SWD 燒錄器（J-Link、STLink/V2 或 RPi），依照你使用的硬體而定，SWD 燒錄器可能不會提供電源給 nRF51822 或 MDBT40，如果是這樣的話記得好要接好電源。
 
@@ -108,7 +108,7 @@ Flash OK
 
 > 如果燒錄的過程中出現「SyntaxError: Missing parentheses in call to 'print'.」錯誤訊息的話，請將 `flash.py` 檔中的所有 `print ""` 改成 `print("")`，也就是加上括號。這只是單純的 Python 版本問題，可以參考 [What does "SyntaxError: Missing parentheses in call to 'print'" mean in Python?](https://stackoverflow.com/questions/25445439/what-does-syntaxerror-missing-parentheses-in-call-to-print-mean-in-python)。
 
-# 燒錄後重置
+## 燒錄後重置
 
 根據 [Adafruit 的說明](https://learn.adafruit.com/introducing-the-adafruit-bluefruit-spi-breakout/device-recovery)，燒錄完韌體後，還要進行一次 Factory Reset，其步驟如下：
 
@@ -117,7 +117,7 @@ Flash OK
 3. 移除 DFU 與 GND 之間的連線。
 4. 完成。
 
-# 腳位對應
+## 腳位對應
 
 | Bluefruit LE SPI Friend | MDBT40 (nRF51822) |
 | ----------------------- | ----------------- |
@@ -137,7 +137,7 @@ Flash OK
 
 ![▲ Adafruit Bluefruit LE SPI Friend 的電路圖，取自 Adafruit](https://cdn-learn.adafruit.com/assets/assets/000/026/205/original/adafruit_products_BluefruitLESPIFriend_sch.png?1436186237)
 
-# 結語
+## 結語
 
 這次介紹了要如何執行燒錄 Adafruit Bluefruit LE SPI Friend 的韌體。
 
@@ -145,7 +145,7 @@ Flash OK
 
 若上述內容有錯誤還請指正。謝謝。
 
-# 相關資料
+## 相關資料
 
 - [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - [Introducing the Adafruit Bluefruit LE SPI Friend | Adafruit Learning System](https://learn.adafruit.com/introducing-the-adafruit-bluefruit-spi-breakout/downloads)

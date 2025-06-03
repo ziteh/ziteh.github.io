@@ -1,14 +1,14 @@
 ---
 title: "[Day-9]Zig：聯合（Union）"
-# subtitle: ""
-# description: ""
+## subtitle: ""
+## description: ""
 tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
 date: 2024-09-01T10:01:00
-# updated: 2024-MM-DDTHH:MM:00
+## updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
-# RESERVE
+## RESERVE
 ---
 
 `union` 用來定義多型別單一值。
@@ -17,7 +17,7 @@ toc: true
 
 如有某一個數值在概念上可以用多種型別表達，但同時只會是一種型別的話，就可以用 `union` 處理。
 
-# 基本
+## 基本
 
 ```zig
 const std = @import("std");
@@ -44,7 +44,7 @@ Result: 32
 Result: true
 ```
 
-# Tagged
+## Tagged
 
 你可以為 `union` 加上 `enum` 標記，這樣它會變成 Tagged union，隨後你可以使用其 `enum` 來判斷目前是那個型別在作用中。通常搭配 `switch` 和 Payload 語法使用。
 
@@ -104,7 +104,7 @@ pub fn main() void {
 }
 ```
 
-# 方法
+## 方法
 
 如同 `struct` 和 `enum`，Zig 的 `union` 也可以包含方法。
 
@@ -137,7 +137,7 @@ int: 32
 boolean: true
 ```
 
-# Tag Name
+## Tag Name
 
 Tagged union 如果要取得字串形式的 tag name，可以用 `@tegName`。
 
@@ -158,7 +158,7 @@ pub fn main() void {
 Name: int
 ```
 
-# 參考
+## 參考
 
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#union)
 - [Unions | zig.guide](https://zig.guide/language-basics/unions)

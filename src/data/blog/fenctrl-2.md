@@ -10,17 +10,17 @@ date: 2017-12-27 14:56:00
 comments: true
 toc: true
 draft: false
-# aliases : ["/2017/12/fenctrl-2/"]
+## aliases : ["/2017/12/fenctrl-2/"]
 ---
 ![](https://bucket.ziteh.dev/blog/fenctrl-2/95df2e58.webp)
 
-# 前言
+## 前言
 
 我第一次接觸OLED-SSD1306是因為高中技藝競賽的題目有用到，當時我覺得這是一個很難的零件，當然我到現在也沒完全了解這個零件，但我覺得網路上可以參考的中文資源太少了，所以我藉著這次製作風扇控制器的關係，還是打了這個文章，還請各位讀者見笑了，內容如果有錯還請各位指導。(本文都是以128\*64解析度的單色OLED來做示範)
 
 <!--more-->
 
-# 認識零件
+## 認識零件
 
 要了解一個零件，最直接且不會出錯的方式就是找Data Sheet來看，所以我們要來簡單的看一下SSD1306的Data Sheet。
 
@@ -44,7 +44,7 @@ draft: false
 
 ![▲ 取自Data Sheet P.20](https://bucket.ziteh.dev/blog/fenctrl-2/119d4b5c.webp)
 
-# 運作方式
+## 運作方式
 
 其實SSD1306的運作方式和點矩陣基本上一樣，可以把它想成一個128\*64的單色點矩陣，只要分別控制這128\*64個點要給'1'還是'0'，就可以控制它顯示的圖樣。
 
@@ -58,7 +58,7 @@ SSD1306的圖形顯示資料記憶體(GDDRAM)由上而下可以分為第0頁~第
 
 ![▲ 取自 Data Sheet P.29](https://bucket.ziteh.dev/blog/fenctrl-2/a717d29f.webp)
 
-# 指令功能
+## 指令功能
 
 這個部分就像許多的微控制器(MCU)一樣，可以傳送指令給SSD1306，它就會依據不同的指令，變換不同等功能，下面就介紹一些比較重要的指令。
 
@@ -80,13 +80,13 @@ SSD1306的圖形顯示資料記憶體(GDDRAM)由上而下可以分為第0頁~第
 
 ![▲ 取自Data Sheet-Application Note P.5](https://bucket.ziteh.dev/blog/fenctrl-2/8c4427b2.webp)
 
-# 參考資料
+## 參考資料
 
  * [OLED-SSD1306 Data Sheet](https://www.google.com.tw/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwiRquzen9vXAhXGkZQKHacKC8YQFgglMAA&url=https%3A%2F%2Fcdn-shop.adafruit.com%2Fdatasheets%2FSSD1306.pdf&usg=AOvVaw295piYr-tzt5CnBsNVzI7X)
 
 - [I2C: Inter-Integrated Circuit - 成大資工Wiki](http://wiki.csie.ncku.edu.tw/embedded/I2C)
 
-# 相關文章
+## 相關文章
 
 - [\[專案:電腦風扇控制器-1\] 構想與零件選用](/posts/fenctrl-1/)
 - [\[專案:電腦風扇控制器-2\] OLED-SSD1306零件簡單介紹](/posts/fenctrl-2/)(本篇)

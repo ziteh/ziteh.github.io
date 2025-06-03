@@ -1,21 +1,21 @@
 ---
 title: "[Day-15]Zig：while 迴圈"
-# subtitle: ""
-# description: ""
+## subtitle: ""
+## description: ""
 tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
 date: 2024-09-07T07:50:00
-# updated: 2024-MM-DDTHH:MM:00
+## updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
-# RESERVE
+## RESERVE
 ---
 
 `while` 是一種條件迴圈，只要條件符合，就會一直執行。
 
 <!-- more -->
 
-# 基本
+## 基本
 
 Zig 的 `while` 語法和多數語言相同，和 `if` 一樣，普通的條件式需為明確的 `bool` 型別（`true` 或 `false`），不支援其它數值隱式轉換。也就是說，無窮迴圈是 `while (true) {}`。
 
@@ -37,7 +37,7 @@ pub fn main() void {
 End
 ```
 
-# continue expression
+## continue expression
 
 Zig 有個特別的 continue expression，會在每次 `while` 迴圈**繼續**進行後執行，語法為 `while () : (CE) {}`，其中 `CE` 就是 continue expression。請比較這裡和上一個「基本」的輸出差異。
 
@@ -58,7 +58,7 @@ pub fn main() void {
 End
 ```
 
-# 可選值
+## 可選值
 
 和 `if` 一樣，條件式內也可以是 Optional，並搭配 Capture 使用。
 
@@ -91,7 +91,7 @@ End
 End
 ```
 
-# break
+## break
 
 `break` 會直接跳出迴圈。
 
@@ -116,7 +116,7 @@ pub fn main() void {
 End
 ```
 
-# continue
+## continue
 
 `continue` 會跳過迴圈內的剩餘部分，直接開始下一次。
 
@@ -141,7 +141,7 @@ pub fn main() void {
 End
 ```
 
-# 參考
+## 參考
 
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#while)
 - [While loops | zig.guide](https://zig.guide/language-basics/while-loops)

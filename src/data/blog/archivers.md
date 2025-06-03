@@ -7,7 +7,7 @@ toc: true
 draft: false
 # aliases : ["/2017/08/archivers/"]
 ---
-# 實驗方式
+## 實驗方式
 
 這次要壓縮測試的資料夾。大小為1.20 GB，60個檔案和3個資料夾。檔案多為JPEG、PNG圖片檔、PDF文件檔和2個MP4影片。
 
@@ -15,11 +15,11 @@ draft: false
 
 ![測試資料夾內容](https://bucket.ziteh.dev/blog/archivers/9606656a.webp)
 
-# 實驗記錄
+## 實驗記錄
 
 <iframe height="590" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSsy0IRcL_wlJlaEo8RqUZp4TW_t7JFjkl998WEFVuQUk6qkehddKAwXKUdMfbm4TrtXyE66_nWGje7/pubhtml?widget=true&amp;headers=false" width="820"></iframe>
 
-# 結論
+## 結論
 
 1. 壓縮格式比較
    1. 可以發現壓縮能力最好的是組別6。而值得注意的是其封裝大小只比壓縮能力第二好的組別19小約1.24 MB；而組別6的壓縮後大小也只比組別19的小約1.25 MB，**但組別6需要用到的記憶體(RAM)大小為12.6 GB**，比組別19的3 GB還大了4倍多。而12.6 GB大小的記憶體使用量對於目前多數人的電腦來說負擔還是很大。
@@ -37,7 +37,7 @@ draft: false
     1. CPU線程數的多寡直接影響到處理的時間和需要的記憶體。
     2. 值得注意的是CPU線程數量也會影響壓縮能力，**線程數少壓縮能力會比較好**。這部分還可以更進一步的實驗觀察。
 
-# 說明
+## 說明
 
 1. **此實驗為簡單的測試，不能當作唯一的參考**，並且未來可以加入更多變數進行測試。
 2. 7z和RAR都可以建立自解壓縮檔。

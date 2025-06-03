@@ -1,21 +1,21 @@
 ---
 title: "[Day-23]Zig：Hash Maps 鍵值對"
-# subtitle: ""
-# description: ""
+## subtitle: ""
+## description: ""
 tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
 date: 2024-09-15T08:44:00
-# updated: 2024-MM-DDTHH:MM:00
+## updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
-# RESERVE
+## RESERVE
 ---
 
 Hash Map 是一種 key-value pair（鍵值對），類似於 Rust 的 `HashMap<K, V>` 或 Python 的 `dict`。
 
 <!-- more -->
 
-# 基礎
+## 基礎
 
 Hash Map 由 std 標準庫提供，一般來說可以使用 `std.AutoHashMap(K, V)` 來宣告，其中 `K` 是 Key 的型別，`V` 是 Value 的型別。由於涉及動態分配，所以也需要使用 allocator，並且搭配 `defer` 和 `deinit()` 來釋放資源。
 
@@ -49,7 +49,7 @@ pub fn main() !void {
 One
 ```
 
-# 預設
+## 預設
 
 `hash_map.get()` 回傳的型別是 Optional `?`，所以也可以搭配 `orelse` 來簡化 Key 不存在的處理。
 
@@ -79,7 +79,7 @@ pub fn main() !void {
 Default
 ```
 
-# String
+## String
 
 如果你想要使用 String 作為 Key，可以直接使用 `std.StringHashMap(V)`。
 
@@ -111,7 +111,7 @@ pub fn main() !void {
 1
 ```
 
-# 參考
+## 參考
 
 - [Hash Maps | zig.guide](https://zig.guide/standard-library/hashmaps)
 - [Zig hashmaps explained | Hexops' devlog](https://devlog.hexops.com/2022/zig-hashmaps-explained/)

@@ -1,14 +1,14 @@
 ---
 title: "[Day-20]Zig：defer"
-# subtitle: ""
-# description: ""
+## subtitle: ""
+## description: ""
 tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
 date: 2024-09-12T06:38:00
-# updated: 2024-MM-DDTHH:MM:00
+## updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
-# RESERVE
+## RESERVE
 ---
 
 `defer` 對於 C 和 Rust 的使用者是個比較陌生的語法，它是用來在離開目前的作用域（Scope）時自動執行表達式（expression）。
@@ -17,7 +17,7 @@ toc: true
 
 它通常用來處理資源釋放。只要在分配資源程式下增加一個 `defer`，就可以確保程式離開 Scope 後會呼叫 `defer` 並釋放資源。
 
-# 基礎
+## 基礎
 
 語法為 `defer expression`。在離開該 `defer` 所在的 Scope （例如 `{}` 或函式）時會自動執行所接的 expression。
 
@@ -39,7 +39,7 @@ X: 10
 X: 11
 ```
 
-# 順序
+## 順序
 
 如果有多個 `defer`，會以相反的順序執行。
 
@@ -64,7 +64,7 @@ X: 10
 X: 21
 ```
 
-# 區塊
+## 區塊
 
 如果要執行的表達式有多行，也可以使用 `{ }` 包圍它們。請注意此處的輸出結果和執行順序！
 
@@ -89,7 +89,7 @@ X: 10
 X: 22
 ```
 
-# 函式
+## 函式
 
 函式也算是 Scope，離開函式時也會觸發 `defer`。
 
@@ -114,7 +114,7 @@ X: 10
 X: 11
 ```
 
-# 參考
+## 參考
 
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#defer)
 - [Defer | zig.guide](https://zig.guide/language-basics/defer)
