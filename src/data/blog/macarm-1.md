@@ -79,7 +79,7 @@ draft: false
 ## 成品展示
 
 <div style="text-align: center;">
-<iframe allow="autoplay; encrypted-media" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/wEU1gOaUeIQ" width="600"></iframe>
+<iframe allow="autoplay; encrypted-media" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/wEU1gOaUeIQ" width="100%"></iframe>
 </div>
 
 ## 後記

@@ -17,7 +17,7 @@ draft: false
 
 ## 實驗記錄
 
-<iframe height="590" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSsy0IRcL_wlJlaEo8RqUZp4TW_t7JFjkl998WEFVuQUk6qkehddKAwXKUdMfbm4TrtXyE66_nWGje7/pubhtml?widget=true&amp;headers=false" width="820"></iframe>
+<iframe height="590" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSsy0IRcL_wlJlaEo8RqUZp4TW_t7JFjkl998WEFVuQUk6qkehddKAwXKUdMfbm4TrtXyE66_nWGje7/pubhtml?widget=true&amp;headers=false" width="100%"></iframe>
 
 ## 結論
 

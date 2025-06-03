@@ -19,7 +19,7 @@ draft: false
 <!--more-->
 
 <div style="clear: both; text-align: center;">
-<iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/AqbKj3T-eaM" width="560"></iframe>
+<iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/AqbKj3T-eaM" width="100%"></iframe>
 </div>
 
 但是因為用厚紙板做肯定一下就壞了，所以我們改用木頭來做。這個東西雖然感覺很簡單，一下就可以完成了，但是因為我完全沒有做過木工，所以過程中還是遇到不少困難呀。

@@ -61,7 +61,7 @@ draft: false
 
 最後附上此作業我打的結果報告，裡面有很多我找到的真空管相關資料，有需要者可以參考看看。我將此PDF檔放在我的雲端上：[Google雲端硬碟](https://drive.google.com/file/d/1H40-AUMELtlNLMlD_a0G0DIxzHOKnHU3/view?usp=sharing)
 
-<iframe center="" height="900" src="https://drive.google.com/file/d/1H40-AUMELtlNLMlD_a0G0DIxzHOKnHU3/preview" text-align:="" width="780"></iframe>
+<iframe center="" height="900" src="https://drive.google.com/file/d/1H40-AUMELtlNLMlD_a0G0DIxzHOKnHU3/preview" text-align:="" width="100%"></iframe>
 
 ## 相關文章
 
