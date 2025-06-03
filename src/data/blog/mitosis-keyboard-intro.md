@@ -357,7 +357,7 @@ int main(void)
 
 #### rules.mk
 
-```mk
+```makefile
 ## MCU name
 MCU = atmega32u4
 

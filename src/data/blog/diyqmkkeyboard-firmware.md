@@ -902,7 +902,7 @@ Pro Micro 一般會分 16MHz/5V 和 8MHz/3.3V 這兩種版本，若你使用的�
 
 請在 `rules.mk` 中加入：
 
-```mk
+```makefile
 ## Processor frequency
 F_CPU = 8000000
 ```

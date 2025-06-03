@@ -49,14 +49,14 @@ QMK 對於藍牙功能的相關資料在這裡：[QMK: Bluetooth](https://docs.q
 
 要啓用藍牙功能的話首先要在 `rules.mk` 中加入這兩行：
 
-```mk
+```makefile
 BLUETOOTH_ENABLE = yes
 BLUETOOTH_DRIVER = AdafruitBLE # or RN42
 ```
 
 不過 QMK 的文件有提到「The currently supported Bluetooth chipsets do not support N-Key Rollover (NKRO)」，所以要關閉防鬼鍵（NKRO）的功能：
 
-```mk
+```makefile
 NKRO_ENABLE = no
 ```
 

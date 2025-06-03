@@ -145,7 +145,7 @@ draft: false
 
 Vial 不使用 [QMK 的 repo](https://github.com/qmk/qmk_firmware)，他們有自己的 [Vial QMK repo](https://github.com/vial-kb/vial-qmk)，請 git clone 此 repo。不要把它 clone 到 `qmk_firmware` 資料夾內，請為它指定另一個獨立的路徑。
 
-```git
+```bash
 git clone https://github.com/vial-kb/vial-qmk
 ```
 
@@ -188,7 +188,7 @@ make vial_example/vial_atmega32u4:default
 
 在 `keymaps/vial` 內新增一個 `rules.mk`，並增加以下內容：
 
-```mk
+```makefile
 VIA_ENABLE = yes
 VIAL_ENABLE = yes
 ```

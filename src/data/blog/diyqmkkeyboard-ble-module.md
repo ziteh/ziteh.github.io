@@ -70,13 +70,13 @@ Adafruit 有提供他們所使用的燒錄工具：[Adafruit nRF51822 Flasher](h
 
 將燒錄工具 Git clone 下來。注意，因為這個 repo 含有 submodule，所以記得加上 `--recursive`：
 
-```git
+```bash
 git clone --recursive git@github.com:adafruit/Adafruit_nRF51822_Flasher.git
 ```
 
 如果你在上一個步驟忘記加上 `--recursive`，或 `Adafruit_BluefruitLE_Firmware` 資料夾是空的，那需要再執行這這指令：
 
-```git
+```bash
 git submodule update --init --recursive
 ```
 

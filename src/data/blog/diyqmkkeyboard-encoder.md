@@ -32,7 +32,7 @@ draft: false
 
 首先要在 `rules.mk` 檔案中啓用編碼器。在該檔案中加入以下之程式碼:
 
-```mk
+```makefile
 ENCODER_ENABLE = yes  # 致能編碼器
 ```
 

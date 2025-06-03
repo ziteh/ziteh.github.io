@@ -144,7 +144,7 @@ QMK 可以設定的按鍵請看說明文件：[Keycodes Overview](https://docs.q
 
 我的**原始** `rules.mk` 長這樣（省略部分註解）：
 
-```mk
+```makefile
 ## MCU name
 MCU = atmega32u4
 
@@ -195,7 +195,7 @@ QMK 支援的晶片型號可以參考 [Compatible Microcontrollers](https://docs
 
 然後要選擇 Bootloader 種類，這個部分原本的 `rules.mk` 裡面沒有，要自己加入。你可以把它加在`F_CPU = ?` 的下面（位置其實沒什麼差別）。要加入的內容為：
 
-```mk
+```makefile
 ## Bootloader selection
 ##   Pro Micro    caterina
 ##   RP2040       rp2040
@@ -227,7 +227,7 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
 
 `rules.mk` 底下還有一段 Build Options：
 
-```mk
+```makefile
 ## Build Options
 ##   comment out to disable the options.
 ##
@@ -253,7 +253,7 @@ RGBLIGHT_ENABLE ?= no
 
 **修改完**的 `rules.mk` 長這樣（省略部分註解）：
 
-```mk
+```makefile
 ## 【Pro Micro (ATmega32U4) 範例 rules.mk】
 ## MCU name
 MCU = atmega32u4
@@ -292,7 +292,7 @@ RGBLIGHT_ENABLE ?= no
 #LTO_ENABLE = yes       # Link time optimization, enable to reduce the compiled size of firmware.
 ```
 
-```mk
+```makefile
 ## 【RP2040 範例 rules.mk】
 ## MCU name
 MCU = RP2040

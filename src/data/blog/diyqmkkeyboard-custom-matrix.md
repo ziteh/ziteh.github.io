@@ -32,7 +32,7 @@ draft: false
 
 然後，因為我們還會需要使用 UART 功能，所以在 `rules.mk` 中還要增加 `SRC += uart.c` 。因此，`rules.mk` 大概會長這樣：
 
-```mk
+```makefile
 ## MCU name
 MCU = atmega32u4
 
