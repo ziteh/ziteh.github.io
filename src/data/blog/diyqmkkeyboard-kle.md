@@ -30,12 +30,12 @@ draft: false
 - 左上角有藍色和紅色的按鈕，可以用來增加或刪除按鍵。旁邊還有一些編輯用的操作按鈕（回上一步、回下一步、剪下、複製、貼上）。
 - 中間是編輯區，可以看到它現在有一個數字鍵盤。
 - 下方是各種標籤頁
-    - **Properties**：編輯各個按鍵的屬性，選取按鍵後可以編輯該按鍵的各種設定與數值。
-    - **Keyboard Properties**：鍵盤屬性設定。
-    - **Custom Styles**：鍵盤外觀樣式設定。
-    - **Raw data**：鍵盤 Layout 的原始資料。
-    - **Summary**：鍵盤概要。
-    - **Tools**：一些編輯按鍵可以用的功能工具。
+  - **Properties**：編輯各個按鍵的屬性，選取按鍵後可以編輯該按鍵的各種設定與數值。
+  - **Keyboard Properties**：鍵盤屬性設定。
+  - **Custom Styles**：鍵盤外觀樣式設定。
+  - **Raw data**：鍵盤 Layout 的原始資料。
+  - **Summary**：鍵盤概要。
+  - **Tools**：一些編輯按鍵可以用的功能工具。
 
 ![▲ KLE 頁面](https://bucket.ziteh.dev/blog/diyqmkkeyboard-kle/d77d985c.webp)
 

@@ -124,6 +124,6 @@ void encoder_update_user(uint8_t index, bool clockwise) {
 
 - [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - QMK 相關
-    - [QMK 官方網站](https://qmk.fm/)
-    - [QMK 官方說明文件](https://docs.qmk.fm/#/)
-    - [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)
+  - [QMK 官方網站](https://qmk.fm/)
+  - [QMK 官方說明文件](https://docs.qmk.fm/#/)
+  - [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)

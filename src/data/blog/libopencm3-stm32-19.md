@@ -40,11 +40,11 @@ ADC 有兩個 Clock：
 在 STM32 中，ADC 通道可分為 Regular（常規）和 Injected（注入）兩組。組，或著說序列（Sequence）是由一到數個 ADC 通道以任一順序組成。
 
 - Regular group
-    - 由最多 16 個通道組成。
-    - 僅有一個 16 位元的資料暫存器（ADC_DR：ADC regular data register）。
+  - 由最多 16 個通道組成。
+  - 僅有一個 16 位元的資料暫存器（ADC_DR：ADC regular data register）。
 - Injected group
-    - 由最多 4 個通道組成。
-    - 有 4 個 16 位元的資料暫存器（ADC_JDR*x*：ADC injected data register *x*, *x*=1\~4）。
+  - 由最多 4 個通道組成。
+  - 有 4 個 16 位元的資料暫存器（ADC_JDR*x*：ADC injected data register *x*, *x*=1\~4）。
 
 Regular 與 Injected 的主要差異除了上面列的外，還有就是 Injected 有著類似中斷（Interrupt）的功能。一般狀態下，使用者可以將平常要量測的類比訊號源設為「 Regular 常規組」，當特殊事件發生時，「Injected 注入組」可以中斷 Regular 的轉換，優先進行 A/D 轉換，完成後再回去進行 Regular 組的轉換。
 

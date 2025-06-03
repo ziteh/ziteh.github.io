@@ -55,16 +55,16 @@ Adafruit 有提供他們所使用的燒錄工具：[Adafruit nRF51822 Flasher](h
 要使用這個工具，需要：
 
 - 下列的其中一個 SWD 燒錄器，並安裝好它們的驅動程式
-    - Segger J-Link（本文以 J-Link 為例）
-    - STLink/V2
-    - Raspberry Pi
+  - Segger J-Link（本文以 J-Link 為例）
+  - STLink/V2
+  - Raspberry Pi
 - 安裝好 [Python](https://www.python.org/)
 - 安裝好 [Adafruit Adalink](https://github.com/adafruit/Adafruit_Adalink)
-    - `git clone https://github.com/adafruit/Adafruit_Adalink.git`
-    - `python setup.py develop` （Windows）；`sudo python setup.py develop`（Linux and MacOS）
+  - `git clone https://github.com/adafruit/Adafruit_Adalink.git`
+  - `python setup.py develop` （Windows）；`sudo python setup.py develop`（Linux and MacOS）
 - 安裝好 Python library [Click](https://click.palletsprojects.com/en/4.x/)
-    - 安裝好 Python Pip
-    - `sudo pip install click`
+  - 安裝好 Python Pip
+  - `sudo pip install click`
 
 ### 下載
 

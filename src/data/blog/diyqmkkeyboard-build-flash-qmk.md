@@ -144,14 +144,14 @@ RP2040 可以透過以下任一種方式燒錄韌體：
 
 - [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - 參考資料
-    - [\[2020\] 新版 QMK 教學](https://ergotaiwan.tw/install-qmk-tutorials-2020/)
-    - [SparkFun Pro Micro: Reset to Bootloader](https://learn.sparkfun.com/tutorials/pro-micro--fio-v3-hookup-guide/troubleshooting-and-faq#ts-reset)
-    - [Trouble flashing QMK - No device present](https://www.keebtalk.com/t/trouble-flashing-qmk-no-device-present/5871/21)
-    - [Installing an Arduino Bootloader](https://learn.sparkfun.com/tutorials/installing-an-arduino-bootloader)
-    - [Replace Pro Micro bootloader with QMK DFU](https://www.reddit.com/r/olkb/comments/8sxgzb/replace_pro_micro_bootloader_with_qmk_dfu/)
+  - [\[2020\] 新版 QMK 教學](https://ergotaiwan.tw/install-qmk-tutorials-2020/)
+  - [SparkFun Pro Micro: Reset to Bootloader](https://learn.sparkfun.com/tutorials/pro-micro--fio-v3-hookup-guide/troubleshooting-and-faq#ts-reset)
+  - [Trouble flashing QMK - No device present](https://www.keebtalk.com/t/trouble-flashing-qmk-no-device-present/5871/21)
+  - [Installing an Arduino Bootloader](https://learn.sparkfun.com/tutorials/installing-an-arduino-bootloader)
+  - [Replace Pro Micro bootloader with QMK DFU](https://www.reddit.com/r/olkb/comments/8sxgzb/replace_pro_micro_bootloader_with_qmk_dfu/)
 - QMK相關
-    - [QMK 官方網站](https://qmk.fm/)
-    - [QMK 官方文件](https://docs.qmk.fm/#/)
-    - [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)
+  - [QMK 官方網站](https://qmk.fm/)
+  - [QMK 官方文件](https://docs.qmk.fm/#/)
+  - [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)
 
 > 本文最早發佈於 2020-06-21，於 2023 重新編排並更新內容。

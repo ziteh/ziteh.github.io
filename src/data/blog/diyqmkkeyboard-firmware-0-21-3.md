@@ -119,8 +119,8 @@ And build with qmk compile -kb mytestkb -km default.
 這時你會看到 `mytestkb` 下有這些檔案：
 
 - `keymaps\`
-    - `default\`
-        - `keymap.c`
+  - `default\`
+    - `keymap.c`
 - `info.json`
 - `config.h`
 - `rules.mk`
@@ -493,8 +493,8 @@ LTO_ENABLE = yes
 - [Qwiic Pro Micro USB-C (ATmega32U4) Hookup Guide - SparkFun Learn](https://learn.sparkfun.com/tutorials/qwiic-pro-micro-usb-c-atmega32u4-hookup-guide/all)
 - [本篇的舊版（0.18.3）內容](/posts/diyqmkkeyboard-firmware-0-18/)
 - QMK相關
-    - [QMK 官方網站](https://qmk.fm/)
-    - [QMK 官方文件](https://docs.qmk.fm/#/)
-    - [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)
+  - [QMK 官方網站](https://qmk.fm/)
+  - [QMK 官方文件](https://docs.qmk.fm/#/)
+  - [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)
 
 > 本文最早發佈於 2020-06-21，於 2023-04-21 重新編排並更新內容，再於 2023-07-02 更新為 QMK 0.21.3 版。

@@ -13,14 +13,14 @@ toc: true
 對我來說，RMK 相較於 QMK 和 ZMK 它有許多優點：
 
 - 對比 QMK：
-    - 原生支援藍牙 BLE 和 nRF 系列 MCU，包含無線分離式鍵盤
-    - License 是寬鬆的 Apache 2.0 和 MIT，而非具感染性的 GPL
-    - ~~Rust 比較酷！~~
+  - 原生支援藍牙 BLE 和 nRF 系列 MCU，包含無線分離式鍵盤
+  - License 是寬鬆的 Apache 2.0 和 MIT，而非具感染性的 GPL
+  - ~~Rust 比較酷！~~
 - 對比 ZMK：
-    - 支援 [Vial](https://get.vial.today/) 即時 Keymap 修改
-    - Rust 的本地開發環境比 Zephyr 更容易建立（至少對於不熟悉 Zephyr 的我來說）
-    - Kconfig + Devicetree 有一定的複雜度
-    - ~~Rust 比較酷！！~~
+  - 支援 [Vial](https://get.vial.today/) 即時 Keymap 修改
+  - Rust 的本地開發環境比 Zephyr 更容易建立（至少對於不熟悉 Zephyr 的我來說）
+  - Kconfig + Devicetree 有一定的複雜度
+  - ~~Rust 比較酷！！~~
 
 Rust 的特色網路上已經有很多文章在討論了，這裡就不在贅述，但 Embassy 又是什麼？Embassy 是一個嵌入式應用框架，它主要負責提供非同步程式功能 `async/await` 和硬體抽象層（HAL），*有點類似*傳統韌體開發的 RTOS（Real-time operating system）。
 
@@ -493,12 +493,12 @@ nRF MCU 要使用藍牙功能的話會需要 [SoftDevice](https://docs.nordicsem
 我有建立一個 RMK 範例專案在 GitHub，Release 頁面也有提供編譯好的燒錄檔，可以參考看看：[siderakb/rmk-example](https://github.com/siderakb/rmk-example)
 
 - [RMK 官方文件](https://haobogu.github.io/rmk/index.html)
-    - [常見問題 FAQs](https://haobogu.github.io/rmk/faq.html)
+  - [常見問題 FAQs](https://haobogu.github.io/rmk/faq.html)
 - [Embassy](https://embassy.dev/)
 - [Rust 程式設計語言](https://www.rust-lang.org/zh-TW/)
 - [Vial 即時 Keymap 編輯器](https://get.vial.today/)
 - Nordic nRF
-    - [SoftDevices](https://docs.nordicsemi.com/bundle/ug_gsg_ses/page/UG/gsg/softdevices.html)
-    - [nRF Connect for Desktop](https://www.nordicsemi.com/Products/Development-tools/nRF-Connect-for-Desktop)
+  - [SoftDevices](https://docs.nordicsemi.com/bundle/ug_gsg_ses/page/UG/gsg/softdevices.html)
+  - [nRF Connect for Desktop](https://www.nordicsemi.com/Products/Development-tools/nRF-Connect-for-Desktop)
 - [rust-embedded/cortex-m-quickstart: Template to develop bare metal applications for Cortex-M microcontrollers](https://github.com/rust-embedded/cortex-m-quickstart)
 - [Adafruit_nRF52_Bootloader](https://github.com/adafruit/Adafruit_nRF52_Bootloader)

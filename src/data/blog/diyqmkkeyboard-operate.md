@@ -61,10 +61,10 @@ draft: false
 在`keyboards`資料夾裡，每個鍵盤項目都會有類似以下的架構：
 
 - keymaps資料夾: 可以建構的不同的按鍵映射（Keymap）。
-    - keymap.c：按鍵映射的程式。必填。
-    - config.h: 此按鍵映射的設定。
-    - rules.mk: 啟用的QMK功能。
-    - readme.md: 此按鍵映射的說明。
+  - keymap.c：按鍵映射的程式。必填。
+  - config.h: 此按鍵映射的設定。
+  - rules.mk: 啟用的QMK功能。
+  - readme.md: 此按鍵映射的說明。
 - rules.mk: 設定預設的「make」設定。
 - config.h: 設定預設的編譯設定。
 - info.json: 給[QMK Configurator](https://config.qmk.fm/#/)用的鍵盤佈局（Layout）設定。更詳細的說明請看：[Supporting Your Keyboard in QMK Configurator](https://docs.qmk.fm/#/reference_configurator_support)。
@@ -282,9 +282,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 - [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - [【C/C++】define用法整理|macro巨集小技巧](http://catforcode.com/define-and-macro/)
 - QMK相關
-    - [QMK官方網站](https://qmk.fm/)
-    - [QMK官方說明文件](https://docs.qmk.fm/#/)
-        - [How Keys Are Registered, and Interpreted by Computers](https://docs.qmk.fm/#/how_keyboards_work)
-        - [Introduction](https://docs.qmk.fm/#/getting_started_introduction)
-        - [Understanding QMK’s Code](https://docs.qmk.fm/#/understanding_qmk?id=process-record)
-    - [QMK的GitHub](https://github.com/qmk/qmk_firmware)
+  - [QMK官方網站](https://qmk.fm/)
+  - [QMK官方說明文件](https://docs.qmk.fm/#/)
+    - [How Keys Are Registered, and Interpreted by Computers](https://docs.qmk.fm/#/how_keyboards_work)
+    - [Introduction](https://docs.qmk.fm/#/getting_started_introduction)
+    - [Understanding QMK’s Code](https://docs.qmk.fm/#/understanding_qmk?id=process-record)
+  - [QMK的GitHub](https://github.com/qmk/qmk_firmware)

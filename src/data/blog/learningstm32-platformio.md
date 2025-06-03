@@ -65,12 +65,12 @@ PlatformIO 支援許多平臺（Platforms），例如 Atmel AVR、Espressif 8266
 - **Name**：專案名稱。
 - **Board**：選擇你要使用的開發板。例如我使用的「ST Nucleo F103RB」。
 - **Framework**：框架。各種開發板都有各自可以使用的框架，例如 ST Nucleo F103RB 有以下幾種。
-    - **Arduino**：可以讓你使用 Arduino 的語法及函數開發 STM32，適合熟悉 Arduino 的 STM32 新手。
-    - **CMSIS**：Cortex-M 系列微控制器的標準通用界面，無關各個供應商。
-    - **Mbed**：一種基於 32-bit ARM Cortex-M 的微型作業系統。
-    - **libopencm3**：開源的 ARM Cortex-M 函式庫。
-    - **STM32Cube**：相信很多人剛入門 STM32 都是使用 STM32Cube，包括我之前使用 TrueSTUDIO 也是使用 STM32Cude。
-    - **Zephyr RTOS**：一個 Linux 基金會主導的開源小型即時作業系統（RTOS）， 常用於 IoT 應用。
+  - **Arduino**：可以讓你使用 Arduino 的語法及函數開發 STM32，適合熟悉 Arduino 的 STM32 新手。
+  - **CMSIS**：Cortex-M 系列微控制器的標準通用界面，無關各個供應商。
+  - **Mbed**：一種基於 32-bit ARM Cortex-M 的微型作業系統。
+  - **libopencm3**：開源的 ARM Cortex-M 函式庫。
+  - **STM32Cube**：相信很多人剛入門 STM32 都是使用 STM32Cube，包括我之前使用 TrueSTUDIO 也是使用 STM32Cude。
+  - **Zephyr RTOS**：一個 Linux 基金會主導的開源小型即時作業系統（RTOS）， 常用於 IoT 應用。
 - **Location**：專案的路徑。
 
 ![▲ 建立專案。](https://bucket.ziteh.dev/blog/learningstm32-platformio/671bb637.webp)
@@ -116,9 +116,9 @@ framework = stm32cube
 從「platformio.ini」的內容可以看出以下資訊：
 
 - `[env:nucleo_f103rb]`代表目前有一個名為「nucleo_f103rb」環境，且此環境擁有以下的設定：
-    - 平臺為「ST STM32」（`platform = ststm32`）。
-    - 開發板為「ST Nucleo F103RB」（`board = nucleo_f103rb`）。
-    - 框架為「STM32Cube」（`framework = stm32cube`）。
+  - 平臺為「ST STM32」（`platform = ststm32`）。
+  - 開發板為「ST Nucleo F103RB」（`board = nucleo_f103rb`）。
+  - 框架為「STM32Cube」（`framework = stm32cube`）。
 
 不難看出 PlatformIO 可以在一個專案中設定多種不同的環境，以配合不同的開發需求，這也是我認為 PlatformIO 好用的一大重點。
 
@@ -169,9 +169,9 @@ PlatformIO 的 GitHub 上也有一些範例程式可以看：[platformio/platfor
 撰寫本文時的相關資訊：
 
 - PlatformIO
-    - PlatformIO IDE，VS Code 擴充套件版本：`2.4.0`
-    - PlatformIO Core 版本：`5.2.3`
-    - PlatformIO Home 版本：`3.4.0`
-    - Platform-ST STM32 版本：`15.0.0`
+  - PlatformIO IDE，VS Code 擴充套件版本：`2.4.0`
+  - PlatformIO Core 版本：`5.2.3`
+  - PlatformIO Home 版本：`3.4.0`
+  - Platform-ST STM32 版本：`15.0.0`
 - VS Code 版本：`1.62.0`
 - 開發板：NUCLEO-F103RB（STM32F103RB）

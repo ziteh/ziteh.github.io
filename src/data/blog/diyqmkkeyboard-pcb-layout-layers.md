@@ -55,9 +55,9 @@ PCB 上大概會有幾種東西：
 - 走線（Track）：用來連接各個零件的導線。
 - 焊盤（Pad）：阻焊層沒有覆蓋、讓零件可以焊接到板子上的地方。
 - [孔（Hole）](https://www.researchmfg.com/2015/06/pth-npth-via/)
-    - 電鍍通孔（PTH，Plating through hole）：通常用於焊接 DIP 插板零件。因為孔壁有電鍍，可以導電，所以同時會連接上下兩層銅箔層。
-    - 非電鍍通孔（NPTH，Non plating through hole）：不能導電的鑽孔，通常用來鎖螺絲或插入零件的固定插銷等。
-    - Via：也算一種 PTH，只是通常會很小，不能插入零件接腳，只用來導通各個銅層。
+  - 電鍍通孔（PTH，Plating through hole）：通常用於焊接 DIP 插板零件。因為孔壁有電鍍，可以導電，所以同時會連接上下兩層銅箔層。
+  - 非電鍍通孔（NPTH，Non plating through hole）：不能導電的鑽孔，通常用來鎖螺絲或插入零件的固定插銷等。
+  - Via：也算一種 PTH，只是通常會很小，不能插入零件接腳，只用來導通各個銅層。
 - 鋪銅區（Filled zone）：大面積的銅箔區域，可以當作超粗的走線，也可以藉由其大表面積來幫助散熱，在一些情況下也有訊號屏蔽等功能。視情況而定，通常會連接 GND 走線網路。
 - 絲印（Silkscreen）：供焊接人員或使用者辨識的標識性圖樣或文字，通常用來指示各零件的擺位及其代號。例如綠色 PCB 上通常用白色的絲印。
 - [阻焊層（Solder mask）](https://www.researchmfg.com/2017/07/soldermask/)：俗稱「綠漆」，是一種絕緣塗料。PCB 上除了要焊接零件的焊盤與 PTH、要散熱的地方及要敷錫的地方外，都會覆蓋阻焊層，以避免短路，也更方便焊接。現在的阻焊層有各種顏色可以選，甚至有所謂的「透明阻焊層+黑色 FR4 基板」的設計，顏色基本上和性能無關。
@@ -103,15 +103,15 @@ PCB 設計參數是用來規範設計的。每一家 PCB 工廠的製作能力�
 在 KiCad 的專案頁面雙擊 `<Project_Name.kicad_pcb>` 以開啓 PCB 編輯器。點擊上方工具列「File > Board Setup > Design Rules > Constraints」，這裡可以調整基本的設計約束。就像上面說的一樣，每個工廠的製造能力都不同，所以請參考你預計使用的生產商所提供的資訊調整這裡的數值（[JLCPCB 製作能力](https://jlcpcb.com/capabilities/pcb-capabilities)、[PCBWay 製造能力](https://www.pcbway.com/capabilities.html)）。通常最重要的有：
 
 - Copper
-    - Minimum clearance: 最小間距
-    - Minimum track width: 最小線寬
-    - Minimum annular width: 最小焊盤環型寬度
-    - Minimum via diameter: 最小的 via 直徑（不是鑽孔）
-    - Copper to hole clearance: 銅箔到孔的間距
-    - Copper to edge clearance: 銅箔到邊緣的間距
+  - Minimum clearance: 最小間距
+  - Minimum track width: 最小線寬
+  - Minimum annular width: 最小焊盤環型寬度
+  - Minimum via diameter: 最小的 via 直徑（不是鑽孔）
+  - Copper to hole clearance: 銅箔到孔的間距
+  - Copper to edge clearance: 銅箔到邊緣的間距
 - Holes
-    - Minimum through hole: 最小鑽孔直徑
-    - Hole to hole clearance: 孔到孔距離
+  - Minimum through hole: 最小鑽孔直徑
+  - Hole to hole clearance: 孔到孔距離
 
 如果非必要，或你對 PCB 製作不是很熟悉的話，不太建議將這些數值設定與工廠提供的極限一樣，而是稍微寬容一點，畢竟生產還是有可能出現做壞的。如果你不是很確定要怎麼設定這些值的話，可以參考下圖，這是我用 JLCPCB 時的設定，這邊的參數比較保守、沒有設到極限。
 
@@ -357,19 +357,19 @@ PCB 全部完成後就可以輸出工廠生產用的 Gerber 檔了。
 - [PCBWay Plug-In for KiCad](https://www.pcbway.com/blog/News/PCBWay_Plug_In_for_KiCad_3ea6219c.html)
 - [KiCad 官方文件](https://docs.kicad.org/7.0/zh/getting_started_in_kicad/getting_started_in_kicad.html)
 - QMK相關
-    - [QMK 官方網站](https://qmk.fm/)
-    - [QMK 官方文件](https://docs.qmk.fm/#/)
-    - [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)
+  - [QMK 官方網站](https://qmk.fm/)
+  - [QMK 官方文件](https://docs.qmk.fm/#/)
+  - [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)
 
 參考資料：
 
 - [電子製造，工作狂人(ResearchMFG)](https://www.researchmfg.com/)
 - JLCPCB
-    - [PCB Manufacturing & Assembly Capabilities - JLCPCB](https://jlcpcb.com/capabilities/pcb-capabilities)
-    - [How to generate Gerber and Drill files in KiCad 6 - JLCPCB Help Center](https://jlcpcb.com/help/article/16-How-to-generate-Gerber-and-Drill-files-in-KiCad-6)
+  - [PCB Manufacturing & Assembly Capabilities - JLCPCB](https://jlcpcb.com/capabilities/pcb-capabilities)
+  - [How to generate Gerber and Drill files in KiCad 6 - JLCPCB Help Center](https://jlcpcb.com/help/article/16-How-to-generate-Gerber-and-Drill-files-in-KiCad-6)
 - PCBWay
-    - [PCB Capabilities - Custom PCB Prototype the Easy Way - PCBWay](https://www.pcbway.com/capabilities.html)
-    - [Generate Gerber file from Kicad 5.1.6 - Help Center - PCBway](https://www.pcbway.com/blog/help_center/Generate_Gerber_file_from_Kicad_5_1_6.html)
+  - [PCB Capabilities - Custom PCB Prototype the Easy Way - PCBWay](https://www.pcbway.com/capabilities.html)
+  - [Generate Gerber file from Kicad 5.1.6 - Help Center - PCBway](https://www.pcbway.com/blog/help_center/Generate_Gerber_file_from_Kicad_5_1_6.html)
 
 ---
 

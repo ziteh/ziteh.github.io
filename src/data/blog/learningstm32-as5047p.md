@@ -31,8 +31,8 @@ draft: false
 AS5047P 透過 SPI 進行通訊。其對 SPI 的要求為：
 
 - Mode = 1（CPOL = 0，CPHA = 1）
-    - 空閒時，SCK 時鐘訊號為低電平（0）。
-    - 資料在第二個邊緣取樣（即負緣）。
+  - 空閒時，SCK 時鐘訊號為低電平（0）。
+  - 資料在第二個邊緣取樣（即負緣）。
 - CSn （Chip select）為低電平有效。
 - 資料長度為 16 個位元。其中 MSB 為偶同位（Even parity）位元。
 - 位元順序為 MSB 在前（MSB first）。

@@ -39,9 +39,9 @@ draft: false
 > - GPIO（General-purpose input/output）：通用功能輸入輸出。簡單來說就是 MCU 的 IO 腳、Pin 腳。
 > - Flash（Flash memory）：快閃記憶體。簡單來說就是 MCU 上儲存韌體程式的地方，類似電腦裡的硬碟。
 > - Bootloader & DFU（Device firmeare update）
->     - Bootloader 是在 MCU 上引導開機的引導程序（對，MCU 和電腦一樣也有開機流程）。
->     - DFU mode 是指 MCU 的一種更新韌體程式的模式，在此模式下更新韌體往往不需要專用的燒錄器，只需要原本就有的通訊埠（如 USB）就可以了。
->     - 雖然 Bootloader 和 DFU 本質上不太相同，但很多時候會把它們混著講，而實際上通常是指 DFU。
+>   - Bootloader 是在 MCU 上引導開機的引導程序（對，MCU 和電腦一樣也有開機流程）。
+>   - DFU mode 是指 MCU 的一種更新韌體程式的模式，在此模式下更新韌體往往不需要專用的燒錄器，只需要原本就有的通訊埠（如 USB）就可以了。
+>   - 雖然 Bootloader 和 DFU 本質上不太相同，但很多時候會把它們混著講，而實際上通常是指 DFU。
 > - PCBA（PCB Assembly）：PCB 組裝。簡單來說就是請工廠除了要生產 PCB 外，還要用打件機幫你把零件放上去，再用回流焊或波峰焊等設備幫你焊接，等你收到時就不用再自己焊接零件了。
 
 ## 快速比較
@@ -88,21 +88,21 @@ draft: false
 樹莓派 Raspberry Pi 所推出的 32-bit ARM MCU，硬體規格非常強大，卻超級便宜。**我最推薦**的 MCU。我自己的 [ErgoSNM](https://github.com/siderakb/ergo-snm-keyboard) v2.1 也是使用 RP2040。
 
 - 優點：
-    - QMK 的新寵兒。雖然還比不上 ATmega32U4 的時間累積，但是有越來越多鍵盤將 MCU 換成 RP2040。要找參考資料和問問題也滿方便了。
-    - QMK 使用內建的 Bootloader，不用準備燒錄器。
-    - 開發板容易購買，不管是官方的 Raspberry Pi Pico 或其它廠商自己出的開發板都很不錯，且各有特色。
-    - GPIO 腳位很靈活，如果你要加額外的零件，並會用到 SPI 或 I2C 的話，這點會很方便。
-    - 硬體規格強大，用來做鍵盤綽綽有餘。
-    - 價格便宜。
-    - 電路圖 Schematic 可以參考 Raspberry Pi 官方的參考資料。
+  - QMK 的新寵兒。雖然還比不上 ATmega32U4 的時間累積，但是有越來越多鍵盤將 MCU 換成 RP2040。要找參考資料和問問題也滿方便了。
+  - QMK 使用內建的 Bootloader，不用準備燒錄器。
+  - 開發板容易購買，不管是官方的 Raspberry Pi Pico 或其它廠商自己出的開發板都很不錯，且各有特色。
+  - GPIO 腳位很靈活，如果你要加額外的零件，並會用到 SPI 或 I2C 的話，這點會很方便。
+  - 硬體規格強大，用來做鍵盤綽綽有餘。
+  - 價格便宜。
+  - 電路圖 Schematic 可以參考 Raspberry Pi 官方的參考資料。
 - 缺點：
-    - 僅有 QFN 封裝，手工焊接需要一定的技術。
-    - 要外接 Flash IC，會佔用 PCB 空間與增加 Layout 難度。
-    - 週邊電路的電容數量比較多且擠，Layout 難度較高。
+  - 僅有 QFN 封裝，手工焊接需要一定的技術。
+  - 要外接 Flash IC，會佔用 PCB 空間與增加 Layout 難度。
+  - 週邊電路的電容數量比較多且擠，Layout 難度較高。
 - 要注意的事：
-    - QMK 針對 RP2040 有個專屬頁面：[Raspberry Pi RP2040](https://docs.qmk.fm/#/platformdev_rp2040)
-    - 如果你真的很想用 RP2040 但也真的無法焊接 QFN 的話，可以試著去瞭解 PCBA 服務，現在要使用不會很難也不會很貴。不然最簡單的方法就是買現成的開發板。
-    - RP2040 的 GPIO **全部都沒有** 5V 承受能力，請僅使用 3.3V。
+  - QMK 針對 RP2040 有個專屬頁面：[Raspberry Pi RP2040](https://docs.qmk.fm/#/platformdev_rp2040)
+  - 如果你真的很想用 RP2040 但也真的無法焊接 QFN 的話，可以試著去瞭解 PCBA 服務，現在要使用不會很難也不會很貴。不然最簡單的方法就是買現成的開發板。
+  - RP2040 的 GPIO **全部都沒有** 5V 承受能力，請僅使用 3.3V。
 
 我自己畫的 RP2040 開發板：[RP Micro](https://github.com/siderakb/rp-micro)
 
@@ -115,23 +115,23 @@ draft: false
 熟悉 Arduino 的人應該對「ATmega」這個名字很熟悉，ATmega32U4 是 Microchip（原本是 Atmel，已被前者併購）公司的一款 8-bit AVR MCU。與 RP2040 同為我推薦新手的其中一種 MCU。
 
 - 優點：
-    - QMK 中最常見的 MCU，不管是想找範例或問問題都比較方便。
-    - QMK 的藍牙功能原則上只支援 AVR。
-    - 開發板容易購買，最常見的就是 Pro Micro。
-    - 週邊電路簡單，PCB Layout 方便，佔用空間也少。
-    - 有 QFP 封裝，適合手工焊接。
-    - 可以使用 5V 或 3.3V。
-    - 電路圖 Schematic 可以參考 Pro Micro。
+  - QMK 中最常見的 MCU，不管是想找範例或問問題都比較方便。
+  - QMK 的藍牙功能原則上只支援 AVR。
+  - 開發板容易購買，最常見的就是 Pro Micro。
+  - 週邊電路簡單，PCB Layout 方便，佔用空間也少。
+  - 有 QFP 封裝，適合手工焊接。
+  - 可以使用 5V 或 3.3V。
+  - 電路圖 Schematic 可以參考 Pro Micro。
 - 缺點：
-    - 32 KB 的 Flash 真的很小，如果鍵盤想要比較多或複雜的功能的話，空間可能會不夠。
-    - 貴，從上面的比較表應該不難看出 ATmega32U4 的規格是最弱最舊的，但是它卻一點也不便宜。
-    - GPIO 數量不多，如果沒有要加其它零件的話，25 腳應該還夠，但如果要加其它零件的話可能就會不夠用。
-    - 如果是單買 IC 本身，出廠大概不會幫你燒 Bootloader，你可能要另外用燒錄器燒。
+  - 32 KB 的 Flash 真的很小，如果鍵盤想要比較多或複雜的功能的話，空間可能會不夠。
+  - 貴，從上面的比較表應該不難看出 ATmega32U4 的規格是最弱最舊的，但是它卻一點也不便宜。
+  - GPIO 數量不多，如果沒有要加其它零件的話，25 腳應該還夠，但如果要加其它零件的話可能就會不夠用。
+  - 如果是單買 IC 本身，出廠大概不會幫你燒 Bootloader，你可能要另外用燒錄器燒。
 - 要注意的事：
-    - 如果你編譯出來的韌體大小真的裝不進 32 KB 的 Flash 的話可以參考官方的文件：[Squeezing Space from AVR](https://docs.qmk.fm/#/squeezing_avr)。
-    - Pro Micro 分為紅色的「SparkFun 原廠」和藍色的「副廠/第三方」版，前者約 NTD 600-1000，後者約 NTD 200-400，都可以使用。
-    - 工作電壓為 5V 時 CPU 時脈可以到 16MHz；為 3.3V 時只能到 8MHz。
-    - PCB Layout 時記得保留燒錄座。
+  - 如果你編譯出來的韌體大小真的裝不進 32 KB 的 Flash 的話可以參考官方的文件：[Squeezing Space from AVR](https://docs.qmk.fm/#/squeezing_avr)。
+  - Pro Micro 分為紅色的「SparkFun 原廠」和藍色的「副廠/第三方」版，前者約 NTD 600-1000，後者約 NTD 200-400，都可以使用。
+  - 工作電壓為 5V 時 CPU 時脈可以到 16MHz；為 3.3V 時只能到 8MHz。
+  - PCB Layout 時記得保留燒錄座。
 
 我自己畫的 ATmega32U4 開發板：[Next μ](https://github.com/siderakb/next-micro)
 

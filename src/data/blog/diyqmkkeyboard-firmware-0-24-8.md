@@ -126,8 +126,8 @@ Project Location: C:/Users/USERNAME/qmk_firmware/keyboards/mytestkb,
 這時你會看到 `mytestkb` 下有這些檔案：
 
 - `keymaps\`
-    - `default\`
-        - `keymap.c`
+  - `default\`
+    - `keymap.c`
 - `info.json`
 - `config.h`
 - `rules.mk`
@@ -503,10 +503,10 @@ LTO_ENABLE = yes
 - [Keyboard Firmware Builder](https://kbfirmware.com/)
 - [Qwiic Pro Micro USB-C (ATmega32U4) Hookup Guide - SparkFun Learn](https://learn.sparkfun.com/tutorials/qwiic-pro-micro-usb-c-atmega32u4-hookup-guide/all)
 - 本篇的舊版內容
-    - [0.21.3 版](/posts/diyqmkkeyboard-firmware-0-21-3/)
-    - [0.18.3 版](/posts/diyqmkkeyboard-firmware-0-18/)
+  - [0.21.3 版](/posts/diyqmkkeyboard-firmware-0-21-3/)
+  - [0.18.3 版](/posts/diyqmkkeyboard-firmware-0-18/)
 - QMK相關
-    - [QMK 官方網站](https://qmk.fm/)
-    - [QMK 官方文件](https://docs.qmk.fm/#/)
-    - [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)
+  - [QMK 官方網站](https://qmk.fm/)
+  - [QMK 官方文件](https://docs.qmk.fm/#/)
+  - [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)
 - 撰寫本文時的 QMK MSYS 版本：`1.9.0`

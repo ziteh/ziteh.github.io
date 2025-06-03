@@ -128,9 +128,9 @@ GPIO\_Init
 - 功能：設定GPIO的模式，也就是設定CRH、CRL暫存器。
 - 輸入參數1：GPIOx，選擇GPIO。
 - 輸入參數2：GPIO\_InitStruct，選擇GPIO模式。為指向GPIO\_InitTypeDef的指標。GPIO\_InitTypeDef類型的結構有以下3個成員（詳細用法請見下方表格整理）。
-    - GPIO\_Pin
-    - GPIO\_Speed
-    - GPIO\_Mode
+  - GPIO\_Pin
+  - GPIO\_Speed
+  - GPIO\_Mode
 - 輸出參數：無
 - 返回值：無
 - 先決條件：無

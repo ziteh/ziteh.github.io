@@ -116,25 +116,25 @@ QMK 韌體的功能眾多、使用簡單、擴展方便，相關的工具及文�
 這裡順便附上一些製作鍵盤時可能會用到的網站。
 
 - 工具
-    - [Keyboard Layout Editor (KLE)](http://www.keyboard-layout-editor.com/)：鍵盤佈局編輯器
-    - [Keyboard Firmware Builder](https://kbfirmware.com/)：鍵盤韌體產生器
-    - [Keyboard PCB Builder](https://kb.xyz.is/)：鍵盤 PCB 產生器
-    - 鍵盤定位板產生器
-        - [ai03 Plate Generator](https://kbplate.ai03.com/)
-        - [Keebio Plate Generator](https://plate.keeb.io/)
-        - [Plate & Case Builder](http://builder.swillkb.com/)
-        - [Keyboard Plate Generator](https://eswai.github.io/plategen/plategen.html)
-    - [Convert KLE to QMK info.json](https://qmk.fm/converter/)：將鍵盤佈局編輯器的資料轉換成 QMK `info.json`
-    - [KiCAD KLE Placer](https://github.com/zykrah/kicad-kle-placer)：根據鍵盤佈局編輯器的資料自動擺放鍵軸的 KiCAD 插件
+  - [Keyboard Layout Editor (KLE)](http://www.keyboard-layout-editor.com/)：鍵盤佈局編輯器
+  - [Keyboard Firmware Builder](https://kbfirmware.com/)：鍵盤韌體產生器
+  - [Keyboard PCB Builder](https://kb.xyz.is/)：鍵盤 PCB 產生器
+  - 鍵盤定位板產生器
+    - [ai03 Plate Generator](https://kbplate.ai03.com/)
+    - [Keebio Plate Generator](https://plate.keeb.io/)
+    - [Plate & Case Builder](http://builder.swillkb.com/)
+    - [Keyboard Plate Generator](https://eswai.github.io/plategen/plategen.html)
+  - [Convert KLE to QMK info.json](https://qmk.fm/converter/)：將鍵盤佈局編輯器的資料轉換成 QMK `info.json`
+  - [KiCAD KLE Placer](https://github.com/zykrah/kicad-kle-placer)：根據鍵盤佈局編輯器的資料自動擺放鍵軸的 KiCAD 插件
 - 其它
-    - QMK 相關
-        - [QMK 官方網站](https://qmk.fm/)
-        - [QMK 官方文件](https://docs.qmk.fm/#/)
-        - [QMK 的 GitHub repo](https://github.com/qmk/qmk_firmware)
-    - 鍵盤清單
-        - [MechKey.Org - All about keyboard](https://mechkey.org/)
-        - [Staggered Keyboards - Keebfolio](https://keebfolio.netlify.app/en/staggered/)
-        - [KeymapDB - Database of keymaps for programmable keyboards](https://keymapdb.com/)
-    - [Zykrah's PCB Guide](https://guide.zykrah.me/)：Zykrah 的 PCB 設計指南。
+  - QMK 相關
+    - [QMK 官方網站](https://qmk.fm/)
+    - [QMK 官方文件](https://docs.qmk.fm/#/)
+    - [QMK 的 GitHub repo](https://github.com/qmk/qmk_firmware)
+  - 鍵盤清單
+    - [MechKey.Org - All about keyboard](https://mechkey.org/)
+    - [Staggered Keyboards - Keebfolio](https://keebfolio.netlify.app/en/staggered/)
+    - [KeymapDB - Database of keymaps for programmable keyboards](https://keymapdb.com/)
+  - [Zykrah's PCB Guide](https://guide.zykrah.me/)：Zykrah 的 PCB 設計指南。
 
 > 本文最早發佈於 2020-06-21，於 2023 重新編排並更新內容。

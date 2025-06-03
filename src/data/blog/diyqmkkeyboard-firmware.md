@@ -127,8 +127,8 @@ Now update the config files to match the hardware!
 這時你應該會看到 `0_my_kb_rp2040` 下有這些檔案：
 
 - `keymaps\`
-    - `default\`
-        - `keymap.c`
+  - `default\`
+    - `keymap.c`
 - `keyboard.json`
 - `readme.md`
 
@@ -541,8 +541,8 @@ Now update the config files to match the hardware!
 這時你會看到 `0_my_kb_promicro` 下有這些檔案：
 
 - `keymaps\`
-    - `default\`
-        - `keymap.c`
+  - `default\`
+    - `keymap.c`
 - `keyboard.json`
 - `readme.md`
 
@@ -925,9 +925,9 @@ F_CPU = 8000000
 - [Keyboard Firmware Builder](https://kbfirmware.com/)
 - [Qwiic Pro Micro USB-C (ATmega32U4) Hookup Guide - SparkFun Learn](https://learn.sparkfun.com/tutorials/qwiic-pro-micro-usb-c-atmega32u4-hookup-guide/all)
 - QMK相關
-    - [QMK 官方網站](https://qmk.fm/)
-    - [QMK 官方文件](https://docs.qmk.fm/#/)
-    - [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)
+  - [QMK 官方網站](https://qmk.fm/)
+  - [QMK 官方文件](https://docs.qmk.fm/#/)
+  - [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)
 - 撰寫本文時的工具版本
-    - QMK MSYS: `1.10.0`
-    - QMK CLI：`1.1.6`
+  - QMK MSYS: `1.10.0`
+  - QMK CLI：`1.1.6`

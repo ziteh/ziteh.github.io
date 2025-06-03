@@ -72,9 +72,9 @@ pub fn main() void {
 
 - [Loops as Expressions | zig.guide](https://zig.guide/language-basics/loops-as-expressions)
 - Inline loop
-    - [Inline Loops | zig.guide](https://zig.guide/language-basics/inline-loops)
-    - [while: Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#inline-while)
-    - [for: Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#inline-for)
+  - [Inline Loops | zig.guide](https://zig.guide/language-basics/inline-loops)
+  - [while: Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#inline-while)
+  - [for: Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#inline-for)
 
 本文以 Zig `0.13.0` 為主。並同時發佈在：
 

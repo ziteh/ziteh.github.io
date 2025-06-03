@@ -405,6 +405,6 @@ keyautoplace.log
 - [KiCad 官方文件](https://docs.kicad.org/7.0/zh/getting_started_in_kicad/getting_started_in_kicad.html)
 - [KiCAD – Create a new Symbol](https://www.studiopieters.nl/kicad-create-a-new-symbol/)
 - QMK相關
-    - [QMK 官方網站](https://qmk.fm/)
-    - [QMK 官方文件](https://docs.qmk.fm/#/)
-    - [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)
+  - [QMK 官方網站](https://qmk.fm/)
+  - [QMK 官方文件](https://docs.qmk.fm/#/)
+  - [QMK 的 GitHub](https://github.com/qmk/qmk_firmware)

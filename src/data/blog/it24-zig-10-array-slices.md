@@ -215,5 +215,5 @@ Type: *const [11:0]u8, Length: 11
 
 - [2024 iThome 鐵人賽](https://ithelp.ithome.com.tw/articles/10347403)
 - 範例程式 GitHub repo
-    - [Array](https://github.com/ziteh/zig-learn-it24/tree/main/array)
-    - [Slices](https://github.com/ziteh/zig-learn-it24/tree/main/slices)
+  - [Array](https://github.com/ziteh/zig-learn-it24/tree/main/array)
+  - [Slices](https://github.com/ziteh/zig-learn-it24/tree/main/slices)

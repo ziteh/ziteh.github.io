@@ -111,12 +111,12 @@ NKRO_ENABLE = no
 
 - QMK 版本：`0.15.13`
 - [Adafruit Bluefruit LE Firmware](https://github.com/adafruit/Adafruit_BluefruitLE_Firmware)
-    - 韌體版本：`0.8.1`
-    - SoftDevice 版本：`8.0.0`
-    - Bootloader 版本：`2`
+  - 韌體版本：`0.8.1`
+  - SoftDevice 版本：`8.0.0`
+  - Bootloader 版本：`2`
 - 藍牙模組開發板：[Raytac MDBT40-DB Bluetooth Module Demo Board Kit](https://www.raytac.com/product/ins.php?index_id=84)
-    - MDBT40-256RV3
-    - nRF51822-xxAC
+  - MDBT40-256RV3
+  - nRF51822-xxAC
 
 ## 相關文章
 

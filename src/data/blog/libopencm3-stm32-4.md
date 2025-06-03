@@ -160,16 +160,16 @@ int main(void)
 
 - `rcc_periph_clock_enable()`：這個函式會致能指定功能的 Clock。在這裡我們要啓用 LED 所在的 GPIO Port 的 Clock。
 - `gpio_mode_setup()`：為指定的 GPIO 設定模式。
-    - `GPIO_LED_PORT`：要設定的 GPIO Port。
-    - `GPIO_MODE_OUTPUT`：設定為「General Purpose Output」 模式。
-    - `GPIO_PUPD_NONE`：設定為不使用上下拉電阻。
-    - `GPIO_LED_PIN`：要設定的 GPIO Pin，若要在同一個 Port 中設定多個 Pin，各個 Pin 可以用 `|` 來複選。
+  - `GPIO_LED_PORT`：要設定的 GPIO Port。
+  - `GPIO_MODE_OUTPUT`：設定為「General Purpose Output」 模式。
+  - `GPIO_PUPD_NONE`：設定為不使用上下拉電阻。
+  - `GPIO_LED_PIN`：要設定的 GPIO Pin，若要在同一個 Port 中設定多個 Pin，各個 Pin 可以用 `|` 來複選。
 
 - `gpio_set_output_options()`：為指定的 GPIO 設定輸出選項。
-    - `GPIO_LED_PORT`：要設定的 GPIO Port。
-    - `GPIO_OTYPE_PP`：設定輸出電路組態為「Push-Pull（推挽）」 。
-    - `GPIO_OSPEED_2MHZ`：設定速度。
-    - `GPIO_LED_PIN`：要設定的 GPIO Pin，若要在同一個 Port 中設定多個 Pin，各個 Pin 可以用 `|` 來複選。
+  - `GPIO_LED_PORT`：要設定的 GPIO Port。
+  - `GPIO_OTYPE_PP`：設定輸出電路組態為「Push-Pull（推挽）」 。
+  - `GPIO_OSPEED_2MHZ`：設定速度。
+  - `GPIO_LED_PIN`：要設定的 GPIO Pin，若要在同一個 Port 中設定多個 Pin，各個 Pin 可以用 `|` 來複選。
 
 - `gpio_toggle()`：反轉該 GPIO 的輸出值。如果目前是輸出 `High`，那就變成輸出 `Low`，反之亦然。
 

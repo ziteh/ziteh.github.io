@@ -243,4 +243,4 @@ resticprofile backup
 ## 更新日誌
 
 - 2024/09/01
-    - 增加 Resticprofile 的 profile 檔案可以使用 `--config` 自訂的說明。
+  - 增加 Resticprofile 的 profile 檔案可以使用 `--config` 自訂的說明。

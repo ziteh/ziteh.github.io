@@ -27,8 +27,8 @@ Mitosis 的架構中，主要擁有這些硬體：
 
 - 1 個 Pro Micro（ATmega32U4）。接收器的一部分，QMK 實際上只在 Pro Micro 上運作，以 USB 線連接電腦。
 - 3 個 nRF51822。這是一個整合了 BLE（Bluetooth Low Energy，藍牙低功耗）等無線功能的 SoC（System On Chip）。
-    - 第 1 個 nRF51822 作為接收器的一部分，負責接收來自左右兩部分鍵盤的訊號，並將其透過 UART 傳給 Pro Micro。
-    - 第 2、3 個 nRF51822 分別在左右兩鍵盤上，負責讀取鍵盤上的按鍵狀態，並將其透過 Gazell 傳給接收器的 nRF51822。
+  - 第 1 個 nRF51822 作為接收器的一部分，負責接收來自左右兩部分鍵盤的訊號，並將其透過 UART 傳給 Pro Micro。
+  - 第 2、3 個 nRF51822 分別在左右兩鍵盤上，負責讀取鍵盤上的按鍵狀態，並將其透過 Gazell 傳給接收器的 nRF51822。
 
 ```text
              PC
@@ -456,11 +456,11 @@ uint8_t matrix_scan(void)
 撰寫本文時的 Mitosis 相關 repo 資訊：
 
 - [reversebias/mitosis](https://github.com/reversebias/mitosis)
-    - nRF51822 的程式
-    - commit：[`f2bb956f8565762212d361a42f830390ef5c6845`](https://github.com/reversebias/mitosis/commit/f2bb956f8565762212d361a42f830390ef5c6845)
+  - nRF51822 的程式
+  - commit：[`f2bb956f8565762212d361a42f830390ef5c6845`](https://github.com/reversebias/mitosis/commit/f2bb956f8565762212d361a42f830390ef5c6845)
 - [qmk/qmk_firmware](https://github.com/qmk/qmk_firmware/tree/master/keyboards/mitosis)
-    - QMK 程式
-    - commit：[`f718a10889e6adf33f3fc2f41b61cad7fe9e0c2e`](https://github.com/qmk/qmk_firmware/commit/f718a10889e6adf33f3fc2f41b61cad7fe9e0c2e)
+  - QMK 程式
+  - commit：[`f718a10889e6adf33f3fc2f41b61cad7fe9e0c2e`](https://github.com/qmk/qmk_firmware/commit/f718a10889e6adf33f3fc2f41b61cad7fe9e0c2e)
 
 > 文章修改記錄 2022/02/23：原本寫的各個 nRF51822 之間的通訊方式是 BLE，但應該是 Gazell，故更新內容。
 
