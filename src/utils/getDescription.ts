@@ -1,39 +1,83 @@
-import { SITE } from "@config";
+import { SITE } from "@/config";
 
+// `<!-- more -->` tag
 const tagMoreRegex = /^(.*?)<!--\s*more\s*-->/s;
 
-const imageRegex = /!\[(.*?)\]\((.*?)\)/g;
-const imageRegex2 = /!\[(.*?)\]\[(.*?)\]/g;
-const linkRegex = /\[(.*?)\]\((.*?)\)/g;
-const linkRegex2 = /\[(.*?)\]\[(.*?)\]/g;
-const linkRefRegex = /\[(.*?)\]: (.*?)[\r\n]/g;
-const starRegex = /\*{1,3}(.*?)\*{1,3}/g;
-const quoteRegex = /> (.*?)[\r\n]/g;
-const headerRegex = /#{1,6} (.*?)[\r\n]/g;
-const codeRegex = /`(.*?)`/g;
-const newlineRegex = /[\r\n]/g;
+const regexReplacers: { [key: string]: [RegExp, string] } = {
+  // # Header 1 / ## Header 2
+  header: [/#{1,6} (.*?)/g, "$1 "],
 
-const getDescription = (markdownContent: string) => {
-  // Match everything until `<!-- more -->` tag
-  const tegMoreResult = markdownContent.match(tagMoreRegex);
+  // *italic* / **bold** / ***bold italic***
+  star: [/\*{1,3}(.*?)\*{1,3}/g, "$1"],
 
-  const short =
-    tegMoreResult === null
-      ? markdownContent.substring(0, SITE.genDescriptionCount) + " ..."
-      : tegMoreResult[1];
+  // _italic_ / __bold__ / ___bold italic___
+  underscore: [/_{1,3}(.*?)_{1,3}/g, "$1"],
 
-  const clean = short
-    .replace(headerRegex, "$1:")
-    .replace(starRegex, "$1")
-    .replace(quoteRegex, "$1")
-    .replace(codeRegex, "$1")
-    .replace(imageRegex, "")
-    .replace(imageRegex2, "")
-    .replace(linkRefRegex, "")
-    .replace(linkRegex2, "$1")
-    .replace(linkRegex, "$1")
-    .replace(newlineRegex, "");
-  return clean;
+  // ~~~strikethrough~~~
+  strikeout: [/~~~[\s\S]*?~~~/g, ""],
+
+  // --- or ***
+  horizontalRule: [/^(-{3,}|\*{3,})$/gm, ""],
+
+  // > Blockquote
+  quote: [/> (.*?)/g, "$1"],
+
+  // `inline code`
+  codeInline: [/`(.*?)`/g, "$1"],
+
+  // ```code block```
+  codeBlock: [/```[\s\S]*?```/g, ""],
+
+  // $ inline LaTeX $
+  latexInline: [/\$(.*?)\$/g, ""],
+
+  // $$ block LaTeX $$
+  latexBlock: [/\$\$[\s\S]*?\$\$/g, ""],
+
+  // ![alt text](url)
+  image1: [/!\[(.*?)\]\((.*?)\)/g, ""],
+
+  // ![alt text][ref]
+  image2: [/!\[(.*?)\]\[(.*?)\]/g, ""],
+
+  // [link text](url)
+  link1: [/\[(.*?)\]\((.*?)\)/g, "$1 "],
+
+  // [link text][ref]
+  link2: [/\[(.*?)\]\[(.*?)\]/g, "$1 "],
+
+  // [ref]: url
+  linkRef: [/\[(.*?)\]: (.*?)/g, ""],
+};
+
+/**
+ * Get the description from markdown content.
+ * @param markdownContent The markdown content.
+ * @returns The description.
+ */
+const getDescription = (markdownContent: string): string => {
+  // Limit the number of lines to process
+  const lines = markdownContent
+    .split(/\r?\n/)
+    .slice(0, SITE.genDescriptionMaxLines);
+  const processedContent = lines.join("");
+
+  // Find the first occurrence of the 'more' tag
+  const moreTagMatch = processedContent.match(tagMoreRegex);
+
+  // If the 'more' tag is found, use the content before it
+  // Otherwise, use the first `SITE.genDescriptionCount` characters
+  let short = moreTagMatch
+    ? moreTagMatch[1]
+    : processedContent.substring(0, SITE.genDescriptionCount) + " ...";
+
+  // Remove Markdown syntax
+  for (const patternKey in regexReplacers) {
+    const [pattern, replacement] = regexReplacers[patternKey];
+    short = short.replace(pattern, replacement);
+  }
+
+  return short;
 };
 
 export default getDescription;

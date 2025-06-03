@@ -6,8 +6,41 @@ ignorePaths:
   - dist/**
   - .astro/**
   - .vscode/**
+  - "*.svg"
+  - public/pagefind/**
+  - src/data/**
 words:
-  - Googlebot
-  - nonportable
-  - Rclone
-  - winfsp
+  - Akara
+  - Artur
+  - astropaper
+  - backurl
+  - commitizen
+  - Disqus
+  - fetchpriority
+  - frontmatter
+  - Giscus
+  - ignorefiles
+  - jampack
+  - Katex
+  - kebabcase
+  - KHTML
+  - microflash
+  - Mingalaba
+  - Naing
+  - noopener
+  - noreferrer
+  - oveflow
+  - pagefind
+  - Pinterest
+  - Praam
+  - rehype
+  - resvg
+  - satnaing
+  - shiki
+  - slugified
+  - Sopelnik
+  - Stackframe
+  - Tablers
+  - Tocbot
+  - unslugified
+  - zokki

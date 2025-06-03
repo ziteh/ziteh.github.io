@@ -1,50 +1,37 @@
 ---
-import { SITE } from "@config";
-import Layout from "@layouts/Layout.astro";
-import Header from "@components/Header.astro";
-import Footer from "@components/Footer.astro";
-import LinkButton from "@components/LinkButton.astro";
-import { _t } from "lang/lang";
-
-// if (Astro.url.pathname !== "/" && Astro.url.pathname.endsWith("/")) {
-//   return Astro.redirect(Astro.url.pathname.slice(0, -1)); // Remove trailing slash
-// }
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import LinkButton from "@/components/LinkButton.astro";
+import { SITE } from "@/config";
+import { _t } from "@/i18n/lang";
 ---
 
 <Layout title={`404 Not Found | ${SITE.title}`}>
   <Header />
 
-  <main id="main-content">
-    <div class="not-found-wrapper">
-      <h1>404</h1>
-      <span aria-hidden="true">¯\_(ツ)_/¯</span>
-      <p>{_t.page404.pageNotFound}</p>
+  <main
+    id="main-content"
+    class="mx-auto flex max-w-3xl flex-1 items-center justify-center"
+  >
+    <div class="mb-14 flex flex-col items-center justify-center">
+      <h1 class="font-mono text-9xl font-bold text-accent">404</h1>
+      <p class="mt-4 mb-32 text-xl sm:text-2xl">{_t.notFoundPage.title}</p>
 
-      <div class="flex flex-row space-x-12">
-        <LinkButton href="/" className="my-6 text-lg hover:underline">
-          {_t.page404.toHome}
-        </LinkButton>
-        <LinkButton href="/search" className="my-6 text-lg hover:underline">
-          {_t.page404.toSearch}
-        </LinkButton>
-      </div>
+      <LinkButton
+        href="/search"
+        class="my-4 rounded-lg bg-foreground/10 px-4 py-2 text-lg hover:bg-foreground/20"
+      >
+        {_t.notFoundPage.toSearch}
+      </LinkButton>
+      <LinkButton
+        href="/"
+        class="my-4 text-lg underline-offset-4 hover:underline"
+      >
+        {_t.notFoundPage.toHome}
+      </LinkButton>
     </div>
   </main>
 
   <Footer />
 </Layout>
-
-<style>
-  #main-content {
-    @apply mx-auto flex max-w-3xl flex-1 items-center justify-center;
-  }
-  .not-found-wrapper {
-    @apply mb-14 flex flex-col items-center justify-center;
-  }
-  .not-found-wrapper h1 {
-    @apply text-9xl font-bold text-skin-accent;
-  }
-  .not-found-wrapper p {
-    @apply mt-4 text-2xl sm:text-3xl;
-  }
-</style>

@@ -1,32 +1,32 @@
 ---
 import { getCollection } from "astro:content";
-import Header from "@components/Header.astro";
-import Footer from "@components/Footer.astro";
-import Layout from "@layouts/Layout.astro";
-import Main from "@layouts/Main.astro";
-import getUniqueCategories from "@utils/getUniqueCategories";
-import { SITE } from "@config";
-import { _t } from "lang/lang";
+import Main from "@/layouts/Main.astro";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import getUniqueCategories from "@/utils/getUniqueCategories";
+import { SITE } from "@/config";
+import { _t } from "@/i18n/lang";
 
 const posts = await getCollection("blog");
 
 let categories = getUniqueCategories(posts);
 ---
 
-<Layout title={`${_t.categories} | ${SITE.title}`} robots="noindex, follow">
-  <Header activeNav="categories" />
-  <Main pageTitle={_t.categories} pageDesc={_t.categoriesDesc}>
+<Layout title={`${_t.categories.title} | ${SITE.title}`}>
+  <Header />
+  <Main pageTitle={_t.categories.title} pageDesc={_t.categories.desc}>
     <ul class="flex flex-col space-y-6">
       {
         categories.map(({ category, categoryName, count }) => (
           <li>
             <a
               href={`/categories/${category}`}
-              class="text-skin-accent hover:underline"
+              class="text-accent hover:underline"
             >
               {categoryName}
             </a>
-            <span class="rounded-full bg-skin-card/60 px-2 py-0.5">
+            <span class="rounded-full bg-foreground/10 px-2 py-0.5">
               {count}
             </span>
           </li>

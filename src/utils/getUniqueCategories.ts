@@ -8,7 +8,7 @@ interface Category {
   count: number;
 }
 
-const getUniqueCategories = (posts: CollectionEntry<"blog">[]) => {
+const getUniqueCategories = (posts: CollectionEntry<"blog">[]): Category[] => {
   const catCountMap = new Map<string, Category>();
 
   posts

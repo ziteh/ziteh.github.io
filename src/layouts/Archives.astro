@@ -1,14 +1,15 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import Main from "@layouts/Main.astro";
-import Header from "@components/Header.astro";
-import Footer from "@components/Footer.astro";
-import Pagination from "@components/Pagination.astro";
-import ListItem from "@components/ListItem";
-import { SITE } from "@config";
+import Layout from "@/layouts/Layout.astro";
+import Main from "@/layouts/Main.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Pagination from "@/components/Pagination.astro";
+import ListItem from "@/components/ListItem.astro";
+import { SITE } from "@/config";
 import type { Page } from "astro";
 import type { CollectionEntry } from "astro:content";
-import { _t } from "lang/lang";
+import { getPath } from "@/utils/getPath";
+import { _t } from "@/i18n/lang";
 
 export interface Props {
   page: Page<CollectionEntry<"blog">>;
@@ -17,13 +18,13 @@ export interface Props {
 const { page } = Astro.props;
 ---
 
-<Layout title={`${_t.archives.title} | ${SITE.title}`} robots="noindex, follow">
+<Layout title={`${_t.archives.title} | ${SITE.title}`}>
   <Header activeNav="posts" />
   <Main pageTitle={_t.archives.title} pageDesc={_t.archives.desc}>
     <ul>
       {
-        page.data.map(({ data, slug }) => (
-          <ListItem href={`/posts/${slug}`} frontmatter={data} />
+        page.data.map(({ data, id, filePath }) => (
+          <ListItem href={getPath(id, filePath)} frontmatter={data} />
         ))
       }
     </ul>

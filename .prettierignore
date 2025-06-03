@@ -7,10 +7,8 @@
 !/.github
 !tsconfig.json
 !astro.config.ts
+!.prettierrc.mjs
 !package.json
 !.prettierrc
-!eslint.config.mjs
+!eslint.config.js
 !README.md
-
-# Posts handle by markdownlint
-/src/content/blog/*.md

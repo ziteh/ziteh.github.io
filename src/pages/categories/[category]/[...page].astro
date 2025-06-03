@@ -1,17 +1,25 @@
 ---
 import { getCollection } from "astro:content";
-import ItemPosts from "@layouts/ItemPosts.astro";
-import getUniqueCategories from "@utils/getUniqueCategories";
-import getPostsByCategory from "@utils/getPostsByCategory";
 import type { GetStaticPathsOptions } from "astro";
-import { SITE } from "@config";
-import { _t } from "lang/lang";
+import Main from "@/layouts/Main.astro";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Card from "@/components/Card.astro";
+import Pagination from "@/components/Pagination.astro";
+import getUniqueCategories from "@/utils/getUniqueCategories";
+import { SITE } from "@/config";
+import { _t } from "@/i18n/lang";
+import getDescription from "@/utils/getDescription";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const posts = await getCollection("blog");
   const categories = getUniqueCategories(posts);
+
   return categories.flatMap(({ category, categoryName }) => {
-    const categoryPosts = getPostsByCategory(posts, category);
+    const categoryPosts = posts.filter(post =>
+      post.data.categories.includes(categoryName)
+    );
 
     return paginate(categoryPosts, {
       params: { category },
@@ -26,11 +34,26 @@ const { category } = params;
 const { page, categoryName } = Astro.props;
 ---
 
-<ItemPosts
-  {page}
-  activeNav="categories"
-  item={category}
-  itemName={categoryName}
-  pageTitle={_t.category}
-  pageDesc={_t.categoryDesc(categoryName)}
-/>
+<Layout title={`${_t.category.title}${categoryName} | ${SITE.title}`}>
+  <Header />
+  <Main
+    pageTitle={[_t.category.title, `${categoryName}`]}
+    titleTransition={category}
+    pageDesc={_t.category.desc(categoryName)}
+  >
+    <h1 slot="title">
+      {`Category:${categoryName}`}
+    </h1>
+    <ul>
+      {
+        page.data.map(data => (
+          <Card {...data} fallbackDesc={getDescription(data.body || "")} />
+        ))
+      }
+    </ul>
+  </Main>
+
+  <Pagination {page} />
+
+  <Footer noMarginTop={page.lastPage > 1} />
+</Layout>
