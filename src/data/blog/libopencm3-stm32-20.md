@@ -271,7 +271,7 @@ ADC 轉換完成後就可以使用 `adc_read_regular()` 取得讀取的 Regular 
 
 #### 設定 RCC
 
-``` C
+``` c
 static void rcc_setup(void)
 {
   rcc_clock_setup_pll(&rcc_hse_8mhz_3v3[RCC_CLOCK_3V3_84MHZ]);
