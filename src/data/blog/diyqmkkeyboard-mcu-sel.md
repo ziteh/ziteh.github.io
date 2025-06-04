@@ -181,4 +181,4 @@ QMK 的藍牙是透過模組支援的，且原則上僅限 AVR MCU。可以參�
 
 ## 相關文章
 
-- [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
+- [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0#教學文列表)

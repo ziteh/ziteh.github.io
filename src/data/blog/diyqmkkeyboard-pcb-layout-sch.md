@@ -15,7 +15,7 @@ draft: false
 # # aliases: []
 ---
 
-到[上一篇文章](/posts/diyqmkkeyboard-3)為止我們已經完成了鍵盤的韌體部分，接下來要進行硬體的部分。本篇要介紹的是[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 5 步——繪製 PCB。
+到[上一篇文章](/posts/diyqmkkeyboard-3)為止我們已經完成了鍵盤的韌體部分，接下來要進行硬體的部分。本篇要介紹的是[製作步驟](/posts/diyqmkkeyboard-0#製作步驟)的第 5 步——繪製 PCB。
 
 我將示範以 KiCad 7 進行機械式鍵盤的 PCB Layout，包含基本的 KiCad 使用教學。要畫 PCB 可能多少需要一些基本電學或基礎電路學知識，但是如果你真的沒學過的話也沒關係，仔細照著本文應該也不會出錯。
 
@@ -222,7 +222,7 @@ Schematic 頁面右下角有一些資訊可以填寫。
 
 ### 使用開發板
 
-如果你覺得要自己畫[微控制器](/posts/diyqmkkeyboard-pcb-layout-sch/#繪製微控制器電路)、[電源](/posts/diyqmkkeyboard-pcb-layout-sch/#繪製電源電路)和 [USB](/posts/diyqmkkeyboard-pcb-layout-sch/#繪製-usb) 的電路太麻煩的話，你可以使用現成的開發板，使用排針或排插連接開發板，這樣就只需要畫[鍵矩陣掃描電路](/posts/diyqmkkeyboard-pcb-layout-sch/#繪製矩陣掃描電路)。以下以 Pro Micro 為例。
+如果你覺得要自己畫[微控制器](/posts/diyqmkkeyboard-pcb-layout-sch#繪製微控制器電路)、[電源](/posts/diyqmkkeyboard-pcb-layout-sch#繪製電源電路)和 [USB](/posts/diyqmkkeyboard-pcb-layout-sch#繪製-usb) 的電路太麻煩的話，你可以使用現成的開發板，使用排針或排插連接開發板，這樣就只需要畫[鍵矩陣掃描電路](/posts/diyqmkkeyboard-pcb-layout-sch#繪製矩陣掃描電路)。以下以 Pro Micro 為例。
 
 加入兩個「Conn\_01x12」元件來代表排針/插，雙擊它進入屬性頁面，將它的「Footprint」改成「Connector\_PinHeader\_2.54mm: PinHeader\_1x12\_P2.54mm\_Vertical」。
 
@@ -248,9 +248,9 @@ Schematic 頁面右下角有一些資訊可以填寫。
 
 ![將開關的代號「SW」改成「KEY」](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/8aa0d212.webp)
 
-另外，也可以在這一步選擇鍵軸的 Footprint。滑鼠移到「Footprint」的「Value」欄位右側，會出現三本書的圖案，點擊後可以[修改 Footprint](/posts/diyqmkkeyboard-pcb-layout-sch/#footprint)。
+另外，也可以在這一步選擇鍵軸的 Footprint。滑鼠移到「Footprint」的「Value」欄位右側，會出現三本書的圖案，點擊後可以[修改 Footprint](/posts/diyqmkkeyboard-pcb-layout-sch#footprint)。
 
-鍵軸的 Footprint 決定了最後這把鍵盤**可以使用什麼樣的機械軸**，Cherry MX、Alps、Kailh Choc 等各種機械軸的 Footprint 都不同，要選擇正確的 Footprint 才行。而如果要鍵盤可以熱插拔的話，也就必須選用有支援熱插拔座的 Footprint（不同軸體的熱插拔座也不同）。當然也有些 Footprint 同時整合並兼容了多種不同的軸體。請自行確認你所[安裝的鍵軸 Footprint 庫](/posts/diyqmkkeyboard-pcb-layout-sch/#安裝-footprint-庫)有哪些種類可以用。
+鍵軸的 Footprint 決定了最後這把鍵盤**可以使用什麼樣的機械軸**，Cherry MX、Alps、Kailh Choc 等各種機械軸的 Footprint 都不同，要選擇正確的 Footprint 才行。而如果要鍵盤可以熱插拔的話，也就必須選用有支援熱插拔座的 Footprint（不同軸體的熱插拔座也不同）。當然也有些 Footprint 同時整合並兼容了多種不同的軸體。請自行確認你所[安裝的鍵軸 Footprint 庫](/posts/diyqmkkeyboard-pcb-layout-sch#安裝-footprint-庫)有哪些種類可以用。
 
 以[我自己的 Footprint 庫](https://github.com/ziteh/key-switches.pretty)為例：`MX_switch_THT_hotswap_A` 是同時兼容 Cherry MX 軸體熱插拔與直接焊接的 Footprint；而 `MX_switch_PTH_hotswap_A` 只有 Cherry MX 熱插拔座的焊盤，沒有直接焊接的 PTH 焊盤；`MX_switch_hotswap_double_sided_A` 是雙面都有 Cherry MX 軸的熱插拔焊盤；`Kailh_Choc_PG1350_THT_A` 則是 Kailh Choc 矮軸直接焊接用的 Footprint。
 
@@ -341,7 +341,7 @@ USB 差分訊號「D+」與「D-」各 2 腳，將相同的接在一起，然後
 
 ### 完成
 
-當所有部分的元件符號及接線都完成後，編輯並再次檢查各個元件的 [Footprint](/posts/diyqmkkeyboard-pcb-layout-sch/#更新元件代號)，然後[更新一下代號](/posts/diyqmkkeyboard-pcb-layout-sch/#更新元件代號)，Schematic 就算完成了。
+當所有部分的元件符號及接線都完成後，編輯並再次檢查各個元件的 [Footprint](/posts/diyqmkkeyboard-pcb-layout-sch#更新元件代號)，然後[更新一下代號](/posts/diyqmkkeyboard-pcb-layout-sch#更新元件代號)，Schematic 就算完成了。
 
 接下來請繼續查看[下一篇](/posts/diyqmkkeyboard-pcb-layout-layers)以完成 PCB Layou 的部分。
 
@@ -400,7 +400,7 @@ keyautoplace.log
 
 ## 相關網頁
 
-- [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
+- [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0#教學文列表)
 - [Keyboard PCB Builder](https://kb.xyz.is/)
 - [KiCad 官方文件](https://docs.kicad.org/7.0/zh/getting_started_in_kicad/getting_started_in_kicad.html)
 - [KiCAD – Create a new Symbol](https://www.studiopieters.nl/kicad-create-a-new-symbol/)

@@ -96,7 +96,7 @@ featured: true
 - [ErgoSNM Keyboard | SideraKB](https://siderakb.ziteh.dev/docs/ergosnm/intro)
 - [ErgoSNM GitHub repo](https://github.com/siderakb/ergo-snm-keyboard)
 - [ErgoSNM YouTube 播放清單](https://youtube.com/playlist?list=PL1kBTdTo-vGbdUH9_YovZvkGXuNMB03fa)
-- [我的 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
+- [我的 QMK 教學系列文列表](/posts/diyqmkkeyboard-0#教學文列表)
 - [QMK 官網](https://qmk.fm/)
 
 [pcb1]: https://bucket.ziteh.dev/blog/ergosnm-v3-0-1/pcb1.webp

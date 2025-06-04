@@ -232,7 +232,7 @@ Vial 必須要你設定一個安全解鎖組合鍵，以避免惡意軟體寫入
 #define VIAL_UNLOCK_COMBO_COLS { 0, 11 }
 ```
 
-該組合鍵應該至少包含兩個按鍵，通常會用 ESC+Enter 的組合。上面的數字必須改成你按鍵的物理位置（也就是[這裡](/posts/diyqmkkeyboard-vial/#鍵盤佈局)編輯的 row 與 colume）。上面的例子就是指定 row0-col0 與 row3-col11 這兩個鍵。
+該組合鍵應該至少包含兩個按鍵，通常會用 ESC+Enter 的組合。上面的數字必須改成你按鍵的物理位置（也就是[這裡](/posts/diyqmkkeyboard-vial#鍵盤佈局)編輯的 row 與 colume）。上面的例子就是指定 row0-col0 與 row3-col11 這兩個鍵。
 
 > 如果你不想要這個功能，可以在 `keymaps/vial/rules.mk` 中增加一行 `VIAL_INSECURE = yes`。但增加這行的鍵盤不會被允許提交並合併進 vial-qmk 的 repo 中。
 
@@ -278,7 +278,7 @@ make zite/calcite52:vial
 
 ## 相關網站
 
-- [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
+- [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0#教學文列表)
 - [Vial](https://get.vial.today/)
 - [vial-kb/vial-qmk](https://github.com/vial-kb/vial-qmk) GitHub repo
 - [vial 官方範例](https://github.com/vial-kb/vial-qmk/tree/vial/keyboards/vial_example)

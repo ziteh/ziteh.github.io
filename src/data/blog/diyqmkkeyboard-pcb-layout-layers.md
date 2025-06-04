@@ -18,7 +18,7 @@ draft: false
 
 ![](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/0df02e9b.webp)
 
-在[上一篇](/posts/diyqmkkeyboard-pcb-layout-sch)中已經介紹了 PCB 的設計步驟及 [KiCad](https://www.kicad.org/) Schematic 的基本用法，接下來要以 KiCad 7 作為示範，繼續介紹[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 5 步的 PCB Layout 的部分。
+在[上一篇](/posts/diyqmkkeyboard-pcb-layout-sch)中已經介紹了 PCB 的設計步驟及 [KiCad](https://www.kicad.org/) Schematic 的基本用法，接下來要以 KiCad 7 作為示範，繼續介紹[製作步驟](/posts/diyqmkkeyboard-0#製作步驟)的第 5 步的 PCB Layout 的部分。
 
 <!--more-->
 
@@ -227,7 +227,7 @@ Schematic 有更新的話記得要再「Update PCB from Schematic」一次。打
 
 ![鎖定](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/c856c152.webp)
 
-> 若你不想用 KiCAD KLE Placer，也可以試試[上一篇](/posts/diyqmkkeyboard-pcb-layout-sch/#自動生成鍵盤-pcb)介紹過的 [Keyboard PCB Builder](https://kb.xyz.is/)。
+> 若你不想用 KiCAD KLE Placer，也可以試試[上一篇](/posts/diyqmkkeyboard-pcb-layout-sch#自動生成鍵盤-pcb)介紹過的 [Keyboard PCB Builder](https://kb.xyz.is/)。
 
 ### 佈線
 
@@ -289,7 +289,7 @@ KiCad 的文字支援變數如 `${TITLE}`、`${REVISION}`，或樣式標記例�
 
 到這一步，PCB Layout 已經快要完成了，但是為了確保我們的 PCB 符合工廠的製作能力與設計規則，我們要進行 DRC。
 
-在上方工具列按「Show the design rules checker window」以顯示 DRC 視窗，並點擊「Run DRC」，KiCad 就會自動根據你[設定的規則](/posts/diyqmkkeyboard-pcb-layout-layers/#pcb-設計參數)進行檢測，並且列出所有的 Error 與 Warning。Error 是一定要處理的問題，Warning 如果比較懶的話基本可以就放著不管。
+在上方工具列按「Show the design rules checker window」以顯示 DRC 視窗，並點擊「Run DRC」，KiCad 就會自動根據你[設定的規則](/posts/diyqmkkeyboard-pcb-layout-layers#pcb-設計參數)進行檢測，並且列出所有的 Error 與 Warning。Error 是一定要處理的問題，Warning 如果比較懶的話基本可以就放著不管。
 
 ![顯示 DRC 頁面](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/55f6d817.webp)
 
@@ -351,7 +351,7 @@ PCB 全部完成後就可以輸出工廠生產用的 Gerber 檔了。
 
 ## 相關網頁
 
-- [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
+- [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0#教學文列表)
 - [Keyboard PCB Builder](https://kb.xyz.is/)
 - [KiCAD JLCPCB tools](https://github.com/Bouni/kicad-jlcpcb-tools)
 - [PCBWay Plug-In for KiCad](https://www.pcbway.com/blog/News/PCBWay_Plug_In_for_KiCad_3ea6219c.html)

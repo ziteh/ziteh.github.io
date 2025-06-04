@@ -279,7 +279,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 ## 相關文章與資源
 
-- [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
+- [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0#教學文列表)
 - [【C/C++】define用法整理|macro巨集小技巧](http://catforcode.com/define-and-macro/)
 - QMK相關
   - [QMK官方網站](https://qmk.fm/)

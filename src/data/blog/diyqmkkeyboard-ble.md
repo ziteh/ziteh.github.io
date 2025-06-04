@@ -120,6 +120,6 @@ NKRO_ENABLE = no
 
 ## 相關文章
 
-- [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
+- [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0#教學文列表)
 - 自製 Adafruit Bluefruit LE SPI Friend 模組教學：[Adafruit Bluefruit LE SPI Friend 韌體燒錄教學](/posts/diyqmkkeyboard-ble-module)。
 - [QMK 官方文件](https://docs.qmk.fm/#/)

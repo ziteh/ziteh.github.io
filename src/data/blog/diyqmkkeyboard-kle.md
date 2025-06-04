@@ -16,7 +16,7 @@ draft: false
 
 ![](https://bucket.ziteh.dev/blog/diyqmkkeyboard-kle/a8a04e75.webp)
 
-根據第一篇所提的[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)，當你確定完鍵盤的整體設計（要多少按鍵？標準、Ortho 或 Alice 佈局？等）後，就可以開始編輯鍵盤佈局（Layout）了。
+根據第一篇所提的[製作步驟](/posts/diyqmkkeyboard-0#製作步驟)，當你確定完鍵盤的整體設計（要多少按鍵？標準、Ortho 或 Alice 佈局？等）後，就可以開始編輯鍵盤佈局（Layout）了。
 
 <!--more-->
 
@@ -100,7 +100,7 @@ draft: false
 
 ## 相關網站
 
-- [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
+- [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0#教學文列表)
 - [ijprest/keyboard-layout-editor](https://github.com/ijprest/keyboard-layout-editor)：KLE 的 GitHub repo。
 
 > 本文最早發佈於 2020-06-21，於 2023 重新編排並更新內容。
