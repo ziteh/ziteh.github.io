@@ -24,7 +24,7 @@
   }
 
   .prose blockquote {
-    @apply !font-normal; /* font-serif !not-italic */
+    @apply text-sm !font-normal; /* font-serif !not-italic */
   }
   .prose blockquote p::before {
     content: "" !important;
