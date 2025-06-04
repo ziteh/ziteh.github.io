@@ -30,11 +30,11 @@ Rust 的特色網路上已經有很多文章在討論了，這裡就不在贅述
 >
 > 本文會以 Windows 為主。
 
-# 建立開發環境
+## 建立開發環境
 
 RMK 有兩種開發方式：Cloud compilation 和 Local compilation。前者是類似 ZMK 那樣使用 GitHub Action 進行建構，後者則是在電腦本地端開發和建構。本文將以 Local compilation 為主進行示範教學。官方文件請參考：[Local compilation - RMK Documentation](https://haobogu.github.io/rmk/user_guide/2-2_local_compilation.html)
 
-## 安裝 Rust
+### 安裝 Rust
 
 首先當然是要建立 Rust 開發環境。這部分就和一般開發 Rust 時要做的事情一樣
 
@@ -50,7 +50,7 @@ cargo --version
 
 它應該會回應類似 `cargo 1.84.1 (66221abde 2024-11-19)`，表示 Rust 已經安裝成功。
 
-## 添加編譯器目標
+### 添加編譯器目標
 
 因為開發韌體算是交叉編譯，因此要為 Rust 添加目標平臺的編譯功能。這部分的命令會因你所使用的不同開發板和 MCU 而有所不同。
 
@@ -78,7 +78,7 @@ rustup target add thumbv7em-none-eabihf
 | Cortex-M33       | `thumbv8m.main-none-eabi`   | 無 FPU |
 | Cortex-M33F      | `thumbv8m.main-none-eabihf` | 有 FPU |
 
-## 安裝其它工具
+### 安裝其它工具
 
 再來還有一些其它工具要安裝：
 
@@ -105,7 +105,7 @@ irm https://github.com/probe-rs/probe-rs/releases/latest/download/probe-rs-tools
 powershell -ExecutionPolicy ByPass -c "irm https://github.com/haobogu/rmkit/releases/download/v0.0.9/rmkit-installer.ps1 | iex"
 ```
 
-## 安裝文字編輯器
+### 安裝文字編輯器
 
 最後你還需要一個文字編輯器，一般來說會推薦使用 [VS Code](https://code.visualstudio.com/)，安裝的部分沒什麼特別的就不贅述了。
 
@@ -115,9 +115,9 @@ powershell -ExecutionPolicy ByPass -c "irm https://github.com/haobogu/rmkit/rele
 - [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
 - [Chinese (Traditional) Language Pack for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hant)：VS Code 繁體中文套件，如果你不習慣 VS code 的英文介面的話可以裝。
 
-# 建立韌體
+## 建立韌體
 
-## 建立專案
+### 建立專案
 
 建立一個資料夾用來存放你的 RMK 專案，例如 D 槽下的 `rmk` 資料夾：`D:\rmk\`，然後變更終端機的工作路徑：
 
@@ -146,7 +146,7 @@ PS D:\rmk> rmkit init
 
 > 如果你打算用 Git 管理此專案，`rmkit` 會幫你建立 `.gitignore`，只需要再執行 `git init` 即可。
 
-## 編輯 `keyboard.toml`
+### 編輯 `keyboard.toml`
 
 接下來使用 VS Code 開啓你的鍵盤資料夾，VS Code 上方選單列 > File > Open Folder...。
 
@@ -203,7 +203,7 @@ charge_led.low_active = false
 
 接下來將分成各個部分說明 `keyboard.toml`，詳細設定請參考 [Keyboard Configuration - RMK Documentation](https://haobogu.github.io/rmk/keyboard_configuration.html)。
 
-### [keyboard]
+#### \[keyboard]
 
 `[keyboard]` 部分是鍵盤的基本訊息。
 
@@ -247,16 +247,16 @@ usb_enable = true # 如果你用的 MCU 沒有 USB外設（如 nRF52832），需
 目前支援的 `board` 有：
 
 - nice!nano
-- nice!nano_v2
+- nice!nano\_v2
 - XIAO BLE
 
 > USB Vendor ID 和 Product ID （VID & PID）理論上是要和 USB 協會申請並註冊的唯一 ID，但我們自己開發使用的話通常就隨意設定即可。
 
-### [matrix]
+#### \[matrix]
 
 `[matrix]` 用來定義鍵盤矩陣掃描的 IO 腳位。如果你不知道什麼是矩陣掃描（Matrix scanning）的話建議上網搜尋一些文章，這是當今絕大多數鍵盤的運作基礎（或者是我未來另外寫一篇說明好了）。
 
-要注意的是這裡使用的腳位名稱是 Embassy 裡的 Peripherals 名稱，例如 nRF52840 的話要看 [Peripherals in embassy_nrf](https://docs.embassy.dev/embassy-nrf/git/nrf52840/struct.Peripherals.html)，也就是 `P0_00`、`P1_05` 這種。而如果是 [RP2040](https://docs.embassy.dev/embassy-rp/git/rp2040/struct.Peripherals.html) 的話要使用 `PIN_0` 這種。
+要注意的是這裡使用的腳位名稱是 Embassy 裡的 Peripherals 名稱，例如 nRF52840 的話要看 [Peripherals in embassy\_nrf](https://docs.embassy.dev/embassy-nrf/git/nrf52840/struct.Peripherals.html)，也就是 `P0_00`、`P1_05` 這種。而如果是 [RP2040](https://docs.embassy.dev/embassy-rp/git/rp2040/struct.Peripherals.html) 的話要使用 `PIN_0` 這種。
 
 ```toml
 [matrix]
@@ -267,7 +267,7 @@ output_pins = ["P1_05", "P1_06", "P1_03"]
 
 如果你不使用矩陣掃描，而是將按鍵直接接入的話，可以另外設定 `matrix_type = "direct_pin"`，詳細內容請參考[官方文件](https://haobogu.github.io/rmk/keyboard_configuration.html#matrix)，文本就不多做介紹。
 
-### [layout]
+#### \[layout]
 
 `[layout]` 用來定義 Keymap 鍵位佈局。其中 `rows` 和 `cols` 的數量要和 `matrix` 的 IO 腳部分配合，`layers` 用來定義分層數量，`keymap` 就是設定按鍵佈局，根據你的 `layers` 可以設定不同層的佈局。
 
@@ -298,7 +298,7 @@ keymap = [
 ]
 ```
 
-### [behavior]
+#### \[behavior]
 
 `[behavior]` 定義一些不同的鍵盤行為。例如 One Shot 功能的超時時間、Combo 鍵等等。這部分屬於比較進階的功能，本文就先跳過。
 
@@ -311,7 +311,7 @@ combos = [
 ]
 ```
 
-### [light]
+#### \[light]
 
 `[light]` 是定義指示燈的部分，包含 `capslock`、`numslock`、`scrolllock`。此處的 IO 腳位名稱和 `[matrix]` 部分一樣，要使用 Embassy 的名稱。
 
@@ -322,7 +322,7 @@ numslock= { pin = "P0_04", low_active = true }
 scrolllock = { pin = "P1_10", low_active = true }
 ```
 
-### [storage]
+#### \[storage]
 
 `[storage]` 定義儲存設定，RMK 會將 Keymap 資料和 BLE 連線資訊儲存在 Flash 中的特定位置。預設情況下它是啓用的，並且會使用 MCU 的最後 2 個 sector 儲存資料。
 
@@ -336,7 +336,7 @@ num_sectors = 2 # 使用多少 Flash 的 sector，預設是 2
 clear_storage = false # 設為 true 的話每次鍵盤開機都會清空，通常用於開發測試
 ```
 
-### [ble]
+#### \[ble]
 
 `[ble]` 設定無線藍牙的相關功能。部分功能如 `battery_adc_pin` 和充電狀態目前僅 nRF52840 支援。
 
@@ -352,7 +352,7 @@ charge_led.pin = "P0_29"
 charge_led.low_active = false
 ```
 
-## 編輯 `memory.x`
+### 編輯 `memory.x`
 
 `memory.x` 用來定義 MCU 的 RAM 和 Flash 佈局。如果你是使用 STM32 的話可以略過此部分。
 
@@ -388,11 +388,11 @@ MEMORY
 
 > 注意這裡的 `1K` 是 `1KiB` 也就是 1024 bytes。
 
-## 編輯 `vial.json`
+### 編輯 `vial.json`
 
 `vial.json` 是 Vial 要使用的檔案，你需要根據 `keyboard.toml` 中的 `[keymap]` 定義建立一個 `vial.json`。詳細的說明請參考 [QMK啓用Vial教學](/posts/diyqmkkeyboard-vial#%E5%BB%BA%E7%AB%8B-vialjson)或官方說明 [Create JSON - Vial](https://get.vial.today/docs/porting-to-via.html)。
 
-## 編輯編譯設定
+### 編輯編譯設定
 
 Rust 編譯設定在 `.carbo/config.toml`，要注意的是 `target` 是不是正確的，其內容請參考[添加編譯器目標](#添加編譯器目標)。
 
@@ -415,7 +415,7 @@ target = "thumbv7em-none-eabihf"     # Cortex-M4F and Cortex-M7F (with FPU)
 DEFMT_LOG = "info"
 ```
 
-# 編譯韌體
+## 編譯韌體
 
 修改完設定後就可以進行編譯了，你可以直接使用 VS Code 下面的終端機執行指令（開啓方式為 VS Code 上方選單列 > Terminal > New Terminal）。
 
@@ -437,11 +437,11 @@ cargo make uf2 --release
 >
 > 使用 UF2 指令 `cargo make uf2 --release` 如果有編譯錯誤的話不會直接提示具體問題，可以先執行 `cargo build --release` 確認問題並修正後再次嘗試。
 
-# 燒錄韌體
+## 燒錄韌體
 
 這裡有兩種不同的燒錄方式。
 
-## UF2
+### UF2
 
 使用 UF2 的好處是你只需要一條 USB 線，無需購買專門的燒錄器，但是你的 MCU 必須已經擁有 UF2 Bootloader 才可以使用此方式。如果你的 MCU 沒有 UF2 Bootloader 的話，你可以使用燒錄器先為其燒入一種 UF2 Bootloader 後就可以使用 UF2 更新韌體了。
 
@@ -454,7 +454,7 @@ UF2 的燒入方式就是將你的 MCU/ 開發板使用 USB 接上電腦，然�
 > 3. 按一下 RESET 按鈕後放開
 > 4. 放開 BOOT 按鈕
 
-## 燒錄器
+### 燒錄器
 
 如果你有專門的燒錄器如 J-Link、DAP Link 可以使用此方法。只要將你的燒錄器接上電腦，再使用燒錄器連接 MCU 的燒錄座，然後使用 `probe-rs` 或其它燒錄工具即可。
 
@@ -466,9 +466,9 @@ cargo run --release
 
 > 記得燒錄器可能會需要安裝其各自的驅動程式。`probe-rs` 安裝完後還要進行[設定](https://probe.rs/docs/getting-started/probe-setup/)。
 
-# nRF 額外說明
+## nRF 額外說明
 
-## SoftDevice
+### SoftDevice
 
 nRF MCU 要使用藍牙功能的話會需要 [SoftDevice](https://docs.nordicsemi.com/bundle/ug_gsg_ses/page/UG/gsg/softdevices.html)，這是一個 Nordic 官方預先編譯好的無線通訊協定棧。不同的 nRF MCU 型號要使用不同的 SoftDevice，且還有再細分成不同的功能，以 nRF52840 來說的話要使用藍牙 BLE 通常是選擇 S140（Bluetooth Low Energy - Central and Peripheral），然後 RMK 目前支援 `v6.x.x` 和 `v7.x.x`。
 
@@ -476,7 +476,7 @@ nRF MCU 要使用藍牙功能的話會需要 [SoftDevice](https://docs.nordicsem
 
 如果你的 nRF52840 是完全空的，那除了燒錄 RMK 鍵盤韌體外，你還要先為其燒錄 SoftDevice。要先到 Nordic 官網下載對應的 SoftDevice（如 [S140](https://www.nordicsemi.com/Products/Development-software/S140/Download)），然後用燒錄器將 SoftDevice 的 `.hex` 檔案（如 `s140_nrf52_7.3.0_softdevice.hex`）燒進 MCU 內。
 
-## 燒錄
+### 燒錄
 
 如果你偏好圖形化工具的話，nRF MCU 可以使用 Nordic 官方的燒錄工具 [nRF Connect for Desktop](https://www.nordicsemi.com/Products/Development-tools/nRF-Connect-for-Desktop)，下載安裝後安裝「Programmer」。
 
@@ -488,7 +488,7 @@ nRF MCU 要使用藍牙功能的話會需要 [SoftDevice](https://docs.nordicsem
 
 > RMK 的 `.hex` 檔案要使用 UF2 的指令產生。
 
-# 參考
+## 參考
 
 我有建立一個 RMK 範例專案在 GitHub，Release 頁面也有提供編譯好的燒錄檔，可以參考看看：[siderakb/rmk-example](https://github.com/siderakb/rmk-example)
 
@@ -501,4 +501,4 @@ nRF MCU 要使用藍牙功能的話會需要 [SoftDevice](https://docs.nordicsem
   - [SoftDevices](https://docs.nordicsemi.com/bundle/ug_gsg_ses/page/UG/gsg/softdevices.html)
   - [nRF Connect for Desktop](https://www.nordicsemi.com/Products/Development-tools/nRF-Connect-for-Desktop)
 - [rust-embedded/cortex-m-quickstart: Template to develop bare metal applications for Cortex-M microcontrollers](https://github.com/rust-embedded/cortex-m-quickstart)
-- [Adafruit_nRF52_Bootloader](https://github.com/adafruit/Adafruit_nRF52_Bootloader)
+- [Adafruit\_nRF52\_Bootloader](https://github.com/adafruit/Adafruit_nRF52_Bootloader)

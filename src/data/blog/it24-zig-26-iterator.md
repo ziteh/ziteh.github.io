@@ -15,7 +15,7 @@ toc: true
 
 <!-- more -->
 
-# 基礎
+## 基礎
 
 首先這是標準庫所提供的迭代器 `std.mem.split(T, V, S)`，其中 `T` 是型別，`V` 是資料，`S` 是分隔符。使用 `.next()` 進行迭代，如果回傳 `null` 則代表迭代完成。
 
@@ -44,7 +44,7 @@ Python
 TypeScript
 ```
 
-# 自製迭代器
+## 自製迭代器
 
 Zig 的迭代器並不是特殊語法，只是約定俗成的慣例，如果想要自製迭代器的話，只要實作一個含有 `next()` 方法的 `struct` 即可。
 
@@ -97,7 +97,7 @@ pub fn main() void {
 10
 ```
 
-# 參考
+## 參考
 
 - [Iterators | zig.guide](https://zig.guide/standard-library/iterators)
 - [Zig Iterators](https://danthedev.com/zig-iterators/)

@@ -15,7 +15,7 @@ toc: true
 
 <!-- more -->
 
-# while
+## while
 
 只要在 `while` 前打上 `LABEL:`，這個 While-loop 就會被標記，隨後只要使用 `break: LABEL` 或 `continue: LABEL` 就可以了
 
@@ -47,7 +47,7 @@ Value: 3
 Break
 ```
 
-# for
+## for
 
 For-loop 也是相同的方式。
 
@@ -75,7 +75,7 @@ Value: 3
 Break
 ```
 
-# Block
+## Block
 
 Zig 的區塊 Block 可以作為表達式回傳值。
 
@@ -103,7 +103,7 @@ pub fn main() void {
 Running in Production mode
 ```
 
-# 參考
+## 參考
 
 - [Labelled Loops | zig.guide](https://zig.guide/language-basics/labelled-loops)
 - [Labelled Blocks | zig.guide](https://zig.guide/language-basics/labelled-blocks)

@@ -15,7 +15,7 @@ Vector 可以用來儲存一組相同型別的資料，其長度和型別需在�
 
 <!-- more -->
 
-# 基礎
+## 基礎
 
 使用 `@Vector(L, T)` 宣告，其中 `L` 代表長度，`T` 代表型別，可以是布林、整數、浮點數、指標。
 
@@ -36,7 +36,7 @@ pub fn main() void {
 3, 6, -5
 ```
 
-# 運算
+## 運算
 
 Vector 支援各種運算：
 
@@ -59,7 +59,7 @@ pub fn main() void {
 2, 5, -50
 ```
 
-# 填充
+## 填充
 
 如果你需要用相同數值填滿整個 Vector，可以用 `@splat(V)`，其中 `V` 就是要填入的數值。
 
@@ -78,7 +78,7 @@ pub fn main() void {
 3, 3, 7
 ```
 
-# 陣列
+## 陣列
 
 Vector 和 Array 可以互相轉換。
 
@@ -106,7 +106,7 @@ pub fn main() void {
 1, 2, 3
 ```
 
-# 參考
+## 參考
 
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#Vectors)
 - [Vectors | zig.guide](https://zig.guide/language-basics/vectors)

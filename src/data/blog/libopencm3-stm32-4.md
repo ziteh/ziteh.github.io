@@ -16,23 +16,23 @@ draft: false
 # aliases: ["/2022/09/libopencm3-stm32-4/"]
 ---
 
-# 前言
+## 前言
 
 終於要開始實際寫程式了，接續上一篇的內容，這次要教最基本的 LibOpenCM3 的 GPIO 輸出用法，會控制一個 LED 燈使其閃爍。
 
 <!--more-->
 
-# 正文
+## 正文
 
 先以 Nucleo-F446RE 做示範。
 
 首先[建立一個 PIO 的專案](/posts/libopencm3-stm32-2#建立專案)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 檔案。
 
-## 完整程式
+### 完整程式
 
 先把完整的程式打出來：
 
-``` c
+```c
 /**
  * @file   main.c
  * @brief  Blinking LED example for STM32 Nucleo-F446RE.
@@ -81,11 +81,11 @@ int main(void)
 }
 ```
 
-## 分段說明
+### 分段說明
 
-### Include
+#### Include
 
-``` c
+```c
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/gpio.h>
 ```
@@ -97,9 +97,9 @@ int main(void)
 
 > LibOpenCM3 的這些檔案 PIO 都會幫我們處理好，所以不用另外下載或設定路徑，直接 `#include` 就可以了。
 
-### 定義腳位
+#### 定義腳位
 
-``` c
+```c
 /* User LED (LD2) connected to Arduino-D13 pin. */
 #define RCC_LED_GPIO (RCC_GPIOA)
 #define GPIO_LED_PORT (GPIOA)
@@ -112,9 +112,9 @@ int main(void)
 
 此外 RCC 也會需要依照 GPIO Port 進行設定，所以也定義一個 `RCC_LED_GPIO` 為 `RCC_GPIOA`。
 
-### Delay 函式
+#### Delay 函式
 
-``` c
+```c
 static void delay(uint32_t value)
 {
   for (uint32_t i = 0; i < value; i++)
@@ -128,9 +128,9 @@ static void delay(uint32_t value)
 
 其中的 `__asm__("nop")` 代表嵌入組合語言的「nop」指令，也就是無操作（No operation）。
 
-### 主程式
+#### 主程式
 
-``` c
+```c
 int main(void)
 {
   /* Enable clock. */
@@ -159,6 +159,7 @@ int main(void)
 ```
 
 - `rcc_periph_clock_enable()`：這個函式會致能指定功能的 Clock。在這裡我們要啓用 LED 所在的 GPIO Port 的 Clock。
+
 - `gpio_mode_setup()`：為指定的 GPIO 設定模式。
   - `GPIO_LED_PORT`：要設定的 GPIO Port。
   - `GPIO_MODE_OUTPUT`：設定為「General Purpose Output」 模式。
@@ -173,7 +174,7 @@ int main(void)
 
 - `gpio_toggle()`：反轉該 GPIO 的輸出值。如果目前是輸出 `High`，那就變成輸出 `Low`，反之亦然。
 
-### 編譯與燒錄/上傳
+#### 編譯與燒錄/上傳
 
 打完程式後，可以在 VS Code 左下方找到編譯（Build）和燒錄（Upload）的按鈕。也可以用快捷鍵「`Ctrl`+`Alt`+`B`」、「`Ctrl`+`Alt`+`U`」。
 
@@ -191,11 +192,11 @@ Flash: 0.1% (used 764 bytes from 524288 bytes)
 
 ![▲ 成果。](https://bucket.ziteh.dev/blog/libopencm3-stm32-4/49da3c87.webp)
 
-## F103RB
+### F103RB
 
 STM32F1 系列的部分程式寫法不一樣，所以在此也提供 Nucleo-F103RB 的程式範例。主要差異只有 GPIO 的設定函式不同，STM32F1 用的是 `gpio_set_mode()`，而非 `gpio_mode_setup()` 與 `gpio_set_output_options()`。
 
-``` c
+```c
 /**
  * @file   main.c
  * @brief  Blinking LED example for STM32 Nucleo-F103RB.
@@ -240,15 +241,15 @@ int main(void)
 
 ```
 
-## PIO 環境
+### PIO 環境
 
 如果你的程式會需要在 F1 或 F4 等其它 STM32 系列上運作，那每次用 F1 時 GPIO 的寫法不同，或是有 Pin 腳不同的情況會很麻煩，所以這裡簡單介紹如何用 PIO 設定多個專案環境，方便切換。
 
 ![▲ 設定好的環境可以在 VS Code 下方進行切換。](https://bucket.ziteh.dev/blog/libopencm3-stm32-4/dd8f02ba.webp)
 
-### 主程式
+#### 主程式
 
-``` c
+```c
 /**
  * @file   main.c
  * @brief  Blinking LED example for STM32 based on LibOpenCM3.
@@ -309,9 +310,9 @@ int main(void)
 
 ```
 
-### PIO 專案設定檔 `platformio.ini`
+#### PIO 專案設定檔 `platformio.ini`
 
-``` ini
+```ini
 [platformio]
 default_envs = nucleo_f103rb
 
@@ -329,11 +330,11 @@ board = nucleo_f446re
 build_flags = -D NUCLEO_F446RE
 ```
 
-# 小結
+## 小結
 
 這次簡單介紹了 LibOpenCM3 的 GPIO 輸出用法，這部分只要有搞懂 STM32 的 GPIO 模式應該不會太難。
 
-# 參考資料
+## 參考資料
 
 - [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
 - [platformio/platform-ststm32](https://github.com/platformio/platform-ststm32)

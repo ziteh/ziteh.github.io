@@ -16,7 +16,7 @@ draft: false
 # aliases: ["/2022/10/posts/libopencm3-stm32-24/"]
 ---
 
-# 前言
+## 前言
 
 SPI（Serial Peripheral Interface）是一種常見的同步序列通訊協定，為主從式架構。有許多感測器或模組都使用 SPI 進行通訊。
 
@@ -33,15 +33,15 @@ SPI（Serial Peripheral Interface）是一種常見的同步序列通訊協定�
 
 關於 SPI 本身我並不打算詳細介紹，若讀者還不熟悉 SPI 的基本概念的話，建議先另外查詢相關文章。我覺得「[Day 13：SPI (Part 1) - 原來是 Shift Register 啊！我還以為是 SPI 呢！](https://ithelp.ithome.com.tw/articles/10245910)」與「[SPI (Serial Peripheral Interface) 串列 (序列) 週邊介面](https://magicjackting.pixnet.net/blog/post/164725144)」這兩篇寫得就很不錯。
 
-# 正文
+## 正文
 
 首先一樣以 Nucleo-F446RE 做示範。
 
 首先[建立一個 PIO 的專案](/posts/libopencm3-stm32-2#建立專案)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h`。
 
-## 完整程式
+### 完整程式
 
-``` c
+```c
 /**
  * @file   main.c
  * @brief  SPI master mode example for STM32 Nucleo-F446RE.
@@ -221,7 +221,7 @@ void exti9_5_isr(void)
 }
 ```
 
-``` c
+```c
 /**
  * @file main.h
  */
@@ -266,11 +266,11 @@ static void spi_deselect(void);
 #endif /* MAIN_H. */
 ```
 
-## 分段說明
+### 分段說明
 
-### Include
+#### Include
 
-``` c
+```c
 // main.h
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/gpio.h>
@@ -282,9 +282,9 @@ static void spi_deselect(void);
 
 除了基本的 `rcc.h`、`gpio.h`，這次的 `spi.h`、`usart.h`、`nvic.h` 外，我希望此 SPI 有一個獨立的 EXTI 請求接腳，所以還會用到 `exti.h`。
 
-### 設定 SPI
+#### 設定 SPI
 
-``` c
+```c
 
 static void spi_setup(void)
 {
@@ -358,9 +358,9 @@ CPOL 決定了 SPI 閒置時 SCK 要為 `Low`（CPOL = `0`） 還是 `High`（CP
 
 ![▲ Standard multi-slave communication 的 SPI 接線圖。取自 RM0390 Rev6 P.852](https://bucket.ziteh.dev/blog/libopencm3-stm32-24/1ac9641f.webp)
 
-### SPI CS 選擇/反選擇
+#### SPI CS 選擇/反選擇
 
-``` c
+```c
 static void spi_select(void)
 {
   gpio_clear(GPIO_SPI_CS_PORT, GPIO_SPI_CS_PIN);
@@ -374,9 +374,9 @@ static void spi_deselect(void)
 
 CS 的控制就是一般的 GPIO 輸出，將其寫成函式以方便操作。
 
-### USART ISR
+#### USART ISR
 
-``` c
+```c
 /**
  * @brief USART2 Interrupt service routine.
  */
@@ -405,13 +405,13 @@ void usart2_isr(void)
 這裡的 SPI 傳送步驟為：
 
 1. 選擇 Slave device（CS 輸出 `Low`）。
-2. 使用 `spi_send()` 將要傳送的資料寫入 SPI_DR 暫存器中。此函式會先等待目前的傳輸已經結束後（`SPI_SR_TXE` flag）才將資料寫入資料暫存器。
+2. 使用 `spi_send()` 將要傳送的資料寫入 SPI\_DR 暫存器中。此函式會先等待目前的傳輸已經結束後（`SPI_SR_TXE` flag）才將資料寫入資料暫存器。
 3. 讀取 `SPI_SR_TXE`（傳送緩衝器為空） 與 `SPI_SP_BSY`（忙碌） flag，以等待 SPI 完成傳輸。
 4. 取消選擇 Slave device（CS 輸出 `High`）。
 
-### EXTI ISR
+#### EXTI ISR
 
-``` c
+```c
 /**
  * @brief EXTI9~5 Interrupt service routine.
  */
@@ -437,13 +437,13 @@ void exti9_5_isr(void)
 
 要注意的是 SPI slave device 不會自己產生 SCK 時脈訊號，SCK 是由 Master device 產生的，而在這裡單純呼叫 `spi_read()` 也不會讓 Master device 產生 SCK 訊號，因此要呼叫 `spi_send()` 並傳送一個假資料（這裡為 `0x00`）讓 SCK 產生。
 
-## 多環境程式（F446RE + F103RB）
+### 多環境程式（F446RE + F103RB）
 
 由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。
 
 由於這次程式較長，所以完整的程式請看 [GitHub repo](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/spi_master)。
 
-## 成果
+### 成果
 
 由於下一篇才會寫 SPI slave，因此這次就先只以邏輯分析儀查看 SPI 的輸出。
 
@@ -453,11 +453,11 @@ void exti9_5_isr(void)
 
 我傳送的資料是 `0xA7`，也就是 `1010 0111b`，以 SCK 的負緣對照 MOSI 訊號也是正確的。
 
-# 小結
+## 小結
 
 SPI 是許多感測器及模組在使用的通訊介面，會使用 SPI 才能使用這些外部元件，因此 SPI 也是很重要的功能。這次介紹了最基本的 SPI 用法，應該已經足夠應付基本的使用了。
 
-# 參考資料
+## 參考資料
 
 - [Day 13：SPI (Part 1) - 原來是 Shift Register 啊！我還以為是 SPI 呢！](https://ithelp.ithome.com.tw/articles/10245910)
 - [SPI (Serial Peripheral Interface) 串列 (序列) 週邊介面](https://magicjackting.pixnet.net/blog/post/164725144)

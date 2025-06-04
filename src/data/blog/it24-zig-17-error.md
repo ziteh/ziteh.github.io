@@ -17,7 +17,7 @@ Zig 使用 `error` 建立錯誤集合型別。
 
 Zig 不使用多少現代語言常見的 `try-catch`、`exception` 機制處理錯誤，而是選擇和 Rust 類似的錯誤型別，透過回傳值的方式處理。
 
-# 基本
+## 基本
 
 `error` 看起來和 `enum` 很類似，但它是專門用來處理錯誤的型別。
 
@@ -39,7 +39,7 @@ pub fn main() void {
 error.OutOfRange
 ```
 
-# 超集
+## 超集
 
 Zig 會依據名稱為每個 `error` 的成員建立一個不重複的 ID（預設以 `u16`），這意味著，只要是相同名稱，就算處於不同的 `error` 內，在程式上它們就是同一個。
 
@@ -69,7 +69,7 @@ pub fn main() void {
 Yes
 ```
 
-# 合併
+## 合併
 
 你可以用 `||` 把多個 `error` 合併成一個更大的 `error`。
 
@@ -99,7 +99,7 @@ pub fn main() void {
 error.ErrorA1, error.ErrorB2
 ```
 
-# 錯誤聯合型別
+## 錯誤聯合型別
 
 由於 Zig 採用類似 Rust 的錯誤處理機制，所以它也有類似 `Result<T, E>` 的用法，即錯誤聯合型別（Error union type），語法為 `E!V`，其中 `E` 是錯誤型別，而 `V` 是其它型別。
 
@@ -129,7 +129,7 @@ Value: 32
 Value: 0
 ```
 
-# 捕獲
+## 捕獲
 
 在處理錯誤聯合型別的回傳值時，可以利用 Capture 捕獲 `error`。
 
@@ -159,7 +159,7 @@ fn do_something() MyError!u8 {
 Error: error.OutOfRange
 ```
 
-# 參考
+## 參考
 
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#Errors)
 - [Errors | zig.guide](https://zig.guide/language-basics/errors)

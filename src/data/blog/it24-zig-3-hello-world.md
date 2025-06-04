@@ -15,7 +15,7 @@ toc: true
 
 <!-- more -->
 
-# 建立專案
+## 建立專案
 
 首先建立一個資料夾 `zig-hello`：
 
@@ -62,7 +62,7 @@ zig-out/
 /docgen_tmp/
 ```
 
-# 執行
+## 執行
 
 目前的 `main.zig` 應該是這樣的（省略部分註解）：
 
@@ -108,7 +108,7 @@ All your codebase are belong to us.
 Run `zig build test` to run the tests.
 ```
 
-## print
+### print
 
 這邊要先特別介紹一下 `print()`，因為之後的範例會很常看到它。它用起來和 C 的差不多，每個 `{}` 都代表一個數值（就像 C 的 `%d`），後面的 `.{ var }`，則是實際的變數或常數，如果有多個的話，要以前寫在 `.{ }` 內，並用逗號 `,` 分隔。如果沒有要填入數值的話 `.{}` 內留空。
 
@@ -120,7 +120,7 @@ std.debug.print("Value: {}\n", .{5});
 std.debug.print("A: {}, B: {}\n", .{5, 10});
 ```
 
-# 測試
+## 測試
 
 以 `test "name" {}` 包圍的區塊是測試程式。你可以執行測試：
 
@@ -137,7 +137,7 @@ test transitive failure
 error: the following build command failed with exit code 1:
 ```
 
-# 參考
+## 參考
 
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#Hello-World)
 - [Hello World | zig.guide](https://zig.guide/getting-started/hello-world)

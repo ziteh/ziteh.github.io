@@ -10,6 +10,7 @@ toc: true
 draft: false
 # aliases : ["/2017/08/unbox-v90hpa/"]
 ---
+
 ![](https://bucket.ziteh.dev/blog/unbox-v90hpa/398c8cda.webp)
 
 老早就想添購些家用的耳機系統，趁著暑假太無聊，上網查東查西，在AA論壇看到有人在討論這台Musical Fidelity V90-HPA，查了一下，價格近萬元，對木耳的我來說還是有些下不了手，但就在這時，我看到加煒在露天賣這台的展示機，價格直接砍半，當下我馬上和店員確認後就下標了。

@@ -15,7 +15,7 @@ toc: true
 
 <!-- more -->
 
-# GitHub CLI
+## GitHub CLI
 
 為了要取得我們的所有 repo，需要使用 [GitHub CLI](https://cli.github.com/)。
 
@@ -58,7 +58,7 @@ vim/killersheep              Silly game for Vim 8.2      public        about 8 m
 vim/vim-history              Very very old history o...  public        about 1 year ago
 ```
 
-# clone --mirror
+## clone --mirror
 
 `git clone` 大家都很熟，但是加上 `--mirror` 後可能就不是每個人都用過了。使用 `git clone --mirror <REPO_URL>` 會 Clone 該 repo 的所有 git 內部資訊（包含 branch、tag），也就是可以完整地備份 repo，方便進行完整的轉移。只使用一般的 `git clone` 的話，還要再另外 `fetch`/`pull` 其它 branch。
 
@@ -78,15 +78,15 @@ git clone neovim.git
 
 你應該會看到一個新的 `neovim` 資料夾，而且內部完整包含了所有檔案，各個 branch 和 tag 也都在。
 
-可以發現，這個 `neovim.git` 其實就和我們平常用的 GitHub、Remote repo 很類似，有興趣的話可以查查 Git Bare repo[^1]。
+可以發現，這個 `neovim.git` 其實就和我們平常用的 GitHub、Remote repo 很類似，有興趣的話可以查查 Git Bare repo\[^1]。
 
-[^1]: [Git Bare Repo - HackMD](https://hackmd.io/@hbdoy/BJz0V5tv8)
+\[^1]: [Git Bare Repo - HackMD](https://hackmd.io/@hbdoy/BJz0V5tv8)
 
-# Bash 腳本
+## Bash 腳本
 
-現在我們可以使用 GitHub CLI 取得所有 repo，也知道 `git clone --mirror` 可以用來完成備份 repo，就可以用個簡單的 Bash 腳本來備份所有 repo[^2]。
+現在我們可以使用 GitHub CLI 取得所有 repo，也知道 `git clone --mirror` 可以用來完成備份 repo，就可以用個簡單的 Bash 腳本來備份所有 repo\[^2]。
 
-[^2]: [git - How to clone all repos at once from GitHub? - Stack Overflow](https://stackoverflow.com/questions/19576742/how-to-clone-all-repos-at-once-from-github)
+\[^2]: [git - How to clone all repos at once from GitHub? - Stack Overflow](https://stackoverflow.com/questions/19576742/how-to-clone-all-repos-at-once-from-github)
 
 ```bash
 #!/bin/bash
@@ -124,4 +124,4 @@ bash clone_github.sh neovim
 
 有了這個腳本，我們就不用每個 repo 都手動 clone 了。當然更進一步的話，可以把它包成 Docker，在 NAS 上定期執行。
 
-# 參考
+## 參考

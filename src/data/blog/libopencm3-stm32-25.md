@@ -16,21 +16,21 @@ draft: false
 # aliases: ["/2022/10/posts/libopencm3-stm32-25/"]
 ---
 
-# 前言
+## 前言
 
 上次已經介紹了 SPI 作為 Master device 的程式，這次要接著介紹作為 Slave device 的程式寫法，讓 Master 與 Slave 可以互相溝通。
 
 <!--more-->
 
-# 正文
+## 正文
 
 首先一樣以 Nucleo-F446RE 做示範。
 
 首先[建立一個 PIO 的專案](/posts/libopencm3-stm32-2#建立專案)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h` 檔案。
 
-## 完整程式
+### 完整程式
 
-``` c
+```c
 /**
  * @file   main.c
  * @brief  SPI slave mode example for STM32 Nucleo-F446RE.
@@ -190,7 +190,7 @@ void spi1_isr(void)
 }
 ```
 
-``` c
+```c
 /* @file main.h */
 
 #ifndef MAIN_H
@@ -230,11 +230,11 @@ static void spi_rq_reset(void);
 #endif /* MAIN_H. */
 ```
 
-## 分段說明
+### 分段說明
 
-### 設定 SPI
+#### 設定 SPI
 
-``` c
+```c
 static void spi_setup(void)
 {
   /* Set SPI pins to alternate function. */
@@ -295,7 +295,7 @@ SPI 本身的設定如 CPOL 與 CPHA 要與 Master 一致才可以正常通訊�
 
 之後再啓用 SPI 的中斷功能。
 
-### SPI ISR
+#### SPI ISR
 
 ```c
 /**
@@ -319,9 +319,9 @@ void spi1_isr(void)
 
 我們設定啓用 SPI 的「接收資料非空」中斷事件，因此 ISR 就負責讀取 Master 傳送的資料，若先前有 Slave 要傳送的資料也會在 CS 腳被下拉且 Master 發起 SCK 時脈訊號後傳送。
 
-### USART ISR
+#### USART ISR
 
-``` c
+```c
 /**
  * @brief USART2 Interrupt service routine.
  */
@@ -338,25 +338,25 @@ void usart2_isr(void)
 
 當 USART 收到資料時，會將資料先用 `spi_send()` 寫入到傳送暫存器中，然後以 `spi_rq_set()` 將 RQ 腳拉低以請求 Master 進行通訊。
 
-## 多環境程式（F446RE + F103RB）
+### 多環境程式（F446RE + F103RB）
 
 由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。
 
 由於這次程式較長，所以完整的程式請看 [GitHub repo](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/spi_slave)。
 
-## 成果
+### 成果
 
 我使用兩塊 STM32 Nucleo 板分別當作 Master 與 Slave。將線都接好後就可以讓兩者互相溝通了，記得要共地。
 
 ![](https://bucket.ziteh.dev/blog/libopencm3-stm32-25/febc06b1.webp)
 
-# 小結
+## 小結
 
 這次接續上次的 SPI Master，寫了 Slave 的操作介紹。其實用法基本上是差不多的，相信不會太難。
 
 會使用 SPI 通常是要連接其它的模組，所以 STM32 通常是當作 Master 的角色，但如果想要自己用 STM32 做一個「模組」的話，就可以用到 SPI Slave 模式了。
 
-# 參考資料
+## 參考資料
 
 - [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
 - [platformio/platform-ststm32](https://github.com/platformio/platform-ststm32)

@@ -23,7 +23,7 @@ draft: false
 
 本文不會把所有支援的 MCU 都介紹（太多了），只會重點介紹那些適合新手及不熟悉該領域的人的型號。如果你想知道所有 QMK 支援的 MCU 的話，請參考官網文件：[Compatible Microcontrollers](https://docs.qmk.fm/#/compatible_microcontrollers)
 
-# MCU 影響什麼？
+## MCU 影響什麼？
 
 首先我們要知道 MCU 會影響鍵盤的什麼？
 
@@ -44,7 +44,7 @@ draft: false
 >   - 雖然 Bootloader 和 DFU 本質上不太相同，但很多時候會把它們混著講，而實際上通常是指 DFU。
 > - PCBA（PCB Assembly）：PCB 組裝。簡單來說就是請工廠除了要生產 PCB 外，還要用打件機幫你把零件放上去，再用回流焊或波峰焊等設備幫你焊接，等你收到時就不用再自己焊接零件了。
 
-# 快速比較
+## 快速比較
 
 | 項目           | ⭐ATmega32U4         | AT90USB1286         | ⭐RP2040                      | STM32F303CC          | STM32F401CC          |
 | -------------- | ------------------- | ------------------- | ---------------------------- | -------------------- | -------------------- |
@@ -66,7 +66,7 @@ draft: false
 > 2. RP2040 沒有內建 Flash，你必須外接獨立的 Flash IC，如： W25Q128JVS, W25Q64JVXGIQ。
 > 3. 一般來說出廠的 MCU 不會燒好第三方 Bootloader，如何你是單買 IC 而非開發板，可能需要使用燒錄器先燒好 Bootloader 後才可以使用 QMK。
 
-對於新手我基本上只推薦 **ATmega32U4** 和 **RP2040**，且***最優先推薦 RP2040***。如果你不知道怎麼選的話，可以參考以下的守則：
+對於新手我基本上只推薦 **ATmega32U4** 和 **RP2040**，&#x4E14;***最優先推薦 RP2040***。如果你不知道怎麼選的話，可以參考以下的守則：
 
 1. 如果你不想自己畫/處理 MCU 的 PCB 電路，想要使用現成的開發板的話，選擇 RP2040。
 2. 如果以下 3 點**全部符合**的話，選擇 QFP 封裝的 ATmega32U4。
@@ -79,9 +79,9 @@ draft: false
 
 使用 ATmega32U4 需要額外注意：32KB 的 Flash 真的很小，建議你在畫 PCB 前先完成並測試 QMK 韌體，把所有你要的功能打開（包含 Vial）。如果編譯後 QMK 提示 Flash 空間不足，且你已經使用了所有優化選項，而你又不想放棄那些功能的話，就只能放棄 ATmega32U4 改用其它 MCU 了。
 
-# MCU 細評
+## MCU 細評
 
-## RP2040
+### RP2040
 
 [官網][rp]
 
@@ -108,7 +108,7 @@ draft: false
 
 ![RP Micro：RP2040 開發板](https://bucket.ziteh.dev/blog/diyqmkkeyboard-mcu-sel/c2824c56.webp)
 
-## ATmega32U4
+### ATmega32U4
 
 [官網][32u4]
 
@@ -137,7 +137,7 @@ draft: false
 
 ![Next μ：ATmega32U4 開發板](https://github.com/ziteh/next-micro/raw/v1.0/doc/pcb_render_front.jpg)
 
-## AT90USB1286
+### AT90USB1286
 
 [官網][at90]
 
@@ -147,7 +147,7 @@ draft: false
 
 常見的開發板是 Teensy++ 2.0。
 
-## STM32F303CC
+### STM32F303CC
 
 [官網][303]
 
@@ -155,7 +155,7 @@ ST 意法半導體龐大的 32-bit ARM MCU 系列——STM32 的一員。在上�
 
 如果你想要看不同腳位數/ROM/RAM/封裝的話，可以看 [STM32F303 系列](https://www.st.com/en/microcontrollers-microprocessors/stm32f303.html)
 
-## STM32F401CC
+### STM32F401CC
 
 [官網][401]
 
@@ -163,18 +163,22 @@ ST 意法半導體龐大的 32-bit ARM MCU 系列——STM32 的一員。在上�
 
 如果你想要看不同腳位數/ROM/RAM/封裝的話，可以看 [STM32F401 系列](https://www.st.com/en/microcontrollers-microprocessors/stm32f401.html)
 
-# 無線藍牙
+## 無線藍牙
 
 QMK 的藍牙是透過模組支援的，且原則上僅限 AVR MCU。可以參考：[\[自製QMK鍵盤-番外\] 為QMK鍵盤加上Bluetooth藍牙無線功能](/posts/diyqmkkeyboard-ble/)
 
 不過在現在，如果你想要做藍牙鍵盤的話，我可能會另外推薦你 [ZMK](https://zmk.dev/) 和 nRF5 系列 SoC （如 [nRF52840](https://www.nordicsemi.com/products/nrf52840?lang=zh-TW)）。
 
 [32u4]: https://www.microchip.com/en-us/product/atmega32u4
+
 [at90]: https://www.microchip.com/en-us/product/AT90USB1286
+
 [rp]: https://www.raspberrypi.com/documentation/microcontrollers/rp2040.html
+
 [303]: https://www.st.com/en/microcontrollers-microprocessors/stm32f303cc.html
+
 [401]: https://www.st.com/en/microcontrollers-microprocessors/stm32f401cc.html
 
-# 相關文章
+## 相關文章
 
 - [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)

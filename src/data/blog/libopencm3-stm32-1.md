@@ -14,13 +14,13 @@ featured: true
 # aliases: ["/2022/09/libopencm3-stm32-1/"]
 ---
 
-# 前言
+## 前言
 
 此為我參加 2022 iThome 鐵人賽的系列文章，將以簡單的方式介紹以 LibOpenCM3 進行 STM32 微控制器的開發。
 
 <!--more-->
 
-# 主題介紹
+## 主題介紹
 
 我這次選擇的主題是「簡單入門 LibOpenCM3 STM32 嵌入式系統開發」，我將會介紹一系列 STM32 的基礎用法。
 
@@ -32,7 +32,7 @@ LibOpenCM3 是一個開源（LGPL-3.0 or GPL-3.0）的 ARM Cortex-M 微控制器
 
 不過我自己其實也不敢說自己熟 STM32 和 LibOpenCM3，很多底層和細節的部分我也不是很清楚，因此我只會寫最最最基本的功能用法，並且不會詳細說明底層的東西（如暫存器操作）。若文章中有錯誤也歡迎指正。
 
-# 硬體
+## 硬體
 
 我這次將會以 [Nucleo-F446RE](https://www.st.com/en/evaluation-tools/nucleo-f446re.html) 這塊 ST 的開發板為主，[Nucleo-F103RB](https://www.st.com/en/evaluation-tools/nucleo-f103rb.html) 為輔，示範 STM32 的程式寫法。
 

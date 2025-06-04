@@ -16,7 +16,7 @@ draft: false
 # aliases: ["/2022/10/posts/libopencm3-stm32-21/"]
 ---
 
-# 前言
+## 前言
 
 ADC（Analog to Digital Converter）顧名思義是將類比訊號轉換成數位訊號的元件，現今多數 MCU 都會內建 ADC，而這也是相當基本且常用的功能。
 
@@ -24,15 +24,15 @@ ADC（Analog to Digital Converter）顧名思義是將類比訊號轉換成數�
 
 <!--more-->
 
-# 正文
+## 正文
 
 首先一樣以 Nucleo-F446RE 做示範。
 
 首先[建立一個 PIO 的專案](/posts/libopencm3-stm32-2#建立專案)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h`。
 
-## 完整程式
+### 完整程式
 
-``` c
+```c
 /**
  * @file   main.c
  * @brief  Multi injected channel ADC example for STM32 Nucleo-F446RE.
@@ -158,7 +158,7 @@ int _write(int file, char *ptr, int len)
 }
 ```
 
-``` c
+```c
 /**
  * @file main.h
  */
@@ -195,11 +195,11 @@ static void delay(uint32_t value);
 #endif /* MAIN_H. */
 ```
 
-## 分段說明
+### 分段說明
 
-### Include
+#### Include
 
-``` c
+```c
 // main.h
 #include <stdio.h> /* For printf(). */
 #include <errno.h> /* For printf(). */
@@ -213,9 +213,9 @@ static void delay(uint32_t value);
 
 > USART 和 `printf()` 的詳細用法請看[之前的文章](/posts/libopencm3-stm32-9/)。
 
-### 設定 ADC
+#### 設定 ADC
 
-``` c
+```c
 static void adc_setup(void)
 {
 /* Set to input analog. */
@@ -263,9 +263,9 @@ static void adc_setup(void)
 - `adc_set_sample_time_on_all_channels()` 設定所有通道的取樣時間，這裡使用 56 個 Cycle。
 - `adc_set_injected_sequence()` 設定 Injected 通道組的序列。本例要讀取的是 Ch0、Ch1 與 Ch4 這 3 個通道。
 
-### 設定 RCC
+#### 設定 RCC
 
-``` c
+```c
 static void rcc_setup(void)
 {
   rcc_clock_setup_pll(&rcc_hse_8mhz_3v3[RCC_CLOCK_3V3_84MHZ]);
@@ -279,9 +279,9 @@ static void rcc_setup(void)
 
 除了 GPIO 外，還要記得致能各功能本身的時鐘。
 
-### 主程式
+#### 主程式
 
-``` c
+```c
 int main(void)
 {
   rcc_setup();
@@ -315,21 +315,21 @@ int main(void)
 
 `adc_start_conversion_injected()` 會觸發 ADC 進行 Injected 組轉換，並以 `adc_eoc_injected()` 觀察 Injected 組是否轉換完成。
 
-確認 ADC 轉換完成後使用 `adc_read_injected()` 來讀取各個轉換完的資料。雖然 Injected 組最多只能設定 4 個，但是它的 4 個通道的資料暫存器是各自獨立的（ADC_JDRx），這裡的第二個參數就是選擇要讀取 1\~4 哪一個 Injected 資料暫存器。要注意這裡的第二個引數是 1\~4 而非 0\~3。
+確認 ADC 轉換完成後使用 `adc_read_injected()` 來讀取各個轉換完的資料。雖然 Injected 組最多只能設定 4 個，但是它的 4 個通道的資料暫存器是各自獨立的（ADC\_JDRx），這裡的第二個參數就是選擇要讀取 1~4 哪一個 Injected 資料暫存器。要注意這裡的第二個引數是 1~4 而非 0~3。
 
-## 多環境程式（F446RE + F103RB）
+### 多環境程式（F446RE + F103RB）
 
 由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。
 
 不過這次的程式我還沒完成 F103RB 的部分，目前不會動作，未來有時間會再看是哪邊有問題。我還是把完整的程式的連接放上來：[GitHub repo](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/adc_multi_channel_injected)。
 
-# 小結
+## 小結
 
 這次延續了上一篇的內容，介紹多通道的 Injected 用法。
 
 一般來說，由於 Regular 組只有一個 16 位元的資料暫存器，若要使用掃描模式讀出序列中的多個通道的話，就必須要設定 DMA。但 Injected 組的 4 個資料暫存器是各自獨立的，因此如過要讀取的 ADC 通道在 4 個內的話，可以考慮使用 Injected 組，這樣就不用設定 DMA 了。
 
-# 參考資料
+## 參考資料
 
 - [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
 - [platformio/platform-ststm32](https://github.com/platformio/platform-ststm32)

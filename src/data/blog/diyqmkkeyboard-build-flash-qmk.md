@@ -24,7 +24,7 @@ draft: false
 > QMK 本身是用 C 及少部分的 C++ 寫的，如果你熟悉 C/C++ 的話，可以使用你喜歡的方式編譯。本篇主要是寫給不熟悉的人，可以用最簡單的方式編譯 QMK。
 > 本文以 Windows 系統為主，macOS 與 Linux 還請參考[官方文件](https://docs.qmk.fm/#/newbs_getting_started)。
 
-# 編譯
+## 編譯
 
 在上一篇我們已經準備好 QMK MSYS 的環境了，可以直接進行編譯，在 QMK MSYS 中執行：
 
@@ -35,19 +35,19 @@ qmk compile -kb mytetstkb -km default
 > `qmk compile -kb <keyboard> -km <keymap>` 是 QMK 的編譯指令。
 > `<keyboard>` 代表了你要編譯的鍵盤，這裡的是 `mytetstkb`。`<keymap>` 是要編譯的鍵映射（Keymap），這裡是 `default`。
 
-如果有問題的話會顯示問題出在哪裡。如果都沒問題的話，應該會看到一整排的 `[OK]`，並且會告訴你編譯好的 `.hex` 檔儲存的路徑（Creating load file for flashing: .build/mytestkb_default.hex，參考路徑：`C:\Users\<USERNAME>\qmk_firmware\.build\mytestkb_default.hex`）。
+如果有問題的話會顯示問題出在哪裡。如果都沒問題的話，應該會看到一整排的 `[OK]`，並且會告訴你編譯好的 `.hex` 檔儲存的路徑（Creating load file for flashing: .build/mytestkb\_default.hex，參考路徑：`C:\Users\<USERNAME>\qmk_firmware\.build\mytestkb_default.hex`）。
 
 ![▲ 編譯完成並顯示編譯好的檔案](https://bucket.ziteh.dev/blog/diyqmkkeyboard-build-flash-qmk/9091b4b4.webp)
 
 這樣就完成編譯了。有了這個 `.hex`（或 `.bin`、`.uf2` 等）檔就可以進行燒錄了。
 
-# 燒錄
+## 燒錄
 
 不同的硬體（微控制器、開發板）可以使用的燒錄方式可能不同，以下僅示範 Pro Micro（ATmega32U4）及 RP2040 的方法，其它硬體請參考官方文件 [Flashing Firmware](https://docs.qmk.fm/#/newbs_flashing)。
 
-## Pro Micro
+### Pro Micro
 
-### 準備軟體
+#### 準備軟體
 
 燒錄韌體前要先安裝好用來燒錄的軟體。
 
@@ -55,7 +55,7 @@ QMK 有個官方的燒錄工具——[QMK Toolbox](https://github.com/qmk/qmk_to
 
 以下為將示範使用 AVRDUDESS 進行燒錄，如果想要使用 QMK Toolbox 或 CLI 的話可以參考 QMK 的官方文件 [Flashing Firmwate](https://docs.qmk.fm/#/newbs_flashing)。
 
-### DFU 模式
+#### DFU 模式
 
 再來要確認好你使用的微控制器要如何進入所謂的 DFU（或 Bootloader）模式，不同的硬體可能會有所不同，通常都是透過短接 RST（Reset）和 GND 接腳。
 
@@ -65,7 +65,7 @@ QMK 有個官方的燒錄工具——[QMK Toolbox](https://github.com/qmk/qmk_to
 
 ![▲ 建議裝個開關在 RST 和 GND 腳上](https://bucket.ziteh.dev/blog/diyqmkkeyboard-build-flash-qmk/5f60539c.webp)
 
-### 進行燒錄
+#### 進行燒錄
 
 接下來請打開「裝置管理員」（你可以透過在左下角、工具列上的 Windows 標誌的開始鍵上按滑鼠右鍵來打開選單並打開它），裝置管理員內會列出目前連接到此電腦上的裝置。
 
@@ -99,9 +99,9 @@ QMK 有個官方的燒錄工具——[QMK Toolbox](https://github.com/qmk/qmk_to
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_KihNT558II" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-## RP2040
+### RP2040
 
-### DFU 模式
+#### DFU 模式
 
 RP2040 進入 DFU 模式的方法主要有以下幾種：
 
@@ -111,7 +111,7 @@ RP2040 進入 DFU 模式的方法主要有以下幾種：
 
 如果 RP2040 成功進入 DFU 模式，那你的電腦應該會多出一個名為 `RPI-RP2` 的儲存裝置，可以在檔案總管的本機中確認。RP2040 的 DFU 模式不像 Pro Micro 有時間限制，要退出就是按一下 Reset 或直接拔除 USB 線。
 
-### 進行燒錄
+#### 進行燒錄
 
 RP2040 可以透過以下任一種方式燒錄韌體：
 
@@ -126,7 +126,7 @@ RP2040 可以透過以下任一種方式燒錄韌體：
 
 > 我沒試過用 QMK Toolbox 燒錄 RP2040，但是其[文件](https://github.com/qmk/qmk_toolbox#flashing)中似乎也沒有提到有對 RP2040 的支援。
 
-# 測試
+## 測試
 
 這時你可以拔掉連接開發板的 USB 線，等待「裝置管理員」更新畫面後再次接上 USB，如果這時「裝置管理員」也有反應的話，且「鍵盤」的地方有新的裝置出現（如 HID Keyboard Device），代表你的開發板有被正確識別為鍵盤，也就是成功了。
 
@@ -136,11 +136,11 @@ RP2040 可以透過以下任一種方式燒錄韌體：
 
 > 你可能會需要安裝 QMK 的驅動程式，通常如果你是用 QMK Toolbox 的話它會問你要不要安裝。如果你不是用 QMK Toolbox 或想另外安裝的話，你可以從 [GitHub](https://github.com/qmk/qmk_driver_installer/releases) 下載。
 
-# 結語
+## 結語
 
 如果到這一步都很成功的話那就恭喜了，到目前為止 QMK 韌體的部分都完成了。
 
-# 相關網頁
+## 相關網頁
 
 - [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - 參考資料

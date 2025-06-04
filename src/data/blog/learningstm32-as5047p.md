@@ -16,7 +16,7 @@ draft: false
 # aliases: ["/2022/04/learningstm32-as5047p/"]
 ---
 
-# 前言
+## 前言
 
 [AMS AS5047P](https://ams.com/en/as5047p) 是一款旋轉位置感測器/磁性編碼器。
 
@@ -26,7 +26,7 @@ draft: false
 
 <!-- more -->
 
-# SPI
+## SPI
 
 AS5047P 透過 SPI 進行通訊。其對 SPI 的要求為：
 
@@ -66,11 +66,11 @@ static void SPI_Init(void)
 }
 ```
 
-# 通訊格式
+## 通訊格式
 
 AS5047P 有 3 種 SPI 訊框格式。
 
-## Command Frame
+### Command Frame
 
 | Bit  | Name | 描述                                               |
 | ---- | ---- | -------------------------------------------------- |
@@ -80,7 +80,7 @@ AS5047P 有 3 種 SPI 訊框格式。
 
 > 讀取「NOP (`0x0000`)」暫存器等同一個 `nop`（no operation，無操作）指令。
 
-## Read Data Frame
+### Read Data Frame
 
 | Bit  | Name | 描述                                               |
 | ---- | ---- | -------------------------------------------------- |
@@ -90,7 +90,7 @@ AS5047P 有 3 種 SPI 訊框格式。
 
 要讀取資料時，先使用「Command Frame」傳輸要讀取的位置，AS5047P 會在 CS 上拉並重新下拉後的下一個讀取指令時，在 MISO 上傳輸「Read Data Frame」。
 
-## Write Data Frame
+### Write Data Frame
 
 | Bit  | Name | 描述                                               |
 | ---- | ---- | -------------------------------------------------- |
@@ -102,11 +102,11 @@ AS5047P 有 3 種 SPI 訊框格式。
 
 當「Write Data Frame」在 MOSI 上傳輸時，AS5047P 會在 MISO 上傳輸該暫存器目前的值（舊的值），並在下一次的「Command Frame」在 MOSI 上傳輸時，AS5047P 會在 MISO 上傳輸該暫存器實際的值。
 
-# 程式
+## 程式
 
-完整的程式可以到 [GitHub:  ziteh/as5047p_driver](https://github.com/ziteh/as5047p_driver/tree/main/lib/AS5047P) 查看。
+完整的程式可以到 [GitHub:  ziteh/as5047p\_driver](https://github.com/ziteh/as5047p_driver/tree/main/lib/AS5047P) 查看。
 
-## 位元操作
+### 位元操作
 
 ```c
 #define BIT_MODITY(src, n, val) ((src) ^= (-(val) ^ (src)) & (1UL << (n)))
@@ -114,7 +114,7 @@ AS5047P 有 3 種 SPI 訊框格式。
 #define BIT_TOGGLE(src, n) ((src) ^= 1UL << (n))
 ```
 
-## 傳輸「Command Frame」
+### 傳輸「Command Frame」
 
 ```c
 void as5047p_send_command(bool is_read_cmd, uint16_t address)
@@ -134,7 +134,7 @@ void as5047p_send_command(bool is_read_cmd, uint16_t address)
 }
 ```
 
-## 寫入資料到指定的暫存器
+### 寫入資料到指定的暫存器
 
 ```c
 void as5047p_send_data(uint16_t address, uint16_t data)
@@ -155,7 +155,7 @@ void as5047p_send_data(uint16_t address, uint16_t data)
 }
 ```
 
-## 讀取資料自指定的暫存器
+### 讀取資料自指定的暫存器
 
 ```c
 uint16_t as5047p_read_data(uint16_t address)
@@ -166,7 +166,7 @@ uint16_t as5047p_read_data(uint16_t address)
 }
 ```
 
-## 讀取角度資訊，可選擇是否啟用動態角度誤差補償（DAEC）
+### 讀取角度資訊，可選擇是否啟用動態角度誤差補償（DAEC）
 
 讀取「ANGLECOM (`0x3FFF`)」可取得有 DAEC 的角度數值，讀取「ANGLEUNC (`0x3FFE`)」可取得無 DAEC 的角度資訊。
 
@@ -195,7 +195,7 @@ int as5047p_get_angle(bool with_daec, float *angle_degree)
 }
 ```
 
-## 偶同位計算
+### 偶同位計算
 
 ```c
 bool is_even_parity(uint16_t data)
@@ -210,7 +210,7 @@ bool is_even_parity(uint16_t data)
 }
 ```
 
-## SPI 通訊
+### SPI 通訊
 
 ```c
 void as5047p_spi_transmit(uint16_t data)
@@ -263,13 +263,13 @@ void as5047p_spi_deselect(void)
 
 > 若要在 STM32 HAL 以外的平臺使用的話，只需要修改 `as5047p_spi_send()`、`as5047p_spi_read()`、`void as5047p_spi_select()`、`as5047p_spi_deselect()` 這 4 個函式的實作就好了。
 
-# 後記
+## 後記
 
-最近在做馬達的閉迴路位置控制，因此買了這個 AS5047P 來用，就順便寫了本篇文章做記錄。而此程式我也有放在 GitHub 上：[ziteh/as5047p_driver](https://github.com/ziteh/as5047p_driver)
+最近在做馬達的閉迴路位置控制，因此買了這個 AS5047P 來用，就順便寫了本篇文章做記錄。而此程式我也有放在 GitHub 上：[ziteh/as5047p\_driver](https://github.com/ziteh/as5047p_driver)
 
 若有問題或內容有誤還請告知，謝謝！
 
-# 相關連結
+## 相關連結
 
 - LibOpenCM3 STM32 SPI 教學：[STM32 LibOpenCM3：SPI (Master mode)](/posts/libopencm3-stm32-24)
 - [AS5047P Datasheet](https://ams.com/documents/20143/36005/AS5047P_DS000324_3-00.pdf)

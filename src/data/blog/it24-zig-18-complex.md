@@ -15,11 +15,11 @@ toc: true
 
 <!-- more -->
 
-# packed
+## packed
 
 `packed` 在 C 中不是標準的關鍵字，但是大多數的編譯器都有支援相關的擴充語法。在 Zig 中你可以直接使用 `packed` 來達成，改變型別的對齊行為。
 
-## union
+### union
 
 ```zig
 const print = @import("std").debug.print;
@@ -38,7 +38,7 @@ Packed size: 4 byte
 Unpacked size: 8 byte
 ```
 
-## struct
+### struct
 
 ```zig
 const print = @import("std").debug.print;
@@ -76,7 +76,7 @@ Packed size: 1 byte
 Unpacked size: 8 byte
 ```
 
-# bit-field
+## bit-field
 
 Zig 的 `struct` 並不直接支援像 C 那樣的 bit field 語法，但是你可以透過它的自訂長度整數和 `packed` 來完成。
 
@@ -167,7 +167,7 @@ pub fn main() void {
 0xa4
 ```
 
-# 匿名 struct
+## 匿名 struct
 
 如果你需要一個臨時的 `struct`，則可以使用匿名 `struct`，例如想要一個多回傳值的函式。
 
@@ -184,7 +184,7 @@ pub fn main() void {
 X: 100, Y: -10
 ```
 
-# 參考
+## 參考
 
 - [packed union: Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#packed-union)
 - [packed struct: Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#packed-struct)

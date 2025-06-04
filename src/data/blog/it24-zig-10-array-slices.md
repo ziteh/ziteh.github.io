@@ -15,9 +15,9 @@ toc: true
 
 <!-- more -->
 
-# 陣列
+## 陣列
 
-## 基本
+### 基本
 
 陣列在編譯期確定長度、單一型別。宣告時可以省略長度，Zig 會根據初值自行推斷。
 
@@ -37,7 +37,7 @@ pub fn main() void {
 1, 1, 1
 ```
 
-## 長度
+### 長度
 
 要得知陣列長度（元素數量），可以直接使用 `array.len` 欄位。
 
@@ -55,7 +55,7 @@ pub fn main() void {
 Length: 5
 ```
 
-## 賦值
+### 賦值
 
 如果是以 `var` 宣告的話，可以為元素重新賦值。
 
@@ -73,7 +73,7 @@ pub fn main() void {
 100
 ```
 
-## 邊界檢查
+### 邊界檢查
 
 Zig 會進行邊界檢查，如果 Index 超出陣列範圍，引發編譯錯誤。
 
@@ -93,9 +93,9 @@ outside.zig:5:21: error: index 8 outside array of length 5
     const val = arr[8]; // Error: Index outside!
 ```
 
-# 切片
+## 切片
 
-## 基本
+### 基本
 
 切片是對於一個陣列的指標和長度資訊。它是一個陣列的一部分，由於是指標，不實際儲存陣列數值，適合傳遞。切片也可以透過 `slice.len` 取代長度。
 
@@ -127,7 +127,7 @@ Slice 2:
   Length: 4
 ```
 
-## 型別
+### 型別
 
 ```zig
 const std = @import("std");
@@ -147,7 +147,7 @@ Array type: [5]u8
 Slice type: *const [5]u8
 ```
 
-## 傳遞
+### 傳遞
 
 因為切片只是指標，所以很適合傳遞，而且它帶有長度資訊，所以可以不必另外傳遞長度。
 
@@ -185,7 +185,7 @@ length: 4
 Type: []const u8
 ```
 
-## 字串
+### 字串
 
 字串實際上是 `u8` 切片。
 
@@ -205,7 +205,7 @@ pub fn main() void {
 Type: *const [11:0]u8, Length: 11
 ```
 
-# 參考
+## 參考
 
 - [Array: Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#Arrays)
 - [Slices: Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#Slices)

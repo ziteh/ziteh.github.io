@@ -21,7 +21,7 @@ draft: false
 - [STM32 EXTI 外部中斷](/posts/libopencm3-stm32-7/)
 - [STM32 LibOpenCM3：EXTI 外部中斷](/posts/libopencm3-stm32-8/)
 
-# 前言
+## 前言
 
 [LibOpenCM3](https://libopencm3.org/) 是一個 Open-Source 的 ARM Cortex-M3 微控制器底層硬體函式庫，支援包含 STM32 在內的多種微控制器。
 
@@ -29,13 +29,13 @@ draft: false
 
 <!--more-->
 
-# 正文
+## 正文
 
 外部中斷最基本的應用就是按鈕。雖然可以使用輪詢的方式來感測按鈕是否有觸發，但這種做法不但消耗資源，也不保險（觸發當下可能剛好錯過輪詢），而使用外部中斷就不會有這樣的問題。
 
 本文示範一個以按鈕觸發的外部中斷，每次按下按鈕時就會觸發指定的外部中斷，讓 LED 進行一次開或關。
 
-## 程式全文
+### 程式全文
 
 ```c
 /**
@@ -98,9 +98,9 @@ int main(void)
 }
 ```
 
-## 程式說明
+### 程式說明
 
-### 引入函式庫
+#### 引入函式庫
 
 ```c
 #include <libopencm3/stm32/rcc.h>
@@ -115,7 +115,7 @@ int main(void)
 
 > 注意是 `libopencm3/cm3/nvic.h` 而非 `libopencm3/stm32/nvic.h`。
 
-### 設定 LED
+#### 設定 LED
 
 ```c
 void led_setup(void)
@@ -133,7 +133,7 @@ void led_setup(void)
 - `rcc_periph_clock_enable()` 用來致能目標 LED 所在 GPIO Port-A 的 Clock。
 - `gpio_set_mode()` 設定 LED 所在的 PA5 為最高速度 2 MHz 的推輓式（Push-Pull）輸出。
 
-### 設定按鈕及 EXTI
+#### 設定按鈕及 EXTI
 
 ```c
 void button_setup(void)
@@ -159,14 +159,14 @@ void button_setup(void)
 - RCC
   - `rcc_periph_clock_enable(RCC_GPIOC)` 致能按鈕本身所在的 GPIO Port-C 的 Clock。
   - `rcc_periph_clock_enable(RCC_AFIO)` 致能 Alternate function I/O（AFIO） 的 Clock。使用外部中斷必須啟用 AFIO。
-- `nvic_enable_irq(NVIC_EXTI15_10_IRQ)` 致能「EXTI-10 到 15」的中斷請求（Interrupt request，IRQ）。我使用的 STM32 中 EXTI-10 到 15 的 IRQ 是共用的，它們都會對應到相同的中斷服務程序（ISR）。我要使用的是 EXTI-13，所以要對「EXTI15_10」進行設定。
+- `nvic_enable_irq(NVIC_EXTI15_10_IRQ)` 致能「EXTI-10 到 15」的中斷請求（Interrupt request，IRQ）。我使用的 STM32 中 EXTI-10 到 15 的 IRQ 是共用的，它們都會對應到相同的中斷服務程序（ISR）。我要使用的是 EXTI-13，所以要對「EXTI15\_10」進行設定。
 - `gpio_set_mode()` 將按鈕所在的 PC13 設定成浮接輸入（Input float）模式。
 - EXTI
   - `exti_select_source(EXTI13, GPIOC)` 選擇 EXTI 的來源為 「EXIT-13」，「GPIO Port-C」，也就是「PC13」。
   - `exti_set_trigger(EXTI13, EXTI_TRIGGER_FALLING)` 設定 「EXTI-13」的觸發方式為「Falling（負緣）」。
   - `exti_enable_request(EXTI13)` 致能「EXTI-13」的中斷請求。
 
-### 中斷服務程序 ISR
+#### 中斷服務程序 ISR
 
 ```c
 /**
@@ -184,7 +184,7 @@ void exti15_10_isr(void)
 - `exti_reset_request(EXTI13)` 會清除來自「EXTI-13」的中斷請求旗標。
 - `gpio_toggle(GPIOA, GPIO5)` 是讓 LED（PA5）的輸出反轉，進行 LED 的開關，也就是我們要的功能——每次按下按鈕 LED 就開或關一次。
 
-### 主程式
+#### 主程式
 
 ```c
 int main(void)
@@ -205,11 +205,11 @@ int main(void)
 
 > `__asm__("nop")` 會嵌入組合語言的「nop（無操作）」指令。
 
-# 結語
+## 結語
 
 本次文章內介紹的程式我也有放在 [GitHub](https://github.com/ziteh/stm32-examples) 上，可以直接載下來並使用 PlatformIO 開始專案。
 
-# 相關文章
+## 相關文章
 
 - [STM32 EXTI 外部中斷](/posts/libopencm3-stm32-7/)
 - [STM32 LibOpenCM3：EXTI 外部中斷](/posts/libopencm3-stm32-8/)

@@ -16,7 +16,7 @@ draft: false
 # aliases: ["/2022/10/posts/libopencm3-stm32-22/"]
 ---
 
-# 前言
+## 前言
 
 ADC（Analog to Digital Converter）顧名思義是將類比訊號轉換成數位訊號的元件，現今多數 MCU 都會內建 ADC，而這也是相當基本且常用的功能。
 
@@ -24,15 +24,15 @@ ADC（Analog to Digital Converter）顧名思義是將類比訊號轉換成數�
 
 <!--more-->
 
-# 正文
+## 正文
 
 首先一樣以 Nucleo-F446RE 做示範。
 
 首先[建立一個 PIO 的專案](/posts/libopencm3-stm32-2#建立專案)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h`。
 
-## 完整程式
+### 完整程式
 
-``` c
+```c
 /**
  * @file   main.c
  * @brief  ADC interrupt example for STM32 Nucleo-F446RE.
@@ -153,7 +153,7 @@ void adc_isr(void)
 }
 ```
 
-``` c
+```c
 /**
  * @file main.h
  */
@@ -189,11 +189,11 @@ static void delay(uint32_t value);
 #endif /* MAIN_H. */
 ```
 
-## 分段說明
+### 分段說明
 
-### Include
+#### Include
 
-``` c
+```c
 // main.h
 #include <stdio.h> /* For printf(). */
 #include <errno.h> /* For printf(). */
@@ -210,9 +210,9 @@ static void delay(uint32_t value);
 
 > USART 和 `printf()` 的詳細用法請看[之前的文章](/posts/libopencm3-stm32-9/)。
 
-### 設定 ADC
+#### 設定 ADC
 
-``` c
+```c
 static void adc_setup(void)
 {
 /* Set to input analog. */
@@ -256,7 +256,7 @@ static void adc_setup(void)
 - `nvic_enable_irq()` 啓用 NVIC 的 ADC IRQ。
 - `adc_set_regular_sequence()` 設定 Regular 的通道序列。這裡只有 Ch0。
 
-### ADC ISQ
+#### ADC ISQ
 
 ```c
 /**
@@ -284,9 +284,9 @@ void adc_isr(void)
 
 都完成後再使用 `adc_start_conversion_regular()` 開始另一次新的轉換。
 
-### 主程式
+#### 主程式
 
-``` c
+```c
 int main(void)
 {
   rcc_setup();
@@ -304,17 +304,17 @@ int main(void)
 
 `adc_start_conversion_regular()` 會觸發 ADC 進行 Regular 組轉換，由於我們要使用中斷，所以不需要用 `adc_eoc()` 觀察 Injected 組是否轉換完成。一旦 ADC 轉換完成就會到 ADC 的 ISR。
 
-## 多環境程式（F446RE + F103RB）
+### 多環境程式（F446RE + F103RB）
 
 由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。
 
 由於本例的差異比較大，為了不佔版面這裡就不列出的，完整的程式請看 [GitHub repo](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/adc_interrupt)。
 
-# 小結
+## 小結
 
 但需要大量進行 ADC 轉換時，如何還是透過 Blocking 的方式讀取 EOC 或 JEOC 位元來等待 ADC 完成轉換的話會非常沒效率，因此本篇簡單介紹了 ADC 的中斷寫法，基本上和以往寫過的中斷一樣，應該不會太難。
 
-# 參考資料
+## 參考資料
 
 - [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
 - [platformio/platform-ststm32](https://github.com/platformio/platform-ststm32)

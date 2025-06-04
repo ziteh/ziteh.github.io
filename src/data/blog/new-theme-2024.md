@@ -15,7 +15,7 @@ toc: true
 
 <!-- more -->
 
-# 歷史回顧
+## 歷史回顧
 
 本 Blog 的第一篇文章是 2016 年 3 月的事，距今已經 8 年多了，那時我還在高中。一開始我還是使用 Google 的 Blogger 服務來架站。當時用 Blogger 其實用得不是很順，版面格式常常跑掉，就算我已經手寫 HTML 了，一儲存還是會亂掉...但我當時也不知道有什麼其它的服務。
 
@@ -27,7 +27,7 @@ toc: true
 
 這個方案就一路用到 2024/06/22，接下來就是本文的開端... ...
 
-# 起因
+## 起因
 
 為什麼要換 Theme 呢？主要有以下幾個原因：
 
@@ -36,15 +36,15 @@ toc: true
 3. 畫面不夠乾淨。我除了喜歡 HackMD 的 ToC 外，我也很欣賞它那乾淨清晰的面板，雖然我之前在調整 Theme 時已經有盡可能保持簡單了，但我現在想要更進一步。
 4. 原本的 Blog 不支援 Mathjax 或 KaTeX 等數學式渲染，我原本有試著自己手動加入，雖然大部分的語法都可以被正確解析，但是有些特殊情況會解析錯誤。例如這個情況下，兩個底線 `_` 會優先被 Markdown 解析成斜體：
 
-    ```latex
-    $$
-    A_1 = B_2
-    $$
-    ```
+   ```latex
+   $$
+   A_1 = B_2
+   $$
+   ```
 
 再加上我原本用的 [Hugo](https://gohugo.io/) 版本有點舊，GitHub 一直寄安全警告，所以我本來就要更新一輪。後來就想說那乾脆來大改一下好了，畢竟舊 Theme 也用一段時間了，是時候換換口味了。
 
-# 尋找新 Theme
+## 尋找新 Theme
 
 一開始我打算繼續使用 Hugo，所以在它們官網的 Theme 清單裡翻了很久，但都沒有看到喜歡的，所以最後我打算回到 [NexT](https://hugo-next.eu.org/)。但是，NexT 原本是 [Hexo](https://hexo.io/) 的，那我還不如回去用 Hexo，反正當初我也是從 Hexo 換到 Hugo，它們的 Front-matter 基本上可以通用不用特別調整（就算要，也只要寫個小腳本來處理就可以了），現在只是再換回去而已。
 
@@ -56,7 +56,7 @@ toc: true
 
 確認好 Theme 都沒問題後，就可以部署了。我是直接用官方的 GitHub Action [範例](https://hexo.io/zh-tw/docs/github-pages)。一切都很順利，新的 Blog 已經上線了。
 
-# 半路殺出的 Fluid
+## 半路殺出的 Fluid
 
 原本新的 Blog 就已經完成了，我準備要撰寫本文。結果，我意外發現 [Jerry Yang's Blog](https://blog.yangjerry.tw/) 也是用 Hexo，而且這個 Theme 看起來更符合我的喜好，所以在思考片刻後，我決定放棄花了一整天調整好的 NexT（上線壽命僅一天），轉而使用 [Fluid](https://github.com/fluid-dev/hexo-theme-fluid)。
 
@@ -72,11 +72,11 @@ Fluid 本來就很簡潔了，所以我要調整的東西不會很多。
 
 我自己對於新的 Theme 還滿滿意的，而且也有確實解決上面列的問題，看來它可以再陪我好一段時間。也希望各位讀者們會喜歡新的 Theme。
 
-# 比較
+## 比較
 
 稍微比較一下各個 Theme。依序是最舊的 Landscape、只活一天的新-NexT、目前的最終 Fluid。
 
-## 主畫面
+### 主畫面
 
 ![Landscape][home_landscape]
 
@@ -84,7 +84,7 @@ Fluid 本來就很簡潔了，所以我要調整的東西不會很多。
 
 ![Fluid][home_fluid]
 
-## 文章標題
+### 文章標題
 
 ![Landscape][title_landscape]
 
@@ -92,7 +92,7 @@ Fluid 本來就很簡潔了，所以我要調整的東西不會很多。
 
 ![Fluid][title_fluid]
 
-## Footer
+### Footer
 
 ![Landscape][footer_landscape]
 
@@ -101,13 +101,19 @@ Fluid 本來就很簡潔了，所以我要調整的東西不會很多。
 ![Fluid][footer_fluid]
 
 [home_landscape]: https://bucket.ziteh.dev/blog/new-theme-2024/3bf97df4.webp
+
 [home_next]: https://bucket.ziteh.dev/blog/new-theme-2024/57dc886f.webp
+
 [home_fluid]: https://bucket.ziteh.dev/blog/new-theme-2024/9d2e2529.webp
 
 [title_landscape]: https://bucket.ziteh.dev/blog/new-theme-2024/addf20f9.webp
+
 [title_next]: https://bucket.ziteh.dev/blog/new-theme-2024/2cff0e83.webp
+
 [title_fluid]: https://bucket.ziteh.dev/blog/new-theme-2024/70e0b340.webp
 
 [footer_landscape]: https://bucket.ziteh.dev/blog/new-theme-2024/32b89f50.webp
+
 [footer_next]: https://bucket.ziteh.dev/blog/new-theme-2024/179db425.webp
+
 [footer_fluid]: https://bucket.ziteh.dev/blog/new-theme-2024/d32ed843.webp

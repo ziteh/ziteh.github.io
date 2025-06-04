@@ -26,13 +26,13 @@ draft: false
 
 > 除了 Vial 外，還有一個類似的功能稱為 [Via](https://www.caniusevia.com/)，雖然功能相近但用法不同，不要搞混了。
 
-# 建立 vial.json
+## 建立 vial.json
 
 要啓用 Vial，首先要準備所謂的鍵盤定義檔，這是一個 JSON 檔。
 
 > 此步驟的官方文件為：[Build support 1 - Create JSON](https://get.vial.today/docs/porting-to-via.html)。
 
-## 鍵盤佈局
+### 鍵盤佈局
 
 到 [Keyboard Layout Editor](http://www.keyboard-layout-editor.com/)（KLE）完成你鍵盤的 Layout。當然，如果你之前使用 KLE 時有儲存 JSON 檔的話，可以把它重新上傳。
 
@@ -69,7 +69,7 @@ draft: false
 ]
 ```
 
-## 建立定義檔
+### 建立定義檔
 
 使用以下的樣板格式建立一個新的 JSON 檔，命名為 `vial.json`：
 
@@ -127,7 +127,7 @@ draft: false
 
 如果你想看看實例，可以參考我的 [Calcite52](https://github.com/ziteh/vial-qmk/blob/0a033db5d5e62cb101c11700999de2607543693a/keyboards/zite/calcite52/keymaps/vial/vial.json) 及 Vial 官方的[多重佈局範例](https://github.com/vial-kb/vial-qmk/blob/12950db4d8ec1f294b1285e9b554a8fdc0a4bc6d/keyboards/idb/idb_60/keymaps/vial/vial.json)。
 
-## 測試
+### 測試
 
 完成 `vial.json` 定義檔後可以先驗證，因為 QMK 的編譯器不會對它的錯誤報錯，因此你需要自行確認。
 
@@ -135,13 +135,13 @@ draft: false
 
 ![載入 vial.json](https://bucket.ziteh.dev/blog/diyqmkkeyboard-vial/c0219f09.webp)
 
-# 移植到 Vial
+## 移植到 Vial
 
 有了 `vial.json` 檔後就可以進行移植。
 
 > 此步驟的官方文件為：[Build support 2 - Port to Vial](https://get.vial.today/docs/porting-to-vial.html)。
 
-## 下載 Vial QMK
+### 下載 Vial QMK
 
 Vial 不使用 [QMK 的 repo](https://github.com/qmk/qmk_firmware)，他們有自己的 [Vial QMK repo](https://github.com/vial-kb/vial-qmk)，請 git clone 此 repo。不要把它 clone 到 `qmk_firmware` 資料夾內，請為它指定另一個獨立的路徑。
 
@@ -151,7 +151,7 @@ git clone https://github.com/vial-kb/vial-qmk
 
 > 如果你不太熟悉 git，或想要 GUI 的話，可以用 [GitHub Desktop](https://desktop.github.com/) 或 [GitKraken](https://www.gitkraken.com/)。
 
-## 準備環境
+### 準備環境
 
 打開你的 QMK 環境（例如 QMK MSYS），用 `cd` 指令導航到你剛剛下載的 `vial-qmk` 資料夾下，然後 clone git submoduels。
 
@@ -180,7 +180,7 @@ make vial_example/vial_atmega32u4:default
 
 > 使用 Vial 時建議使用 `make` 而非 `qmk compile`，當然你可能要另外安裝 [*make*](https://stackoverflow.com/questions/32127524/how-to-install-and-use-make-in-windows)。
 
-## 建立 Keymap
+### 建立 Keymap
 
 要為 Vial 建立其專屬的 Keymap。
 
@@ -195,7 +195,7 @@ VIAL_ENABLE = yes
 
 將建立好的定義檔 `vial.json` 也複製到 `keymaps/vial` 資料夾內。
 
-## 生成識別碼
+### 生成識別碼
 
 接下來要為你的鍵盤生成唯一的識別 ID。用 `cd` 指令回到 `vial-qmk` 的根目錄並執行：
 
@@ -221,7 +221,7 @@ python3 util/vial_generate_keyboard_uid.py
 
 `VIAL_KEYBOARD_UID` 後面的內容要替換成你上面實際執行指令所得到的。
 
-## 設定安全解鎖組合鍵
+### 設定安全解鎖組合鍵
 
 Vial 必須要你設定一個安全解鎖組合鍵，以避免惡意軟體寫入你的鍵盤中。詳細請參考 [Security](https://get.vial.today/docs/security.html)。
 
@@ -238,7 +238,7 @@ Vial 必須要你設定一個安全解鎖組合鍵，以避免惡意軟體寫入
 
 ![設定 row0-col0 與 row3-col11 為解鎖組合鍵](https://bucket.ziteh.dev/blog/diyqmkkeyboard-vial/ba765ef1.webp)
 
-## 確認檔案
+### 確認檔案
 
 完成上面的步驟後，你的 `keymaps/vial` 資料夾底下應該會有這些檔案：
 
@@ -262,7 +262,7 @@ Vial 必須要你設定一個安全解鎖組合鍵，以避免惡意軟體寫入
 
 > 可以參考[官方範例](https://github.com/vial-kb/vial-qmk/blob/8356266e078cefeec7c1e4a8c1d59118ad5a0755/keyboards/vial_example/vial_atmega32u4/keymaps/vial/config.h)
 
-# 編譯
+## 編譯
 
 都完成後就可以進行編譯了。
 
@@ -276,7 +276,7 @@ make zite/calcite52:vial
 
 完成編譯並燒錄後，就可以鍵鍵盤接上電腦並打開 Vial 軟體了。Vial 可以編輯的各個功能介紹請看 [User manual](https://get.vial.today/manual/)。
 
-# 相關網站
+## 相關網站
 
 - [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - [Vial](https://get.vial.today/)

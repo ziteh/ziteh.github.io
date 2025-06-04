@@ -32,16 +32,16 @@ draft: false
 ![▲第三個設定切換後的顯示樣式](https://bucket.ziteh.dev/blog/googleshortcuts/269d3b84.webp)
 
 最下面可以重置設定﹑匯出與匯入設定值。因為此擴充套件沒有雲端同步之類的功能，所以如果有多台電腦的話就可以匯出與匯入設定值，這樣就不用每一台電腦都設定一次了。
-**2018/02/10補充：**這個擴充套件好像有雲端同步的功能，但不用另外登入雲端賬號，可能是跟著Firefox的賬號。
+\*\*2018/02/10補充：\*\*這個擴充套件好像有雲端同步的功能，但不用另外登入雲端賬號，可能是跟著Firefox的賬號。
 
 ![▲可以匯入與匯出設定值](https://bucket.ziteh.dev/blog/googleshortcuts/e741292b.webp)
 
-# Google Shortcuts 擴充套件網址
+## Google Shortcuts 擴充套件網址
 
 - [Firefox版](https://addons.mozilla.org/zh-TW/firefox/addon/google-shortcuts-all-google-se/)
 - [Google Chrome版](https://chrome.google.com/webstore/detail/shortcuts-for-google/baohinapilmkigilbbbcccncoljkdpnd?utm_source=plus)
 
-# 相關連結
+## 相關連結
 
 - [作者網站](https://outgoing.prod.mozaws.net/v1/e9c84cc3de9363f645c4307679cf1ecdea8b2cf1c7ba1f51afb54191d3713a99/https%3A//apps.jeurissen.co/)
 - [我的Firefox擴充套件收藏集](https://addons.mozilla.org/zh-TW/firefox/collections/ZiTe/zite%E7%9A%84%E6%94%B6%E8%97%8F%E9%9B%86/)

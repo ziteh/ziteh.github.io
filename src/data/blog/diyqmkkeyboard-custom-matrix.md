@@ -22,11 +22,11 @@ draft: false
 
 <!--more-->
 
-# 在 QMK 中使用 Custom Matrix 與 UART
+## 在 QMK 中使用 Custom Matrix 與 UART
 
 由於 Mitosis 不是和一般的鍵盤一樣透過按鍵掃描來取得按鍵狀態，而是藉由 UART 通訊，所以我們需要改變 QMK 的掃描程式，改成使用 UART 取得按鍵狀態。以下將會說明要如何達成。
 
-## rules.mk
+### rules.mk
 
 首先，要完整地啓用「[Custom Matrix](https://docs.qmk.fm/#/custom_matrix)」功能的話，要在 `rules.mk` 中增加 `CUSTOM_MATRIX = yes` 與 `SRC += matrix.c`，並在鍵盤資料夾中增加 `matrix.c` 檔案。而自定的掃描程式就要按照格式寫在 `matrix.c` 中。
 
@@ -106,7 +106,7 @@ CUSTOM_MATRIX = yes
 SRC += matrix.c uart.c
 ```
 
-## matrix.c
+### matrix.c
 
 自行新增的程式檔案 `matrix.c` 是用來放自定的掃描程式的，我們要在掃描程式中使用 UART 進行通訊。
 
@@ -281,7 +281,7 @@ uint8_t matrix_key_count(void) {
 - `uart_init(9600)`：在 `matrix_init()` 中初始化 UART，並將鮑率（Baud Rate）設定為 9600 bps。
 - `uart_available()`：有用過 Arduino 的 Serial Port 的人應該都看得懂這一段，就是只要 UART 的接收緩衝區有值（有接收到資料），就使用 `uart_read()` 將收到的資料讀出，在透過 `switch-case` 來處理並改寫 `matrix[]` 的值，以完成按鍵狀態的更新。
 
-## 利用 QMK 移動滑鼠遊標
+### 利用 QMK 移動滑鼠遊標
 
 因為我要做的無線分離式鍵盤上預計裝有軌跡球，所以我也一併測試了 QMK 要如何控制滑鼠遊標。
 
@@ -329,7 +329,7 @@ typedef struct {
 - `v` 與 `h` 代表滑鼠滾輪垂直與水平滾動的距離，範圍是 `-128 ~ 127`。
 - `buttons` 代表各個滑鼠按鈕按下的情況。
 
-# LoRa 無線通訊模組 HC-12
+## LoRa 無線通訊模組 HC-12
 
 因為我手邊沒有其它適合的無線通訊模組，所以就先拿「HC-12」這款 LoRa 模組來使用。
 
@@ -457,15 +457,16 @@ state = 0;
 ```
 
 最終效果如影片所示：
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/L6DrpNg0moA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-# 結語
+## 結語
 
 這次簡單地分享了 QMK 使用 Custom Matrix、UART 和控制滑鼠遊標的方法，有些功能我自己也是找了不少資料才知道要怎麼做，並且也測試了很多次。
 
 然而對 QMK 的瞭解也還很粗淺，很多細節沒辦法講解，而如果上述內容有任何錯誤也請指正。
 
-# 相關文章
+## 相關文章
 
 - [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - [Mitosis 無線分離式鍵盤介紹](/posts/mitosis-keyboard-intro)

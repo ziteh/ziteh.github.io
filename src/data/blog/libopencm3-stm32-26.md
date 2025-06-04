@@ -16,27 +16,27 @@ draft: false
 # aliases: ["/2022/10/posts/libopencm3-stm32-26/"]
 ---
 
-# 前言
+## 前言
 
 在上一篇中，我簡單介紹了 SPI 的用法，而除了 SPI 外還有另一種非常常見的通訊協定——I²C（以下稱 I2C）。
 
 I2C 和 SPI 一樣是主從式架構，I2C 的主要特色就是無論有多少 Slave device 都只需要兩條線就可以完成通訊。
 
-在這一篇文章中，我不會詳細介紹 I2C 本身，但建議還是要對它有基本的瞭解比較好，在此推薦「[I2C bus 簡介 (Inter-Integrated Circuit Bus) @ 傑克! 真是太神奇了!](https://magicjackting.pixnet.net/blog/post/173061691-i2c-bus-%E7%B0%A1%E4%BB%8B-(inter-integrated-circuit-bus)-)」及「[【Day21】I2C的介紹 - iT 邦幫忙](https://ithelp.ithome.com.tw/articles/10278308)」這兩篇文章。
+在這一篇文章中，我不會詳細介紹 I2C 本身，但建議還是要對它有基本的瞭解比較好，在此推薦「[I2C bus 簡介 (Inter-Integrated Circuit Bus) @ 傑克! 真是太神奇了!](https://magicjackting.pixnet.net/blog/post/173061691-i2c-bus-%E7%B0%A1%E4%BB%8B-\(inter-integrated-circuit-bus\)-)」及「[【Day21】I2C的介紹 - iT 邦幫忙](https://ithelp.ithome.com.tw/articles/10278308)」這兩篇文章。
 
 [24C256](https://www.microchip.com/en-us/product/AT24C256C) 是一個擁有 I2C 介面的 EEPROM，這次將示範如何使用 STM32 來透過 I2C 對其進行資料的讀寫，且可以用 USART 進行操作。
 
 <!--more-->
 
-# 正文
+## 正文
 
 首先一樣以 Nucleo-F446RE 做示範。
 
 首先[建立一個 PIO 的專案](/posts/libopencm3-stm32-2#建立專案)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h`。
 
-## 完整程式
+### 完整程式
 
-``` c
+```c
 /**
  * @file   main.c
  * @brief  I2C EEPROM (24C256) example for STM32 Nucleo-F446RE.
@@ -181,7 +181,7 @@ void usart2_isr(void)
 }
 ```
 
-``` c
+```c
 /** @file   main.h */
 
 #ifndef MAIN_H
@@ -216,11 +216,11 @@ static void usart_setup(void);
 #endif /* MAIN_H. */
 ```
 
-## 分段說明
+### 分段說明
 
-### Include
+#### Include
 
-``` c
+```c
 // main.h
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/gpio.h>
@@ -231,9 +231,9 @@ static void usart_setup(void);
 
 除了基本的 `rcc.h` 和 `gpio.h` 及這次的 `i2c.h` 外，因為我要使用 USART 和中斷功能，所以還會需要 `usart.h` 與 `nvic.h`。
 
-### 設定 I2C
+#### 設定 I2C
 
-``` c
+```c
 static void i2c_setup(void)
 {
   /* Set SCL & SDA pin to open-drain alternate function. */
@@ -276,7 +276,7 @@ static void i2c_setup(void)
 
 這裡我選擇使用「Fast mode」。以 `i2c_set_speed()` 函式進行設定，此函式的第二個引數 `i2c_speed_fm_400k` 就代表要使用「Fast mode」，而第三個引數要給的是 I2C 的時脈，對於 F446RE 或大多數的 STM32，這個速度等同 APB1。
 
-### USART ISQ
+#### USART ISQ
 
 ```c
 /**
@@ -339,7 +339,7 @@ void usart2_isr(void)
 
 要讀取 `0x0102` 位置的資料的話，那就是用 USART 傳送：`0x01 0x01 0x02`，然後 STM32 就會回傳該位置的資料。
 
-> 24C256 的定址範圍為 `0x0000` \~ `0x7FFF` 共 32768 個位置，每個位置皆為一個 Byte。
+> 24C256 的定址範圍為 `0x0000` ~ `0x7FFF` 共 32768 個位置，每個位置皆為一個 Byte。
 
 當 USART 接收到一筆資料時，會先判斷這是要進行寫（`0x00`）還是讀（`0x01`）。然後再使用 I2C 傳送資料。
 
@@ -389,7 +389,7 @@ i2c_transfer7(I2C1,
 usart_send_blocking(USART2, i2c_rx_data[0]);
 ```
 
-## 多環境程式（F446RE + F103RB）
+### 多環境程式（F446RE + F103RB）
 
 由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。
 
@@ -442,7 +442,7 @@ static void i2c_setup(void)
 }
 ```
 
-## 成果
+### 成果
 
 我首先將 `0xAB` 寫入 `0x0000` (`00 00 00 AB`)，再寫入 `0x39` 到 `0x0001`（`00 00 01 39`）。
 
@@ -452,18 +452,22 @@ static void i2c_setup(void)
 
 ![](https://bucket.ziteh.dev/blog/libopencm3-stm32-26/01b2cbce.webp)
 
-# 小結
+## 小結
 
 這次介紹了 I2C 的程式寫法。SPI 與 I2C 是各種電路模組或 IC 會使用的通訊協定，只要會使用 SPI 與 I2C，那基本上常見的模組都可以使用了，因此 I2C 是一個很重要的功能，還好 STM32 本身的硬體及 LibOpenCM3 都把那些複雜的設定做好了，因此要使用 I2C 相當容易。
 
-# 參考資料
+## 參考資料
 
 - [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
 
 - [platformio/platform-ststm32](https://github.com/platformio/platform-ststm32)
+
 - [STM32F446RE datasheet (DS10693)](https://www.st.com/resource/en/datasheet/stm32f446re.pdf)
+
 - [STM32F446xx reference manual (RM0390)](https://www.st.com/resource/en/reference_manual/rm0390-stm32f446xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)
+
 - [STM32F103RB datasheet (DS5319)](https://www.st.com/resource/en/datasheet/stm32f103rb.pdf)
+
 - [STM32 Nucleo-64 board user manual (UM1724)](https://www.st.com/resource/en/user_manual/um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf)
 
 > 本文的程式也有放在 [GitHub](https://github.com/ziteh/stm32-examples/tree/main/libopencm3/i2c_eeprom_24c256) 上。

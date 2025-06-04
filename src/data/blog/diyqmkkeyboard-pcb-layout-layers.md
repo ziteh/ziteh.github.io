@@ -26,11 +26,11 @@ draft: false
 
 > 以下內容以 KiCad `v7.0.2` 作為示範。
 
-# PCB 基礎介紹
+## PCB 基礎介紹
 
 在正式繪製 PCB 電路板之前，先來簡單介紹 PCB 本身。
 
-## 分層
+### 分層
 
 首先是銅箔層數。PCB 依照其銅箔層的數量可以分為單層、雙層或 4、6、8 甚至到 64 層板，通常從 4 層板開始就會稱為多層板了。銅箔層數越多走線的靈活度也越高，但價格當然也會提升。除非是高密度產品，一般來說雙層板就已經足夠，對鍵盤來說也是，所以以下內容皆以雙層板為主。
 
@@ -48,7 +48,7 @@ draft: false
 | 底層錫膏   | B.Paste        |
 | 底層絲印   | B.Silkscreen   |
 
-## 組成
+### 組成
 
 PCB 上大概會有幾種東西：
 
@@ -66,7 +66,7 @@ PCB 上大概會有幾種東西：
 
 ![PCB 的組成](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/4462e61d.webp)
 
-## 表面處理
+### 表面處理
 
 最後是表面處理。如果銅箔沒有做表面處理的話，那很容易就氧化掉了，會難以焊接。表面處理有很多種，但最常見的是 HASL（Hot air solder leveling，也就是常說的「噴錫」） 和 [ENIG](https://www.researchmfg.com/2016/02/enig-pros-cons/)（Electroless nickel immersion gold，也就是常說的「沉金」或「化金」）。
 
@@ -77,26 +77,26 @@ HASL 比較便宜，但是其平整度較差，且放太久後會不易吃錫焊
 > - 一般看到的「有黃金」的 PCB 板通常是 ENIG 製程的，而不是用電鍍的方式。電鍍鎳金是另一種表面處理。
 > - 「無鉛（Lead free）」是一種環保工藝，但是會些微增加焊接難度，如果你的焊接技術沒有很好，或是沒有一把好的恆溫電烙鐵的話，不建議使用無鉛 HASL 和無鉛焊錫。
 
-# PCB Laout
+## PCB Laout
 
 進行 PCB Layout 時，我通常會遵循以下的步驟：
 
 1. 設定 PCB 設計參數。
-1. 從 Schematic 更新 PCB。
-1. 調整零件 Footprint 的位置。
-1. 進行佈線。
-1. 畫外框邊緣。
-1. 編輯鋪銅區域。
-1. 編輯絲印。
-1. 進行 DRC（Design Rule Checking）。
-1. 查看 3D 視圖。
-1. 輸出生產檔案（Gerber 檔）。
+2. 從 Schematic 更新 PCB。
+3. 調整零件 Footprint 的位置。
+4. 進行佈線。
+5. 畫外框邊緣。
+6. 編輯鋪銅區域。
+7. 編輯絲印。
+8. 進行 DRC（Design Rule Checking）。
+9. 查看 3D 視圖。
+10. 輸出生產檔案（Gerber 檔）。
 
 其中第 3、4 步會花不少時間，尤其經驗不夠的話會要花很多時間調整，如果這部分有問題的話，可以多參考看看別人的 PCB 是怎麼畫得。
 
 > 如果你需要上網查一些資料的話，有些人會將 KiCad 的 PCB 編輯器稱為「pcbnew」。
 
-## PCB 設計參數
+### PCB 設計參數
 
 PCB 設計參數是用來規範設計的。每一家 PCB 工廠的製作能力都不同，容許的生產規格也不同，甚至不同種類的 PCB 允許的規格也不同。為了避免畫出工廠做不出來的 PCB，所以要設定一些參數限制。這些參數也會作為 DRC（Design rule check） 的檢查依據。
 
@@ -130,7 +130,7 @@ PCB 設計參數是用來規範設計的。每一家 PCB 工廠的製作能力�
 
 如果你想要更詳細地設定 DRC 的話，可以到「File > Board Setup > Design Rules > Custom Rules」中設定。這裡是比較進階的用法，我自己也不是完全熟悉這邊的設定，但是可以大概參考一下我之前使用的設定：[KiCad custom rules for JLCPCB](https://gist.github.com/ziteh/0d88f3ad4d2d7f4b38755af364208a6e)
 
-## 更新 PCB
+### 更新 PCB
 
 只要 Schematic 完成了，就可以讓 KiCad 根據其內容自動更新 PCB。打開 Schematic，點擊上方工具列「Tools > Update PCB from Schematic」（或快捷鍵 `F8`）即可。KiCad 會自動打開 PCB 編輯器並將各個零件的 Footprint 擺上。
 
@@ -142,7 +142,7 @@ PCB 設計參數是用來規範設計的。每一家 PCB 工廠的製作能力�
 
 ![更新完的 PCB](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/1660ced8.webp)
 
-## 零件擺放
+### 零件擺放
 
 首先要將各個零件 Footprint 擺放到適合的位置，這一步驟相當吃經驗，可能也需要一些電路知識。Footprint 擺放得好的話，之後走線會很順暢，也會影響電路性能。這部分我暫時想不到有什麼訣竅，最好的方式就是多參考別人的 PCB。
 
@@ -180,7 +180,7 @@ PCB 設計參數是用來規範設計的。每一家 PCB 工廠的製作能力�
 
 > 你或許可以用 [KiCanvas](https://kicanvas.org/) 來線上查看 KiCad 的 PCB 檔案，例如[這樣](https://kicanvas.org/?github=https%3A%2F%2Fgithub.com%2Fziteh%2Fcalcite%2Ftree%2Fmain%2FCalcite52)。我的另一篇文章有介紹：[KiCanvas——線上預覽KiCAD電路圖](/posts/kicanvas-intro/)
 
-### 自動擺放
+#### 自動擺放
 
 鍵盤 PCB 中擺放上比較*麻煩*的是鍵軸與衛星軸，因為它們的位置不能亂排，必須要照著你設計的鍵盤  Layout 才行，但是一把鍵盤幾十甚至上百個按鍵，每個按鍵都手動擺位置既沒效率也容易出錯，更別說擺完鍵軸後還有同等數量的鍵矩陣掃描二極體，所以這時我們要善用自動化工具。
 
@@ -229,7 +229,7 @@ Schematic 有更新的話記得要再「Update PCB from Schematic」一次。打
 
 > 若你不想用 KiCAD KLE Placer，也可以試試[上一篇](/posts/diyqmkkeyboard-pcb-layout-sch/#自動生成鍵盤-pcb)介紹過的 [Keyboard PCB Builder](https://kb.xyz.is/)。
 
-## 佈線
+### 佈線
 
 由於現在各個 Footprint 之間的走線還沒完成，所以會顯示預拉線（Ratsnest），它根據 Schematic 的接線連接各個 Footprint 的腳位，讓你可以參考哪些零件的哪個腳會接在一起。擺放 Footprint 時可以參考預拉線，而之後正式佈線時只有把所有的預拉線用正在的走線連接在一起就可以了。這一步通常也需要一些經驗才有辦法走得好，如果發現有幾條線怎麼都走不好的話，可以重新調整一下 Footprint 的擺放。
 
@@ -243,7 +243,7 @@ Schematic 有更新的話記得要再「Update PCB from Schematic」一次。打
 
 ![使用按鍵 X 和 V 靈活地佈線](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/ada8660b.webp)
 
-如果你想仔細地查看其中一條接線網路的話，可以選擇該網路的焊盤或走線後，按右鍵「Net Inspection Tools > Highlight Net」（或選取後按快捷鍵「`」）。要解除的話就按「ESC」即可。
+如果你想仔細地查看其中一條接線網路的話，可以選擇該網路的焊盤或走線後，按右鍵「Net Inspection Tools > Highlight Net」（或選取後按快捷鍵「\`」）。要解除的話就按「ESC」即可。
 
 ![Highlight 特定走線網路](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/9587864b.webp)
 
@@ -251,13 +251,13 @@ Schematic 有更新的話記得要再「Update PCB from Schematic」一次。打
 
 ![擺放零件並完成佈線（以 Calcite52 為例）](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/649d4b88.webp)
 
-### 自動佈線
+#### 自動佈線
 
 佈線通常是最無聊的一步，好險現在有自動佈線工具可以用。雖然自動佈線可能沒辦法走得很好看，但它可以為我們提供一些參考，當然如果你不是很在乎美觀的話，也可以直接用它完成的佈線。
 
 我使用的工具是 [Freerouting](https://github.com/freerouting/freerouting)。在 KiCad 的 PCM 中就可以直接安裝了。使用上其實沒什麼特別的，詳細的用法就請參考[官方說明](https://github.com/freerouting/freerouting#additional-steps-for-users-of-kicad)。你可以先把一些比較重要的走線動手完成，之後在使用自動佈線工具完成剩餘的走線。
 
-## 邊緣與鋪銅
+### 邊緣與鋪銅
 
 等走線都完成後就可以畫 PCB 的外框邊緣。在右側的層列表中切換到「Edge.Cuts」層，然後使用右側工具列的「Draw a line」或「Draw a Rectangle」來繪製外框。請注意畫完的外框一定要是封閉的才行。
 
@@ -269,7 +269,7 @@ PCB 通常會進行鋪銅將 Footprint 與走線外的空白處保留銅箔，�
 
 ![完成外框與鋪銅的 PCB（以 Calcite52 為例）](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/b56e8ae1.webp)
 
-## 編輯絲印
+### 編輯絲印
 
 絲印基本上與 PCB 的運作沒有關係，它只是用來標識各種資訊方便焊接人員進行焊接或美觀用途等，所以我習慣比較後面再編輯。
 
@@ -285,7 +285,7 @@ KiCad 的文字支援變數如 `${TITLE}`、`${REVISION}`，或樣式標記例�
 
 > KiCad 7 才開始支援變更文字字形。
 
-## DRC 檢測
+### DRC 檢測
 
 到這一步，PCB Layout 已經快要完成了，但是為了確保我們的 PCB 符合工廠的製作能力與設計規則，我們要進行 DRC。
 
@@ -295,13 +295,13 @@ KiCad 的文字支援變數如 `${TITLE}`、`${REVISION}`，或樣式標記例�
 
 ![DRC 頁面](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/2e6c7f20.webp)
 
-## 3D 檢視器
+### 3D 檢視器
 
 當你的 PCB 都畫完後，可能會想看看它實際上長什麼樣，這時可以使用 3D 檢視器。在上放工具列「View > 3D Viewer」即可打開。
 
 ![3D 檢視器（以 Calcite52 為例）](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/6843db55.webp)
 
-## 輸出 Gerber 檔
+### 輸出 Gerber 檔
 
 PCB 全部完成後就可以輸出工廠生產用的 Gerber 檔了。
 
@@ -309,7 +309,7 @@ PCB 全部完成後就可以輸出工廠生產用的 Gerber 檔了。
 
 > 正式輸出 Gerber 前建議再跑一次 DRC。
 
-### 手動輸出
+#### 手動輸出
 
 以下以 JLCPCB 的規範為例，示範一下手動輸出 Gerber 的方式。
 
@@ -335,7 +335,7 @@ PCB 全部完成後就可以輸出工廠生產用的 Gerber 檔了。
 
 > 有時候這些 Gerber 檔檢視器也會顯示錯誤，可以多用幾個不同的檢視器確認。如果你無法確定你的 Gerber 是否正確，或許可以聯絡 PCB 工廠尋求協助。
 
-# 快捷鍵參考
+## 快捷鍵參考
 
 一些基本的快捷鍵
 
@@ -347,9 +347,9 @@ PCB 全部完成後就可以輸出工廠生產用的 Gerber 檔了。
 |      X       | 開始繪製走線                            |
 |      V       | 在繪製走線狀態下新增一個 Via 並自動換面 |
 |      U       | 點選一條走線後，分段選取                |
-| ` (ESC 下方) | 高亮顯示同一條走線網路                  |
+| \` (ESC 下方) | 高亮顯示同一條走線網路                  |
 
-# 相關網頁
+## 相關網頁
 
 - [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - [Keyboard PCB Builder](https://kb.xyz.is/)

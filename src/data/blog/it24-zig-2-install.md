@@ -32,6 +32,7 @@ Zig 可以在其官網的 [Download](https://ziglang.org/download/) 直接下載
    ```
 
 3. 可以注意一下安裝完後會提示安裝路徑。如果有需要的話，可以將此路徑加到 PATH 環境變數中。正常情況下，它應該會被安裝在類似 `C:\ProgramData\chocolatey\lib\zig\tools\zig-windows-x86_64-0.13.0` 這樣的路徑下。
+
 4. 接著你可以確認是否可以執行 Zig：
 
    ```ps
@@ -42,7 +43,7 @@ Zig 可以在其官網的 [Download](https://ziglang.org/download/) 直接下載
 
 這樣就完成了！
 
-# 參考
+## 參考
 
 - [Download ⚡ Zig Programming Language](https://ziglang.org/download/)
 - [Install Zig from a Package Manager · ziglang/zig Wiki](https://github.com/ziglang/zig/wiki/Install-Zig-from-a-Package-Manager)

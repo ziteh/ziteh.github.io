@@ -11,19 +11,20 @@ toc: true
 draft: false
 # aliases: ["/2019/02/psucustomcables/"]
 ---
+
 ![](https://bucket.ziteh.dev/blog/psucustomcables/6df06aac.webp)
 
-# 前言
+## 前言
 
 上次買了[新的電腦機殼ZS-A4](/posts/unbox-zsa4itx/)，也順便換了些零件，但由於新機殼實在是太小了，原本PSU附的線有點太長，比較嚴重的是3個2.5寸硬碟的電源線因為距離太近，所以只能插到2個硬碟。基於以上的原因，我就想説來試試看自己做電源供應器的模組線，所以就上網買了些材料，開始了手殘之旅。
 
 <!--more-->
 
-# 材料
+## 材料
 
 ![▲退Pin器、壓接頭、3色編制網、電線、熱縮套和各式端子外殼](https://bucket.ziteh.dev/blog/psucustomcables/a6b21c4e.webp)
 
-# 開始製作
+## 開始製作
 
 ![▲首先是做SATA電源線的部分，我買的是刺破型的接頭，比較方便使用。  ](https://bucket.ziteh.dev/blog/psucustomcables/fa931aff.webp)
 
@@ -57,10 +58,10 @@ draft: false
 
 ![▲和原本的比較，好像更亂了...](https://bucket.ziteh.dev/blog/psucustomcables/77fe892f.webp)
 
-# 結論
+## 結論
 
 雖然我真的很手殘，做的線真的有夠醜，但至少也體驗過自己做模組線了，有了這次的經驗，我下次還是乖乖請別人做好了，尊重專業呀。
 
-# 相關文章
+## 相關文章
 
 - [\[開箱\] ZS-A4 ITX訂製機殼及相關零件簡單開箱](/posts/unbox-zsa4itx/)

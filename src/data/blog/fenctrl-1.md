@@ -11,21 +11,22 @@ toc: true
 draft: false
 # aliases : ["/2017/11/fenctrl-1/"]
 ---
-# 前言
+
+## 前言
 
 2017年10月初，我在虎尾科大裡加入了一個我也不知道算不算社團的社團，叫做Dream Maker築夢者，不難看出和自造者有很大的關係。我加入他們並成為所謂的第二屆黃豆學習生，而成為黃豆學習生有一個重要的任務就是要在12月底前完成並發表一個專案，所以我就開始執行這個電腦風扇控制器的製作計劃。
 
 <!--more-->
 
-# 發想
+## 發想
 
 我的電腦總共裝了5個系統散熱風扇，雖然說它們其實並不會吵，但平常用電腦只是上上網、看看影片之類的，也不用這麽多風扇，感覺有點浪費電，畢竟我現在在外租屋，一度電是5塊錢，要盡量的節能省碳。所以我之前就有想要做一個風扇控制器，可以個別調整風扇的轉速和電源，而現在剛好有個機會可以讓我把它實作出來。
 
-# 製作概要
+## 製作概要
 
 我的主控一樣會使用FPGA，程式使用VHDL，畢竟這些還是我目前最熟悉的方案。控制風扇轉速的部分很簡單，就用FPGA直接輸出PWM訊號就好了，而風扇電源的部分我會使用繼電器的方式來控制，雖然我之前沒用過繼電器，的相關知識還是有的。而顯示介面我選擇用128x64的單色OLED，介面操作的方式就用最簡單的4個按鈕。而整個電路都要塞入電腦的5.25前面板的空間內，且最多可以控制6個風扇。
 
-# 零件列表
+## 零件列表
 
 |名稱|型號規格|數量|
 |--- |--- |--- |
@@ -56,7 +57,7 @@ draft: false
 |電源指示LED|SMD|3|
 |LED電阻|1KΩ|3|
 
-## FPGA部分
+### FPGA部分
 
 FPGA我選擇使用Altera Cyclone II EP2C5T144C8N TQFP-144。核心電壓(VCCINT)使用1.2V，接腳電壓(VCCIO)我使用3.3V，運作頻率為48MHz。配置晶片我使用EPCS4I8。到時候會有JTAG和AS兩種燒錄座。
 
@@ -64,7 +65,7 @@ FPGA我選擇使用Altera Cyclone II EP2C5T144C8N TQFP-144。核心電壓(VCCI
 
 ![▲ EPCSxx AS模式接線圖。出自原廠Data Sheet P.4-8](https://bucket.ziteh.dev/blog/fenctrl-1/43cc47ad.webp)
 
-## 繼電器部分
+### 繼電器部分
 
 繼電器我選擇使用LEG-12，它要用12V的電壓才能驅動，所以要搭配電晶體電路才能運作，並加上一個整流二極體1N4004來保護電路免於受到繼電器線圈的反電動勢破壞。
 
@@ -72,7 +73,7 @@ FPGA我選擇使用Altera Cyclone II EP2C5T144C8N TQFP-144。核心電壓(VCCI
 
 ![▲ LEG-12 繼電器電路](https://bucket.ziteh.dev/blog/fenctrl-1/d45cfca6.webp)
 
-## 穩壓晶片部分
+### 穩壓晶片部分
 
 我的3.3V穩壓晶片使用LM1117S-3.3，另外還有像是AMS1117、AMC1117之類的穩壓晶片應該也差不多。1.2V的穩壓晶片我還沒選擇好。
 
@@ -80,30 +81,30 @@ FPGA我選擇使用Altera Cyclone II EP2C5T144C8N TQFP-144。核心電壓(VCCI
 
 ![▲ LM1117S的固定電壓電路。出自原廠Data Sheet P.2](https://bucket.ziteh.dev/blog/fenctrl-1/83d20040.webp)
 
-# 參考資料
+## 參考資料
 
 這些是我在網路上找到並覺得很有參考價值的資料。如有覺得連結侵犯的您的權益請告知，謝謝。
 
-## 網站
+### 網站
 
 1. FPGA : [Altera Cyclone II 系列官方介紹](https://www.altera.com.cn/products/fpga/cyclone-categories/cyclone-ii/support.html#General_Power_Supplies)
 2. FPGA電路 : [Altera Cyclone II EP2C5T144 FPGA Mini Development Board – FZ0697](http://artofcircuits.com/product/altera-cyclone-ii-ep2c5t144-fpga-mini-development-board-fz0697)
 3. 繼電器 : [Cooper Maa :](http://coopermaa2nd.blogspot.tw/2011/03/lab21-12v.html?m=1) [Arduino 筆記 - Lab21 用繼電器控制 12V 風扇](http://coopermaa2nd.blogspot.tw/2011/03/lab21-12v.html?m=1)
 4. 穩壓晶片 : [小狐狸事務所 :](http://yhhuang1966.blogspot.tw/2015/07/ic.html) [關於電源穩壓 IC](http://yhhuang1966.blogspot.tw/2015/07/ic.html)
 5. LM1117 : [3.3V VOLTAGE REGULATOR](http://www.electronics-lab.com/project/3-3v-voltage-regulator/)
-6. LM1117S : [LM1117S-3.3](http://blog.naver.com/PostView.nhn?blogId=telius07&logNo=40034037959)
+6. LM1117S : [LM1117S-3.3](http://blog.naver.com/PostView.nhn?blogId=telius07\&logNo=40034037959)
 7. PWM風扇 : [呂阿谷 : PC散熱風扇之研究三：PWM風扇進階研究](http://luyaku.pixnet.net/blog/post/341175399-pc%E6%95%A3%E7%86%B1%E9%A2%A8%E6%89%87%E4%B9%8B%E7%A0%94%E7%A9%B6%E4%B8%89%EF%BC%9Apwm%E9%A2%A8%E6%89%87%E9%80%B2%E9%9A%8E%E7%A0%94%E7%A9%B6)
 
-## Data Sheet
+### Data Sheet
 
-1. Cyclone II : [Cyclone II Device Handbook - Altera](https://www.google.com.tw/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwjnwZmjndvXAhVONpQKHVFaBLQQFgglMAA&url=https%3A%2F%2Fwww.altera.com%2Fliterature%2Fhb%2Fcyc2%2Fcyc2_cii5v1.pdf&usg=AOvVaw0RzIUFQt3lfLf4CxeIyVNA)
-2. EPCS4I8 : [Serial Configuration (EPCS) Devices Datasheet - Altera](https://www.google.com.tw/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwjgxv6PntvXAhUEFJQKHbNKB58QFgglMAA&url=https%3A%2F%2Fwww.altera.com%2Fliterature%2Fhb%2Fcfg%2Fcyc_c51014.pdf&usg=AOvVaw3gRe3H3TqbR6BwOBfJI2Fh)
-3. LM1117S : [LM1117S Datasheet(PDF) - HTC Korea TAEJIN Technology Co.](https://www.google.com.tw/url?sa=t&rct=j&q=&esrc=s&source=web&cd=5&ved=0ahUKEwjD96HHodvXAhVEKJQKHeVFAHUQFghFMAQ&url=http%3A%2F%2Fwww.alldatasheet.com%2Fdatasheet-pdf%2Fpdf%2F177530%2FHTC%2FLM1117S.html&usg=AOvVaw1sJsJP7hkOuazaewM7HDWB)
+1. Cyclone II : [Cyclone II Device Handbook - Altera](https://www.google.com.tw/url?sa=t\&rct=j\&q=\&esrc=s\&source=web\&cd=1\&ved=0ahUKEwjnwZmjndvXAhVONpQKHVFaBLQQFgglMAA\&url=https%3A%2F%2Fwww.altera.com%2Fliterature%2Fhb%2Fcyc2%2Fcyc2_cii5v1.pdf\&usg=AOvVaw0RzIUFQt3lfLf4CxeIyVNA)
+2. EPCS4I8 : [Serial Configuration (EPCS) Devices Datasheet - Altera](https://www.google.com.tw/url?sa=t\&rct=j\&q=\&esrc=s\&source=web\&cd=1\&ved=0ahUKEwjgxv6PntvXAhUEFJQKHbNKB58QFgglMAA\&url=https%3A%2F%2Fwww.altera.com%2Fliterature%2Fhb%2Fcfg%2Fcyc_c51014.pdf\&usg=AOvVaw3gRe3H3TqbR6BwOBfJI2Fh)
+3. LM1117S : [LM1117S Datasheet(PDF) - HTC Korea TAEJIN Technology Co.](https://www.google.com.tw/url?sa=t\&rct=j\&q=\&esrc=s\&source=web\&cd=5\&ved=0ahUKEwjD96HHodvXAhVEKJQKHeVFAHUQFghFMAQ\&url=http%3A%2F%2Fwww.alldatasheet.com%2Fdatasheet-pdf%2Fpdf%2F177530%2FHTC%2FLM1117S.html\&usg=AOvVaw1sJsJP7hkOuazaewM7HDWB)
 4. LEG-12 : [RAYEX ELECTRONICS](https://www.tme.eu/en/details/leg-12/miniature-electromagnetic-relays/rayex-electronics/) [](https://www.tme.eu/en/details/leg-12/miniature-electromagnetic-relays/rayex-electronics/) [LEG-12](https://www.tme.eu/en/details/leg-12/miniature-electromagnetic-relays/rayex-electronics/)
-5. SSD1306 : [SSD1306](https://www.google.com.tw/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwiRquzen9vXAhXGkZQKHacKC8YQFgglMAA&url=https%3A%2F%2Fcdn-shop.adafruit.com%2Fdatasheets%2FSSD1306.pdf&usg=AOvVaw295piYr-tzt5CnBsNVzI7X)
-6. 1N4004 : [1N4001 datasheet - Adafruit Industries](https://www.google.com.tw/url?sa=t&rct=j&q=&esrc=s&source=web&cd=4&ved=0ahUKEwi4tOnzn9vXAhUBuZQKHc9mAJEQFgg9MAM&url=https%3A%2F%2Fcdn-shop.adafruit.com%2Fdatasheets%2F1N4001-D.PDF&usg=AOvVaw021F3iEmxkk38CKMcf287Z)
+5. SSD1306 : [SSD1306](https://www.google.com.tw/url?sa=t\&rct=j\&q=\&esrc=s\&source=web\&cd=1\&ved=0ahUKEwiRquzen9vXAhXGkZQKHacKC8YQFgglMAA\&url=https%3A%2F%2Fcdn-shop.adafruit.com%2Fdatasheets%2FSSD1306.pdf\&usg=AOvVaw295piYr-tzt5CnBsNVzI7X)
+6. 1N4004 : [1N4001 datasheet - Adafruit Industries](https://www.google.com.tw/url?sa=t\&rct=j\&q=\&esrc=s\&source=web\&cd=4\&ved=0ahUKEwi4tOnzn9vXAhUBuZQKHc9mAJEQFgg9MAM\&url=https%3A%2F%2Fcdn-shop.adafruit.com%2Fdatasheets%2F1N4001-D.PDF\&usg=AOvVaw021F3iEmxkk38CKMcf287Z)
 
-# 相關文章
+## 相關文章
 
 - [\[專案:電腦風扇控制器-1\] 構想與零件選用](/posts/fenctrl-1/)(本篇)
 - [\[專案:電腦風扇控制器-2\] OLED-SSD1306零件簡單介紹](/posts/fenctrl-2/)

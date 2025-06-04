@@ -18,7 +18,7 @@ draft: false
 
 <!--more-->
 
-# 安裝
+## 安裝
 
 Flash 使用 Lua 寫成，需要有 LuaJIT 的環境（例如 Neovim）。
 
@@ -74,7 +74,7 @@ return {
 }
 ```
 
-# 操作
+## 操作
 
 我最常使用的操作有 2 種。第一種是 `s`+ 搜尋文字，這個操作就很類似 Easy Motion 的 `<leader><leader>`，不過 Flash `s` 後面的搜尋文字不限數量，如果你要跳轉的目標字串開頭重複性很高的話，你可以打 2~3 個字符來匹配，被匹配的文字會高亮顯示，這時你只要再鍵入各個匹配項後的 label 就可以跳轉，而且 Flash 的跳轉可以跨分隔畫面（可以設定）。
 
@@ -84,7 +84,7 @@ return {
 
 ![鍵入 fr 向下搜尋 r 的範例][op-f]
 
-# 延伸
+## 延伸
 
 Flash 還有其它功能和設定我就不一一細講了。
 
@@ -93,4 +93,5 @@ Flash 還有其它功能和設定我就不一一細講了。
 附帶一提，如果有人想看我的完整 Neovim 配置，可以參考 [ziteh/vim-config](https://github.com/ziteh/vim-config)，透過 branch 切換。
 
 [op-s]: https://bucket.ziteh.dev/blog/vim-flash/6f14eacd.webp
+
 [op-f]: https://bucket.ziteh.dev/blog/vim-flash/e85b715f.webp

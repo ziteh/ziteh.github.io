@@ -10,6 +10,7 @@ toc: true
 draft: false
 # aliases : ["/2017/08/unbox-akgk550mk2/"]
 ---
+
 <h3 style="text-align: center;"><span style="color: red;">
 此篇文章沒有聽感心得，還請想知道聲音表現的發燒友另尋文章，謝謝!
 </span></span></h3>

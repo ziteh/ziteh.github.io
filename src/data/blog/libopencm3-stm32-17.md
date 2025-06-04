@@ -14,7 +14,7 @@ draft: false
 # aliases: ["/2022/09/libopencm3-stm32-17/"]
 ---
 
-# 前言
+## 前言
 
 在[上一篇](/posts/libopencm3-stm32-16/)中已經介紹了 WDG 看門狗計時器的用途以及 IWDG 與 WWDG 的差別，也示範了 IWDG 的基本用法。
 
@@ -22,7 +22,7 @@ draft: false
 
 <!--more-->
 
-# 基本概念
+## 基本概念
 
 在啓用 WWDG 時有兩種情況會造成它觸發 System Reset：
 
@@ -40,15 +40,15 @@ draft: false
 
 ![▲ WWDG 的 Window 示意圖。取自 RM0390 Rev 6 P.648。](https://bucket.ziteh.dev/blog/libopencm3-stm32-18/30c7d67d.webp)
 
-在上圖中，WWDG 下數計數器的當前計數值是 T[6:0]，而 Window 的值是 W[6:0]（上限）。
+在上圖中，WWDG 下數計數器的當前計數值是 T\[6:0]，而 Window 的值是 W\[6:0]（上限）。
 
-透過圖可以看出，T[6:0] 會隨時間不斷下數，當數到 `0x3F`時（`0x40` 後，也就是 T6 位元從 `1` 變 `0`）會觸發 Reset（條件 1）。
+透過圖可以看出，T\[6:0] 會隨時間不斷下數，當數到 `0x3F`時（`0x40` 後，也就是 T6 位元從 `1` 變 `0`）會觸發 Reset（條件 1）。
 
-但是在 T[6:0] > W[6:0] 時是在 Window 外，是「Refresh not allowed」的區段，在這個區段內進行 Refresh 也會觸發 Reset（條件 2）。
+但是在 T\[6:0] > W\[6:0] 時是在 Window 外，是「Refresh not allowed」的區段，在這個區段內進行 Refresh 也會觸發 Reset（條件 2）。
 
 ![▲ WWDG 的系統方塊圖。取自 RM0390 Rev 6 P.647。](https://bucket.ziteh.dev/blog/libopencm3-stm32-17/8229f9f9.webp)
 
-# Timeout 計算
+## Timeout 計算
 
 ![▲ WWDG 的 Timeout 計算公式。取自 RM0390 Rev 6 P.648。](https://bucket.ziteh.dev/blog/libopencm3-stm32-18/6b84f3fc.webp)
 
@@ -62,19 +62,19 @@ draft: false
 
 ![](https://bucket.ziteh.dev/blog/libopencm3-stm32-17/65f41a5b.webp)
 
-可能有些人會覺得為什麼計算公式中是 T[5:0] 而不是 T[6:0]，因為第 6 位元 T6 實際上是用來指示是否該進行 Reset 的 Flag。
+可能有些人會覺得為什麼計算公式中是 T\[5:0] 而不是 T\[6:0]，因為第 6 位元 T6 實際上是用來指示是否該進行 Reset 的 Flag。
 
-當 T[6:0] 的值從 `0x40` 變成 `0x3F`——也就是從 `0100 0000b` 變成 `0011 1111b`——時，T6 位元從 `1` 變成 `0`，就會觸發 Reset。
+當 T\[6:0] 的值從 `0x40` 變成 `0x3F`——也就是從 `0100 0000b` 變成 `0011 1111b`——時，T6 位元從 `1` 變成 `0`，就會觸發 Reset。
 
 這部分可以參考上面的 WWDG 的系統方塊圖， T6 位反相後接到一個 OR 閘，而此 OR 閘的輸出就是 Reset。所以實際的計數公式只有 T0~T5，不包含 T6。
 
-# 小結
+## 小結
 
 這次接續 IWDG 的內容，繼續介紹 WWDG 的用法。
 
 相比於 IWDG，WWDG 多了 Windows 的概念，所以在計算 Timeout 時會多一個要計算的值，但計算的過程相信不會太複雜。
 
-# 參考資料
+## 參考資料
 
 - [STM32 Window Watchdog (WWDG) - Hackster.io](https://www.hackster.io/vasam2230/stm32-window-watchdog-wwdg-dda290)
 - [STM32F446RE datasheet (DS10693)](https://www.st.com/resource/en/datasheet/stm32f446re.pdf)

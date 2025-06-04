@@ -15,6 +15,7 @@ toc: true
 draft: false
 # aliases: ["/2018/09/learningstm32-03/"]
 ---
+
 先前已經介紹過[GPIO相關暫存器](/posts/learningstm32-02/)的用法了，現在我來介紹幾個最基本的輸出入程式寫法。
 
 由於我使用的開發板NUCLEO-F103RB上有内建LED燈（PA5）和按鈕（PC13），所以以下的程式我就直接使用這兩隻腳位。
@@ -70,7 +71,7 @@ int main(void)
 
 ![▲ 基本輸入-按下按鈕後中間的綠色LED熄滅，否則亮起。](https://bucket.ziteh.dev/blog/learningstm32-03/b5450ff8.webp)
 
-基本輸出入除了以上這種直接寫入暫存器的方法外還可以使用函數的方式來達成，而這些函數都在stm32f10x\_rcc.c和stm32f10x\_gpio.c中（參考路徑：Libraries\\STM32F10x\_StdPeriph\_Driver\\src），有興趣的可以參考研究。
+基本輸出入除了以上這種直接寫入暫存器的方法外還可以使用函數的方式來達成，而這些函數都在stm32f10x\_rcc.c和stm32f10x\_gpio.c中（參考路徑：Libraries\STM32F10x\_StdPeriph\_Driver\src），有興趣的可以參考研究。
 
 如果將上面的基本輸入程式改用函數的話，寫法如下。
 
@@ -177,20 +178,20 @@ GPIO\_ResetBits
 
 <br/>
 
-| RCC_APB2Periph        | 描述     |
+| RCC\_APB2Periph        | 描述     |
 | --------------------- | -------- |
-| RCC_APB2Periph_AFIO   | 复用功能 |
-| RCC_APB2Periph_GPIOA  | GPIO A   |
-| RCC_APB2Periph_GPIOB  | GPIO B   |
-| RCC_APB2Periph_GPIOC  | GPIO C   |
-| RCC_APB2Periph_GPIOD  | GPIO D   |
-| RCC_APB2Periph_GPIOE  | GPIO E   |
-| RCC_APB2Periph_ADC1   | ADC1     |
-| RCC_APB2Periph_ADC2   | ADC2     |
-| RCC_APB2Periph_TIM1   | TIM1     |
-| RCC_APB2Periph_SPI1   | SPI1     |
-| RCC_APB2Periph_USART1 | USART1   |
-| RCC_APB2Periph_ALL    | 全部     |
+| RCC\_APB2Periph\_AFIO   | 复用功能 |
+| RCC\_APB2Periph\_GPIOA  | GPIO A   |
+| RCC\_APB2Periph\_GPIOB  | GPIO B   |
+| RCC\_APB2Periph\_GPIOC  | GPIO C   |
+| RCC\_APB2Periph\_GPIOD  | GPIO D   |
+| RCC\_APB2Periph\_GPIOE  | GPIO E   |
+| RCC\_APB2Periph\_ADC1   | ADC1     |
+| RCC\_APB2Periph\_ADC2   | ADC2     |
+| RCC\_APB2Periph\_TIM1   | TIM1     |
+| RCC\_APB2Periph\_SPI1   | SPI1     |
+| RCC\_APB2Periph\_USART1 | USART1   |
+| RCC\_APB2Periph\_ALL    | 全部     |
 
 備註：可以用“|”符號（也就是OR運算）一次選取多個功能。例如：
 
@@ -206,25 +207,25 @@ RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA |
 | ENABLE   | 致能（使用） |
 | DISABLE  | 禁能（關閉） |
 
-| GPIO_Pin     | 描述       |
+| GPIO\_Pin     | 描述       |
 | ------------ | ---------- |
-| GPIO_Pin_0   | 選擇Pin_0  |
-| GPIO_Pin_1   | 選擇Pin_1  |
-| GPIO_Pin_2   | 選擇Pin_2  |
-| GPIO_Pin_3   | 選擇Pin_3  |
-| GPIO_Pin_4   | 選擇Pin_4  |
-| GPIO_Pin_5   | 選擇Pin_5  |
-| GPIO_Pin_6   | 選擇Pin_6  |
-| GPIO_Pin_7   | 選擇Pin_7  |
-| GPIO_Pin_8   | 選擇Pin_8  |
-| GPIO_Pin_9   | 選擇Pin_9  |
-| GPIO_Pin_10  | 選擇Pin_10 |
-| GPIO_Pin_11  | 選擇Pin_11 |
-| GPIO_Pin_12  | 選擇Pin_12 |
-| GPIO_Pin_13  | 選擇Pin_13 |
-| GPIO_Pin_14  | 選擇Pin_14 |
-| GPIO_Pin_15  | 選擇Pin_15 |
-| GPIO_Pin_All | 選擇全部   |
+| GPIO\_Pin\_0   | 選擇Pin\_0  |
+| GPIO\_Pin\_1   | 選擇Pin\_1  |
+| GPIO\_Pin\_2   | 選擇Pin\_2  |
+| GPIO\_Pin\_3   | 選擇Pin\_3  |
+| GPIO\_Pin\_4   | 選擇Pin\_4  |
+| GPIO\_Pin\_5   | 選擇Pin\_5  |
+| GPIO\_Pin\_6   | 選擇Pin\_6  |
+| GPIO\_Pin\_7   | 選擇Pin\_7  |
+| GPIO\_Pin\_8   | 選擇Pin\_8  |
+| GPIO\_Pin\_9   | 選擇Pin\_9  |
+| GPIO\_Pin\_10  | 選擇Pin\_10 |
+| GPIO\_Pin\_11  | 選擇Pin\_11 |
+| GPIO\_Pin\_12  | 選擇Pin\_12 |
+| GPIO\_Pin\_13  | 選擇Pin\_13 |
+| GPIO\_Pin\_14  | 選擇Pin\_14 |
+| GPIO\_Pin\_15  | 選擇Pin\_15 |
+| GPIO\_Pin\_All | 選擇全部   |
 
 備註：可以用“|”符號一次選取多個功能。例如：
 
@@ -232,19 +233,19 @@ RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA |
 GPIO_SetBits(GPIOA, GPIO_Pin_10 | GPIO_Pin_15); // 將PA10、PA15設置為1
 ```
 
-| GPIO_Speed       | 描述                    |
+| GPIO\_Speed       | 描述                    |
 | ---------------- | ----------------------- |
-| GPIO_Speed_10MHz | 設定最高輸出頻率為10MHz |
-| GPIO_Speed_2MHz  | 設定最高輸出頻率為2MHz  |
-| GPIO_Speed_50MHz | 設定最高輸出頻率為50MHz |
+| GPIO\_Speed\_10MHz | 設定最高輸出頻率為10MHz |
+| GPIO\_Speed\_2MHz  | 設定最高輸出頻率為2MHz  |
+| GPIO\_Speed\_50MHz | 設定最高輸出頻率為50MHz |
 
-| GPIO_Mode             | 描述             |
+| GPIO\_Mode             | 描述             |
 | --------------------- | ---------------- |
-| GPIO_Mode_AIN         | 類比輸入         |
-| GPIO_Mode_IN_FLOATING | 浮空輸入         |
-| GPIO_Mode_IPD         | 下拉輸入         |
-| GPIO_Mode_IPU         | 上拉輸入         |
-| GPIO_Mode_Out_OD      | 汲極開路通用輸出 |
-| GPIO_Mode_Out_PP      | 推挽通用輸出     |
-| GPIO_Mode_AF_OD       | 汲極開路复用輸出 |
-| GPIO_Mode_AF_PP       | 推挽复用輸出     |
+| GPIO\_Mode\_AIN         | 類比輸入         |
+| GPIO\_Mode\_IN\_FLOATING | 浮空輸入         |
+| GPIO\_Mode\_IPD         | 下拉輸入         |
+| GPIO\_Mode\_IPU         | 上拉輸入         |
+| GPIO\_Mode\_Out\_OD      | 汲極開路通用輸出 |
+| GPIO\_Mode\_Out\_PP      | 推挽通用輸出     |
+| GPIO\_Mode\_AF\_OD       | 汲極開路复用輸出 |
+| GPIO\_Mode\_AF\_PP       | 推挽复用輸出     |

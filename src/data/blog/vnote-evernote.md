@@ -7,9 +7,10 @@ toc: true
 draft: false
 # aliases: ["/2019/03/vnote-evernote/"]
 ---
+
 ![](https://bucket.ziteh.dev/blog/vnote-evernote/1829a82f.webp)
 
-# 前言
+## 前言
 
 經由[電腦玩物](https://www.playpcesor.com/?m=0)得知Evernote後，我使用它也有6年的時間了，記事的數量超過2500則，也在2年前訂購了專業版。每天上課做筆記、回家寫作業、上網找資料和規劃做專案都少不了Evernote，我可以説是滿重度的使用者了，沒有它我很多事沒辦法做。
 
@@ -17,7 +18,7 @@ draft: false
 
 <!--more-->
 
-# VNote簡介
+## VNote簡介
 
 1. 使用Markdown語法
 2. 在編輯模式下原地預覽圖片、圖表和公式
@@ -31,7 +32,7 @@ draft: false
 10. UML圖表、流程圖、時序圖和數學公式。支援語法：Mermaid、 Flowchart.js、 MathJax、 WaveDrom、PlantUML 和 Graphviz
 11. 更詳細介紹請見[網站](https://tamlok.github.io/vnote/zh_cn/#!index.md)和[GitHub](https://github.com/tamlok/vnote)
 
-# 什麽是Markdown ?
+## 什麽是Markdown ?
 
 Markdown是一種自由格式的輕量級標示語言(Lightweight Markup Language)，還可以很輕鬆的和HTML互相轉換。
 
@@ -44,7 +45,7 @@ Markdown是一種自由格式的輕量級標示語言(Lightweight Markup Languag
 
 ![▲Markdown語法示範(編輯界面)](https://bucket.ziteh.dev/blog/vnote-evernote/0361d00e.webp)
 
-# 界面導覽
+## 界面導覽
 
 ![▲主畫面](https://bucket.ziteh.dev/blog/vnote-evernote/5b0736b2.webp)
 
@@ -64,9 +65,9 @@ Markdown是一種自由格式的輕量級標示語言(Lightweight Markup Languag
 - 右下是搜尋：可以用來搜尋筆記、筆記本、内文...等等。
 - 下方是標簽和字數統計：編輯標簽和顯示字數統計。
 
-# 重點功能
+## 重點功能
 
-## 加入圖片
+### 加入圖片
 
 Markdown是純文字的檔案，它不像.doc、.odt之類的文件檔案可以直接插入圖片。但作為一個筆記軟體，圖片要如何加入是非常重要的。
 
@@ -76,15 +77,15 @@ VNote除了用網址的方式加入圖片外還支援直接按“Ctrl + V”貼�
 
 ![▲用貼上的方式加入圖片](https://bucket.ziteh.dev/blog/vnote-evernote/2400912e.webp)
 
-## 智慧表格
+### 智慧表格
 
 剛開始用Markdown語法時可能會覺得它的表格不是很好打，會弄得很亂，但VNote的表格會自動依照内容長度進行調整，相當方便。
 
 ![▲智慧表格](https://bucket.ziteh.dev/blog/vnote-evernote/7ba5e1b7.webp)
 
-# 更多功能
+## 更多功能
 
-## MathJax
+### MathJax
 
 MathJax是一個JavaScript庫，可以利用LaTeX、MathML 或AsciiMath的語法來編寫數學算式。而且VNote支援編輯時及時原地預覽功能，讓更加編寫方便。
 
@@ -104,7 +105,7 @@ $$
 
 ![▲MathJax示範(檢視界面)](https://bucket.ziteh.dev/blog/vnote-evernote/6825f9c4.webp)
 
-## Flowchart.js
+### Flowchart.js
 
 Flowchart.js可以用來繪製流程圖，VNote支援編輯時及時原地預覽功能。
 
@@ -128,7 +129,7 @@ cond(no)->sub1(right)->op1
 
 ![▲Flowchart.js示範](https://bucket.ziteh.dev/blog/vnote-evernote/e442b992.webp)
 
-## PlantUML
+### PlantUML
 
 PlantUML可以用來繪製各種圖表，VNote支援編輯時及時原地預覽功能。
 
@@ -146,7 +147,7 @@ Alice <-- Bob: another authentication Response
 
 ![▲PlantUML示範](https://bucket.ziteh.dev/blog/vnote-evernote/765bc538.webp)
 
-## Graphviz
+### Graphviz
 
 Graphviz可以用來文字來描述各個節點的關係，并且圖形化，VNote支援編輯時及時原地預覽功能。
 
@@ -154,7 +155,7 @@ Graphviz可以用來文字來描述各個節點的關係，并且圖形化，VNo
 
 範例：
 
-``` dot
+```dot
 digraph G
 {
   a -> b;
@@ -164,7 +165,7 @@ digraph G
 
 ![▲Graphviz示範](https://bucket.ziteh.dev/blog/vnote-evernote/33187776.webp)
 
-## Mermaid
+### Mermaid
 
 Mermaid可以讓你用簡單的語法繪製圖表。不過目前不支援編輯時及時原地預覽功能，要右鍵開啓「圖表實時預覽」畫面。
 
@@ -182,7 +183,7 @@ C-->D;
 
 ![▲Mermaid示範](https://bucket.ziteh.dev/blog/vnote-evernote/81833ecf.webp)
 
-## WaveDrom
+### WaveDrom
 
 WaveDrom是一個基於JavaScript的時序圖編寫語法，對於電機電子相關領域的人來説有這個功能很方便。目前不支援編輯時及時原地預覽功能，要右鍵開啓「圖表實時預覽」畫面。
 
@@ -202,7 +203,7 @@ WaveDrom是一個基於JavaScript的時序圖編寫語法，對於電機電子�
 
 ![▲WaveDrom示範](https://bucket.ziteh.dev/blog/vnote-evernote/2b1e746a.webp)
 
-# 結論
+## 結論
 
 VNote的功能非常多，如過在使用上有任何問題，都可以向打開上方工具列 >幫助(H) > Markdown指南(M) 來查看官方的教學文件。
 

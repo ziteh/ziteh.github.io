@@ -22,6 +22,7 @@ Zig 作為 C 的取代者，保留了直接操作記憶體的指標、`asm volat
 <!-- more -->
 
 我曾經看到有人這樣形容：
+
 > Rust 可能像是一個更好的 C++，那 Zig 就是一個更好的 C。
 
 而且 Zig 現在也有 [Bun](https://github.com/oven-sh/bun) 這個專案證明它的效能。
@@ -32,7 +33,7 @@ Zig 作為 C 的取代者，保留了直接操作記憶體的指標、`asm volat
 
 希望這系列的入門文章可以讓你學到 Zig 的基礎，如果內容有誤的也歡迎指出。謝謝閱讀。
 
-# 參考
+## 參考
 
 - [ziglang/zig: General-purpose programming language and toolchain for maintaining robust, optimal, and reusable software.](https://github.com/ziglang/zig)
 - [Welcome | zig.guide](https://zig.guide/)

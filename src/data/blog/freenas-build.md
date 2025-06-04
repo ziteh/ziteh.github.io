@@ -12,9 +12,10 @@ toc: true
 draft: false
 # aliases: ["/2020/12/freenas-build/"]
 ---
+
 ![](https://bucket.ziteh.dev/blog/freenas-build/3d476087.webp)
 
-# 前言
+## 前言
 
 隨著 Google 宣佈 Google Photos 在 2021 年 6 月 後不會有無限儲存高畫質相片的服務後，大家也紛紛開始擔心再未來連學術帳號的雲端無限空間也會被影響。
 
@@ -28,7 +29,7 @@ FreeNAS 是基於 FreeBSD 的開源 NAS 系統，作為開源軟體，它也是�
 
 <!--more-->
 
-# 硬體規格
+## 硬體規格
 
 首先是硬體規格的部分。由於 FreeNAS 使用的檔案系統為 ZFS，對硬體的要求與其它常見的 NAS 系統如 OpenMediaVault 是比較高的。
 
@@ -46,13 +47,13 @@ FreeNAS 是基於 FreeBSD 的開源 NAS 系統，作為開源軟體，它也是�
 | ---- | ------------------------------------------ | --------- |
 | CPU  | Intel Pentium G3260 3.3GHz 2C2T (1150腳位) | 300       |
 | MB   | ASUS B85M-G R2.0 (mATX)                    | 2000      |
-| RAM  | Kingston DDR3 1600MHz 4GB*2                | 500       |
+| RAM  | Kingston DDR3 1600MHz 4GB\*2                | 500       |
 | PSU  | Corsair CX500 500W                         | 1500      |
 | CASE | acer Veriton 套裝機殼                      | 200       |
 
 ![▲ 組裝完成的硬體。](https://bucket.ziteh.dev/blog/freenas-build/492fc0d4.webp)
 
-# 安裝 FreeNAS
+## 安裝 FreeNAS
 
 就和其它作業系統一樣，要安裝 FreeNAS 的話通常會使用開機碟的方式。準備一個隨身碟來將 FreeNAS 燒入，並在組裝好的電腦上以此開機碟開機。成功後就會進入 FreeNAS 的安裝程式。
 
@@ -64,7 +65,7 @@ FreeNAS 是基於 FreeBSD 的開源 NAS 系統，作為開源軟體，它也是�
 
 ![▲ FreeNAS 管理介面](https://bucket.ziteh.dev/blog/freenas-build/66d7a2c0.webp)
 
-# 結語
+## 結語
 
 由於目前這臺 FreeNAS 只是我先組起來測試用的，因此資料碟也只裝了一個舊 HDD，所以我就只是簡單地記錄一下第一次組裝的過程。
 

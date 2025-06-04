@@ -13,9 +13,10 @@ toc: true
 draft: false
 # aliases: ["/2020/03/unbox-just60/"]
 ---
+
 ![](https://bucket.ziteh.dev/blog/unbox-just60/a44aa991.webp)
 
-# 前言
+## 前言
 
 一直以來我用的都是100%鍵盤（標準104鍵），但是因為右側的控制鍵區（方向鍵、Home和PageUp等）還有數字鍵區讓右手從鍵盤到滑鼠的移動距離非常遠，長時間使用或頻繁移動的話對右手來說非常累。雖然我個人認為最好的方式就是好筆電一樣，在空白鍵下放一個觸控板，這樣指標的動作就交給左右大拇指就可以了，但是觸控板產品實在不多，而就算用手機裝相關App其操作手感也還是比不上一般的筆電，故此想法目前還無法實現。
 
@@ -38,7 +39,7 @@ draft: false
 
 經過了幾個禮拜的挑選、查資料和看介紹，我最後選擇了今天的主角——**YDKB Just60**。
 
-# 主要特色
+## 主要特色
 
 首先Just60的PCB尺寸就是一般的60%鍵盤的大小，其外殼就選GH60的就可以通用了。再來按鍵的部分，它可支援的配列方式有很多種，一般常見的Poker2、Minila或是其它怪異的配列都可以，最多可以一次塞68鍵（就是67鍵的Minila配置再把2U的左Shift變成2個1U的鍵）。
 
@@ -54,7 +55,7 @@ draft: false
 
 至於詳細的介紹可以看它們的[官方說明文件](http://help.ydkb.io/doku.php)，裡面寫得非常仔細。
 
-# 設計
+## 設計
 
 因為Just60可以設定的配列很多，所以我也稍微設計了一下要怎麼配才能最適合自己，這時就覺得它可以直接在[網站](http://ydkb.io/#)上完成設定真的很方便。我最後決定是使用一種很奇怪的65鍵配列方式，我也不知道這種配列其他鍵盤有沒有。
 
@@ -72,7 +73,7 @@ draft: false
 
 1. 我的左Shift是在靠Z鍵的那邊，另一個靠外側的是Fn/L1鍵（長壓時會切至Layer1）。一開始這兩鍵的位置是反過來的（靠Z的是Fn/L1、靠外是左Shift），但用了一下發現怪怪的就換成現在這樣。
 2. 我的大寫鎖定鍵（Caps Lock）同時也是LT2鍵。這樣的設定會令快速單擊此鍵是會和平常一樣切換大寫鎖定，但在長壓時會是切換至Layer2的功能。因為我自己很少用到大寫鎖定鍵，但直接把整個大寫鎖定鍵拿掉也不太好，所以就這樣設定，非常方便。
-3. 我的ESC在Layer1是按鍵「\`」和「\~」，但我只要按下Shift+ESC就可以直接打出波浪符「\~」了，不用按Fn/L1切去Layer1再按Shift（這樣也是可以打出波浪符，但要多按Fn/L1鍵）。
+3. 我的ESC在Layer1是按鍵「\`」和「~」，但我只要按下Shift+ESC就可以直接打出波浪符「~」了，不用按Fn/L1切去Layer1再按Shift（這樣也是可以打出波浪符，但要多按Fn/L1鍵）。
 4. Layer1的V我直接設定成Ctrl+Shift+V的組合鍵，因為我滿常用的。
 5. Layer1和Layer2的Enter鍵我設定為數字鍵區的Enter（Pad Enter）。這兩個鍵並不一樣，在有些遊戲裡會需要分開（如Arma3），所以我如此設定。
 6. Layer2主要是設定成數字鍵區，因為我打程式或是CAD的時候還是很需要一直打數字。
@@ -84,7 +85,7 @@ draft: false
 
 確定好此鍵盤確實可以完全勝任我的要求後，就是訂購零件並準備製作了。
 
-# 零件
+## 零件
 
 首先定位板的部分，因為我的配列方式為左Shift是2U（1U+1U）長度，而不是標準的2.25U長度，所以要選擇「左移版」的定位板。再來因為我有使用藍牙的需求，而金屬會有屏遮電磁波的效果，會造成無線通訊的訊號不好或連線不穩定，故我選用碳纖維材質的定位板，比起金屬和壓克力材質都還要適合我。
 
@@ -110,7 +111,7 @@ PCB的話，除了鍵軸和鍵軸上的LED外，其它零件都焊接好了。�
 
 ![▲ 鍵軸：Cherry MX 黑軸20顆（左）、Cherry MX 靜音紅軸50顆（右）。](https://bucket.ziteh.dev/blog/unbox-just60/fbfb2c71.webp)
 
-# 開始製作
+## 開始製作
 
 零件到齊後就開始進行製作了。
 
@@ -150,7 +151,7 @@ PCB的話，除了鍵軸和鍵軸上的LED外，其它零件都焊接好了。�
 
 ![▲ 最後完成的樣子。](https://bucket.ziteh.dev/blog/unbox-just60/54f6a82b.webp)
 
-# 結語
+## 結語
 
 這是我的第3把機械式鍵盤，第一把是keychron K1（104鍵版），再來是RK61，接下來就是本次介紹的Just60。我使用機械式鍵盤的時間並不長，第一把keychron K1是大概一年前買的，目前也有很多機械式鍵盤的東西並不是很清楚。但這次組了這把Just60我非常滿意，估計它可以陪我好一陣子了。
 
@@ -175,7 +176,7 @@ PCB的話，除了鍵軸和鍵軸上的LED外，其它零件都焊接好了。�
 
 另外，如果想要參考我使用的配列或鍵位設定的話可以[點此連接](http://ydkb.io/?just60-10343521#H4sIAAAAAAAAA+2Ta4obQQyEL1Q/Wm/1Wcze/xop9djJsi8CyQ8vLAI1Y7dqpE81t9vNbQckU/rkOnnBEUgUGht8FIEoxCAOiRfcJDF3WbShCypQhRrUoQFNaEEbumELJqwwhRnMYQFLWMEatuELKc7sCje4wwOe8GKRN3wjFkIQijAEOwsE/5egejRiI0cDqUhjUTqS3SeykI3cqIUSlKIM5ahAcbhCNWqzohda0Io2tKMDnWhO3+iNvbAFW7EN27Fn/p3YhU08nJ8TyyIhzieLDFYNBuY4OU+uk/vkYVY2WIeMDNphO3CFWmQjNifx2uiTiXhQYbRGaXRGhRpKuhS5SRhbuCKD089ZnGOeZsU+i34d8+rfFb6vimMERnHY14a4VOsCPpD/IMdr4ETGLdVZapwiEry2kLKv/ajSNal1Gk517iO9il549MNZP2n0TXCh5xizzGZ7lvvZ5a+E3t+4Sz9iTHr/ZXZ9mCctWFgYPPSHHJ/4OOMz0bOD/VAeF00tEUnzA2IaQDz8TWN9bYX+pOfu5vRxbpzG9C9n+jjGjMpbc8rdmpdN/w/JtxGmsS6kcx6UGl/s7Z/f+P1uDJP1FJ08y40fIh8ReY5OnuXGD5F3RF5+AYB2vzflCQAA)線上預覽，或在[這裡](https://drive.google.com/file/d/1AjuOwTBrjMcKHmRhm-1OQJiBNJLSPhMC/view?usp=sharing)（Google雲端硬碟）下載我的設定檔。
 
-# 同場加映：黑胡桃木鍵帽
+## 同場加映：黑胡桃木鍵帽
 
 因為在買零件的時候被旁邊的廣告影響，覺得黑胡桃木的空白鍵帽好像不錯，所以就買了一個回來看看。裝上後覺得有點特色也不錯。
 
@@ -197,10 +198,10 @@ PCB的話，除了鍵軸和鍵軸上的LED外，其它零件都焊接好了。�
 
 ![▲ 鍵盤特寫。](https://bucket.ziteh.dev/blog/unbox-just60/353d1741.webp)
 
-# 相關文章
+## 相關文章
 
 - [自組60%藍牙機械鍵盤-Just60 後續改軸](/posts/just60-replaceswitches/)
 
-# 參考文章
+## 參考文章
 
 - [DIY機械鍵盤組裝教學 Mechanical Keyboards Building Guide](https://playkeyboard01.pixnet.net/blog/post/200804099-diy%E6%A9%9F%E6%A2%B0%E9%8D%B5%E7%9B%A4%E7%B5%84%E8%A3%9D%E6%95%99%E5%AD%B8-mechanical-keyboards-building-gu)（這篇文章的教學寫得非常詳細）

@@ -20,7 +20,7 @@ draft: false
 
 另外，我較熟悉的語言為：C/C++、C#、Python，比較通常是和它們比。然後我是比較單純的以「寫程式」的角度分享，我相信每各程式語言的設計背後都有充足且嚴謹的理由。
 
-# 變數預設不可變
+## 變數預設不可變
 
 這個標題看起來可能有點奇怪，不可變的變數還能叫變數嗎？
 
@@ -54,7 +54,7 @@ int b = 2;           // 可變
 
 > 雖然我不寫 Kotlin，但我不喜歡它使用 `val` 和 `var`，它們只差在最後的 `l` 和 `r`，差異不夠明顯無法一眼看出。除非依賴 IDE 額外輔助顯示。
 
-# 型別後置 & 推導
+## 型別後置 & 推導
 
 型別聲明後置與型別推導是大多數現代語言都有的特性，其好處就不用特別說了。
 
@@ -65,7 +65,7 @@ let mut speed: f32 = 103.43;
 let x = get_value();
 ```
 
-# 明確大小的數值型別
+## 明確大小的數值型別
 
 身為一個韌體工程師，我在寫 C 的時候總是使用明確大小的數值型別，那幾 byte 的空間對我們很重要。能用 `uint8_t` 裝的絕不用 `uint16_t`；不會有負值的絕不用有號數。
 
@@ -84,7 +84,7 @@ let e: f32 = 3.1415; // 4 byte, floating-point IEEE 754-2008
 let f: usize = 64;   // 取決於平臺的位數
 ```
 
-# 尾隨逗號
+## 尾隨逗號
 
 Rust 的尾隨逗號（Trailing comma）是合法的，容許尾隨逗號可以讓人更方便地加入或刪除成員，不用特地編輯最後的逗號。現代語言基本上都有此特性。
 
@@ -96,7 +96,7 @@ enum MyEnum {
 };
 ```
 
-# 帶參數的 Enum
+## 帶參數的 Enum
 
 Rust 的 Enum（列舉）可以帶參數，但我第一次知道時覺得很詭異，因為我 C/C++ 的 Enum 沒有參數還不是用的好好的，為什麼你 Rust 就要帶參數？
 
@@ -120,7 +120,7 @@ enum Result<T, E> {
 
 帶有參數的 Enum 無疑比 C/C++ 的傳統 Enum 更加靈活，可以做到更多操作，再搭配 Rust 的 `match` 模式配對，寫起來是滿舒服的。
 
-# match 模式配對
+## match 模式配對
 
 Rust 沒有傳統的 `switch-case` 語法，取而代之的是 `match`。來比較一下：
 
@@ -207,7 +207,7 @@ match res {
 
 > 不過老實說我不是很喜歡打 `=>`，如果可以只用一個符號的話打起來更舒服，但可能有特別的考量。
 
-# 沒有例外處理 Exception
+## 沒有例外處理 Exception
 
 Rust 沒有常見的例外處理，也就是沒有 `try-catch`、`exception` 這些。通常透過回傳 `Rusult<T, E>` 和 `Option<T>`，並使用 `if-else` 或 `match` 來處理 Error 或 None。
 
@@ -223,7 +223,7 @@ let data = match get_data() {
 };
 ```
 
-# 預設私有
+## 預設私有
 
 封裝（Encapsulation）是 OOP 的一大特性，透過限制物件、函式等的存取來提高程式碼的安全性（不被任意修改或調用）與易用性（不用看到一堆用不到的東西）。
 
@@ -255,7 +255,7 @@ impl Person {
 }
 ```
 
-# 特徵 trait
+## 特徵 trait
 
 Rust 不像 C# 或 Java 有真正的 [Interface](https://docs.oracle.com/javase/tutorial/java/concepts/interface.html)，取而代之的是特徵 [`trait`](https://doc.rust-lang.org/rust-by-example/trait.html)。用起來其實基本上一樣，另外 `trait` 內就不用另外聲明 `pub` 了。
 
@@ -292,7 +292,7 @@ fn main() {
 }
 ```
 
-# 型別別名
+## 型別別名
 
 就像 C 可以用 `typedef` 自訂型別，Rust 也可以使用 `type` 來定義型別別名（type alias）。
 
@@ -308,7 +308,7 @@ fn main() {
 
 但是我必須要說，我不喜歡 Rust 選擇「type」這個字，因為我的程式裡確實有些地方會想用 type 當作屬性或成員，但 Rust 把它當作定義型別的關鍵字（keyword）了，所以就沒辦法用。我個人更偏好 C 的 `typedef` 這樣不易衝突的字。（雖然 Rust 有所謂的 Raw identifiers 可以突破此限制）
 
-# 總結
+## 總結
 
 以上就是我在簡單使用 Rust 一段時間後的感想，整體來說，我滿喜歡 Rust 的設計的，寫起來的感覺也很不錯（雖然我現在還不是完全理解 [Ownership 和 Lifetime](https://doc.rust-lang.org/nomicon/ownership.html)）。未來我會繼續學習 Rust ，讓它變成主力語言（無論是嵌入式還是桌面程式開發）。
 

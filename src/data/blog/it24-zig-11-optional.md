@@ -17,7 +17,7 @@ toc: true
 
 類似於 Rust 的 `Option<T>`，Zig 的 Optional 提供數值被賦予 `null` 的能力，以代表空、沒有。
 
-# 基本
+## 基本
 
 在宣告時個型別前加上 `?` 使其變成可選類型。
 
@@ -40,7 +40,7 @@ Value: null
 Value: 32
 ```
 
-# orelse
+## orelse
 
 可以使用 `orelse` 來展開（unwrap）可選型別，將其變成一般的子型別。
 
@@ -67,7 +67,7 @@ Value: 128
 Type: u8
 ```
 
-# unreachable
+## unreachable
 
 如果你確定該可選值目前不是 `null`，可以使用 `.?` 直接展開成子型別的數值。如果對 `null` 進行 `.?` 會在執行期引發 Painc 錯誤。
 
@@ -92,7 +92,7 @@ Value: 32
 thread 55352 panic: attempt to use null value
 ```
 
-# 參考
+## 參考
 
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#Optionals)
 - [Optionals | zig.guide](https://zig.guide/language-basics/optionals)

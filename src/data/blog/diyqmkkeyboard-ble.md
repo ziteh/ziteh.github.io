@@ -22,7 +22,7 @@ draft: false
 
 <!--more-->
 
-# 藍牙模組
+## 藍牙模組
 
 根據 [QMK 文件](https://docs.qmk.fm/#/feature_bluetooth)的說明，目前 QMK 正式支援的藍牙模組只有 2 種：
 
@@ -35,17 +35,17 @@ Adafruit Bluefruit LE SPI Friend（以下簡稱 Adafruit BLE）是 Adafruit 所�
 
 因為 Adafruit BLE 的韌體已經有實作藍牙 HID 的相關 [AT 指令](https://learn.adafruit.com/introducing-the-adafruit-bluefruit-spi-breakout/at-commands)，所以 QMK 其實只是依照按下的按鍵，再透過 AT 指令讓 Adafruit BLE 完成與電腦間的通訊。
 
-## 自製 Adafruit BLE 模組
+### 自製 Adafruit BLE 模組
 
 Adafruit BLE 模組的價位有點高，但因為它的韌體有在 [GitHub](https://github.com/adafruit/Adafruit_BluefruitLE_Firmware) 上，所以也可以自己買 MDBT40 或其它 nRF51822 模組來燒錄。我使用的就是自行燒錄的，詳細教學在[這裡](/posts/diyqmkkeyboard-ble-module)。
 
 不過要注意的是，MDBT40 和 nRF51822 有不同的版本規格，要選用 32 KB RAM、256 KB Flash Memory 的版本才行，也就是 MDBT40-256RV3 或 MDBT40-P256RV3 及 nRF51822-xxAC。
 
-# QMK
+## QMK
 
 QMK 對於藍牙功能的相關資料在這裡：[QMK: Bluetooth](https://docs.qmk.fm/#/feature_bluetooth)
 
-## rules.mk
+### rules.mk
 
 要啓用藍牙功能的話首先要在 `rules.mk` 中加入這兩行：
 
@@ -60,7 +60,7 @@ BLUETOOTH_DRIVER = AdafruitBLE # or RN42
 NKRO_ENABLE = no
 ```
 
-## config.h
+### config.h
 
 再來就是可以在 `config.h` 中加入以下的 SPI 腳位定義（可修改）：
 
@@ -72,11 +72,11 @@ NKRO_ENABLE = no
 
 > 記得要選該微控制器上有 SPI 功能的腳位才行。
 
-## 編譯並燒錄
+### 編譯並燒錄
 
 完成上述 `rules.mk` 及 `config.h` 的修改就可以直接[編譯並燒錄](/posts/diyqmkkeyboard-3/)了，就是這麼簡單。
 
-# 接線
+## 接線
 
 因為我使用的是 Pro Micro (ATmega32U4)，故以下將以它作為示範。也需注意 `RST`、`IRQ`、`CS` 這三個的實際腳位是可以在 `config.h` 中修改的。
 
@@ -103,11 +103,11 @@ NKRO_ENABLE = no
 
 > 你可能會想在 Keymap 中加入藍牙控制的按鍵，請參考 [Bluetooth Keycodes](https://docs.qmk.fm/#/feature_bluetooth?id=bluetooth-keycodes)。
 
-# 效果展示
+## 效果展示
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/OKdwwEEPLHY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-# 相關資訊
+## 相關資訊
 
 - QMK 版本：`0.15.13`
 - [Adafruit Bluefruit LE Firmware](https://github.com/adafruit/Adafruit_BluefruitLE_Firmware)
@@ -118,7 +118,7 @@ NKRO_ENABLE = no
   - MDBT40-256RV3
   - nRF51822-xxAC
 
-# 相關文章
+## 相關文章
 
 - [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - 自製 Adafruit Bluefruit LE SPI Friend 模組教學：[Adafruit Bluefruit LE SPI Friend 韌體燒錄教學](/posts/diyqmkkeyboard-ble-module)。

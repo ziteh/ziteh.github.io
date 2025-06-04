@@ -14,7 +14,7 @@ draft: false
 # aliases: ["/2022/09/libopencm3-stm32-11/"]
 ---
 
-# 前言
+## 前言
 
 Timer 計時器是各個 MCU 中都會有的基本功能。正如其名，當需要精確定時以進行控制時，Timer 就會派上用場，Timer 還可以用來產生 PWM 訊號，是很常用的功能。
 
@@ -24,7 +24,7 @@ Timer 計時器是各個 MCU 中都會有的基本功能。正如其名，當需
 
 <!--more-->
 
-# 時鐘樹
+## 時鐘樹
 
 時鐘樹（Clock tree）是學習並使用 STM32 及各微控制器時很重要的事，因為各個功能都有自己的運作頻率，在使用 Timer 前最好有一定的認識。
 
@@ -36,7 +36,7 @@ Timer 計時器是各個 MCU 中都會有的基本功能。正如其名，當需
 
 |名稱|英文全名|中文全名|說明|
 |----|-------|-------|----|
-|HSE|High-speed external|外部高速|接 4\~25 MHz 的震盪器（Oscillator）或石英震盪器（Crystal）|
+|HSE|High-speed external|外部高速|接 4~25 MHz 的震盪器（Oscillator）或石英震盪器（Crystal）|
 |LSE|Low-speed external|外部低速|接 32.768 kHz 的振盪器或石英振盪器|
 |HSI|High-speed internal|內部高速|為一個 16 MHz 的 RC 振盪器|
 |LSI|Low-speed internal|內部低速|為一個 32 kHz 的 RC 振盪器|
@@ -47,7 +47,7 @@ Timer 計時器是各個 MCU 中都會有的基本功能。正如其名，當需
 
 > 如果你好奇為什麼 LSE 是 32.768 k 這個奇怪的數字，因為 32786 是 2^15，在二進制的微控制器中使用二的冪次方為頻率在分頻與計數上比較方便。
 
-# Timer 頻率
+## Timer 頻率
 
 每個 STM32 中都有許多不同的 Timer，各個 Timer 的規格及功能都不同。我們這次用的是 TIM2，這是一個通用功能計時器（General-purpose timer），為一個 32 位元的上/下數 Counter，擁有自動裝載（Auto-reload）功能，還有一個 16 位元的可程式預除頻器。
 
@@ -55,11 +55,11 @@ Timer 計時器是各個 MCU 中都會有的基本功能。正如其名，當需
 
 ![▲ STM32F446xC/E 的功能方塊圖。取自 DS10693 Figure 3。](https://bucket.ziteh.dev/blog/libopencm3-stm32-11/fa20d772.webp)
 
-從 STM32F446RE 的 Clock tree 還可以知道，當 APB1 的預除頻器設定為 `/1` 時，APB1 timer  clock = APB1 clock，而 APB1 的預除頻器設定為 `/1` 以外時，APB1 timer clock = 2* APB1 clock。
+從 STM32F446RE 的 Clock tree 還可以知道，當 APB1 的預除頻器設定為 `/1` 時，APB1 timer  clock = APB1 clock，而 APB1 的預除頻器設定為 `/1` 以外時，APB1 timer clock = 2\* APB1 clock。
 
 ![▲ STM32F446xx 的部分 Clock tree。取自 RM0390 Figure 14。](https://bucket.ziteh.dev/blog/libopencm3-stm32-11/9e81b4ed.webp)
 
-# PSC 暫存器
+## PSC 暫存器
 
 PSC 是 Prescaler 的意思，它用來設定各 Timer 自己的預除頻值。
 
@@ -68,14 +68,15 @@ PSC 是 Prescaler 的意思，它用來設定各 Timer 自己的預除頻值。
 
 - `CK_CNT`：Counter 的計數頻率，也就是預除頻器的輸出頻率。
 - `CK_PSC`：預除頻器的輸入頻率，也就是 Timer 頻率。
-- `PSC`：TIMx_PSC 暫存器的值（除頻值）。
+- `PSC`：TIMx\_PSC 暫存器的值（除頻值）。
 
 ![▲ Counter 的頻率公式。取自 RM0390。](https://bucket.ziteh.dev/blog/libopencm3-stm32-11/8b79516a.webp)
 
-# ARR 暫存器
+## ARR 暫存器
 
 接下來還要計算自動裝載暫存器（Auto-Reload Register，ARR）的值。ARR 暫存器的功能我們可以從 RM0390 中得知：
-> In upcounting mode, the counter counts from 0 to the auto-reload value (content of the TIMx_ARR register), then restarts from 0 and generates a counter overflow event.
+
+> In upcounting mode, the counter counts from 0 to the auto-reload value (content of the TIMx\_ARR register), then restarts from 0 and generates a counter overflow event.
 
 在上數模式時，Counter 會從 0 數到 ARR 值，然後重新從 0 開始數並產生 Overflow 及 Update 事件（包含 Update 中斷）。
 
@@ -86,7 +87,7 @@ PSC 是 Prescaler 的意思，它用來設定各 Timer 自己的預除頻值。
 
 我們可以把 ARR 再當成一個除頻器，輸入為 Counter 計數頻率，除頻值為 ARR+1，輸出為 Overflow 發生的頻率。
 
-# 完整公式
+## 完整公式
 
 然後我們就可以得到完整的結構：
 `Timer 頻率 --[Timer 預除頻器]--> Counter 頻率 --[ARR]--> Overflow 頻率`
@@ -97,20 +98,20 @@ PSC 是 Prescaler 的意思，它用來設定各 Timer 自己的預除頻值。
 - `f_overflow`：Overflow 的發生頻率，也就是我們的目標頻率。
 - `f_counter`：Counter 的計數頻率，也就是上面的 `CK_CNT`。
 - `f_timer`：Timer 的頻率，也就是上面的 `CK_PSC`。
-- `ARR`：TIMx_ARR 暫存器的值。
-- `PSC`：TIMx_PSC 暫存器的值。
+- `ARR`：TIMx\_ARR 暫存器的值。
+- `PSC`：TIMx\_PSC 暫存器的值。
 
 有了上面這個公式，我們就可以設定 Timer 的參數並得到想要的頻率了。`f_overflow` 是我們的目標頻率，`f_timer`/`f_counter` 的值取決於 RCC Clock tree 的設定，`ARR` 及 `PSC` 就是我們主要可以調整的數值。
 
 我通常會先選定一個大略的 `PSC` 值（即先選擇 Counter 的頻率），然後在使用上面的公式計算出精確的 `ARR` 值。
 
-# 小結
+## 小結
 
 Timer 是一個稍微比較複雜的功能，它有很多細節的設定，也要會看時鐘樹，這篇也僅僅是以最精簡的方式概略介紹而已，有很多東西實在沒辦法細講（有些我也沒詳細研究）。
 
 但 Timer 是一個很重要的功能，我想至少設定 PSC 與 ARR 的部分要看懂，而我也盡力寫得清楚些，並將官方文件的說明都附上。
 
-# 參考資料
+## 參考資料
 
 - [STM32F446RE datasheet (DS10693)](https://www.st.com/resource/en/datasheet/stm32f446re.pdf)
 - [STM32F446xx reference manual (RM0390)](https://www.st.com/resource/en/reference_manual/rm0390-stm32f446xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)

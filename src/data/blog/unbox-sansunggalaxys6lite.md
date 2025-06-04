@@ -11,9 +11,10 @@ toc: true
 draft: false
 # aliases: ["/2020/05/unbox-sansunggalaxys6lite/"]
 ---
+
 ![](https://bucket.ziteh.dev/blog/unbox-sansunggalaxys6lite/78a24f43.webp)
 
-# 前言
+## 前言
 
 我在去年（2019）11月時買了一台剛上市的Apple iPad 2019（7代，10.2吋）來作為上課寫筆記用。在使用了半年後，我身邊的一些同學也開始用平板來做筆記。其中有一位同學他不是和我一樣買iPad，而是買三星 Galaxy Tab S6 Lite。我向他借來用後大為驚訝，我沒想過一台平板的手寫感會這麼好、功能會這麼齊全。
 
@@ -21,7 +22,7 @@ draft: false
 
 <!--more-->
 
-# 本機
+## 本機
 
 雖然說這篇是開箱文，但在買的時候就在店裡開箱了，故開箱的過程就不贅述了。這次購買S6 Lite內附原廠充電器、充電線、S Pen（手寫筆）和Pin針，此外還附贈原廠皮套。
 
@@ -47,7 +48,7 @@ draft: false
 
 ![▲ S Pen、Adonit NOTE iPad手寫筆與0.5mm原子筆比較，S Pen的筆頭滿細的。](https://bucket.ziteh.dev/blog/unbox-sansunggalaxys6lite/6d8c8c3e.webp)
 
-# S Pen及其功能
+## S Pen及其功能
 
 我會換S6 Lite有很大一部分的原因是因為S Pen。
 
@@ -63,12 +64,12 @@ draft: false
 
 ![▲ 截圖及去背功能。](https://bucket.ziteh.dev/blog/unbox-sansunggalaxys6lite/8d31a5de.webp)
 
-# 結語
+## 結語
 
 本文差不多就這樣了，其它基本常見的功能我就不詳細介紹了，我只大概講一下我自己特別喜歡的幾點。
 
 總之我非常滿意，未來如果有空也可以分享我用平板做上課筆記的心得。
 
-# 相關文章
+## 相關文章
 
 - [三星 Tab S6 Lite V.S. Apple iPad 2019(7代)](/posts/s6lite-vs-ipad2019/)
