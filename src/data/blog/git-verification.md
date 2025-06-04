@@ -22,17 +22,17 @@ draft: false
 
 > 本文以 Windows 11 為主。
 
-## 安裝工具
+# 安裝工具
 
 首先要安裝用來產生金鑰對的工具。在 Windows 上最簡單的方式是安裝 [Gpg4win](https://www.gpg4win.org/)，它是 [GnuPG](https://www.gnupg.org/) 的 Windows 官方發行版。安裝過程就不贅述了。
 
-## 產生金鑰
+# 產生金鑰
 
 這裡有兩種方式可以產生金鑰，分別是 GUI 圖形化介面和 CLI 命令行，根據自己的喜好擇一即可。
 
 完成此步驟以取得 Key ID 和公鑰（Public Key）。
 
-### GUI 圖形化
+## GUI 圖形化
 
 安裝好 Gpg4win 後應該會有個軟體 Kleopatra 也被一併安裝，這是一個憑證管理軟體。開啓它並選擇「File > New OpenPGP Key Pair...」（或 Ctrl+N）。
 
@@ -59,7 +59,7 @@ draft: false
 - Key ID 的話就在清單上，例如這裡是 `D54135B170193E40`。
 - 公鑰的話要雙擊清單中的證書（金鑰對），在新開始的視窗按下面的「Export」按鈕。會再開啓一個新視窗，顯示的一大串文字就是公鑰。會以 `-----BEGIN PGP PUBLIC KEY BLOCK-----` 開頭， `-----END PGP PUBLIC KEY BLOCK-----` 結尾。你可以直接整段複製。
 
-### CLI 命令行
+## CLI 命令行
 
 參考 GitHub 文件：[Generating a new GPG key - GitHub Docs](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key)
 
@@ -102,7 +102,7 @@ gpg --armor --export D54135B170193E40
 
 這裡的 `D54135B170193E40` 記得換成你真正的 Key ID。它會輸出一大段文字，這就是你的公鑰，請整段複製起來。（連同開頭和結尾的 `-----BEGIN PGP PUBLIC KEY BLOCK-----`、`-----END PGP PUBLIC KEY BLOCK-----`）
 
-## GitHub 設定 GPG Key
+# GitHub 設定 GPG Key
 
 開啓 GitHub 設定頁面的 [SSH and GPG keys](https://github.com/settings/keys) 頁。按下「New GPG key」按鈕以新增金鑰。
 
@@ -116,13 +116,13 @@ gpg --armor --export D54135B170193E40
 >
 > 你可以開一個測試用的 repo，先送幾個有簽名且可被認證的 commit，接著刪除 GitHub 上對應的 GPG Key，這些 commit 會從 Verified 變成 Unverified。如果再把對應的 GPG Key 加回去的話，又會變回到 Verified。
 
-## Git 設定
+# Git 設定
 
 接下來要設定讓 Git 使用該金鑰對為 commit 簽名。
 
 > 以下範例的設定皆使用全局 `--global`，你可以視需求調整。
 
-### GPG 路徑
+## GPG 路徑
 
 首先要知道你的 GPG 程式路徑。可以開啓 PowerShell 查詢：
 
@@ -144,7 +144,7 @@ git config --global gpg.program "<GPG_PATH>"
 git config --global gpg.program "C:\Program Files (x86)\GnuPG\bin\gpg.exe"
 ```
 
-### 設定 Key ID
+## 設定 Key ID
 
 設定 Git 要用來簽名的 Key ID：
 
@@ -154,7 +154,7 @@ git config --global user.signingkey "<KEY_ID>"
 
 這裡的 `<KEY_ID>` 請替換成你實際的 Key ID（例如本文的 `D54135B170193E40`）。
 
-### 簽署所有 commit
+## 簽署所有 commit
 
 設定讓 Git 為所有 commit 簽署：
 
@@ -164,7 +164,7 @@ git config --global commit.gpgsign true
 
 或是如果你不想要每個 commit 都簽名的話，可以只在要簽名的 commit 時加上 `-S` 選項。([git commit](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--Sltkeyidgt))
 
-### 確認設定
+## 確認設定
 
 確認是否設定成功：
 
@@ -174,7 +174,7 @@ git config --global user.signingkey
 git config --global commit.gpgsign
 ```
 
-## 完成
+# 完成
 
 如果沒問題的話，現在你就可以嘗試 commit 並 push 到 GitHub 上看看了。
 
@@ -182,7 +182,7 @@ git config --global commit.gpgsign
 
 > 上圖的 Key ID 和文中的不同是因為文中的是範例用的，不是我真正的金鑰對。
 
-## 參考資料
+# 參考資料
 
 - [Use GPG Signing Keys with Git (and GitHub) on Windows 10 | by Ryan Miller | Medium](https://medium.com/@ryanmillerc/use-gpg-signing-keys-with-git-on-windows-10-github-4acbced49f68)
 - [Setting Up GPG on Windows (The Easy Way) | Tower Blog](https://www.git-tower.com/blog/setting-up-gpg-windows/)

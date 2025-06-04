@@ -1,21 +1,21 @@
 ---
 title: "[Day-24]Zig：編譯期 Comptime"
-## subtitle: ""
-## description: ""
+# subtitle: ""
+# description: ""
 tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
 date: 2024-09-16T07:28:00
-## updated: 2024-MM-DDTHH:MM:00
+# updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
-## RESERVE
+# RESERVE
 ---
 
 `comptime` 是 Zig 的一大特色，使用它可以將許多運算帶到編譯期，從而提高運行時的效率。這個功能類似 C++11 的 `constexpr` 和 C++20 的 `consteval`。
 
 <!-- more -->
 
-## 表達式
+# 表達式
 
 將 `comptime` 加在表達式（Expression）前，Zig 就會將其結果在編譯期計算。如果無法在編譯期完成計算則會發出編譯期錯誤。
 
@@ -72,7 +72,7 @@ Run-time:     75025 in 1505500ns
 Compile-time: 75025 in 0ns
 ```
 
-## 泛型
+# 泛型
 
 泛型的型別也很適合使用 `comptime` 標記，以向編譯期表達此參數是編譯期就可以確定的。
 
@@ -97,7 +97,7 @@ Result 1: 15
 Result 2: 90
 ```
 
-## 參考
+# 參考
 
 - [Comptime | zig.guide](https://zig.guide/language-basics/comptime)
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#comptime)

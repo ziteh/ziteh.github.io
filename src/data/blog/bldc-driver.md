@@ -1,7 +1,7 @@
 ---
 title: "BLDC無刷直流馬達控制/驅動器研究"
-## subtitle: ""
-## description: ""
+# subtitle: ""
+# description: ""
 tags:
   - 電子電路
   - 馬達
@@ -9,7 +9,7 @@ tags:
 
 
 date: 2023-08-02T11:59:00+08:00
-## header_img: ""
+# header_img: ""
 comments: true
 toc: true
 draft: false
@@ -19,7 +19,7 @@ draft: false
 
 <!--more-->
 
-## 完整電路板
+# 完整電路板
 
 這些是我找到的馬達驅動電路，有一半是在 GitHub 上找到的。
 
@@ -94,7 +94,7 @@ draft: false
 [st-evalkit-robot-1]: https://www.st.com/en/evaluation-tools/evalkit-robot-1.html
 [st-steval-spin3202]: https://www.st.com/en/evaluation-tools/steval-spin3202.html
 
-## IC
+# IC
 
 這裡整理了一些我覺得有趣的 IC。
 
@@ -137,7 +137,7 @@ STSPIN32 SiP
 [mcf8316a]: https://www.ti.com/product/MCF8316A
 [tmc4671]: https://www.analog.com/en/products/tmc4671.html
 
-## 功率 MOSFET
+# 功率 MOSFET
 
 都是 N 通道。
 
@@ -160,13 +160,13 @@ STSPIN32 SiP
 | SiR626ADP     | 1        |         |         |              |               | 5.15 x 6.15 |
 | TPH1R306PL    | 1        |         |         |              |               | 5.15 x 6.15 |
 
-## 文件
+# 文件
 
 - ST AN5397 "Current Sensing in motion control applications"
 - TI SLUA887 "Bootstrap Circuitry Selection for Half-Bridge Configurations"
 - Diodes DN1156 "Gate Drivers in BLDC Motors"
 
-## 編碼器
+# 編碼器
 
 [常見磁性旋轉位置感測器/旋轉編碼器比較](/posts/magnetic-rotaty-position-sensor/)
 

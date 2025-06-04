@@ -13,11 +13,11 @@ date: 2018-08-04 15:05:00
 comments: true
 toc: true
 draft: false
-## aliases: ["/2018/08/learningstm32-01/"]
+# aliases: ["/2018/08/learningstm32-01/"]
 ---
 ![](https://bucket.ziteh.dev/blog/learningstm32-01/598d898d.webp)
 
-## 前言
+# 前言
 
 由於最近在接觸ARM，而我選擇STM32系列的微控制器，它們和FPGA/CPLD的用法有著不少的差別，讓我一時之間無法很好理解用法，而台灣相關的資源也不是很豐富，所以我想來寫有關STM32系列微控制器的文章。
 
@@ -27,15 +27,15 @@ draft: false
 
 我使用的開發板為NUCLEO-F103RB，上面的晶片型號是STM32F103RBT6。此開發板自帶ST-Link/V2，所以只要USB接上電腦就可以進行燒錄工作。而我使用的IDE是Keil uVision 5。
 
-## 建立工程環境
+# 建立工程環境
 
 以下為建立工程環境的簡單介紹。老實講我也不知道為什麼要這樣建，但我看書和網路上的教學大概都是如此，所以我也就先照著做了。
 
-### 一、下載Library
+## 一、下載Library
 
  下載Library有2種方法，2種方法是沒有差別的。
 
-#### 方法一
+### 方法一
 
 1.到ST網站的[STM32 Embedded Software](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software.html?querycriteria=productId=SC961)，滾動到頁面下方的清單處，在清單上方選擇\[STM32 Standard Peripheral Libraries\]
 2.找到對的型號。如我使用的是STM32F103RBT6，所以選擇STM32F10x系列用的STSW-STM32054。
@@ -55,7 +55,7 @@ draft: false
 
 ![](https://bucket.ziteh.dev/blog/learningstm32-01/b09eae76.webp)
 
-#### 方法二
+### 方法二
 
 1.到ST網站的[STM32 Embedded Software](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software.html?querycriteria=productId=SC961)，滾動到頁面下方的清單處，點擊清單右上方的\[Download\]開始下載。
 
@@ -69,7 +69,7 @@ draft: false
 
 ![](https://bucket.ziteh.dev/blog/learningstm32-01/81bdff6f.webp)
 
-### 二、下載並安裝Pack
+## 二、下載並安裝Pack
 
 1.先到Keil網站的[MDK5 Software Pack](https://www.keil.com/dd2/pack/#/eula-container)，找到要的型號後按右方的下載按鈕開始下載。
 
@@ -83,7 +83,7 @@ draft: false
 
 ![](https://bucket.ziteh.dev/blog/learningstm32-01/cd7d997e.webp)
 
-### 三、建立工程環境
+## 三、建立工程環境
 
 1.新增User、Project、Doc這三個資料夾，並將【一、下載Library】部分中的Libraries資料夾直接整個複製過來。
 
@@ -170,7 +170,7 @@ draft: false
 
 ![](https://bucket.ziteh.dev/blog/learningstm32-01/3593e7f7.webp)
 
-### 四、測試
+## 四、測試
 
 1.點擊\[main.c\]就可以開始編寫程式。
 2.點擊左上方的\[Build\]（或使用快捷鍵-F7）來進行程式編譯。

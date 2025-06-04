@@ -1,7 +1,7 @@
 ---
 title: "ErgoSNM v3.0 帶軌跡球的無線分離式人體工學QMK鍵盤"
 subtitle: "A wireless split ergonomic keyboard with trackball"
-## description: ""
+# description: ""
 tags:
   - DIY
   - 3C
@@ -26,7 +26,7 @@ featured: true
 
 更多資訊請看[ErgoSNM——有軌跡球的分離式人體工學QMK鍵盤 (v2.1)](/posts/ergosnm-v2-1-intro/) 與 [ErgoSNM Keyboard | SideraKB](https://siderakb.ziteh.dev/docs/ergosnm/intro)。
 
-## 架構
+# 架構
 
 雖然就目前來說，我認為無線鍵盤的首選韌體應該是 [ZMK](https://zmk.dev/) 而非 QMK，但是我對 ZMK 和 Zephyr 還不夠熟悉，而且我想要有 [Vial](https://get.vial.today/) 的功能，所以目前還是用 QMK。
 
@@ -52,7 +52,7 @@ featured: true
                                      [PMW3360]
 ```
 
-## PCB
+# PCB
 
 這次一樣請 JLCPCB 生產 PCB。
 
@@ -68,7 +68,7 @@ featured: true
 
 另外 LDO 的輸出入電容我畫成 0402 的了，之後應該會改成 0603。
 
-## 測試
+# 測試
 
 這是第一版的測試，可以看出延遲相當嚴重。
 
@@ -78,7 +78,7 @@ featured: true
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/EPGxoYIOgcI?si=n5n0IPBgmPbb8iIb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-## 後續
+# 後續
 
 其實無線版的 ErgoSNM 對我來說最大的困難是 Zephyr，我花了不少時間在看 Devicetree 怎麼用。
 
@@ -90,7 +90,7 @@ featured: true
 2. 用 ZMK 的話就不用額外的接收器，可以直接用 BLE 藍牙。
 3. ZMK 已經有包含功耗在內各方面最佳化。
 
-## 相關連結
+# 相關連結
 
 - [ErgoSNM——有軌跡球的分離式人體工學QMK鍵盤 (v2.1)](/posts/ergosnm-v2-1-intro/)
 - [ErgoSNM Keyboard | SideraKB](https://siderakb.ziteh.dev/docs/ergosnm/intro)

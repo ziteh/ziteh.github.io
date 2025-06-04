@@ -1,7 +1,7 @@
 ---
 title: "Vim 複製並連續取代文字"
 subtitle: ""
-## description: ""
+# description: ""
 tags: ["教學", "Vim"]
 categories: []
 

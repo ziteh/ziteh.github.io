@@ -1,21 +1,21 @@
 ---
 title: "[Day-25]Zig：標籤 Labeled"
-## subtitle: ""
-## description: ""
+# subtitle: ""
+# description: ""
 tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
 date: 2024-09-17T09:45:00
-## updated: 2024-MM-DDTHH:MM:00
+# updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
-## RESERVE
+# RESERVE
 ---
 
 有時候會需要寫一些比較複雜的多層迴圈程式，但這時如何要使用 `break` 或 `continue` 時會沒辦法控制要對哪一層迴圈進行。對於這種情況，只要為迴圈打上標籤，就可以明確指定了。
 
 <!-- more -->
 
-## while
+# while
 
 只要在 `while` 前打上 `LABEL:`，這個 While-loop 就會被標記，隨後只要使用 `break: LABEL` 或 `continue: LABEL` 就可以了
 
@@ -47,7 +47,7 @@ Value: 3
 Break
 ```
 
-## for
+# for
 
 For-loop 也是相同的方式。
 
@@ -75,7 +75,7 @@ Value: 3
 Break
 ```
 
-## Block
+# Block
 
 Zig 的區塊 Block 可以作為表達式回傳值。
 
@@ -103,7 +103,7 @@ pub fn main() void {
 Running in Production mode
 ```
 
-## 參考
+# 參考
 
 - [Labelled Loops | zig.guide](https://zig.guide/language-basics/labelled-loops)
 - [Labelled Blocks | zig.guide](https://zig.guide/language-basics/labelled-blocks)

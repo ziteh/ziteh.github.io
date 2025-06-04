@@ -11,10 +11,10 @@ date: 2022-09-30 12:00:00
 comments: true
 toc: true
 draft: false
-## aliases: ["/2022/09/libopencm3-stm32-17/"]
+# aliases: ["/2022/09/libopencm3-stm32-17/"]
 ---
 
-## 前言
+# 前言
 
 在[上一篇](/posts/libopencm3-stm32-16/)中已經介紹了 WDG 看門狗計時器的用途以及 IWDG 與 WWDG 的差別，也示範了 IWDG 的基本用法。
 
@@ -22,7 +22,7 @@ draft: false
 
 <!--more-->
 
-## 基本概念
+# 基本概念
 
 在啓用 WWDG 時有兩種情況會造成它觸發 System Reset：
 
@@ -48,7 +48,7 @@ draft: false
 
 ![▲ WWDG 的系統方塊圖。取自 RM0390 Rev 6 P.647。](https://bucket.ziteh.dev/blog/libopencm3-stm32-17/8229f9f9.webp)
 
-## Timeout 計算
+# Timeout 計算
 
 ![▲ WWDG 的 Timeout 計算公式。取自 RM0390 Rev 6 P.648。](https://bucket.ziteh.dev/blog/libopencm3-stm32-18/6b84f3fc.webp)
 
@@ -68,13 +68,13 @@ draft: false
 
 這部分可以參考上面的 WWDG 的系統方塊圖， T6 位反相後接到一個 OR 閘，而此 OR 閘的輸出就是 Reset。所以實際的計數公式只有 T0~T5，不包含 T6。
 
-## 小結
+# 小結
 
 這次接續 IWDG 的內容，繼續介紹 WWDG 的用法。
 
 相比於 IWDG，WWDG 多了 Windows 的概念，所以在計算 Timeout 時會多一個要計算的值，但計算的過程相信不會太複雜。
 
-## 參考資料
+# 參考資料
 
 - [STM32 Window Watchdog (WWDG) - Hackster.io](https://www.hackster.io/vasam2230/stm32-window-watchdog-wwdg-dda290)
 - [STM32F446RE datasheet (DS10693)](https://www.st.com/resource/en/datasheet/stm32f446re.pdf)

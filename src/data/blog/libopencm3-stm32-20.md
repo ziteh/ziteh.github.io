@@ -13,10 +13,10 @@ date: 2022-10-03 12:00:00
 comments: true
 toc: true
 draft: false
-## aliases: ["/2022/10/posts/libopencm3-stm32-20/"]
+# aliases: ["/2022/10/posts/libopencm3-stm32-20/"]
 ---
 
-## 前言
+# 前言
 
 ADC（Analog to Digital Converter）顧名思義是將類比訊號轉換成數位訊號的元件，現今多數 MCU 都會內建 ADC，而這也是相當基本且常用的功能。
 
@@ -24,13 +24,13 @@ ADC（Analog to Digital Converter）顧名思義是將類比訊號轉換成數�
 
 <!--more-->
 
-## 正文
+# 正文
 
 首先一樣以 Nucleo-F446RE 做示範。
 
 首先[建立一個 PIO 的專案](/posts/libopencm3-stm32-2#建立專案)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 與 `main.h`。
 
-### 完整程式
+## 完整程式
 
 ``` c
 /**
@@ -185,9 +185,9 @@ static void delay(uint32_t value);
 #endif /* MAIN_H. */
 ```
 
-### 分段說明
+## 分段說明
 
-#### Include
+### Include
 
 ``` c
 // main.h
@@ -203,7 +203,7 @@ static void delay(uint32_t value);
 
 > USART 和 `printf()` 的詳細用法請看[之前的文章](/posts/libopencm3-stm32-9/)。
 
-#### 設定 ADC
+### 設定 ADC
 
 ``` c
 static void adc_setup(void)
@@ -238,7 +238,7 @@ static void adc_setup(void)
 - `adc_set_right_aligned()` 讓資料的對齊方式為靠右對齊。
 - `adc_set_sample_time_on_all_channels()` 設定所有通道的取樣時間，這裡使用 56 個 Cycle。
 
-#### 讀取 ADC 的值
+### 讀取 ADC 的值
 
 ``` c
 static uint16_t get_adc_value(int channel)
@@ -269,7 +269,7 @@ ADC 轉換完成後就可以使用 `adc_read_regular()` 取得讀取的 Regular 
 
 由於此 ADC 是 12-bit 解析度，因此讀值範圍是 0~4095（`0x0000` \~ `0x0FFF`）。
 
-#### 設定 RCC
+### 設定 RCC
 
 ``` c
 static void rcc_setup(void)
@@ -285,7 +285,7 @@ static void rcc_setup(void)
 
 除了 GPIO 外，還要記得致能各功能本身的時鐘。
 
-#### 主程式
+### 主程式
 
 ``` c
 int main(void)
@@ -307,7 +307,7 @@ int main(void)
 
 在迴圈中每次讀取 ADC 通道的值並 Print 出去。
 
-### 多環境程式（F446RE + F103RB）
+## 多環境程式（F446RE + F103RB）
 
 由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。
 
@@ -354,13 +354,13 @@ static void adc_setup(void)
 }
 ```
 
-## 小結
+# 小結
 
 這次介紹了最基本的 ADC 用法，也就是讀取單一 Regular 通道。
 
 雖然 ADC 本身的設定與模式都比以往的其它功能複雜，但實際使用時我想這些程式並不會太難看懂。
 
-## 參考資料
+# 參考資料
 
 - [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
 - [platformio/platform-ststm32](https://github.com/platformio/platform-ststm32)

@@ -10,10 +10,10 @@ date: 2022-10-11 09:46:00
 comments: true
 toc: true
 draft: false
-## aliases: ["/2022/10/posts/libopencm3-stm32-28/"]
+# aliases: ["/2022/10/posts/libopencm3-stm32-28/"]
 ---
 
-## 前言
+# 前言
 
 在使用 STM32 的過程中，一定會搭配許多不同的模組使用，像是各種感測器或額外的通訊模組等，但是實際搜尋 GitHub 就會發現很難找到基於 LibOpenCM3 寫的 Library。若是很簡單的模組大不了可以看一下 Datasheet 就自己寫函式庫算了，但只要稍微複雜一點的模組，自己重寫一個 Library 的效率實在是太低了。
 
@@ -25,7 +25,7 @@ draft: false
 
 <!--more-->
 
-## 挑選 Library
+# 挑選 Library
 
 首先要選擇要以哪個 Library 會基礎進行修改。
 
@@ -69,7 +69,7 @@ SOFTWARE.
 - `mcp2515.h`
 - `can.h`
 
-## 修改 Library
+# 修改 Library
 
 有了基底 Library 就可以開始修改了。
 
@@ -176,7 +176,7 @@ void MCP2515::setRegister(const REGISTER reg, const uint8_t value)
 
 將那些函式修改完後，Library 的移植其實就已經完成了。
 
-## 使用新 Library
+# 使用新 Library
 
 經過上面這樣的改造，我將 SPI 的操作及 delay 等函式的實作（Implementation）都移出 Library 了，即 Library 不依賴 SPI 和 delay 函式，Library 中僅留有這些函式的「長相」（`typedef`）。
 
@@ -218,7 +218,7 @@ void mcp2515Init(void)
 實際修改完的 Library 為 [ziteh/mcp2515-driver](https://github.com/ziteh/mcp2515-driver)。
 完整的範例程式可以看[這裡](https://github.com/ziteh/mcp2515-driver/blob/main/examples/stm32_main.cpp)。
 
-## 依賴反轉 DIP
+# 依賴反轉 DIP
 
 我這次修改的主要是將 SPI 及 delay 的操作函式移出 Library，這是一種「依賴反轉」的概念。
 
@@ -250,13 +250,13 @@ typedef void (*delay_t)(uint32_t ms);
 - [SOLID 依賴反轉原則 Dependency Inversion Principle (DIP) - Finn - Medium](https://medium.com/@f40507777/%E4%BE%9D%E8%B3%B4%E5%8F%8D%E8%BD%89%E5%8E%9F%E5%89%87-dependency-inversion-principle-dip-bc0ba2e3a388)
 - [10. 從被動變主動—依賴反轉 - iT 邦幫忙](https://ithelp.ithome.com.tw/articles/10191603)
 
-## 小結
+# 小結
 
 這次介紹了要如何將 Arduino 的 Library 修改成 Platform Independent 的架構，並讓 LibOpenCM3 可以使用。
 
 這不是 STM32 或 LibOpenCM3 本身的介紹，但我覺得這是實際在寫程式會遇到的一個問題，也相當重要，因此寫了這篇文章，簡單分享了我會如何修改。
 
-## 參考資料
+# 參考資料
 
 - [autowp/arduino-mcp2515: Arduino MCP2515 CAN interface library](https://github.com/autowp/arduino-mcp2515)
 

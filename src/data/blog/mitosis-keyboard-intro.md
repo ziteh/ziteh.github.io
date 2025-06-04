@@ -10,7 +10,7 @@ date: 2022-01-09 22:11:00
 comments: true
 toc: true
 draft: false
-## aliases: ["/2022/01/diyqmkkeyboard-6/"]
+# aliases: ["/2022/01/diyqmkkeyboard-6/"]
 ---
 
 [Mitosis](https://github.com/qmk/qmk_firmware/tree/master/keyboards/mitosis) 是一款使用 [QMK](https://qmk.fm/) 作為韌體所開發的無線分離式鍵盤，它不僅僅是與電腦之間無線，它的左右兩部分之間也沒有實體連線，可謂是「真 • 無線」。就我所知，有許多基於 QMK 的無線分離式鍵盤都是受到 Mitosis 的啓發。
@@ -19,7 +19,7 @@ draft: false
 
 <!--more-->
 
-## 硬體與基本架構
+# 硬體與基本架構
 
 首先，Mitosis 是擁有並需要自製的專用接收器，而 QMK 實際上只在此接收器上運作。
 
@@ -52,11 +52,11 @@ Mitosis 的架構中，主要擁有這些硬體：
 
 總的來說，左右鍵盤上的 nRF51822 會處理各自的按鍵狀態，並各自將其透過 Gazell 傳輸給接收器上的 nRF51822，接收器受到新的按鍵狀態後，會將左右部分的按鍵狀態組合在一起，並透過 UART 傳給 Pro Micro，Pro Micro 收到來自 UART 的封包後就解析按鍵狀態，並交由 QMK 處理。
 
-## 程式
+# 程式
 
 從基本架構可以得知，Mitosis 總共有 4 個 MCU（1 個 Pro Micro 的 ATmega32U4，3 個 nRF51822），而它們執行的程式當然也不一樣，以下就一一介紹不同部分的程式。
 
-### 左右手鍵盤（nRF51822）
+## 左右手鍵盤（nRF51822）
 
 首先，這部分的程式在：[reversebias/mitosis/mitosis-keyboard-basic/](https://github.com/reversebias/mitosis/tree/master/mitosis-keyboard-basic)。主要有：
 
@@ -72,7 +72,7 @@ Mitosis 的架構中，主要擁有這些硬體：
 - `handler_maintenance()`
 - `handler_debounce()`
 
-#### handler_debounce()
+### handler_debounce()
 
 先看到 [`handler_debounce()`](https://github.com/reversebias/mitosis/blob/f2bb956f8565762212d361a42f830390ef5c6845/mitosis-keyboard-basic/main.c#L115) 這個函數，它負責處理按鍵防彈跳（Debounce）。內容如下：
 
@@ -135,7 +135,7 @@ static void handler_debounce(nrf_drv_rtc_int_type_t int_type)
 
 一旦開始防彈跳，它就會一直確認快照與目前的按鍵狀態是否一樣，一旦不一樣就停止防彈跳，若累計達到設定的防彈跳次數就會承認快照的按鍵狀態，並將快照的值給目前的鍵值 `keys`，並呼叫 `send_data()` 開始傳送。
 
-#### handler_maintenance()
+### handler_maintenance()
 
 ```c
 // 8Hz held key maintenance, keeping the reciever keystates valid
@@ -147,7 +147,7 @@ static void handler_maintenance(nrf_drv_rtc_int_type_t int_type)
 
 此函數的功能顯而易見，就是以 8 Hz 的頻率次數呼叫 `send_data()` 傳送資料。此函數[由 RTC0 處理](https://github.com/reversebias/mitosis/blob/f2bb956f8565762212d361a42f830390ef5c6845/mitosis-keyboard-basic/main.c#L179)。
 
-#### send_data()
+### send_data()
 
 ```c
 // Assemble packet and send to receiver
@@ -188,7 +188,7 @@ static void send_data(void)
 
 `PIPE_NUMBER` 的值左右鍵盤不同（在 [`mitosis.h`](https://github.com/reversebias/mitosis/blob/f2bb956f8565762212d361a42f830390ef5c6845/mitosis-keyboard-basic/config/mitosis.h) 中定義），接收器藉此判斷收到的資料是來自左還是右鍵盤。
 
-#### read_keys()
+### read_keys()
 
 ```c
 // Return the key states, masked with valid key pins
@@ -202,7 +202,7 @@ static uint32_t read_keys(void)
 
 從這裡也可以得知，Mitosis 是**不用矩陣掃描**（Matrix scan）的，畢竟它的按鍵數本來就比較少（左右各 23 鍵），又是分離式的鍵盤，一個 nRF51822 的 GPIO 足以分配到每個按鍵上，自然不用掃描，直接讀值就好。
 
-### 接收器（nRF51822）
+## 接收器（nRF51822）
 
 這部分的程式在：[reversebias/mitosis/mitosis-receiver-basic/](https://github.com/reversebias/mitosis/tree/master/mitosis-receiver-basic)。主要有：
 
@@ -213,7 +213,7 @@ static uint32_t read_keys(void)
 - `nrf_gzll_host_rx_data_ready()`
 - `main()`
 
-#### nrf_gzll_host_rx_data_ready()
+### nrf_gzll_host_rx_data_ready()
 
 ```c
 // If a data packet was received, identify half, and throw flag
@@ -247,7 +247,7 @@ void nrf_gzll_host_rx_data_ready(uint32_t pipe, nrf_gzll_host_rx_info_t rx_info)
 
 這是接收處理函數。當接收到資料時，以 `pipe` 判斷這是來自左還是右鍵盤，並設定好資料。
 
-#### main()
+### main()
 
 以下省略一些不重要的程式：
 
@@ -347,7 +347,7 @@ int main(void)
 
 傳給 QMK 的封包除了按鍵狀態外，還有一個 `0xE0` 作為結束封包。
 
-### QMK / 接收器（Pro Micro）
+## QMK / 接收器（Pro Micro）
 
 這部分的程式在：[qmk/qmk_firmware/keyboards/mitosis](https://github.com/qmk/qmk_firmware/tree/master/keyboards/mitosis)。主要有：
 
@@ -355,18 +355,18 @@ int main(void)
 - `config.h`
 - `matrix.c`
 
-#### rules.mk
+### rules.mk
 
 ```makefile
-## MCU name
+# MCU name
 MCU = atmega32u4
 
-## Bootloader selection
+# Bootloader selection
 BOOTLOADER = caterina
 
-## Build Options
-##    change yes to no to disable
-##
+# Build Options
+#    change yes to no to disable
+#
 BOOTMAGIC_ENABLE = no  # Enable Bootmagic Lite
 MOUSEKEY_ENABLE = yes  # Mouse keys
 EXTRAKEY_ENABLE = yes  # Audio control and System control
@@ -374,16 +374,16 @@ CONSOLE_ENABLE = yes   # Console for debug
 COMMAND_ENABLE = yes   # Commands for debug and configuration
 CUSTOM_MATRIX = yes    # Remote matrix from the wireless bridge
 NKRO_ENABLE = yes      # Enable N-Key Rollover
-## BACKLIGHT_ENABLE = yes  # Enable keyboard backlight functionality
+# BACKLIGHT_ENABLE = yes  # Enable keyboard backlight functionality
 UNICODE_ENABLE = yes   # Unicode
 
-## # project specific files
+# # project specific files
 SRC += matrix.c serial_uart.c
 ```
 
 這裡可以注意到作者使用了 QMK 的「[Custom Matrix](https://docs.qmk.fm/#/custom_matrix)」功能 （`CUSTOM_MATRIX = yes` 及 `SRC += matrix.c`），因為 Mitosis 不像一般的鍵盤透過矩陣掃描得知按鍵狀態，而是讀取來自 nRF51822 透過 UART 傳送的封包。
 
-#### config.h
+### config.h
 
 `config.h` 主要是設定 QMK 中的各種東西，稍微熟悉 QMK 的人都不陌生。這裡僅列出重要的地方，也就是 UART 的相關設定：
 
@@ -398,7 +398,7 @@ SRC += matrix.c serial_uart.c
     UCSR1C = _BV(UCSZ11) | _BV(UCSZ10);
 ```
 
-#### matrix.c
+### matrix.c
 
 `matrix.c` 是為了使用 QMK 的「[Custom Matrix](https://docs.qmk.fm/#/custom_matrix)」功能所必要的檔案。
 
@@ -449,7 +449,7 @@ uint8_t matrix_scan(void)
 
 接著，一個 `for` 迴圈會處理來自 UART 的按鍵狀態封包。當接收完成後，判斷結束封包是否正確（為 `0xE0`），如果沒問題的話就將按鍵狀態封包處理並賦值給 `matrix[]`，接下來就是讓 QMK 去處理了。
 
-## 結語
+# 結語
 
 本次簡單地介紹 Mitosis 鍵盤是如和達成無線的，但我其實沒用過 nRF51822，對 QMK 的瞭解也還很粗淺，很多細節沒辦法講解，而如果上述內容有任何錯誤也請指正。
 
@@ -464,7 +464,7 @@ uint8_t matrix_scan(void)
 
 > 文章修改記錄 2022/02/23：原本寫的各個 nRF51822 之間的通訊方式是 BLE，但應該是 Gazell，故更新內容。
 
-## 相關文章
+# 相關文章
 
 - [Mitosis 原作者的文章](https://imgur.com/a/mwTFj)
 - [QMK 官方文件](https://docs.qmk.fm/#/)

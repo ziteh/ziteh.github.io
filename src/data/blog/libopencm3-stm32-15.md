@@ -13,10 +13,10 @@ date: 2022-09-28 12:00:00
 comments: true
 toc: true
 draft: false
-## aliases: ["/2022/09/libopencm3-stm32-15/"]
+# aliases: ["/2022/09/libopencm3-stm32-15/"]
 ---
 
-## 前言
+# 前言
 
 在前面的篇章中，我們已經學會使用 Timer 來精確定時了，而在使用 MCU 的過程中最常會需要精確定時的莫過於 `delay()` 函式，在此之前我都是單純的讓 MCU 空跑一定的次數，但這樣很難知道它實際上到底 delay 了多久的時間，而已同樣的數值在不同的 Clock Tree 設定下 delay 的長度也不同，因此我們可以使用 Timer 來做出一個更好的 `delay()`。
 
@@ -26,13 +26,13 @@ draft: false
 
 <!--more-->
 
-## 正文
+# 正文
 
 首先一樣以 Nucleo-F446RE 做示範。
 
 首先[建立一個 PIO 的專案](/posts/libopencm3-stm32-2#建立專案)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 檔案。
 
-### 完整程式
+## 完整程式
 
 ``` c
 /**
@@ -109,9 +109,9 @@ void sys_tick_handler(void)
 }
 ```
 
-### 分段說明
+## 分段說明
 
-#### Include
+### Include
 
 ``` c
 #include <libopencm3/stm32/rcc.h>
@@ -122,7 +122,7 @@ void sys_tick_handler(void)
 
 重點在於要記得引入 `systick.h`。值得注意的是如果不引入 `nvic.h` 的話，程式應該也可以完成編譯甚至執行，但 SysTick 的 ISR 函式原型其實是宣告在這裡面的，所以我還是把它加入。
 
-#### 設定 SysTick
+### 設定 SysTick
 
 ``` c
 static void systick_setup(void)
@@ -154,7 +154,7 @@ SysTick（System tick timer）是 ARM Cortex M3 系列內建的功能，這是�
 
 > RVR 是一個 24 位元的暫存器，它的容許範圍為 `0x000001` \~ `0xFFFFFF`，實際在設定時要注意一下。[官方說明](https://developer.arm.com/documentation/dui0552/a/cortex-m3-peripherals/system-timer--systick/systick-reload-value-register)
 
-#### Delay 與 SysTick ISR
+### Delay 與 SysTick ISR
 
 ``` c
 static volatile uint32_t systick_delay = 0;
@@ -186,7 +186,7 @@ void sys_tick_handler(void)
 
 而 `sys_tick_handler()` 是 SysTick 的 ISR，它只要負責每次都把 `systick_delay` 減 1 即可。
 
-### 多環境程式（F446RE + F103RB）
+## 多環境程式（F446RE + F103RB）
 
 由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。
 
@@ -221,7 +221,7 @@ static void led_setup(void)
 }
 ```
 
-### 成果
+## 成果
 
 這裡使用兩個 STM32，並分別設定 LED 開關的 delay 為 500ms 和 5ms，結果也是滿精準的。
 
@@ -229,11 +229,11 @@ static void led_setup(void)
 
 ![](https://bucket.ziteh.dev/blog/libopencm3-stm32-15/d2a84e01.webp)
 
-## 小結
+# 小結
 
 `delay_ms()` 是在用 MCU 時非常常用到的功能，而這次介紹如何使用 SysTick 來實現它，這樣就可以得到一個相對精準的 delay，也不用大費周章去設定一般的 Timer。
 
-## 參考資料
+# 參考資料
 
 - [Cortex-M3 Devices Generic User Guide](https://developer.arm.com/documentation/dui0552/a/cortex-m3-peripherals/system-timer--systick/systick-control-and-status-register?lang=en)
 - [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)

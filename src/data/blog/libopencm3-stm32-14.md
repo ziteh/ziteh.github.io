@@ -13,10 +13,10 @@ date: 2022-09-27 09:41:00
 comments: true
 toc: true
 draft: false
-## aliases: ["/2022/09/libopencm3-stm32-14/"]
+# aliases: ["/2022/09/libopencm3-stm32-14/"]
 ---
 
-## 前言
+# 前言
 
 在之前的內容中已經介紹過基本的 Timer 用法，及 PWM 的計算。
 
@@ -26,13 +26,13 @@ draft: false
 
 <!--more-->
 
-## 正文
+# 正文
 
 首先一樣以 Nucleo-F446RE 做示範。
 
 首先[建立一個 PIO 的專案](/posts/libopencm3-stm32-2#建立專案)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 檔案。
 
-### 完整程式
+## 完整程式
 
 ``` c
 /**
@@ -99,9 +99,9 @@ int main(void)
 }
 ```
 
-### 分段說明
+## 分段說明
 
-#### Include
+### Include
 
 ``` c
 #include <libopencm3/stm32/rcc.h>
@@ -111,7 +111,7 @@ int main(void)
 
 和 [Timer](/posts/libopencm3-stm32-12/) 時相比只少了中斷的 `nvic.h`，要使用 PWM 就只需要這 3 個功能就可以了。
 
-#### 計算並設計 Timer 參數（PSC、ARR、CCR 暫存器）
+### 計算並設計 Timer 參數（PSC、ARR、CCR 暫存器）
 
 ``` c
 #define PWM_GOAL_FREQUENCY (1000)  /* f_goal, PWM goal frequency in Hz. */
@@ -134,7 +134,7 @@ int main(void)
 
 因此這裡以 `PWM_TIMER_OC_VALUE` 為名定義 CCR 的計算公式 `(PWM_TIMER_PERIOD + 1) * PWM_GOAL_DUTY_CYCLE / 100`。
 
-#### RCC
+### RCC
 
 ``` c
 static void rcc_setup(void)
@@ -149,7 +149,7 @@ static void rcc_setup(void)
 
 這部分還是和 [Timer](/posts/libopencm3-stm32-12/) 一樣。重點一樣是指定時鐘源為 8 MHz 的 HSE，並設定系統時鐘為 168 MHz。
 
-#### PWM 與 Timer 設定
+### PWM 與 Timer 設定
 
 ``` c
 static void pwm_setup(void)
@@ -179,7 +179,7 @@ Timer 大部分的設定都和和[上一篇](/posts/libopencm3-stm32-12/)的一�
 
 使用 `timer_set_oc_value()` 函式將 CCR 的值傳給 TIMx_CCRx 暫存器。
 
-### 多環境程式（F446RE + F103RB）
+## 多環境程式（F446RE + F103RB）
 
 由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。
 
@@ -218,18 +218,18 @@ static void pwm_setup(void)
 }
 ```
 
-### 成果
+## 成果
 
 我使用兩組開發板並分別設定為頻率 `1kHz`, Duty Cycle `72.5%` 以及頻率 `2kHz`, Duty Cycle `15.0%`。
 可以看到 PWM 的輸出結果是相當精準的。
 
 ![](https://bucket.ziteh.dev/blog/libopencm3-stm32-14/eb3dd8ed.webp)
 
-## 小結
+# 小結
 
 這次介紹了 STM32 的 PWM 用法，PWM 是 Timer 的延伸功能，因此大部分的設定都和 Timer 有關，如果 Timer 有理解的話 PWM 應該不會太難。
 
-## 參考資料
+# 參考資料
 
 - [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
 - [platformio/platform-ststm32](https://github.com/platformio/platform-ststm32)

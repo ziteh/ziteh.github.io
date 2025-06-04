@@ -9,10 +9,10 @@ date: 2023-02-10 23:10:00
 comments: true
 toc: true
 draft: false
-## aliases: ["/2023/02/calcite52-keyboard-1/"]
+# aliases: ["/2023/02/calcite52-keyboard-1/"]
 ---
 
-## 前言
+# 前言
 
 ![](https://bucket.ziteh.dev/blog/calcite52-keyboard-1/e0d61ba2.webp)
 
@@ -26,7 +26,7 @@ Home row mods 主要是將修飾鍵（Modifiers，如 Shift、Ctrl、Alt 和 Win
 
 <!--more-->
 
-## 正文
+# 正文
 
 要實現 Home row mods 和 ARTSEY 的功能，韌體使用 [QMK](https://qmk.fm/) 會比較方便。
 

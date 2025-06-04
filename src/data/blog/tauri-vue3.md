@@ -1,14 +1,14 @@
 ---
 title: "非網頁人的 Tauri + Vue3 入坑筆記"
 subtitle: "router + i18n + Vuetify + Rust + TypeScript"
-## description: ""
+# description: ""
 tags: ["教學","Rust","程式"]
-## categories: [""]
+# categories: [""]
 date: 2024-07-25T11:54:00
-## updated: 2024-MM-DDTHH:MM:00
+# updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
-## RESERVE
+# RESERVE
 ---
 
 這陣子我在使用 [Tauri](https://tauri.app/) 寫一個[電子零件庫存管理工具 —— Elebox](https://github.com/ziteh/elebox)，工具練是 Vue3 + Vuetify + Vite + TypeScript + pnpm。這篇文章稍微記錄一下我在學習並使用它們時遇到的情況及基本用法。
@@ -24,13 +24,13 @@ toc: true
 
 <!-- more -->
 
-## Vue3
+# Vue3
 
 我的前端框架選擇的是 [Vue3](https://vuejs.org/)。其實在此之前我有稍微碰過 React，但當時沒有搞得很懂，這次換成 Vue 是想說它好像比較好上手，對與我這種非網頁技術專業的人來說應該比較好。我只是想要快速地建立一個可以運行的程式，而且這個程式不會很大，甚至可能只有我自己會用而已。
 
 在實際使用過後，我覺得 Vue 的基本概念真的是滿簡單直覺的，我甚至沒有先看過教學或官方文件，只是找幾個示範專案看個大概，然後接下來就是邊寫邊查需要的功能。
 
-### 資料
+## 資料
 
 為了保持 Vue 的響應性，資料要使用 `ref` 或 `reactive` 儲存。這兩著的差異不是很大，網路上的文章[^1][^2][^3]總結大概是：
 
@@ -76,7 +76,7 @@ onMounted(fetchExisting);
 </template>
 ```
 
-### props 屬性
+## props 屬性
 
 元素可能會有多個屬性可以使用。例如 Vuetify 的 [v-btn](https://vuetifyjs.com/en/components/buttons/#api)。
 
@@ -94,7 +94,7 @@ onMounted(fetchExisting);
 ></v-btn>
 ```
 
-### 動態處理元素
+## 動態處理元素
 
 可以對元素使用類似 `v-if`、`v-for` 等動態處理 DOM 元素。
 
@@ -132,7 +132,7 @@ onMounted(fetchExisting);
 </v-list>
 ```
 
-### onMounted()
+## onMounted()
 
 如果要在載入此檔案時自動執行某程式，使用 `ouMounted()`。
 
@@ -162,11 +162,11 @@ onMounted(() => {
 });
 ```
 
-### 自製組件
+## 自製組件
 
 如果要自製 components 的話，可能會用到這些：
 
-#### props 傳入資料
+### props 傳入資料
 
 將資料從父傳到子。但是傳入的 props 對子組件是唯讀的，如果要可以改的話，要再分配給 `ref`。
 
@@ -213,7 +213,7 @@ onMounted(getTreeNodes);
 </template>
 ```
 
-#### emit 回傳資料
+### emit 回傳資料
 
 將資料從子傳到父。使用 `emit` 讓子組件可以向上傳遞資料或事件。在傳遞資料時要注意其資料結構。
 
@@ -265,7 +265,7 @@ function onSubUpdate(data: {type: string, price?: number}) {
 </template>
 ```
 
-#### watch 監聽變化
+### watch 監聽變化
 
 如果要即時監聽一個資料的變更，可以使用 `watch`。
 
@@ -285,11 +285,11 @@ watch([val], (newVal)=>{
 </template>
 ```
 
-### 路由
+## 路由
 
 安裝 `vue-touter` 可以提供路由功能。
 
-#### 路由表
+### 路由表
 
 首先要定義路由表：
 
@@ -333,7 +333,7 @@ app.use(router);
 app.mount("#app");
 ```
 
-#### 在 TS 中使用
+### 在 TS 中使用
 
 直接使用路徑：
 
@@ -380,7 +380,7 @@ function getEdit() {
 }
 ```
 
-#### 在元素中使用
+### 在元素中使用
 
 ```html
 <v-btn
@@ -395,11 +395,11 @@ function getEdit() {
 ></v-btn>
 ```
 
-### i18n 國際化多語言
+## i18n 國際化多語言
 
 安裝 `vue-i18n` 可以使用國際化功能。
 
-#### 設定
+### 設定
 
 ```ts
 // plugins/i18n.ts
@@ -436,7 +436,7 @@ app.use(i18n);
 app.mount("#app");
 ```
 
-#### 詞彙表
+### 詞彙表
 
 我是把詞彙表獨立在 `locales/` 資料夾下，一個語言一個檔案。
 
@@ -456,7 +456,7 @@ export default {
 };
 ```
 
-#### 使用
+### 使用
 
 設定好後可以在 HTML 中直接以 `$t()` 全域使用。
 
@@ -491,7 +491,7 @@ const headers = ref([
 </template>
 ```
 
-#### 動態變更語言
+### 動態變更語言
 
 引入 `locale` 並直接賦值語言代號即可即時變更語言顯示。記得要 `.value`。
 
@@ -523,7 +523,7 @@ function changeLanguage() {
 </template>
 ```
 
-### 路徑別名
+## 路徑別名
 
 如果專案具一定的規模的話，在 `import` 時使用相對路徑會出現一堆 `../` 不太方便，為此我們可以設定路徑別名。常見的就是將 `src/` 設定為別名 `@`。
 
@@ -573,11 +573,11 @@ import NewDatabase from "@/components/NewDatabase.vue";
 import { DbPart } from "@/utils/part";
 ```
 
-## Vuetify
+# Vuetify
 
 我使用的 UI 元件庫是 Vuetify，也沒什麼特別的原因，當初看順眼就直接用了。
 
-### 設定
+## 設定
 
 ```ts
 // plugins/vuetify.ts
@@ -616,7 +616,7 @@ app.mount("#app");
 
 注意，專案自己的 `.css` 要在 Vuetify 後，以免被其覆蓋。
 
-### 使用元件
+## 使用元件
 
 你可以在[此處](https://vuetifyjs.com/en/components/all/#containment)查看所有 Vuetify 的元件。各個元件的說明都滿完整的，且有不少範例。
 
@@ -672,7 +672,7 @@ const existing = reactive<Db.Part[]>([]);
 
 如有想設定元件的預設值的話，可以參考 [Global configuration — Contextual defaults](https://vuetifyjs.com/en/features/global-configuration/#contextual-defaults)。
 
-### 排版
+## 排版
 
 Vuetify 已經有定義好排版工具，但是還是需要有基本的 HTML、CSS 知識。可以參考：
 
@@ -711,13 +711,13 @@ Vuetify 已經有定義好排版工具，但是還是需要有基本的 HTML、C
 </v-container>
 ```
 
-### Icon
+## Icon
 
 Icon 庫我使用的是 [Material Design Icons](https://pictogrammers.com/library/mdi/)。可以參考 [Icon Fonts — Vuetify](https://vuetifyjs.com/en/features/icon-fonts/#fa-4-css)。
 
-## Tauri
+# Tauri
 
-### command
+## command
 
 [command](https://tauri.app/v1/guides/features/command/) 是 Tauri 連結 Rust 和 TS/JS 的主要功能。
 
@@ -798,7 +798,7 @@ function doSomethings1() {
 }
 ```
 
-### 自動開啓除錯視窗
+## 自動開啓除錯視窗
 
 開發過程中常常要看除錯視窗，自動開啓會方便很多。在 `main.rs` 的 `Builder` 加入：[^5]
 
@@ -816,7 +816,7 @@ tauri::Builder::default()
 
 [^5]: [Open WebView Dev Tools on startup · Issue #1213 · tauri-apps/tauri](https://github.com/tauri-apps/tauri/issues/1213#issuecomment-1700917797)
 
-### 管理狀態
+## 管理狀態
 
 要管理狀態的話，可以用 `Mutex<T>`，然後使用 `.manage()` 傳入，只後就可以在函式中使用。
 
@@ -873,11 +873,11 @@ function setDirCommand() {
 }
 ```
 
-### API
+## API
 
 Tauri 有提供一些 [API](https://tauri.app/v1/api/js/) 可以在 TS/JS 中使用
 
-#### dialog
+### dialog
 
 dialog 可以開啓各自視窗。
 
@@ -923,13 +923,13 @@ async function openDirDialog() {
 }
 ```
 
-### 檔案
+## 檔案
 
 如果你需要處理一些 config、temp、catch 檔案的話，可以使用 Tauri 內建的 [path API](https://tauri.app/v1/api/js/path)。
 
 如果你想要將裝置本機的路徑轉換成 URL 以可以在前端載入的話，可以使用 [convertFileSrc](https://tauri.app/v1/api/js/tauri#convertfilesrc)。
 
-### 其它
+## 其它
 
 其它我覺得比較好用的 API 還有：
 
@@ -937,17 +937,17 @@ async function openDirDialog() {
 - [fs](https://tauri.app/v1/api/js/fs)：檔案操作
 - [clipboard](https://tauri.app/v1/api/js/clipboard)：讀寫剪貼簿
 
-## pnpm
+# pnpm
 
 我的套件管理是使用 pnpm，之前我都是單純使用 npm，但聽說 pnpm 比較快且不佔空間，而且用法上也不用特別另外學，所有就改成 pnpm 了。
 
-## 前端語言
+# 前端語言
 
 我使用 TypeScript 而非 JavaScript。因為我是寫 C/C++ 出身的，比較熟悉也喜歡靜態型別，而且我想（對於大部分的資料）靜態型別對程式的穩健性和可預期性也比較好，所以就直接選擇 TS。
 
 我以前剛開始寫 Python 時也被動態型別搞得很煩，後來裝了靜態型別檢查工具才覺得 Python 好用。
 
-## 參考
+# 參考
 
 - [Tauri](https://tauri.app/)
 - [Vue.js](https://vuejs.org/)

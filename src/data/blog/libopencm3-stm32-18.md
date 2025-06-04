@@ -13,22 +13,22 @@ date: 2022-10-01 12:00:00
 comments: true
 toc: true
 draft: false
-## aliases: ["/2022/10/libopencm3-stm32-18/"]
+# aliases: ["/2022/10/libopencm3-stm32-18/"]
 ---
 
-## 前言
+# 前言
 
 在上一篇中已經介紹了 WWDG 的基本概念。這一篇要接著介紹 WWDG 窗口看門狗的程式。
 
 <!--more-->
 
-## 正文
+# 正文
 
 首先一樣以 Nucleo-F446RE 做示範。
 
 首先[建立一個 PIO 的專案](/posts/libopencm3-stm32-2#建立專案)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 檔案。
 
-### 完整程式
+## 完整程式
 
 ``` c
 /**
@@ -139,9 +139,9 @@ void sys_tick_handler(void)
 }
 ```
 
-### 分段說明
+## 分段說明
 
-#### Include
+### Include
 
 ``` c
 #include <libopencm3/stm32/rcc.h>
@@ -153,7 +153,7 @@ void sys_tick_handler(void)
 
 和 IWDG 時一樣，為了要更方便驗證 WWDG 的運作，我使用 SysTick 實現較精確的 ms 級 `delay()`，因此需要 `systick.h` 與 `nvic.h`。當然也需要今天的主角——`wwdg.h`。
 
-#### RCC
+### RCC
 
 ``` c
 static void rcc_setup(void)
@@ -166,7 +166,7 @@ static void rcc_setup(void)
 
 要注意這裡與 IWDG 不同，WWDG 在 APB1 底下，所以要記得為它致能 Clock。
 
-#### WWDG Timeout 計算
+### WWDG Timeout 計算
 
 ``` c
 #define WWDG_COUNTER (0x7F) /* WWDG_CR  -> T[6:0], 0x7F ~ 0x40. */
@@ -192,7 +192,7 @@ static void rcc_setup(void)
 
 依此設定，必須要在 T[6:0] = `0x5F`\~`0x40` 的這段時間內才可以 Refresh。T[6:0] = `0x7F`\~`0x60` 是 Window 外，T[6:0] ≦ `0x3F`時代表 Timeout。
 
-#### WWDG 設定
+### WWDG 設定
 
 ``` c
 static void wwdg_setup(void)
@@ -217,7 +217,7 @@ static void wwdg_setup(void)
 
 > 注意，寫入 WWDG_CR 暫存器的值必須要在 `0xFF` 與 `0xC0` 之間。由於第 7 位 WDGA 只能在 Reset 後由硬體清為 `0`，所以寫入 WWDG_CR 的第 7 位元一定是 `1`。而如果第 6 位 T6 被設定為 `0` 的話會立刻觸發 Reset。
 
-#### WWDG Refresh
+### WWDG Refresh
 
 ``` c
 static void wwdg_refresh(void)
@@ -228,7 +228,7 @@ static void wwdg_refresh(void)
 
 Refresh 也非常單純，就是寫入 T[6:0] 讓計數器 Reload。
 
-#### 主程式
+### 主程式
 
 ``` c
 int main(void)
@@ -264,7 +264,7 @@ int main(void)
 
 主迴圈就是讓 LED 閃爍，並在一定時間後進行 Refresh，這裡是要驗證 WWDG 的 Timeout（條件 1），若更晚進行 Refresh 的話就會觸發 Reseet。
 
-### 多環境程式（F446RE + F103RB）
+## 多環境程式（F446RE + F103RB）
 
 由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。
 
@@ -297,7 +297,7 @@ static void led_setup(void)
 }
 ```
 
-### 成果
+## 成果
 
 這次使用 PlatformIO 的 Debug 功能來測試 WWDG 的運作。
 
@@ -311,13 +311,13 @@ static void led_setup(void)
 
 > 這裡的 delay 的最小單位是 1 ms，但實際計算 WWDG 的各項參數是會算到小數點後，這一點在實際應用上應該被考慮，例如使用 ns 級的 delay 函式。
 
-## 小結
+# 小結
 
 這次接續 IWDG 的內容，繼續介紹 WWDG 的用法。由於 LibOpenCM3 目前沒有實作 WWDG 的相關操作函式，所以這次是使用操作暫存器的方式來示範，但因為我幾乎沒有在直接操作暫存器，因此不確定上述的寫法是不是最好的，畢竟這種東西應該有不少細節是需要注意的，若有任何建議都歡迎提出。
 
 另外，這次也使用了 PIO 的 Debug 功能來做程式的驗證。Debug 是非常好用的功能，尤其 Nucleo 開發板上都有 ST-Link，可以直接進行 Debug，即時查看程式的運作與 STM32 中的暫存器數值。如果還沒用過的話請一定要學習並嘗試看看。
 
-## 參考資料
+# 參考資料
 
 - [STM32 Window Watchdog (WWDG) - Hackster.io](https://www.hackster.io/vasam2230/stm32-window-watchdog-wwdg-dda290)
 - [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)

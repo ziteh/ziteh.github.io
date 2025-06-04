@@ -11,10 +11,10 @@ date: 2022-09-24 09:00:00
 comments: true
 toc: true
 draft: false
-## aliases: ["/2022/09/libopencm3-stm32-11/"]
+# aliases: ["/2022/09/libopencm3-stm32-11/"]
 ---
 
-## 前言
+# 前言
 
 Timer 計時器是各個 MCU 中都會有的基本功能。正如其名，當需要精確定時以進行控制時，Timer 就會派上用場，Timer 還可以用來產生 PWM 訊號，是很常用的功能。
 
@@ -24,7 +24,7 @@ Timer 計時器是各個 MCU 中都會有的基本功能。正如其名，當需
 
 <!--more-->
 
-## 時鐘樹
+# 時鐘樹
 
 時鐘樹（Clock tree）是學習並使用 STM32 及各微控制器時很重要的事，因為各個功能都有自己的運作頻率，在使用 Timer 前最好有一定的認識。
 
@@ -47,7 +47,7 @@ Timer 計時器是各個 MCU 中都會有的基本功能。正如其名，當需
 
 > 如果你好奇為什麼 LSE 是 32.768 k 這個奇怪的數字，因為 32786 是 2^15，在二進制的微控制器中使用二的冪次方為頻率在分頻與計數上比較方便。
 
-## Timer 頻率
+# Timer 頻率
 
 每個 STM32 中都有許多不同的 Timer，各個 Timer 的規格及功能都不同。我們這次用的是 TIM2，這是一個通用功能計時器（General-purpose timer），為一個 32 位元的上/下數 Counter，擁有自動裝載（Auto-reload）功能，還有一個 16 位元的可程式預除頻器。
 
@@ -59,7 +59,7 @@ Timer 計時器是各個 MCU 中都會有的基本功能。正如其名，當需
 
 ![▲ STM32F446xx 的部分 Clock tree。取自 RM0390 Figure 14。](https://bucket.ziteh.dev/blog/libopencm3-stm32-11/9e81b4ed.webp)
 
-## PSC 暫存器
+# PSC 暫存器
 
 PSC 是 Prescaler 的意思，它用來設定各 Timer 自己的預除頻值。
 
@@ -72,7 +72,7 @@ PSC 是 Prescaler 的意思，它用來設定各 Timer 自己的預除頻值。
 
 ![▲ Counter 的頻率公式。取自 RM0390。](https://bucket.ziteh.dev/blog/libopencm3-stm32-11/8b79516a.webp)
 
-## ARR 暫存器
+# ARR 暫存器
 
 接下來還要計算自動裝載暫存器（Auto-Reload Register，ARR）的值。ARR 暫存器的功能我們可以從 RM0390 中得知：
 > In upcounting mode, the counter counts from 0 to the auto-reload value (content of the TIMx_ARR register), then restarts from 0 and generates a counter overflow event.
@@ -86,7 +86,7 @@ PSC 是 Prescaler 的意思，它用來設定各 Timer 自己的預除頻值。
 
 我們可以把 ARR 再當成一個除頻器，輸入為 Counter 計數頻率，除頻值為 ARR+1，輸出為 Overflow 發生的頻率。
 
-## 完整公式
+# 完整公式
 
 然後我們就可以得到完整的結構：
 `Timer 頻率 --[Timer 預除頻器]--> Counter 頻率 --[ARR]--> Overflow 頻率`
@@ -104,13 +104,13 @@ PSC 是 Prescaler 的意思，它用來設定各 Timer 自己的預除頻值。
 
 我通常會先選定一個大略的 `PSC` 值（即先選擇 Counter 的頻率），然後在使用上面的公式計算出精確的 `ARR` 值。
 
-## 小結
+# 小結
 
 Timer 是一個稍微比較複雜的功能，它有很多細節的設定，也要會看時鐘樹，這篇也僅僅是以最精簡的方式概略介紹而已，有很多東西實在沒辦法細講（有些我也沒詳細研究）。
 
 但 Timer 是一個很重要的功能，我想至少設定 PSC 與 ARR 的部分要看懂，而我也盡力寫得清楚些，並將官方文件的說明都附上。
 
-## 參考資料
+# 參考資料
 
 - [STM32F446RE datasheet (DS10693)](https://www.st.com/resource/en/datasheet/stm32f446re.pdf)
 - [STM32F446xx reference manual (RM0390)](https://www.st.com/resource/en/reference_manual/rm0390-stm32f446xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)

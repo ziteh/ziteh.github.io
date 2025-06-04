@@ -1,21 +1,21 @@
 ---
 title: "[Day-22]Zig：ArrayList"
-## subtitle: ""
-## description: ""
+# subtitle: ""
+# description: ""
 tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
 date: 2024-09-14T08:48:00
-## updated: 2024-MM-DDTHH:MM:00
+# updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
-## RESERVE
+# RESERVE
 ---
 
 ArrayList 是一種動態的數組容器，可以儲存相同型別、不定長度的資料（執行期分配），類似 Rust 中的 `Vec<T>`。
 
 <!-- more -->
 
-## 基礎
+# 基礎
 
 ArrayList 是由標準庫提供的。由於是動態分配的型別，所以要使用它的話需要透過 [Allocator](/posts/it24-zig-21-allocator/) 來分配，並且也需要 [defer](/posts/it24-zig-20-defer/) 做好釋放資源的處理。只要系統可以成功分配空間，ArrayList 的長度就可以一直加。使用 `items` 欄位存取成員。
 
@@ -44,7 +44,7 @@ pub fn main() !void {
 1, 2, -3
 ```
 
-## for
+# for
 
 其成員也可以用 `for` 迴圈處理。
 
@@ -75,7 +75,7 @@ pub fn main() !void {
 1, 2, -3,
 ```
 
-## 型別
+# 型別
 
 使用 `@TypeOf()` 查看具體型別。
 
@@ -106,7 +106,7 @@ array_list.ArrayListAligned(i8,null)
 []i8
 ```
 
-## 參考
+# 參考
 
 - [ArrayList | zig.guide](https://zig.guide/standard-library/arraylist)
 - [Learning Zig - Coding in Zig](https://www.openmymind.net/learning_zig/coding_in_zig/#arraylist)

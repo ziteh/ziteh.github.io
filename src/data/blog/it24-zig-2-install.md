@@ -1,14 +1,14 @@
 ---
 title: "[Day-2]安裝 Zig"
-## subtitle: ""
-## description: ""
+# subtitle: ""
+# description: ""
 tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
 date: 2024-08-25T09:18:00
-## updated: 2024-MM-DDTHH:MM:00
+# updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
-## RESERVE
+# RESERVE
 ---
 
 這篇來介紹一下如何在電腦上安裝 Zig 及相關工具，讓你可以執行 Zig。
@@ -42,7 +42,7 @@ Zig 可以在其官網的 [Download](https://ziglang.org/download/) 直接下載
 
 這樣就完成了！
 
-## 參考
+# 參考
 
 - [Download ⚡ Zig Programming Language](https://ziglang.org/download/)
 - [Install Zig from a Package Manager · ziglang/zig Wiki](https://github.com/ziglang/zig/wiki/Install-Zig-from-a-Package-Manager)

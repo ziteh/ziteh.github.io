@@ -11,10 +11,10 @@ date: 2022-09-19 10:26:00
 comments: true
 toc: true
 draft: false
-## aliases: ["/2022/09/libopencm3-stm32-6/"]
+# aliases: ["/2022/09/libopencm3-stm32-6/"]
 ---
 
-## 前言
+# 前言
 
 在上一篇中，我們使用輪詢的方式來讀取目前的按鈕狀態，但這種方式的效率不是很好，在需要讀取按鈕狀態等情況下，我們可以使用外部中斷（External Interrupt，EXTI），讓 CPU 可以去忙其它事情，等到按鈕被按下時會產生中斷事件，才去執行按鈕被按下時要處理的事。
 
@@ -22,7 +22,7 @@ draft: false
 
 <!--more-->
 
-## 中斷基本概念
+# 中斷基本概念
 
 中斷（Interrupt）是幾乎所有 MCU 都會有的基本功能（Arduino 也有）之一，如同它的名字，它是一種用來中斷其它程式的功能。
 
@@ -30,13 +30,13 @@ MCU 在工作時會遭遇許多不同的「事件」，例如按鈕被按下、�
 
 例如小明正在寫作業，突然肚子痛，所以先跑去上廁所，上完廁所後再繼續寫作業。其中，「肚子痛」是一個事件，它會向大腦/CPU 發送中斷請求（Interrupt Request，IRQ），「上廁所」是中斷服務程式（Interrupt Service Routine，ISR）。每個 IRQ 都有對應的 ISR，當 IRQ 被接受時就會執行此對應的 ISR。
 
-## 中斷向量
+# 中斷向量
 
 中斷向量（Interrupt Vector）指的是 ISR 的起始位址。而程式中的 ISR 通常會有很多，也就會有許多的中斷向量，把這些中斷向量儲存成表就是中斷向量表。
 
 當 IRQ 被接受時，CPU 就會根據中斷向量表查詢 ISR 的起始位址，並開始執行 ISR。
 
-## 中斷優先級
+# 中斷優先級
 
 中斷通常也都會設計優先級。當多個 IRQ 發生時，CPU 會優先接受優先級較高的 IRQ。在 STM32（和大多數 MCU ）中，最高的中斷優先級是等級 `0`，數字越大優先級越低。
 
@@ -46,7 +46,7 @@ MCU 在工作時會遭遇許多不同的「事件」，例如按鈕被按下、�
 
 簡單來說，搶佔優先級決定了這個中斷可以中斷哪些其它的中斷，而副優先級決定了在搶佔優先級相同的情況下的優先順序。
 
-## 優先級分組
+# 優先級分組
 
 STM32 還可以以 NVIC Priority Group 設定搶佔優先級與副優先級的等級數量。基本上中斷等級就是 16 個（4 bit），你可以決定這 4 個位元中，搶佔與副優先級要分配幾個位元。例如搶佔優先級分配了 4 bit，那就是 16 個等級全都是搶佔優先，沒有副優先級（都是 `0`），或搶佔優先級分配 1 bit，副優先級分配 3 bit 等。全部的分組方式如下：
 
@@ -62,11 +62,11 @@ STM32 還可以以 NVIC Priority Group 設定搶佔優先級與副優先級的�
 
 > NVIC 為 Nested vectored interrupt controller（嵌套向量中斷控制器），是 ARM Cortex-M 的中斷控制單元。
 
-## 小結
+# 小結
 
 這次介紹了中斷的基本概念，中斷的基本原理每個 CPU/MCU 都大同小異，只是搶佔優先與副優先的概念可能一般不會聽到。
 
-## 參考資料
+# 參考資料
 
 - [STM32F446xx reference manual (RM0390)](https://www.st.com/resource/en/reference_manual/rm0390-stm32f446xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)
 

@@ -1,14 +1,14 @@
 ---
 title: "[Day-7]Zig：結構（Struct）"
-## subtitle: ""
-## description: ""
+# subtitle: ""
+# description: ""
 tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
 date: 2024-08-30T07:28:00
-## updated: 2024-MM-DDTHH:MM:00
+# updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
-## RESERVE
+# RESERVE
 ---
 
 `struct` 可以用來組織個複雜的自訂型別。
@@ -19,7 +19,7 @@ toc: true
 
 > 純 C 真的要包含函式的 `struct` 的話也可以用指標函式來達成，但這種做法不常見。
 
-## 基本
+# 基本
 
 使用 `const` 來宣告 `struct`：
 
@@ -47,7 +47,7 @@ pub fn main() void {
 X: 10, Y: 123.45
 ```
 
-## 方法
+# 方法
 
 可以為 `struct` 定義 method：
 
@@ -107,7 +107,7 @@ pub fn main() void {
 X: 20, Y: 3.5
 ```
 
-## 預設值
+# 預設值
 
 可以自訂預設值：
 
@@ -132,7 +132,7 @@ X: 0, Y: 12.5
 X: 245.8, Y: 100
 ```
 
-## 嵌套
+# 嵌套
 
 如果要建構複雜的 `struct`，也可以互相嵌套：
 
@@ -167,7 +167,7 @@ X: 10, Y: 12.5
 X: 20.2, Y: 110
 ```
 
-## 參考
+# 參考
 
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#struct)
 - [Structs | zig.guide](https://zig.guide/language-basics/structs)

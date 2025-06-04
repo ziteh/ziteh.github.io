@@ -1,7 +1,7 @@
 ---
 title: "C 語言 Coding Style 規範"
 subtitle: "我的編程風格"
-## description: ""
+# description: ""
 tags: ["心得", "程式","C/C++"]
 categories: []
 
@@ -16,7 +16,7 @@ draft: false
 
 <!--more-->
 
-## 簡述
+# 簡述
 
 1. 所有的左右花括號 `{ }` 都不換行。
 2. 縮排使用 4 個空白，而非 `Tab` 字元。
@@ -52,7 +52,7 @@ int main(void) {
 }
 ```
 
-## A. 定義
+# A. 定義
 
 提及這些關鍵字時會以粗體標示。
 
@@ -69,7 +69,7 @@ int main(void) {
     - **具描述性**：代表用更多文字精確描述。
     - **簡潔有力**：代表盡可能簡短。
 
-## B. 通則
+# B. 通則
 
 1. 縮排**必須**使用 4 個空白（`Space`），**不允許**用 `Tab` 字元。（建議設定為軟 Tab，即按 Tab 出空白）
 2. 任何左/右花括號 `{ }` 都**必須**置於同一行，並縮進其內容一次，即 LLVM 或（類）K&R Coding style。
@@ -120,7 +120,7 @@ int my_function(int param) {
 - 使用`ip_address` 而非 `IP_address`
 - 使用 `uart_send` 而非 `UART_send`。
 
-## C. 函數（Function）
+# C. 函數（Function）
 
 1. 函數名稱**必須**使用**蛇型**風格，命名**應該**偏好**具描述性**。
 2. 參數（Parameter）
@@ -162,7 +162,7 @@ void loooooooooooooooooooooooooooooooooong_function(
 }
 ```
 
-## D. 變數（Variable）
+# D. 變數（Variable）
 
 1. 全域範圍
     1. 一般全域變數名稱**必須**使用**蛇形**風格，命名**應該**偏好**具描述性**，為名詞。
@@ -191,7 +191,7 @@ void func(void) {
 }
 ```
 
-## E. 資料型別（Data Type）
+# E. 資料型別（Data Type）
 
 1. 列舉（Enum）、結構（Struct）與聯合（Union）
     1. 本身的名稱**必須**使用**蛇型**風格，命名**應該**偏好**具描述性**，為名詞。
@@ -231,7 +231,7 @@ union control_reg {
 typedef int (*event_callback_fn)(int long_param);
 ```
 
-## F. 流程控制
+# F. 流程控制
 
 1. `switch-case` 語法的 `case` 或 `default` **不允許**縮排。其內容**必須**要縮排。
 2. `switch-case` 語法的最後一個 `case` 或 `default` 也**必須**要加上 `break`，即使它在語法上是可以省略的。
@@ -259,7 +259,7 @@ void function(int param) {
 }
 ```
 
-## G. 預處理器（Preprocessor）
+# G. 預處理器（Preprocessor）
 
 1. 巨集常數（Macro constants，以 `#define` 定義的值）
     1. 名稱**必須**使用**大寫蛇形**風格，命名**應該**偏好**具描述性**，為名詞。
@@ -323,7 +323,7 @@ void function(int param) {
     #endif
     ```
 
-## H. 註解
+# H. 註解
 
 1. 所有註解句子的第一個字**必須**要大寫，除非句子的開頭不是英文。
 2. 一般註解**必須**使用單行註解形式，即雙斜線，即使它會寫成多行的形式。行末**不允許**加句號，即使行中有其它標點符號。
@@ -381,7 +381,7 @@ void array_copy(uint8_t *des, const uint8_t *src, uint16_t len) {
 }
 ```
 
-## I. 空白
+# I. 空白
 
 1. 如果註解前有程式碼，**必須**間隔 2 個空白。
 2. 函數（包含宣告、定義、呼叫）和 `sizeof` 運算子的左圓括號前**不允許**插入空白，其餘都**必須**在前有 1 個空白。
@@ -411,29 +411,29 @@ int main(void) {
 }
 ```
 
-## 附錄
+# 附錄
 
-### Q&A
+## Q&A
 
-#### 為何所有的花括號 `{}` 都不換行？為何不是 Allman 風格？
+### 為何所有的花括號 `{}` 都不換行？為何不是 Allman 風格？
 
 因為：[C 語言用 K&R Coding Style 的最大理由不是省行數](/posts/c-kr-style/)
 
-#### 為何要使用 `(void)` 捨棄非 `void` 的函數回傳值？
+### 為何要使用 `(void)` 捨棄非 `void` 的函數回傳值？
 
 為了明確表達你知道這個函數有回傳值，但是你不需要它，因為很多情況下函數的回傳值會是錯誤代碼之類的。
 
 > 這是來自 Rust 的啓發。
 > [Casting function returns to void](https://stackoverflow.com/a/3998815)
 
-#### 為什麼函數的參數只能有全部同行和全部不同行兩種？
+### 為什麼函數的參數只能有全部同行和全部不同行兩種？
 
 1. 保持規則單純。
 2. 參數寫成多行的情況表示此函數的參數有一定的複雜性（無論是數量還是名稱），各自獨立一行更方便閱讀和修改。
 
 > 這是來自 Rust 的啓發。
 
-#### 使用縮寫不會影響閱讀和判斷嗎？
+### 使用縮寫不會影響閱讀和判斷嗎？
 
 所以你只能使用常見、不會造成歧義和一目瞭然的縮寫。
 
@@ -441,7 +441,7 @@ int main(void) {
 > A C programmer would call that variable `tmp`, which is much easier to write, and not the least more difficult to understand.
 > -- From [Linux kernel coding style](https://www.kernel.org/doc/html/v4.10/process/coding-style.html#naming)
 
-#### 為何 `switch-case` 的最後一個案例也要加 `break`？
+### 為何 `switch-case` 的最後一個案例也要加 `break`？
 
 主要有兩個理由：1. 保持一致，2. 如果哪天修改了這些案例，明確的 `break` 是一種保護。
 
@@ -453,23 +453,23 @@ int main(void) {
 > As a matter of good form, put a break after the last case (the default here) even though it's logically unnecessary. Some day when another case gets added at the end, this bit of defensive programming will save you.  
 > -- From *The C Programming Language, 2/e*, [Should we break the default case in switch statement?](https://stackoverflow.com/a/26139061)
 
-#### 為何使用花括號的 `switch-case` 的 `break` 要在其外？
+### 為何使用花括號的 `switch-case` 的 `break` 要在其外？
 
 絕大多數的情況下 `case` 都會以 `break` 結束，以避免執行了預期外的程式。某些較複雜的案例會使用花括號包圍，將 `break` 放在其外可以更明確地確認你沒有遺漏結尾的 `break`。
 
-#### 為何 `typedef` 要加上後綴？
+### 為何 `typedef` 要加上後綴？
 
 加上 `_t` 後綴是來自標準庫的習慣，實際上大多數的專案也延續了此規則，而且這樣可以明確知道這個是一種型別，而非變數等。
 
 指標函數加上 `_fn` 後綴是對於 `_t` 行為的擴充。
 
-#### 為何要為指標加上後綴？
+### 為何要為指標加上後綴？
 
 因為指標代表的是該數值的記憶體位置，而不是該數值本身。例如「台北101」和「台北市信義區信義路五段7號」，雖然後者可以指向前者，但它們在概念上終究不是完全一樣的。
 
 當然，這個後綴是可選的，請根據實際需求選擇。
 
-#### 為何 `const` 只在全域才實施**大寫蛇形**，而區域變數、成員和參數不實施？
+### 為何 `const` 只在全域才實施**大寫蛇形**，而區域變數、成員和參數不實施？
 
 `const` 全域常數實施**大寫蛇形**是為了替換/取代/兼容 `#define` 的巨集常數。使用 `#define` 定義值的名稱使用**大寫蛇形**是多數 C 專案的共同習慣，所以作為替換的 `const` 全域常數也使用相同的規則（此規則甚至在其它語言也適用）。區域變數、成員和參數不實施是因為它們本來就沒有「替換 `#define`」的這層意義與功能在。
 
@@ -480,7 +480,7 @@ int main(void) {
 
 > [[106] const 變數有助理解程式碼並協助編譯器優化](https://samtsai.org/2016/07/24/106-const-bian-shu-you-zhu-li-jie-cheng-shi-ma-bing-xie-zhu-bian-yi-qi-you-hua/)
 
-#### 為何要用 `const` 全域常數取代 `#define`？
+### 為何要用 `const` 全域常數取代 `#define`？
 
 實際上 `const` 和 `#define` 的處理方式不同。`#define` 是預處理器會使用「替換」的方式處理，`const` 是表明此變數不可變（在編譯期檢查）。
 
@@ -496,7 +496,7 @@ int main(void) {
 
 > [What is the difference between #define and const?](https://stackoverflow.com/a/6442372)
 
-#### 為何要用 `inline` 取代 `#define` 巨集？
+### 為何要用 `inline` 取代 `#define` 巨集？
 
 基本上和「為何要用 `const` 全域常數替換或取代 `#define`？」的理由類似。
 
@@ -522,13 +522,13 @@ int main(void) {
 
 > [Inline functions vs Preprocessor macros](https://stackoverflow.com/a/1137627)
 
-#### 為何標頭檔的 C++ 檢查不是**必須**？
+### 為何標頭檔的 C++ 檢查不是**必須**？
 
 簡單來說，我認為這違反 YAGNI（You Aren't Gonna Need It，你不會需要它）原則。我認為它可能是一種對於未來情況的假設。
 
 如果你知道或認為這個程式*就是不會*被 C++ 使用，只會在純 C 中的話，那加入 C++ 檢查就是多餘且干擾的。我參與的專案中有很多都是嵌入式系統，它們基本上永遠都只會是純 C，完全沒有必要讓 C++ 檢查為強制**必須**的，你自行判斷是否該加入。但是我認為這個判定可以寬鬆一點，即只要稍微有一點會在 C++ 中使用的可能，那就可以加。
 
-#### 為何 `#endif` 後不加對應開頭的註解？
+### 為何 `#endif` 後不加對應開頭的註解？
 
 在 `#endif` 後面加對應的 `#if`/`#ifdef`/`#ifndef` 名稱的註解是很多 C 專案的習慣，例如：
 
@@ -555,7 +555,7 @@ extern "C" {
 
 如果你有 N 個預處理器 Flag，那這個程式就有 2^N 種變化性（或著說狀態），這可能是難以掌握的。而且這是不是預處理或是檔案層級的單一職責問題？
 
-### 自動格式化
+## 自動格式化
 
 推薦使用 [clang-format](https://clang.llvm.org/docs/ClangFormat.html) 工具來自動完成程式碼格式化（已整合在 VS Code [C/C++ 套件](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)中），這是 LLVM 專案下的開源工具。可以在 [Clang-format configurator v2](https://clang-format-configurator.site/) 網站測試並預覽格式化設定。
 
@@ -563,7 +563,7 @@ extern "C" {
 
 ```yaml
 ---
-## clang-format v18.1.3
+# clang-format v18.1.3
 
 BasedOnStyle: LLVM
 Language: Cpp
@@ -626,7 +626,7 @@ LineEnding: DeriveLF
 
 如果你想要另外下載執行檔的話，可以在 [LLVM 的 GitHub](https://github.com/llvm/llvm-project/releases) 下載並安裝。安裝完的預設路徑應該是在 `C:\Program Files\LLVM\bin\clang-format.exe`。
 
-### Doxygen
+## Doxygen
 
 你可以在 VScode 安裝這個 [Doxygen Documentation Generator](https://marketplace.visualstudio.com/items?itemName=cschlosser.doxdocgen) 來協助產生 Doxygen 註解。可以使用以下的設定：
 
@@ -650,7 +650,7 @@ LineEnding: DeriveLF
 }
 ```
 
-## 參考
+# 參考
 
 - [Recommended C style and coding rules](https://github.com/MaJerle/c-code-style)
 - [Linux kernel coding style](https://www.kernel.org/doc/html/v4.10/process/coding-style.html)

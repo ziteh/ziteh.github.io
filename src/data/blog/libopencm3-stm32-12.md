@@ -13,10 +13,10 @@ date: 2022-09-25 10:53:00
 comments: true
 toc: true
 draft: false
-## aliases: ["/2022/09/libopencm3-stm32-12/"]
+# aliases: ["/2022/09/libopencm3-stm32-12/"]
 ---
 
-## 前言
+# 前言
 
 Timer 計時器是各個 MCU 中都會有的基本功能。正如其名，當需要精確定時以進行控制時，Timer 就會派上用場，Timer 還可以用來產生 PWM 訊號，是很常用的功能。
 
@@ -26,13 +26,13 @@ Timer 計時器是各個 MCU 中都會有的基本功能。正如其名，當需
 
 <!--more-->
 
-## 正文
+# 正文
 
 首先一樣以 Nucleo-F446RE 做示範。
 
 首先[建立一個 PIO 的專案](/posts/libopencm3-stm32-2#建立專案)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 檔案。
 
-### 完整程式
+## 完整程式
 
 ```c
 /**
@@ -115,9 +115,9 @@ void tim2_isr(void)
 }
 ```
 
-### 分段說明
+## 分段說明
 
-#### Include
+### Include
 
 ```c
 #include <libopencm3/stm32/rcc.h>
@@ -128,7 +128,7 @@ void tim2_isr(void)
 
 除了基本的 `rcc.h` 和 `gpio.h` 外，當然還有這次的重點——`timer.h`。因為會用到中斷的功能，所以 `nvic.h` 也是必要的。
 
-#### Timer 頻率
+### Timer 頻率
 
 ```c
 #define TIMER_CLOCK (rcc_apb1_frequency * 2) /* f_timer. */
@@ -138,7 +138,7 @@ void tim2_isr(void)
 
 我們後續的 RCC 設定會讓 APB1 的預除頻器不為 `/1`，所以 TIM2 clock = 2* APB1 clock。定義 `TIMER_CLOCK` 為 `rcc_apb1_frequency * 2`。其中 `rcc_apb1_frequency` 的實際數值會在後續的 RCC 步驟中由 LibOpenCM3 設定好，我們只需要直接調用就好了。
 
-#### PSC 暫存器（Counter 頻率）
+### PSC 暫存器（Counter 頻率）
 
 ```c
 #define COUNTER_CLOCK (1000000) /* f_counter (CK_CNT). */
@@ -158,7 +158,7 @@ void tim2_isr(void)
 
 我將預除頻值 PSC 以 `TIMER_PRESCALER` 為名定義為 `TIMER_CLOCK / COUNTER_CLOCK - 1`。這個值會存進 TIMx_PSC 暫存器。
 
-#### ARR 暫存器
+### ARR 暫存器
 
 ``` c
 #define GOAL_FREQUENCY (5) /* Goal frequency in Hz. */
@@ -179,7 +179,7 @@ void tim2_isr(void)
 
 再來只要套用上面的公式去設定 ARR 的值就可以了。這裡以 `TIMER_PERIOD` 為名定義 ARR 為 `(TIMER_CLOCK / ((TIMER_PRESCALER + 1) * GOAL_FREQUENCY)) - 1`。這個值會存進 TIMx_ARR 暫存器。
 
-#### 確認數值
+### 確認數值
 
 雖然理論上只要照著上面的公式設定 PSC 與 ARR 就可以了，所以 PSC 與 ARR 的值會超多種組合，不過實際使用時要注意一下 PSC 與 ARR 的空間。
 
@@ -212,7 +212,7 @@ Counter 的計數頻率是 1 MHz，也就是每秒數 1,000,000 次。而 ARR �
 
 每計數 200 K 次就會發生 Overflow，1 秒會計數 1,000 K 次，所以每秒會發生 5 次 Overflow（5 Hz），正確無誤。
 
-#### RCC
+### RCC
 
 ``` c
 static void rcc_setup(void)
@@ -239,7 +239,7 @@ static void rcc_setup(void)
 
 ![▲ Nucleo 預設使用 ST-Link MCO 做為 HSE。取自 UM1724。](https://bucket.ziteh.dev/blog/libopencm3-stm32-12/8768070a.webp)
 
-#### 設定 Timer
+### 設定 Timer
 
 ``` c
 static void timer_setup(void)
@@ -272,7 +272,7 @@ static void timer_setup(void)
 
 > 有關 F446RE 的 TIMx_CR1 的詳細說明可以查看 [RM0390](https://www.st.com/resource/en/reference_manual/rm0390-stm32f446xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)。
 
-#### Timer ISR
+### Timer ISR
 
 ``` c
 /**
@@ -291,7 +291,7 @@ void tim2_isr(void)
 
 這是 TIM2 的 ISR。每當 TIM2 發生中斷時，先清除中斷旗標，然後切換 LED on/off。
 
-### 多環境程式（F446RE + F103RB）
+## 多環境程式（F446RE + F103RB）
 
 由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。
 
@@ -329,7 +329,7 @@ static void led_setup(void)
 }
 ```
 
-### 成果
+## 成果
 
 這是實際輸出的波形，D6 與 D7 分別為設定目標頻率為 5 Hz 與 100 Hz，可以看出相當精準。
 
@@ -337,11 +337,11 @@ static void led_setup(void)
 
 > 注意，我們在程式中設定的目標頻率是「切換頻率」，而示波器量測的是「波形頻率」，GPIO 的輸出要切換 2 次才是一個完整的波形，所以示波器上顯示的頻率才會是程式設定的一半。
 
-## 小結
+# 小結
 
 這次接續上一篇的內容，寫出 Timer 的程式，也驗證了上一篇的計算公式。
 
-## 參考資料
+# 參考資料
 
 - [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
 - [platformio/platform-ststm32](https://github.com/platformio/platform-ststm32)

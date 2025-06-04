@@ -1,14 +1,14 @@
 ---
 title: "[Day-8]Zig：列舉（Enum）"
-## subtitle: ""
-## description: ""
+# subtitle: ""
+# description: ""
 tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
 date: 2024-08-31T13:20:00
-## updated: 2024-MM-DDTHH:MM:00
+# updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
-## RESERVE
+# RESERVE
 ---
 
 列舉（Enum）也是各個語言中常見且好用的自訂型別。
@@ -17,7 +17,7 @@ toc: true
 
 和多數語言一樣，`enum` 可以用來創造一些固定的「選項」，對程式碼可讀性和強健性來說都很好用。比較特別的是，Zig 的 `enum` 也可以包含方法（method）。
 
-## 基本
+# 基本
 
 ```zig
 const std = @import("std");
@@ -42,7 +42,7 @@ pub fn main() void {
 
 ```
 
-## 數值
+# 數值
 
 和其它語言一樣，`enum` 各項目可以賦予數值，但是要指定儲存的型別，且只能是整數型別。`enum` 的項目不會直接隱式地轉換成整數值，要用 `@intFromEnum()` 明確轉型。
 
@@ -65,7 +65,7 @@ pub fn main() void {
 }
 ```
 
-## 預設數值
+# 預設數值
 
 如果不指定數值，或沒有完全指定數值，Zig 會自動遞增。
 
@@ -118,7 +118,7 @@ Enum3: -1, 0, 1
 Enum4: 0, 100, 101
 ```
 
-## 大小
+# 大小
 
 ```zig
 const std = @import("std");
@@ -146,7 +146,7 @@ Enum1: 1 byte
 Enum2: 2 byte
 ```
 
-## 方法
+# 方法
 
 `enum` 可以包含方法，這在型別轉換時很有用。
 
@@ -185,7 +185,7 @@ pub fn main() void {
 Ok
 ```
 
-## 包含變數或常數
+# 包含變數或常數
 
 比較特別的是 `enum` 也可以包含 `var` 或 `const`。
 
@@ -213,7 +213,7 @@ Var: 1
 Const: 100
 ```
 
-## 參考
+# 參考
 
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#enum)
 - [Enums | zig.guide](https://zig.guide/language-basics/enums)

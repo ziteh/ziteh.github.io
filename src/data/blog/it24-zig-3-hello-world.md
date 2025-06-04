@@ -1,21 +1,21 @@
 ---
 title: "[Day-3]執行與測試 Zig"
-## subtitle: ""
-## description: ""
+# subtitle: ""
+# description: ""
 tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
 date: 2024-08-26T06:40:00
-## updated: 2024-MM-DDTHH:MM:00
+# updated: 2024-MM-DDTHH:MM:00
 comments: true
 toc: true
-## RESERVE
+# RESERVE
 ---
 
 目前我們已經安裝好 Zig 了，總算是可以來實際寫寫 Zig 並試著運行了。
 
 <!-- more -->
 
-## 建立專案
+# 建立專案
 
 首先建立一個資料夾 `zig-hello`：
 
@@ -49,8 +49,8 @@ zig-hello
 生成的專案沒有 `.gitignore`，你可以用這個：
 
 ```gitignore
-## Source: https://github.com/ziglang/zig/blob/master/.gitignore
-## andrewrk
+# Source: https://github.com/ziglang/zig/blob/master/.gitignore
+# andrewrk
 
 .zig-cache/
 zig-cache/
@@ -62,7 +62,7 @@ zig-out/
 /docgen_tmp/
 ```
 
-## 執行
+# 執行
 
 目前的 `main.zig` 應該是這樣的（省略部分註解）：
 
@@ -108,7 +108,7 @@ All your codebase are belong to us.
 Run `zig build test` to run the tests.
 ```
 
-### print
+## print
 
 這邊要先特別介紹一下 `print()`，因為之後的範例會很常看到它。它用起來和 C 的差不多，每個 `{}` 都代表一個數值（就像 C 的 `%d`），後面的 `.{ var }`，則是實際的變數或常數，如果有多個的話，要以前寫在 `.{ }` 內，並用逗號 `,` 分隔。如果沒有要填入數值的話 `.{}` 內留空。
 
@@ -120,7 +120,7 @@ std.debug.print("Value: {}\n", .{5});
 std.debug.print("A: {}, B: {}\n", .{5, 10});
 ```
 
-## 測試
+# 測試
 
 以 `test "name" {}` 包圍的區塊是測試程式。你可以執行測試：
 
@@ -137,7 +137,7 @@ test transitive failure
 error: the following build command failed with exit code 1:
 ```
 
-## 參考
+# 參考
 
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#Hello-World)
 - [Hello World | zig.guide](https://zig.guide/getting-started/hello-world)

@@ -17,7 +17,7 @@ draft: false
 
 <!--more-->
 
-## PCB
+# PCB
 
 Calcite52 是基於 [Home row mods](https://precondition.github.io/home-row-mods) 和 [ARTSEY](https://artsey.io/) 這兩個鍵盤操作系統進行設計的鍵盤，所以按鍵數特別少，只有 52 鍵。
 
@@ -35,7 +35,7 @@ Calcite52 是基於 [Home row mods](https://precondition.github.io/home-row-mods
 
 這是我第一次用 Choc 軸，選擇茶軸。鍵帽是 Keychron K1 上拆下來的。
 
-## 外殼
+# 外殼
 
 ![樹脂 SLA 3D 列印的外殼](https://bucket.ziteh.dev/blog/calcite52-keyboard-2/3f95f570.webp)
 
@@ -49,7 +49,7 @@ Calcite52 是基於 [Home row mods](https://precondition.github.io/home-row-mods
 
 ![修正後的外殼，並加強結構](https://bucket.ziteh.dev/blog/calcite52-keyboard-2/aab5a97d.webp)
 
-## 腳架
+# 腳架
 
 雖然修正後的外殼畫好了，但我暫時懶得再次訂 SLA 列印件，所以就簡單地再設計一對腳架，用 FDM 3D 列印。
 
@@ -59,7 +59,7 @@ Calcite52 是基於 [Home row mods](https://precondition.github.io/home-row-mods
 
 ![](https://bucket.ziteh.dev/blog/calcite52-keyboard-2/0ce0859b.webp)
 
-## Keymap
+# Keymap
 
 Calcite52 支援 [Vial](https://get.vial.today/)，可以即使編輯鍵位及各種功能。
 

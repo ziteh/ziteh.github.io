@@ -8,7 +8,7 @@ date: 2020-04-02 16:38:00
 comments: true
 toc: true
 draft: false
-## aliases: ["/2020/04/literature-epiphyllum/"]
+# aliases: ["/2020/04/literature-epiphyllum/"]
 ---
 ![](https://bucket.ziteh.dev/blog/literature-epiphyllum/85ca4acf.webp)
 

@@ -8,7 +8,7 @@ date: 2020-05-04 17:29:00
 comments: true
 toc: true
 draft: false
-## aliases: ["/2020/05/literature-lycoris-radiata/"]
+# aliases: ["/2020/05/literature-lycoris-radiata/"]
 ---
 
 ![](https://bucket.ziteh.dev/blog/literature-lycoris-radiata/a1c89397.webp)

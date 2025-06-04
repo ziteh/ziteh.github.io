@@ -11,10 +11,10 @@ date: 2022-09-16 12:00:00
 comments: true
 toc: true
 draft: false
-## aliases: ["/2022/09/libopencm3-stm32-3/"]
+# aliases: ["/2022/09/libopencm3-stm32-3/"]
 ---
 
-## 前言
+# 前言
 
 GPIO（General Purpose Input/Output）可以說是微控制器最基本的功能，因此第一堂當然要先教 GPIO 的使用方式。
 
@@ -22,7 +22,7 @@ GPIO（General Purpose Input/Output）可以說是微控制器最基本的功能
 
 <!--more-->
 
-## STM32 的 GPIO 簡介
+# STM32 的 GPIO 簡介
 
 相比於 Arduino，STM32 在使用 GPIO 時，要設定和注意的地方有很多，因此我先簡單介紹一下 STM32 的 GPIO。
 
@@ -57,7 +57,7 @@ GPIO（General Purpose Input/Output）可以說是微控制器最基本的功能
 
 另外，STM32 並非所有 Pin 腳都可以相容/承受 5V 的電壓，有些僅能 3.3V，且每個型號每支接腳都不一樣，在接電路或購買電子零件時，請查看 Datasheet 並多加留意是否需要電平轉換。
 
-## 指定 Alternate Function
+# 指定 Alternate Function
 
 對於非 F1 系列的 STM32，要使用 AF 功能時，還有知道目標功能是「AF 幾？」。
 
@@ -67,7 +67,7 @@ GPIO（General Purpose Input/Output）可以說是微控制器最基本的功能
 
 ![▲ GPIO 與 AF 功能的對應表。取自 DS10693 Rev10 P.57。](https://bucket.ziteh.dev/blog/libopencm3-stm32-9/4cfda474.webp)
 
-## 小結
+# 小結
 
 今天簡單說明了 STM32 GPIO 的模式，這些算是基本中的基本，只要弄清楚，未來在使用時就會輕鬆很多，明天終於要正式寫程式了。
 
@@ -75,7 +75,7 @@ GPIO（General Purpose Input/Output）可以說是微控制器最基本的功能
 
 > p.s. 我其實一直不確定要怎麼翻譯「Alternate Function」比較貼切，只好先使用簡體圈常見的用詞。
 
-## 參考資料
+# 參考資料
 
 - [【Cary-生活筆記】: Open-Drain 與 Push-Pull輸出方式有什麼不一樣？](http://cary1120.blogspot.com/2013/11/open-drain-push-pull.html)
 - [推輓輸出 - 維基百科，自由的百科全書](https://zh.wikipedia.org/zh-tw/%E6%8E%A8%E6%8C%BD%E8%BE%93%E5%87%BA)

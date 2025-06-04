@@ -13,10 +13,10 @@ date: 2022-09-29 12:00:00
 comments: true
 toc: true
 draft: false
-## aliases: ["/2022/09/libopencm3-stm32-16/"]
+# aliases: ["/2022/09/libopencm3-stm32-16/"]
 ---
 
-## 前言
+# 前言
 
 看門狗計時器（Watchdog timer，WDG）是眾多 MCU 都有的功能，它是一種特殊功能的計時器，其功能為不斷下數，如果下數到一個值之前都沒有做刷新（Refresh）的話就認定目前系統出問題了（例如進入死迴圈跳不出來），並自動觸發系統重置（System reset）。如果要系統正常運作不 Reset 的話，必須要在 WDG Timeout 前進行 Refresh，以告訴 WDG：「我還在正常運作，不要把我 Reset 掉」。
 
@@ -36,13 +36,13 @@ safety level, timing accuracy and flexibility of use.
 
 本文將先以 IWDG 為例，寫一個簡單的例子，以測試 IWDG 是否可以自動觸發 Reset。
 
-## 正文
+# 正文
 
 首先一樣以 Nucleo-F446RE 做示範。
 
 首先[建立一個 PIO 的專案](/posts/libopencm3-stm32-2#建立專案)，選擇 Framework 為「libopencm3」，並在 `src/` 資料夾中新增並開啓 `main.c` 檔案。
 
-### 完整程式
+## 完整程式
 
 ``` c
 /**
@@ -134,9 +134,9 @@ void sys_tick_handler(void)
 }
 ```
 
-### 分段說明
+## 分段說明
 
-#### Include
+### Include
 
 ``` c
 #include <libopencm3/stm32/rcc.h>
@@ -150,7 +150,7 @@ void sys_tick_handler(void)
 
 > SysTick 的用法請參考[之前的文章](/posts/libopencm3-stm32-15/)。
 
-#### RCC
+### RCC
 
 ``` c
 static void rcc_setup(void)
@@ -162,7 +162,7 @@ static void rcc_setup(void)
 
 由於 IWDG 是完全獨立的，它不在 AHB、APB1 或 APB2 底下，所以 RCC 不用設定啓用 IWDG。
 
-#### IWDG 設定
+### IWDG 設定
 
 ``` c
 static void iwdg_setup(void)
@@ -177,7 +177,7 @@ static void iwdg_setup(void)
 
 頻率那些的計算 LibOpenCM3 都直接實現在 `iwdg_set_period_ms()` 中了，其實際內容可以查看 [LibOpenCM3 的 repo](https://github.com/libopencm3/libopencm3/blob/44e142d4f97863e669737707a1a22bf40ed49bbc/lib/stm32/common/iwdg_common_all.c#L73-L114)。
 
-#### 主程式
+### 主程式
 
 ``` c
 int main(void)
@@ -210,7 +210,7 @@ int main(void)
 
 但如果把 IWDG timeout 的 300ms 調短，或調慢主迴圈內的 200ms，讓系統來不及在 IWDG timeout 前 Refresh 的話，IWDG 就會自動觸發 Reset，這時觀察 LED 的話就會看到它一直在 off 10ms 後 on 2s，因為 MCU 一直被 Reset。
 
-### 多環境程式（F446RE + F103RB）
+## 多環境程式（F446RE + F103RB）
 
 由於 STM32F1 的部分函式不同，所以 F103RB 沒辦法直接使用上面的 F446RE 的程式。
 
@@ -242,7 +242,7 @@ static void led_setup(void)
 }
 ```
 
-### 成果
+## 成果
 
 我分別用了兩塊 STM32，並將左邊的 IWDG timeout 設為 300 ms，右邊的為 100 ms，而主迴圈的 Refresh 前 delay 都是 200 ms。
 
@@ -250,11 +250,11 @@ static void led_setup(void)
 
 ![](https://bucket.ziteh.dev/blog/libopencm3-stm32-16/2cb22142.webp)
 
-## 小結
+# 小結
 
 WDG 在簡單的非正式專案中可能不太會用到，但它設定簡單、使用方便，稍微瞭解一下也很值得。
 
-## 參考資料
+# 參考資料
 
 - [libopencm3/libopencm3-examples](https://github.com/libopencm3/libopencm3-examples)
 - [platformio/platform-ststm32](https://github.com/platformio/platform-ststm32)

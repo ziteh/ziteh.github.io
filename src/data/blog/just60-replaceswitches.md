@@ -10,11 +10,11 @@ date: 2020-03-31 16:59:00
 comments: true
 toc: true
 draft: false
-## aliases: ["/2020/03/just60-replaceswitches/"]
+# aliases: ["/2020/03/just60-replaceswitches/"]
 ---
 ![](https://bucket.ziteh.dev/blog/just60-replaceswitches/fd301cd3.webp)
 
-## 前言
+# 前言
 
 之前在[\[開箱\]自組60%藍牙機械鍵盤-Just60](/posts/unbox-just60/)一文中介紹了我組裝Just60的過程，在我使用到目前為止的3個多月下來都沒有什麼太大的問題。不過因為我的鍵位配列方案相當緊湊，尤其是左Shift從正常的2.25U變成只有1U的長度，使用起來還是多少有些不習慣，經常誤觸，甚至連帶著左Ctrl也變得容易按錯。
 
@@ -34,7 +34,7 @@ draft: false
 
 至於選擇Gateron（佳達隆）的鍵軸而非Cherry軸主要是為了嚐鮮、玩玩，並無什麼更深層的考量，頂多也就價位的關係吧。
 
-## 開工
+# 開工
 
 我自認焊接技術還行，但拆焊的功夫就真的不太行了，畢竟沒有什麼練習的機會。而且面對一塊破千元的PCB，我不敢用“拍”的方式來將焊錫甩落，只能乖乖的使用吸錫器來進行拆焊作業。
 
@@ -54,7 +54,7 @@ draft: false
 
 最後再將鍵盤組回就完成了。
 
-## 結語
+# 結語
 
 一開始解焊的時候實在是非常難搞，但拆到約3、4顆時就可以抓到訣竅了，之後拆焊的速度也就非常快了。
 
@@ -64,6 +64,6 @@ draft: false
 
 所以現在我的Just60上總共混了5種鍵軸：Cherry黑、Cherry靜音紅、Gateron青、Gateron茶與Gateron白。
 
-## 相關文章
+# 相關文章
 
 - [\[開箱\]自組60%藍牙機械鍵盤-Just60](/posts/unbox-just60/)

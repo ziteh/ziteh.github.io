@@ -13,7 +13,7 @@ date: 2021-11-28 22:00:00
 comments: true
 toc: true
 draft: false
-## aliases: ["/2021/11/libopencm3-example-exti/"]
+# aliases: ["/2021/11/libopencm3-example-exti/"]
 ---
 
 我在 2022 年 9 月重新寫了與本文內容相近的文章，建議可以觀看新文章：
@@ -21,7 +21,7 @@ draft: false
 - [STM32 EXTI 外部中斷](/posts/libopencm3-stm32-7/)
 - [STM32 LibOpenCM3：EXTI 外部中斷](/posts/libopencm3-stm32-8/)
 
-## 前言
+# 前言
 
 [LibOpenCM3](https://libopencm3.org/) 是一個 Open-Source 的 ARM Cortex-M3 微控制器底層硬體函式庫，支援包含 STM32 在內的多種微控制器。
 
@@ -29,13 +29,13 @@ draft: false
 
 <!--more-->
 
-## 正文
+# 正文
 
 外部中斷最基本的應用就是按鈕。雖然可以使用輪詢的方式來感測按鈕是否有觸發，但這種做法不但消耗資源，也不保險（觸發當下可能剛好錯過輪詢），而使用外部中斷就不會有這樣的問題。
 
 本文示範一個以按鈕觸發的外部中斷，每次按下按鈕時就會觸發指定的外部中斷，讓 LED 進行一次開或關。
 
-### 程式全文
+## 程式全文
 
 ```c
 /**
@@ -98,9 +98,9 @@ int main(void)
 }
 ```
 
-### 程式說明
+## 程式說明
 
-#### 引入函式庫
+### 引入函式庫
 
 ```c
 #include <libopencm3/stm32/rcc.h>
@@ -115,7 +115,7 @@ int main(void)
 
 > 注意是 `libopencm3/cm3/nvic.h` 而非 `libopencm3/stm32/nvic.h`。
 
-#### 設定 LED
+### 設定 LED
 
 ```c
 void led_setup(void)
@@ -133,7 +133,7 @@ void led_setup(void)
 - `rcc_periph_clock_enable()` 用來致能目標 LED 所在 GPIO Port-A 的 Clock。
 - `gpio_set_mode()` 設定 LED 所在的 PA5 為最高速度 2 MHz 的推輓式（Push-Pull）輸出。
 
-#### 設定按鈕及 EXTI
+### 設定按鈕及 EXTI
 
 ```c
 void button_setup(void)
@@ -166,7 +166,7 @@ void button_setup(void)
   - `exti_set_trigger(EXTI13, EXTI_TRIGGER_FALLING)` 設定 「EXTI-13」的觸發方式為「Falling（負緣）」。
   - `exti_enable_request(EXTI13)` 致能「EXTI-13」的中斷請求。
 
-#### 中斷服務程序 ISR
+### 中斷服務程序 ISR
 
 ```c
 /**
@@ -184,7 +184,7 @@ void exti15_10_isr(void)
 - `exti_reset_request(EXTI13)` 會清除來自「EXTI-13」的中斷請求旗標。
 - `gpio_toggle(GPIOA, GPIO5)` 是讓 LED（PA5）的輸出反轉，進行 LED 的開關，也就是我們要的功能——每次按下按鈕 LED 就開或關一次。
 
-#### 主程式
+### 主程式
 
 ```c
 int main(void)
@@ -205,11 +205,11 @@ int main(void)
 
 > `__asm__("nop")` 會嵌入組合語言的「nop（無操作）」指令。
 
-## 結語
+# 結語
 
 本次文章內介紹的程式我也有放在 [GitHub](https://github.com/ziteh/stm32-examples) 上，可以直接載下來並使用 PlatformIO 開始專案。
 
-## 相關文章
+# 相關文章
 
 - [STM32 EXTI 外部中斷](/posts/libopencm3-stm32-7/)
 - [STM32 LibOpenCM3：EXTI 外部中斷](/posts/libopencm3-stm32-8/)
