@@ -178,7 +178,7 @@ PCB 設計參數是用來規範設計的。每一家 PCB 工廠的製作能力�
 - [calcite](https://github.com/ziteh/calcite)
 - [rp-micro](https://github.com/ziteh/rp-micro)
 
-> 你或許可以用 [KiCanvas](https://kicanvas.org/) 來線上查看 KiCad 的 PCB 檔案，例如[這樣](https://kicanvas.org/?github=https%3A%2F%2Fgithub.com%2Fziteh%2Fcalcite%2Ftree%2Fmain%2FCalcite52)。我的另一篇文章有介紹：[KiCanvas——線上預覽KiCAD電路圖](/posts/kicanvas-intro/)
+> 你或許可以用 [KiCanvas](https://kicanvas.org/) 來線上查看 KiCad 的 PCB 檔案，例如[這樣](https://kicanvas.org/?github=https%3A%2F%2Fgithub.com%2Fziteh%2Fcalcite%2Ftree%2Fmain%2FCalcite52)。我的另一篇文章有介紹：[KiCanvas——線上預覽KiCAD電路圖](/posts/kicanvas-intro)
 
 #### 自動擺放
 

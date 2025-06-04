@@ -14,7 +14,7 @@ draft: false
 # aliases: ["/2022/02/diyqmkkeyboard-9/", "/posts/diyqmkkeyboard-9/"]
 ---
 
-在[上一篇文章中](/posts/diyqmkkeyboard-ble/)，我們使用 [Adafruit Bluefruit LE SPI Friend](https://www.adafruit.com/product/2633)（以下簡稱 Adafruit BLE）藍牙模組為 QMK 添加了藍牙的功能。
+在[上一篇文章中](/posts/diyqmkkeyboard-ble)，我們使用 [Adafruit Bluefruit LE SPI Friend](https://www.adafruit.com/product/2633)（以下簡稱 Adafruit BLE）藍牙模組為 QMK 添加了藍牙的功能。
 
 不過這個模組的價格有點高，還好 Adafruit 有提供其韌體及燒錄工具，所以只要有 MDBT40 或 nRF51822 的話也可以自製 Adafruit Bluefruit LE SPI Friend 藍牙模組。
 

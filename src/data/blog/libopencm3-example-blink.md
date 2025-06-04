@@ -18,8 +18,8 @@ draft: false
 
 我在 2022 年 9 月重新寫了與本文內容相近的文章，建議可以觀看新文章：
 
-- [STM32 GPIO 簡介](/posts/libopencm3-stm32-3/)
-- [STM32 LibOpenCM3：GPIO 輸出](/posts/libopencm3-stm32-4/)
+- [STM32 GPIO 簡介](/posts/libopencm3-stm32-3)
+- [STM32 LibOpenCM3：GPIO 輸出](/posts/libopencm3-stm32-4)
 
 ## 前言
 
@@ -33,7 +33,7 @@ draft: false
 
 ### 環境與專案
 
-我使用的 IDE 為 [PlatformIO IDE for VSCode（Visual Studio Code）](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide)，並安裝了 [ST STM32](https://platformio.org/platforms/ststm32) `Ver 15.0.0` 平臺。有關 PlatformIO 的介紹可以看我寫的另一篇文章：[\[STM32學習記錄-6\] 在VS Code與PlatformIO上開發STM32](/posts/learningstm32-platformio/)。
+我使用的 IDE 為 [PlatformIO IDE for VSCode（Visual Studio Code）](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide)，並安裝了 [ST STM32](https://platformio.org/platforms/ststm32) `Ver 15.0.0` 平臺。有關 PlatformIO 的介紹可以看我寫的另一篇文章：[\[STM32學習記錄-6\] 在VS Code與PlatformIO上開發STM32](/posts/learningstm32-platformio)。
 
 安裝完相關軟體後就可以建立一個 PlatformIO 專案。我示範使用的開發板為「ST Nucleo-F103RB（STM32F103RB）」，並選擇「Framework」為「libopencm3」。
 
@@ -172,5 +172,5 @@ int main(void)
 
 ## 相關文章
 
-- [STM32 GPIO 簡介](/posts/libopencm3-stm32-3/)
-- [STM32 LibOpenCM3：GPIO 輸出](/posts/libopencm3-stm32-4/)
+- [STM32 GPIO 簡介](/posts/libopencm3-stm32-3)
+- [STM32 LibOpenCM3：GPIO 輸出](/posts/libopencm3-stm32-4)

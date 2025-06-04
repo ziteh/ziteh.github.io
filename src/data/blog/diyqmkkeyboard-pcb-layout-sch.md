@@ -15,7 +15,7 @@ draft: false
 # # aliases: []
 ---
 
-到[上一篇文章](/posts/diyqmkkeyboard-3/)為止我們已經完成了鍵盤的韌體部分，接下來要進行硬體的部分。本篇要介紹的是[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 5 步——繪製 PCB。
+到[上一篇文章](/posts/diyqmkkeyboard-3)為止我們已經完成了鍵盤的韌體部分，接下來要進行硬體的部分。本篇要介紹的是[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 5 步——繪製 PCB。
 
 我將示範以 KiCad 7 進行機械式鍵盤的 PCB Layout，包含基本的 KiCad 使用教學。要畫 PCB 可能多少需要一些基本電學或基礎電路學知識，但是如果你真的沒學過的話也沒關係，仔細照著本文應該也不會出錯。
 
@@ -63,7 +63,7 @@ draft: false
 
 ## 自動生成鍵盤 PCB
 
-[Keyboard PCB Builder](https://kb.xyz.is/) 是一個自動工具，只要複製貼上 Keyboard Layout Editor 的 [raw data](/posts/diyqmkkeyboard-kle/)，就可以幫你生成基本的 KiCad 專案。
+[Keyboard PCB Builder](https://kb.xyz.is/) 是一個自動工具，只要複製貼上 Keyboard Layout Editor 的 [raw data](/posts/diyqmkkeyboard-kle)，就可以幫你生成基本的 KiCad 專案。
 
 將下載的 `.zip` 檔解壓縮，使用 KiCad 開啓 `keyboard.pro` 即可開啓專案。自動生成的專案檔包含了已經畫好鍵盤矩陣的 Schematic、擺好位置的 PCB 設計及各種鍵軸的 Footprint 庫。微控制器與其它部分還是必須要自己手動繪製。
 
@@ -343,10 +343,10 @@ USB 差分訊號「D+」與「D-」各 2 腳，將相同的接在一起，然後
 
 當所有部分的元件符號及接線都完成後，編輯並再次檢查各個元件的 [Footprint](/posts/diyqmkkeyboard-pcb-layout-sch/#更新元件代號)，然後[更新一下代號](/posts/diyqmkkeyboard-pcb-layout-sch/#更新元件代號)，Schematic 就算完成了。
 
-接下來請繼續查看[下一篇](/posts/diyqmkkeyboard-pcb-layout-layers/)以完成 PCB Layou 的部分。
+接下來請繼續查看[下一篇](/posts/diyqmkkeyboard-pcb-layout-layers)以完成 PCB Layou 的部分。
 
 > 如果你想參考完整的檔案的話，可以到 GitHub 上找一些別人的 repo，例如我的 [Calcite52](https://github.com/ziteh/calcite)。
-> 你或許可以用 [KiCanvas](https://kicanvas.org/) 來線上查看 KiCad 的 Schematic 檔案，例如[這樣](https://kicanvas.org/?github=https%3A%2F%2Fgithub.com%2Fziteh%2Fcalcite%2Ftree%2Fmain%2FCalcite52)。我的另一篇文章有介紹：[KiCanvas——線上預覽KiCAD電路圖](/posts/kicanvas-intro/)
+> 你或許可以用 [KiCanvas](https://kicanvas.org/) 來線上查看 KiCad 的 Schematic 檔案，例如[這樣](https://kicanvas.org/?github=https%3A%2F%2Fgithub.com%2Fziteh%2Fcalcite%2Ftree%2Fmain%2FCalcite52)。我的另一篇文章有介紹：[KiCanvas——線上預覽KiCAD電路圖](/posts/kicanvas-intro)
 
 ## Git
 

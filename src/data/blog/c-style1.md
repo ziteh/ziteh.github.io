@@ -421,7 +421,7 @@ int main(void) {
 
 #### 為何所有的花括號 `{}` 都不換行？為何不是 Allman 風格？
 
-因為：[C 語言用 K\&R Coding Style 的最大理由不是省行數](/posts/c-kr-style/)
+因為：[C 語言用 K\&R Coding Style 的最大理由不是省行數](/posts/c-kr-style)
 
 #### 為何要使用 `(void)` 捨棄非 `void` 的函數回傳值？
 
@@ -659,4 +659,4 @@ LineEnding: DeriveLF
 - [Recommended C style and coding rules](https://github.com/MaJerle/c-code-style)
 - [Linux kernel coding style](https://www.kernel.org/doc/html/v4.10/process/coding-style.html)
 - [My favorite C programming practices.](https://github.com/mcinglis/c-style)
-- [C 語言用 K\&R Coding Style 的最大理由不是省行數](/posts/c-kr-style/)
+- [C 語言用 K\&R Coding Style 的最大理由不是省行數](/posts/c-kr-style)

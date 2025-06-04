@@ -109,7 +109,7 @@ int main(void)
 #include <libopencm3/stm32/timer.h>
 ```
 
-和 [Timer](/posts/libopencm3-stm32-12/) 時相比只少了中斷的 `nvic.h`，要使用 PWM 就只需要這 3 個功能就可以了。
+和 [Timer](/posts/libopencm3-stm32-12) 時相比只少了中斷的 `nvic.h`，要使用 PWM 就只需要這 3 個功能就可以了。
 
 #### 計算並設計 Timer 參數（PSC、ARR、CCR 暫存器）
 
@@ -125,9 +125,9 @@ int main(void)
 #define PWM_TIMER_OC_VALUE ((PWM_TIMER_PERIOD + 1) * PWM_GOAL_DUTY_CYCLE / 100) /* CCR. */
 ```
 
-這部分的 `PWM_TIMER_CLOCK`、`PWM_COUNTER_CLOCK`、`PWM_TIMER_PRESCALER`(PSC)、 `PWM_TIMER_PERIOD`(ARR) 和 [Timer](/posts/libopencm3-stm32-12/) 的部分一樣，就不再贅述。
+這部分的 `PWM_TIMER_CLOCK`、`PWM_COUNTER_CLOCK`、`PWM_TIMER_PRESCALER`(PSC)、 `PWM_TIMER_PERIOD`(ARR) 和 [Timer](/posts/libopencm3-stm32-12) 的部分一樣，就不再贅述。
 
-這次的重點是 CCR 暫存器。在[上一篇](/posts/libopencm3-stm32-13/)中已經說明其關係式為：
+這次的重點是 CCR 暫存器。在[上一篇](/posts/libopencm3-stm32-13)中已經說明其關係式為：
 `Duty_Cycle% = CCR / (ARR + 1) * 100%`
 所以
 `CCR = (ARR + 1) * Duty_Cycle%  / 100%`
@@ -147,7 +147,7 @@ static void rcc_setup(void)
 }
 ```
 
-這部分還是和 [Timer](/posts/libopencm3-stm32-12/) 一樣。重點一樣是指定時鐘源為 8 MHz 的 HSE，並設定系統時鐘為 168 MHz。
+這部分還是和 [Timer](/posts/libopencm3-stm32-12) 一樣。重點一樣是指定時鐘源為 8 MHz 的 HSE，並設定系統時鐘為 168 MHz。
 
 #### PWM 與 Timer 設定
 
@@ -175,7 +175,7 @@ static void pwm_setup(void)
 
 要使 GPIO 可以輸出 PWM 訊號的話，要將 Timer 的 Channel 對應的 GPIO 設定為 Alternate function。我們使用 TIM3 的 Channel 2。
 
-Timer 大部分的設定都和和[上一篇](/posts/libopencm3-stm32-12/)的一樣，主要差異為要使用 `timer_set_oc_mode()` 指定使用 Channel 2（`TIM_OC2`），並設定為 `TIM_OCM_PWM1` 模式。
+Timer 大部分的設定都和和[上一篇](/posts/libopencm3-stm32-12)的一樣，主要差異為要使用 `timer_set_oc_mode()` 指定使用 Channel 2（`TIM_OC2`），並設定為 `TIM_OCM_PWM1` 模式。
 
 使用 `timer_set_oc_value()` 函式將 CCR 的值傳給 TIMx\_CCRx 暫存器。
 

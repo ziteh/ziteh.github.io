@@ -208,7 +208,7 @@ static void delay(uint32_t value);
 
 另外就是因為要使用中斷功能，所以 `nvic.h` 也是必要的。
 
-> USART 和 `printf()` 的詳細用法請看[之前的文章](/posts/libopencm3-stm32-9/)。
+> USART 和 `printf()` 的詳細用法請看[之前的文章](/posts/libopencm3-stm32-9)。
 
 #### 設定 ADC
 

@@ -106,7 +106,7 @@ int main(void)
 #include <libopencm3/stm32/gpio.h>
 ```
 
-Include 的部分和 [GPIO 輸入](/posts/libopencm3-stm32-4/)時一樣，引入 `rcc.h` 與 `gpio.h`。
+Include 的部分和 [GPIO 輸入](/posts/libopencm3-stm32-4)時一樣，引入 `rcc.h` 與 `gpio.h`。
 
 #### 定義腳位
 

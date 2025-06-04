@@ -13,7 +13,7 @@ draft: false
 
 ![](https://bucket.ziteh.dev/blog/calcite52-keyboard-2/b151b244.webp)
 
-[上一篇](/posts/calcite52-keyboard-1/)中介紹了 Calcite52 的設計理念，現在 Rev 1.0 成品已經完成了，所以來介紹一下。
+[上一篇](/posts/calcite52-keyboard-1)中介紹了 Calcite52 的設計理念，現在 Rev 1.0 成品已經完成了，所以來介紹一下。
 
 <!--more-->
 

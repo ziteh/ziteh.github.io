@@ -27,10 +27,10 @@ draft: false
 
 ---
 
-在[上一篇文章](/posts/diyqmkkeyboard-kle/)中已經完成鍵盤的 Layout，這篇文章將會接續[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 3 步——生成並編輯 QMK 韌體。
+在[上一篇文章](/posts/diyqmkkeyboard-kle)中已經完成鍵盤的 Layout，這篇文章將會接續[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 3 步——生成並編輯 QMK 韌體。
 
 > 本篇是以發文當時最新的 [`0.21.3`](https://github.com/qmk/qmk_firmware/releases/tag/0.21.3) 版本的 QMK 作為示範。
-> 本文的[前一個版本](/posts/diyqmkkeyboard-firmware-0-18/)是針對 `0.18.3` 版所撰寫的，已經不適合最新版的 QMK，故更新本文內容，舊版教學文僅作為參考保留。
+> 本文的[前一個版本](/posts/diyqmkkeyboard-firmware-0-18)是針對 `0.18.3` 版所撰寫的，已經不適合最新版的 QMK，故更新本文內容，舊版教學文僅作為參考保留。
 
 ## 準備環境
 
@@ -130,7 +130,7 @@ And build with qmk compile -kb mytestkb -km default.
 
 `info.json` 是最主要的設定檔，大部分的設定都在這裡調整。有關它的詳細說明請參考 [info.json Format](https://docs.qmk.fm/#/reference_info_json) 及 [Data Driven Configuration](https://docs.qmk.fm/#/data_driven_config)。
 
-> [舊版 QMK](/posts/diyqmkkeyboard-firmware-0-18/) 在 `rules.mk` 和 `config.h` 中的設定現在多數都移到 `info.json` 中了。
+> [舊版 QMK](/posts/diyqmkkeyboard-firmware-0-18) 在 `rules.mk` 和 `config.h` 中的設定現在多數都移到 `info.json` 中了。
 
 #### 鍵盤資訊
 
@@ -491,7 +491,7 @@ LTO_ENABLE = yes
 - [本 QMK 教學系列文列表](/posts/diyqmkkeyboard-0/#教學文列表)
 - [Keyboard Firmware Builder](https://kbfirmware.com/)
 - [Qwiic Pro Micro USB-C (ATmega32U4) Hookup Guide - SparkFun Learn](https://learn.sparkfun.com/tutorials/qwiic-pro-micro-usb-c-atmega32u4-hookup-guide/all)
-- [本篇的舊版（0.18.3）內容](/posts/diyqmkkeyboard-firmware-0-18/)
+- [本篇的舊版（0.18.3）內容](/posts/diyqmkkeyboard-firmware-0-18)
 - QMK相關
   - [QMK 官方網站](https://qmk.fm/)
   - [QMK 官方文件](https://docs.qmk.fm/#/)

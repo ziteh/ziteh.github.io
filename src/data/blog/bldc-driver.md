@@ -202,7 +202,7 @@ STSPIN32 SiP
 
 ## 編碼器
 
-[常見磁性旋轉位置感測器/旋轉編碼器比較](/posts/magnetic-rotaty-position-sensor/)
+[常見磁性旋轉位置感測器/旋轉編碼器比較](/posts/magnetic-rotaty-position-sensor)
 
 ---
 

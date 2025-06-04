@@ -72,4 +72,4 @@ draft: false
 
 ## 相關文章
 
-- [三星 Tab S6 Lite V.S. Apple iPad 2019(7代)](/posts/s6lite-vs-ipad2019/)
+- [三星 Tab S6 Lite V.S. Apple iPad 2019(7代)](/posts/s6lite-vs-ipad2019)

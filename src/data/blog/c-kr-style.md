@@ -326,7 +326,7 @@ int main(void)
 
 但是還有一點，在我的定義下，「看得順眼」的權重更高。你完全有理由只憑這點就推翻上面的所有比較，然後繼續用你最熟悉的 Coding style。當然你也有可能和我一樣，瞬間跳槽。
 
-另外也可以看看我自己的完整規範：[C 語言 Coding Style 規範](/posts/c-style1/)
+另外也可以看看我自己的完整規範：[C 語言 Coding Style 規範](/posts/c-style1)
 
 ## 參考
 

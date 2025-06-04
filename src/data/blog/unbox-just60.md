@@ -200,7 +200,7 @@ PCB的話，除了鍵軸和鍵軸上的LED外，其它零件都焊接好了。�
 
 ## 相關文章
 
-- [自組60%藍牙機械鍵盤-Just60 後續改軸](/posts/just60-replaceswitches/)
+- [自組60%藍牙機械鍵盤-Just60 後續改軸](/posts/just60-replaceswitches)
 
 ## 參考文章
 

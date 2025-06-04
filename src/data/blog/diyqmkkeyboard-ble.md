@@ -74,7 +74,7 @@ NKRO_ENABLE = no
 
 ### 編譯並燒錄
 
-完成上述 `rules.mk` 及 `config.h` 的修改就可以直接[編譯並燒錄](/posts/diyqmkkeyboard-3/)了，就是這麼簡單。
+完成上述 `rules.mk` 及 `config.h` 的修改就可以直接[編譯並燒錄](/posts/diyqmkkeyboard-3)了，就是這麼簡單。
 
 ## 接線
 

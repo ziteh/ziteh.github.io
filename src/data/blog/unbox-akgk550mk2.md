@@ -17,7 +17,7 @@ draft: false
 
 ![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/5bbbba3f.webp)
 
-上次開[V90-HPA](/posts/unbox-v90hpa/)的時候才說要買K550，不到半個月的時間我就完成了這項預言。
+上次開[V90-HPA](/posts/unbox-v90hpa)的時候才說要買K550，不到半個月的時間我就完成了這項預言。
 
 <!--more-->
 

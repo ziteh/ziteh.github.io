@@ -15,13 +15,13 @@ draft: false
 # aliases: ["/posts/diyqmkkeyboard-edit-qmk/", "/2020/06/diyqmkkeyboard-2/", "/posts/diyqmkkeyboard-2/"]
 ---
 
-在[上一篇文章](/posts/diyqmkkeyboard-kle/)中已經完成鍵盤的 Layout，這篇文章將會接續[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 3 步——生成並編輯 QMK 韌體。
+在[上一篇文章](/posts/diyqmkkeyboard-kle)中已經完成鍵盤的 Layout，這篇文章將會接續[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 3 步——生成並編輯 QMK 韌體。
 
 <!--more-->
 
 > 本篇是以舊的 [`0.24.8`](https://github.com/qmk/qmk_firmware/releases/tag/0.24.8) 版本的 QMK 作為示範。新版本的教學請查看：[產生並編輯 QMK 韌體](/posts/diyqmkkeyboard-firmware)。
 >
-> 本文的[前一個版本](/posts/diyqmkkeyboard-firmware-0-21-3/)是針對 `0.21.3` 版所撰寫的，舊版教學文僅作為參考保留。
+> 本文的[前一個版本](/posts/diyqmkkeyboard-firmware-0-21-3)是針對 `0.21.3` 版所撰寫的，舊版教學文僅作為參考保留。
 >
 > 如果你想要切換 QMK 版本的話，可以使用下面的方法（需要先安裝好 QMK MSYS 環境）。
 >
@@ -137,7 +137,7 @@ Project Location: C:/Users/USERNAME/qmk_firmware/keyboards/mytestkb,
 
 `info.json` 是最主要的設定檔，大部分的設定都在這裡調整。有關它的詳細說明請參考 [info.json Format](https://docs.qmk.fm/#/reference_info_json) 及 [Data Driven Configuration](https://docs.qmk.fm/#/data_driven_config)。以下設定不照順序說明，請以名稱為主。
 
-> [舊版 QMK](/posts/diyqmkkeyboard-firmware-0-18/) 在 `rules.mk` 和 `config.h` 中的設定現在多數都移到 `info.json` 中了。
+> [舊版 QMK](/posts/diyqmkkeyboard-firmware-0-18) 在 `rules.mk` 和 `config.h` 中的設定現在多數都移到 `info.json` 中了。
 
 #### 鍵盤資訊
 
@@ -503,8 +503,8 @@ LTO_ENABLE = yes
 - [Keyboard Firmware Builder](https://kbfirmware.com/)
 - [Qwiic Pro Micro USB-C (ATmega32U4) Hookup Guide - SparkFun Learn](https://learn.sparkfun.com/tutorials/qwiic-pro-micro-usb-c-atmega32u4-hookup-guide/all)
 - 本篇的舊版內容
-  - [0.21.3 版](/posts/diyqmkkeyboard-firmware-0-21-3/)
-  - [0.18.3 版](/posts/diyqmkkeyboard-firmware-0-18/)
+  - [0.21.3 版](/posts/diyqmkkeyboard-firmware-0-21-3)
+  - [0.18.3 版](/posts/diyqmkkeyboard-firmware-0-18)
 - QMK相關
   - [QMK 官方網站](https://qmk.fm/)
   - [QMK 官方文件](https://docs.qmk.fm/#/)

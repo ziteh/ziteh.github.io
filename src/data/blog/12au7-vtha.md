@@ -66,4 +66,4 @@ draft: false
 
 ## 相關文章
 
-- [真空管工作原理與結構介紹](/posts/vacuumtube/)
+- [真空管工作原理與結構介紹](/posts/vacuumtube)

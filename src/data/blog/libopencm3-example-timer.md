@@ -18,8 +18,8 @@ draft: false
 
 我在 2022 年 9 月重新寫了與本文內容相近的文章，建議可以觀看新文章：
 
-- [STM32 Timer 計時器](/posts/libopencm3-stm32-11/)
-- [STM32 LibOpenCM3：Timer 計時器](/posts/libopencm3-stm32-12/)
+- [STM32 Timer 計時器](/posts/libopencm3-stm32-11)
+- [STM32 LibOpenCM3：Timer 計時器](/posts/libopencm3-stm32-12)
 
 ## 前言
 
@@ -296,5 +296,5 @@ int main(void)
 
 ## 相關連結
 
-- [STM32 Timer 計時器](/posts/libopencm3-stm32-11/)
-- [STM32 LibOpenCM3：Timer 計時器](/posts/libopencm3-stm32-12/)
+- [STM32 Timer 計時器](/posts/libopencm3-stm32-11)
+- [STM32 LibOpenCM3：Timer 計時器](/posts/libopencm3-stm32-12)

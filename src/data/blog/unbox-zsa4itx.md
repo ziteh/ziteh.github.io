@@ -115,4 +115,4 @@ Cryorig 快睿 C7的内容物有一包外六角螺絲、產品保固卡、用來
 
 ## 相關文章
 
-- [自製電腦PSU模組線 (手殘沒有極限)](/posts/psucustomcables/)
+- [自製電腦PSU模組線 (手殘沒有極限)](/posts/psucustomcables)

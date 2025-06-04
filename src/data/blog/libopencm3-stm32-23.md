@@ -241,7 +241,7 @@ static void delay(uint32_t value);
 
 另外就是因為要使用中斷及 Timer，所以 `nvic.h` 和 `timer.h` 也是必要的。
 
-> USART 和 `printf()` 的詳細用法請看[之前的文章](/posts/libopencm3-stm32-9/)。
+> USART 和 `printf()` 的詳細用法請看[之前的文章](/posts/libopencm3-stm32-9)。
 
 #### 設定 ADC
 
@@ -339,7 +339,7 @@ static void timer_setup(void)
 
 使用 `timer_set_master_mode()` 設定 Timer 在每次的 Update 事件都會產生 TRGO 訊號，以觸發 ADC。
 
-> Timer 的頻率設定請看[之前的文章](/posts/libopencm3-stm32-12/)。
+> Timer 的頻率設定請看[之前的文章](/posts/libopencm3-stm32-12)。
 
 ### 多環境程式（F446RE + F103RB）
 

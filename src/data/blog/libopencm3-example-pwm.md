@@ -18,8 +18,8 @@ draft: false
 
 我在 2022 年 9 月重新寫了與本文內容相近的文章，建議可以觀看新文章：
 
-- [STM32 PWM 脈波寬度調變](/posts/libopencm3-stm32-13/)
-- [STM32 LibOpenCM3：PWM 脈波寬度調變](/posts/libopencm3-stm32-14/)
+- [STM32 PWM 脈波寬度調變](/posts/libopencm3-stm32-13)
+- [STM32 LibOpenCM3：PWM 脈波寬度調變](/posts/libopencm3-stm32-14)
 
 ## 前言
 
@@ -258,8 +258,8 @@ int main(void)
 
 ## 相關連結
 
-- [STM32 PWM 脈波寬度調變](/posts/libopencm3-stm32-13/)
-- [STM32 LibOpenCM3：PWM 脈波寬度調變](/posts/libopencm3-stm32-14/)
+- [STM32 PWM 脈波寬度調變](/posts/libopencm3-stm32-13)
+- [STM32 LibOpenCM3：PWM 脈波寬度調變](/posts/libopencm3-stm32-14)
 - 參考資料
   - [STM32F0 with libopencm3 - Part 1: Simple Timer - Collection of useful, and useless information](https://bdebyl.net/post/stm32-part1/)
   - [Wiki - Pulse-Width Modulation (PWM)](http://wiki.csie.ncku.edu.tw/embedded/PWM)

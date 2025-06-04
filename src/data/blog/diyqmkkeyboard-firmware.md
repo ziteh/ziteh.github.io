@@ -14,7 +14,7 @@ toc: true
 draft: false
 ---
 
-在[上一篇文章](/posts/diyqmkkeyboard-kle/)中已經完成鍵盤的 Layout，這篇文章將會接續[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 3 步——生成並編輯 QMK 韌體。
+在[上一篇文章](/posts/diyqmkkeyboard-kle)中已經完成鍵盤的 Layout，這篇文章將會接續[製作步驟](/posts/diyqmkkeyboard-0/#製作步驟)的第 3 步——生成並編輯 QMK 韌體。
 
 <!--more-->
 
@@ -57,7 +57,7 @@ Checking file size of clueboard_66_rev3_default.hex                    [OK]
 
 QMK 的檔案預設會在：`C:/Users/<USERNAME>/qmk_firmware`。上面這個訊息中的 `.build/clueboard_66_rev3_default.hex` 代表的就是 `C:/Users/<USERNAME>/qmk_firmware/.build/clueboard_66_rev3_default.hex`。
 
-環境建立好後就可以編輯一些設定了。[如何選擇微控制器 MCU](/posts/diyqmkkeyboard-mcu-sel/) 一文中已經說明了如何挑選適合的 MCU，這時你應該已經決定好要用什麼 MCU 來製作了。
+環境建立好後就可以編輯一些設定了。[如何選擇微控制器 MCU](/posts/diyqmkkeyboard-mcu-sel) 一文中已經說明了如何挑選適合的 MCU，這時你應該已經決定好要用什麼 MCU 來製作了。
 
 如果你對嵌入式不是很熟悉的話，我只推薦 RP2040 和 ATmega32U4（Pro Micro），而 RP2040 是我目前認為製作 QMK 鍵盤的**首選**，因為它價格便宜、性能很好、功能完善、空間充足、購買方便、使用者也多。如果沒有特殊原因的話建議使用 RP2040。以下將分別介紹 RP2040 和 Pro Micro 的步驟。
 
@@ -136,7 +136,7 @@ Now update the config files to match the hardware!
 
 這是最主要的設定檔（也就是舊版的 `info.json`），大部分的設定都在這裡調整。有關它的詳細說明請參考 [info.json Format](https://docs.qmk.fm/#/reference_info_json) 及 [Data Driven Configuration](https://docs.qmk.fm/#/data_driven_config)。以下各個項目無需按照順序，請以名稱為主，但是在編輯時要注意 [JSON 禁止尾逗號](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Trailing_commas#json_%E4%B8%AD%E7%9A%84%E5%B0%BE%E5%90%8E%E9%80%97%E5%8F%B7)。
 
-> [舊版 QMK](/posts/diyqmkkeyboard-firmware-0-18/) 在 `rules.mk` 和 `config.h` 中的設定現在多數都移到 `keyboard.json` 中了。
+> [舊版 QMK](/posts/diyqmkkeyboard-firmware-0-18) 在 `rules.mk` 和 `config.h` 中的設定現在多數都移到 `keyboard.json` 中了。
 
 #### 鍵盤資訊
 
@@ -550,7 +550,7 @@ Now update the config files to match the hardware!
 
 這是最主要的設定檔（也就是舊版的 `info.json`），大部分的設定都在這裡調整。有關它的詳細說明請參考 [info.json Format](https://docs.qmk.fm/#/reference_info_json) 及 [Data Driven Configuration](https://docs.qmk.fm/#/data_driven_config)。以下各個項目無需按照順序，請以名稱為主，但是在編輯時要注意 [JSON 禁止尾逗號](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Trailing_commas#json_%E4%B8%AD%E7%9A%84%E5%B0%BE%E5%90%8E%E9%80%97%E5%8F%B7)。
 
-> [舊版 QMK](/posts/diyqmkkeyboard-firmware-0-18/) 在 `rules.mk` 和 `config.h` 中的設定現在多數都移到 `keyboard.json` 中了。
+> [舊版 QMK](/posts/diyqmkkeyboard-firmware-0-18) 在 `rules.mk` 和 `config.h` 中的設定現在多數都移到 `keyboard.json` 中了。
 
 #### 鍵盤資訊
 

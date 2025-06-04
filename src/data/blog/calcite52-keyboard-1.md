@@ -51,4 +51,4 @@ PCB 基本上一下就畫好了。以往比較麻煩的是要把按鍵和二極�
 - 我一直覺得 Enter 和 Backspace 放在小拇指很糟糕，故改到大拇指。擺在中央讓左右手可以單獨按到。
 
 > Calcite52 的相關檔案在 GitHub 上：[ziteh/calcite](https://github.com/ziteh/calcite)
-> [下一篇](/posts/calcite52-keyboard-2/)
+> [下一篇](/posts/calcite52-keyboard-2)

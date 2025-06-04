@@ -23,7 +23,7 @@ draft: false
 
 <!--more-->
 
-為了做成這把鍵盤，我開始研究 [QMK](https://github.com/qmk/qmk_firmware)，所以我才會寫了一系列的 [QMK 教學文](/posts/diyqmkkeyboard-0/)。而現在，第一個可以正式當作鍵盤使用的 `Rev 2.1` 版完成了，因此來介紹一下。
+為了做成這把鍵盤，我開始研究 [QMK](https://github.com/qmk/qmk_firmware)，所以我才會寫了一系列的 [QMK 教學文](/posts/diyqmkkeyboard-0)。而現在，第一個可以正式當作鍵盤使用的 `Rev 2.1` 版完成了，因此來介紹一下。
 
 ## 特色與規格
 

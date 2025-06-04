@@ -165,7 +165,7 @@ ST 意法半導體龐大的 32-bit ARM MCU 系列——STM32 的一員。在上�
 
 ## 無線藍牙
 
-QMK 的藍牙是透過模組支援的，且原則上僅限 AVR MCU。可以參考：[\[自製QMK鍵盤-番外\] 為QMK鍵盤加上Bluetooth藍牙無線功能](/posts/diyqmkkeyboard-ble/)
+QMK 的藍牙是透過模組支援的，且原則上僅限 AVR MCU。可以參考：[\[自製QMK鍵盤-番外\] 為QMK鍵盤加上Bluetooth藍牙無線功能](/posts/diyqmkkeyboard-ble)
 
 不過在現在，如果你想要做藍牙鍵盤的話，我可能會另外推薦你 [ZMK](https://zmk.dev/) 和 nRF5 系列 SoC （如 [nRF52840](https://www.nordicsemi.com/products/nrf52840?lang=zh-TW)）。
 

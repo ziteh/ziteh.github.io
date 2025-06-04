@@ -15,7 +15,7 @@ draft: false
 
 ## 前言
 
-上一篇[文章](/posts/unbox-sansunggalaxys6lite/)說到我把iPad賣掉，換成S6 Lite。不過我買S6 Lite時iPad其實還沒賣出，所以就來簡單比較一下我個人比較在意的幾點。
+上一篇[文章](/posts/unbox-sansunggalaxys6lite)說到我把iPad賣掉，換成S6 Lite。不過我買S6 Lite時iPad其實還沒賣出，所以就來簡單比較一下我個人比較在意的幾點。
 
 注意，本文所述皆只是我個人的感覺而已，最好還是自己實際體驗過。
 
@@ -194,4 +194,4 @@ draft: false
 
 ## 相關文章
 
-- [\[開箱\] 三星 Tab S6 Lite 方便做筆記的平板](/posts/unbox-sansunggalaxys6lite/)
+- [\[開箱\] 三星 Tab S6 Lite 方便做筆記的平板](/posts/unbox-sansunggalaxys6lite)

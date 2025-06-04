@@ -148,7 +148,7 @@ void sys_tick_handler(void)
 
 為了要更好地驗證 IWDG 的運作，所以我們要有較為精確的 `delay()`，因此這裡我除了 `iwdg.h` 外還引入了 `systick.h` 與 `nvic.h`，利用 SysTick 來實現較精確的 ms 等級 `delay()`。
 
-> SysTick 的用法請參考[之前的文章](/posts/libopencm3-stm32-15/)。
+> SysTick 的用法請參考[之前的文章](/posts/libopencm3-stm32-15)。
 
 #### RCC
 
