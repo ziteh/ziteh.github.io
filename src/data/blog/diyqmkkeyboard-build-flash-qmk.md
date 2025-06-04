@@ -97,7 +97,7 @@ QMK 有個官方的燒錄工具——[QMK Toolbox](https://github.com/qmk/qmk_to
 
 燒錄過程示範影片：
 
-<center><iframe width="100%" height="450" src="https://www.youtube.com/embed/_KihNT558II" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_KihNT558II" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ### RP2040
 

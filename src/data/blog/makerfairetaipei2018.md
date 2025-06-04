@@ -18,9 +18,7 @@ draft: false
 
 <!--more-->
 
-<div style="clear: both; text-align: center;">
-<iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/AqbKj3T-eaM" width="100%"></iframe>
-</div>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/AqbKj3T-eaM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 但是因為用厚紙板做肯定一下就壞了，所以我們改用木頭來做。這個東西雖然感覺很簡單，一下就可以完成了，但是因為我完全沒有做過木工，所以過程中還是遇到不少困難呀。
 
@@ -88,9 +86,7 @@ draft: false
 
 ![](https://bucket.ziteh.dev/blog/makerfairetaipei2018/6dac6bdf.webp)
 
-<div style="clear: both; text-align: center;">
-<iframe style="width: 100%; height: 315px; border: 0; margin: 20px 0" src="https://www.youtube.com/embed/LqzdGxMLNnI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LqzdGxMLNnI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## 結論
 
