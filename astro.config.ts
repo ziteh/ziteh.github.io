@@ -10,6 +10,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import rehypeRewrite, { type RehypeRewriteOptions } from "rehype-rewrite";
 import rehypeExternalLinks from "rehype-external-links";
+import rehypeWrapAll from "rehype-wrap-all";
 import expressiveCode, {
   ExpressiveCodeTheme,
   type AstroExpressiveCodeOptions,
@@ -61,7 +62,7 @@ const expressiveCodeOption: AstroExpressiveCodeOptions = {
 // Rehype rewrite options, https://github.com/jaywcjlove/rehype-rewrite
 const rehypeRewriteOption: RehypeRewriteOptions = {
   rewrite: node => {
-    // Also look for Astro's Responsive Images
+    // See also Astro's Responsive Images
     if (node.type === "element" && node.tagName === "img") {
       node.properties = {
         ...node.properties,
@@ -130,6 +131,13 @@ export default defineConfig({
       rehypeSlug,
       [rehypeAutolinkHeadings, { behavior: "append" }],
       [rehypeExternalLinks, { target: "_blank", rel: "noopener noreferrer" }],
+      [
+        rehypeWrapAll,
+        {
+          selector: "table",
+          wrapper: "div.responsive-table",
+        },
+      ],
       [rehypeRewrite, rehypeRewriteOption],
     ],
     // Use ExpressiveCode instead of shiki
