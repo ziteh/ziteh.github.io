@@ -21,7 +21,7 @@ html[data-theme="light"] {
   --accent: #4a8bbd;
   --muted: #e6e6e6;
   --border: #e5e9f0;
-  --strong-font-weight: 700; /* Compensating visual weight */
+  --strong-font-weight: 800; /* Compensating visual weight */
 }
 
 html[data-theme="dark"] {
@@ -30,7 +30,7 @@ html[data-theme="dark"] {
   --accent: #d19a66;
   --muted: #343f60bf;
   --border: #4d4844;
-  --strong-font-weight: 800; /* Compensating visual weight */
+  --strong-font-weight: 900; /* Compensating visual weight */
 }
 
 @theme inline {
