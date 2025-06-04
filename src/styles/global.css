@@ -22,6 +22,7 @@ html[data-theme="light"] {
   --muted: #e6e6e6;
   --border: #e5e9f0;
   --strong-font-weight: 800; /* Compensating visual weight */
+  --body-font-weight: 400;
 }
 
 html[data-theme="dark"] {
@@ -30,7 +31,8 @@ html[data-theme="dark"] {
   --accent: #d19a66;
   --muted: #343f60bf;
   --border: #4d4844;
-  --strong-font-weight: 900; /* Compensating visual weight */
+  --strong-font-weight: 800; /* Compensating visual weight */
+  --body-font-weight: 400;
 }
 
 @theme inline {
@@ -39,6 +41,7 @@ html[data-theme="dark"] {
   --color-accent: var(--accent);
   --color-muted: var(--muted);
   --color-border: var(--border);
+  --color-body-font-weight: var(--body-font-weight);
 }
 
 @layer base {
@@ -58,6 +61,7 @@ html[data-theme="dark"] {
   body {
     @apply flex min-h-svh flex-col bg-background font-sans text-foreground selection:bg-accent/75 selection:text-background;
     font-family: var(--font-sans), var(--font-emoji);
+    font-weight: var(--color-body-font-weight);
   }
   a,
   button {
