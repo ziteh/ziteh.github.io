@@ -224,7 +224,7 @@ Schematic 頁面右下角有一些資訊可以填寫。
 
 如果你覺得要自己畫[微控制器](/posts/diyqmkkeyboard-pcb-layout-sch/#繪製微控制器電路)、[電源](/posts/diyqmkkeyboard-pcb-layout-sch/#繪製電源電路)和 [USB](/posts/diyqmkkeyboard-pcb-layout-sch/#繪製-usb) 的電路太麻煩的話，你可以使用現成的開發板，使用排針或排插連接開發板，這樣就只需要畫[鍵矩陣掃描電路](/posts/diyqmkkeyboard-pcb-layout-sch/#繪製矩陣掃描電路)。以下以 Pro Micro 為例。
 
-加入兩個「Conn_01x12」元件來代表排針/插，雙擊它進入屬性頁面，將它的「Footprint」改成「Connector_PinHeader_2.54mm:PinHeader_1x12_P2.54mm_Vertical」。
+加入兩個「Conn_01x12」元件來代表排針/插，雙擊它進入屬性頁面，將它的「Footprint」改成「Connector_PinHeader_2.54mm: PinHeader_1x12_P2.54mm_Vertical」。
 
 加入電源符號與標籤，並根據 Pro Micro 的腳位接到正確的位置。
 
