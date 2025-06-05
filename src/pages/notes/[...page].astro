@@ -1,0 +1,49 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import Main from "@/layouts/Main.astro";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import NotePagination from "@/components/NotePagination.astro";
+import { SITE } from "@/config";
+import { _t } from "@/i18n/lang";
+import { getNotePath } from "@/utils/getPath";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const notePerPage = 15;
+
+  const posts = await getCollection("note", ({ data }) => !data.draft);
+  return paginate(posts, { pageSize: notePerPage });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<Layout title={`筆記 | ${SITE.title}`}>
+  <Header />
+  <Main pageTitle="筆記" pageDesc={_t.posts.desc}>
+    <ul>
+      {
+        page.data.map(data => (
+          <div class="mb-4 block">
+            <a
+              href={getNotePath(data.id, data.filePath)}
+              class="hover:text-accent hover:underline"
+            >
+              <span>{data.data.title}</span>
+              <span>{" - "}</span>
+              <span class="text-sm opacity-80">
+                {data.data.date.toLocaleDateString()}
+              </span>
+            </a>
+          </div>
+        ))
+      }
+    </ul>
+  </Main>
+
+  <NotePagination {page} />
+
+  <Footer noMarginTop={page.lastPage > 1} />
+</Layout>

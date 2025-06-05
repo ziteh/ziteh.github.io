@@ -1,0 +1,369 @@
+---
+// import { _t } from "@/i18n/lang";
+import { render, type CollectionEntry } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+// import Tag from "@/components/Tag.astro";
+import Datetime from "@/components/Datetime.astro";
+import BackButton from "@/components/BackButton.astro";
+import { getNotePath } from "@/utils/getPath";
+import { slugifyStr } from "@/utils/slugify";
+import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
+// import IconChevronRight from "@/assets/icons/IconChevronRight.svg";
+// import IconChevronUp from "@/assets/icons/IconChevronUp.svg";
+// import IconCategory from "@/assets/icons/IconCategory.svg";
+// import IconMenuSidebar from "@/assets/icons/IconMenuSidebar.svg";
+// import IconTag from "@/assets/icons/IconTag.svg";
+import { SITE } from "@/config";
+import getDescription from "@/utils/getDescription";
+// import WontonComment from "@/components/WontonComment.astro";
+import LinkButton from "@/components/LinkButton.astro";
+
+export interface Props {
+  post: CollectionEntry<"note">;
+  posts: CollectionEntry<"note">[];
+}
+
+// const { slug } = Astro.params;
+const { post /* , posts */ } = Astro.props;
+
+const {
+  title,
+  subtitle,
+  author,
+  description,
+  ogImage: initOgImage,
+  canonicalURL,
+  date,
+  updated,
+  timezone,
+  // tags,
+  // categories,
+  toc,
+  math,
+  comments,
+} = post.data;
+
+const { Content } = await render(post);
+
+let ogImageUrl: string | undefined;
+
+// Determine OG image source
+if (typeof initOgImage === "string") {
+  ogImageUrl = initOgImage; // Remote OG image (absolute URL)
+} else if (initOgImage?.src) {
+  ogImageUrl = initOgImage.src; // Local asset
+}
+
+// Use dynamic OG image if enabled and no remote|local ogImage
+if (!ogImageUrl && SITE.dynamicOgImage) {
+  ogImageUrl = `${getNotePath(post.id, post.filePath)}/index.png`;
+}
+
+// Resolve OG image URL (or fallback to SITE.ogImage / default `og.png`)
+const ogImage = ogImageUrl
+  ? new URL(ogImageUrl, Astro.url.origin).href
+  : undefined;
+
+const layoutProps = {
+  title: `${title} | ${SITE.title}`,
+  subtitle: subtitle || undefined,
+  author,
+  description: description || getDescription(post.body || ""),
+  pubDatetime: date,
+  modDatetime: updated,
+  canonicalURL,
+  ogImage,
+  scrollSmooth: true,
+  toc,
+  math,
+  comments,
+};
+
+/* ========== Prev/Next Posts ========== */
+
+// const allPosts = posts.map(({ data: { title }, id }) => ({
+//   slug: id,
+//   title,
+// }));
+// const currentPostIndex = allPosts.findIndex(a => a.slug === post.id);
+// const prevPost = currentPostIndex !== 0 ? allPosts[currentPostIndex - 1] : null;
+// const nextPost =
+//   currentPostIndex !== allPosts.length ? allPosts[currentPostIndex + 1] : null;
+---
+
+<Layout {...layoutProps}>
+  <Header />
+  <BackButton />
+  <main
+    id="main-content"
+    class:list={[
+      "mx-auto w-full max-w-2xl px-4 pb-32 xl:max-w-3xl",
+      { "mt-8": !SITE.showBackButton },
+    ]}
+    data-pagefind-body
+  >
+    <!-- Title -->
+    <h1
+      transition:name={slugifyStr(title)}
+      class="mt-8 mb-4 inline-block text-3xl font-bold text-accent sm:text-4xl"
+    >
+      {title}
+    </h1>
+    {subtitle && <h2 class="text-xl">{subtitle}</h2>}
+
+    <div class="flex items-center gap-4 opacity-65">
+      <Datetime
+        pubDatetime={date}
+        modDatetime={updated}
+        {timezone}
+        size="lg"
+        class="my-2 ml-auto"
+      />
+    </div>
+
+    <article
+      id="article"
+      class="js-toc-content mx-auto prose mt-8 mb-12 max-w-2xl xl:max-w-3xl"
+    >
+      <Content />
+    </article>
+
+    <hr class="my-6" />
+
+    <!-- Previous/Next Post Buttons -->
+    <!-- <div data-pagefind-ignore class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+      {
+        prevPost && (
+          <a
+            href={`/notes/${prevPost.slug}`}
+            class="flex w-full gap-1 hover:opacity-75"
+          >
+            <IconChevronLeft class="inline-block flex-none" />
+            <div>
+              <div class="text-sm text-accent/85">{prevPost.title}</div>
+            </div>
+          </a>
+        )
+      }
+      {
+        nextPost && (
+          <a
+            href={`/notes/${nextPost.slug}`}
+            class="flex w-full justify-end gap-1 text-right hover:opacity-75 sm:col-start-2"
+          >
+            <div>
+              <div class="text-sm text-accent/85">{nextPost.title}</div>
+            </div>
+            <IconChevronRight class="inline-block flex-none" />
+          </a>
+        )
+      }
+    </div> -->
+
+    <!-- Comments -->
+    <!-- {comments && SITE.wontonCommentUrl && <WontonComment post={slug || ""} />} -->
+
+    <!-- <a href="/notes" class="hover:underline">All Notes</a> -->
+    <div class="mx-auto flex w-full max-w-3xl items-center justify-start px-2">
+      <LinkButton
+        id="all-notes-button"
+        href="/notes"
+        class="focus-outline m-2 flex hover:text-foreground/75"
+      >
+        <IconChevronLeft class="inline-block size-6" />
+        <span>All Notes</span>
+      </LinkButton>
+    </div>
+  </main>
+
+  <!-- Sidebar -->
+  <!-- <aside id="sidebar" class="sidebar">
+    {
+      toc && (
+        <>
+          <div id="toc-container" class="js-toc" />
+          <hr class="my-4 opacity-80" aria-hidden={true} />
+        </>
+      )
+    }
+    <div
+      class="flex flex-col items-start space-y-0 truncate overflow-hidden whitespace-nowrap opacity-80"
+    >
+      <button
+        id="back-to-top"
+        aria-label={_t.common.backToTop}
+        class="focus-outline py-1 whitespace-nowrap hover:opacity-75"
+      >
+        <IconChevronUp class="inline-block" />
+        <span class="text-sm">{_t.common.backToTop}</span>
+      </button>
+    </div>
+  </aside> -->
+
+  <!-- {
+    toc && (
+      <div class="lg:hidden">
+        {/* Mobile sidebar toggle button */}
+        <button
+          id="mobile-toc-toggle"
+          aria-label="Show table of contents"
+          aria-expanded="false"
+          class="fixed right-4 bottom-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-foreground/85 text-background shadow-lg"
+        >
+          <IconMenuSidebar class="h-6 w-6" />
+        </button>
+
+        {/* Background backdrop */}
+        <div
+          id="sidebar-backdrop"
+          class="pointer-events-none fixed inset-0 z-30 bg-foreground/30 opacity-0 transition-opacity duration-300 ease-in-out"
+        />
+      </div>
+    )
+  } -->
+
+  <Footer />
+</Layout>
+
+<script is:inline data-astro-rerun type="module">
+  // const mobileWidth = 1024; // lg breakpoint
+  // const isMobileDevice = () => window.innerWidth < mobileWidth;
+
+  /* Tocbot */
+  // (function () {
+  //   // If tocbot is not enabled, return early
+  //   if (!document.getElementById("toc-container")) {
+  //     return;
+  //   }
+
+  //   const scrollSmoothOffset = 0;
+
+  //   function initTocbot() {
+  //     window.tocbot.init({
+  //       tocSelector: ".js-toc",
+  //       contentSelector: ".js-toc-content",
+  //       headingSelector: "h2, h3, h4",
+  //       hasInnerContainers: true,
+  //       scrollSmoothDuration: 300,
+  //       scrollSmoothOffset,
+  //     });
+  //   }
+
+  //   if (window.tocbot) {
+  //     initTocbot();
+  //   } else {
+  //     const script = document.createElement("script");
+  //     script.src =
+  //       "https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.29.0/tocbot.min.js";
+  //     script.integrity =
+  //       "sha512-+9XzRSJjnUN2OI106uAbbVZ3f+z1ncIRZFOr56hEdaxbQeZ8i1+B7OVjdF8tG4YhgxM/rWP73K2SiG93x6UJoQ==";
+  //     script.crossOrigin = "anonymous";
+  //     script.referrerPolicy = "no-referrer";
+  //     script.onload = initTocbot;
+  //     document.body.appendChild(script);
+  //   }
+
+  //   // Handle mobile sidebar
+  //   const sidebar = document.getElementById("sidebar");
+  //   const mobileToggleBtn = document.getElementById("mobile-toc-toggle");
+  //   const backdrop = document.getElementById("sidebar-backdrop");
+
+  //   if (sidebar && mobileToggleBtn && backdrop) {
+  //     const handleOpenSidebar = () => {
+  //       sidebar.classList.add(
+  //         "transition-transform",
+  //         "duration-300",
+  //         "ease-in-out"
+  //       );
+  //       sidebar.classList.add("mobile-open");
+  //       backdrop.classList.add("opacity-100");
+  //       backdrop.classList.remove("pointer-events-none");
+  //       mobileToggleBtn.setAttribute("aria-expanded", "true");
+  //     };
+
+  //     const handleCloseSidebar = () => {
+  //       if (isMobileDevice()) {
+  //         sidebar.classList.add(
+  //           "transition-transform",
+  //           "duration-300",
+  //           "ease-in-out"
+  //         );
+  //         sidebar.classList.remove("mobile-open");
+  //         backdrop.classList.remove("opacity-100");
+  //         backdrop.classList.add("pointer-events-none");
+  //         mobileToggleBtn.setAttribute("aria-expanded", "false");
+
+  //         // Remove transition classes after the transition ends
+  //         sidebar.addEventListener(
+  //           "transitionend",
+  //           function removeTransition() {
+  //             sidebar.classList.remove(
+  //               "transition-transform",
+  //               "duration-300",
+  //               "ease-in-out"
+  //             );
+  //             sidebar.removeEventListener("transitionend", removeTransition);
+  //           }
+  //         );
+  //       }
+  //     };
+
+  //     const toggleSidebar = () => {
+  //       const isOpen = sidebar.classList.contains("mobile-open");
+  //       if (isOpen) {
+  //         handleCloseSidebar();
+  //       } else {
+  //         handleOpenSidebar();
+  //       }
+  //     };
+
+  //     // Toc click event
+  //     sidebar.addEventListener("click", e => {
+  //       const link = e.target.closest("a");
+  //       if (link && isMobileDevice()) {
+  //         e.preventDefault();
+
+  //         // Get the target element
+  //         const targetId = link.getAttribute("href");
+  //         const targetElement = document.querySelector(targetId);
+  //         if (targetElement) {
+  //           // Scroll to the target element
+  //           window.scrollTo({
+  //             top: targetElement.offsetTop + scrollSmoothOffset - 30,
+  //             behavior: "smooth",
+  //           });
+  //         }
+  //       }
+  //     });
+
+  //     mobileToggleBtn.addEventListener("click", toggleSidebar);
+  //     backdrop.addEventListener("click", handleCloseSidebar);
+
+  //     // Initial check
+  //     if (!isMobileDevice()) {
+  //       sidebar.classList.remove("translate-x-full");
+  //     }
+  //   }
+  // })();
+
+  // Back to Top button
+  // document.querySelector("#back-to-top")?.addEventListener("click", () => {
+  //   document.body.scrollTop = 0; // For Safari
+  //   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+
+  //   const sidebar = document.getElementById("sidebar");
+  //   const backdrop = document.getElementById("sidebar-backdrop");
+  //   if (isMobileDevice() && sidebar && backdrop) {
+  //     sidebar.classList.remove("mobile-open");
+  //     backdrop.classList.remove("opacity-100");
+  //     backdrop.classList.add("pointer-events-none");
+  //   }
+  // });
+
+  // Astro View Transitions
+  document.addEventListener("astro:after-swap", () => {
+    window.scrollTo({ left: 0, top: 0, behavior: "instant" });
+  });
+</script>
