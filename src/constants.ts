@@ -9,6 +9,7 @@ import IconPinterest from "@/assets/icons/IconPinterest.svg";
 import IconYouTube from "@/assets/icons/IconYouTube.svg";
 import IconRss from "@/assets/icons/IconRss.svg";
 import IconSunGlasses from "@/assets/icons/IconSunGlasses.svg";
+import IconNote from "@/assets/icons/IconNote.svg";
 // import { SITE } from "@/config";
 
 export const SOCIALS = [
@@ -17,6 +18,12 @@ export const SOCIALS = [
     href: "/rss.xml",
     linkTitle: `RSS Feed`,
     icon: IconRss,
+  },
+  {
+    name: "Note",
+    href: "/notes",
+    linkTitle: `Notes`,
+    icon: IconNote,
   },
   {
     name: "Awesome",
