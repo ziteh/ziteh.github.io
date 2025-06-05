@@ -74,21 +74,20 @@ const structuredData = {
     <!-- 'unsafe-inline' is dangerous! but it's difficult to avoid using it at the moment, see also Astro-Shield -->
     <!-- 'wasm-unsafe-eval' for Pagefind -->
     <meta
-      http-equiv="Content-Security-Policy"
+      http-equiv="Content-Security-Policy-Report-Only"
       content=`
   default-src 'self';
-  script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://cdnjs.cloudflare.com/ajax/libs/tocbot/ https://cdnjs.cloudflare.com/ajax/libs/KaTeX/;
+  script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://cdnjs.cloudflare.com/ajax/libs/tocbot/ https://cdnjs.cloudflare.com/ajax/libs/KaTeX/ https://zite-honmonoh.disqus.com/ https://disqus.com/;
   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://cdnjs.cloudflare.com/ajax/libs/tocbot/ https://cdnjs.cloudflare.com/ajax/libs/KaTeX/;
   font-src 'self' https://fonts.gstatic.com/ https://cdnjs.cloudflare.com/ajax/libs/KaTeX/;
   img-src 'self' data: https:;
   connect-src 'self' ${SITE.wontonCommentUrl};
   form-action 'self';
-  frame-src https://www.youtube.com/ https://www.youtube-nocookie.com/;
+  frame-src https://www.youtube.com/ https://www.youtube-nocookie.com/ https://disqus.com/;
   base-uri 'none';
   object-src 'none';
   manifest-src 'self';
   upgrade-insecure-requests;
-  block-all-mixed-content;
 `
     />
 

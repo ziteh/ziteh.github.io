@@ -19,8 +19,8 @@ import IconMenuSidebar from "@/assets/icons/IconMenuSidebar.svg";
 import IconTag from "@/assets/icons/IconTag.svg";
 import { SITE } from "@/config";
 import getDescription from "@/utils/getDescription";
-// import DisqusComment from "@/components/DisqusComment.astro";
-import WontonComment from "@/components/WontonComment.astro";
+import DisqusComment from "@/components/DisqusComment.astro";
+// import WontonComment from "@/components/WontonComment.astro";
 
 export interface Props {
   post: CollectionEntry<"blog">;
@@ -230,13 +230,20 @@ const nextPost =
 
     <!-- Comments -->
     {
-      comments && SITE.wontonCommentUrl && (
-        <WontonComment post={slug || ""} />
+      comments && (
+        // <WontonComment post={slug || ""} />
 
-        // <div class="comments my-8">
-        //   {/* <p class="mb-6 text-center text-sm">Additional info</p> */}
-        //   <DisqusComment slug={slug} title={title} />
-        // </div>
+        <div class="comments my-8">
+          <p class="mb-6 text-center text-sm">
+            這是 Disqus
+            留言板，你可能會看到它插入的廣告。留言可能不會立即顯示。若過了幾天仍未出現，請{" "}
+            <a href="mailto:honmonoh@gmail.com" class="text-accent">
+              Email
+            </a>{" "}
+            聯繫：）
+          </p>
+          <DisqusComment slug={slug} title={title} />
+        </div>
 
         // If you want to use Giscus instead, please refer to
         // https://astro-paper.pages.dev/posts/how-to-integrate-giscus-comments/
