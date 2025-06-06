@@ -231,7 +231,9 @@ const nextPost =
     <!-- Comments -->
     {
       comments && (
-        <WontonComment post={slug || ""} />
+        <div id="_comment">
+          <WontonComment post={slug || ""} />
+        </div>
 
         // <div class="comments my-8">
         //   <p class="mb-6 text-center text-sm">
