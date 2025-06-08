@@ -38,8 +38,8 @@ const u = $(Array.prototype.forEach),
   y = $(String.prototype.toLowerCase),
   v = $(String.prototype.toString),
   w = $(String.prototype.match),
-  b = $(String.prototype.replace),
-  A = $(String.prototype.indexOf),
+  A = $(String.prototype.replace),
+  b = $(String.prototype.indexOf),
   T = $(String.prototype.trim),
   _ = $(Object.prototype.hasOwnProperty),
   S = $(RegExp.prototype.test),
@@ -63,7 +63,7 @@ function $(e) {
     return m(e, t, i);
   };
 }
-function k(e, t) {
+function N(e, t) {
   let n = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : y;
   i && i(e, null);
   let a = t.length;
@@ -77,7 +77,7 @@ function k(e, t) {
   }
   return e;
 }
-function N(e) {
+function k(e) {
   for (let t = 0; t < e.length; t++) {
     _(e, t) || (e[t] = null);
   }
@@ -88,7 +88,7 @@ function M(e) {
   for (const [i, o] of n(e)) {
     _(e, i) &&
       (Array.isArray(o)
-        ? (t[i] = N(o))
+        ? (t[i] = k(o))
         : o && "object" == typeof o && o.constructor === Object
           ? (t[i] = M(o))
           : (t[i] = o));
@@ -786,7 +786,7 @@ var ae = (function e() {
         Node: d,
         Element: E,
         NodeFilter: $,
-        NamedNodeMap: N = t.NamedNodeMap || t.MozNamedAttrMap,
+        NamedNodeMap: k = t.NamedNodeMap || t.MozNamedAttrMap,
         HTMLFormElement: z,
         DOMParser: W,
         trustedTypes: j,
@@ -833,14 +833,14 @@ var ae = (function e() {
       DATA_ATTR: ye,
       ARIA_ATTR: ve,
       IS_SCRIPT_OR_DATA: we,
-      ATTR_WHITESPACE: be,
-      CUSTOM_ELEMENT: Ae,
+      ATTR_WHITESPACE: Ae,
+      CUSTOM_ELEMENT: be,
     } = Q;
     let { IS_ALLOWED_URI: Te } = Q,
       _e = null;
-    const Se = k({}, [...x, ...R, ...P, ...D, ...O]);
+    const Se = N({}, [...x, ...R, ...P, ...D, ...O]);
     let Ce = null;
-    const Ee = k({}, [...B, ...F, ...G, ...U]);
+    const Ee = N({}, [...B, ...F, ...G, ...U]);
     let $e = Object.seal(
         c(null, {
           tagNameCheck: {
@@ -863,8 +863,8 @@ var ae = (function e() {
           },
         })
       ),
-      ke = null,
       Ne = null,
+      ke = null,
       Me = !0,
       Le = !0,
       xe = !1,
@@ -883,7 +883,7 @@ var ae = (function e() {
       je = !1,
       qe = {},
       Ye = null;
-    const Xe = k({}, [
+    const Xe = N({}, [
       "annotation-xml",
       "audio",
       "colgroup",
@@ -911,9 +911,9 @@ var ae = (function e() {
       "xmp",
     ]);
     let Ve = null;
-    const Je = k({}, ["audio", "video", "img", "source", "image", "track"]);
+    const Je = N({}, ["audio", "video", "img", "source", "image", "track"]);
     let Ke = null;
-    const Ze = k({}, [
+    const Ze = N({}, [
         "alt",
         "class",
         "for",
@@ -935,10 +935,10 @@ var ae = (function e() {
     let nt = tt,
       it = !1,
       ot = null;
-    const at = k({}, [Qe, et, tt], v);
-    let rt = k({}, ["mi", "mo", "mn", "ms", "mtext"]),
-      st = k({}, ["annotation-xml"]);
-    const lt = k({}, ["title", "style", "font", "a", "script"]);
+    const at = N({}, [Qe, et, tt], v);
+    let rt = N({}, ["mi", "mo", "mn", "ms", "mtext"]),
+      st = N({}, ["annotation-xml"]);
+    const lt = N({}, ["title", "style", "font", "a", "script"]);
     let ct = null;
     const mt = ["application/xhtml+xml", "text/html"];
     let dt = null,
@@ -959,20 +959,20 @@ var ae = (function e() {
                 ? "text/html"
                 : e.PARSER_MEDIA_TYPE),
             (dt = "application/xhtml+xml" === ct ? v : y),
-            (_e = _(e, "ALLOWED_TAGS") ? k({}, e.ALLOWED_TAGS, dt) : Se),
-            (Ce = _(e, "ALLOWED_ATTR") ? k({}, e.ALLOWED_ATTR, dt) : Ee),
+            (_e = _(e, "ALLOWED_TAGS") ? N({}, e.ALLOWED_TAGS, dt) : Se),
+            (Ce = _(e, "ALLOWED_ATTR") ? N({}, e.ALLOWED_ATTR, dt) : Ee),
             (ot = _(e, "ALLOWED_NAMESPACES")
-              ? k({}, e.ALLOWED_NAMESPACES, v)
+              ? N({}, e.ALLOWED_NAMESPACES, v)
               : at),
             (Ke = _(e, "ADD_URI_SAFE_ATTR")
-              ? k(M(Ze), e.ADD_URI_SAFE_ATTR, dt)
+              ? N(M(Ze), e.ADD_URI_SAFE_ATTR, dt)
               : Ze),
             (Ve = _(e, "ADD_DATA_URI_TAGS")
-              ? k(M(Je), e.ADD_DATA_URI_TAGS, dt)
+              ? N(M(Je), e.ADD_DATA_URI_TAGS, dt)
               : Je),
-            (Ye = _(e, "FORBID_CONTENTS") ? k({}, e.FORBID_CONTENTS, dt) : Xe),
-            (ke = _(e, "FORBID_TAGS") ? k({}, e.FORBID_TAGS, dt) : M({})),
-            (Ne = _(e, "FORBID_ATTR") ? k({}, e.FORBID_ATTR, dt) : M({})),
+            (Ye = _(e, "FORBID_CONTENTS") ? N({}, e.FORBID_CONTENTS, dt) : Xe),
+            (Ne = _(e, "FORBID_TAGS") ? N({}, e.FORBID_TAGS, dt) : M({})),
+            (ke = _(e, "FORBID_ATTR") ? N({}, e.FORBID_ATTR, dt) : M({})),
             (qe = !!_(e, "USE_PROFILES") && e.USE_PROFILES),
             (Me = !1 !== e.ALLOW_ARIA_ATTR),
             (Le = !1 !== e.ALLOW_DATA_ATTR),
@@ -1010,20 +1010,20 @@ var ae = (function e() {
             Pe && (Le = !1),
             Fe && (Be = !0),
             qe &&
-              ((_e = k({}, O)),
+              ((_e = N({}, O)),
               (Ce = []),
-              !0 === qe.html && (k(_e, x), k(Ce, B)),
-              !0 === qe.svg && (k(_e, R), k(Ce, F), k(Ce, U)),
-              !0 === qe.svgFilters && (k(_e, P), k(Ce, F), k(Ce, U)),
-              !0 === qe.mathMl && (k(_e, D), k(Ce, G), k(Ce, U))),
-            e.ADD_TAGS && (_e === Se && (_e = M(_e)), k(_e, e.ADD_TAGS, dt)),
-            e.ADD_ATTR && (Ce === Ee && (Ce = M(Ce)), k(Ce, e.ADD_ATTR, dt)),
-            e.ADD_URI_SAFE_ATTR && k(Ke, e.ADD_URI_SAFE_ATTR, dt),
+              !0 === qe.html && (N(_e, x), N(Ce, B)),
+              !0 === qe.svg && (N(_e, R), N(Ce, F), N(Ce, U)),
+              !0 === qe.svgFilters && (N(_e, P), N(Ce, F), N(Ce, U)),
+              !0 === qe.mathMl && (N(_e, D), N(Ce, G), N(Ce, U))),
+            e.ADD_TAGS && (_e === Se && (_e = M(_e)), N(_e, e.ADD_TAGS, dt)),
+            e.ADD_ATTR && (Ce === Ee && (Ce = M(Ce)), N(Ce, e.ADD_ATTR, dt)),
+            e.ADD_URI_SAFE_ATTR && N(Ke, e.ADD_URI_SAFE_ATTR, dt),
             e.FORBID_CONTENTS &&
-              (Ye === Xe && (Ye = M(Ye)), k(Ye, e.FORBID_CONTENTS, dt)),
+              (Ye === Xe && (Ye = M(Ye)), N(Ye, e.FORBID_CONTENTS, dt)),
             We && (_e["#text"] = !0),
-            De && k(_e, ["html", "head", "body"]),
-            _e.table && (k(_e, ["tbody"]), delete ke.tbody),
+            De && N(_e, ["html", "head", "body"]),
+            _e.table && (N(_e, ["tbody"]), delete Ne.tbody),
             e.TRUSTED_TYPES_POLICY)
           ) {
             if ("function" != typeof e.TRUSTED_TYPES_POLICY.createHTML)
@@ -1062,8 +1062,8 @@ var ae = (function e() {
           s && s(e), (ut = e);
         }
       },
-      ft = k({}, [...R, ...P, ...I]),
-      yt = k({}, [...D, ...H]),
+      ft = N({}, [...R, ...P, ...I]),
+      yt = N({}, [...D, ...H]),
       vt = function (e) {
         g(i.removed, { element: e });
         try {
@@ -1088,7 +1088,7 @@ var ae = (function e() {
               t.setAttribute(e, "");
             } catch (e) {}
       },
-      bt = function (e) {
+      At = function (e) {
         let t = null,
           n = null;
         if (Oe) e = "<remove></remove>" + e;
@@ -1125,7 +1125,7 @@ var ae = (function e() {
               : a
         );
       },
-      At = function (e) {
+      bt = function (e) {
         return ce.call(
           e.ownerDocument || e,
           e,
@@ -1143,7 +1143,7 @@ var ae = (function e() {
           ("string" != typeof e.nodeName ||
             "string" != typeof e.textContent ||
             "function" != typeof e.removeChild ||
-            !(e.attributes instanceof N) ||
+            !(e.attributes instanceof k) ||
             "function" != typeof e.removeAttribute ||
             "function" != typeof e.setAttribute ||
             "string" != typeof e.namespaceURI ||
@@ -1174,8 +1174,8 @@ var ae = (function e() {
           return vt(e), !0;
         if (e.nodeType === ne) return vt(e), !0;
         if (Ie && e.nodeType === ie && S(/<[/\w]/g, e.data)) return vt(e), !0;
-        if (!_e[n] || ke[n]) {
-          if (!ke[n] && $t(n)) {
+        if (!_e[n] || Ne[n]) {
+          if (!Ne[n] && $t(n)) {
             if ($e.tagNameCheck instanceof RegExp && S($e.tagNameCheck, n))
               return !1;
             if ($e.tagNameCheck instanceof Function && $e.tagNameCheck(n))
@@ -1229,7 +1229,7 @@ var ae = (function e() {
                 e.nodeType === te &&
                 ((t = e.textContent),
                 u([he, ge, fe], e => {
-                  t = b(t, e, " ");
+                  t = A(t, e, " ");
                 }),
                 e.textContent !== t &&
                   (g(i.removed, { element: e.cloneNode() }),
@@ -1241,9 +1241,9 @@ var ae = (function e() {
       Et = function (e, t, n) {
         if (Ue && ("id" === t || "name" === t) && (n in o || n in pt))
           return !1;
-        if (Le && !Ne[t] && S(ye, t));
+        if (Le && !ke[t] && S(ye, t));
         else if (Me && S(ve, t));
-        else if (!Ce[t] || Ne[t]) {
+        else if (!Ce[t] || ke[t]) {
           if (
             !(
               ($t(e) &&
@@ -1262,22 +1262,22 @@ var ae = (function e() {
           )
             return !1;
         } else if (Ke[t]);
-        else if (S(Te, b(n, be, "")));
+        else if (S(Te, A(n, Ae, "")));
         else if (
           ("src" !== t && "xlink:href" !== t && "href" !== t) ||
           "script" === e ||
-          0 !== A(n, "data:") ||
+          0 !== b(n, "data:") ||
           !Ve[e]
         ) {
-          if (xe && !S(we, b(n, be, "")));
+          if (xe && !S(we, A(n, Ae, "")));
           else if (n) return !1;
         } else;
         return !0;
       },
       $t = function (e) {
-        return "annotation-xml" !== e && w(e, Ae);
+        return "annotation-xml" !== e && w(e, be);
       },
-      kt = function (e) {
+      Nt = function (e) {
         St(pe.beforeSanitizeAttributes, e, null);
         const { attributes: t } = e;
         if (!t || Tt(e)) return;
@@ -1321,7 +1321,7 @@ var ae = (function e() {
           }
           Pe &&
             u([he, ge, fe], e => {
-              d = b(d, e, " ");
+              d = A(d, e, " ");
             });
           const p = dt(e.nodeName);
           if (Et(p, c, d)) {
@@ -1350,13 +1350,13 @@ var ae = (function e() {
         }
         St(pe.afterSanitizeAttributes, e, null);
       },
-      Nt = function e(t) {
+      kt = function e(t) {
         let n = null;
-        const i = At(t);
+        const i = bt(t);
         for (St(pe.beforeSanitizeShadowDOM, t, null); (n = i.nextNode()); )
           St(pe.uponSanitizeShadowNode, n, null),
             Ct(n),
-            kt(n),
+            Nt(n),
             n.content instanceof l && e(n.content);
         St(pe.afterSanitizeShadowDOM, t, null);
       };
@@ -1382,13 +1382,13 @@ var ae = (function e() {
         ) {
           if (e.nodeName) {
             const t = dt(e.nodeName);
-            if (!_e[t] || ke[t])
+            if (!_e[t] || Ne[t])
               throw C(
                 "root node is forbidden and cannot be sanitized in-place"
               );
           }
         } else if (e instanceof d)
-          (n = bt("\x3c!----\x3e")),
+          (n = At("\x3c!----\x3e")),
             (o = n.ownerDocument.importNode(e, !0)),
             (o.nodeType === ee && "BODY" === o.nodeName) ||
             "HTML" === o.nodeName
@@ -1397,12 +1397,12 @@ var ae = (function e() {
         else {
           if (!Be && !Pe && !De && -1 === e.indexOf("<"))
             return re && Ge ? re.createHTML(e) : e;
-          if (((n = bt(e)), !n)) return Be ? null : Ge ? se : "";
+          if (((n = At(e)), !n)) return Be ? null : Ge ? se : "";
         }
         n && Oe && vt(n.firstChild);
-        const c = At(je ? e : n);
+        const c = bt(je ? e : n);
         for (; (r = c.nextNode()); )
-          Ct(r), kt(r), r.content instanceof l && Nt(r.content);
+          Ct(r), Nt(r), r.content instanceof l && kt(r.content);
         if (je) return e;
         if (Be) {
           if (Fe)
@@ -1424,7 +1424,7 @@ var ae = (function e() {
             (m = "<!DOCTYPE " + n.ownerDocument.doctype.name + ">\n" + m),
           Pe &&
             u([he, ge, fe], e => {
-              m = b(m, e, " ");
+              m = A(m, e, " ");
             }),
           re && Ge ? re.createHTML(m) : m
         );
@@ -1581,26 +1581,26 @@ function ce(e, t) {
   ye = document,
   ve = () => ye.createComment(""),
   we = e => null === e || ("object" != typeof e && "function" != typeof e),
-  be = Array.isArray,
-  Ae = "[ \t\n\f\r]",
+  Ae = Array.isArray,
+  be = "[ \t\n\f\r]",
   Te = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,
   _e = /-->/g,
   Se = />/g,
   Ce = RegExp(
-    `>|${Ae}(?:([^\\s"'>=/]+)(${Ae}*=${Ae}*(?:[^ \t\n\f\r"'\`<>=]|("|')|))|$)`,
+    `>|${be}(?:([^\\s"'>=/]+)(${be}*=${be}*(?:[^ \t\n\f\r"'\`<>=]|("|')|))|$)`,
     "g"
   ),
   Ee = /'/g,
   $e = /"/g,
-  ke = /^(?:script|style|textarea|title)$/i,
-  Ne = ((Pe = 1), (e, ...t) => ({ _$litType$: Pe, strings: e, values: t })),
+  Ne = /^(?:script|style|textarea|title)$/i,
+  ke = ((Pe = 1), (e, ...t) => ({ _$litType$: Pe, strings: e, values: t })),
   Me = Symbol.for("lit-noChange"),
   Le = Symbol.for("lit-nothing"),
   xe = new WeakMap(),
   Re = ye.createTreeWalker(ye, 129);
 var Pe;
 function Ie(e, t) {
-  if (!be(e) || !e.hasOwnProperty("raw"))
+  if (!Ae(e) || !e.hasOwnProperty("raw"))
     throw Error("invalid template strings array");
   return void 0 !== ue ? ue.createHTML(t) : t;
 }
@@ -1636,7 +1636,7 @@ class De {
                   : void 0 !== l[1]
                     ? (r = Se)
                     : void 0 !== l[2]
-                      ? (ke.test(l[2]) && (o = RegExp("</" + l[2], "g")),
+                      ? (Ne.test(l[2]) && (o = RegExp("</" + l[2], "g")),
                         (r = Ce))
                       : void 0 !== l[3] && (r = Ce)
                 : r === Ce
@@ -1704,7 +1704,7 @@ class De {
             } else
               e.startsWith(he) &&
                 (s.push({ type: 6, index: o }), i.removeAttribute(e));
-        if (ke.test(i.tagName)) {
+        if (Ne.test(i.tagName)) {
           const e = i.textContent.split(he),
             t = e.length - 1;
           if (t > 0) {
@@ -1833,7 +1833,7 @@ class Be {
           : void 0 !== e.nodeType
             ? this.T(e)
             : (e =>
-                  be(e) ||
+                  Ae(e) ||
                   "function" ==
                     typeof (null == e ? void 0 : e[Symbol.iterator]))(e)
               ? this.k(e)
@@ -1872,7 +1872,7 @@ class Be {
     return void 0 === t && xe.set(e.strings, (t = new De(e))), t;
   }
   k(e) {
-    be(this._$AH) || ((this._$AH = []), this._$AR());
+    Ae(this._$AH) || ((this._$AH = []), this._$AR());
     const t = this._$AH;
     let n,
       i = 0;
@@ -2117,6 +2117,7 @@ const Je = (
     pseudonymNotice:
       "Will be converted to a unique pseudonym, longer names help avoid impersonation",
     editingPseudonymNotice: "Cannot be changed when editing",
+    author: "Author",
   },
   Ze = {
     anonymous: "匿名",
@@ -2161,6 +2162,7 @@ const Je = (
     markdownCodeBlockExample: "```\n程式碼區塊\n```",
     pseudonymNotice: "名稱將被轉換為化名，使用較長的名稱有助於避免被冒充",
     editingPseudonymNotice: "編輯時無法更改",
+    author: "作者",
   },
   Qe = [
     "Brilliant",
@@ -2880,6 +2882,7 @@ const it = class e {
     t(this, "elementId"),
       t(this, "post"),
       t(this, "apiUrl"),
+      t(this, "authorName"),
       t(this, "apiService"),
       t(this, "i18n"),
       t(this, "commentMap", {}),
@@ -2919,6 +2922,7 @@ const it = class e {
       (this.elementId = e),
       (this.post = n.post || "/blog/my-post"),
       (this.apiUrl = n.apiUrl || "http://localhost:8787/"),
+      (this.authorName = n.authorName),
       (this.apiService = (e => {
         const t = new Map(),
           n = (e, n, i) => {
@@ -3075,6 +3079,8 @@ const it = class e {
     return `${n}/${i}/${o} ${String(a).padStart(2, "0")}:${r} ${s}`;
   }
   getDisplayName(e) {
+    if ((null == e ? void 0 : e.isAdmin) && this.authorName)
+      return ae.sanitize(this.authorName, { ALLOWED_TAGS: [] });
     const t = (null == e ? void 0 : e.pseudonym)
       ? ae.sanitize(e.pseudonym, { ALLOWED_TAGS: [] })
       : void 0;
@@ -3146,12 +3152,12 @@ const it = class e {
   createPreviewTemplate() {
     const e = Date.now(),
       t = this.previewPseudonym;
-    return Ne`
+    return ke`
       <div class="comment-box preview-mode">
         <div id="preview">
           ${
             this.previewText
-              ? Ne`
+              ? ke`
                 <div class="preview-comment">
                   <div class="comment-header">
                     <span class="comment-name">${t || this.i18n.t("anonymous")}</span>
@@ -3159,7 +3165,7 @@ const it = class e {
                     ${
                       this.currentReplyTo &&
                       this.commentMap[this.currentReplyTo]
-                        ? Ne`<span class="reply-to">
+                        ? ke`<span class="reply-to">
                           ${this.i18n.t("replyTo")}
                           <span>${this.getDisplayName(this.commentMap[this.currentReplyTo])}</span>
                         </span>`
@@ -3169,7 +3175,7 @@ const it = class e {
                   <div class="comment-content">${this.renderMarkdown(this.previewText)}</div>
                 </div>
               `
-              : Ne`<div class="empty-preview">${this.i18n.t("emptyPreview")}</div>`
+              : ke`<div class="empty-preview">${this.i18n.t("emptyPreview")}</div>`
           }
         </div>
         <div class="comment-footer wtc-flex wtc-gap-xs">
@@ -3235,7 +3241,7 @@ const it = class e {
       });
   }
   createCommentsTemplate() {
-    return Ne` <div id="comments">${this.processComments(this.comments)}</div> `;
+    return ke` <div id="comments">${this.processComments(this.comments)}</div> `;
   }
   setReplyTo(e) {
     this.editingComment &&
@@ -3288,7 +3294,7 @@ const it = class e {
   createCommentItemTemplate(e, t = !1, n = null, i = null, o = null) {
     const a = this.getCommentCssClasses(t),
       r = this.canEditComment(e.id);
-    return Ne`
+    return ke`
       <div class="${a.item}" ${t ? `data-id="${e.id}"` : ""}>
         ${this.createCommentHeader(e, a, n, r)}
         ${this.createCommentContent(e, a.content)}
@@ -3308,12 +3314,13 @@ const it = class e {
     };
   }
   createCommentHeader(e, t, n, i) {
-    const o = this.isMyComment(e);
-    return Ne`
+    const o = this.isMyComment(e),
+      a = e.isAdmin;
+    return ke`
       <div class="${t.header}">
         <span class="${t.name}" title="${e.id}">
           ${this.getDisplayName(e)}
-          ${o ? Ne`<span class="my-comment-badge">Me</span>` : ""}
+          ${a ? ke`<span class="author-badge">${this.i18n.t("author")}</span>` : o ? ke`<span class="my-comment-badge">Me</span>` : ""}
         </span>
         <span
           class="${t.time}"
@@ -3328,7 +3335,7 @@ const it = class e {
   }
   createReplyToIndicator(e, t) {
     return e
-      ? Ne`<span class="reply-to">
+      ? ke`<span class="reply-to">
           ${this.i18n.t("replyTo")}
           <span title="${t ?? ""}">${e}</span>
         </span>`
@@ -3336,7 +3343,7 @@ const it = class e {
   }
   createCommentControls(e, t) {
     return e
-      ? Ne`<span class="comment-controls wtc-flex wtc-gap-xs">
+      ? ke`<span class="comment-controls wtc-flex wtc-gap-xs">
           <button
             class="edit-button wtc-clickable wtc-transition wtc-transparent-bg wtc-reset-button"
             @click=${() => this.handleEdit(t)}
@@ -3353,10 +3360,10 @@ const it = class e {
       : "";
   }
   createCommentContent(e, t) {
-    return Ne`<div class="${t}">${this.renderMarkdown(e.msg)}</div>`;
+    return ke`<div class="${t}">${this.renderMarkdown(e.msg)}</div>`;
   }
   createCommentActions(e) {
-    return Ne`
+    return ke`
       <button
         class="reply-button wtc-clickable wtc-transition wtc-transparent-bg wtc-reset-button"
         @click=${() => this.setReplyTo(e.id)}
@@ -3367,7 +3374,7 @@ const it = class e {
   }
   createRepliesSection(e, t, n) {
     return e
-      ? Ne`<div class="replies">
+      ? ke`<div class="replies">
       ${
         t
           ? t.map(e => {
@@ -3590,10 +3597,10 @@ const it = class e {
     qe(this.createMarkdownHelpTemplate(), e), e.classList.add("active");
   }
   hideHelpModal(e) {
-    qe(Ne``, e), e.classList.remove("active");
+    qe(ke``, e), e.classList.remove("active");
   }
   createMarkdownHelpTemplate() {
-    return Ne`
+    return ke`
       <div class="markdown-help-container wtc-flex">
         <div
           class="markdown-help-backdrop wtc-clickable"
@@ -3645,14 +3652,14 @@ ${this.i18n.t("markdownCodeBlockExample")}</pre
     `;
   }
   createFormTemplate() {
-    return Ne`
+    return ke`
       ${this.createFormContent()} ${this.createStatusIndicators()}
       <div id="markdown-help-modal"></div>
       <div id="admin-login-modal"></div>
     `;
   }
   createFormContent() {
-    return Ne`
+    return ke`
       <div class="comment-box">
         <div id="form-content" class="${"write" === this.activeTab ? "active" : ""}">
           <form
@@ -3676,7 +3683,7 @@ ${this.i18n.t("markdownCodeBlockExample")}</pre
     `;
   }
   createTextareaSection() {
-    return Ne`
+    return ke`
       <div class="comment-input">
         <textarea
           name="message"
@@ -3692,7 +3699,7 @@ ${this.i18n.t("markdownCodeBlockExample")}</pre
     `;
   }
   createFormFooter() {
-    return Ne`
+    return ke`
       <div class="comment-footer wtc-flex wtc-flex-wrap wtc-gap-xs">
         <div class="name-input-container">
           <input
@@ -3713,7 +3720,7 @@ ${this.i18n.t("markdownCodeBlockExample")}</pre
     `;
   }
   createFormButtons() {
-    return Ne`
+    return ke`
       <button
         type="button"
         class="help-btn wtc-clickable wtc-reset-button"
@@ -3735,7 +3742,7 @@ ${this.i18n.t("markdownCodeBlockExample")}</pre
     `;
   }
   createAdminButton() {
-    return Ne`
+    return ke`
       <button
         type="button"
         class="admin-btn wtc-clickable wtc-reset-button"
@@ -3753,12 +3760,12 @@ ${this.i18n.t("markdownCodeBlockExample")}</pre
     (this.showAdminLogin = !1), this.renderAdminLogin();
   }
   renderAdminLogin() {
-    const e = this.showAdminLogin ? this.createAdminLoginTemplate() : Ne``,
+    const e = this.showAdminLogin ? this.createAdminLoginTemplate() : ke``,
       t = document.getElementById("admin-login-modal");
     t && qe(e, t);
   }
   createAdminLoginTemplate() {
-    return Ne`
+    return ke`
       <div class="admin-modal-backdrop wtc-clickable" @click=${() => this.hideAdminModal()}>
         <div class="admin-modal-content" @click=${e => e.stopPropagation()}>
           <button
@@ -3815,11 +3822,11 @@ ${this.i18n.t("markdownCodeBlockExample")}</pre
   createStatusIndicators() {
     const e = this.createReplyIndicator(),
       t = this.createEditIndicator();
-    return e || t ? Ne`${e}${t}` : "";
+    return e || t ? ke`${e}${t}` : "";
   }
   createReplyIndicator() {
     return this.currentReplyTo && this.commentMap[this.currentReplyTo]
-      ? Ne`<div class="info wtc-flex wtc-gap-md">
+      ? ke`<div class="info wtc-flex wtc-gap-md">
           ${this.i18n.t("replyingTo")}
           ${this.getDisplayName(this.commentMap[this.currentReplyTo])}<button
             type="button"
@@ -3833,7 +3840,7 @@ ${this.i18n.t("markdownCodeBlockExample")}</pre
   }
   createEditIndicator() {
     return this.editingComment
-      ? Ne`<div class="info wtc-flex wtc-gap-md">
+      ? ke`<div class="info wtc-flex wtc-gap-md">
           ${this.i18n.t("editing")} ${this.editingComment.id}<button
             type="button"
             class="cancel-link wtc-clickable wtc-transition wtc-reset-button"
@@ -3845,7 +3852,7 @@ ${this.i18n.t("markdownCodeBlockExample")}</pre
       : "";
   }
   async renderApp() {
-    const e = Ne`
+    const e = ke`
       <div class="wtc-container">
         <div class="comment-box-container">
           <div id="comment-form-container" class="form-content"></div>

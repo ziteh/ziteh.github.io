@@ -55,7 +55,12 @@ const { post } = Astro.props;
         if (!post || !apiUrl) return;
 
         const { initWontonComment } = await import("/wonton-comment.es.js");
-        initWontonComment("wtc-app", { post, apiUrl, language: "zh-Hant" });
+        initWontonComment("wtc-app", {
+          post,
+          apiUrl,
+          language: "zh-Hant",
+          authorName: "ZiTe",
+        });
       } catch (err) {
         // eslint-disable-next-line no-console
         console.warn("Failed to initialize comment app:", err);
