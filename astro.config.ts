@@ -10,6 +10,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import rehypeRewrite, { type RehypeRewriteOptions } from "rehype-rewrite";
 import rehypeExternalLinks from "rehype-external-links";
+import rehypeImgSizeCache from "@ziteh/rehype-img-size-cache";
 import rehypeWrapAll from "rehype-wrap-all";
 import expressiveCode, {
   ExpressiveCodeTheme,
@@ -128,6 +129,7 @@ export default defineConfig({
     rehypePlugins: [
       rehypeKatex,
       rehypeFigure,
+      rehypeImgSizeCache,
       rehypeSlug,
       [rehypeAutolinkHeadings, { behavior: "append" }],
       [rehypeExternalLinks, { target: "_blank", rel: "noopener noreferrer" }],
