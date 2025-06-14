@@ -15,7 +15,7 @@ draft: false
 # # aliases: []
 ---
 
-到[上一篇文章](/posts/diyqmkkeyboard-3)為止我們已經完成了鍵盤的韌體部分，接下來要進行硬體的部分。本篇要介紹的是[製作步驟](/posts/diyqmkkeyboard-0#製作步驟)的第 5 步——繪製 PCB。
+到[上一篇文章](/posts/diyqmkkeyboard-build-flash-qmk)為止我們已經完成了鍵盤的韌體部分，接下來要進行硬體的部分。本篇要介紹的是[製作步驟](/posts/diyqmkkeyboard-0#製作步驟)的第 5 步——繪製 PCB。
 
 我將示範以 KiCad 7 進行機械式鍵盤的 PCB Layout，包含基本的 KiCad 使用教學。要畫 PCB 可能多少需要一些基本電學或基礎電路學知識，但是如果你真的沒學過的話也沒關係，仔細照著本文應該也不會出錯。
 
