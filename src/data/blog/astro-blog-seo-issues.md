@@ -1,25 +1,15 @@
-***
-
+---
 title: "本 Blog 遇到的 SEO 問題"
-
 ## subtitle: ""
-
 ## description: ""
-
-tags: \["心得"]
-
+tags: ["心得"]
 ## categories: \[""]
-
-date: 2025-01-04 15:30:00
-
+date: 2025-01-04T15:30:00+08:00
 ## updated: 2024-MM-DD HH:MM:00
-
 comments: true
 toc: true
-
 ## RESERVE
-
-***
+---
 
 本 Blog 大概在 2024 年 10 月初的時候迎來一次重大變更，包含購買了網域 `ziteh.dev`，將網頁框架改成 [Astro](https://astro.build/)，並且也將 Theme 改成我從 [Astro Paper](https://github.com/satnaing/astro-paper) 調整而來的 [Astro Paper-S](https://astro-paper-s.ziteh.dev/)。託管服務也從 GitHub Pages 改成 [Cloudflare Pages](https://pages.cloudflare.com/)。
 
