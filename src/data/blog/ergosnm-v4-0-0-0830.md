@@ -9,7 +9,7 @@ categories: []
 date: 2025-08-30T017:00:14+08:00
 comments: true
 toc: true
-draft: true
+draft: false
 ---
 
 ErgoSNM 是一把我正在開發的整合軌跡球的無線分離式鍵盤。這篇文章會說明目前的開發進度。
