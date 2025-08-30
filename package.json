@@ -15,7 +15,7 @@
     "spell": "pnpm dlx cspell --config cspell.yaml .",
     "md:check": "pnpm dlx markdownlint-cli2 ./src/data/blog/**",
     "md:fix": "pnpm dlx markdownlint-cli2 --fix ./src/data/blog/**",
-    "prepare": "husky"
+    "prepare": "husky && chmod +x .husky/pre-commit"
   },
   "lint-staged": {
     "**/*.md": "markdownlint-cli2 --fix",
