@@ -72,7 +72,7 @@ PCB 保持支援 MX 和 Choc V2 的 hot swap 支援，加上 reversible 的設�
 
 ## 外殼
 
-！[外殼](https://bucket.ziteh.dev/blog/ergosnm-4-0-0-0830/case1.webp)
+![外殼](https://bucket.ziteh.dev/blog/ergosnm-4-0-0-0830/case1.webp)
 
 外殼是用 SLA 3D 列印的，也是我一直以來最不擅長的部分。而且為了貫徹開源硬體 OSHW 的精神，我這次將 CAD 軟體也改成了開源的 FreeCAD，不少小東西要新學。
 
