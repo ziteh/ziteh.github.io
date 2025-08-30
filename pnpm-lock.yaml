@@ -20,6 +20,9 @@ importers:
       '@microflash/rehype-figure':
         specifier: ^2.1.4
         version: 2.1.4
+      '@minify-html/node':
+        specifier: ^0.16.4
+        version: 0.16.4
       '@resvg/resvg-js':
         specifier: ^2.6.2
         version: 2.6.2
@@ -713,13 +716,33 @@ packages:
   '@microflash/rehype-figure@2.1.4':
     resolution: {integrity: sha512-57mUABQ2gEGoqZda+P2TawIpneQ37+dKglspet9o4otlw4PSLodvNtikhtFGLjRf7ODsy3IVRcqL823eKp6Czw==}
 
+  '@minify-html/node-darwin-arm64@0.16.4':
+    resolution: {integrity: sha512-9H8hcywDb8zo2jEJfaIAibgsKjMqE+XF7SyqTtJ5H8lVXHxffOkawH4TQtphf9V/x7zXeb/nByAvHe1orJ/RHA==}
+    cpu: [arm64]
+    os: [darwin]
+
   '@minify-html/node-darwin-x64@0.15.0':
     resolution: {integrity: sha512-D9M9UDku/8I5VEMS0gTLFFQK1DFXK8io+QZvR5cbya4u8NmdDQix/t3EyCR4Wgv/Gfk86gwIS+zfMSvuKcpb5A==}
     cpu: [x64]
     os: [darwin]
 
+  '@minify-html/node-darwin-x64@0.16.4':
+    resolution: {integrity: sha512-P0Krf5nwXbccMrC7ragKAIVOENHFoVRQi+v/8k5pmfjrNlxgXGVILacG0FbUZXsH2Z2XaIo39HxuMf70L6wQlA==}
+    cpu: [x64]
+    os: [darwin]
+
+  '@minify-html/node-linux-arm64@0.16.4':
+    resolution: {integrity: sha512-GDRExKf7AmyAdBTdhMkMyzFhJu5VeyJTu0OnNH2ekp69JrhQTrrrt9UYqnjen+7qLIaZB/R8urDRAYNk0HZi5w==}
+    cpu: [arm64]
+    os: [linux]
+
   '@minify-html/node-linux-x64@0.15.0':
     resolution: {integrity: sha512-cO893EV6O9ZHUFX+2Yge546OCo/eCiatjzJDmUmrPP56fQ7pzTRquHs4ko3t8Rg6tMKG7RT49mBuF09JWPnrgg==}
+    cpu: [x64]
+    os: [linux]
+
+  '@minify-html/node-linux-x64@0.16.4':
+    resolution: {integrity: sha512-MS/gF1gxJoeHqEGcb1xoUIRv6gVin4cGJszgHPYSikzkK8Yg0p6rVOZdDAE4AAnp/NW0DYNq7fwYgw3igmppFw==}
     cpu: [x64]
     os: [linux]
 
@@ -728,8 +751,18 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@minify-html/node-win32-x64@0.16.4':
+    resolution: {integrity: sha512-SCY7hzIqG1RclU0QzU2MlGtPOujPu6dvaPYqDvhAHpkvRXtX0hnyOrrfqf7GcBdDbASxV8LDlBWpY46JO2cjAA==}
+    cpu: [x64]
+    os: [win32]
+
   '@minify-html/node@0.15.0':
     resolution: {integrity: sha512-ANzt6ZBiqtwrepVXRfa0Qn/woCkINFBjQEKiXyBmg7+51mIFQHVAUbAm6UHRrT0L3xoPG0BX0/XI3NqtjK8Vyg==}
+    engines: {node: '>= 8.6.0'}
+    hasBin: true
+
+  '@minify-html/node@0.16.4':
+    resolution: {integrity: sha512-ykQgl6xcQQDE1shUExeObPSNwAf00DVUt/GrxdjiqFNCVGu7DXK9nuH29sNTyKKYnJJLZAi6OEib2bDfxW3udg==}
     engines: {node: '>= 8.6.0'}
     hasBin: true
 
@@ -4178,13 +4211,28 @@ snapshots:
       unist-util-remove: 4.0.0
       unist-util-visit: 5.0.0
 
+  '@minify-html/node-darwin-arm64@0.16.4':
+    optional: true
+
   '@minify-html/node-darwin-x64@0.15.0':
+    optional: true
+
+  '@minify-html/node-darwin-x64@0.16.4':
+    optional: true
+
+  '@minify-html/node-linux-arm64@0.16.4':
     optional: true
 
   '@minify-html/node-linux-x64@0.15.0':
     optional: true
 
+  '@minify-html/node-linux-x64@0.16.4':
+    optional: true
+
   '@minify-html/node-win32-x64@0.15.0':
+    optional: true
+
+  '@minify-html/node-win32-x64@0.16.4':
     optional: true
 
   '@minify-html/node@0.15.0':
@@ -4192,6 +4240,14 @@ snapshots:
       '@minify-html/node-darwin-x64': 0.15.0
       '@minify-html/node-linux-x64': 0.15.0
       '@minify-html/node-win32-x64': 0.15.0
+
+  '@minify-html/node@0.16.4':
+    optionalDependencies:
+      '@minify-html/node-darwin-arm64': 0.16.4
+      '@minify-html/node-darwin-x64': 0.16.4
+      '@minify-html/node-linux-arm64': 0.16.4
+      '@minify-html/node-linux-x64': 0.16.4
+      '@minify-html/node-win32-x64': 0.16.4
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:

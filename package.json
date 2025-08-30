@@ -26,6 +26,7 @@
     "@astrojs/sitemap": "^3.4.0",
     "@expressive-code/plugin-line-numbers": "^0.41.2",
     "@microflash/rehype-figure": "^2.1.4",
+    "@minify-html/node": "^0.16.4",
     "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/vite": "^4.1.8",
     "@ziteh/rehype-img-size-cache": "^0.1.2",
