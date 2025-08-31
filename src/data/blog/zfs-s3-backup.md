@@ -92,7 +92,7 @@ S3 有很多種不同的方案，適合不同的情景。對我的離機備份�
 
 3. 用 BLAKE3 計算每個分割檔案的 Hash 並儲存
 4. 為每個分割檔案進行壓縮（例如 Zstd），壓縮完成後要進行解壓縮測試，以 Hash 驗證。雖然在 `zfs send` 時可以選擇以原本壓縮的形式匯出，但是我覺得作為封存檔案可能還是再以較高的壓縮率壓縮一次更好
-5. 各個壓縮完的檔案使用 age 進行加密，不過就不進行解密測試了。會選擇 age 是因為這個是一個使用起來很簡單的非對稱加密，在 TrueNAS 上我不是很清楚如何安全的管理密鑰（網路上查到的功能都是企業版的），所以我想說使用非對稱加密的話就只需要儲存公鑰，不用煩惱私鑰的儲存，但也因此無法進行解密測試了。不過使用 age 加密備份檔案還有一些需要注意的事情，例如 [Why not use the "age" tool for encrypted backups? - Information Security Stack Exchange](https://security.stackexchange.com/questions/281767/why-not-use-the-age-tool-for-encrypted-backups) 這篇文章提到的因為缺乏身份驗證所帶來的 silent replacement 攻擊。但是我覺得這個攻擊對我來說比較還好，因為它要求攻擊者可以替換遠端上的檔案，但是如果我的 S3 被入侵的話那才是更嚴重的問題，而且我的 S3 會設定相應週期的物件鎖，確保這份備份檔案有效期間無法修改。
+5. 各個壓縮完的檔案使用 age 進行加密，不過就不進行解密測試了。會選擇 age 是因為這個是一個使用起來很簡單的非對稱加密，在 TrueNAS 上我不是很清楚如何安全的管理密鑰（網路上查到的功能都是企業版的），所以我想說使用非對稱加密的話就只需要儲存公鑰，不用煩惱私鑰的儲存，但也因此無法進行解密測試了。不過使用 age 加密備份檔案還有一些需要注意的事情，例如 [Why not use the "age" tool for encrypted backups?](https://security.stackexchange.com/questions/281767/why-not-use-the-age-tool-for-encrypted-backups) 這篇文章提到的因為缺乏身份驗證所帶來的 silent replacement 攻擊。但是我覺得這個攻擊對我來說比較還好，因為它要求攻擊者可以替換遠端上的檔案，但是如果我的 S3 被入侵的話那才是更嚴重的問題，而且我的 S3 會設定相應週期的物件鎖，確保這份備份檔案有效期間無法修改。
 6. 加密後的檔案 計算 SHA-256，設定好指定的 mataddata 和 tag 後上傳 AWS S3
 
 上傳到 S3 的物件至少需要這些資訊：
@@ -126,3 +126,5 @@ S3 有很多種不同的方案，適合不同的情景。對我的離機備份�
 這個專案還沒完成，可能也不會真的做完，其實程式方面沒有什麼技術難度，就是把各個工具流程串在一起，我花比較多的時間還是在規劃整個備份邏輯和流程，中間改來改去的。[ziteh/zfs-remote-backup](https://github.com/ziteh/zfs-remote-backup)
 
 其實 GitHub 上面已經有一些類似的工具可以用，像是 [someone1/zfsbackup-go](https://github.com/someone1/zfsbackup-go)，說不定我只會就直接用這個了。
+
+另外，在使用 AWS 前還有很多細節要注意，例如 [How an empty S3 bucket can make your AWS bill explode](https://medium.com/@maciej.pocwierz/how-an-empty-s3-bucket-can-make-your-aws-bill-explode-934a383cb8b1) 這篇文章建議的 Bucket 名稱要夠長且摻入亂碼，以及操作時要明確指定區域。
