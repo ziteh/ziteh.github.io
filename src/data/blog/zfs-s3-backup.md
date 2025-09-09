@@ -5,10 +5,10 @@ tags:
     - 程式
     - Rust
 categories: []
-date: 2025-08-31T09:50:00+08:00
+date: 2025-09-09T08:40:00+08:00
 comments: true
 toc: true
-draft: true
+draft: false
 ---
 
 為了將 TrueNAS 上的檔案有效的備份到 AWS S3 Glacier Deep Archive 上，我構思了一個基本的備份工具概念。雖然目前這個工具沒有實現，但我可以記錄一些想法。
