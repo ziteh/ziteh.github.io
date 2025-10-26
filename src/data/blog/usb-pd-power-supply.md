@@ -61,7 +61,7 @@ MCU 如果有 USB 可以方便從電腦控制：
 - STM32C071G8U6：Cortex-M0+ 48MHz，QFN-28 的小型 MCU，基本外圍電路很簡單只需要 VDD 加兩個 MLCC 去耦電容，不用外接振盪器也可以用 USB 2.0 FS 12Mbps
 - STM32F030C8T6：Cortex-M0 48MHz，LQFP-48。沒有 USB，但是很便宜。
 
-但是因為考慮 PD 供電和電腦之間可能不共地，所有需要做隔離保護。最直接的方式應該是直接對要接電腦的 USB 做隔離，但是就是是 USB 2.0 12mbps 的隔離 IC 也很貴，一個更便宜的方案是 USB 進來後先透過 USB-to-TTL 轉成 UART，再透過 UART 隔離 IC 接到 MCU，UART 隔離 IC 的價格比 USB 隔離 IC 便宜很多。如果是這樣的話那 MCU 就不用 USB PHY 了。如果需要單一通道的訊號隔離也可以透過光耦完成。
+但是因為考慮 PD 供電和電腦之間可能不共地，所有需要做隔離保護。最直接的方式應該是直接對要接電腦的 USB 做隔離，但是就算是 USB 2.0 12Mbps 的隔離 IC 也很貴，一個更便宜的方案是 USB 進來後先透過 USB-to-TTL 轉成 UART，再透過 UART 隔離 IC 接到 MCU，UART 隔離 IC 的價格比 USB 隔離 IC 便宜很多。如果是這樣的話那 MCU 就不用 USB PHY 了。如果需要單一通道的訊號隔離也可以透過光耦完成。
 
 ### 方案 A
 
