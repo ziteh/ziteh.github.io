@@ -105,7 +105,12 @@ const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
     />
 
     <!-- Font -->
-    <Font cssVariable="--font-body" preload />
+    <style is:inline>
+      :root {
+        --font-body: 'system-ui, -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", sans-serif';
+      }
+    </style>
+    <!-- <Font cssVariable="--font-body" preload /> -->
     <Font cssVariable="--font-mono" />
     {math && <KatexStyles />}
 

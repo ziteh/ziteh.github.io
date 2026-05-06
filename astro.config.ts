@@ -125,15 +125,15 @@ export default defineConfig({
   ],
   // https://docs.astro.build/en/guides/fonts/
   fonts: [
-    {
-      cssVariable: "--font-body",
-      name: "Noto Sans",
-      weights: [400, 700],
-      styles: ["normal"],
-      fallbacks: ["sans-serif"],
-      formats: ["woff2"],
-      provider: fontProviders.fontsource(),
-    },
+    // {
+    //   cssVariable: "--font-body",
+    //   name: "Noto Sans",
+    //   weights: [400, 700],
+    //   styles: ["normal"],
+    //   fallbacks: ["sans-serif"],
+    //   formats: ["woff2"],
+    //   provider: fontProviders.fontsource(),
+    // },
     {
       cssVariable: "--font-mono",
       name: "Fira Mono",
