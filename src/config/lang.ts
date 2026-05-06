@@ -118,10 +118,10 @@ const myLang: typeof en = (() => {
       },
     },
     categories: {
-      title: "分類",
-      desc: "所有分類",
+      title: "系列",
+      desc: "所有系列",
       pageTitle(name: string): string {
-        return `分類：${name}`;
+        return `系列：${name}`;
       },
     },
     search: {
@@ -188,4 +188,4 @@ const myLang: typeof en = (() => {
 })();
 
 // Select your language pack
-export const _t: typeof en = en;
+export const _t: typeof en = myLang;

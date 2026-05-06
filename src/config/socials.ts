@@ -16,7 +16,7 @@ export const SOCIALS = [
   },
   {
     name: "GitHub",
-    href: "https://github.com/ziteh/astro-theme-jing",
+    href: "https://github.com/ziteh",
     title: `GitHub - ${SITE.title}`,
     icon: IconGitHub,
   },
