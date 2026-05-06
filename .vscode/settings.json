@@ -1,0 +1,12 @@
+{
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "search.exclude": {
+    "pnpm-lock.yaml": true,
+    "**/*.svg": false
+  },
+  "json.schemaDownload.trustedDomains": {
+    "https://biomejs.dev/schemas/": true
+  }
+}

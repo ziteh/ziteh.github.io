@@ -1,0 +1,93 @@
+---
+import SearchComponent from "astro-pagefind/components/Search";
+import { _t } from "@/config";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout title={_t.search.title} description={_t.search.desc}>
+  <main id="main-content">
+    <h1 class="sr-only">{_t.search.title}</h1>
+    <div id="search-skeleton" aria-hidden="true">
+      <div class="skeleton-input"></div>
+    </div>
+    <SearchComponent
+      id="search"
+      className="pagefind-ui"
+      uiOptions={{ showImages: false, translations: { placeholder: _t.search.title } }}
+    />
+  </main>
+</BaseLayout>
+
+<style is:global>
+  input {
+    font-size: 16px;
+  }
+  .pagefind-ui {
+    --pagefind-ui-primary: var(--color-900);
+    --pagefind-ui-text: var(--color-900);
+    --pagefind-ui-background: var(--color-100);
+    --pagefind-ui-border: var(--color-500);
+    --pagefind-ui-tag: var(--color-300);
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -400px 0;
+    }
+    100% {
+      background-position: 400px 0;
+    }
+  }
+
+  #search-skeleton {
+    padding: 0.75rem 0;
+  }
+
+  #search {
+    visibility: hidden;
+  }
+
+  .skeleton-input {
+    height: 3rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-500);
+    background: var(--color-300);
+    background-image: linear-gradient(
+      90deg,
+      var(--color-300) 25%,
+      var(--color-500) 50%,
+      var(--color-300) 75%
+    );
+    background-size: 800px 100%;
+    animation: shimmer 1.4s infinite linear;
+  }
+</style>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const skeleton = document.getElementById("search-skeleton");
+    const searchEl = document.getElementById("search");
+
+    function hideSkeleton() {
+      if (skeleton) skeleton.style.display = "none";
+      if (searchEl) searchEl.style.visibility = "visible";
+    }
+
+    const input = searchEl?.querySelector<HTMLInputElement>(".pagefind-ui__search-input");
+    if (input) {
+      hideSkeleton();
+      input.setAttribute("aria-label", input.title || "Search");
+    } else {
+      const observer = new MutationObserver(() => {
+        const el = searchEl?.querySelector<HTMLInputElement>(".pagefind-ui__search-input");
+        if (el) {
+          observer.disconnect();
+          hideSkeleton();
+          el.setAttribute("aria-label", el.title || "Search");
+        }
+      });
+      if (searchEl) observer.observe(searchEl, { childList: true, subtree: true });
+      setTimeout(hideSkeleton, 3000);
+    }
+  });
+</script>

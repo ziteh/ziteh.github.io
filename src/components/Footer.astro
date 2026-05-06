@@ -1,0 +1,54 @@
+---
+import { _t, SITE, SOCIALS } from "@/config";
+
+const today = new Date();
+---
+
+<footer>
+  <p>
+    &copy;&nbsp;{today.getFullYear()}&nbsp;<a href="/about">{SITE.author}</a>. All rights reserved.
+  </p>
+  <div class="social-links">
+    {
+      SOCIALS.map((social) => (
+        <a href={social.href} title={social.title} target="_blank" rel="noopener noreferrer">
+          <span class="sr-only">{social.title}</span>
+          <social.icon />
+        </a>
+      ))
+    }
+  </div>
+</footer>
+
+<style>
+  footer {
+    padding: 2em 1em 4em 1em;
+    text-align: center;
+    color: var(--color-700);
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-light);
+  }
+  footer p {
+    margin: 0;
+  }
+  footer a {
+    color: var(--color-700);
+    text-decoration: none;
+  }
+  footer a:hover {
+    color: var(--color-900);
+  }
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin-top: 1em;
+  }
+  .social-links a {
+    text-decoration: none;
+    color: var(--color-700);
+  }
+  .social-links a:hover {
+    color: var(--color-900);
+  }
+</style>
