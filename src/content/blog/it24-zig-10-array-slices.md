@@ -2,7 +2,7 @@
 title: "[Day-10]Zig：陣列（Array）和切片（Slices）"
 # subtitle: ""
 # description: ""
-tags: ["教學", "程式", "Zig"]
+tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
 date: 2024-09-02T07:20:00
 # updated: 2024-MM-DDTHH:MM:00
@@ -99,7 +99,7 @@ outside.zig:5:21: error: index 8 outside array of length 5
 
 切片是對於一個陣列的指標和長度資訊。它是一個陣列的一部分，由於是指標，不實際儲存陣列數值，適合傳遞。切片也可以透過 `slice.len` 取代長度。
 
-它的語法是 `array[n..m]`，其中 `n` 是開始索引，`m` 是結束索引（不包含）。所以 `array[0..3]` 就是取第 0~2。如果要取到最後的話，`m` 可以省略，也就是 `array[n..]`。
+它的語法是 `array[n..m]`，其中 `n` 是開始索引，`m` 是結束索引（不包含）。所以  `array[0..3]` 就是取第 0~2。如果要取到最後的話，`m` 可以省略，也就是 `array[n..]`。
 
 ```zig
 const std = @import("std");

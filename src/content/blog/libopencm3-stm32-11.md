@@ -1,5 +1,5 @@
 ---
-title: "STM32 Timer 計時器"
+title: 'STM32 Timer 計時器'
 author: ZiTe
 tags:
   - STM32
@@ -34,12 +34,12 @@ Timer 計時器是各個 MCU 中都會有的基本功能。正如其名，當需
 
 最原始的時鐘源有四種：
 
-| 名稱 | 英文全名            | 中文全名 | 說明                                                      |
-| ---- | ------------------- | -------- | --------------------------------------------------------- |
-| HSE  | High-speed external | 外部高速 | 接 4~25 MHz 的震盪器（Oscillator）或石英震盪器（Crystal） |
-| LSE  | Low-speed external  | 外部低速 | 接 32.768 kHz 的振盪器或石英振盪器                        |
-| HSI  | High-speed internal | 內部高速 | 為一個 16 MHz 的 RC 振盪器                                |
-| LSI  | Low-speed internal  | 內部低速 | 為一個 32 kHz 的 RC 振盪器                                |
+|名稱|英文全名|中文全名|說明|
+|----|-------|-------|----|
+|HSE|High-speed external|外部高速|接 4~25 MHz 的震盪器（Oscillator）或石英震盪器（Crystal）|
+|LSE|Low-speed external|外部低速|接 32.768 kHz 的振盪器或石英振盪器|
+|HSI|High-speed internal|內部高速|為一個 16 MHz 的 RC 振盪器|
+|LSI|Low-speed internal|內部低速|為一個 32 kHz 的 RC 振盪器|
 
 觀察時鐘樹你會發現 LSE 和 LSI 其實和 SYSCLK 無關，它們會跑去獨立看門狗計時器（IWDG）和 RTC/AWU。真正可以作為 SYSCLK 來源的只有 HSE、HSI 或經過 PLL（Phase-locked loop，鎖相環）的這兩者。
 
@@ -55,7 +55,7 @@ Timer 計時器是各個 MCU 中都會有的基本功能。正如其名，當需
 
 ![▲ STM32F446xC/E 的功能方塊圖。取自 DS10693 Figure 3。](https://bucket.ziteh.dev/blog/libopencm3-stm32-11/fa20d772.webp)
 
-從 STM32F446RE 的 Clock tree 還可以知道，當 APB1 的預除頻器設定為 `/1` 時，APB1 timer clock = APB1 clock，而 APB1 的預除頻器設定為 `/1` 以外時，APB1 timer clock = 2\* APB1 clock。
+從 STM32F446RE 的 Clock tree 還可以知道，當 APB1 的預除頻器設定為 `/1` 時，APB1 timer  clock = APB1 clock，而 APB1 的預除頻器設定為 `/1` 以外時，APB1 timer clock = 2\* APB1 clock。
 
 ![▲ STM32F446xx 的部分 Clock tree。取自 RM0390 Figure 14。](https://bucket.ziteh.dev/blog/libopencm3-stm32-11/9e81b4ed.webp)
 
@@ -68,7 +68,7 @@ PSC 是 Prescaler 的意思，它用來設定各 Timer 自己的預除頻值。
 
 - `CK_CNT`：Counter 的計數頻率，也就是預除頻器的輸出頻率。
 - `CK_PSC`：預除頻器的輸入頻率，也就是 Timer 頻率。
-- `PSC`：TIMx_PSC 暫存器的值（除頻值）。
+- `PSC`：TIMx\_PSC 暫存器的值（除頻值）。
 
 ![▲ Counter 的頻率公式。取自 RM0390。](https://bucket.ziteh.dev/blog/libopencm3-stm32-11/8b79516a.webp)
 
@@ -76,7 +76,7 @@ PSC 是 Prescaler 的意思，它用來設定各 Timer 自己的預除頻值。
 
 接下來還要計算自動裝載暫存器（Auto-Reload Register，ARR）的值。ARR 暫存器的功能我們可以從 RM0390 中得知：
 
-> In upcounting mode, the counter counts from 0 to the auto-reload value (content of the TIMx_ARR register), then restarts from 0 and generates a counter overflow event.
+> In upcounting mode, the counter counts from 0 to the auto-reload value (content of the TIMx\_ARR register), then restarts from 0 and generates a counter overflow event.
 
 在上數模式時，Counter 會從 0 數到 ARR 值，然後重新從 0 開始數並產生 Overflow 及 Update 事件（包含 Update 中斷）。
 
@@ -98,8 +98,8 @@ PSC 是 Prescaler 的意思，它用來設定各 Timer 自己的預除頻值。
 - `f_overflow`：Overflow 的發生頻率，也就是我們的目標頻率。
 - `f_counter`：Counter 的計數頻率，也就是上面的 `CK_CNT`。
 - `f_timer`：Timer 的頻率，也就是上面的 `CK_PSC`。
-- `ARR`：TIMx_ARR 暫存器的值。
-- `PSC`：TIMx_PSC 暫存器的值。
+- `ARR`：TIMx\_ARR 暫存器的值。
+- `PSC`：TIMx\_PSC 暫存器的值。
 
 有了上面這個公式，我們就可以設定 Timer 的參數並得到想要的頻率了。`f_overflow` 是我們的目標頻率，`f_timer`/`f_counter` 的值取決於 RCC Clock tree 的設定，`ARR` 及 `PSC` 就是我們主要可以調整的數值。
 

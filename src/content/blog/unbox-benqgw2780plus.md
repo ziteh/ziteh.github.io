@@ -1,5 +1,5 @@
 ---
-title: "[開箱] BenQ GW2780 Plus 27吋IPS螢幕"
+title: '[開箱] BenQ GW2780 Plus 27吋IPS螢幕'
 author: ZiTe
 tags:
   - 開箱

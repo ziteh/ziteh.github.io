@@ -1,6 +1,6 @@
 ---
-title: "簽署 commit 並設定 GitHub GPG Key 以驗證"
-subtitle: "Git commit signature verification & GPG key"
+title: '簽署 commit 並設定 GitHub GPG Key 以驗證'
+subtitle: 'Git commit signature verification & GPG key'
 author: ZiTe
 tags:
   - 教學

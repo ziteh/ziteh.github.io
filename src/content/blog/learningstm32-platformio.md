@@ -1,5 +1,5 @@
 ---
-title: "[STM32學習記錄-6] 在VS Code與PlatformIO上開發STM32"
+title: '[STM32學習記錄-6] 在VS Code與PlatformIO上開發STM32'
 author: ZiTe
 tags:
   - 電子電路
@@ -116,7 +116,7 @@ framework = stm32cube
 
 從「platformio.ini」的內容可以看出以下資訊：
 
-- `[env:nucleo_f103rb]`代表目前有一個名為「nucleo_f103rb」環境，且此環境擁有以下的設定：
+- `[env:nucleo_f103rb]`代表目前有一個名為「nucleo\_f103rb」環境，且此環境擁有以下的設定：
   - 平臺為「ST STM32」（`platform = ststm32`）。
   - 開發板為「ST Nucleo F103RB」（`board = nucleo_f103rb`）。
   - 框架為「STM32Cube」（`framework = stm32cube`）。
@@ -137,7 +137,7 @@ PlatformIO 的 GitHub 上也有一些範例程式可以看：[platformio/platfor
 
 寫完程式後就是進行建置與燒錄了。
 
-點擊 VS Code 左側欄位的 PlatformIO Icon，並點擊「PROJECT TASKS」中對應環境的「Build」進行建置。本範例只有一個環境「nucleo_f103rb」，故點擊「nucleo_f103rb > Gereral > Build」。也可以點擊下方狀態條的「PlatformIO: Build」按鈕。
+點擊 VS Code 左側欄位的 PlatformIO Icon，並點擊「PROJECT TASKS」中對應環境的「Build」進行建置。本範例只有一個環境「nucleo\_f103rb」，故點擊「nucleo\_f103rb > Gereral > Build」。也可以點擊下方狀態條的「PlatformIO: Build」按鈕。
 
 ![▲ Build 與 Upload 按鈕。](https://bucket.ziteh.dev/blog/learningstm32-platformio/618c18cb.webp)
 

@@ -1,6 +1,6 @@
 ---
-title: "[自製QMK鍵盤-0] 開始 DIY 一把機械鍵盤"
-subtitle: "自己做一把 QMK 鍵盤教學"
+title: '[自製QMK鍵盤-0] 開始 DIY 一把機械鍵盤'
+subtitle: '自己做一把 QMK 鍵盤教學'
 author: ZiTe
 tags:
   - 教學

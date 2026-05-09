@@ -1,5 +1,5 @@
 ---
-title: "讚歎！"
+title: '讚歎！'
 author: ZiTe
 tags:
   - 文藝

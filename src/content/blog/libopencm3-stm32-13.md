@@ -1,5 +1,5 @@
 ---
-title: "STM32 PWM 脈波寬度調變"
+title: 'STM32 PWM 脈波寬度調變'
 author: ZiTe
 tags:
   - STM32
@@ -18,7 +18,7 @@ draft: false
 
 在上一篇中已經介紹過基本的 Timer 用法，而 Timer 除了單純的定時外，最常見的應用就是產生 PWM（Pulse width modulation）訊號。
 
-在使用 PWM 時我們會需要控制兩種參數：頻率與 Duty Cycle（佔空比）。頻率的部分和 Timer 一樣，由 TIMx_PSC 與 TIMx_ARR 暫存器的值來設定，而 Duty Cycle 則由 TIMx_CCRx 暫存器來指定。
+在使用 PWM 時我們會需要控制兩種參數：頻率與 Duty Cycle（佔空比）。頻率的部分和 Timer 一樣，由 TIMx\_PSC 與 TIMx\_ARR 暫存器的值來設定，而 Duty Cycle 則由 TIMx\_CCRx 暫存器來指定。
 
 這篇會先從理論的部分說明要如何計算並設定 CCR 的值以精確地控制 Duty Cycle。
 
@@ -29,7 +29,7 @@ draft: false
 當我們要使用 PWM 時，我們最在意的是 PWM 的頻率與 Duty Cycle。在 STM32 中，PWM 由 Timer 產生，其頻率的計算方式與 Timer 的部分一樣，這裡就不再贅述，可以參考[之前的文章](/posts/libopencm3-stm32-11)。
 而 Duty Cycle 由 CCR（Capture/Compare Register，捕獲/比較暫存器） 來控制。
 
-> The reference PWM signal OCxREF is high as long as TIMx_CNT < TIMx_CCRx else it becomes low.
+> The reference PWM signal OCxREF is high as long as TIMx\_CNT < TIMx\_CCRx else it becomes low.
 
 在邊緣對齊、上數模式及 PWM mode 1 下，只要 Counter 的計數值 CNT < CCR，那 PWM 就會輸出 `High`，否則輸出 `Low`。而 PWM mode 2 模式可以視為 mode 1 的反相——只要 Counter 的計數值 CNT < CCR，那 PWM 就會輸出 `Low`，否則輸出 `High`。
 

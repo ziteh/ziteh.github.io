@@ -2,7 +2,7 @@
 title: "[Day-1]Zig：延續了 C 使用者最喜歡的低級操作，再加上 Rust 的現代特性"
 subtitle: "Zig 程式語言簡介"
 # description: ""
-tags: ["教學", "程式", "Zig"]
+tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
 date: 2024-08-24T08:29:00
 # updated: 2024-MM-DDTHH:MM:00
@@ -49,6 +49,7 @@ Zig 是一個靜態強型別的程序式編程（Procedural programming）語言
 ![StackOverflow 2023 Survey - Salary and experience by language][zig-salary-and-exp]
 
 [zig-top-paying]: https://bucket.ziteh.dev/blog/it24-zig-1-intro/34b509d3.webp
+
 [zig-salary-and-exp]: https://bucket.ziteh.dev/blog/it24-zig-1-intro/14adfe10.webp
 
 這次是我第二次參加 iThome 鐵人賽（第一次是 2022 年），也是我開始工作後第一次參加。總之，我想利用這 30 天，**非常概略**地介紹 Zig 這門語言，特別會以 C 或 Rust 的使用者來看待和比較它，所以需要對 C 有基本的瞭解再看本系列會比較適合，希望熟悉低階操作的你也會喜歡上 Zig。但是由於我接觸 Zig 的資歷也還非常淺，所以沒辦法分享中高階的內容，如果內容有誤，也請指正。謝謝。

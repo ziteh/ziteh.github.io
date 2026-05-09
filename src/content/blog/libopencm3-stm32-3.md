@@ -1,5 +1,5 @@
 ---
-title: "STM32 GPIO 簡介"
+title: 'STM32 GPIO 簡介'
 author: ZiTe
 tags:
   - STM32
@@ -39,7 +39,7 @@ GPIO（General Purpose Input/Output）可以說是微控制器最基本的功能
 
 輸出電路組態：
 
-- [Push-Pull（推挽）](https://zh.wikipedia.org/zh-tw/%E6%8E%A8%E6%8C%BD%E8%BE%93%E5%87%BA)：由一對互補的電晶體組成，可以直接輸出 `High` 或 `Low` 電位。
+- [Push-Pull（推挽）](https://zh.wikipedia.org/zh-tw/%E6%8E%A8%E6%8C%BD%E8%BE%93%E5%87%BA)：由一對互補的電晶體組成，可以直接輸出 `High` 或  `Low` 電位。
 - [Open-Drain（汲極開路）](https://zh.wikipedia.org/zh-tw/%E9%9B%86%E7%94%B5%E6%9E%81%E5%BC%80%E8%B7%AF)：FET 版的 Open-Collector。由一個 N 通道 FET 構成，只能輸出 `Low（GND）` 或 `Open（開路）`狀態，因此要外加一上拉電阻才能使其輸出的 `Open` 狀態變成 `High`，而 `High` 狀態的實際電壓根據上拉電阻所接的電源而定，可以高或低於 IC 本身的電壓值。擁有線接及閘（Wired AND）的特性。
 
 輸入模式：

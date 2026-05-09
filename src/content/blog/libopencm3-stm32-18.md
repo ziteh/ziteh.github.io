@@ -1,5 +1,5 @@
 ---
-title: "STM32 LibOpenCM3：WWDG 窗口看門狗計時器"
+title: 'STM32 LibOpenCM3：WWDG 窗口看門狗計時器'
 author: ZiTe
 tags:
   - STM32
@@ -215,7 +215,7 @@ static void wwdg_setup(void)
 
 要設定的值只有四個，分別為 WDG 預除頻器的除頻值 WDGTW、T\[6:0]、W\[6:0]，最後再將 WDGA 設為 `1` 以致能 WWDG。
 
-> 注意，寫入 WWDG_CR 暫存器的值必須要在 `0xFF` 與 `0xC0` 之間。由於第 7 位 WDGA 只能在 Reset 後由硬體清為 `0`，所以寫入 WWDG_CR 的第 7 位元一定是 `1`。而如果第 6 位 T6 被設定為 `0` 的話會立刻觸發 Reset。
+> 注意，寫入 WWDG\_CR 暫存器的值必須要在 `0xFF` 與 `0xC0` 之間。由於第 7 位 WDGA 只能在 Reset 後由硬體清為 `0`，所以寫入 WWDG\_CR 的第 7 位元一定是 `1`。而如果第 6 位 T6 被設定為 `0` 的話會立刻觸發 Reset。
 
 #### WWDG Refresh
 

@@ -2,7 +2,7 @@
 title: "[Day-2]安裝 Zig"
 # subtitle: ""
 # description: ""
-tags: ["教學", "程式", "Zig"]
+tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
 date: 2024-08-25T09:18:00
 # updated: 2024-MM-DDTHH:MM:00

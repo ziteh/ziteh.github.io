@@ -1,5 +1,5 @@
 ---
-title: "STM32 LibOpenCM3：EXTI 外部中斷"
+title: 'STM32 LibOpenCM3：EXTI 外部中斷'
 author: ZiTe
 tags:
   - STM32
@@ -212,7 +212,7 @@ void exti15_10_isr(void)
 
 `exti_reset_request()` 可以用來清除 IRQ flag。
 
-由於 EXTI 15 ~ 10 共用一個 ISR，所以還要再用 `exti_get_flag_status()` 來讀取 EXTI_PR 暫存器的值，以確定目前是哪一個 EXTI Line 被觸發。
+由於 EXTI 15 ~ 10 共用一個 ISR，所以還要再用 `exti_get_flag_status()` 來讀取 EXTI\_PR 暫存器的值，以確定目前是哪一個 EXTI Line 被觸發。
 
 在 LibOpenCM3 中，各個功能的 ISR 函式名稱是固定的，如果打錯的話就無法正常執行。完整的 STM32F4 系列的 ISR 列表[在此](http://libopencm3.org/docs/latest/stm32f4/html/group__CM3__nvic__isrprototypes__STM32F4.html)。
 

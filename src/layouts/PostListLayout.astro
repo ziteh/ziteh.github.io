@@ -124,8 +124,8 @@ const tags = getUniqueTags(allPosts);
   }
   .sidebar h2 {
     margin: 0 0 0.75rem 0;
-    font-size: 1rem;
-    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-normal);
   }
   .sidebar h2:not(:first-child) {
     margin-top: 2.5rem;
@@ -141,7 +141,7 @@ const tags = getUniqueTags(allPosts);
   .categories a {
     display: flex;
     justify-content: space-between;
-    font-size: 0.85rem;
+    font-size: var(--font-size-sm);
     text-decoration: none;
     padding: 0.15rem 0.45rem;
     color: var(--color-700);
@@ -157,7 +157,7 @@ const tags = getUniqueTags(allPosts);
     opacity: 0.6;
   }
   .archives-link {
-    font-size: 0.85rem;
+    font-size: var(--font-size-sm);
     text-decoration: none;
     color: var(--color-700);
   }
@@ -167,9 +167,9 @@ const tags = getUniqueTags(allPosts);
   @media (--bp-lg) {
     .page-layout {
       display: grid;
-      grid-template-columns: 1fr clamp(150px, 22vw, 320px);
+      grid-template-columns: 1fr clamp(150px, 22vw, 280px);
       column-gap: clamp(3rem, 7vw, 8rem);
-      max-width: calc(var(--content-width) + clamp(3rem, 7vw, 8rem) + clamp(150px, 22vw, 320px));
+      max-width: calc(var(--content-width) + clamp(3rem, 7vw, 8rem) + clamp(150px, 22vw, 280px));
       align-items: start;
     }
     .content-wrapper {
@@ -179,6 +179,10 @@ const tags = getUniqueTags(allPosts);
     .sidebar,
     .sidebar.open {
       position: static;
+      grid-column: auto;
+      grid-row: auto;
+      align-self: start;
+      margin-left: 0;
       width: auto;
       height: auto;
       max-height: none;
@@ -188,6 +192,9 @@ const tags = getUniqueTags(allPosts);
       z-index: auto;
       transform: none;
       transition: none;
+    }
+    .sidebar h2 {
+      font-size: var(--font-size-xs);
     }
   }
 </style>

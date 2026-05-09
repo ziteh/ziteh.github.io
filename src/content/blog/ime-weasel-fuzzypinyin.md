@@ -38,8 +38,8 @@ draft: false
 
 1. 在檔案總管上的路徑欄輸入以下路徑：
    1. `%APPDATA%\Rime` (Windows)
-   2. `~/.config/ibus/rime` (Linux)
-   3. `~/Library/Rime` (Mac OS)
+   2. `~/.config/ibus/rime`  (Linux)
+   3. `~/Library/Rime`  (Mac OS)
 2. 在電腦上安裝好小狼毫輸入法後，切換輸入法到小狼毫，並在其右下角的圖示按下滑鼠右鍵顯示選單，並點擊「用戶文件夾」。
 
 ![▲ 在右鍵選單中點選用戶文件夾。](https://bucket.ziteh.dev/blog/ime-weasel-fuzzypinyin/86b729ee.webp)
@@ -48,25 +48,25 @@ draft: false
 
 到達用戶資料夾後應該會看到一些YAML檔，這些都是小狼毫的設定檔。
 
-這時要看各位所選擇使用的小狼毫輸入方案是那一種，像我是使用「朙月拼音」和「朙月拼音-臺灣正體」，而它們的設定檔分別為「luna_pinyin.schema.yaml」和「luna_pinyin_tw.schema.yaml」。這兩個檔案可能會在`用戶資料夾/build/`裡。
+這時要看各位所選擇使用的小狼毫輸入方案是那一種，像我是使用「朙月拼音」和「朙月拼音-臺灣正體」，而它們的設定檔分別為「luna\_pinyin.schema.yaml」和「luna\_pinyin\_tw.schema.yaml」。這兩個檔案可能會在`用戶資料夾/build/`裡。
 
 接着請到[我的 GitHub](https://gist.github.com/ziteh/beac7b7038652b79864fbab7a7254183)下載設定檔。
 
-可以發現其檔名為「luna_pinyin.custom.yaml」，對應了上述的「luna_pinyin.schema.yaml」。請將「luna_pinyin.custom.yaml」放到用戶資料夾中（不是`用戶資料夾/build/`）。
+可以發現其檔名為「luna\_pinyin.custom.yaml」，對應了上述的「luna\_pinyin.schema.yaml」。請將「luna\_pinyin.custom.yaml」放到用戶資料夾中（不是`用戶資料夾/build/`）。
 
-另外因為我還有選擇「朙月拼音-臺灣正體」方案，所以我將「luna_pinyin.custom.yaml」複製一份並修改檔名為「luna_pinyin_tw.custom.yaml」。
+另外因為我還有選擇「朙月拼音-臺灣正體」方案，所以我將「luna\_pinyin.custom.yaml」複製一份並修改檔名為「luna\_pinyin\_tw.custom.yaml」。
 
 ![▲ 加入設定檔的用戶資料夾。](https://bucket.ziteh.dev/blog/ime-weasel-fuzzypinyin/8e1d5afc.webp)
 
 ### 三、 修改設定檔
 
-以文字編輯軟體打開「luna_pinyin.custom.yaml」。你會看到有許多行，其中每一行都是一種模糊音的規則。如果你想啓用該模糊音規則，就請將改行前的`#`（井號）刪除；反之要停用的話就在該行前加上井號。
+以文字編輯軟體打開「luna\_pinyin.custom.yaml」。你會看到有許多行，其中每一行都是一種模糊音的規則。如果你想啓用該模糊音規則，就請將改行前的`#`（井號）刪除；反之要停用的話就在該行前加上井號。
 
 例如以下示範啓用規則「zh, ch, sh => z, c, s」、「z, c, s => zh, ch, sh」，並停用規則「n => l」、「l => n」。
 
 ```yaml
-- derive/^([zcs])h/$1/ # zh, ch, sh => z, c, s
-- derive/^([zcs])([^h])/$1h$2/ # z, c, s => zh, ch, sh
+- derive/^([zcs])h/$1/             # zh, ch, sh => z, c, s
+- derive/^([zcs])([^h])/$1h$2/     # z, c, s => zh, ch, sh
 
 #- derive/^n/l/                     # n => l
 #- derive/^l/n/                     # l => n

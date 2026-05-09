@@ -1,5 +1,5 @@
 ---
-title: "[開箱] ZS-A4 ITX訂製機殼及相關零件簡單開箱"
+title: '[開箱] ZS-A4 ITX訂製機殼及相關零件簡單開箱'
 author: ZiTe
 tags:
   - 3C

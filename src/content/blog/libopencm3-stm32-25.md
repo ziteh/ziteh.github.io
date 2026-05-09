@@ -1,5 +1,5 @@
 ---
-title: "STM32 LibOpenCM3：SPI (Slave mode)"
+title: 'STM32 LibOpenCM3：SPI (Slave mode)'
 author: ZiTe
 tags:
   - STM32

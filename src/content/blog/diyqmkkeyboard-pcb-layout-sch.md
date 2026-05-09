@@ -1,6 +1,6 @@
 ---
-title: "[自製QMK鍵盤-5] KiCAD鍵盤PCB繪製教學 (上)"
-subtitle: "KiCAD PCB 電路板 Schematic 基礎教學"
+title: '[自製QMK鍵盤-5] KiCAD鍵盤PCB繪製教學 (上)'
+subtitle: 'KiCAD PCB 電路板 Schematic 基礎教學'
 author: ZiTe
 tags:
   - 教學
@@ -58,7 +58,7 @@ draft: false
 4. 進行 Design rule check（DRC）
 5. 輸出生產所需的檔案（Gerber 檔）
 
-> _Footprint_ 指的是一個電子元件物理上的實際樣子，包含了 Pin 腳的數量、位置及大小等。例如同樣是機械鍵軸，有分 Cherry MX、Alps、Kailh Choc 等不同的樣式，或是電阻有 THT 分插板型或 SMD 表面黏貼型的，而 SMD 型又會根據尺寸分為 0805、0603、0402...等。
+> *Footprint* 指的是一個電子元件物理上的實際樣子，包含了 Pin 腳的數量、位置及大小等。例如同樣是機械鍵軸，有分 Cherry MX、Alps、Kailh Choc 等不同的樣式，或是電阻有 THT 分插板型或 SMD 表面黏貼型的，而 SMD 型又會根據尺寸分為 0805、0603、0402...等。
 > 不同 Footprint 的 Pin 腳位置（焊孔或焊盤）及大小不同，用錯 Footprint 的話到時候零件可是沒辦法裝上去的。
 
 ## 自動生成鍵盤 PCB
@@ -113,7 +113,7 @@ GitHub 上有許多人畫好的機械軸 Footprint 庫，你可以選幾個喜�
 
 - [ebastler/marbastlib](https://github.com/ebastler/marbastlib)
 - [daprice/keyswitches.pretty](https://github.com/daprice/keyswitches.pretty)
-- [ai03-2725/MX_Alps_Hybrid](https://github.com/ai03-2725/MX_Alps_Hybrid)
+- [ai03-2725/MX\_Alps\_Hybrid](https://github.com/ai03-2725/MX_Alps_Hybrid)
 - [perigoso/keyswitch-kicad-library](https://github.com/perigoso/keyswitch-kicad-library)
 - [keebio/Keebio-Parts.pretty](https://github.com/keebio/Keebio-Parts.pretty)
 - [egladman/keebs.pretty](https://github.com/egladman/keebs.pretty)
@@ -183,14 +183,14 @@ GitHub 上有許多人畫好的機械軸 Footprint 庫，你可以選幾個喜�
 
 ![選擇指定元件的 Footprint 欄位](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/878720b0.webp)
 
-Footprint 瀏覽頁面左側有兩個清單，在最左側的清單找種類，例如表面黏貼型的電容是「Capacitor_SMD」，點選後在右側的清單選擇要的 Footprint，例如常用的 0402 電容是「C_0402_1005Metric」。
+Footprint 瀏覽頁面左側有兩個清單，在最左側的清單找種類，例如表面黏貼型的電容是「Capacitor\_SMD」，點選後在右側的清單選擇要的 Footprint，例如常用的 0402 電容是「C\_0402\_1005Metric」。
 
-![選擇 Footprint 「C_0402_1005Metric」](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/cddc979d.webp)
+![選擇 Footprint 「C\_0402\_1005Metric」](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/cddc979d.webp)
 
-至於要怎麼選擇 Footprint？這個牽涉到許多因素，首先是該零件要有，例如 RT9013-33GB 的封裝就是 SOT-23-5，那當然是選用「Package_TO_SOT_SMD:SOT-23-5」。但是像電容或電阻選擇就很多了，這時可以考慮焊接方式，要手工焊接的話，除非你手很穩（或有其它工具）可以焊 0201 尺寸的元件，不然通常會選 0805、0603 或 0402 的，同時你也可以考慮購買容易度；如果你打算使用 PCBA 的話，那可以考慮工廠那邊的報價。當然，封裝也和元件的功率和耐壓等電氣規格有關，但鍵盤的電路比較不需要擔心這點。
+至於要怎麼選擇 Footprint？這個牽涉到許多因素，首先是該零件要有，例如 RT9013-33GB 的封裝就是 SOT-23-5，那當然是選用「Package\_TO\_SOT\_SMD:SOT-23-5」。但是像電容或電阻選擇就很多了，這時可以考慮焊接方式，要手工焊接的話，除非你手很穩（或有其它工具）可以焊 0201 尺寸的元件，不然通常會選 0805、0603 或 0402 的，同時你也可以考慮購買容易度；如果你打算使用 PCBA 的話，那可以考慮工廠那邊的報價。當然，封裝也和元件的功率和耐壓等電氣規格有關，但鍵盤的電路比較不需要擔心這點。
 
-> 一般說的 0603、0402 或 0201 封裝是英制尺寸，0603 就代表其尺寸長寬為 0.06 _0.03 inch。但是還有公制（Metric）表示法，公制 0603 代表的是長寬 0.6_ 0.3 mm。而英制 0402 等於公制 1005；英制 0201 等於公制 0603，所以一定不要搞混了。
-> KiCad 中的「C_0402_1005Metric」前面的「0402」是指英制尺寸，後面的「1005Metric」是指公制尺寸。所以這個 Footprint 就是我們一般習慣稱呼的 0402 封裝。
+> 一般說的 0603、0402 或 0201 封裝是英制尺寸，0603 就代表其尺寸長寬為 0.06 *0.03 inch。但是還有公制（Metric）表示法，公制 0603 代表的是長寬 0.6* 0.3 mm。而英制 0402 等於公制 1005；英制 0201 等於公制 0603，所以一定不要搞混了。
+> KiCad 中的「C\_0402\_1005Metric」前面的「0402」是指英制尺寸，後面的「1005Metric」是指公制尺寸。所以這個 Footprint 就是我們一般習慣稱呼的 0402 封裝。
 
 #### 更新元件代號
 
@@ -224,7 +224,7 @@ Schematic 頁面右下角有一些資訊可以填寫。
 
 如果你覺得要自己畫[微控制器](/posts/diyqmkkeyboard-pcb-layout-sch#繪製微控制器電路)、[電源](/posts/diyqmkkeyboard-pcb-layout-sch#繪製電源電路)和 [USB](/posts/diyqmkkeyboard-pcb-layout-sch#繪製-usb) 的電路太麻煩的話，你可以使用現成的開發板，使用排針或排插連接開發板，這樣就只需要畫[鍵矩陣掃描電路](/posts/diyqmkkeyboard-pcb-layout-sch#繪製矩陣掃描電路)。以下以 Pro Micro 為例。
 
-加入兩個「Conn_01x12」元件來代表排針/插，雙擊它進入屬性頁面，將它的「Footprint」改成「Connector_PinHeader_2.54mm: PinHeader_1x12_P2.54mm_Vertical」。
+加入兩個「Conn\_01x12」元件來代表排針/插，雙擊它進入屬性頁面，將它的「Footprint」改成「Connector\_PinHeader\_2.54mm: PinHeader\_1x12\_P2.54mm\_Vertical」。
 
 加入電源符號與標籤，並根據 Pro Micro 的腳位接到正確的位置。
 
@@ -240,9 +240,9 @@ Schematic 頁面右下角有一些資訊可以填寫。
 
 ![新增「key-matrix」子頁面](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/c723ada5.webp)
 
-加入開關與二極體的元件符號「SW_Push」和「1N4148W」。當然二極體的型號很多，不一定要用 1N4148，但這是最常見的選擇（其後綴 _W_ 代表 SOD-123 封裝）。
+加入開關與二極體的元件符號「SW\_Push」和「1N4148W」。當然二極體的型號很多，不一定要用 1N4148，但這是最常見的選擇（其後綴 *W* 代表 SOD-123 封裝）。
 
-![加入「SW_Push」元件到頁面](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/67a8d16c.webp)
+![加入「SW\_Push」元件到頁面](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/67a8d16c.webp)
 
 個人會喜歡將此處代表鍵軸的元件代號改成「KEY」，雙擊開關的符號，將 Reference 的開頭由「SW」改成「KEY」。這一步有助於後續的自動擺放工具。
 
@@ -292,7 +292,7 @@ LDO 的型號有非常多種，其規格可能都不太一樣，且還有分可�
 
 ### 繪製 USB
 
-加入元件「USB_C_Receptacle_USB2.0」，這是 USB Type-C（僅 USB 2.0）的符號。
+加入元件「USB\_C\_Receptacle\_USB2.0」，這是 USB Type-C（僅 USB 2.0）的符號。
 
 ![選擇 USB 元件符號並加入到頁面](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/10986d17.webp)
 
@@ -300,7 +300,7 @@ USB Type-C 需要加入 CC 電阻。加入兩個電阻「R」，在屬性頁面�
 
 「VBUS」是 USB 的電源腳，USB 標準電源是 5.0V，可以直接接給 LDO 用，但一般安全起見會加個自恢復保險絲。加入元件符號「Polyfuse」，並將其「Value」改成「500mA, 6V」。將其一端接「VBUS」一端接「+5V」。
 
-USB 差分訊號「D+」與「D-」各 2 腳，將相同的接在一起，然後加入全域標籤「USB_D+」與「USB_D-」。
+USB 差分訊號「D+」與「D-」各 2 腳，將相同的接在一起，然後加入全域標籤「USB\_D+」與「USB\_D-」。
 
 「GND」和「SHIELD」接地。在一些情況下，「SHIELD」和地之間可能會接一些濾波電路，但是對鍵盤來說直接接地就可以了。
 
@@ -316,7 +316,7 @@ USB 差分訊號「D+」與「D-」各 2 腳，將相同的接在一起，然後
 
 我這裡以較複雜的 RP2040 為例。RP2040 所需的外圍元件有：
 
-- 石英振盪器。可以使用元件「Crystal_GND24」，將數值改成「12MHz」。
+- 石英振盪器。可以使用元件「Crystal\_GND24」，將數值改成「12MHz」。
 - 外接 QSPI Flash。這裡使用 16MB 的 「W25Q128JVS」。Flash 也有自己的週邊電路元件。
 - USB 終端串聯電阻，阻值 27Ω。
 - 8 顆接到 3.3V 的去藕電容，其中一顆是「1uF」，其它是「100nF」。
@@ -331,7 +331,7 @@ USB 差分訊號「D+」與「D-」各 2 腳，將相同的接在一起，然後
 
 ### 其它元件
 
-鍵盤會需要螺絲孔，這個也要加入 Schematic 中。在元件符號庫中找到「MountingHole」或「MountingHole_Pad」，前者是無焊盤的絕緣螺絲孔，後者有焊盤，可以做接地屏蔽等用途。要幾個螺絲孔加複製幾個。
+鍵盤會需要螺絲孔，這個也要加入 Schematic 中。在元件符號庫中找到「MountingHole」或「MountingHole\_Pad」，前者是無焊盤的絕緣螺絲孔，後者有焊盤，可以做接地屏蔽等用途。要幾個螺絲孔加複製幾個。
 
 建議至少為電源「+3V3」與「GND」加上測試焊盤，未來焊接前的短路檢查會比較方便。使用元件符號「TestPoint」，並將其接到要加上測試焊盤的接線上。
 

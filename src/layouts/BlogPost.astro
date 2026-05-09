@@ -25,69 +25,75 @@ const ogImage = `${Astro.url.pathname.replace(/\.html$/, "").replace(/\/$/, "")}
 
 <BaseLayout title={title} description={description} ogType="article" image={ogImage}>
   <main id="main-content">
-    <article class="prose">
-      <header class="title">
-        <h1>{title}</h1>
-        <p class="meta">
-          <span class="date">
-            <FormattedDate date={updated ?? date} />
-            {updated && <span>, {_t.date.postedOn(_t.date.shortFormat(date))}</span>}
-          </span>
-          {
-            categories.length > 0 && (
-              <span class="categories">
-                {categories.map((category, index) => (
-                  <>
-                    {index > 0 && ", "}
-                    <a href={`/categories/${slugifyStr(category)}`} data-astro-prefetch>
-                      {category}
-                    </a>
-                  </>
-                ))}
+    <div class="post-layout">
+      <article class="prose">
+        <header class="title">
+          <h1>{title}</h1>
+          <p class="meta">
+            <span class="date">
+              <FormattedDate date={updated ?? date} />
+              {updated && <span>, {_t.date.postedOn(_t.date.shortFormat(date))}</span>}
+            </span>
+            {
+              categories.length > 0 && (
+                <span class="categories">
+                  {categories.map((category, index) => (
+                    <>
+                      {index > 0 && ", "}
+                      <a href={`/categories/${slugifyStr(category)}`} data-astro-prefetch>
+                        {category}
+                      </a>
+                    </>
+                  ))}
+                </span>
+              )
+            }
+          </p>
+        </header>
+        <div class="main-content" data-pagefind-body>
+          <slot />
+        </div>
+      </article>
+      <aside class="sidebar">
+        {toc && <nav class="toc" aria-label="Table of contents" />}
+        <button class="back-to-top" id="back-to-top" type="button">{_t.common.backToTop}</button>
+      </aside>
+    </div>
+    <div class="article-footer">
+      <hr />
+      <ul class="tag-list">
+        {
+          tags &&
+            tags.map((tag) => (
+              <li>
+                <TagPill id={slugifyStr(tag)} name={tag} />
+              </li>
+            ))
+        }
+      </ul>
+      <nav class="post-nav" aria-label="Post navigation">
+        {
+          nextPost && (
+            <a href={`/posts/${nextPost.id}`} class="post-nav-next" data-astro-prefetch>
+              <span class="post-nav-label">
+                <IconLeft />
               </span>
-            )
-          }
-        </p>
-      </header>
-      <div class="main-content" data-pagefind-body>
-        <slot />
-      </div>
-      <footer>
-        <hr />
-        <ul class="tag-list">
-          {
-            tags &&
-              tags.map((tag) => (
-                <li>
-                  <TagPill id={slugifyStr(tag)} name={tag} />
-                </li>
-              ))
-          }
-        </ul>
-        <nav class="post-nav" aria-label="Post navigation">
-          {
-            nextPost && (
-              <a href={`/posts/${nextPost.id}`} class="post-nav-next" data-astro-prefetch>
-                <span class="post-nav-label">
-                  <IconLeft />
-                </span>
-                <span class="post-nav-title">{nextPost.data.title}</span>
-              </a>
-            )
-          }
-          {
-            prevPost && (
-              <a href={`/posts/${prevPost.id}`} class="post-nav-prev" data-astro-prefetch>
-                <span class="post-nav-title">{prevPost.data.title}</span>
-                <span class="post-nav-label">
-                  <IconRight />
-                </span>
-              </a>
-            )
-          }
-        </nav>
-      </footer>
-    </article>
+              <span class="post-nav-title">{nextPost.data.title}</span>
+            </a>
+          )
+        }
+        {
+          prevPost && (
+            <a href={`/posts/${prevPost.id}`} class="post-nav-prev" data-astro-prefetch>
+              <span class="post-nav-title">{prevPost.data.title}</span>
+              <span class="post-nav-label">
+                <IconRight />
+              </span>
+            </a>
+          )
+        }
+      </nav>
+    </div>
     <div class="sidebar-overlay" aria-hidden="true"></div>
     <button class="sidebar-fab" aria-label="Toggle sidebar" type="button">
       <IconMenu />
@@ -103,11 +109,6 @@ const ogImage = `${Astro.url.pathname.replace(/\.html$/, "").replace(/\/$/, "")}
       )
     }
   </main>
-  <aside class="sidebar">
-    {toc && <nav class="toc" aria-label="Table of contents" />}
-    {toc && <hr />}
-    <button class="back-to-top" id="back-to-top" type="button">{_t.common.backToTop}</button>
-  </aside>
 </BaseLayout>
 
 <script is:inline define:vars={{ __DEV__: import.meta.env.DEV }}>

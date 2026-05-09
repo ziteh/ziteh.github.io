@@ -1,8 +1,8 @@
 ---
 title: 基於 USB PD 供電的可程式直流電源供應器研究
 tags:
-  - DIY
-  - 電子電路
+    - DIY
+    - 電子電路
 date: 2025-10-26T18:07:00+08:00
 comments: true
 toc: true
@@ -81,7 +81,6 @@ eFuse 可以用來提供快速的 SCP：
 - TPS2663：有 SHDN pin 可以從外部關斷。可以增加一個 N-FET 來和內部的 FET 組成 Back-to-back 來達成 RCP。Sink only 時 PP5V pin 可以接地 [^tps2663_1][^tps2663_2]。
 
 [^tps2663_1]: [TPS25751: Do I need to supply 5v if sinking only? - Power management forum - Power management - TI E2E support forums](https://e2e.ti.com/support/power-management-group/power-management/f/power-management-forum/1426073/tps25751-do-i-need-to-supply-5v-if-sinking-only)
-
 [^tps2663_2]: [[FAQ] TPS25750: How do I create a Sink-Only USB-C PD port to replace a legacy Barrel Jack Connector? - Interface forum - Interface - TI E2E support forums](https://e2e.ti.com/support/interface-group/interface/f/interface-forum/988215/faq-tps25750-how-do-i-create-a-sink-only-usb-c-pd-port-to-replace-a-legacy-barrel-jack-connector)
 
 在這個方案中，我會選擇 TPS25751 + TPS1663 的組合，RCP 由前者提供，後者就專心處理 SCP 即可，另外 TPS1663 有 SHDN pin 可以由 MCU 控制，可以可以打從電供上的 OUTPUT 按鈕功能。

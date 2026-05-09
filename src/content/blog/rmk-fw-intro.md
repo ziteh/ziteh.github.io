@@ -247,7 +247,7 @@ usb_enable = true # 如果你用的 MCU 沒有 USB外設（如 nRF52832），需
 目前支援的 `board` 有：
 
 - nice!nano
-- nice!nano_v2
+- nice!nano\_v2
 - XIAO BLE
 
 > USB Vendor ID 和 Product ID （VID & PID）理論上是要和 USB 協會申請並註冊的唯一 ID，但我們自己開發使用的話通常就隨意設定即可。
@@ -256,7 +256,7 @@ usb_enable = true # 如果你用的 MCU 沒有 USB外設（如 nRF52832），需
 
 `[matrix]` 用來定義鍵盤矩陣掃描的 IO 腳位。如果你不知道什麼是矩陣掃描（Matrix scanning）的話建議上網搜尋一些文章，這是當今絕大多數鍵盤的運作基礎（或者是我未來另外寫一篇說明好了）。
 
-要注意的是這裡使用的腳位名稱是 Embassy 裡的 Peripherals 名稱，例如 nRF52840 的話要看 [Peripherals in embassy_nrf](https://docs.embassy.dev/embassy-nrf/git/nrf52840/struct.Peripherals.html)，也就是 `P0_00`、`P1_05` 這種。而如果是 [RP2040](https://docs.embassy.dev/embassy-rp/git/rp2040/struct.Peripherals.html) 的話要使用 `PIN_0` 這種。
+要注意的是這裡使用的腳位名稱是 Embassy 裡的 Peripherals 名稱，例如 nRF52840 的話要看 [Peripherals in embassy\_nrf](https://docs.embassy.dev/embassy-nrf/git/nrf52840/struct.Peripherals.html)，也就是 `P0_00`、`P1_05` 這種。而如果是 [RP2040](https://docs.embassy.dev/embassy-rp/git/rp2040/struct.Peripherals.html) 的話要使用 `PIN_0` 這種。
 
 ```toml
 [matrix]
@@ -501,4 +501,4 @@ nRF MCU 要使用藍牙功能的話會需要 [SoftDevice](https://docs.nordicsem
   - [SoftDevices](https://docs.nordicsemi.com/bundle/ug_gsg_ses/page/UG/gsg/softdevices.html)
   - [nRF Connect for Desktop](https://www.nordicsemi.com/Products/Development-tools/nRF-Connect-for-Desktop)
 - [rust-embedded/cortex-m-quickstart: Template to develop bare metal applications for Cortex-M microcontrollers](https://github.com/rust-embedded/cortex-m-quickstart)
-- [Adafruit_nRF52_Bootloader](https://github.com/adafruit/Adafruit_nRF52_Bootloader)
+- [Adafruit\_nRF52\_Bootloader](https://github.com/adafruit/Adafruit_nRF52_Bootloader)

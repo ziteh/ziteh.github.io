@@ -1,10 +1,10 @@
 ---
-title: "[LibOpenCM3 × STM32教學-4] 輸出PWM並控制Duty Cycle及頻率"
+title: '[LibOpenCM3 × STM32教學-4] 輸出PWM並控制Duty Cycle及頻率'
 author: ZiTe
 tags:
-  - "STM32"
-  - "電子電路"
-  - "教學"
+  - 'STM32'
+  - '電子電路'
+  - '教學'
   - C/C++
   - 程式
   - 嵌入式
@@ -159,8 +159,8 @@ PER = {f_tim / [(PRS + 1) * f_pwm]} - 1
 
 - `f_pwm`: PWM frequency，PWM 的頻率.
 - `f_tim`: Timer frequency， Timer 的頻率.
-- `PRS`: Timer prescaler，Timer 的預除頻器數值.
-- `PER`: Timer period，Timer 的週期數值.
+- `PRS`:   Timer prescaler，Timer 的預除頻器數值.
+- `PER`:   Timer period，Timer 的週期數值.
 
 透過時鐘樹（[Datasheet](https://cdn-shop.adafruit.com/datasheets/2127datasheet.pdf) P.12, Figure 2. Clock tree）可以知道，我們使用的「Timer 3」的時鐘源是「APB 1」，而在本例中，我們會在主程式呼叫 `rcc_clock_setup_in_hsi_out_48mhz()` 以將系統時鐘設為 48 MHz，這樣將會一併讓「APB 1」的預除頻器（Prescaler）被設定為「除 2」，所以我們的「APB 1」時鐘頻率為 48 MHz / 2 = 24 MHz。
 

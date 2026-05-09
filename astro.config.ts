@@ -127,7 +127,7 @@ export default defineConfig({
   fonts: [
     // {
     //   cssVariable: "--font-body",
-    //   name: "Noto Sans",
+    //   name: "Geist",
     //   weights: [400, 700],
     //   styles: ["normal"],
     //   fallbacks: ["sans-serif"],

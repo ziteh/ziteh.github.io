@@ -1,5 +1,5 @@
 ---
-title: "STM32 LibOpenCM3：ADC 單通道 Regular"
+title: 'STM32 LibOpenCM3：ADC 單通道 Regular'
 author: ZiTe
 tags:
   - STM32

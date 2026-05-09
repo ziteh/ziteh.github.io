@@ -2,7 +2,7 @@
 title: "[Day-21]Zig：分配器（Allocator）"
 # subtitle: ""
 # description: ""
-tags: ["教學", "程式", "Zig"]
+tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
 date: 2024-09-13T06:50:00
 # updated: 2024-MM-DDTHH:MM:00
@@ -140,7 +140,7 @@ Type: []u8, []f32, []i2
 
 - [Allocators | zig.guide](https://zig.guide/standard-library/allocators)
 - [Learning Zig - Heap Memory & Allocators](https://www.openmymind.net/learning_zig/heap_memory/)
-- [zig/lib/std/heap/general_purpose_allocator.zig at master · ziglang/zig](https://github.com/ziglang/zig/blob/master/lib/std/heap/general_purpose_allocator.zig)
+- [zig/lib/std/heap/general\_purpose\_allocator.zig at master · ziglang/zig](https://github.com/ziglang/zig/blob/master/lib/std/heap/general_purpose_allocator.zig)
 - [Documentation - The Zig Programming Language](https://ziglang.org/documentation/0.13.0/#toc-Choosing-an-Allocator)
 
 本文以 Zig `0.13.0` 為主。並同時發佈在：

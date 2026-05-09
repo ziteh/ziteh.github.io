@@ -1,5 +1,5 @@
 ---
-title: "[自製QMK鍵盤-番外] 旋轉編碼器 (Encoder)"
+title: '[自製QMK鍵盤-番外] 旋轉編碼器 (Encoder)'
 author: ZiTe
 tags:
   - 3C

@@ -19,17 +19,17 @@ export const SITE = {
   getDescriptionMaxLines: 10, // Max number of lines to process
 
   // Default values for frontmatter fields
-  defaultFmTag: "其他",
+  defaultFmTag: "Others",
   defaultFmCategory: "",
   defaultFmToc: false,
-  defaultFmComments: true,
+  defaultFmComments: false,
   defaultFmMath: false,
 
   // Config
   transitions: true, // View transitions (https://docs.astro.build/en/guides/view-transitions/)
 
   // Disqus comments
-  disqusShortname: "", // Your Disqus shortname (without https:// and .disqus.com)
+  disqusShortname: "zite-honmonoh", // Your Disqus shortname (without https:// and .disqus.com)
 
   // Giscus comments
   giscusRepo: "", // e.g. "user/repo"

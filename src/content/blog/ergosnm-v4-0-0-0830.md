@@ -2,9 +2,9 @@
 title: ErgoSNM v4.0 開發進度-08/30
 subtitle: 帶軌跡球的無線分離式鍵盤開發進度
 tags:
-  - DIY
-  - 3C
-  - QMK
+    - DIY
+    - 3C
+    - QMK
 categories: []
 date: 2025-08-30T17:20:00+08:00
 comments: true

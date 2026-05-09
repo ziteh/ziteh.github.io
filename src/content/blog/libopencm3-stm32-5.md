@@ -1,5 +1,5 @@
 ---
-title: "STM32 LibOpenCM3：GPIO 輸入"
+title: 'STM32 LibOpenCM3：GPIO 輸入'
 author: ZiTe
 tags:
   - STM32

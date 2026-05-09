@@ -1,5 +1,5 @@
 ---
-title: "[教學:3D列印-2] Slic3r 切片軟體教學"
+title: '[教學:3D列印-2] Slic3r 切片軟體教學'
 author: ZiTe
 tags:
   - 3D列印

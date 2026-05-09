@@ -1,8 +1,8 @@
 ---
-title: "如果幸福有顏色"
+title: '如果幸福有顏色'
 author: ZiTe
 tags:
-  - "文藝"
+  - '文藝'
 date: 2021-11-27 22:33:00
 comments: true
 toc: true

@@ -2,7 +2,7 @@
 title: "C 語言 Coding Style 規範"
 subtitle: "我的編程風格"
 # description: ""
-tags: ["心得", "程式", "C/C++"]
+tags: ["心得", "程式","C/C++"]
 categories: []
 
 date: 2024-05-25T14:55:00+08:00
@@ -267,6 +267,7 @@ void function(int param) {
    3. **可以**加上強制轉型（Casting）作為型別標記。
 
 2. 巨集（Macro）
+
    1. 本身的名稱**必須**使用**大寫蛇形**風格，命名**應該**偏好**具描述性**。
    2. 參數的名稱**必須**使用**蛇形**風格，命名**應該**偏好**簡潔有力**（更甚至使用單一字母）。
    3. 所有參數皆**必須**使用括號 `()` 包圍，以避免展開錯誤。
@@ -289,6 +290,7 @@ void function(int param) {
 3. `#endif` 後**不應該**加上用於標註其對應的開頭的註解。
 
 4. 所有 `.h` 標頭檔皆**必須**有引用保護（Include Guard）。
+
    1. 若使用的編譯器支援 `#pragma once` 則優先使用，否則使用預處理器達成，其格式為：
 
    ```c
@@ -329,9 +331,9 @@ void function(int param) {
 
 1. 所有註解句子的第一個字**必須**要大寫，除非句子的開頭不是英文。
 2. 一般註解**必須**使用單行註解形式，即雙斜線，即使它會寫成多行的形式。行末**不允許**加句號，即使行中有其它標點符號。
-   1. _例外_：帶有特殊功能的註解**必須**使用多行註解形式，例如 `/* clang-format off */`。
+   1. *例外*：帶有特殊功能的註解**必須**使用多行註解形式，例如 `/* clang-format off */`。
 3. 文件註解**必須**使用 Doxygen 的三斜線 `///` 註解形式。如果是描述性的句子，各行末**必須**加句號。
-   1. _例外_：URL 網址或檔案名等特殊字段行末**不允許**加句號，以避免感染閱讀或複製。
+   1. *例外*：URL 網址或檔案名等特殊字段行末**不允許**加句號，以避免感染閱讀或複製。
 4. 對於檔案的 Doxygen 格式**必須**遵守以下規則與順序：
    1. 使用 `@file <FILENAME>` 標記此檔案的名稱。
    2. 使用 `@brief <TEXT>` 簡述此檔案。
@@ -453,7 +455,7 @@ int main(void) {
 > \-- From @tdammers [Break on default case in switch](https://softwareengineering.stackexchange.com/a/201786)
 
 > As a matter of good form, put a break after the last case (the default here) even though it's logically unnecessary. Some day when another case gets added at the end, this bit of defensive programming will save you.\
-> \-- From _The C Programming Language, 2/e_, [Should we break the default case in switch statement?](https://stackoverflow.com/a/26139061)
+> \-- From *The C Programming Language, 2/e*, [Should we break the default case in switch statement?](https://stackoverflow.com/a/26139061)
 
 #### 為何使用花括號的 `switch-case` 的 `break` 要在其外？
 
@@ -477,7 +479,7 @@ int main(void) {
 
 另外，為了鼓勵使用者為本來就不會也不該改變的值使用不可變變數（Immutable variable），`const` 區域變數、成員和參數不實施**大寫蛇形**，而是遵照原始規則，可以讓使用者不會為了「避免程式碼出現一堆難看的全大寫」而進一步避免使用 `const`。所以如果你確定這個區域變數、成員或參數的值不會也不該改變，請考慮加上 `const`。這是來自 Rust 的一個啓發。
 
-> you should use `const` wherever possible but for _maintainability reasons_ & _preventing yourself from doing stupid mistakes_.
+> you should use `const` wherever possible but for *maintainability reasons* & *preventing yourself from doing stupid mistakes*.
 > \-- From [Should I use const for local variables for better code optimization?](https://stackoverflow.com/a/10747948)
 
 > [\[106\] const 變數有助理解程式碼並協助編譯器優化](https://samtsai.org/2016/07/24/106-const-bian-shu-you-zhu-li-jie-cheng-shi-ma-bing-xie-zhu-bian-yi-qi-you-hua/)
@@ -600,7 +602,7 @@ BraceWrapping:
   AfterObjCDeclaration: false
   AfterStruct: false
   AfterUnion: false
-  AfterExternBlock: true # Make `IndentExternBlock: NoIndent` work. https://github.com/llvm/llvm-project/issues/49804
+  AfterExternBlock: true  # Make `IndentExternBlock: NoIndent` work. https://github.com/llvm/llvm-project/issues/49804
   BeforeCatch: false
   BeforeElse: false
   BeforeLambdaBody: false
@@ -610,8 +612,8 @@ BraceWrapping:
   SplitEmptyRecord: true
   SplitEmptyNamespace: true
 BreakBeforeBinaryOperators: NonAssignment
-CommentPragmas: ""
-IncludeIsMainRegex: ""
+CommentPragmas: ''
+IncludeIsMainRegex: ''
 IndentExternBlock: NoIndent
 IndentPPDirectives: BeforeHash
 InsertNewlineAtEOF: true
@@ -638,10 +640,17 @@ LineEnding: DeriveLF
   "doxdocgen.c.firstLine": "",
   "doxdocgen.c.lastLine": "",
   "doxdocgen.c.triggerSequence": "///",
-  "doxdocgen.file.copyrightTag": ["@copyright SPDX-License-Identifier: "],
-  "doxdocgen.file.fileOrder": ["file", "brief", "author", "copyright"],
+  "doxdocgen.file.copyrightTag": [
+    "@copyright SPDX-License-Identifier: "
+  ],
+  "doxdocgen.file.fileOrder": [
+    "file",
+    "brief",
+    "author",
+    "copyright"
+  ],
   "doxdocgen.generic.authorTag": "@author {author} <{email}>",
-  "doxdocgen.generic.returnTemplate": "@return "
+  "doxdocgen.generic.returnTemplate": "@return ",
 }
 ```
 

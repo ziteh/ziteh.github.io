@@ -40,7 +40,7 @@ github.com
   - Token scopes: 'gist', 'read:org', 'repo', 'workflow'
 ```
 
-再來，你可以用 `gh repo list <USERNAME>` 列出所有的 repo，`<USERNAME>` 是目標用戶或組織的 _username_。如果擁有權限的話，Private repo 也會列出。你可以試著列出自己的 repo，看看是否可以看到自己的 Private repo。例如列出 [Vim](https://github.com/vim) 的所有 repo：
+再來，你可以用 `gh repo list <USERNAME>` 列出所有的 repo，`<USERNAME>` 是目標用戶或組織的 *username*。如果擁有權限的話，Private repo 也會列出。你可以試著列出自己的 repo，看看是否可以看到自己的 Private repo。例如列出 [Vim](https://github.com/vim) 的所有 repo：
 
 ```bash
 $ gh repo list vim

@@ -1,5 +1,5 @@
 ---
-title: "[專案:電腦風扇控制器-1] 構想與零件選用"
+title: '[專案:電腦風扇控制器-1] 構想與零件選用'
 author: ZiTe
 tags:
   - 電子電路
@@ -28,34 +28,34 @@ draft: false
 
 ## 零件列表
 
-| 名稱           | 型號規格                | 數量 |
-| -------------- | ----------------------- | ---- |
-| FPGA           | EP2C5T144C8N TQFP-144   | 1    |
-| FPGA配置晶片   | EPCS4I8                 | 1    |
-| FPGA轉接板     | --                      | 1    |
-| FPGA燒錄座     | 10Pin 公牛座            | 2    |
-| 石英震盪器     | 有源 48MHz              | 1    |
-| 繼電器         | LEG-12                  | 6    |
-| 穩壓晶片       | LM1117S-3.3             | 1    |
-| 大按鈕+蓋      | --                      | 4    |
-| Reset按鈕      | --                      | 1    |
-| OLED           | SSD1306 128x64 單色 I2C | 1    |
-| 按鈕接地電阻   | 1KΩ                     | 5    |
-| 按鈕防彈跳電容 | 0.1μF                   | 4    |
-| I2C提升電阻    | 4.7KΩ                   | 2    |
-| 繼電器電晶體   | ?                       | 6    |
-| 繼電器電阻     | 1KΩ                     | 6    |
-| 繼電器二級體   | 1N4004                  | 6    |
-| 風扇接座       | 4Pin 莫士接座           | 6    |
-| 總電源接座     | 大4Pin                  | 1    |
-| OLED接座       | 4Pin 杜邦母座           | 1    |
-| 電源去耦電容   | 10μF                    | 7    |
-| 總電源開關     | 雙刀單擲                | 1    |
-| PWM 風扇       | 12V 4Pin                | 2    |
-| 穩壓電路電容   | ?                       | ?    |
-| 保險絲         | ?                       | ?    |
-| 電源指示LED    | SMD                     | 3    |
-| LED電阻        | 1KΩ                     | 3    |
+|名稱|型號規格|數量|
+|--- |--- |--- |
+|FPGA|EP2C5T144C8N TQFP-144|1|
+|FPGA配置晶片|EPCS4I8|1|
+|FPGA轉接板|--|1|
+|FPGA燒錄座|10Pin 公牛座|2|
+|石英震盪器|有源 48MHz|1|
+|繼電器|LEG-12|6|
+|穩壓晶片|LM1117S-3.3|1|
+|大按鈕+蓋|--|4|
+|Reset按鈕|--|1|
+|OLED|SSD1306 128x64 單色 I2C|1|
+|按鈕接地電阻|1KΩ|5|
+|按鈕防彈跳電容|0.1μF|4|
+|I2C提升電阻|4.7KΩ|2|
+|繼電器電晶體|?|6|
+|繼電器電阻|1KΩ|6|
+|繼電器二級體|1N4004|6|
+|風扇接座|4Pin 莫士接座|6|
+|總電源接座|大4Pin|1|
+|OLED接座|4Pin 杜邦母座|1|
+|電源去耦電容|10μF|7|
+|總電源開關|雙刀單擲|1|
+|PWM 風扇|12V 4Pin|2|
+|穩壓電路電容|?|?|
+|保險絲|?|?|
+|電源指示LED|SMD|3|
+|LED電阻|1KΩ|3|
 
 ### FPGA部分
 
@@ -92,17 +92,17 @@ FPGA我選擇使用Altera Cyclone II EP2C5T144C8N TQFP-144。核心電壓(VCCI
 3. 繼電器 : [Cooper Maa :](http://coopermaa2nd.blogspot.tw/2011/03/lab21-12v.html?m=1) [Arduino 筆記 - Lab21 用繼電器控制 12V 風扇](http://coopermaa2nd.blogspot.tw/2011/03/lab21-12v.html?m=1)
 4. 穩壓晶片 : [小狐狸事務所 :](http://yhhuang1966.blogspot.tw/2015/07/ic.html) [關於電源穩壓 IC](http://yhhuang1966.blogspot.tw/2015/07/ic.html)
 5. LM1117 : [3.3V VOLTAGE REGULATOR](http://www.electronics-lab.com/project/3-3v-voltage-regulator/)
-6. LM1117S : [LM1117S-3.3](http://blog.naver.com/PostView.nhn?blogId=telius07&logNo=40034037959)
+6. LM1117S : [LM1117S-3.3](http://blog.naver.com/PostView.nhn?blogId=telius07\&logNo=40034037959)
 7. PWM風扇 : [呂阿谷 : PC散熱風扇之研究三：PWM風扇進階研究](http://luyaku.pixnet.net/blog/post/341175399-pc%E6%95%A3%E7%86%B1%E9%A2%A8%E6%89%87%E4%B9%8B%E7%A0%94%E7%A9%B6%E4%B8%89%EF%BC%9Apwm%E9%A2%A8%E6%89%87%E9%80%B2%E9%9A%8E%E7%A0%94%E7%A9%B6)
 
 ### Data Sheet
 
-1. Cyclone II : [Cyclone II Device Handbook - Altera](https://www.google.com.tw/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwjnwZmjndvXAhVONpQKHVFaBLQQFgglMAA&url=https%3A%2F%2Fwww.altera.com%2Fliterature%2Fhb%2Fcyc2%2Fcyc2_cii5v1.pdf&usg=AOvVaw0RzIUFQt3lfLf4CxeIyVNA)
-2. EPCS4I8 : [Serial Configuration (EPCS) Devices Datasheet - Altera](https://www.google.com.tw/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwjgxv6PntvXAhUEFJQKHbNKB58QFgglMAA&url=https%3A%2F%2Fwww.altera.com%2Fliterature%2Fhb%2Fcfg%2Fcyc_c51014.pdf&usg=AOvVaw3gRe3H3TqbR6BwOBfJI2Fh)
-3. LM1117S : [LM1117S Datasheet(PDF) - HTC Korea TAEJIN Technology Co.](https://www.google.com.tw/url?sa=t&rct=j&q=&esrc=s&source=web&cd=5&ved=0ahUKEwjD96HHodvXAhVEKJQKHeVFAHUQFghFMAQ&url=http%3A%2F%2Fwww.alldatasheet.com%2Fdatasheet-pdf%2Fpdf%2F177530%2FHTC%2FLM1117S.html&usg=AOvVaw1sJsJP7hkOuazaewM7HDWB)
+1. Cyclone II : [Cyclone II Device Handbook - Altera](https://www.google.com.tw/url?sa=t\&rct=j\&q=\&esrc=s\&source=web\&cd=1\&ved=0ahUKEwjnwZmjndvXAhVONpQKHVFaBLQQFgglMAA\&url=https%3A%2F%2Fwww.altera.com%2Fliterature%2Fhb%2Fcyc2%2Fcyc2_cii5v1.pdf\&usg=AOvVaw0RzIUFQt3lfLf4CxeIyVNA)
+2. EPCS4I8 : [Serial Configuration (EPCS) Devices Datasheet - Altera](https://www.google.com.tw/url?sa=t\&rct=j\&q=\&esrc=s\&source=web\&cd=1\&ved=0ahUKEwjgxv6PntvXAhUEFJQKHbNKB58QFgglMAA\&url=https%3A%2F%2Fwww.altera.com%2Fliterature%2Fhb%2Fcfg%2Fcyc_c51014.pdf\&usg=AOvVaw3gRe3H3TqbR6BwOBfJI2Fh)
+3. LM1117S : [LM1117S Datasheet(PDF) - HTC Korea TAEJIN Technology Co.](https://www.google.com.tw/url?sa=t\&rct=j\&q=\&esrc=s\&source=web\&cd=5\&ved=0ahUKEwjD96HHodvXAhVEKJQKHeVFAHUQFghFMAQ\&url=http%3A%2F%2Fwww.alldatasheet.com%2Fdatasheet-pdf%2Fpdf%2F177530%2FHTC%2FLM1117S.html\&usg=AOvVaw1sJsJP7hkOuazaewM7HDWB)
 4. LEG-12 : [RAYEX ELECTRONICS](https://www.tme.eu/en/details/leg-12/miniature-electromagnetic-relays/rayex-electronics/) [](https://www.tme.eu/en/details/leg-12/miniature-electromagnetic-relays/rayex-electronics/) [LEG-12](https://www.tme.eu/en/details/leg-12/miniature-electromagnetic-relays/rayex-electronics/)
-5. SSD1306 : [SSD1306](https://www.google.com.tw/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwiRquzen9vXAhXGkZQKHacKC8YQFgglMAA&url=https%3A%2F%2Fcdn-shop.adafruit.com%2Fdatasheets%2FSSD1306.pdf&usg=AOvVaw295piYr-tzt5CnBsNVzI7X)
-6. 1N4004 : [1N4001 datasheet - Adafruit Industries](https://www.google.com.tw/url?sa=t&rct=j&q=&esrc=s&source=web&cd=4&ved=0ahUKEwi4tOnzn9vXAhUBuZQKHc9mAJEQFgg9MAM&url=https%3A%2F%2Fcdn-shop.adafruit.com%2Fdatasheets%2F1N4001-D.PDF&usg=AOvVaw021F3iEmxkk38CKMcf287Z)
+5. SSD1306 : [SSD1306](https://www.google.com.tw/url?sa=t\&rct=j\&q=\&esrc=s\&source=web\&cd=1\&ved=0ahUKEwiRquzen9vXAhXGkZQKHacKC8YQFgglMAA\&url=https%3A%2F%2Fcdn-shop.adafruit.com%2Fdatasheets%2FSSD1306.pdf\&usg=AOvVaw295piYr-tzt5CnBsNVzI7X)
+6. 1N4004 : [1N4001 datasheet - Adafruit Industries](https://www.google.com.tw/url?sa=t\&rct=j\&q=\&esrc=s\&source=web\&cd=4\&ved=0ahUKEwi4tOnzn9vXAhUBuZQKHc9mAJEQFgg9MAM\&url=https%3A%2F%2Fcdn-shop.adafruit.com%2Fdatasheets%2F1N4001-D.PDF\&usg=AOvVaw021F3iEmxkk38CKMcf287Z)
 
 ## 相關文章
 

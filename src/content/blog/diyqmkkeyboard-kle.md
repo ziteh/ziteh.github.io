@@ -1,5 +1,5 @@
 ---
-title: "[自製QMK鍵盤-1] 編輯鍵盤佈局 (Layout)"
+title: '[自製QMK鍵盤-1] 編輯鍵盤佈局 (Layout)'
 author: ZiTe
 tags:
   - 教學

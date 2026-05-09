@@ -36,7 +36,7 @@ draft: false
 
 ## MESC STM32 BLDC FOC 韌體函式庫
 
-[davidmolony/MESC_Firmware: FOC library for BLDC/PMSM compatible with all STM32 targets with FPU.](https://github.com/davidmolony/MESC_Firmware)
+[davidmolony/MESC\_Firmware: FOC library for BLDC/PMSM compatible with all STM32 targets with FPU.](https://github.com/davidmolony/MESC_Firmware)
 
 對於擁有 FPU 的 STM32 MCU 所開發的 BLDC/PMSM FOC 控制韌體函式庫。
 

@@ -1,5 +1,5 @@
 ---
-title: "[自製QMK鍵盤-2] 如何選擇微控制器 MCU？"
+title: '[自製QMK鍵盤-2] 如何選擇微控制器 MCU？'
 author: ZiTe
 tags:
   - 教學
@@ -46,15 +46,15 @@ draft: false
 
 ## 快速比較
 
-| 項目           | ⭐ATmega32U4        | AT90USB1286         | ⭐RP2040                     | STM32F303CC          | STM32F401CC          |
+| 項目           | ⭐ATmega32U4         | AT90USB1286         | ⭐RP2040                      | STM32F303CC          | STM32F401CC          |
 | -------------- | ------------------- | ------------------- | ---------------------------- | -------------------- | -------------------- |
 | CPU 架構       | 8-bit AVR           | 8-bit AVR           | 雙核心 32-bit ARM Cortex-M0+ | 32-bit ARM Cortex-M4 | 32-bit ARM Cortex-M4 |
-| 運作頻率       | 16/8 MHz _(1)_      | 16/8 MHz _(1)_      | 133 MHz                      | 72 Mhz               | 84 Mhz               |
-| ROM (Flash)    | 32 KB + 1 KB EEPROM | 128 KB + 4KB EEPROM | 最多 16 MB _(2)_             | 256 KB               | 256 KB               |
+| 運作頻率       | 16/8 MHz *(1)*      | 16/8 MHz *(1)*      | 133 MHz                      | 72 Mhz               | 84 Mhz               |
+| ROM (Flash)    | 32 KB + 1 KB EEPROM | 128 KB + 4KB EEPROM | 最多 16 MB *(2)*             | 256 KB               | 256 KB               |
 | RAM            | 2.5 KB              | 8 KB                | 264 KB                       | 40 KB                | 64 KB                |
 | GPIO           | 25                  | 46                  | 30                           | 37                   | 36                   |
 | 週邊電路       | 少                  | 少                  | 多（Flash）                  | 少                   | 少                   |
-| Bootloader     | 第三方 _(3)_        | 第三方 _(3)_        | 內建                         | 內建                 | 內建                 |
+| Bootloader     | 第三方 *(3)*        | 第三方 *(3)*        | 內建                         | 內建                 | 內建                 |
 | 封裝           | TQFP-44, QFN-44     | TQFP-64, QFN-64     | QFN-56                       | LQFP-48              | UFQFPN-48, WLCSP-49  |
 | 常見開發板     | Pro Micro           | Teensy++ 2.0        | Paspberry Pi Pico            | Proton C             | WeAct Blackpill      |
 | 單價（Mouser） | NT$ 180             | NT$ 355             | NT$ 24                       | NT$ 261              | NT$ 226              |
@@ -66,7 +66,7 @@ draft: false
 > 2. RP2040 沒有內建 Flash，你必須外接獨立的 Flash IC，如： W25Q128JVS, W25Q64JVXGIQ。
 > 3. 一般來說出廠的 MCU 不會燒好第三方 Bootloader，如何你是單買 IC 而非開發板，可能需要使用燒錄器先燒好 Bootloader 後才可以使用 QMK。
 
-對於新手我基本上只推薦 **ATmega32U4** 和 **RP2040**，&#x4E14;**_最優先推薦 RP2040_**。如果你不知道怎麼選的話，可以參考以下的守則：
+對於新手我基本上只推薦 **ATmega32U4** 和 **RP2040**，&#x4E14;***最優先推薦 RP2040***。如果你不知道怎麼選的話，可以參考以下的守則：
 
 1. 如果你不想自己畫/處理 MCU 的 PCB 電路，想要使用現成的開發板的話，選擇 RP2040。
 2. 如果以下 3 點**全部符合**的話，選擇 QFP 封裝的 ATmega32U4。
@@ -170,9 +170,13 @@ QMK 的藍牙是透過模組支援的，且原則上僅限 AVR MCU。可以參�
 不過在現在，如果你想要做藍牙鍵盤的話，我可能會另外推薦你 [ZMK](https://zmk.dev/) 和 nRF5 系列 SoC （如 [nRF52840](https://www.nordicsemi.com/products/nrf52840?lang=zh-TW)）。
 
 [32u4]: https://www.microchip.com/en-us/product/atmega32u4
+
 [at90]: https://www.microchip.com/en-us/product/AT90USB1286
+
 [rp]: https://www.raspberrypi.com/documentation/microcontrollers/rp2040.html
+
 [303]: https://www.st.com/en/microcontrollers-microprocessors/stm32f303cc.html
+
 [401]: https://www.st.com/en/microcontrollers-microprocessors/stm32f401cc.html
 
 ## 相關文章

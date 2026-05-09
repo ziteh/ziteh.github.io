@@ -178,7 +178,7 @@ make vial_example/vial_atmega32u4:default
 
 這裡的路徑是 `vial-qmk/keyboards/` 底下的路徑，不用前導斜線 `/`。如果這時有編譯錯誤的話，你可能要先確定你的 QMK 環境及相關工具。
 
-> 使用 Vial 時建議使用 `make` 而非 `qmk compile`，當然你可能要另外安裝 [_make_](https://stackoverflow.com/questions/32127524/how-to-install-and-use-make-in-windows)。
+> 使用 Vial 時建議使用 `make` 而非 `qmk compile`，當然你可能要另外安裝 [*make*](https://stackoverflow.com/questions/32127524/how-to-install-and-use-make-in-windows)。
 
 ### 建立 Keymap
 

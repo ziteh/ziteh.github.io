@@ -1,5 +1,5 @@
 ---
-title: "[教學:3D列印-3] 常用G-code指令解讀"
+title: '[教學:3D列印-3] 常用G-code指令解讀'
 author: ZiTe
 tags:
   - 3D列印

@@ -100,5 +100,7 @@ featured: true
 - [QMK 官網](https://qmk.fm/)
 
 [pcb1]: https://bucket.ziteh.dev/blog/ergosnm-v3-0-1/pcb1.webp
+
 [pcb2]: https://bucket.ziteh.dev/blog/ergosnm-v3-0-1/pcb2.webp
+
 [layout]: https://bucket.ziteh.dev/blog/ergosnm-v3-0-1/layout.webp

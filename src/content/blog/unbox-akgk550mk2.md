@@ -1,5 +1,5 @@
 ---
-title: "[開箱] AKG K550-MK2 : 封閉式家用大耳罩 — 3年前的夢想"
+title: '[開箱] AKG K550-MK2 : 封閉式家用大耳罩 — 3年前的夢想'
 author: ZiTe
 tags:
   - 開箱

@@ -63,11 +63,12 @@ import { _t, SITE } from "@/config";
   }
   .site-title {
     margin: 0;
-    font-size: 1em;
+    font-size: var(--font-size-lg);
     font-weight: var(--font-weight-bold);
   }
   .site-title a,
   .site-title a.active {
+    color: var(--color-900);
     text-decoration: none;
   }
   nav {
@@ -81,9 +82,12 @@ import { _t, SITE } from "@/config";
   }
   nav a {
     padding: 1em;
-    color: var(--color-900);
+    color: var(--color-700);
     border-bottom: 2px solid transparent;
     text-decoration: none;
+  }
+  nav a:hover {
+    color: var(--color-900);
   }
   nav a.active {
     text-decoration: none;

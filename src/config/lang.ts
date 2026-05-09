@@ -118,10 +118,10 @@ const myLang: typeof en = (() => {
       },
     },
     categories: {
-      title: "系列",
-      desc: "所有系列",
+      title: "分類",
+      desc: "所有分類",
       pageTitle(name: string): string {
-        return `系列：${name}`;
+        return `分類：${name}`;
       },
     },
     search: {

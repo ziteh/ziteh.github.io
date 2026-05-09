@@ -1,5 +1,5 @@
 ---
-title: "[開箱] 群暉Synology NAS DS216 Play"
+title: '[開箱] 群暉Synology NAS DS216 Play'
 author: ZiTe
 tags:
   - 3C

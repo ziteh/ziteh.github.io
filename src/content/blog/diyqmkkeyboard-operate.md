@@ -1,5 +1,5 @@
 ---
-title: "[自製QMK鍵盤-番外] QMK的基本架構與運作方式"
+title: '[自製QMK鍵盤-番外] QMK的基本架構與運作方式'
 author: ZiTe
 tags:
   - 3C
@@ -86,13 +86,13 @@ draft: false
 
 這是因為QMK支援的平台不同，最常見的平台是「[lufa](https://github.com/abcminiuser/lufa)（Lightweight USB Framework for AVRs）」，它運作在如ATmega32U4這樣的AVR微控制器（處理機，Processors）上。其它還有「chibios」和「vusb」。
 
-以下將重點放在使用「lufa」平台上的AVR微控制器。你可以在[tmk_core/protocol/lufa/lufa.c](https://github.com/qmk/qmk_firmware/blob/e1203a222bb12ab9733916164a000ef3ac48da93/tmk_core/protocol/lufa/lufa.c#L1028)中找到`main()`函數。瀏覽該函數可以發現它會初始化已配置的硬體（包含了主機的USB），然後在[`while(1)`](https://github.com/qmk/qmk_firmware/blob/e1203a222bb12ab9733916164a000ef3ac48da93/tmk_core/protocol/lufa/lufa.c#L1069)中開始核心的部分。這是所謂的「主迴圈（Main loop）」。
+以下將重點放在使用「lufa」平台上的AVR微控制器。你可以在[tmk\_core/protocol/lufa/lufa.c](https://github.com/qmk/qmk_firmware/blob/e1203a222bb12ab9733916164a000ef3ac48da93/tmk_core/protocol/lufa/lufa.c#L1028)中找到`main()`函數。瀏覽該函數可以發現它會初始化已配置的硬體（包含了主機的USB），然後在[`while(1)`](https://github.com/qmk/qmk_firmware/blob/e1203a222bb12ab9733916164a000ef3ac48da93/tmk_core/protocol/lufa/lufa.c#L1069)中開始核心的部分。這是所謂的「主迴圈（Main loop）」。
 
 ### 主迴圈
 
 主迴圈的程式負責永遠地重複執行同一組指令。這是QMK分配令鍵盤執行它應該做的所有事情的地方。雖然它看起來包含了很多功能，但多數情況下它們會被`#define`給禁用（disable）。
 
-`keyboard_task()`函數負責調度所有的鍵盤功能。其原始碼可在[tmk_core / common / keyboard.c](https://github.com/qmk/qmk_firmware/blob/e1203a222bb12ab9733916164a000ef3ac48da93/tmk_core/common/keyboard.c#L216)中找到，它負責檢測鍵盤矩陣的變化和各狀態LED燈的亮滅。
+`keyboard_task()`函數負責調度所有的鍵盤功能。其原始碼可在[tmk\_core / common / keyboard.c](https://github.com/qmk/qmk_firmware/blob/e1203a222bb12ab9733916164a000ef3ac48da93/tmk_core/common/keyboard.c#L216)中找到，它負責檢測鍵盤矩陣的變化和各狀態LED燈的亮滅。
 
 在`keyboard_task()`函數中，你可以找到要處理的程式碼：
 
@@ -170,17 +170,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 我們在`const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS]`呼叫了`LAYOUT()`巨集，並傳遞如以下的引數給`LAYOUT()`巨集：
 
 |         |         |         |         |
-| ------- | ------- | ------- | ------- |
-| KC_NLCK | KC_PSLS | KC_PAST | KC_PMNS |
-| KC_P7   | KC_P8   | KC_P9   | KC_PPLS |
-| KC_P4   | KC_P5   | KC_P6   |         |
-| KC_P1   | KC_P2   | KC_P3   | KC_PENT |
-| KC_P0   |         | KC_PDOT |         |
+|---------|---------|---------|---------|
+| KC\_NLCK | KC\_PSLS | KC\_PAST | KC\_PMNS |
+| KC\_P7   | KC\_P8   | KC\_P9   | KC\_PPLS |
+| KC\_P4   | KC\_P5   | KC\_P6   |         |
+| KC\_P1   | KC\_P2   | KC\_P3   | KC\_PENT |
+| KC\_P0   |         | KC\_PDOT |         |
 
 以上這些引數傳遞進`LAYOUT()`巨集後，一一對應了`LAYOUT()`巨集的前半部分，也就是：
 
 |     |     |     |     |
-| --- | --- | --- | --- |
+|-----|-----|-----|-----|
 | k00 | k01 | k02 | k03 |
 | k10 | k11 | k12 | k13 |
 | k20 | k21 | k22 |     |
@@ -191,25 +191,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 例如在`LAYOUT()`巨集的前半部分中，引數`KC_NLCK`的位置對應了參數名`k00`，那麼在`LAYOUT()`巨集後半部分的`k00`就會被替換成`KC_NLCK`。
 
-以下是`LAYOUT()`巨集的後半部分，請注意我特別標示成斜體的*KC_NO*在什麼位置。
+以下是`LAYOUT()`巨集的後半部分，請注意我特別標示成斜體的*KC\_NO*在什麼位置。
 
-|     |         |     |         |
-| --- | ------- | --- | ------- |
-| k00 | k01     | k02 | k03     |
-| k10 | k11     | k12 | k13     |
-| k20 | k21     | k22 | _KC_NO_ |
-| k30 | k31     | k32 | k33     |
-| k40 | _KC_NO_ | k42 | _KC_NO_ |
+|     |       |     |       |
+|-----|-------|-----|-------|
+| k00 | k01   | k02 | k03   |
+| k10 | k11   | k12 | k13   |
+| k20 | k21   | k22 | *KC\_NO* |
+| k30 | k31   | k32 | k33   |
+| k40 | *KC\_NO* | k42 | *KC\_NO* |
 
 當`LAYOUT()`巨集完成所有的替換工作後，它會回傳如以下的內容：
 
 |         |         |         |         |
-| ------- | ------- | ------- | ------- |
-| KC_NLCK | KC_PSLS | KC_PAST | KC_PMNS |
-| KC_P7   | KC_P8   | KC_P9   | KC_PPLS |
-| KC_P4   | KC_P5   | KC_P6   | _KC_NO_ |
-| KC_P1   | KC_P2   | KC_P3   | KC_PENT |
-| KC_P0   | _KC_NO_ | KC_PDOT | _KC_NO_ |
+|---------|---------|---------|---------|
+| KC\_NLCK | KC\_PSLS | KC\_PAST | KC\_PMNS |
+| KC\_P7   | KC\_P8   | KC\_P9   | KC\_PPLS |
+| KC\_P4   | KC\_P5   | KC\_P6   | *KC\_NO*   |
+| KC\_P1   | KC\_P2   | KC\_P3   | KC\_PENT |
+| KC\_P0   | *KC\_NO*   | KC\_PDOT | *KC\_NO*   |
 
 以上為了方便理解，所以我使用表格的方式表示，但實際情況會更加類似以下：
 
@@ -220,28 +220,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 以上的引數透過位置來對應到以下`LAYOUT()`巨集的前半部分。
 
 |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |     |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | k00 | k01 | k02 | k03 | k10 | k11 | k12 | k13 | k20 | k21 | k22 | k30 | k31 | k32 | k33 | k40 | k42 |
 
 以上`LAYOUT()`巨集的前半部分透過名稱（如`k00`）來對應到以下的`LAYOUT()`巨集後半部分。
 
-|     |         |     |         |
-| --- | ------- | --- | ------- |
-| k00 | k01     | k02 | k03     |
-| k10 | k11     | k12 | k13     |
-| k20 | k21     | k22 | _KC_NO_ |
-| k30 | k31     | k32 | k33     |
-| k40 | _KC_NO_ | k42 | _KC_NO_ |
+|     |       |     |       |
+|-----|-------|-----|-------|
+| k00 | k01   | k02 | k03   |
+| k10 | k11   | k12 | k13   |
+| k20 | k21   | k22 | *KC\_NO* |
+| k30 | k31   | k32 | k33   |
+| k40 | *KC\_NO* | k42 | *KC\_NO* |
 
 當巨集完成替換後會變成像這樣：
 
 |         |         |         |         |
-| ------- | ------- | ------- | ------- |
-| KC_NLCK | KC_PSLS | KC_PAST | KC_PMNS |
-| KC_P7   | KC_P8   | KC_P9   | KC_PPLS |
-| KC_P4   | KC_P5   | KC_P6   | _KC_NO_ |
-| KC_P1   | KC_P2   | KC_P3   | KC_PENT |
-| KC_P0   | _KC_NO_ | KC_PDOT | _KC_NO_ |
+|---------|---------|---------|---------|
+| KC\_NLCK | KC\_PSLS | KC\_PAST | KC\_PMNS |
+| KC\_P7   | KC\_P8   | KC\_P9   | KC\_PPLS |
+| KC\_P4   | KC\_P5   | KC\_P6   | *KC\_NO*   |
+| KC\_P1   | KC\_P2   | KC\_P3   | KC\_PENT |
+| KC\_P0   | *KC\_NO*   | KC\_PDOT | *KC\_NO*   |
 
 ##### 檢測狀態變化
 

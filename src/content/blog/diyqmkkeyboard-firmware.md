@@ -1,6 +1,6 @@
 ---
-title: "[自製QMK鍵盤-3] 產生並編輯QMK韌體教學"
-subtitle: "2025 QMK 韌體編輯教學"
+title: '[自製QMK鍵盤-3] 產生並編輯QMK韌體教學'
+subtitle: '2025 QMK 韌體編輯教學'
 author: ZiTe
 tags:
   - 教學
@@ -83,7 +83,7 @@ https://docs.qmk.fm/#/hardware_keyboard_guidelines?id=naming-your-keyboardprojec
 Keyboard Name?
 ```
 
-這時請輸入你想要的鍵盤名稱後按 Enter，例如我使用「0_my_kb_rp2040」做示範。命名規則請參考 [Naming Your Keyboard/Project](https://docs.qmk.fm/hardware_keyboard_guidelines#naming-your-keyboard-project)。名稱以「0」開頭單純是因為名稱排序下比較好找資料夾。
+這時請輸入你想要的鍵盤名稱後按 Enter，例如我使用「0\_my\_kb\_rp2040」做示範。命名規則請參考 [Naming Your Keyboard/Project](https://docs.qmk.fm/hardware_keyboard_guidelines#naming-your-keyboard-project)。名稱以「0」開頭單純是因為名稱排序下比較好找資料夾。
 
 再來它回問你 Username 及 Real Name，這部分就打你自己想要的名稱即可（之後也還可以改），例如我兩者都打「ziteh」。
 
@@ -101,7 +101,7 @@ Your Real Name?  [ziteh]
 
 ![▲ 使用指令建立新鍵盤](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware/b5aa9bec.webp)
 
-接著會問你基礎佈局，你可以選一個和你預計要做的鍵盤較為類似的佈局，這樣後續要改的東西就會比較少。例如常見的 60% 鍵盤為「11. 65_ansi」，那就輸入其編號「11」後按 Enter。我這裡就選擇「none of the above」表示不使用現成的特定 Layout。
+接著會問你基礎佈局，你可以選一個和你預計要做的鍵盤較為類似的佈局，這樣後續要改的東西就會比較少。例如常見的 60% 鍵盤為「11. 65\_ansi」，那就輸入其編號「11」後按 Enter。我這裡就選擇「none of the above」表示不使用現成的特定 Layout。
 
 > 實際編號可能會因為版本而不同，請以選項名稱和你看到的為主。
 
@@ -233,23 +233,23 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
   "layouts": {
     "LAYOUT": {
       "layout": [
-        { "label": "Num Lock", "x": 0, "y": 0 },
-        { "label": "/", "x": 1, "y": 0 },
-        { "label": "*", "x": 2, "y": 0 },
-        { "label": "-", "x": 3, "y": 0 },
-        { "label": "7", "x": 0, "y": 1 },
-        { "label": "8", "x": 1, "y": 1 },
-        { "label": "9", "x": 2, "y": 1 },
-        { "label": "+", "x": 3, "y": 1, "h": 2 },
-        { "label": "4", "x": 0, "y": 2 },
-        { "label": "5", "x": 1, "y": 2 },
-        { "label": "6", "x": 2, "y": 2 },
-        { "label": "1", "x": 0, "y": 3 },
-        { "label": "2", "x": 1, "y": 3 },
-        { "label": "3", "x": 2, "y": 3 },
-        { "label": "Enter", "x": 3, "y": 3, "h": 2 },
-        { "label": "0", "x": 0, "y": 4, "w": 2 },
-        { "label": ".", "x": 2, "y": 4 }
+        {"label":"Num Lock", "x":0, "y":0},
+        {"label":"/", "x":1, "y":0},
+        {"label":"*", "x":2, "y":0},
+        {"label":"-", "x":3, "y":0},
+        {"label":"7", "x":0, "y":1},
+        {"label":"8", "x":1, "y":1},
+        {"label":"9", "x":2, "y":1},
+        {"label":"+", "x":3, "y":1, "h":2},
+        {"label":"4", "x":0, "y":2},
+        {"label":"5", "x":1, "y":2},
+        {"label":"6", "x":2, "y":2},
+        {"label":"1", "x":0, "y":3},
+        {"label":"2", "x":1, "y":3},
+        {"label":"3", "x":2, "y":3},
+        {"label":"Enter", "x":3, "y":3, "h":2},
+        {"label":"0", "x":0, "y":4, "w":2},
+        {"label":".", "x":2, "y":4}
       ]
     }
   }
@@ -374,26 +374,26 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
     "LAYOUT": {
       "layout": [
         { "label": "NumLock", "matrix": [0, 0], "x": 0, "y": 0 },
-        { "label": "/", "matrix": [0, 1], "x": 1, "y": 0 },
-        { "label": "*", "matrix": [0, 2], "x": 2, "y": 0 },
-        { "label": "-", "matrix": [0, 3], "x": 3, "y": 0 },
+        { "label": "/",       "matrix": [0, 1], "x": 1, "y": 0 },
+        { "label": "*",       "matrix": [0, 2], "x": 2, "y": 0 },
+        { "label": "-",       "matrix": [0, 3], "x": 3, "y": 0 },
 
-        { "label": "7", "matrix": [1, 0], "x": 0, "y": 1 },
-        { "label": "8", "matrix": [1, 1], "x": 1, "y": 1 },
-        { "label": "9", "matrix": [1, 2], "x": 2, "y": 1 },
+        { "label": "7",       "matrix": [1, 0], "x": 0, "y": 1 },
+        { "label": "8",       "matrix": [1, 1], "x": 1, "y": 1 },
+        { "label": "9",       "matrix": [1, 2], "x": 2, "y": 1 },
 
-        { "label": "4", "matrix": [2, 0], "x": 0, "y": 2 },
-        { "label": "5", "matrix": [2, 1], "x": 1, "y": 2 },
-        { "label": "6", "matrix": [2, 2], "x": 2, "y": 2 },
-        { "label": "+", "matrix": [2, 3], "x": 3, "y": 1, "h": 2 },
+        { "label": "4",       "matrix": [2, 0], "x": 0, "y": 2 },
+        { "label": "5",       "matrix": [2, 1], "x": 1, "y": 2 },
+        { "label": "6",       "matrix": [2, 2], "x": 2, "y": 2 },
+        { "label": "+",       "matrix": [2, 3], "x": 3, "y": 1, "h": 2 },
 
-        { "label": "1", "matrix": [3, 0], "x": 0, "y": 3 },
-        { "label": "2", "matrix": [3, 1], "x": 1, "y": 3 },
-        { "label": "3", "matrix": [3, 2], "x": 2, "y": 3 },
+        { "label": "1",       "matrix": [3, 0], "x": 0, "y": 3 },
+        { "label": "2",       "matrix": [3, 1], "x": 1, "y": 3 },
+        { "label": "3",       "matrix": [3, 2], "x": 2, "y": 3 },
 
-        { "label": "0", "matrix": [4, 1], "x": 0, "y": 4, "w": 2 },
-        { "label": ".", "matrix": [4, 2], "x": 2, "y": 4 },
-        { "label": "Enter", "matrix": [4, 3], "x": 3, "y": 3, "h": 2 }
+        { "label": "0",       "matrix": [4, 1], "x": 0, "y": 4, "w": 2 },
+        { "label": ".",       "matrix": [4, 2], "x": 2, "y": 4 },
+        { "label": "Enter",   "matrix": [4, 3], "x": 3, "y": 3, "h": 2 }
       ]
     }
   }
@@ -499,7 +499,7 @@ https://docs.qmk.fm/#/hardware_keyboard_guidelines?id=naming-your-keyboardprojec
 Keyboard Name?
 ```
 
-這時請輸入你想要的鍵盤名稱後按 Enter，例如我使用「0_my_kb_promicro」做示範。命名規則請參考 [Naming Your Keyboard/Project](https://docs.qmk.fm/hardware_keyboard_guidelines#naming-your-keyboard-project)。名稱以「0」開頭單純是因為名稱排序下比較好找資料夾。
+這時請輸入你想要的鍵盤名稱後按 Enter，例如我使用「0\_my\_kb\_promicro」做示範。命名規則請參考 [Naming Your Keyboard/Project](https://docs.qmk.fm/hardware_keyboard_guidelines#naming-your-keyboard-project)。名稱以「0」開頭單純是因為名稱排序下比較好找資料夾。
 
 再來它回問你 Username 及 Real Name，這部分就打你自己想要的名稱即可（之後也還可以改），例如我兩者都打「ziteh」。
 
@@ -517,7 +517,7 @@ Your Real Name?  [ziteh]
 
 ![▲ 使用指令建立新鍵盤](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware/b5aa9bec.webp)
 
-接著會問你基礎佈局，你可以選一個和你預計要做的鍵盤較為類似的佈局，這樣後續要改的東西就會比較少。例如常見的 60% 鍵盤為「11. 65_ansi」，那就輸入其編號「11」後按 Enter。我這裡就選擇「none of the above」表示不使用現成的特定 Layout。
+接著會問你基礎佈局，你可以選一個和你預計要做的鍵盤較為類似的佈局，這樣後續要改的東西就會比較少。例如常見的 60% 鍵盤為「11. 65\_ansi」，那就輸入其編號「11」後按 Enter。我這裡就選擇「none of the above」表示不使用現成的特定 Layout。
 
 > 實際編號可能會因為版本而不同，請以選項名稱和你看到的為主。
 
@@ -647,23 +647,23 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
   "layouts": {
     "LAYOUT": {
       "layout": [
-        { "label": "Num Lock", "x": 0, "y": 0 },
-        { "label": "/", "x": 1, "y": 0 },
-        { "label": "*", "x": 2, "y": 0 },
-        { "label": "-", "x": 3, "y": 0 },
-        { "label": "7", "x": 0, "y": 1 },
-        { "label": "8", "x": 1, "y": 1 },
-        { "label": "9", "x": 2, "y": 1 },
-        { "label": "+", "x": 3, "y": 1, "h": 2 },
-        { "label": "4", "x": 0, "y": 2 },
-        { "label": "5", "x": 1, "y": 2 },
-        { "label": "6", "x": 2, "y": 2 },
-        { "label": "1", "x": 0, "y": 3 },
-        { "label": "2", "x": 1, "y": 3 },
-        { "label": "3", "x": 2, "y": 3 },
-        { "label": "Enter", "x": 3, "y": 3, "h": 2 },
-        { "label": "0", "x": 0, "y": 4, "w": 2 },
-        { "label": ".", "x": 2, "y": 4 }
+        {"label":"Num Lock", "x":0, "y":0},
+        {"label":"/", "x":1, "y":0},
+        {"label":"*", "x":2, "y":0},
+        {"label":"-", "x":3, "y":0},
+        {"label":"7", "x":0, "y":1},
+        {"label":"8", "x":1, "y":1},
+        {"label":"9", "x":2, "y":1},
+        {"label":"+", "x":3, "y":1, "h":2},
+        {"label":"4", "x":0, "y":2},
+        {"label":"5", "x":1, "y":2},
+        {"label":"6", "x":2, "y":2},
+        {"label":"1", "x":0, "y":3},
+        {"label":"2", "x":1, "y":3},
+        {"label":"3", "x":2, "y":3},
+        {"label":"Enter", "x":3, "y":3, "h":2},
+        {"label":"0", "x":0, "y":4, "w":2},
+        {"label":".", "x":2, "y":4}
       ]
     }
   }
@@ -786,7 +786,7 @@ LTO 是 Link-Time Optimization（連接時間最佳化）的意思，它可以�
     "nkro": true
   },
   "build": {
-    "lto": true
+      "lto": true
   },
   "usb": {
     "device_version": "1.0.0",
@@ -801,26 +801,26 @@ LTO 是 Link-Time Optimization（連接時間最佳化）的意思，它可以�
     "LAYOUT": {
       "layout": [
         { "label": "NumLock", "matrix": [0, 0], "x": 0, "y": 0 },
-        { "label": "/", "matrix": [0, 1], "x": 1, "y": 0 },
-        { "label": "*", "matrix": [0, 2], "x": 2, "y": 0 },
-        { "label": "-", "matrix": [0, 3], "x": 3, "y": 0 },
+        { "label": "/",       "matrix": [0, 1], "x": 1, "y": 0 },
+        { "label": "*",       "matrix": [0, 2], "x": 2, "y": 0 },
+        { "label": "-",       "matrix": [0, 3], "x": 3, "y": 0 },
 
-        { "label": "7", "matrix": [1, 0], "x": 0, "y": 1 },
-        { "label": "8", "matrix": [1, 1], "x": 1, "y": 1 },
-        { "label": "9", "matrix": [1, 2], "x": 2, "y": 1 },
+        { "label": "7",       "matrix": [1, 0], "x": 0, "y": 1 },
+        { "label": "8",       "matrix": [1, 1], "x": 1, "y": 1 },
+        { "label": "9",       "matrix": [1, 2], "x": 2, "y": 1 },
 
-        { "label": "4", "matrix": [2, 0], "x": 0, "y": 2 },
-        { "label": "5", "matrix": [2, 1], "x": 1, "y": 2 },
-        { "label": "6", "matrix": [2, 2], "x": 2, "y": 2 },
-        { "label": "+", "matrix": [2, 3], "x": 3, "y": 1, "h": 2 },
+        { "label": "4",       "matrix": [2, 0], "x": 0, "y": 2 },
+        { "label": "5",       "matrix": [2, 1], "x": 1, "y": 2 },
+        { "label": "6",       "matrix": [2, 2], "x": 2, "y": 2 },
+        { "label": "+",       "matrix": [2, 3], "x": 3, "y": 1, "h": 2 },
 
-        { "label": "1", "matrix": [3, 0], "x": 0, "y": 3 },
-        { "label": "2", "matrix": [3, 1], "x": 1, "y": 3 },
-        { "label": "3", "matrix": [3, 2], "x": 2, "y": 3 },
+        { "label": "1",       "matrix": [3, 0], "x": 0, "y": 3 },
+        { "label": "2",       "matrix": [3, 1], "x": 1, "y": 3 },
+        { "label": "3",       "matrix": [3, 2], "x": 2, "y": 3 },
 
-        { "label": "0", "matrix": [4, 1], "x": 0, "y": 4, "w": 2 },
-        { "label": ".", "matrix": [4, 2], "x": 2, "y": 4 },
-        { "label": "Enter", "matrix": [4, 3], "x": 3, "y": 3, "h": 2 }
+        { "label": "0",       "matrix": [4, 1], "x": 0, "y": 4, "w": 2 },
+        { "label": ".",       "matrix": [4, 2], "x": 2, "y": 4 },
+        { "label": "Enter",   "matrix": [4, 3], "x": 3, "y": 3, "h": 2 }
       ]
     }
   }

@@ -1,6 +1,6 @@
 ---
-title: "[自製QMK鍵盤-番外] 0.24.8版QMK韌體"
-subtitle: "2024 QMK 韌體編輯教學"
+title: '[自製QMK鍵盤-番外] 0.24.8版QMK韌體'
+subtitle: '2024 QMK 韌體編輯教學'
 author: ZiTe
 tags:
   - 教學
@@ -96,7 +96,7 @@ Your Real Name?  [ziteh]
 
 ![▲ 使用指令建立新鍵盤](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware/b5aa9bec.webp)
 
-接著會問你基礎佈局，你可以選一個和你預計要做的鍵盤較為類似的佈局，這樣後續要改的東西就會比較少。例如常見的 60% 鍵盤為「11. 65_ansi」，那就輸入「11」後按 Enter。
+接著會問你基礎佈局，你可以選一個和你預計要做的鍵盤較為類似的佈局，這樣後續要改的東西就會比較少。例如常見的 60% 鍵盤為「11. 65\_ansi」，那就輸入「11」後按 Enter。
 
 最後會問你所使用的 MCU，如果你使用的是 Pro Micro 的話，可以選「14」號的「promicro」。當然如果你是用別的 MCU 的話就自行選擇。這些設定後續都可以再修改。
 
@@ -234,23 +234,23 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
   "layouts": {
     "LAYOUT": {
       "layout": [
-        { "label": "Num Lock", "x": 0, "y": 0 },
-        { "label": "/", "x": 1, "y": 0 },
-        { "label": "*", "x": 2, "y": 0 },
-        { "label": "-", "x": 3, "y": 0 },
-        { "label": "7", "x": 0, "y": 1 },
-        { "label": "8", "x": 1, "y": 1 },
-        { "label": "9", "x": 2, "y": 1 },
-        { "label": "+", "x": 3, "y": 1, "h": 2 },
-        { "label": "4", "x": 0, "y": 2 },
-        { "label": "5", "x": 1, "y": 2 },
-        { "label": "6", "x": 2, "y": 2 },
-        { "label": "1", "x": 0, "y": 3 },
-        { "label": "2", "x": 1, "y": 3 },
-        { "label": "3", "x": 2, "y": 3 },
-        { "label": "Enter", "x": 3, "y": 3, "h": 2 },
-        { "label": "0", "x": 0, "y": 4, "w": 2 },
-        { "label": ".", "x": 2, "y": 4 }
+        {"label":"Num Lock", "x":0, "y":0},
+        {"label":"/", "x":1, "y":0},
+        {"label":"*", "x":2, "y":0},
+        {"label":"-", "x":3, "y":0},
+        {"label":"7", "x":0, "y":1},
+        {"label":"8", "x":1, "y":1},
+        {"label":"9", "x":2, "y":1},
+        {"label":"+", "x":3, "y":1, "h":2},
+        {"label":"4", "x":0, "y":2},
+        {"label":"5", "x":1, "y":2},
+        {"label":"6", "x":2, "y":2},
+        {"label":"1", "x":0, "y":3},
+        {"label":"2", "x":1, "y":3},
+        {"label":"3", "x":2, "y":3},
+        {"label":"Enter", "x":3, "y":3, "h":2},
+        {"label":"0", "x":0, "y":4, "w":2},
+        {"label":".", "x":2, "y":4}
       ]
     }
   }
@@ -355,8 +355,8 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
   "bootloader": "caterina",
   "diode_direction": "COL2ROW",
   "matrix_pins": {
-    "cols": ["D1", "D0", "D4", "C6"],
-    "rows": ["F4", "F5", "F6", "F7", "B1"]
+    "cols": [ "D1", "D0", "D4", "C6" ],
+    "rows": [ "F4", "F5", "F6", "F7", "B1" ]
   },
   "features": {
     "bootmagic": true,
@@ -374,27 +374,27 @@ QMK 支援的微控制器和 Bootloader 很多，如果是上面沒有寫到的�
   "layouts": {
     "LAYOUT": {
       "layout": [
-        { "label": "NumLock", "matrix": [0, 0], "x": 0, "y": 0 },
-        { "label": "/", "matrix": [0, 1], "x": 1, "y": 0 },
-        { "label": "*", "matrix": [0, 2], "x": 2, "y": 0 },
-        { "label": "-", "matrix": [0, 3], "x": 3, "y": 0 },
+        {"label": "NumLock", "matrix": [0, 0], "x": 0, "y": 0},
+        {"label": "/",       "matrix": [0, 1], "x": 1, "y": 0},
+        {"label": "*",       "matrix": [0, 2], "x": 2, "y": 0},
+        {"label": "-",       "matrix": [0, 3], "x": 3, "y": 0},
 
-        { "label": "7", "matrix": [1, 0], "x": 0, "y": 1 },
-        { "label": "8", "matrix": [1, 1], "x": 1, "y": 1 },
-        { "label": "9", "matrix": [1, 2], "x": 2, "y": 1 },
+        {"label": "7",       "matrix": [1, 0], "x": 0, "y": 1},
+        {"label": "8",       "matrix": [1, 1], "x": 1, "y": 1},
+        {"label": "9",       "matrix": [1, 2], "x": 2, "y": 1},
 
-        { "label": "4", "matrix": [2, 0], "x": 0, "y": 2 },
-        { "label": "5", "matrix": [2, 1], "x": 1, "y": 2 },
-        { "label": "6", "matrix": [2, 2], "x": 2, "y": 2 },
-        { "label": "+", "matrix": [2, 3], "x": 3, "y": 1, "h": 2 },
+        {"label": "4",       "matrix": [2, 0], "x": 0, "y": 2},
+        {"label": "5",       "matrix": [2, 1], "x": 1, "y": 2},
+        {"label": "6",       "matrix": [2, 2], "x": 2, "y": 2},
+        {"label": "+",       "matrix": [2, 3], "x": 3, "y": 1, "h": 2},
 
-        { "label": "1", "matrix": [3, 0], "x": 0, "y": 3 },
-        { "label": "2", "matrix": [3, 1], "x": 1, "y": 3 },
-        { "label": "3", "matrix": [3, 2], "x": 2, "y": 3 },
+        {"label": "1",       "matrix": [3, 0], "x": 0, "y": 3},
+        {"label": "2",       "matrix": [3, 1], "x": 1, "y": 3},
+        {"label": "3",       "matrix": [3, 2], "x": 2, "y": 3},
 
-        { "label": "0", "matrix": [4, 1], "x": 0, "y": 4, "w": 2 },
-        { "label": ".", "matrix": [4, 2], "x": 2, "y": 4 },
-        { "label": "Enter", "matrix": [4, 3], "x": 3, "y": 3, "h": 2 }
+        {"label": "0",       "matrix": [4, 1], "x": 0, "y": 4, "w": 2},
+        {"label": ".",       "matrix": [4, 2], "x": 2, "y": 4},
+        {"label": "Enter",   "matrix": [4, 3], "x": 3, "y": 3, "h": 2}
       ]
     }
   }

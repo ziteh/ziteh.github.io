@@ -1,5 +1,5 @@
 ---
-title: "[開箱]自組60%藍牙機械鍵盤-Just60"
+title: '[開箱]自組60%藍牙機械鍵盤-Just60'
 author: ZiTe
 tags:
   - 3C

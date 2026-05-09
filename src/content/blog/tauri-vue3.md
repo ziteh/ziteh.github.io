@@ -2,7 +2,7 @@
 title: "非網頁人的 Tauri + Vue3 入坑筆記"
 subtitle: "router + i18n + Vuetify + Rust + TypeScript"
 # description: ""
-tags: ["教學", "Rust", "程式"]
+tags: ["教學","Rust","程式"]
 # categories: [""]
 date: 2024-07-25T11:54:00
 # updated: 2024-MM-DDTHH:MM:00
@@ -99,18 +99,36 @@ onMounted(fetchExisting);
 可以對元素使用類似 `v-if`、`v-for` 等動態處理 DOM 元素。
 
 ```html
-<v-btn v-if="btnShow" text="Delete"></v-btn>
+<v-btn
+  v-if="btnShow"
+  text="Delete"
+></v-btn>
 ```
 
 ```html
-<v-btn v-if="select === 'A'" text="A"></v-btn>
-<v-btn v-else-if="select === 'B'" text="B"></v-btn>
-<v-btn v-else text="Others"></v-btn>
+<v-btn
+  v-if="select === 'A'"
+  text="A"
+></v-btn>
+<v-btn
+  v-else-if="select === 'B'"
+  text="B"
+></v-btn>
+<v-btn
+  v-else
+  text="Others"
+></v-btn>
 ```
 
 ```html
 <v-list>
-  <v-list-item v-for="(n, i) in items" :key="i" :title="n.name"> {{ n.value }} </v-list-item>
+  <v-list-item
+    v-for="(n, i) in items"
+    :key="i"
+    :title="n.name"
+  >
+    {{ n.value }}
+  </v-list-item>
 </v-list>
 ```
 
@@ -326,17 +344,17 @@ const router = useRouter();
 
 // 回上一頁
 function goBack() {
-  router.go(-1);
+    router.go(-1);
 }
 
 // 導航到 '/home'
 function getHome() {
-  router.push("/home");
+    router.push("/home");
 }
 
 // 導航到 '/home'，但不會記錄，會無法使用回上一頁
 function getHome() {
-  router.replace("/home");
+    router.replace("/home");
 }
 ```
 
@@ -349,16 +367,16 @@ const router = useRouter();
 
 // 導航到 'Home'
 function getHome() {
-  router.push({ name: "Home" });
+    router.push({ name: "Home" });
 }
 
 // 導航到 'Item' 且帶參數
 function getItem() {
-  router.push({ name: "Item", params: { uuid: 128 } });
+    router.push({ name: "Item", params: { uuid: 128 } });
 }
 
 function getEdit() {
-  router.push({ name: "Edit", params: { item: "MyItem", uuid: 128 } });
+    router.push({ name: "Edit", params: { item: "MyItem", uuid: 128 } });
 }
 ```
 
@@ -390,8 +408,8 @@ import en from "@/locales/en.js";
 import zhHant from "@/locales/zhHant.js";
 
 const messages = {
-  en, // English
-  "zh-Hant": zhHant, // 繁體中文
+  en,                 // English
+  "zh-Hant": zhHant,  // 繁體中文
 };
 
 const i18n = createI18n({
@@ -519,10 +537,10 @@ function changeLanguage() {
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
-    }
+    },
 
     // 省略...
-  }
+  },
   // 省略...
 }
 ```
@@ -587,7 +605,7 @@ import App from "@/App.vue";
 import router from "@/router";
 import i18n from "@/plugins/i18n";
 import vuetify from "@/plugins/vuetify";
-import "@/styles.css"; // 專案的 css 在 Vuetify 後載入，才不會被 Vuetify 的覆蓋
+import "@/styles.css";  // 專案的 css 在 Vuetify 後載入，才不會被 Vuetify 的覆蓋
 
 const app = createApp(App);
 app.use(router);
@@ -612,24 +630,32 @@ Slots 的部分可能比較複雜些，我舉一個 [Data table](https://vuetify
 
 ```html
 <script setup lang="ts">
-  import { ref, reactive } from "vue";
-  import { DbPart as Db } from "@/utils/db_cmd_part";
+import { ref, reactive } from "vue";
+import { DbPart as Db } from "@/utils/db_cmd_part";
 
-  const search = ref("");
+const search = ref("");
 
-  const headers = ref([
-    { key: "name", title: "Name", sortable: true },
-    { key: "quantity", title: "Qty", sortable: true },
-    { key: "category", title: "Category", sortable: true },
-  ]);
+const headers = ref([
+  { key: "name", title: "Name", sortable: true },
+  { key: "quantity", title: "Qty", sortable: true },
+  { key: "category", title: "Category", sortable: true },
+]);
 
-  const existing = reactive<Db.Part[]>([]);
+const existing = reactive<Db.Part[]>([]);
 </script>
 
 <template>
-  <v-data-table v-if="existing.length > 0" :headers="headers" :items="existing" :search="search">
+  <v-data-table
+    v-if="existing.length > 0"
+    :headers="headers"
+    :items="existing"
+    :search="search"
+  >
     <template v-slot:item.name="{ item }">
-      <v-btn variant="text" :to="{ name: 'part_detail', params: { name: item.name } }">
+      <v-btn
+        variant="text"
+        :to="{ name: 'part_detail', params: { name: item.name } }"
+      >
         {{ item.name }}
         <v-icon v-if="item.starred">mdi-star</v-icon>
       </v-btn>
@@ -661,7 +687,10 @@ Vuetify 已經有定義好排版工具，但是還是需要有基本的 HTML、C
 <v-container>
   <v-row class="align-center">
     <v-col>
-      <v-text-field label="Folder" v-model="dir"></v-text-field>
+      <v-text-field
+        label="Folder"
+        v-model="dir"
+      ></v-text-field>
     </v-col>
     <v-col cols="auto" class="mb-6">
       <v-btn>Export</v-btn>
@@ -729,26 +758,26 @@ fn do_somethings_4() -> Result<(), String> {
 import { invoke } from "@tauri-apps/api/tauri";
 
 function doSomethings1() {
-  // 注意此處的 myNum 名稱
-  invoke("do_somethings_1", { param: "Hi", myNum: 32 });
+    // 注意此處的 myNum 名稱
+    invoke("do_somethings_1", { param: "Hi", myNum: 32 });
 }
 
 function doSomethings2() {
-  invoke("do_somethings_2", { param: undefined });
+    invoke("do_somethings_2", { param: undefined });
 }
 
 function doSomethings3() {
-  const val = invoke("do_somethings_3");
-  console.log(val);
+    const val = invoke("do_somethings_3");
+    console.log(val);
 }
 
 function doSomethings4() {
-  try {
-    const val = invoke("do_somethings_4");
-    console.log(val);
-  } catch (err) {
-    console.error(err);
-  }
+    try {
+        const val = invoke("do_somethings_4");
+        console.log(val);
+    } catch (err) {
+        console.error(err);
+    }
 }
 ```
 
@@ -765,7 +794,7 @@ fn do_somethings_1(param: String, my_num: i16) {
 
 ```ts
 function doSomethings1() {
-  invoke("do_somethings_1", { param: "Hi", my_num: 32 });
+    invoke("do_somethings_1", { param: "Hi", my_num: 32 });
 }
 ```
 
@@ -835,12 +864,12 @@ fn main() {
 ```ts
 // cmd.ts
 function getDirCommand() {
-  const dir = invoke("get_dir");
-  console.log(dir);
+    const dir = invoke("get_dir");
+    console.log(dir);
 }
 
 function setDirCommand() {
-  invoke("set_Dir", { newDir: "/new/path/" });
+    invoke("set_Dir", { newDir: "/new/path/" });
 }
 ```
 

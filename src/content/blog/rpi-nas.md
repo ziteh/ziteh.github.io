@@ -1,8 +1,8 @@
 ---
 title: Raspberry Pi NAS 方案研究
 tags:
-  - 3C
-  - 生活
+    - 3C
+    - 生活
 date: 2025-11-16T20:49:00+08:00
 comments: true
 toc: true

@@ -5,31 +5,41 @@ const today = new Date();
 ---
 
 <footer>
-  <p>
-    &copy;&nbsp;{today.getFullYear()}&nbsp;<a href="/about">{SITE.author}</a>. All rights reserved.
-  </p>
+  <span
+    >&copy;&nbsp;{today.getFullYear()}&nbsp;<a href="/about">{SITE.author}</a>. All rights reserved.</span
+  >
   <div class="social-links">
     {
-      SOCIALS.map((social) => (
-        <a href={social.href} title={social.title} target="_blank" rel="noopener noreferrer">
-          <span class="sr-only">{social.title}</span>
-          <social.icon />
-        </a>
+      SOCIALS.map((social, i) => (
+        <>
+          {i > 0 && <span class="separator">·</span>}
+          <a href={social.href} target="_blank" rel="noopener noreferrer">
+            {social.title}
+          </a>
+        </>
       ))
     }
   </div>
 </footer>
 
 <style>
+  @import "@/styles/breakpoints.css";
+
   footer {
-    padding: 2em 1em 4em 1em;
-    text-align: center;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em 2.5em;
     color: var(--color-700);
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-xs);
     font-weight: var(--font-weight-light);
   }
-  footer p {
-    margin: 0;
+  @media (--bp-md) {
+    footer {
+      flex-direction: row;
+    }
   }
   footer a {
     color: var(--color-700);
@@ -37,18 +47,10 @@ const today = new Date();
   }
   footer a:hover {
     color: var(--color-900);
+    text-decoration: underline;
   }
   .social-links {
     display: flex;
-    justify-content: center;
     gap: 1em;
-    margin-top: 1em;
-  }
-  .social-links a {
-    text-decoration: none;
-    color: var(--color-700);
-  }
-  .social-links a:hover {
-    color: var(--color-900);
   }
 </style>

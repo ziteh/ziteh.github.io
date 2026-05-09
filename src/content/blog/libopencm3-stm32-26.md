@@ -1,5 +1,5 @@
 ---
-title: "STM32 LibOpenCM3：I2C"
+title: 'STM32 LibOpenCM3：I2C'
 author: ZiTe
 tags:
   - STM32
@@ -22,7 +22,7 @@ draft: false
 
 I2C 和 SPI 一樣是主從式架構，I2C 的主要特色就是無論有多少 Slave device 都只需要兩條線就可以完成通訊。
 
-在這一篇文章中，我不會詳細介紹 I2C 本身，但建議還是要對它有基本的瞭解比較好，在此推薦「[I2C bus 簡介 (Inter-Integrated Circuit Bus) @ 傑克! 真是太神奇了!](<https://magicjackting.pixnet.net/blog/post/173061691-i2c-bus-%E7%B0%A1%E4%BB%8B-(inter-integrated-circuit-bus)->)」及「[【Day21】I2C的介紹 - iT 邦幫忙](https://ithelp.ithome.com.tw/articles/10278308)」這兩篇文章。
+在這一篇文章中，我不會詳細介紹 I2C 本身，但建議還是要對它有基本的瞭解比較好，在此推薦「[I2C bus 簡介 (Inter-Integrated Circuit Bus) @ 傑克! 真是太神奇了!](https://magicjackting.pixnet.net/blog/post/173061691-i2c-bus-%E7%B0%A1%E4%BB%8B-\(inter-integrated-circuit-bus\)-)」及「[【Day21】I2C的介紹 - iT 邦幫忙](https://ithelp.ithome.com.tw/articles/10278308)」這兩篇文章。
 
 [24C256](https://www.microchip.com/en-us/product/AT24C256C) 是一個擁有 I2C 介面的 EEPROM，這次將示範如何使用 STM32 來透過 I2C 對其進行資料的讀寫，且可以用 USART 進行操作。
 
@@ -271,7 +271,7 @@ static void i2c_setup(void)
 24C256 支援的 I2C 速度模式有：
 
 - Standard mode: 100 kbps
-- Fast mode: 400 kbps
+- Fast mode:  400 kbps
 - Fast mode Plus: 1Mbps
 
 這裡我選擇使用「Fast mode」。以 `i2c_set_speed()` 函式進行設定，此函式的第二個引數 `i2c_speed_fm_400k` 就代表要使用「Fast mode」，而第三個引數要給的是 I2C 的時脈，對於 F446RE 或大多數的 STM32，這個速度等同 APB1。

@@ -2,7 +2,7 @@
 title: "[Day-27]Zig：進階迴圈"
 # subtitle: ""
 # description: ""
-tags: ["教學", "程式", "Zig"]
+tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
 date: 2024-09-19T07:01:00
 # updated: 2024-MM-DDTHH:MM:00

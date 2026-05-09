@@ -2,7 +2,7 @@
 title: "在 Windows 使用 Rclone 掛載 Cloudflare R2 物件儲存"
 # subtitle: ""
 # description: ""
-tags: ["程式", "教學"]
+tags: ["程式","教學"]
 categories: ["快速分享"]
 date: 2025-04-05 09:43:00+08:00
 # header_img: ""
@@ -61,8 +61,8 @@ rclone config
 - name: 自己選擇，如 `cfr2`
 - type: s3
 - provider: Cloudflare
-- access_key_id: 存取金鑰識別碼
-- secret_access_key: 秘密存取金鑰
+- access\_key\_id: 存取金鑰識別碼
+- secret\_access\_key: 秘密存取金鑰
 - region: auto
 - endpoint: 針對 S3 用戶端使用管轄區域特定端點
 

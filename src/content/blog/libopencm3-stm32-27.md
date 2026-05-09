@@ -1,5 +1,5 @@
 ---
-title: "STM32 LibOpenCM3：CRC"
+title: 'STM32 LibOpenCM3：CRC'
 author: ZiTe
 tags:
   - STM32
@@ -215,7 +215,7 @@ static void usart_setup(void)
 - 輸入 `0x00 00 00 00` 得到 `0xC7 04 DD 7B`。
 - 輸入 `ABCD` (ASCII) 得到 `0xAB CF 9A 63`。
 
-可以到一些線上的 CRC 計算機（如[這個](https://crccalc.com/?crc=9D%2012%203A%20D4&method=CRC-32/MPEG-2&datatype=hex&outtype=0)）驗證其結果是正確的（算法選擇「CRC-32/MPEG-2」）。
+可以到一些線上的 CRC 計算機（如[這個](https://crccalc.com/?crc=9D%2012%203A%20D4\&method=CRC-32/MPEG-2\&datatype=hex\&outtype=0)）驗證其結果是正確的（算法選擇「CRC-32/MPEG-2」）。
 
 ![](https://bucket.ziteh.dev/blog/libopencm3-stm32-27/73a0ddcc.webp)
 

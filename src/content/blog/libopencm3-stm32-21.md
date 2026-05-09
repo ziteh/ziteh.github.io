@@ -1,5 +1,5 @@
 ---
-title: "STM32 LibOpenCM3：ADC 多通道 Injected"
+title: 'STM32 LibOpenCM3：ADC 多通道 Injected'
 author: ZiTe
 tags:
   - STM32
@@ -315,7 +315,7 @@ int main(void)
 
 `adc_start_conversion_injected()` 會觸發 ADC 進行 Injected 組轉換，並以 `adc_eoc_injected()` 觀察 Injected 組是否轉換完成。
 
-確認 ADC 轉換完成後使用 `adc_read_injected()` 來讀取各個轉換完的資料。雖然 Injected 組最多只能設定 4 個，但是它的 4 個通道的資料暫存器是各自獨立的（ADC_JDRx），這裡的第二個參數就是選擇要讀取 1~4 哪一個 Injected 資料暫存器。要注意這裡的第二個引數是 1~4 而非 0~3。
+確認 ADC 轉換完成後使用 `adc_read_injected()` 來讀取各個轉換完的資料。雖然 Injected 組最多只能設定 4 個，但是它的 4 個通道的資料暫存器是各自獨立的（ADC\_JDRx），這裡的第二個參數就是選擇要讀取 1~4 哪一個 Injected 資料暫存器。要注意這裡的第二個引數是 1~4 而非 0~3。
 
 ### 多環境程式（F446RE + F103RB）
 

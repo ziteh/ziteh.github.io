@@ -1,5 +1,5 @@
 ---
-title: "STM32 LibOpenCM3：SysTick delay"
+title: 'STM32 LibOpenCM3：SysTick delay'
 author: ZiTe
 tags:
   - STM32

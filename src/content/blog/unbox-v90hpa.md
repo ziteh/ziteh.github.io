@@ -1,5 +1,5 @@
 ---
-title: "[開箱] Musical Fidelity V90-HPA : 家用DAC/耳機擴大機"
+title: '[開箱] Musical Fidelity V90-HPA : 家用DAC/耳機擴大機'
 author: ZiTe
 tags:
   - 開箱

@@ -1,5 +1,5 @@
 ---
-title: "STM32 LibOpenCM3：Timer 計時器"
+title: 'STM32 LibOpenCM3：Timer 計時器'
 author: ZiTe
 tags:
   - STM32
@@ -152,11 +152,11 @@ void tim2_isr(void)
 
 - `CK_CNT`：Counter 的計數頻率，也就是預除頻器的輸出頻率。
 - `CK_PSC`：預除頻器的輸入頻率，也就是 Timer 頻率。
-- `PSC`：TIMx_PSC 暫存器的值（除頻值）。
+- `PSC`：TIMx\_PSC 暫存器的值（除頻值）。
 
 這裡我定義了一個 `COUNTER_CLOCK` 來設定 Counter 的計數頻率 `CK_CNT`，以供下面設定 PSC 時使用。這個值不是絕對或唯一的，基本上只要不會導致算出的 PSC 值大到超出其暫存器的上限都可以。
 
-我將預除頻值 PSC 以 `TIMER_PRESCALER` 為名定義為 `TIMER_CLOCK / COUNTER_CLOCK - 1`。這個值會存進 TIMx_PSC 暫存器。
+我將預除頻值 PSC 以 `TIMER_PRESCALER` 為名定義為 `TIMER_CLOCK / COUNTER_CLOCK - 1`。這個值會存進 TIMx\_PSC 暫存器。
 
 #### ARR 暫存器
 
@@ -172,18 +172,18 @@ void tim2_isr(void)
 - `f_overflow`：Overflow 的發生頻率，也就是我們的目標頻率。
 - `f_counter`：Counter 的計數頻率，也就是上面的 `CK_CNT`。
 - `f_timer`：Timer 的頻率，也就是上面的 `CK_PSC`。
-- `ARR`：TIMx_ARR 暫存器的值。
-- `PSC`：TIMx_PSC 暫存器的值。
+- `ARR`：TIMx\_ARR 暫存器的值。
+- `PSC`：TIMx\_PSC 暫存器的值。
 
 這裡以 `GOAL_FREQUENCY` 定義目標頻率 `f_overflow`。
 
-再來只要套用上面的公式去設定 ARR 的值就可以了。這裡以 `TIMER_PERIOD` 為名定義 ARR 為 `(TIMER_CLOCK / ((TIMER_PRESCALER + 1) * GOAL_FREQUENCY)) - 1`。這個值會存進 TIMx_ARR 暫存器。
+再來只要套用上面的公式去設定 ARR 的值就可以了。這裡以 `TIMER_PERIOD` 為名定義 ARR 為 `(TIMER_CLOCK / ((TIMER_PRESCALER + 1) * GOAL_FREQUENCY)) - 1`。這個值會存進 TIMx\_ARR 暫存器。
 
 #### 確認數值
 
 雖然理論上只要照著上面的公式設定 PSC 與 ARR 就可以了，所以 PSC 與 ARR 的值會超多種組合，不過實際使用時要注意一下 PSC 與 ARR 的空間。
 
-TIM2_ARR 是 32 位元的暫存器，TIM2_PSC 是 16 位元的暫存器，所以 ARR 的值不能超過 2^32，而 PSC 的值不能超過 2^16。
+TIM2\_ARR 是 32 位元的暫存器，TIM2\_PSC 是 16 位元的暫存器，所以 ARR 的值不能超過 2^32，而 PSC 的值不能超過 2^16。
 
 我們來驗證一下。在後續的 RCC 設定中 `rcc_apb1_frequency` 會被設定成 `42000000`，也就是 42 MHz，而 `GOAL_FREQUENCY` 為 `5`。
 
@@ -264,13 +264,13 @@ static void timer_setup(void)
 
 在這裡設定好 Timer 的相關參數，包含啓用中斷、設定 PSC（`timer_set_prescaler()`）與 ARR （`timer_set_period()`）的值等。
 
-`timer_set_mode()` 的 `TIM_CR1_CKD_CK_INT` 代表 TIMx_CR1（Control register 1） 的 CKD（Clock division） 會設為 `00` 不分頻；`TIM_CR1_CMS_EDGE` 則是 CMS（Center-aligned mode selection）會設為 `00`，設定為邊緣對齊模式；`TIM_CR1_DIR_UP` 是設定 DIR（Direction）為 `0` 以使用上數計數器模式。
+`timer_set_mode()` 的 `TIM_CR1_CKD_CK_INT` 代表 TIMx\_CR1（Control register 1） 的 CKD（Clock division） 會設為 `00` 不分頻；`TIM_CR1_CMS_EDGE` 則是 CMS（Center-aligned mode selection）會設為 `00`，設定為邊緣對齊模式；`TIM_CR1_DIR_UP` 是設定 DIR（Direction）為 `0` 以使用上數計數器模式。
 
-`timer_disable_preload()` 會設定 TIMx_CR1 的 ARPE（Auto-reload preload enable）為 `0`，以禁用 ARR 的 Preload 功能。
+`timer_disable_preload()` 會設定 TIMx\_CR1 的 ARPE（Auto-reload preload enable）為 `0`，以禁用 ARR 的 Preload 功能。
 
-`timer_continuous_mode()` 會將 TIMx_CR1 的 OPM（One-pulse mode）設為 `0`，令 Counter 在 Update event 之後也不會停止，可以一直計數。
+`timer_continuous_mode()` 會將 TIMx\_CR1 的 OPM（One-pulse mode）設為 `0`，令 Counter 在 Update event 之後也不會停止，可以一直計數。
 
-> 有關 F446RE 的 TIMx_CR1 的詳細說明可以查看 [RM0390](https://www.st.com/resource/en/reference_manual/rm0390-stm32f446xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)。
+> 有關 F446RE 的 TIMx\_CR1 的詳細說明可以查看 [RM0390](https://www.st.com/resource/en/reference_manual/rm0390-stm32f446xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)。
 
 #### Timer ISR
 

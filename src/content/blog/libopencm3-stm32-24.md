@@ -1,5 +1,5 @@
 ---
-title: "STM32 LibOpenCM3：SPI (Master mode)"
+title: 'STM32 LibOpenCM3：SPI (Master mode)'
 author: ZiTe
 tags:
   - STM32
@@ -342,11 +342,11 @@ static void spi_setup(void)
 CPOL 決定了 SPI 閒置時 SCK 要為 `Low`（CPOL = `0`） 還是 `High`（CPOL = `1`）；CPHA 則是定義 SPI 的資料取樣要在第 1 個邊緣（CPHA = `0`），還是第 2 個邊緣（CPHA = `1`）。因此共有 4 種組合：
 
 | Mode | CPOL | CPHA |
-| ---- | ---- | ---- |
-| 0    | 0    | 0    |
-| 1    | 0    | 1    |
-| 2    | 1    | 0    |
-| 3    | 1    | 1    |
+|---|---|---|
+| 0 | 0 | 0 |
+| 1 | 0 | 1 |
+| 2 | 1 | 0 |
+| 3 | 1 | 1 |
 
 這裡我使用 CPOL = `0`（`SPI_CR1_CPOL_CLK_TO_0_WHEN_IDLE`）與 CPHA = `1`（`SPI_CR1_CPHA_CLK_TRANSITION_2`），也就是 Mode 1。根據此設定，因為閒置時 SCK 是 `Low`，而 SPI 在第 2 個邊緣進行資料取樣，也就是在 SCK 的負緣採樣。
 
@@ -405,7 +405,7 @@ void usart2_isr(void)
 這裡的 SPI 傳送步驟為：
 
 1. 選擇 Slave device（CS 輸出 `Low`）。
-2. 使用 `spi_send()` 將要傳送的資料寫入 SPI_DR 暫存器中。此函式會先等待目前的傳輸已經結束後（`SPI_SR_TXE` flag）才將資料寫入資料暫存器。
+2. 使用 `spi_send()` 將要傳送的資料寫入 SPI\_DR 暫存器中。此函式會先等待目前的傳輸已經結束後（`SPI_SR_TXE` flag）才將資料寫入資料暫存器。
 3. 讀取 `SPI_SR_TXE`（傳送緩衝器為空） 與 `SPI_SP_BSY`（忙碌） flag，以等待 SPI 完成傳輸。
 4. 取消選擇 Slave device（CS 輸出 `High`）。
 

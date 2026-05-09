@@ -1,5 +1,5 @@
 ---
-title: "STM32 IDE：PlatformIO"
+title: 'STM32 IDE：PlatformIO'
 author: ZiTe
 tags:
   - STM32

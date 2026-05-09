@@ -1,5 +1,5 @@
 ---
-title: "[專案:電腦風扇控制器-2] OLED-SSD1306零件簡單介紹"
+title: '[專案:電腦風扇控制器-2] OLED-SSD1306零件簡單介紹'
 author: ZiTe
 tags:
   - 教學
@@ -83,7 +83,7 @@ SSD1306的圖形顯示資料記憶體(GDDRAM)由上而下可以分為第0頁~第
 
 ## 參考資料
 
- \* [OLED-SSD1306 Data Sheet](https://www.google.com.tw/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwiRquzen9vXAhXGkZQKHacKC8YQFgglMAA&url=https%3A%2F%2Fcdn-shop.adafruit.com%2Fdatasheets%2FSSD1306.pdf&usg=AOvVaw295piYr-tzt5CnBsNVzI7X)
+ \* [OLED-SSD1306 Data Sheet](https://www.google.com.tw/url?sa=t\&rct=j\&q=\&esrc=s\&source=web\&cd=1\&ved=0ahUKEwiRquzen9vXAhXGkZQKHacKC8YQFgglMAA\&url=https%3A%2F%2Fcdn-shop.adafruit.com%2Fdatasheets%2FSSD1306.pdf\&usg=AOvVaw295piYr-tzt5CnBsNVzI7X)
 
 - [I2C: Inter-Integrated Circuit - 成大資工Wiki](http://wiki.csie.ncku.edu.tw/embedded/I2C)
 

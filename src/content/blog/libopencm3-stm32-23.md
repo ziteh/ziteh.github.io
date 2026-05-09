@@ -1,5 +1,5 @@
 ---
-title: "STM32 LibOpenCM3：ADC Timer 觸發"
+title: 'STM32 LibOpenCM3：ADC Timer 觸發'
 author: ZiTe
 tags:
   - STM32

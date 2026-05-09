@@ -1,10 +1,10 @@
 ---
-title: "[LibOpenCM3 × STM32教學-3] Timer計時器中斷"
+title: '[LibOpenCM3 × STM32教學-3] Timer計時器中斷'
 author: ZiTe
 tags:
-  - "STM32"
-  - "電子電路"
-  - "教學"
+  - 'STM32'
+  - '電子電路'
+  - '教學'
   - C/C++
   - 程式
   - 嵌入式
@@ -140,7 +140,7 @@ void tim2_isr(void)
 #include <libopencm3/cm3/nvic.h>
 ```
 
-#### 設定 LED led_setup()
+#### 設定 LED led\_setup()
 
 這部分就是設定好 LED，將其 GPIO 設定成推輓式（Push-Pull）輸出模式。
 
@@ -160,7 +160,7 @@ void led_setup(void)
 }
 ```
 
-#### 設定計時器 timer_setup()
+#### 設定計時器 timer\_setup()
 
 這裡設置了 Timer 的相關設定，包含了用來決定計數的預除頻器（Prascaler）與週期（Period），並且啟用中斷功能（`nvic_enable_irq(NVIC_TIM2_IRQ)` 與 `timer_enable_irq(TIM2, TIM_DIER_CC1IE)`），`timer_enable_counter(TIM2)` 會讓指定的 Timer 開始計數。
 
@@ -182,8 +182,8 @@ PER = {f_tim / [(PRS + 1) * f_int]} - 1
 
 - `f_int`: Interrupt frequency，中斷觸發頻率.
 - `f_tim`: Timer frequency， Timer 的原始頻率.
-- `PRS`: Timer prescaler，Timer 的預除頻器數值.
-- `PER`: Timer period，Timer 的週期數值.
+- `PRS`:   Timer prescaler，Timer 的預除頻器數值.
+- `PER`:   Timer period，Timer 的週期數值.
 
 透過時鐘樹（[Datasheet](https://cdn-shop.adafruit.com/datasheets/2127datasheet.pdf) P.12, Figure 2. Clock tree）可以知道，我們使用的「Timer 2」的時鐘源是「APB 1」，而在本例中，我們會在主程式呼叫 `rcc_clock_setup_in_hsi_out_48mhz()` 以將系統時鐘設為 48 MHz，這樣將會一併讓「APB 1」的預除頻器（Prescaler）被設定為「除 2」，所以我們的「APB 1」時鐘頻率為 48 MHz / 2 = 24 MHz。
 
@@ -223,7 +223,7 @@ void timer_setup(void)
 }
 ```
 
-#### 中斷服務程序 ISR tim2_isr()
+#### 中斷服務程序 ISR tim2\_isr()
 
 中斷服務程序（Interrupt service routine，ISR）是當中斷發生時會執行的程式，在這裡也就是每此計時器達到指定的時間後會執行的程式。
 

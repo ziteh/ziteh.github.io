@@ -1,5 +1,5 @@
 ---
-title: "無線分離式人體工學鍵盤Mitosis的介紹與分析"
+title: '無線分離式人體工學鍵盤Mitosis的介紹與分析'
 author: ZiTe
 tags:
   - DIY
@@ -72,7 +72,7 @@ Mitosis 的架構中，主要擁有這些硬體：
 - `handler_maintenance()`
 - `handler_debounce()`
 
-#### handler_debounce()
+#### handler\_debounce()
 
 先看到 [`handler_debounce()`](https://github.com/reversebias/mitosis/blob/f2bb956f8565762212d361a42f830390ef5c6845/mitosis-keyboard-basic/main.c#L115) 這個函數，它負責處理按鍵防彈跳（Debounce）。內容如下：
 
@@ -135,7 +135,7 @@ static void handler_debounce(nrf_drv_rtc_int_type_t int_type)
 
 一旦開始防彈跳，它就會一直確認快照與目前的按鍵狀態是否一樣，一旦不一樣就停止防彈跳，若累計達到設定的防彈跳次數就會承認快照的按鍵狀態，並將快照的值給目前的鍵值 `keys`，並呼叫 `send_data()` 開始傳送。
 
-#### handler_maintenance()
+#### handler\_maintenance()
 
 ```c
 // 8Hz held key maintenance, keeping the reciever keystates valid
@@ -147,7 +147,7 @@ static void handler_maintenance(nrf_drv_rtc_int_type_t int_type)
 
 此函數的功能顯而易見，就是以 8 Hz 的頻率次數呼叫 `send_data()` 傳送資料。此函數[由 RTC0 處理](https://github.com/reversebias/mitosis/blob/f2bb956f8565762212d361a42f830390ef5c6845/mitosis-keyboard-basic/main.c#L179)。
 
-#### send_data()
+#### send\_data()
 
 ```c
 // Assemble packet and send to receiver
@@ -188,7 +188,7 @@ static void send_data(void)
 
 `PIPE_NUMBER` 的值左右鍵盤不同（在 [`mitosis.h`](https://github.com/reversebias/mitosis/blob/f2bb956f8565762212d361a42f830390ef5c6845/mitosis-keyboard-basic/config/mitosis.h) 中定義），接收器藉此判斷收到的資料是來自左還是右鍵盤。
 
-#### read_keys()
+#### read\_keys()
 
 ```c
 // Return the key states, masked with valid key pins
@@ -213,7 +213,7 @@ static uint32_t read_keys(void)
 - `nrf_gzll_host_rx_data_ready()`
 - `main()`
 
-#### nrf_gzll_host_rx_data_ready()
+#### nrf\_gzll\_host\_rx\_data\_ready()
 
 ```c
 // If a data packet was received, identify half, and throw flag
@@ -349,7 +349,7 @@ int main(void)
 
 ### QMK / 接收器（Pro Micro）
 
-這部分的程式在：[qmk/qmk_firmware/keyboards/mitosis](https://github.com/qmk/qmk_firmware/tree/master/keyboards/mitosis)。主要有：
+這部分的程式在：[qmk/qmk\_firmware/keyboards/mitosis](https://github.com/qmk/qmk_firmware/tree/master/keyboards/mitosis)。主要有：
 
 - `rules.mk`
 - `config.h`
@@ -458,7 +458,7 @@ uint8_t matrix_scan(void)
 - [reversebias/mitosis](https://github.com/reversebias/mitosis)
   - nRF51822 的程式
   - commit：[`f2bb956f8565762212d361a42f830390ef5c6845`](https://github.com/reversebias/mitosis/commit/f2bb956f8565762212d361a42f830390ef5c6845)
-- [qmk/qmk_firmware](https://github.com/qmk/qmk_firmware/tree/master/keyboards/mitosis)
+- [qmk/qmk\_firmware](https://github.com/qmk/qmk_firmware/tree/master/keyboards/mitosis)
   - QMK 程式
   - commit：[`f718a10889e6adf33f3fc2f41b61cad7fe9e0c2e`](https://github.com/qmk/qmk_firmware/commit/f718a10889e6adf33f3fc2f41b61cad7fe9e0c2e)
 

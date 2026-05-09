@@ -1,6 +1,6 @@
 ---
-title: "[自製QMK鍵盤-番外] 0.18.3版QMK韌體教學"
-subtitle: "2022 QMK 韌體教學"
+title: '[自製QMK鍵盤-番外] 0.18.3版QMK韌體教學'
+subtitle: '2022 QMK 韌體教學'
 author: ZiTe
 tags:
   - 教學
@@ -336,7 +336,7 @@ RGBLIGHT_ENABLE ?= no
 - `MANUFACTURER`：製造商/開發者
 - `PRODUCT`：鍵盤的名稱
 
-**_請注意_**，原本有一行 `#define DESCRIPTION`，但新版的 QMK 已經不使用，請將此行刪除。
+***請注意***，原本有一行 `#define DESCRIPTION`，但新版的 QMK 已經不使用，請將此行刪除。
 
 例如我可以改成：
 
@@ -367,7 +367,7 @@ RGBLIGHT_ENABLE ?= no
 #define MATRIX_COL_PINS { GP10, GP11, GP12, GP13 }
 ```
 
-**_請注意_**，原本還有 `#define UNUSED_PINS`，但是新版的 QMK 已經不使用，請將該行刪除。詳見 [QMK Breaking Changes - 2022 August 27 Changelog](https://www.reddit.com/r/olkb/comments/wznmtn/qmk_breaking_changes_2022_august_27_changelog/) 及 [Pull Request #17931 · qmk/qmk_firmware](https://github.com/qmk/qmk_firmware/pull/17931)。
+***請注意***，原本還有 `#define UNUSED_PINS`，但是新版的 QMK 已經不使用，請將該行刪除。詳見 [QMK Breaking Changes - 2022 August 27 Changelog](https://www.reddit.com/r/olkb/comments/wznmtn/qmk_breaking_changes_2022_august_27_changelog/) 及 [Pull Request #17931 · qmk/qmk\_firmware](https://github.com/qmk/qmk_firmware/pull/17931)。
 
 #### 鍵盤矩陣大小
 
@@ -381,7 +381,7 @@ RGBLIGHT_ENABLE ?= no
 
 #### 防彈跳
 
-**_請注意_**，原本的防彈跳是使用：
+***請注意***，原本的防彈跳是使用：
 
 ```c
 /* Set 0 if debouncing isn't needed */
@@ -397,14 +397,14 @@ RGBLIGHT_ENABLE ?= no
 
 #### 其它
 
-**_請注意_**，原本的 `config.h` 內有：
+***請注意***，原本的 `config.h` 內有：
 
 ```c
 /* prevent stuck modifiers */
 #define PREVENT_STUCK_MODIFIERS
 ```
 
-但新版的 QMK 已經不使用 `PREVENT_STUCK_MODIFIERS`，請將該行刪除。詳見 [Issue #2518 · qmk/qmk_firmware](https://github.com/qmk/qmk_firmware/issues/2518)。
+但新版的 QMK 已經不使用 `PREVENT_STUCK_MODIFIERS`，請將該行刪除。詳見 [Issue #2518 · qmk/qmk\_firmware](https://github.com/qmk/qmk_firmware/issues/2518)。
 
 另外，原本的 `config.h`（及其它 `.h` 檔案） 的 Include Guard 是使用傳統的預處理器寫法，你可以將其改成較先進的 `#pragma once`。例如：
 
@@ -546,8 +546,8 @@ KEYMAP(
 - [Keyboard Firmware Builder](https://kbfirmware.com/)
 - [Qwiic Pro Micro USB-C (ATmega32U4) Hookup Guide - SparkFun Learn](https://learn.sparkfun.com/tutorials/qwiic-pro-micro-usb-c-atmega32u4-hookup-guide/all)
 - [QMK Breaking Changes - 2022 August 27 Changelog : olkb](https://www.reddit.com/r/olkb/comments/wznmtn/qmk_breaking_changes_2022_august_27_changelog/)
-- [Remove `UNUSED_PINS` by tzarc · Pull Request #17931 · qmk/qmk_firmware](https://github.com/qmk/qmk_firmware/pull/17931)
-- [PREVENT_STUCK_MODIFIERS should be the default · Issue #2518 · qmk/qmk_firmware](https://github.com/qmk/qmk_firmware/issues/2518)
+- [Remove `UNUSED_PINS` by tzarc · Pull Request #17931 · qmk/qmk\_firmware](https://github.com/qmk/qmk_firmware/pull/17931)
+- [PREVENT\_STUCK\_MODIFIERS should be the default · Issue #2518 · qmk/qmk\_firmware](https://github.com/qmk/qmk_firmware/issues/2518)
 - [QMK issue - error: unused variable 'event' \[-Werror=unused-variable\] : olkb](https://www.reddit.com/r/olkb/comments/72f66p/qmk_issue_error_unused_variable_event/)
 - [RESET key not working with pro micro #3091](https://github.com/qmk/qmk_firmware/issues/3091)
 - [Replace Pro Micro bootloader with QMK DFU](https://www.reddit.com/r/olkb/comments/8sxgzb/replace_pro_micro_bootloader_with_qmk_dfu/)

@@ -1,5 +1,5 @@
 ---
-title: "Calcite52 - 一種52鍵QMK正交鍵盤的初步設計"
+title: 'Calcite52 - 一種52鍵QMK正交鍵盤的初步設計'
 author: ZiTe
 tags:
   - DIY

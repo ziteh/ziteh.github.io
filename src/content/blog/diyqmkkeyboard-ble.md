@@ -1,5 +1,5 @@
 ---
-title: "[自製QMK鍵盤-番外] 為QMK鍵盤加上Bluetooth藍牙無線功能"
+title: '[自製QMK鍵盤-番外] 為QMK鍵盤加上Bluetooth藍牙無線功能'
 author: ZiTe
 tags:
   - DIY

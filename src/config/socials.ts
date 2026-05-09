@@ -2,28 +2,20 @@
  * Social media links configuration.
  */
 
-import IconGitHub from "@/assets/icons/brand-github.svg";
-import IconYouTube from "@/assets/icons/brand-youtube.svg";
-import IconRss from "@/assets/icons/rss.svg";
-import { SITE } from "@/config/site";
-
 export const SOCIALS = [
   {
     name: "YouTube",
-    href: "https://www.youtube.com",
-    title: `YouTube - ${SITE.title}`,
-    icon: IconYouTube,
+    href: "https://www.youtube.com/@siderakb",
+    title: "YouTube",
   },
   {
     name: "GitHub",
     href: "https://github.com/ziteh",
-    title: `GitHub - ${SITE.title}`,
-    icon: IconGitHub,
+    title: "GitHub",
   },
   {
     name: "RSS",
     href: "/rss.xml",
-    title: "RSS Feed",
-    icon: IconRss,
+    title: "RSS",
   },
 ] as const;

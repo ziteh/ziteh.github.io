@@ -1,10 +1,10 @@
 ---
 title: 在 C 中以 union 取多個資料結構的最大大小
 tags:
-  - C/C++
-  - 程式
+    - C/C++
+    - 程式
 categories:
-  - 快速分享
+    - 快速分享
 date: 2025-08-05T18:30:31+08:00
 comments: true
 toc: false
@@ -17,10 +17,10 @@ draft: false
 
 ```c
 union data_size {
-    uint8_t _data_a[32];
-    uint16_t _data_b[4];
+    uint8_t _data_a[32]; 
+    uint16_t _data_b[4]; 
     struct data_c _data_c;
-};
+}; 
 
 #define DATA_SIZE_MAX sizeof(union data_size)
 ```

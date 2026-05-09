@@ -1,5 +1,5 @@
 ---
-title: "[STM32學習記錄-7] AS5047P 旋轉位置感測器/磁性編碼器使用教學"
+title: '[STM32學習記錄-7] AS5047P 旋轉位置感測器/磁性編碼器使用教學'
 author: ZiTe
 tags:
   - 電子電路
@@ -104,7 +104,7 @@ AS5047P 有 3 種 SPI 訊框格式。
 
 ## 程式
 
-完整的程式可以到 [GitHub: ziteh/as5047p_driver](https://github.com/ziteh/as5047p_driver/tree/main/lib/AS5047P) 查看。
+完整的程式可以到 [GitHub:  ziteh/as5047p\_driver](https://github.com/ziteh/as5047p_driver/tree/main/lib/AS5047P) 查看。
 
 ### 位元操作
 
@@ -265,7 +265,7 @@ void as5047p_spi_deselect(void)
 
 ## 後記
 
-最近在做馬達的閉迴路位置控制，因此買了這個 AS5047P 來用，就順便寫了本篇文章做記錄。而此程式我也有放在 GitHub 上：[ziteh/as5047p_driver](https://github.com/ziteh/as5047p_driver)
+最近在做馬達的閉迴路位置控制，因此買了這個 AS5047P 來用，就順便寫了本篇文章做記錄。而此程式我也有放在 GitHub 上：[ziteh/as5047p\_driver](https://github.com/ziteh/as5047p_driver)
 
 若有問題或內容有誤還請告知，謝謝！
 

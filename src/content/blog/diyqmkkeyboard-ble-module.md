@@ -1,5 +1,5 @@
 ---
-title: "[自製QMK鍵盤-番外] Adafruit Bluefruit LE SPI Friend 韌體燒錄教學"
+title: '[自製QMK鍵盤-番外] Adafruit Bluefruit LE SPI Friend 韌體燒錄教學'
 author: ZiTe
 tags:
   - DIY
@@ -34,9 +34,9 @@ draft: false
 
 但是 Adafruit Bluefruit LE SPI Friend 所屬的 **BLESPIFRIEND** 沒有 `0.5.0` 及之前的版本。
 
-所以在購買 nRF51822 及其模組時，記得要選用 32KB SRAM 版本的 nRF51822-**_xxAC_**。
+所以在購買 nRF51822 及其模組時，記得要選用 32KB SRAM 版本的 nRF51822-***xxAC***。
 
-> 依照命名規則看，只有 nRF51822-**_xxAC_** 是 32KB SRAM \ 256KB Flash 的版本，後綴為 **_xxAA_** 或 **_xxAB_** 的 SRAM 大小都是 16KB（xxAA 與 xxAB 的差異是前者的 Flash 是128 KB，而後者是256 KB）。
+> 依照命名規則看，只有 nRF51822-***xxAC*** 是 32KB SRAM \ 256KB Flash 的版本，後綴為 ***xxAA*** 或 ***xxAB*** 的 SRAM 大小都是 16KB（xxAA 與 xxAB 的差異是前者的 Flash 是128 KB，而後者是256 KB）。
 
 ### MDBT40
 
@@ -84,7 +84,7 @@ git submodule update --init --recursive
 
 將你的 nRF51822 或 MDBT40 連接上你的 SWD 燒錄器（J-Link、STLink/V2 或 RPi），依照你使用的硬體而定，SWD 燒錄器可能不會提供電源給 nRF51822 或 MDBT40，如果是這樣的話記得好要接好電源。
 
-接著，就可以執行指令以使用 Adafruit nRF51822 Flasher 進行燒錄。燒錄指令有這些參數：
+接著，就可以執行指令以使用  Adafruit nRF51822 Flasher 進行燒錄。燒錄指令有這些參數：
 
 - `--jtag` `TEXT`：選擇你使用的燒錄器，只能是 `jlink`、`stlink` 或 `rpigpio` 的其中一種。
 - `--softdevice` `TEXT`：選擇 SoftDevice 版本，例如 `8.0.0`。這個 SoftDevice 是 nRF51822 的東西。

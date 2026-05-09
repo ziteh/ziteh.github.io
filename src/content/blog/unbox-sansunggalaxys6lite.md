@@ -1,5 +1,5 @@
 ---
-title: "[開箱] 三星 Tab S6 Lite 方便做筆記的平板"
+title: '[開箱] 三星 Tab S6 Lite 方便做筆記的平板'
 author: ZiTe
 tags:
   - 3C

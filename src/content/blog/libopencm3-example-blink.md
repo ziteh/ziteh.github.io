@@ -1,5 +1,5 @@
 ---
-title: "[LibOpenCM3 × STM32教學-1] 用LibOpenCM3來開發STM32-LED閃爍範例"
+title: '[LibOpenCM3 × STM32教學-1] 用LibOpenCM3來開發STM32-LED閃爍範例'
 author: ZiTe
 tags:
   - 電子電路

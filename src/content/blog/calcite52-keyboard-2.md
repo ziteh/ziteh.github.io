@@ -1,5 +1,5 @@
 ---
-title: "Calcite52 - 52鍵正交Choc矮軸QMK鍵盤"
+title: 'Calcite52 - 52鍵正交Choc矮軸QMK鍵盤'
 author: ZiTe
 tags:
   - DIY

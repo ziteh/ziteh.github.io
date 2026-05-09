@@ -1,6 +1,6 @@
 ---
-title: "[自製QMK鍵盤-4] 編譯與燒錄"
-subtitle: "QMK 韌體編譯及燒錄教學"
+title: '[自製QMK鍵盤-4] 編譯與燒錄'
+subtitle: 'QMK 韌體編譯及燒錄教學'
 author: ZiTe
 tags:
   - 教學
@@ -35,7 +35,7 @@ qmk compile -kb mytetstkb -km default
 > `qmk compile -kb <keyboard> -km <keymap>` 是 QMK 的編譯指令。
 > `<keyboard>` 代表了你要編譯的鍵盤，這裡的是 `mytetstkb`。`<keymap>` 是要編譯的鍵映射（Keymap），這裡是 `default`。
 
-如果有問題的話會顯示問題出在哪裡。如果都沒問題的話，應該會看到一整排的 `[OK]`，並且會告訴你編譯好的 `.hex` 檔儲存的路徑（Creating load file for flashing: .build/mytestkb_default.hex，參考路徑：`C:\Users\<USERNAME>\qmk_firmware\.build\mytestkb_default.hex`）。
+如果有問題的話會顯示問題出在哪裡。如果都沒問題的話，應該會看到一整排的 `[OK]`，並且會告訴你編譯好的 `.hex` 檔儲存的路徑（Creating load file for flashing: .build/mytestkb\_default.hex，參考路徑：`C:\Users\<USERNAME>\qmk_firmware\.build\mytestkb_default.hex`）。
 
 ![▲ 編譯完成並顯示編譯好的檔案](https://bucket.ziteh.dev/blog/diyqmkkeyboard-build-flash-qmk/9091b4b4.webp)
 
@@ -83,7 +83,7 @@ QMK 有個官方的燒錄工具——[QMK Toolbox](https://github.com/qmk/qmk_to
 
 ![▲ AVRDUDESS 設定示意](https://bucket.ziteh.dev/blog/diyqmkkeyboard-build-flash-qmk/83eebec7.webp)
 
-**_請注意_**，因為 Pro Micro 的 DFU 模式只會持續 8 秒，所以在上述的步驟 5 進入 DFU 模式後，接下來的步驟 6～8 必須要在這 8 秒內完成，否則失敗。
+***請注意***，因為 Pro Micro 的 DFU 模式只會持續 8 秒，所以在上述的步驟 5 進入 DFU 模式後，接下來的步驟 6～8 必須要在這 8 秒內完成，否則失敗。
 
 如果你覺得要在 8 秒內完成有難度，那可以試試先進入 DFU 模式後，到「裝置管理員」中查看 Pro Micro 的 COM Port，然後直接將此 COM Port 手動輸入到 AVRDUDESS 中（即使現在 DFU 模式可能已經結束了、此 COM Port 已經不存在），隨後再次進入 DFU 模式，確認「裝置管理員」有偵測到裝置變更（畫面有更新）後立刻按下「Program!」進行燒錄。
 

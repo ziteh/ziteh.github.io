@@ -1,5 +1,5 @@
 ---
-title: "STM32 LibOpenCM3：PWM 脈波寬度調變"
+title: 'STM32 LibOpenCM3：PWM 脈波寬度調變'
 author: ZiTe
 tags:
   - STM32
@@ -20,7 +20,7 @@ draft: false
 
 在之前的內容中已經介紹過基本的 Timer 用法，及 PWM 的計算。
 
-在使用 PWM 時我們會需要控制兩種參數：頻率與 Duty Cycle（佔空比）。頻率的部分和 Timer 一樣，由 TIMx_PSC 與 TIMx_ARR 暫存器的值來設定，而 Duty Cycle 則由 TIMx_CCRx 暫存器來指定。
+在使用 PWM 時我們會需要控制兩種參數：頻率與 Duty Cycle（佔空比）。頻率的部分和 Timer 一樣，由 TIMx\_PSC 與 TIMx\_ARR 暫存器的值來設定，而 Duty Cycle 則由 TIMx\_CCRx 暫存器來指定。
 
 這篇的目標是寫出一個可以設定 PWM 頻率與 Duty Cycle 的程式，並讓 STM32 輸出 PWM 訊號。
 
@@ -177,7 +177,7 @@ static void pwm_setup(void)
 
 Timer 大部分的設定都和和[上一篇](/posts/libopencm3-stm32-12)的一樣，主要差異為要使用 `timer_set_oc_mode()` 指定使用 Channel 2（`TIM_OC2`），並設定為 `TIM_OCM_PWM1` 模式。
 
-使用 `timer_set_oc_value()` 函式將 CCR 的值傳給 TIMx_CCRx 暫存器。
+使用 `timer_set_oc_value()` 函式將 CCR 的值傳給 TIMx\_CCRx 暫存器。
 
 ### 多環境程式（F446RE + F103RB）
 

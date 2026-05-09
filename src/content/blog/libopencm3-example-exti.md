@@ -1,10 +1,10 @@
 ---
-title: "[LibOpenCM3 × STM32教學-2] 按鈕觸發外部中斷 EXTI"
+title: '[LibOpenCM3 × STM32教學-2] 按鈕觸發外部中斷 EXTI'
 author: ZiTe
 tags:
-  - "STM32"
-  - "電子電路"
-  - "教學"
+  - 'STM32'
+  - '電子電路'
+  - '教學'
   - C/C++
   - 程式
   - 嵌入式
@@ -159,7 +159,7 @@ void button_setup(void)
 - RCC
   - `rcc_periph_clock_enable(RCC_GPIOC)` 致能按鈕本身所在的 GPIO Port-C 的 Clock。
   - `rcc_periph_clock_enable(RCC_AFIO)` 致能 Alternate function I/O（AFIO） 的 Clock。使用外部中斷必須啟用 AFIO。
-- `nvic_enable_irq(NVIC_EXTI15_10_IRQ)` 致能「EXTI-10 到 15」的中斷請求（Interrupt request，IRQ）。我使用的 STM32 中 EXTI-10 到 15 的 IRQ 是共用的，它們都會對應到相同的中斷服務程序（ISR）。我要使用的是 EXTI-13，所以要對「EXTI15_10」進行設定。
+- `nvic_enable_irq(NVIC_EXTI15_10_IRQ)` 致能「EXTI-10 到 15」的中斷請求（Interrupt request，IRQ）。我使用的 STM32 中 EXTI-10 到 15 的 IRQ 是共用的，它們都會對應到相同的中斷服務程序（ISR）。我要使用的是 EXTI-13，所以要對「EXTI15\_10」進行設定。
 - `gpio_set_mode()` 將按鈕所在的 PC13 設定成浮接輸入（Input float）模式。
 - EXTI
   - `exti_select_source(EXTI13, GPIOC)` 選擇 EXTI 的來源為 「EXIT-13」，「GPIO Port-C」，也就是「PC13」。

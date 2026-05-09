@@ -1,5 +1,5 @@
 ---
-title: "[Firefox/Chrome擴充套件] Google Shortcuts 快捷清單"
+title: '[Firefox/Chrome擴充套件] Google Shortcuts 快捷清單'
 author: ZiTe
 date: 2018-02-06 00:01:00
 comments: true

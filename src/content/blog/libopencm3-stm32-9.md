@@ -1,5 +1,5 @@
 ---
-title: "STM32 LibOpenCM3：USART 發送"
+title: 'STM32 LibOpenCM3：USART 發送'
 author: ZiTe
 tags:
   - STM32

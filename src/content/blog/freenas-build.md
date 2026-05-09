@@ -47,7 +47,7 @@ FreeNAS 是基於 FreeBSD 的開源 NAS 系統，作為開源軟體，它也是�
 | ---- | ------------------------------------------ | --------- |
 | CPU  | Intel Pentium G3260 3.3GHz 2C2T (1150腳位) | 300       |
 | MB   | ASUS B85M-G R2.0 (mATX)                    | 2000      |
-| RAM  | Kingston DDR3 1600MHz 4GB\*2               | 500       |
+| RAM  | Kingston DDR3 1600MHz 4GB\*2                | 500       |
 | PSU  | Corsair CX500 500W                         | 1500      |
 | CASE | acer Veriton 套裝機殼                      | 200       |
 

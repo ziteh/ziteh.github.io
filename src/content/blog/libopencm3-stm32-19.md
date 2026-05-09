@@ -1,5 +1,5 @@
 ---
-title: "STM32 ADC 類比數位轉換器"
+title: 'STM32 ADC 類比數位轉換器'
 author: ZiTe
 tags:
   - STM32
@@ -41,10 +41,10 @@ ADC 有兩個 Clock：
 
 - Regular group
   - 由最多 16 個通道組成。
-  - 僅有一個 16 位元的資料暫存器（ADC_DR：ADC regular data register）。
+  - 僅有一個 16 位元的資料暫存器（ADC\_DR：ADC regular data register）。
 - Injected group
   - 由最多 4 個通道組成。
-  - 有 4 個 16 位元的資料暫存器（ADC_JDR*x*：ADC injected data register _x_, _x_=1~4）。
+  - 有 4 個 16 位元的資料暫存器（ADC\_JDR*x*：ADC injected data register *x*, *x*=1~4）。
 
 Regular 與 Injected 的主要差異除了上面列的外，還有就是 Injected 有著類似中斷（Interrupt）的功能。一般狀態下，使用者可以將平常要量測的類比訊號源設為「 Regular 常規組」，當特殊事件發生時，「Injected 注入組」可以中斷 Regular 的轉換，優先進行 A/D 轉換，完成後再回去進行 Regular 組的轉換。
 
@@ -54,7 +54,7 @@ Regular 與 Injected 的主要差異除了上面列的外，還有就是 Injecte
 
 F446RE 中有 3 個內部通道：溫度感測器、內部參考電壓 `V_REFINT` 與電池 `V_BAT`。
 
-其中，溫度感測器與 `V_BAT` 共用 ADC1_IN18 通道。它們無法同時使用，若同時被啓用，那只有 `V_BAT` 的轉換會運作。而 `V_REFINT` 使用 ADC1_IN17 通道。
+其中，溫度感測器與 `V_BAT` 共用 ADC1\_IN18 通道。它們無法同時使用，若同時被啓用，那只有 `V_BAT` 的轉換會運作。而 `V_REFINT` 使用 ADC1\_IN17 通道。
 
 ## 轉換模式
 
@@ -62,23 +62,23 @@ F446RE 中有 3 個內部通道：溫度感測器、內部參考電壓 `V_REFINT
 
 在此模式下，每次觸發 ADC 都只會進行一次轉換，轉換完成後就停止。
 
-透過將 ADC_CR2 暫存器的 CONT 位元設為 `0` 以使用此模式。
+透過將 ADC\_CR2 暫存器的 CONT 位元設為 `0` 以使用此模式。
 
 觸發源可以是：
 
-- 將 ADC_CR2 的 SWSTART 位元設為 `1`，即軟體觸發轉換。僅限 Regular 通道。
-- 將 ADC_CR2 的 JSWSTART 位元設為 `1`，即軟體觸發轉換。僅限 Injected 通道。
+- 將 ADC\_CR2 的 SWSTART 位元設為 `1`，即軟體觸發轉換。僅限 Regular 通道。
+- 將 ADC\_CR2 的 JSWSTART 位元設為 `1`，即軟體觸發轉換。僅限 Injected 通道。
 - 外部觸發（如 Timer 或 EXTI）。Regular 及 Injected 通道皆適用。
 
 ### Continuous conversion mode 連續轉換模式
 
 在此模式下，ADC 在完成一次轉換後會儘快開始另一次新的轉換。
 
-透過將 ADC_CR2 暫存器的 CONT 位元設為 `1` 以使用此模式。
+透過將 ADC\_CR2 暫存器的 CONT 位元設為 `1` 以使用此模式。
 
 觸發源可以是：
 
-- 將 ADC_CR2 的 SWSTART 位元設為 `1`，即軟體觸發轉換。僅限 Regular 通道。
+- 將 ADC\_CR2 的 SWSTART 位元設為 `1`，即軟體觸發轉換。僅限 Regular 通道。
 - 外部觸發（如 Timer 或 EXTI）。僅限 Regular 通道。
 
 > Injected 通道無法使用連續轉換，除非設定 JAUTO 位元以啓用 Auto-injection，在此就不詳細說明。
@@ -93,7 +93,7 @@ F446RE 中有 3 個內部通道：溫度感測器、內部參考電壓 `V_REFINT
 
 由於 Regular 組只有一個 16 位元的資料暫存器，所以通常會搭配 DMA 來存取轉換完成的資料，避免資料被下一個通道的資料覆蓋。而 Injected 組的 4 個通道都有自己獨立且專用的 16 位元資料暫存器，故其轉換完成的資料會儲存進各自的資料暫存器中，不必擔心資料會被其它通道所覆蓋。
 
-此模式透過設定 ADC_CR1 中的 SCAN 位元來啓用。
+此模式透過設定 ADC\_CR1 中的 SCAN 位元來啓用。
 
 ### Discontinuous mode 不連續模式
 
@@ -107,7 +107,7 @@ F446RE 中有 3 個內部通道：溫度感測器、內部參考電壓 `V_REFINT
 - 第四次觸發：轉換「0，1，2」通道。
 - 以此類推... ...
 
-此模式透過設定 ADC_CR1 的 DISCEN（對於 Regular）或 JDISCEN（對於 Injected）位元來啓用。Regular 和 Injected 不能同時啓用 Discontinuous mode。
+此模式透過設定 ADC\_CR1 的 DISCEN（對於 Regular）或 JDISCEN（對於 Injected）位元來啓用。Regular 和 Injected 不能同時啓用 Discontinuous mode。
 
 > Auto-injected 與 Discontinuous mode 無法同時使用。
 > Discontinuous mode 與 Continuous conversion mode 雖然名稱相近但其「連續」的意義不同。前者是可以將組再細分成小組，後者是在每次轉換完成後自動觸發下一次的轉換。

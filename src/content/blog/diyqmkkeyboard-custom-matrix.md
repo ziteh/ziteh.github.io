@@ -1,5 +1,5 @@
 ---
-title: "[自製QMK鍵盤-番外] 在Custom Matrix中使用UART與控制滑鼠遊標，並加上無線模組"
+title: '[自製QMK鍵盤-番外] 在Custom Matrix中使用UART與控制滑鼠遊標，並加上無線模組'
 author: ZiTe
 tags:
   - DIY

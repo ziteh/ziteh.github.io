@@ -93,4 +93,5 @@ Flash 還有其它功能和設定我就不一一細講了。
 附帶一提，如果有人想看我的完整 Neovim 配置，可以參考 [ziteh/vim-config](https://github.com/ziteh/vim-config)，透過 branch 切換。
 
 [op-s]: https://bucket.ziteh.dev/blog/vim-flash/6f14eacd.webp
+
 [op-f]: https://bucket.ziteh.dev/blog/vim-flash/e85b715f.webp

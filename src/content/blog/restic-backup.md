@@ -27,7 +27,7 @@ toc: true
 
 - 直接下載：
   1. 從 [GitHub Releases](https://github.com/restic/restic/releases) 下載執行檔（例如 `
-restic_0.16.3_windows_amd64.zip`）。
+     restic_0.16.3_windows_amd64.zip`）。
   2. 將其解壓縮，並將 `.exe` 執行檔重新命名為 `restic.exe`。
   3. 建立資料夾 `C:/restic/`，並將 `restic.exe` 複製進去。（此路徑和後續的 Resticprofile 有關）
   4. 修改環境變數，將上述路徑 `C:/restic/` 加入到 PATH 中。
@@ -165,7 +165,7 @@ Resticprofile 的[配置檔案](https://creativeprojects.github.io/resticprofile
 version: "1"
 
 global:
-  #   restic-binary: "C:/restic/restic.exe"
+#   restic-binary: "C:/restic/restic.exe"
   priority: normal
 
 default:
@@ -194,7 +194,7 @@ default:
     source-relative: true
     source-base: "C:/Users/me/Pictures/"
     source:
-      - "." # 全部
+      - "."  # 全部
 
 dropbox:
   description: "Dropbox"

@@ -1,5 +1,5 @@
 ---
-title: "STM32 EXTI 外部中斷"
+title: 'STM32 EXTI 外部中斷'
 author: ZiTe
 tags:
   - STM32
@@ -40,11 +40,11 @@ draft: false
 
 但是中斷向量共用的話要如何分辨現在觸發的到底是哪一個 EXTI 呢？
 
-檔案是靠讀取 EXTI_PR (Pending Register) 暫存器。若此暫存器的對應位元為 `1` 的話，代表有中斷請求發送。
+檔案是靠讀取 EXTI\_PR (Pending Register) 暫存器。若此暫存器的對應位元為 `1` 的話，代表有中斷請求發送。
 
-例如 EXTI10~15 都會觸發相同的 ISR（因為其中斷向量共用/相同，都是 `0x0000 00E0`），但只要進入 EXTI10~15 的 ISR 後，再讀取 EXTI_PR 並查看第 10 到 15 位元哪個是 `1` 就知道實際被觸發的到底是 10~15 的哪一個了。
+例如 EXTI10~15 都會觸發相同的 ISR（因為其中斷向量共用/相同，都是 `0x0000 00E0`），但只要進入 EXTI10~15 的 ISR 後，再讀取 EXTI\_PR 並查看第 10 到 15 位元哪個是 `1` 就知道實際被觸發的到底是 10~15 的哪一個了。
 
-![▲ EXTI_PR 暫存器。取自 RM0390 Rev6 P.249。](https://bucket.ziteh.dev/blog/libopencm3-stm32-7/c19fc267.webp)
+![▲ EXTI\_PR 暫存器。取自 RM0390 Rev6 P.249。](https://bucket.ziteh.dev/blog/libopencm3-stm32-7/c19fc267.webp)
 
 ## 小結
 

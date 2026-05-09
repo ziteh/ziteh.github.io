@@ -2,7 +2,7 @@
 title: "[Day-7]Zig：結構（Struct）"
 # subtitle: ""
 # description: ""
-tags: ["教學", "程式", "Zig"]
+tags: ["教學","程式","Zig"]
 categories: ["Zig 入門指南（鐵人 24）"]
 date: 2024-08-30T07:28:00
 # updated: 2024-MM-DDTHH:MM:00
