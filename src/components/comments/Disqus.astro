@@ -12,7 +12,24 @@ const { url, identifier } = Astro.props;
 const disqusShortname = SITE.disqusShortname;
 ---
 
+<span class="note"
+  >這是 Disqus 留言板，你可能會看到它插入的廣告，留言可能不會立即顯示。若過了幾天仍未出現，請 <a
+    href="mailto:honmonoh@gmail.com">Email</a
+  > 聯繫：）</span
+>
 <div id="disqus_thread"></div>
+
+<style>
+  .note {
+    margin: 1.25em 0;
+    font-size: var(--font-size-xs);
+    color: var(--color-700);
+  }
+  .note a {
+    color: var(--color-700);
+  }
+</style>
+
 <script is:inline define:vars={{ url, identifier, disqusShortname }}>
   (function () {
     var disqus_config = function () {
