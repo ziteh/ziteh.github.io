@@ -143,14 +143,6 @@ export default defineConfig({
       formats: ["woff2"],
       provider: fontProviders.fontsource(),
     },
-    {
-      cssVariable: "--font-og",
-      name: "Noto Sans",
-      weights: [400],
-      styles: ["normal"],
-      formats: ["woff"], // Satori doesn't support woff2
-      provider: fontProviders.fontsource(),
-    },
   ],
   vite: {
     server: {
