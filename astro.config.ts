@@ -73,7 +73,7 @@ export default defineConfig({
         },
       ],
       // https://expressive-code.com/guides/themes/
-      themes: ["catppuccin-latte", "one-dark-pro"],
+      themes: ["github-light", "one-dark-pro"],
       useDarkModeMediaQuery: false,
       themeCssSelector: (theme) => {
         if (theme.type === "dark") return '[data-theme="dark"]';
