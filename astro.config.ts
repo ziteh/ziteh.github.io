@@ -120,7 +120,7 @@ export default defineConfig({
     // Search engine
     pagefind(),
     // Compression
-    playformCompress(),
+    // playformCompress(),
     astroCompressor({ gzip: true, zstd: true, brotli: true }),
   ],
   // https://docs.astro.build/en/guides/fonts/
