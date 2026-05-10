@@ -111,7 +111,7 @@ const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
       }
     </style>
     <!-- <Font cssVariable="--font-body" preload /> -->
-    <Font cssVariable="--font-mono" />
+    <Font cssVariable="--font-mono" preload={[{ weight: "400" }]} />
     {math && <KatexStyles />}
 
     <!-- Google Search Console https://support.google.com/webmasters/answer/9008080#meta_tag_verification -->
