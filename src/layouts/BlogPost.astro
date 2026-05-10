@@ -23,7 +23,14 @@ const { title, description, categories, date, updated, toc, comments, tags, prev
 const ogImage = `${Astro.url.pathname.replace(/\.html$/, "").replace(/\/$/, "")}-og.png`;
 ---
 
-<BaseLayout title={title} description={description} ogType="article" image={ogImage}>
+<BaseLayout
+  title={title}
+  description={description}
+  ogType="article"
+  image={ogImage}
+  pubDate={date}
+  updatedDate={updated}
+>
   <main id="main-content">
     <div class="post-layout">
       <article class="prose">
