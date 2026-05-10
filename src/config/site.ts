@@ -15,11 +15,11 @@ export const SITE = {
   postsPerAllPosts: 5,
 
   // Description generation
-  getDescriptionCount: 150, // If 'more' tag is not found, use this count of characters
+  getDescriptionCount: 100, // If 'more' tag is not found, use this count of characters
   getDescriptionMaxLines: 10, // Max number of lines to process
 
   // Default values for frontmatter fields
-  defaultFmTag: "Others",
+  defaultFmTag: "其他",
   defaultFmCategory: "",
   defaultFmToc: false,
   defaultFmComments: false,
