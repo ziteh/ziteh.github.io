@@ -58,12 +58,8 @@
 /posts/it24-zig-28-build  https://ithelp.ithome.com.tw/articles/10354747  301
 /posts/it24-zig-29-package  https://ithelp.ithome.com.tw/articles/10355399  301
 /posts/it24-zig-30-end  https://ithelp.ithome.com.tw/users/20151756/ironman/7460  301
-/categories/簡單入門-lib-open-cm-3-stm-32-嵌入式系統開發  https://ithelp.ithome.com.tw/users/20151756/ironman/5382  301
-/categories/簡單入門-lib-open-cm-3-stm-32-嵌入式系統開發/*  https://ithelp.ithome.com.tw/users/20151756/ironman/5382  301
 /categories/%E7%B0%A1%E5%96%AE%E5%85%A5%E9%96%80-lib-open-cm-3-stm-32-%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%B5%B1%E9%96%8B%E7%99%BC  https://ithelp.ithome.com.tw/users/20151756/ironman/5382  301
 /categories/%E7%B0%A1%E5%96%AE%E5%85%A5%E9%96%80-lib-open-cm-3-stm-32-%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%B5%B1%E9%96%8B%E7%99%BC/*  https://ithelp.ithome.com.tw/users/20151756/ironman/5382  301
-/categories/zig-入門指南（鐵人-24-）  https://ithelp.ithome.com.tw/users/20151756/ironman/7460  301
-/categories/zig-入門指南（鐵人-24-）/*  https://ithelp.ithome.com.tw/users/20151756/ironman/7460  301
 /categories/zig-%E5%85%A5%E9%96%80%E6%8C%87%E5%8D%97%EF%BC%88%E9%90%B5%E4%BA%BA-24-%EF%BC%89  https://ithelp.ithome.com.tw/users/20151756/ironman/7460  301
 /categories/zig-%E5%85%A5%E9%96%80%E6%8C%87%E5%8D%97%EF%BC%88%E9%90%B5%E4%BA%BA-24-%EF%BC%89/*  https://ithelp.ithome.com.tw/users/20151756/ironman/7460  301
 /posts/*/  /posts/:splat  301
