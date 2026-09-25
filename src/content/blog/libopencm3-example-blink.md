@@ -18,8 +18,8 @@ draft: false
 
 我在 2022 年 9 月重新寫了與本文內容相近的文章，建議可以觀看新文章：
 
-- [STM32 GPIO 簡介](/posts/libopencm3-stm32-3)
-- [STM32 LibOpenCM3：GPIO 輸出](/posts/libopencm3-stm32-4)
+- [STM32 GPIO 簡介](https://ithelp.ithome.com.tw/articles/10290881)
+- [STM32 LibOpenCM3：GPIO 輸出](https://ithelp.ithome.com.tw/articles/10291071)
 
 ## 前言
 
@@ -172,5 +172,5 @@ int main(void)
 
 ## 相關文章
 
-- [STM32 GPIO 簡介](/posts/libopencm3-stm32-3)
-- [STM32 LibOpenCM3：GPIO 輸出](/posts/libopencm3-stm32-4)
+- [STM32 GPIO 簡介](https://ithelp.ithome.com.tw/articles/10290881)
+- [STM32 LibOpenCM3：GPIO 輸出](https://ithelp.ithome.com.tw/articles/10291071)
