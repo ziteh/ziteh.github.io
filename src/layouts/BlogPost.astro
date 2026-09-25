@@ -10,6 +10,7 @@ import TagPill from "@/components/TagPill.astro";
 import TocScript from "@/components/TocScript.astro";
 import { _t, SITE } from "@/config";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getCanonicalURL } from "@/utils/getCanonicalURL";
 import type { BlogPost } from "@/utils/getPosts";
 import { slugifyStr } from "@/utils/slugify";
 
@@ -109,7 +110,7 @@ const ogImage = `${Astro.url.pathname.replace(/\.html$/, "").replace(/\/$/, "")}
       comments && (
         <section id="comments" aria-label="Comments">
           {SITE.disqusShortname && (
-            <Disqus url={new URL(Astro.url.pathname, Astro.site).toString()} identifier={title} />
+            <Disqus url={getCanonicalURL(Astro.url, Astro.site)} identifier={title} />
           )}
           {SITE.giscusRepo && <Giscus />}
         </section>

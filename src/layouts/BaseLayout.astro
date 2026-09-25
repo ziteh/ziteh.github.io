@@ -6,6 +6,7 @@ import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
 import KatexStyles from "@/components/KatexStyles.astro";
 import { _t, SITE } from "@/config";
+import { getCanonicalURL } from "@/utils/getCanonicalURL";
 
 interface Props {
   title: string;
@@ -29,8 +30,7 @@ const {
   noindex = false,
 } = Astro.props;
 
-const cleanPathname = Astro.url.pathname.replace(/\/index\.html$/, "/").replace(/\.html$/, "");
-const canonicalURL = new URL(cleanPathname, Astro.site).toString().replace(/\/$/, "");
+const canonicalURL = getCanonicalURL(Astro.url, Astro.site);
 const showTitle = title === SITE.title ? title : `${title} | ${SITE.title}`;
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 ---
