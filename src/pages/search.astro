@@ -4,7 +4,7 @@ import { _t } from "@/config";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title={_t.search.title} description={_t.search.desc}>
+<BaseLayout title={_t.search.title} description={_t.search.desc} noindex>
   <main id="main-content">
     <h1 class="sr-only">{_t.search.title}</h1>
     <div id="search-skeleton" aria-hidden="true">
