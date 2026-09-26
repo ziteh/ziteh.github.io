@@ -1,0 +1,18 @@
+{
+  "name": "ziteh.github.io",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "lint": "markdownlint \"content/**/*.md\"",
+    "lint:fix": "markdownlint --fix \"content/**/*.md\"",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^17.5.1",
+    "markdownlint-cli": "^0.49.1"
+  },
+  "lint-staged": {
+    "*.md": "markdownlint"
+  }
+}

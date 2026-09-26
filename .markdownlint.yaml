@@ -54,21 +54,14 @@ no-bare-urls: false
 # Table
 table-pipe-style:
   style: leading_and_trailing
+table-column-style: false
 
 # Horizontal rule
 hr-style:
   style: "---"
 
 # HTML
-no-inline-html:
-  allowed_elements:
-    - details
-    - summary
-    - kbd
-    - sub
-    - sup
-    - img
-    - br
+no-inline-html: false
 
 # Whitespace / Formatting
 line-length: false

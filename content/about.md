@@ -1,4 +1,6 @@
 
+<!-- markdownlint-disable first-line-h1 -->
+
 我是 ZiTe，把 Blog 當成筆記寫。
 
 若內容有誤，還請指正。若覺得有趣或有疑問，歡迎留言或聯絡。
