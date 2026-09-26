@@ -1,0 +1,82 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/DavidAnson/markdownlint/refs/heads/main/schema/markdownlint-config-schema-strict.json
+# https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
+
+default: true
+
+# Headings
+heading-increment: true
+heading-style:
+  style: atx
+blanks-around-headings:
+  lines_above: 1
+  lines_below: 1
+  include_front_matter: false
+single-h1:
+  front_matter_title: ^\s*title\s*[:=]
+no-duplicate-heading:
+  siblings_only: true
+no-emphasis-as-heading: false
+required-headings: false
+no-trailing-punctuation: true
+
+# Lists
+ul-style:
+  style: dash
+ul-indent:
+  indent: 2
+  start_indented: false
+ol-prefix:
+  style: ordered
+
+# Code
+code-block-style:
+  style: fenced
+code-fence-style:
+  style: backtick
+fenced-code-language: true
+commands-show-output: false
+
+# Emphasis
+emphasis-style:
+  style: asterisk
+strong-style:
+  style: asterisk
+
+# Links / Images
+no-alt-text: false
+descriptive-link-text: false
+link-image-style:
+  collapsed: false
+  shortcut: false
+  url_inline: false
+no-bare-urls: false
+
+# Table
+table-pipe-style:
+  style: leading_and_trailing
+
+# Horizontal rule
+hr-style:
+  style: "---"
+
+# HTML
+no-inline-html:
+  allowed_elements:
+    - details
+    - summary
+    - kbd
+    - sub
+    - sup
+    - img
+    - br
+
+# Whitespace / Formatting
+line-length: false
+no-trailing-spaces:
+  br_spaces: 2
+  list_item_empty_lines: false
+  strict: true
+no-hard-tabs:
+  code_blocks: true
+  spaces_per_tab: 2
+no-blanks-blockquote: false
