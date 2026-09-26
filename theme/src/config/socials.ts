@@ -4,11 +4,11 @@
 
 export const SOCIALS = [
   {
-    href: "https://www.youtube.com",
+    href: "https://www.youtube.com/@siderakb",
     title: "YouTube",
   },
   {
-    href: "https://github.com/ziteh/astro-theme-jing",
+    href: "https://github.com/ziteh",
     title: "GitHub",
   },
   {
