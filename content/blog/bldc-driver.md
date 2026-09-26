@@ -23,29 +23,29 @@ draft: false
 
 這些是我找到的馬達驅動電路，有一半是在 GitHub 上找到的。
 
-| 名稱                                                 | 尺寸 (mm)          | 電壓               | 連續電流     | 峰值電流  | MCU                | Gate Driver | FETs                   | 開源                                           | 備註                   |
-| ---------------------------------------------------- | ------------------ | ------------------ | ------------ | --------- | ------------------ | ----------- | ---------------------- | ---------------------------------------------- | ---------------------- |
-| [ODrive Pro][odrive-pro]                             | 51 x 64            | 12~58V            | 20A          | 120A (3s) | STM32H7A3RGT6      | DRV8353S    | ?（並聯）              | [韌體][odrive-fw]                              | IO 隔離                |
-| [ODrive S1][odrive-s1]                               | 66 x 50            | 12~48V            | 20A          | 80A (3s)  | STM32H725RGV6      | DRV8353RS   | TPH1R306PL             | [韌體][odrive-fw]                              | IO 隔離                |
-| [ODrive v3.6][odrive-v36]                            | 140 x 50           | 12~24V or 12~56V | 40A (散熱片) | 120A      | STM32F405RGT6      | DRV8301     | NTMFS4935NT1G（並聯）  | [韌體][odrive-fw]                              | 雙馬達                 |
-| [ODrive v3.5][odrive-v35]                            | 140 x 50           | 12~24V or 12~56V | 40A (散熱片) | 120A      | STM32F405RGT6      | DRV8301     | NTMFS4935NT1G（並聯）  | [韌體][odrive-fw],[硬體開始閉源][odrive-close] | 雙馬達                 |
-| [Tinymovr R5.2][tinymovr-r52]                        | 40 x 36            | 12~38V            | 40A (散熱)   | ?         | PAC5527            | 見 MCU      | SIR626ADP              | [韌體][tinymovr-fw]                            |                        |
-| [Tinymovr M5.1][tinymovr-m51]                        | 29.5 x 29.5        | 12~38V            | 5A（散熱）   | ?         | PAC5527            | 見 MCU      | ?                      | [韌體][tinymovr-fw]                            |                        |
-| [moteus r4.11][moteus-r411]                          | 46 x 53            | 12~44V            | 11A          | ?         | STM32G474CEU6      | DRV8353FS   | TPH2R506PL             | [韌體][moteus-fw]                              |                        |
-| [moteus n1][moteus-n1]                               | 46 x 46            | 10~54V            | 8A           | ?         | STM32G474CEU6      | DRV8353FS   | TPH2R408QM             | [韌體][moteus-fw]                              |                        |
-| [rp2040 motor controller][rp2040-mc]                 |                    |                    |              |           | RP2040             | EG2131      | BSC016N06NS            | 硬/韌體                                        |                        |
-| [O32controller][o32]                                 | 27 x 27            | 15V                | 50A (散熱)   | 100A      | STSPIN32F0A        | 見 MCU      | CSD88584Q5DC（雙通道） | 硬/韌體                                        |                        |
-| [µMotor][mu-motor]                                   | 35 x 20            | 24V                |              | 10A       | STM32G474CET6      | DRV8320S    | FDMD82xx（雙通道）     | 硬/韌體                                        |                        |
-| [SimpleFOCShield][sfoc-shield]                       | Arduino Uno shield | 12~24V            | 2A           | 5A        | 無                 | L6234       | 見 Gate Driver         | 硬/韌體                                        |                        |
-| [VESC][vesc]                                         |                    | 60V Max            | ?            | ?         | STM32F40x (LQFP64) | DRV8302     | IRFS7530               | 硬/韌體                                        |                        |
-| [miniFOC][minifoc]                                   |                    | 5~18V             | 5A (?)       |           | GD32F130G6U6       | EG2133      | AP2300                 | 硬/韌體                                        |                        |
-| [osannolik/MotCtrl][motctrl]                         | 45 x 77            |                    |              |           | STM32F446          | LM5101A     | FDBL0110N60            | 硬/韌體                                        |                        |
-| [Dagor][dagor]                                       | 44 x 44            | 5~24V             | ?            | 40A       | ESP32-WROM-32U     | DRV8305     | ?                      | 韌體                                           |                        |
-| [Janus][janus]                                       | 51 x 51            | 5~12V             | ?            | 23A       | 無/ESP32-Dev-Kit1  | DRV8305     | NVTFS5C453NLWFTAG      | 韌體                                           |                        |
-| [AdinAck/Motor-Controller][adinack]                  |                    | 5~40V             | 3A           | 8A        | SAMD21             | DRV8316     | 見 Gate Driver         | 硬/韌體                                        |                        |
-| [sabanekko3/PCBM\_drive-board][saganekko3]            |                    |                    |              |           | STM32F303K8Tx      | MIC4604YM   | BSC028N06LS3           | 硬/韌體                                        |                        |
-| [FunQi-Stack][funqi]                                 |                    |                    |              |           | STSPIN32G4         | 見 MCU      | 無                     | 韌體 (SimpleFOC)                               |                        |
-| [azmat-bilal/bldc\_motor\_controller\_pcb][azmat-bilal] |                    |                    |              |           | STM32F405RGTx      | DRV8301     | CSD18540Q5B            | 硬體                                           | 電路參考 ODrive v3.5/6 |
+| 名稱                                                    | 尺寸 (mm)          | 電壓             | 連續電流     | 峰值電流  | MCU                | Gate Driver | FETs                   | 開源                                           | 備註                   |
+| ------------------------------------------------------- | ------------------ | ---------------- | ------------ | --------- | ------------------ | ----------- | ---------------------- | ---------------------------------------------- | ---------------------- |
+| [ODrive Pro][odrive-pro]                                | 51 x 64            | 12~58V           | 20A          | 120A (3s) | STM32H7A3RGT6      | DRV8353S    | ?（並聯）              | [韌體][odrive-fw]                              | IO 隔離                |
+| [ODrive S1][odrive-s1]                                  | 66 x 50            | 12~48V           | 20A          | 80A (3s)  | STM32H725RGV6      | DRV8353RS   | TPH1R306PL             | [韌體][odrive-fw]                              | IO 隔離                |
+| [ODrive v3.6][odrive-v36]                               | 140 x 50           | 12~24V or 12~56V | 40A (散熱片) | 120A      | STM32F405RGT6      | DRV8301     | NTMFS4935NT1G（並聯）  | [韌體][odrive-fw]                              | 雙馬達                 |
+| [ODrive v3.5][odrive-v35]                               | 140 x 50           | 12~24V or 12~56V | 40A (散熱片) | 120A      | STM32F405RGT6      | DRV8301     | NTMFS4935NT1G（並聯）  | [韌體][odrive-fw],[硬體開始閉源][odrive-close] | 雙馬達                 |
+| [Tinymovr R5.2][tinymovr-r52]                           | 40 x 36            | 12~38V           | 40A (散熱)   | ?         | PAC5527            | 見 MCU      | SIR626ADP              | [韌體][tinymovr-fw]                            |                        |
+| [Tinymovr M5.1][tinymovr-m51]                           | 29.5 x 29.5        | 12~38V           | 5A（散熱）   | ?         | PAC5527            | 見 MCU      | ?                      | [韌體][tinymovr-fw]                            |                        |
+| [moteus r4.11][moteus-r411]                             | 46 x 53            | 12~44V           | 11A          | ?         | STM32G474CEU6      | DRV8353FS   | TPH2R506PL             | [韌體][moteus-fw]                              |                        |
+| [moteus n1][moteus-n1]                                  | 46 x 46            | 10~54V           | 8A           | ?         | STM32G474CEU6      | DRV8353FS   | TPH2R408QM             | [韌體][moteus-fw]                              |                        |
+| [rp2040 motor controller][rp2040-mc]                    |                    |                  |              |           | RP2040             | EG2131      | BSC016N06NS            | 硬/韌體                                        |                        |
+| [O32controller][o32]                                    | 27 x 27            | 15V              | 50A (散熱)   | 100A      | STSPIN32F0A        | 見 MCU      | CSD88584Q5DC（雙通道） | 硬/韌體                                        |                        |
+| [µMotor][mu-motor]                                      | 35 x 20            | 24V              |              | 10A       | STM32G474CET6      | DRV8320S    | FDMD82xx（雙通道）     | 硬/韌體                                        |                        |
+| [SimpleFOCShield][sfoc-shield]                          | Arduino Uno shield | 12~24V           | 2A           | 5A        | 無                 | L6234       | 見 Gate Driver         | 硬/韌體                                        |                        |
+| [VESC][vesc]                                            |                    | 60V Max          | ?            | ?         | STM32F40x (LQFP64) | DRV8302     | IRFS7530               | 硬/韌體                                        |                        |
+| [miniFOC][minifoc]                                      |                    | 5~18V            | 5A (?)       |           | GD32F130G6U6       | EG2133      | AP2300                 | 硬/韌體                                        |                        |
+| [osannolik/MotCtrl][motctrl]                            | 45 x 77            |                  |              |           | STM32F446          | LM5101A     | FDBL0110N60            | 硬/韌體                                        |                        |
+| [Dagor][dagor]                                          | 44 x 44            | 5~24V            | ?            | 40A       | ESP32-WROM-32U     | DRV8305     | ?                      | 韌體                                           |                        |
+| [Janus][janus]                                          | 51 x 51            | 5~12V            | ?            | 23A       | 無/ESP32-Dev-Kit1  | DRV8305     | NVTFS5C453NLWFTAG      | 韌體                                           |                        |
+| [AdinAck/Motor-Controller][adinack]                     |                    | 5~40V            | 3A           | 8A        | SAMD21             | DRV8316     | 見 Gate Driver         | 硬/韌體                                        |                        |
+| [sabanekko3/PCBM\_drive-board][saganekko3]              |                    |                  |              |           | STM32F303K8Tx      | MIC4604YM   | BSC028N06LS3           | 硬/韌體                                        |                        |
+| [FunQi-Stack][funqi]                                    |                    |                  |              |           | STSPIN32G4         | 見 MCU      | 無                     | 韌體 (SimpleFOC)                               |                        |
+| [azmat-bilal/bldc\_motor\_controller\_pcb][azmat-bilal] |                    |                  |              |           | STM32F405RGTx      | DRV8301     | CSD18540Q5B            | 硬體                                           | 電路參考 ODrive v3.5/6 |
 
 [odrive-pro]: https://odriverobotics.com/shop/odrive-pro
 
@@ -125,16 +125,16 @@ draft: false
 
 這裡整理了一些我覺得有趣的 IC。
 
-|           型號           | 功能                                                 | 封裝                |
-| :----------------------: | ---------------------------------------------------- | ------------------- |
-|  [STSPIN32G4][spin32g4]  | MCU + Gate Driver + Op-amp                           | QFN-64 9x9mm        |
-|  [STSPIN32F0][spin32f0]  | MCU + Gate Driver + Op-amp                           | QFN-48 7x7mm        |
-| [STSPIN32F0A][spin32f0A] | MCU + Gate Driver + Op-amp                           | QFN-48 7x7mm        |
-| [STSPIN32F0B][spin32f0B] | MCU + Gate Driver + Op-amp                           | QFN-48 7x7mm        |
-|      [L6234][l6234]      | Gate Driver + FETs                                   | PowerSO20 16x14.5mm |
-|   [DRV8316C][drv8316c]   | Gate Driver + FETs + 電流感測放大器                   | VQFN-40 7x5mm       |
-|   [MCF8316A][mcf8316a]   | 硬體 FOC controller + Gate Driver + FETs + 電流感測放大器 | VQFN-40 7x5m       |
-|   [TMC4671][tmc4671]     | 硬體 FOC controller                                  | QFN-76 10.5x6.5mm   |
+|           型號           | 功能                                                      | 封裝                |
+| :----------------------: | --------------------------------------------------------- | ------------------- |
+|  [STSPIN32G4][spin32g4]  | MCU + Gate Driver + Op-amp                                | QFN-64 9x9mm        |
+|  [STSPIN32F0][spin32f0]  | MCU + Gate Driver + Op-amp                                | QFN-48 7x7mm        |
+| [STSPIN32F0A][spin32f0A] | MCU + Gate Driver + Op-amp                                | QFN-48 7x7mm        |
+| [STSPIN32F0B][spin32f0B] | MCU + Gate Driver + Op-amp                                | QFN-48 7x7mm        |
+|      [L6234][l6234]      | Gate Driver + FETs                                        | PowerSO20 16x14.5mm |
+|   [DRV8316C][drv8316c]   | Gate Driver + FETs + 電流感測放大器                       | VQFN-40 7x5mm       |
+|   [MCF8316A][mcf8316a]   | 硬體 FOC controller + Gate Driver + FETs + 電流感測放大器 | VQFN-40 7x5m        |
+|    [TMC4671][tmc4671]    | 硬體 FOC controller                                       | QFN-76 10.5x6.5mm   |
 
 STSPIN32 SiP
 
@@ -175,7 +175,7 @@ STSPIN32 SiP
 
 都是 N 通道。
 
-| 型號          | 通道數   | Vds (V) | Vgs (V) | Id (A)       | Rds\_on (mΩ)   |  尺寸 (mm)  |
+| 型號          | 通道數   | Vds (V) | Vgs (V) | Id (A)       | Rds\_on (mΩ)  |  尺寸 (mm)  |
 | :------------ | :------- | :-----: | :-----: | :----------- | :------------ | :---------: |
 | CSD88584Q5DC  | 2 (半橋) |   40    |   20    | 50 (Ta=25°C) | 0.68 (Vgs=10) |    6 x 5    |
 | CSD88599Q5DC  | 2 (半橋) |   60    |   20    | 40 (Ta=25°C) | 1.7 (Vgs=10)  |    6 x 5    |

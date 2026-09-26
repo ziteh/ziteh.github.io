@@ -46,6 +46,7 @@ draft: false
 
 ## 快速比較
 
+<!-- markdownlint-disable table-column-style -->
 | 項目           | ⭐ATmega32U4         | AT90USB1286         | ⭐RP2040                      | STM32F303CC          | STM32F401CC          |
 | -------------- | ------------------- | ------------------- | ---------------------------- | -------------------- | -------------------- |
 | CPU 架構       | 8-bit AVR           | 8-bit AVR           | 雙核心 32-bit ARM Cortex-M0+ | 32-bit ARM Cortex-M4 | 32-bit ARM Cortex-M4 |
@@ -61,6 +62,7 @@ draft: false
 | 單價（臺灣）   | NT$ 280             | NT$ 510             | NT$ 80                       | NT$ 195              | --                   |
 | 單價（淘寶）   | NT$ 79              | NT$ 330             | NT$ 18                       | NT$ 45               | NT$ 42               |
 | 廠商           | Microchip           | Microchip           | 樹莓派                       | ST                   | ST                   |
+<!-- markdownlint-eable table-column-style -->
 
 > 1. 使用 5V 電源時可以到 16 MHz；使用 3.3V 時可以到 8MHz。
 > 2. RP2040 沒有內建 Flash，你必須外接獨立的 Flash IC，如： W25Q128JVS, W25Q64JVXGIQ。

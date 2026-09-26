@@ -54,7 +54,8 @@ no-bare-urls: false
 # Table
 table-pipe-style:
   style: leading_and_trailing
-table-column-style: false
+table-column-style:
+  style: aligned
 
 # Horizontal rule
 hr-style:

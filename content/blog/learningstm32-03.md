@@ -178,8 +178,8 @@ GPIO\_ResetBits
 
 <br/>
 
-| RCC\_APB2Periph        | 描述     |
-| --------------------- | -------- |
+| RCC\_APB2Periph         | 描述     |
+| ----------------------- | -------- |
 | RCC\_APB2Periph\_AFIO   | 复用功能 |
 | RCC\_APB2Periph\_GPIOA  | GPIO A   |
 | RCC\_APB2Periph\_GPIOB  | GPIO B   |
@@ -207,8 +207,8 @@ RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA |
 | ENABLE   | 致能（使用） |
 | DISABLE  | 禁能（關閉） |
 
-| GPIO\_Pin     | 描述       |
-| ------------ | ---------- |
+| GPIO\_Pin      | 描述        |
+| -------------- | ----------- |
 | GPIO\_Pin\_0   | 選擇Pin\_0  |
 | GPIO\_Pin\_1   | 選擇Pin\_1  |
 | GPIO\_Pin\_2   | 選擇Pin\_2  |
@@ -225,7 +225,7 @@ RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA |
 | GPIO\_Pin\_13  | 選擇Pin\_13 |
 | GPIO\_Pin\_14  | 選擇Pin\_14 |
 | GPIO\_Pin\_15  | 選擇Pin\_15 |
-| GPIO\_Pin\_All | 選擇全部   |
+| GPIO\_Pin\_All | 選擇全部    |
 
 備註：可以用“|”符號一次選取多個功能。例如：
 
@@ -233,18 +233,18 @@ RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA |
 GPIO_SetBits(GPIOA, GPIO_Pin_10 | GPIO_Pin_15); // 將PA10、PA15設置為1
 ```
 
-| GPIO\_Speed       | 描述                    |
-| ---------------- | ----------------------- |
+| GPIO\_Speed        | 描述                    |
+| ------------------ | ----------------------- |
 | GPIO\_Speed\_10MHz | 設定最高輸出頻率為10MHz |
 | GPIO\_Speed\_2MHz  | 設定最高輸出頻率為2MHz  |
 | GPIO\_Speed\_50MHz | 設定最高輸出頻率為50MHz |
 
-| GPIO\_Mode             | 描述             |
-| --------------------- | ---------------- |
-| GPIO\_Mode\_AIN         | 類比輸入         |
+| GPIO\_Mode               | 描述             |
+| ------------------------ | ---------------- |
+| GPIO\_Mode\_AIN          | 類比輸入         |
 | GPIO\_Mode\_IN\_FLOATING | 浮空輸入         |
-| GPIO\_Mode\_IPD         | 下拉輸入         |
-| GPIO\_Mode\_IPU         | 上拉輸入         |
+| GPIO\_Mode\_IPD          | 下拉輸入         |
+| GPIO\_Mode\_IPU          | 上拉輸入         |
 | GPIO\_Mode\_Out\_OD      | 汲極開路通用輸出 |
 | GPIO\_Mode\_Out\_PP      | 推挽通用輸出     |
 | GPIO\_Mode\_AF\_OD       | 汲極開路复用輸出 |
