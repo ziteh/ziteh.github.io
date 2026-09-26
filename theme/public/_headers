@@ -1,0 +1,38 @@
+# https://developers.cloudflare.com/pages/configuration/headers/
+
+/
+  Cache-Control: public, max-age=3600, stale-while-revalidate=604800
+
+/archives
+  Cache-Control: public, max-age=3600, stale-while-revalidate=604800
+
+/archives/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=604800
+
+/categories/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=604800
+
+/tags/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=604800
+
+/posts
+  Cache-Control: public, max-age=3600, stale-while-revalidate=604800
+
+/posts/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=604800
+
+/posts/*-og.png
+  ! Cache-Control
+  Cache-Control: public, max-age=31556952, immutable
+
+/og.png
+  Cache-Control: public, max-age=31556952, immutable
+
+/_astro/*
+  Cache-Control: public, max-age=31556952, immutable
+
+/pagefind/fragment/*
+  Cache-Control: public, max-age=31556952, immutable
+
+/pagefind/index/*
+  Cache-Control: public, max-age=31556952, immutable
