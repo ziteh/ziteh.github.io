@@ -41,6 +41,7 @@ draft: false
 
 ## 比較表
 
+<!-- markdownlint-disable no-inline-html -->
 <table>
 <tbody>
 <tr style="height: 23px;">
@@ -180,6 +181,7 @@ draft: false
 </tr>
 </tbody>
 </table>
+<!-- markdownlint-eable no-inline-html -->
 
 ## 結語
 

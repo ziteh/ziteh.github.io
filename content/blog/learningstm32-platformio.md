@@ -129,6 +129,7 @@ framework = stm32cube
 
 在資料夾「src」中新增檔案「main.c」，並加入以下的程式碼：
 
+<!-- markdownlint-disable-next-line no-inline-html -->
 <script src="https://gist.github.com/ziteh/b6bd1a9af2d1ac61cdfcc55e7d0580db.js"></script>
 
 PlatformIO 的 GitHub 上也有一些範例程式可以看：[platformio/platform-ststm32](https://github.com/platformio/platform-ststm32)

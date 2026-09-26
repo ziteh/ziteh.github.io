@@ -62,7 +62,16 @@ hr-style:
   style: "---"
 
 # HTML
-no-inline-html: false
+no-inline-html:
+  allowed_elements:
+    - details
+    - summary
+    - kbd
+    - sub
+    - sup
+    - img
+    - br
+    - iframe
 
 # Whitespace / Formatting
 line-length: false
