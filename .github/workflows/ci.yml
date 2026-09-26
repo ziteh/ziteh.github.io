@@ -10,9 +10,15 @@ on:
 permissions:
   contents: read
 
+env:
+  CONTENT_DIR: '../content'
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./theme
 
     steps:
       - uses: actions/checkout@v6
@@ -31,10 +37,15 @@ jobs:
       - name: Install dependencies
         run: pnpm install --ignore-scripts --frozen-lockfile
 
+      - name: Generate Astro types
+        run: pnpm exec astro sync
+
       - name: Format & Lint
         run: |
           pnpm run format:check
           pnpm run lint:check
+          pnpm run type:check
+          pnpm run astro:check
 
       - name: Build
         run: pnpm run build
