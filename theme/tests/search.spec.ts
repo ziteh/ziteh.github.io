@@ -9,24 +9,45 @@ test.describe("Pagefind search", () => {
     await expect(page.locator("#search-skeleton")).toBeHidden();
   });
 
-  test("searchbox is horizontally centered and matches the skeleton's size", async ({ page }) => {
+  test("searchbox is horizontally centered in the search stack", async ({ page }) => {
     await page.goto("/search");
-
-    const skeleton = await page.locator(".skeleton-input").boundingBox();
     await expect(page.locator(".pf-searchbox-input")).toBeVisible();
+
     const stack = await page.locator("#search-stack").boundingBox();
     const box = await page.locator(".pf-searchbox").boundingBox();
+    if (!stack || !box) throw new Error("expected elements to have a layout box");
 
-    if (!skeleton || !stack || !box) throw new Error("expected elements to have a layout box");
-
-    // centered: equal left/right whitespace within the stack
     const leftGap = box.x - stack.x;
     const rightGap = stack.x + stack.width - (box.x + box.width);
     expect(leftGap).toBeCloseTo(rightGap, 0);
+  });
 
-    // matches the skeleton so there's no layout shift when it's replaced
+  test("skeleton is sized to match the searchbox, avoiding layout shift", async ({ page }) => {
+    await page.goto("/search");
+    await expect(page.locator(".pf-searchbox-input")).toBeVisible();
+
+    // the real skeleton element may already be hidden by the time the page settles, so measure
+    // a fresh probe with the same class instead of racing against hideSkeleton().
+    const skeleton = await page.evaluate(() => {
+      // wrap it the same way #search-skeleton does, since a bare grid item with
+      // `margin: auto` shrinks to content instead of stretching like a block child does.
+      const wrapper = document.createElement("div");
+      wrapper.style.visibility = "hidden";
+      const probe = document.createElement("div");
+      probe.className = "skeleton-input";
+      wrapper.appendChild(probe);
+      const stack = document.getElementById("search-stack");
+      if (!stack) throw new Error("expected #search-stack to exist");
+      stack.appendChild(wrapper);
+      const rect = probe.getBoundingClientRect();
+      wrapper.remove();
+      return { width: rect.width, height: rect.height };
+    });
+    const box = await page.locator(".pf-searchbox").boundingBox();
+    if (!box) throw new Error("expected .pf-searchbox to have a layout box");
+
     expect(box.width).toBeCloseTo(skeleton.width, 0);
-    expect(box.y).toBeCloseTo(skeleton.y, 0);
+    expect(box.height).toBeCloseTo(skeleton.height, 0);
   });
 
   test("typing a query returns a matching result", async ({ page }) => {

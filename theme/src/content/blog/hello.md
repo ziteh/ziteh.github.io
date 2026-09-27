@@ -11,7 +11,7 @@ toc: true
 comments: false
 ---
 
-[**Astro Jing**](https://github.com/ziteh/astro-theme-jing) is a calm blog theme powered by [Astro](https://astro.build/). This post will show you how to use it.
+[**Astro Jing**](https://github.com/ziteh/astro-jing-theme) is a calm blog theme powered by [Astro](https://astro.build/). This post will show you how to use it.
 
 <!-- more -->
 
@@ -27,12 +27,13 @@ Features:
 - Comment systems (Giscus / Disqus)
 - Sitemap & RSS feed
 - Static site
+- View the post as Markdown
 
 ## Usage
 
 ```bash
-git clone https://github.com/ziteh/astro-theme-jing.git
-cd astro-theme-jing
+git clone https://github.com/ziteh/astro-jing-theme.git
+cd astro-jing-theme
 pnpm i
 pnpm dev
 ```
@@ -75,38 +76,42 @@ There are some settings that need to be adjusted before deployment.
 
 ### site.ts
 
-> [`src/config/site.ts`](https://github.com/ziteh/astro-theme-jing/blob/main/src/config/site.ts)
+> [`src/config/site.ts`](https://github.com/ziteh/astro-jing-theme/blob/main/src/config/site.ts)
 
 Basic site information and feature toggles.
 
-| Field                    | Description                                       | Example                      |
-| ------------------------ | ------------------------------------------------- | ---------------------------- |
-| **`url`\***              | Your site's URL                                   | `https://username.github.io` |
-| **`title`\***            | Blog title                                        | `My Blog`                    |
-| **`description`\***      | Blog description                                  | `A personal blog`            |
-| **`author`\***           | Blog author name                                  | `ZiTe`                       |
-| `postsPerHomepage`       | Posts to display per page ([home](/))             | `3`                          |
-| `postsPerArchives`       | Posts to display per page ([archives](/archives)) | `10`                         |
-| `postsPerAllPosts`       | Posts to display per page ([posts](/posts))       | `5`                          |
-| `getDescriptionCount`    | Character count for auto-description              | `150`                        |
-| `getDescriptionMaxLines` | Max lines to process for auto-description         | `10`                         |
-| `defaultFmTag`           | Default tag for posts                             | `Others`                     |
-| `defaultFmCategory`      | Default category for posts                        | `""`                         |
-| `defaultFmToc`           | Enable table of contents by default               | `false`                      |
-| `defaultFmComments`      | Enable comments by default                        | `false`                      |
-| `defaultFmMath`          | Enable math equations by default                  | `false`                      |
-| `transitions`            | Enable [view transitions][astro-vt]               | `true`                       |
-| `disqusShortname`        | Disqus shortname                                  | `your-disqus-shortname`      |
-| `giscusRepo`             | Giscus repository                                 | `user/repo`                  |
-| `giscusRepoId`           | Giscus repository ID                              |                              |
-| `giscusCategory`         | Giscus category name                              |                              |
-| `giscusCategoryId`       | Giscus category ID                                |                              |
+| Field                    | Description                                                                       | Example                        |
+| ------------------------ | --------------------------------------------------------------------------------- | ------------------------------ |
+| **`url`\***              | Your site's URL                                                                   | `https://username.github.io`   |
+| **`title`\***            | Blog title                                                                        | `My Blog`                      |
+| **`description`\***      | Blog description                                                                  | `A personal blog`              |
+| **`author`\***           | Blog author name                                                                  | `ZiTe`                         |
+| `postsPerHomepage`       | Posts to display per page ([home](/))                                             | `3`                            |
+| `postsPerArchives`       | Posts to display per page ([archives](/archives))                                 | `10`                           |
+| `postsPerAllPosts`       | Posts to display per page ([posts](/posts))                                       | `5`                            |
+| `getDescriptionCount`    | Character count for auto-description                                              | `150`                          |
+| `getDescriptionMaxLines` | Max lines to process for auto-description                                         | `10`                           |
+| `defaultFmTag`           | Default tag for posts                                                             | `Others`                       |
+| `defaultFmCategory`      | Default category for posts                                                        | `""`                           |
+| `defaultFmToc`           | Enable table of contents by default                                               | `false`                        |
+| `defaultFmComments`      | Enable comments by default                                                        | `false`                        |
+| `defaultFmMath`          | Enable math equations by default                                                  | `false`                        |
+| `transitions`            | Enable [view transitions][astro-vt]                                               | `true`                         |
+| `ogFontPath`             | Path to a local font file for OG images, bypassing the Astro Fonts API            | `fonts/NotoSansTC-Regular.ttf` |
+| `postMdUrl`              | Generate a Markdown version of your blog posts for LLMs to crawl                  | `true`                         |
+| `llmsTxt`                | Generate llms.txt for LLMs to crawl your blog posts (need `postMdUrl` to be true) | `false`                        |
+| `viewAsMD`               | Add a "View as Markdown" button to post (need `postMdUrl` to be true)             | `true`                         |
+| `disqusShortname`        | Disqus shortname                                                                  | `your-disqus-shortname`        |
+| `giscusRepo`             | Giscus repository                                                                 | `user/repo`                    |
+| `giscusRepoId`           | Giscus repository ID                                                              |                                |
+| `giscusCategory`         | Giscus category name                                                              |                                |
+| `giscusCategoryId`       | Giscus category ID                                                                |                                |
 
 > **\***: important
 
 ### lang.ts
 
-> [`src/config/lang.ts`](https://github.com/ziteh/astro-theme-jing/blob/main/src/config/lang.ts)
+> [`src/config/lang.ts`](https://github.com/ziteh/astro-jing-theme/blob/main/src/config/lang.ts)
 
 Internationalization (i18n) language and locale settings.
 
@@ -120,7 +125,7 @@ To add a new language, modify the `myLang` object following the `en` template an
 
 ### socials.ts
 
-> [`src/config/socials.ts`](https://github.com/ziteh/astro-theme-jing/blob/main/src/config/socials.ts)
+> [`src/config/socials.ts`](https://github.com/ziteh/astro-jing-theme/blob/main/src/config/socials.ts)
 
 Social media links displayed in the site footer.
 
@@ -140,7 +145,7 @@ Example:
 
 ### astro.config.ts
 
-> [`astro.config.ts`](https://github.com/ziteh/astro-theme-jing/blob/main/astro.config.ts)
+> [`astro.config.ts`](https://github.com/ziteh/astro-jing-theme/blob/main/astro.config.ts)
 
 Astro config, please refer to [Configuration overview](https://docs.astro.build/en/guides/configuring-astro/) and [Configuration Reference](https://docs.astro.build/en/reference/configuration-reference/).
 
@@ -204,9 +209,21 @@ If you prefer **system-native fonts** — for example, to use Traditional Chines
 
 All other CSS files (`global.css`, `post.css`, etc.) already use `var(--font-body)` and `var(--font-mono)` and require no changes.
 
+#### OG image font
+
+OG images are rendered by [Satori](https://github.com/vercel/satori), which relies solely on the `--font-og` font's glyphs — it does not fall back to system fonts. By default `--font-og` is fetched via the Astro Fonts API, whose default subset only covers Latin characters. If your post titles/tags contain non-Latin characters (e.g. Chinese, Japanese, and Korean) that aren't in that subset, they will render as missing-glyph boxes in OG images.
+
+To fix this, set `ogFontPath` in [`site.ts`](#sitets) to the path (relative to the project root) of a local font file that covers the characters you need, e.g.:
+
+```ts
+ogFontPath: "fonts/NotoSansTC-Regular.ttf",
+```
+
+When `ogFontPath` is non-empty, that font file is read directly for OG image rendering, bypassing the Astro Fonts API and its subsetting entirely. Leave it as `""` to keep using the Astro Fonts API.
+
 ### Syntax highlighting
 
-Astro Jing uses Expressive Code for syntax highlighting; please refer to <https://expressive-code.com/>
+Astro Jing uses [Expressive Code](https://expressive-code.com/) for syntax highlighting.
 
 You can adjust its config in [`astro.config.ts`](#astroconfigts). [Themes](https://expressive-code.com/guides/themes/#available-themes)
 

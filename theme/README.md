@@ -1,12 +1,14 @@
 # Astro Jing
 
-A calm blog theme powered by [Astro](https://astro.build/).
+![screenshot](fig/astro-jing-theme-post-light.webp)
+
+A calm blog theme powered by [Astro](https://astro.build/). [Demo site](https://astro-jing-theme.ziteh.dev/).
 
 Features:
 
 - Auto-generate post descriptions based on character count or up to the `<!-- more -->` tag
 - Auto-expanding & collapsing table of contents
-- Open Graph image generation
+- Generate Open Graph images with hashed filenames
 - Full-text search
 - Syntax highlighting
 - Math equations
@@ -14,10 +16,14 @@ Features:
 - Comment systems (Giscus / Disqus)
 - Sitemap & RSS feed
 - Static site
+- View the post as Markdown
 
 ## Usage
 
+You can directly [create a new repo from this template](https://github.com/new?template_name=astro-jing-theme&template_owner=ziteh), or use this repo as a [git subtree](#using-as-a-git-subtree).
+
 ```bash
+# After cloning...
 pnpm i          # Install dependencies
 pnpm dev        # Start dev server
 pnpm build      # Production build
@@ -34,7 +40,7 @@ project structure:
 
 ```text
 my-blog/                  # Your blog repo
-├── theme/                # astro-theme-jing (subtree)
+├── theme/                # astro-jing-theme (subtree)
 │   ├── astro.config.ts
 │   ├── package.json
 │   ├── src/
@@ -51,9 +57,9 @@ my-blog/                  # Your blog repo
 cd my-blog
 mkdir -p content/blog
 touch content/about.md && touch content/blog/post.md
-# Then edit the content files
+# Then edit the content files and commit
 
-git subtree add --prefix theme https://github.com/ziteh/astro-theme-jing main --squash
+git subtree add --prefix theme https://github.com/ziteh/astro-jing-theme main --squash
 cd theme
 echo "CONTENT_DIR=../content" > .env
 # Now edit src/config/site.ts, socials.ts, lang.ts, astro.config.ts, etc. directly
@@ -63,7 +69,7 @@ pnpm i && pnpm build
 To pull in later theme updates:
 
 ```bash
-git subtree pull --prefix theme https://github.com/ziteh/astro-theme-jing main --squash
+git subtree pull --prefix theme https://github.com/ziteh/astro-jing-theme main --squash
 ```
 
 ## Development
@@ -87,6 +93,7 @@ Refer to [Astro project structure](https://docs.astro.build/en/basics/project-st
 
 ```text
 ├── public/             # Unprocessed assets
+│   └── _headers        # Custom headers, such as CSP and Cache-Control
 ├── tests/
 ├── src/
 │   ├── config/

@@ -15,7 +15,7 @@ Here is a sample of some basic Markdown syntax that can be used when writing Mar
 
 The following HTML `<h1>`—`<h6>` elements represent six levels of section headings. `<h1>` is the highest section level while `<h6>` is the lowest.
 
-# H1
+# H1 <!-- markdownlint-disable-line single-h1 -->
 
 ## H2
 
@@ -43,7 +43,7 @@ Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sap
 
 ### Output
 
-![blog placeholder](../../assets/blog-placeholder-about.jpg)
+![SideraKB ErgoSNM Kerboard](../../assets/siderakb-ergosnm.jpg)
 
 ## Blockquotes
 

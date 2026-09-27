@@ -28,6 +28,16 @@ export const SITE = {
   // Config
   transitions: true, // View transitions (https://docs.astro.build/en/guides/view-transitions/)
 
+  // OG image font
+  // Empty: load via the Astro Fonts API font, may not cover non-Latin scripts (e.g. CJK)
+  // Non-empty: path (relative to project root) to a font file to read directly
+  ogFontPath: "fonts/NotoSansTC-Regular.ttf",
+
+  // LLM / AI
+  postMdUrl: true, // Generate a Markdown version of your blog posts for LLMs to crawl
+  llmsTxt: false, // Generate llms.txt for LLMs to crawl your blog posts (need postMdUrl to be true)
+  viewAsMD: true, // Add a "View as Markdown" button to post (need postMdUrl to be true)
+
   // Disqus comments
   disqusShortname: "zite-honmonoh", // Your Disqus shortname (without https:// and .disqus.com)
 
@@ -43,3 +53,10 @@ export const SITE = {
   giscusInputPosition: "bottom",
   giscusTheme: "preferred_color_scheme",
 } as const;
+
+if (SITE.llmsTxt && !SITE.postMdUrl) {
+  throw new Error("SITE.postMdUrl must be enabled when SITE.llmsTxt is enabled.");
+}
+if (SITE.viewAsMD && !SITE.postMdUrl) {
+  throw new Error("SITE.postMdUrl must be enabled when SITE.viewAsMD is enabled.");
+}

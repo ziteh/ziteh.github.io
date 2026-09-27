@@ -114,6 +114,7 @@ figure {
   margin: 1.5em 0;
 }
 figcaption {
+  margin-top: 0.725em;
   font-size: var(--font-size-sm);
   color: var(--color-700);
   text-align: center;
@@ -156,6 +157,7 @@ h6:hover .icon-link::before {
 }
 
 .meta {
+  display: flex;
   margin: 0 0 0.5em 0;
   color: var(--color-700);
   font-size: var(--font-size-sm);
@@ -175,6 +177,15 @@ h6:hover .icon-link::before {
 .categories::before {
   content: "|";
   margin: 0 0.5em;
+}
+.markdown-link {
+  margin-left: auto;
+  font-size: var(--font-size-xs);
+  text-decoration: none;
+  color: var(--color-700);
+}
+.markdown-link:hover {
+  color: var(--color-900);
 }
 .categories a {
   text-decoration: none;

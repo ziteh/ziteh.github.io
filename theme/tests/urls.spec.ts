@@ -85,7 +85,7 @@ test.describe("RSS feed consistency with sitemap", () => {
 });
 
 test.describe("OG image URL consistency with sitemap", () => {
-  test("article pages: og:image path equals page path (stripped) + '-og.png'", async ({
+  test("article pages: og:image is /og-images/posts/{slug}.{hash}.png", async ({
     page,
     request,
   }) => {
@@ -105,16 +105,18 @@ test.describe("OG image URL consistency with sitemap", () => {
       if (!ogImage) continue;
 
       const ogPath = new URL(ogImage).pathname;
-      const cleanPath = path.replace(/\/$/, "");
-      expect(ogPath, `og:image path for ${path} must be "${cleanPath}-og.png"`).toBe(
-        `${cleanPath}-og.png`,
-      );
+      const slug = path.replace(/\/$/, "").split("/").pop() ?? "";
+      const escapedSlug = slug.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      expect(
+        ogPath,
+        `og:image path for ${path} must be "/og-images/posts/${slug}.{hash}.png"`,
+      ).toMatch(new RegExp(`^/og-images/posts/${escapedSlug}\\.[0-9a-f]{8}\\.png$`));
     }
 
     expect(articleCount, "sitemap must include at least one article page").toBeGreaterThan(0);
   });
 
-  test("non-article pages: og:image path is /og.png", async ({ page, request }) => {
+  test("non-article pages: og:image is /og-images/site.{hash}.png", async ({ page, request }) => {
     const sitemapUrls = await getSitemapPageUrls(request);
 
     for (const sitemapUrl of sitemapUrls) {
@@ -129,7 +131,9 @@ test.describe("OG image URL consistency with sitemap", () => {
       if (!ogImage) continue;
 
       const ogPath = new URL(ogImage).pathname;
-      expect(ogPath, `og:image path for ${path} must be "/og.png"`).toBe("/og.png");
+      expect(ogPath, `og:image path for ${path} must be "/og-images/site.{hash}.png"`).toMatch(
+        /^\/og-images\/site\.[0-9a-f]{8}\.png$/,
+      );
     }
   });
 
@@ -152,5 +156,36 @@ test.describe("OG image URL consistency with sitemap", () => {
       const res = await request.get(ogPath);
       expect(res.status(), `og:image resource "${ogPath}" must return 200`).toBe(200);
     }
+  });
+});
+
+test.describe("Markdown version (.md) consistency with sitemap", () => {
+  test("article pages: .md canonical matches the sitemap URL", async ({ request }) => {
+    const sitemapUrls = await getSitemapPageUrls(request);
+
+    let articleCount = 0;
+    for (const sitemapUrl of sitemapUrls) {
+      const path = new URL(sitemapUrl).pathname;
+      const htmlRes = await request.get(path);
+      const html = await htmlRes.text();
+      // Minified HTML may order meta attributes either way, e.g. <meta content=article property=og:type>
+      const ogTypeTag = html.match(/<meta[^>]*\bproperty=["']?og:type["']?[^>]*>/)?.[0];
+      const ogType = ogTypeTag?.match(/\bcontent=["']?([^"'\s>]+)["']?/)?.[1];
+      if (ogType !== "article") continue;
+      articleCount++;
+
+      const mdRes = await request.get(`${path.replace(/\/$/, "")}.md`);
+      expect(mdRes.status(), `${path}.md must return 200`).toBe(200);
+
+      const mdText = await mdRes.text();
+      const canonical = mdText.match(/^canonical: '(.*)'$/m)?.[1];
+      expect(canonical, `${path}.md must have a canonical frontmatter field`).toBeTruthy();
+      expect(
+        canonical ? normalizeUrl(canonical) : canonical,
+        `canonical in ${path}.md must match sitemap URL "${sitemapUrl}"`,
+      ).toBe(normalizeUrl(sitemapUrl));
+    }
+
+    expect(articleCount, "sitemap must include at least one article page").toBeGreaterThan(0);
   });
 });

@@ -64,6 +64,7 @@ const en = (() => {
       next: "Next",
       prev: "Prev",
     },
+    rightsStatement: "All rights reserved.",
     date: {
       monthDay(date: Date): string {
         return date.toLocaleDateString(lang, {
@@ -156,6 +157,7 @@ const myLang: typeof en = (() => {
       next: "下一頁",
       prev: "上一頁",
     },
+    rightsStatement: "CC BY-NC-SA",
     date: {
       monthDay(date: Date): string {
         return date.toLocaleDateString(lang, {

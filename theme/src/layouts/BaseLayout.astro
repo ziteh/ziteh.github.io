@@ -4,16 +4,15 @@ import "@/styles/global.css";
 import { ClientRouter } from "astro:transitions";
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
-import KatexStyles from "@/components/KatexStyles.astro";
 import { _t, SITE } from "@/config";
-import { getCanonicalURL } from "@/utils/getCanonicalURL";
+import { getCanonicalURL, getMarkdownURL } from "@/utils/getURL";
+import { SITE_OG_HASH } from "@/utils/ogImage";
 
 interface Props {
   title: string;
   description: string;
   ogType?: "website" | "article";
   image?: string;
-  math?: boolean;
   pubDate?: Date;
   updatedDate?: Date;
   noindex?: boolean;
@@ -23,14 +22,14 @@ const {
   title,
   description,
   ogType = "website",
-  image = "/og.png",
-  math = false,
+  image = `/og-images/site.${SITE_OG_HASH}.png`,
   pubDate,
   updatedDate,
   noindex = false,
 } = Astro.props;
 
 const canonicalURL = getCanonicalURL(Astro.url, Astro.site);
+const markdownURL = getMarkdownURL(canonicalURL);
 const showTitle = title === SITE.title ? title : `${title} | ${SITE.title}`;
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 ---
@@ -41,11 +40,16 @@ const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
     <!-- Global Metadata -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any" />
     <link rel="canonical" href={canonicalURL} />
     {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="sitemap" href="/sitemap-index.xml" />
+    {
+      SITE.postMdUrl && ogType === "article" && (
+        <link rel="alternate" type="text/markdown" href={markdownURL} title="Markdown Version" />
+      )
+    }
     <link
       rel="alternate"
       type="application/rss+xml"
@@ -116,7 +120,6 @@ const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
       }
     </style>
     <Font cssVariable="--font-mono" preload={[{ weight: "400" }]} />
-    {math && <KatexStyles />}
 
     <!-- Google Search Console https://support.google.com/webmasters/answer/9008080#meta_tag_verification -->
     {

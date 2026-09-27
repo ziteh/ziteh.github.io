@@ -1,13 +1,13 @@
 ---
-import { _t, SITE, SOCIALS } from "@/config";
+import { SITE, SOCIALS } from "@/config";
 
 const today = new Date();
 ---
 
 <footer>
-  <span
+  <span class="rights"
     >&copy;&nbsp;{today.getFullYear()}&nbsp;<a href="/about">{SITE.author}</a>. CC BY-NC-SA. Powered
-    by <a href="https://github.com/ziteh/astro-theme-jing" target="_blank" rel="noopener noreferrer"
+    by <a href="https://github.com/ziteh/astro-jing-theme" target="_blank" rel="noopener noreferrer"
       >Astro Jing</a
     >.</span
   >
@@ -39,9 +39,19 @@ const today = new Date();
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-light);
   }
+  .rights {
+    order: 2;
+  }
+  .social-links {
+    order: 1;
+  }
   @media (--bp-md) {
     footer {
       flex-direction: row;
+    }
+    .rights,
+    .social-links {
+      order: 0;
     }
   }
   footer a {

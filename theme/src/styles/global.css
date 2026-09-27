@@ -58,6 +58,9 @@
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   font-family: var(--font-body);
   font-weight: var(--font-weight-light);
   margin: 0;
@@ -72,6 +75,7 @@ body {
 }
 
 main {
+  flex: 1 0 auto;
   width: var(--content-width);
   max-width: calc(100% - 2em);
   margin: auto;

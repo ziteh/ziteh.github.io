@@ -1,7 +1,20 @@
 {
-  "name": "astro-theme-jing",
+  "name": "astro-jing-theme",
+  "description": "Astro Jing - a calm Astro blog theme",
   "type": "module",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ziteh/astro-jing-theme"
+  },
+  "homepage": "https://astro-jing-theme.ziteh.dev",
+  "keywords": [
+    "astro",
+    "theme",
+    "blog"
+  ],
+  "author": "ZiTe",
+  "license": "MIT",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",

@@ -1,10 +1,20 @@
 import { type CollectionEntry, getCollection } from "astro:content";
-import getDescription from "@/utils/getDescription";
+import getDescriptionFromBody from "@/utils/getDescription";
 
 export type BlogPost = Omit<CollectionEntry<"blog">, "data"> & {
   data: Omit<CollectionEntry<"blog">["data"], "description"> & {
     description: string;
   };
+};
+
+const getDesc = (desc: string | undefined, body: string | undefined): string => {
+  let output = "";
+  if (desc) {
+    output = desc;
+  } else if (body) {
+    output = getDescriptionFromBody(body);
+  }
+  return output.replace(/\s+/g, " ").trim();
 };
 
 const getBlogPosts = async (): Promise<BlogPost[]> => {
@@ -19,7 +29,7 @@ const getBlogPosts = async (): Promise<BlogPost[]> => {
       ...post,
       data: {
         ...post.data,
-        description: post.data.description ?? getDescription(post.body ?? ""),
+        description: getDesc(post.data.description, post.body),
       },
     }))
     .sort(

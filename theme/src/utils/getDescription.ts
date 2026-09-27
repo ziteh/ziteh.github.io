@@ -67,7 +67,7 @@ const stripMarkdown = (content: string): string => {
     .trim();
 };
 
-const getDescription = (markdownContent: string): string => {
+const getDescriptionFromBody = (markdownContent: string): string => {
   // Limit the number of lines to process
   const lines = markdownContent.split(/\r?\n/).slice(0, SITE.getDescriptionMaxLines);
   const processedContent = lines.join("\n");
@@ -85,4 +85,4 @@ const getDescription = (markdownContent: string): string => {
   return `${plainText.slice(0, SITE.getDescriptionCount).trimEnd()}...`;
 };
 
-export default getDescription;
+export default getDescriptionFromBody;

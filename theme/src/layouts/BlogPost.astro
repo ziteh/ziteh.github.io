@@ -6,22 +6,38 @@ import IconMenu from "@/assets/icons/menu-2.svg";
 import Disqus from "@/components/comments/Disqus.astro";
 import Giscus from "@/components/comments/Giscus.astro";
 import FormattedDate from "@/components/FormattedDate.astro";
+import KatexStyles from "@/components/KatexStyles.astro";
 import TagPill from "@/components/TagPill.astro";
 import TocScript from "@/components/TocScript.astro";
+import TocStyles from "@/components/TocStyles.astro";
 import { _t, SITE } from "@/config";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { getCanonicalURL } from "@/utils/getCanonicalURL";
 import type { BlogPost } from "@/utils/getPosts";
+import { getCanonicalURL, getMarkdownPath } from "@/utils/getURL";
+import { getPostOgHash } from "@/utils/ogImage";
 import { slugifyStr } from "@/utils/slugify";
 
 type Props = BlogPost["data"] & {
+  slug: string;
   prevPost: BlogPost | null;
   nextPost: BlogPost | null;
 };
 
-const { title, description, categories, date, updated, toc, comments, tags, prevPost, nextPost } =
-  Astro.props;
-const ogImage = `${Astro.url.pathname.replace(/\.html$/, "").replace(/\/$/, "")}-og.png`;
+const {
+  title,
+  description,
+  categories,
+  date,
+  updated,
+  toc,
+  comments,
+  math,
+  tags,
+  slug,
+  prevPost,
+  nextPost,
+} = Astro.props;
+const ogImage = `/og-images/posts/${slug}.${getPostOgHash(title, date, tags)}.png`;
 ---
 
 <BaseLayout
@@ -32,6 +48,8 @@ const ogImage = `${Astro.url.pathname.replace(/\.html$/, "").replace(/\/$/, "")}
   pubDate={date}
   updatedDate={updated}
 >
+  {math && <KatexStyles slot="head" />}
+  {toc && <TocStyles slot="head" />}
   <main id="main-content">
     <div class="post-layout">
       <article class="prose">
@@ -54,6 +72,13 @@ const ogImage = `${Astro.url.pathname.replace(/\.html$/, "").replace(/\/$/, "")}
                     </>
                   ))}
                 </span>
+              )
+            }
+            {
+              SITE.viewAsMD && SITE.postMdUrl && (
+                <a class="markdown-link" href={getMarkdownPath(Astro.url)} title="View as Markdown">
+                  Markdown
+                </a>
               )
             }
           </p>
