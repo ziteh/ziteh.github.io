@@ -12,7 +12,7 @@ draft: false
 # aliases: ["/2019/03/unbox-ds216play/"]
 ---
 
-![](https://bucket.ziteh.dev/blog/unbox-ds216play/09e110d9.webp)
+![](./img/unbox-ds216play/09e110d9.webp)
 
 ## 前言
 
@@ -20,41 +20,41 @@ draft: false
 
 <!--more-->
 
-![▲外盒正面](https://bucket.ziteh.dev/blog/unbox-ds216play/45098bbb.webp)
+![▲外盒正面](./img/unbox-ds216play/45098bbb.webp)
 
-![▲外盒背面](https://bucket.ziteh.dev/blog/unbox-ds216play/14fe7939.webp)
+![▲外盒背面](./img/unbox-ds216play/14fe7939.webp)
 
-![▲打開](https://bucket.ziteh.dev/blog/unbox-ds216play/7de56bf9.webp)
+![▲打開](./img/unbox-ds216play/7de56bf9.webp)
 
-![▲裡面有NAS本體和一個配件盒](https://bucket.ziteh.dev/blog/unbox-ds216play/7cc888b5.webp)
+![▲裡面有NAS本體和一個配件盒](./img/unbox-ds216play/7cc888b5.webp)
 
-![▲拆掉泡棉套後就是DS216 Play](https://bucket.ziteh.dev/blog/unbox-ds216play/eb643bd5.webp)
+![▲拆掉泡棉套後就是DS216 Play](./img/unbox-ds216play/eb643bd5.webp)
 
-![▲2側都有Synology LOGO的散熱孔](https://bucket.ziteh.dev/blog/unbox-ds216play/7debda6c.webp)
+![▲2側都有Synology LOGO的散熱孔](./img/unbox-ds216play/7debda6c.webp)
 
-![▲正面的4個指示燈，由上至下分別為：狀態、區域網路、硬碟1和硬碟2](https://bucket.ziteh.dev/blog/unbox-ds216play/61ec4a79.webp)
+![▲正面的4個指示燈，由上至下分別為：狀態、區域網路、硬碟1和硬碟2](./img/unbox-ds216play/61ec4a79.webp)
 
-![▲電源鍵和電源燈也在正面](https://bucket.ziteh.dev/blog/unbox-ds216play/b47d56ae.webp)
+![▲電源鍵和電源燈也在正面](./img/unbox-ds216play/b47d56ae.webp)
 
-![▲底部也有散熱孔](https://bucket.ziteh.dev/blog/unbox-ds216play/64f25cde.webp)
+![▲底部也有散熱孔](./img/unbox-ds216play/64f25cde.webp)
 
-![▲背面有USB 3.2 Gen 1(USB 3.0)、USB 2.0、RJ-45網路孔和DC電源各1個](https://bucket.ziteh.dev/blog/unbox-ds216play/e9d29fdb.webp)
+![▲背面有USB 3.2 Gen 1(USB 3.0)、USB 2.0、RJ-45網路孔和DC電源各1個](./img/unbox-ds216play/e9d29fdb.webp)
 
-![▲另外一個配件盒内有2本手冊、變壓器、RJ-45網路線、電源線和螺絲2包](https://bucket.ziteh.dev/blog/unbox-ds216play/9e161f26.webp)
+![▲另外一個配件盒内有2本手冊、變壓器、RJ-45網路線、電源線和螺絲2包](./img/unbox-ds216play/9e161f26.webp)
 
-![▲變壓器的規格，輸入為100-240VAC 50/60Hz 1.7A；輸出為+12VDC 5.00A 60W](https://bucket.ziteh.dev/blog/unbox-ds216play/b9d7aeac.webp)
+![▲變壓器的規格，輸入為100-240VAC 50/60Hz 1.7A；輸出為+12VDC 5.00A 60W](./img/unbox-ds216play/b9d7aeac.webp)
 
-![▲將外殼打開來就可以看到内部的樣子](https://bucket.ziteh.dev/blog/unbox-ds216play/fe362a4d.webp)
+![▲將外殼打開來就可以看到内部的樣子](./img/unbox-ds216play/fe362a4d.webp)
 
-![▲SATA+電源接頭](https://bucket.ziteh.dev/blog/unbox-ds216play/c14d4bbc.webp)
+![▲SATA+電源接頭](./img/unbox-ds216play/c14d4bbc.webp)
 
-![▲由於我還沒買NAS碟，所以先將閑置的硬碟拿來用一下](https://bucket.ziteh.dev/blog/unbox-ds216play/25941a7c.webp)
+![▲由於我還沒買NAS碟，所以先將閑置的硬碟拿來用一下](./img/unbox-ds216play/25941a7c.webp)
 
-![▲旁邊固定架上的4個黑原型物是用來防震的橡膠墊，這是還沒鎖上螺絲的樣子](https://bucket.ziteh.dev/blog/unbox-ds216play/9d469a38.webp)
+![▲旁邊固定架上的4個黑原型物是用來防震的橡膠墊，這是還沒鎖上螺絲的樣子](./img/unbox-ds216play/9d469a38.webp)
 
-![▲裝好HDD後就可以開機了](https://bucket.ziteh.dev/blog/unbox-ds216play/5b6bda08.webp)
+![▲裝好HDD後就可以開機了](./img/unbox-ds216play/5b6bda08.webp)
 
-![▲只要照著上面配件盒内的快速安裝手冊做，一下就可以完成設定，開始使用了](https://bucket.ziteh.dev/blog/unbox-ds216play/a3a67a23.webp)
+![▲只要照著上面配件盒内的快速安裝手冊做，一下就可以完成設定，開始使用了](./img/unbox-ds216play/a3a67a23.webp)
 
 ## 結論
 

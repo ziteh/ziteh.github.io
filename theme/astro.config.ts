@@ -34,6 +34,7 @@ export default defineConfig({
   image: {
     layout: "constrained",
     responsiveStyles: true,
+    breakpoints: [720, 1440],
   },
   markdown: {
     // Keep the remark/rehype pipeline for existing plugins

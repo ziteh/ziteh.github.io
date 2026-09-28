@@ -34,11 +34,11 @@ MCU控制最基本的就是輸入與輸出，此篇就來簡單介紹最基本�
 
 CRH和CRL分別是Configuration Register High與Configuration Register Low的縮寫。CRL負責0～7號接腳，CRH負責8～15號接腳，而每隻接腳使用4個位元。接腳可以透過這4個位元設定成不同的功能。其設定方法如下。
 
-![](https://bucket.ziteh.dev/blog/learningstm32-02/1c80455c.webp)
+![](./img/learningstm32-02/1c80455c.webp)
 
 而CRH和CRL的格式如下。CNF和MODE後面的數字就是腳位標號，可以看出每隻接腳由4個位元進行設置，如CRH的31到28位元控制第15腳、CRL的15到12位元控制第3腳。而且所有位元都是可讀寫的。
 
-![](https://bucket.ziteh.dev/blog/learningstm32-02/511aa80b.webp)
+![](./img/learningstm32-02/511aa80b.webp)
 
 範例：
 
@@ -99,7 +99,7 @@ GPIOA->CRL = 0x22222222;
 
 ODR與IDR分別是Output Data Register和Input Data Register的縮寫。這兩個暫存器各自控制15到0號腳的輸出入資料。觀察下表可以發現ODR是可讀寫的，而IDR是唯讀的。且兩個暫存器都只是用0到15位元，16到31位元是保留的。
 
-![](https://bucket.ziteh.dev/blog/learningstm32-02/771c653f.webp)
+![](./img/learningstm32-02/771c653f.webp)
 
 範例：
 
@@ -122,7 +122,7 @@ BSRR與BRR分別是Bit Set/Reset Register和Bit Reset Register的縮寫。BSRR�
 
 而設置的權重比重置高，所以如果該腳位同時被設置又被重置的話，其結果是該腳位會被設置為1。而BRR的功能和BSRR的31到16位元一樣。而可以注意到的是BSRR和BRR所有位元都是唯寫的。
 
-![](https://bucket.ziteh.dev/blog/learningstm32-02/5d24c468.webp)
+![](./img/learningstm32-02/5d24c468.webp)
 
 範例：
 
@@ -137,7 +137,7 @@ LCKR是Configuration Lock Register的縮寫。其中15到0位元分別控制15�
 
 要特別注意到是這個鎖定的功能是用來鎖定腳位的輸出入模式設置，也就是鎖CRH和CRL的設置，不是用來鎖定腳位的高低準位的。
 
-![](https://bucket.ziteh.dev/blog/learningstm32-02/bd3d56b6.webp)
+![](./img/learningstm32-02/bd3d56b6.webp)
 
 而LCKR的寫法比較特別，我也還不是很清楚，只知道要照著以下的格式進行寫入。日後如果有找到寫法的話我再來更新。
 
@@ -155,7 +155,7 @@ RD LCKR[16] = ‘1’（非必要，但可以確保）
 
 APB2ENR是APB2 Peripheral Clock Enable Register的縮寫。每個位元都代表一個外圍設備，而當該位元為1時代表對應的功能致能（開啟），反之設為0代表禁能（關閉）。
 
-![](https://bucket.ziteh.dev/blog/learningstm32-02/06ea8a8d.webp)
+![](./img/learningstm32-02/06ea8a8d.webp)
 
 而我們寫APB2ENR時通常使用OR的方式，請看範例：
 

@@ -14,7 +14,7 @@ draft: false
 
 <!--more-->
 
-![測試資料夾內容](https://bucket.ziteh.dev/blog/archivers/9606656a.webp)
+![測試資料夾內容](./img/archivers/9606656a.webp)
 
 ## 實驗記錄
 

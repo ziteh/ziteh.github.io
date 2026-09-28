@@ -15,7 +15,7 @@ toc: false
 
 比較特別的是 `npm run start` 後會啓動一個編輯頁面，你可以在上面即時預覽目前的畫面，甚至可以用滑鼠調整各個效果的時間，就不用一直用鍵盤輸入時間微調了。這也是我第一次使用 TS 的 `yield`。
 
-![瀏覽器上的編輯畫面](https://bucket.ziteh.dev/blog/ts-motion-canvas/motion_canvas.webp)
+![瀏覽器上的編輯畫面](./img/ts-motion-canvas/motion_canvas.webp)
 
 最後輸出時，我是選擇生成每幀的 PNG 圖片，然後再用 ffmpge 將它們合在一起變成影片。
 

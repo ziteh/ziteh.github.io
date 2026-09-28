@@ -13,7 +13,7 @@ draft: false
 # aliases: ["/2020/10/deft-pro-switch/"]
 ---
 
-![](https://bucket.ziteh.dev/blog/deft-pro-switch/3ce6be62.webp)
+![](./img/deft-pro-switch/3ce6be62.webp)
 
 ## 前言
 
@@ -25,15 +25,15 @@ draft: false
 
 首先要拆開 Deft Pro 的外殼。Deft Pro 的外殼固定螺絲都在底部，總共有 7 顆螺絲，使用 T6 星形起子就可以完成拆卸。
 
-![▲ Deft Pro 外殼的 7 顆 T6 星形螺絲位置。](https://bucket.ziteh.dev/blog/deft-pro-switch/0c5ad47f.webp)
+![▲ Deft Pro 外殼的 7 顆 T6 星形螺絲位置。](./img/deft-pro-switch/0c5ad47f.webp)
 
-![▲ 拆開外殼後的 Deft Pro。](https://bucket.ziteh.dev/blog/deft-pro-switch/7fba5552.webp)
+![▲ 拆開外殼後的 Deft Pro。](./img/deft-pro-switch/7fba5552.webp)
 
 由於我這次只想要更換左鍵的微動開關，故只需要將左側的子電路板拆下即可。左側子電路板由一條軟排線連接，打開扣具即可卸下。電路板由 3 個十字螺絲固定，卸下螺絲後就可以看到完整的電路板與微動開關。
 
-![▲ Deft Pro 的左側子電路板由軟排線連接。](https://bucket.ziteh.dev/blog/deft-pro-switch/b7ef0e70.webp)
+![▲ Deft Pro 的左側子電路板由軟排線連接。](./img/deft-pro-switch/b7ef0e70.webp)
 
-![▲ Deft Pro 的左側子電路板。](https://bucket.ziteh.dev/blog/deft-pro-switch/a073edbb.webp)
+![▲ Deft Pro 的左側子電路板。](./img/deft-pro-switch/a073edbb.webp)
 
 ## 更換微動
 
@@ -41,7 +41,7 @@ draft: false
 
 我這次所要換上的微動開關為 Zippy 出品的「DF3-P1L0」。Zippy 是臺灣的廠商，而這款微動開關有著號稱六千萬次的點擊壽命，與原本的「D2FC-F-7N(10M)」號稱的一千萬次多上不少。「DF3-P1L0」在網路上的評價都很不錯，所以我這次選擇它，來看看是不是真的這麼好。
 
-![▲ 原本的 D2FC-F-7N(10M)。](https://bucket.ziteh.dev/blog/deft-pro-switch/cabdff81.webp)
+![▲ 原本的 D2FC-F-7N(10M)。](./img/deft-pro-switch/cabdff81.webp)
 
 拆焊的祕訣在於先補焊錫，在搭配吸錫器將焊錫吸走。焊接的部分基本上只能多練習，常焊接就會知道要怎麼做比較容易成功。
 
@@ -51,7 +51,7 @@ draft: false
 
 我個人覺得，「DF3-P1L0」相較於原本的「D2FC-F-7N(10M)」按鍵手感差異並不大，但聲音的部分「DF3-P1L0」是比較低沉的。當然這部分沒有好壞，畢竟每個人喜歡的感覺都不同。
 
-![▲ 常見的微動。由左至右為D2F-01F、D2FC-F-7N(10M)、DF3-P1L0。](https://bucket.ziteh.dev/blog/deft-pro-switch/21da8283.webp)
+![▲ 常見的微動。由左至右為D2F-01F、D2FC-F-7N(10M)、DF3-P1L0。](./img/deft-pro-switch/21da8283.webp)
 
 ## 結語
 

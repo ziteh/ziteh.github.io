@@ -69,11 +69,11 @@ draft: false
 
 本文不使用其自動生成的專案，這裡僅做簡單的介紹。
 
-![自動生成的專案內容](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/91b4aafe.webp)
+![自動生成的專案內容](./img/diyqmkkeyboard-pcb-layout-sch/91b4aafe.webp)
 
-![自動生成的 Schematic 電路圖，有鍵矩陣電路](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/4354ec82.webp)
+![自動生成的 Schematic 電路圖，有鍵矩陣電路](./img/diyqmkkeyboard-pcb-layout-sch/4354ec82.webp)
 
-![自動生成的 PCB 設計，已經擺好按鍵位置](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/dcbcba1b.webp)
+![自動生成的 PCB 設計，已經擺好按鍵位置](./img/diyqmkkeyboard-pcb-layout-sch/dcbcba1b.webp)
 
 ## 安裝 KiCad
 
@@ -91,11 +91,11 @@ draft: false
 
 開啓安裝好的 KiCad。按下左上角的建立新專案按鈕。
 
-![新增專案](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/09c32e39.webp)
+![新增專案](./img/diyqmkkeyboard-pcb-layout-sch/09c32e39.webp)
 
 選擇要存放專案的位置，並輸入專案名稱。預設會自動新增與專案同名的資料夾（可以從右下取消自動新增資料夾）。
 
-![選擇存放位置並輸入專案名稱](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/a1f46c67.webp)
+![選擇存放位置並輸入專案名稱](./img/diyqmkkeyboard-pcb-layout-sch/a1f46c67.webp)
 
 建立完專案後會出現 3 個檔案：
 
@@ -103,7 +103,7 @@ draft: false
 - `<project_name>.kicad_sch`：Schematic 電路圖
 - `<project_name>.kicad_pcb`：PCB 設計檔
 
-![建立完成後的專案](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/b4210f9b.webp)
+![建立完成後的專案](./img/diyqmkkeyboard-pcb-layout-sch/b4210f9b.webp)
 
 ### 安裝 Footprint 庫
 
@@ -123,13 +123,13 @@ GitHub 上有許多人畫好的機械軸 Footprint 庫，你可以選幾個喜�
 
 [ebastler/marbastlib](https://github.com/ebastler/marbastlib) 就支援 PCM 安裝。只要在 KiCad 主頁面（專案頁面）打開 PCM 頁面並按下「Manage」按鈕，在新跳出的「Manage Repositories」頁面中新增其網址 `https://raw.githubusercontent.com/ebastler/ebastler-KiCAD-repository/main/repository.json`，隨後就可以在 PCM 頁面上面的下拉式選單中選擇「ebastler KiCad repository」，並選擇「Libraries」標籤頁安裝「marbastlib」。點擊「Install」按鈕後要記得按「Apply Pending Changes」才會真正進行安裝。
 
-![安裝支援 PCM 的 Footprint 庫](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/e6c06262.webp)
+![安裝支援 PCM 的 Footprint 庫](./img/diyqmkkeyboard-pcb-layout-sch/e6c06262.webp)
 
 而我自己畫的 [ziteh/key-switches.pretty](https://github.com/ziteh/key-switches.pretty) 必須要手動下載並自己新增。透過 KiCad 主頁面（專案頁面）上方工具列的「Preferences > Manager Footprint Libraries」開啓 Footprint 庫管理頁面，標籤頁可以選擇全域的「Global Libraries」或專屬於專案的「Project Specific Libraries」，透過左下的資料夾圖樣按鈕選擇下載下來的 Footprint 庫資料夾位置即可。
 
 對於手動增加的 Footprint 庫，如果想要以專案專屬的方式安裝（Project Specific Libraries），可以將其資料夾放到專案資料夾中，再到管理頁面新增，它應該會自動套用變數路徑，如：`${KIPRJMOD}/my-footprint.pertty`。如果你預計使用 Git，也可以用 Git submodule 管理這些 Footprint 庫。
 
-![手動新增專案專屬的 Footprint 庫](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/138969b0.webp)
+![手動新增專案專屬的 Footprint 庫](./img/diyqmkkeyboard-pcb-layout-sch/138969b0.webp)
 
 ### 編輯 Schematic
 
@@ -137,21 +137,21 @@ GitHub 上有許多人畫好的機械軸 Footprint 庫，你可以選幾個喜�
 
 在專案頁面中雙擊 `.kicad_sch` 以打開 Schematic。現在是全空的狀態。
 
-![Schematic 編輯器畫面](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/be0c88ec.webp)
+![Schematic 編輯器畫面](./img/diyqmkkeyboard-pcb-layout-sch/be0c88ec.webp)
 
 #### 加入元件符號
 
 在右排工具列偏上處有一個「Add a symbol」按鈕（或快捷鍵 `A`），按下後會出現元件符號（symbol）選擇視窗。在上方的搜尋欄鍵入「R」，並在中間的清單中找到電阻的符號（應該位於 Deveice 底下），然後將其擺放到畫面上。按一下 `ESC` 退出擺放符號，返回選取模式。
 
-![使用「Add a symbol」按鈕加入元件到頁面](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/d65228e5.webp)
+![使用「Add a symbol」按鈕加入元件到頁面](./img/diyqmkkeyboard-pcb-layout-sch/d65228e5.webp)
 
-![在元件符號選擇畫面搜尋並選擇所需的元件](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/3aab38a5.webp)
+![在元件符號選擇畫面搜尋並選擇所需的元件](./img/diyqmkkeyboard-pcb-layout-sch/3aab38a5.webp)
 
 選擇元件符號可以按 `R` 旋轉。雙擊則可以進入其屬性設定頁面。
 
 將滑鼠遊標移動到符號的接腳端點上會出現接線的提示，按一下後就會開始接線，過程中單擊會在該處清楚轉角，接線到另一個接腳端點、線會自動結束接線，在空白處雙擊會強制結束。若要手動新增走線，可以在右排工具列選擇，或使用快捷鍵 `W`。
 
-![點擊元件接腳或使用快捷鍵 W 可以繪製接線](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/80e89acc.webp)
+![點擊元件接腳或使用快捷鍵 W 可以繪製接線](./img/diyqmkkeyboard-pcb-layout-sch/80e89acc.webp)
 
 在右側工具列加入元件符號的按鈕下面還有一個「Add a power symbol」的按鈕（快捷鍵 `P`），使用它可以加入電源符號。
 
@@ -161,15 +161,15 @@ GitHub 上有許多人畫好的機械軸 Footprint 庫，你可以選幾個喜�
 
 在右排工具列中央處有一個「Add a hierarchical sheet」按鈕（或快捷鍵 `S`），按下後可以在頁面上繪製一個方塊以代表子頁面，隨後可以設定其名稱。雙擊此方塊即可進入子頁面。你可以按快捷鍵 `Ctrl`+`H` 開啓階層式頁面導覽，以方便在各個頁面間切換。
 
-![透過「Add a hierarchical sheet」按鈕新增階層式頁面](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/105cfc11.webp)
+![透過「Add a hierarchical sheet」按鈕新增階層式頁面](./img/diyqmkkeyboard-pcb-layout-sch/105cfc11.webp)
 
-![設定子頁面的名稱](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/e85f531d.webp)
+![設定子頁面的名稱](./img/diyqmkkeyboard-pcb-layout-sch/e85f531d.webp)
 
 #### 標籤
 
 在右排工具列中央處選擇「Add a global label」（或快捷鍵 `Ctrl`+`L`）可以新增全域標籤。這個全域標籤可以跨頁面連接走線，只要是名稱相同的標籤就會視為連接在一起。善於全域標籤可以讓你的 Schematic 不會充滿一堆凌亂的走線。
 
-![用「Add a global label」按鈕加入全域標籤](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/d6d5b7da.webp)
+![用「Add a global label」按鈕加入全域標籤](./img/diyqmkkeyboard-pcb-layout-sch/d6d5b7da.webp)
 
 除了全域標籤，還有一種網路標籤（Net label），透過右側工具列的「Add a net label」或快捷鍵 `L` 來新增網路標籤。網路標籤和全域標籤的功能一樣，相同名稱的標籤會連接在一起，只是網路標籤的作用域是局部的，僅在目前的單一頁面中有效，要跨頁面連接的話要用全域標籤，或使用階層式標籤（hierarchical label）。
 
@@ -177,15 +177,15 @@ GitHub 上有許多人畫好的機械軸 Footprint 庫，你可以選幾個喜�
 
 指定各個元件的 Footprint。元件的 Footprint 可以透過雙擊該元件開啓屬性設定頁面來調整，也可以按上方工具列的「Bulk-edit fields of all symbols in schematic」按鈕開啓「Symbol Fields Table」頁面來修改。
 
-![「Bulk-edit fields of all symbols in schematic」按鈕](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/cdc0f54a.webp)
+![「Bulk-edit fields of all symbols in schematic」按鈕](./img/diyqmkkeyboard-pcb-layout-sch/cdc0f54a.webp)
 
 點擊元件「Footprint」欄位右側的「三本書符號」以開啓 Footprint 庫瀏覽頁面。
 
-![選擇指定元件的 Footprint 欄位](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/878720b0.webp)
+![選擇指定元件的 Footprint 欄位](./img/diyqmkkeyboard-pcb-layout-sch/878720b0.webp)
 
 Footprint 瀏覽頁面左側有兩個清單，在最左側的清單找種類，例如表面黏貼型的電容是「Capacitor\_SMD」，點選後在右側的清單選擇要的 Footprint，例如常用的 0402 電容是「C\_0402\_1005Metric」。
 
-![選擇 Footprint 「C\_0402\_1005Metric」](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/cddc979d.webp)
+![選擇 Footprint 「C\_0402\_1005Metric」](./img/diyqmkkeyboard-pcb-layout-sch/cddc979d.webp)
 
 至於要怎麼選擇 Footprint？這個牽涉到許多因素，首先是該零件要有，例如 RT9013-33GB 的封裝就是 SOT-23-5，那當然是選用「Package\_TO\_SOT\_SMD:SOT-23-5」。但是像電容或電阻選擇就很多了，這時可以考慮焊接方式，要手工焊接的話，除非你手很穩（或有其它工具）可以焊 0201 尺寸的元件，不然通常會選 0805、0603 或 0402 的，同時你也可以考慮購買容易度；如果你打算使用 PCBA 的話，那可以考慮工廠那邊的報價。當然，封裝也和元件的功率和耐壓等電氣規格有關，但鍵盤的電路比較不需要擔心這點。
 
@@ -198,15 +198,15 @@ Footprint 瀏覽頁面左側有兩個清單，在最左側的清單找種類，�
 
 在上方工具列的「Fill in schematic symbol reference designators」按鈕，開啓「Annotate Schematic」頁面。你可以先用左下角的「Clear Annotation」清除目前的代號，再用右下角的「Annotate」自動更新代號。
 
-![「Fill in schematic symbol reference designators」按鈕](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/e40f44f2.webp)
+![「Fill in schematic symbol reference designators」按鈕](./img/diyqmkkeyboard-pcb-layout-sch/e40f44f2.webp)
 
-![「Annotate Schematic」頁面](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/7e030c1b.webp)
+![「Annotate Schematic」頁面](./img/diyqmkkeyboard-pcb-layout-sch/7e030c1b.webp)
 
 #### 零件型號
 
 如果你要使用 JLCPCB 的 PCBA（PCB 組裝。除了生產 PCB 外，一併把零件焊接完成）服務的話，可以在「Symbol Fields Table」（上方工具列的「Bulk-edit fields of all symbols in schematic」按鈕）中新增欄位「LCSC」，並在內填入 JLCPCB 的零件編號，例如 RP2040 是 C2040、W25Q128JVS 是 C97521。
 
-![增加「LCSC」欄位並填入各零件的編號](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/227b18e4.webp)
+![增加「LCSC」欄位並填入各零件的編號](./img/diyqmkkeyboard-pcb-layout-sch/227b18e4.webp)
 
 #### 頁面資訊
 
@@ -214,7 +214,7 @@ Schematic 頁面右下角有一些資訊可以填寫。
 
 要修改這些資訊的話，可以到上方工具列「File > Page Settings」中設定。
 
-![修改 Schemaric 頁面資訊](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/ca8951db.webp)
+![修改 Schemaric 頁面資訊](./img/diyqmkkeyboard-pcb-layout-sch/ca8951db.webp)
 
 ## 開始繪製鍵盤
 
@@ -228,7 +228,7 @@ Schematic 頁面右下角有一些資訊可以填寫。
 
 加入電源符號與標籤，並根據 Pro Micro 的腳位接到正確的位置。
 
-![使用 Pro Micro](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/7708c2aa.webp)
+![使用 Pro Micro](./img/diyqmkkeyboard-pcb-layout-sch/7708c2aa.webp)
 
 > 上圖的接腳標籤名是根據 ATmega32U4 原本的腳位名，不是板上標記的 Arduino 腳位名。
 
@@ -238,15 +238,15 @@ Schematic 頁面右下角有一些資訊可以填寫。
 
 為了保持整潔，我喜歡將其放在一個獨立的子頁面中。先新增一個階層式子頁面，並命名為「key-matrix」（Sheetname 與 Sheetfile 的名稱都要改）。雙擊方塊進入子頁面。
 
-![新增「key-matrix」子頁面](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/c723ada5.webp)
+![新增「key-matrix」子頁面](./img/diyqmkkeyboard-pcb-layout-sch/c723ada5.webp)
 
 加入開關與二極體的元件符號「SW\_Push」和「1N4148W」。當然二極體的型號很多，不一定要用 1N4148，但這是最常見的選擇（其後綴 *W* 代表 SOD-123 封裝）。
 
-![加入「SW\_Push」元件到頁面](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/67a8d16c.webp)
+![加入「SW\_Push」元件到頁面](./img/diyqmkkeyboard-pcb-layout-sch/67a8d16c.webp)
 
 個人會喜歡將此處代表鍵軸的元件代號改成「KEY」，雙擊開關的符號，將 Reference 的開頭由「SW」改成「KEY」。這一步有助於後續的自動擺放工具。
 
-![將開關的代號「SW」改成「KEY」](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/8aa0d212.webp)
+![將開關的代號「SW」改成「KEY」](./img/diyqmkkeyboard-pcb-layout-sch/8aa0d212.webp)
 
 另外，也可以在這一步選擇鍵軸的 Footprint。滑鼠移到「Footprint」的「Value」欄位右側，會出現三本書的圖案，點擊後可以[修改 Footprint](/posts/diyqmkkeyboard-pcb-layout-sch#footprint)。
 
@@ -254,19 +254,19 @@ Schematic 頁面右下角有一些資訊可以填寫。
 
 以[我自己的 Footprint 庫](https://github.com/ziteh/key-switches.pretty)為例：`MX_switch_THT_hotswap_A` 是同時兼容 Cherry MX 軸體熱插拔與直接焊接的 Footprint；而 `MX_switch_PTH_hotswap_A` 只有 Cherry MX 熱插拔座的焊盤，沒有直接焊接的 PTH 焊盤；`MX_switch_hotswap_double_sided_A` 是雙面都有 Cherry MX 軸的熱插拔焊盤；`Kailh_Choc_PG1350_THT_A` 則是 Kailh Choc 矮軸直接焊接用的 Footprint。
 
-![我自己的 Footprint 庫中有多種不同的 Footprint](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/5381c574.webp)
+![我自己的 Footprint 庫中有多種不同的 Footprint](./img/diyqmkkeyboard-pcb-layout-sch/5381c574.webp)
 
 先將開關與二極體這樣擺放，一端相連接（注意方向，二極體有方向性），再根據你的鍵盤按鍵數量複製它們。然後將其接成鍵矩陣的樣子。
 
-![先將一組開關與二極體擺好，再複製需要的數量](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/177a1cb5.webp)
+![先將一組開關與二極體擺好，再複製需要的數量](./img/diyqmkkeyboard-pcb-layout-sch/177a1cb5.webp)
 
-![接成鍵矩陣掃描電路](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/d062afb7.webp)
+![接成鍵矩陣掃描電路](./img/diyqmkkeyboard-pcb-layout-sch/d062afb7.webp)
 
 > 請注意走線的交叉處，若交叉點上有一個圓點，則代表交叉的兩條線有連接；無圓點的話就代表這兩線沒有實際連接，是跨越。要手動使交叉點連接的話可以用快捷鍵 `J`。
 
 為鍵矩陣電路的各個 Row 和 Column 新增各自的全域標籤。
 
-![加上全域標籤](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/660e1979.webp)
+![加上全域標籤](./img/diyqmkkeyboard-pcb-layout-sch/660e1979.webp)
 
 ### 繪製電源電路
 
@@ -286,7 +286,7 @@ LDO 的型號有非常多種，其規格可能都不太一樣，且還有分可�
 
 增加「GND」、「+5V」與「+3V3」這三種電源符號。「+5V」接「VIN」、「+3V3」接「VOUT」、「GND」接兩個電容的另一腳與 RT9013-33GB 的「GND」。
 
-![RT9013-33GB 電路](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/a77f813b.webp)
+![RT9013-33GB 電路](./img/diyqmkkeyboard-pcb-layout-sch/a77f813b.webp)
 
 這樣就完成電源電路了。每種電源 IC 所需的外圍電路不同，若要使用其它型號的 IC，請記得去查看它的 Datasheet，一般都會提供參考應用電路。
 
@@ -294,7 +294,7 @@ LDO 的型號有非常多種，其規格可能都不太一樣，且還有分可�
 
 加入元件「USB\_C\_Receptacle\_USB2.0」，這是 USB Type-C（僅 USB 2.0）的符號。
 
-![選擇 USB 元件符號並加入到頁面](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/10986d17.webp)
+![選擇 USB 元件符號並加入到頁面](./img/diyqmkkeyboard-pcb-layout-sch/10986d17.webp)
 
 USB Type-C 需要加入 CC 電阻。加入兩個電阻「R」，在屬性頁面將「Value」改成「5.1k」，並分別接到「CC1」與「CC2」腳，另一端接地（GND）。
 
@@ -308,7 +308,7 @@ USB 差分訊號「D+」與「D-」各 2 腳，將相同的接在一起，然後
 
 > 如果可以的話，可以為 USB 加入 ESD 靜電保護的元件。
 
-![USB Type-C 電路](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/bf190bdf.webp)
+![USB Type-C 電路](./img/diyqmkkeyboard-pcb-layout-sch/bf190bdf.webp)
 
 ### 繪製微控制器電路
 
@@ -323,7 +323,7 @@ USB 差分訊號「D+」與「D-」各 2 腳，將相同的接在一起，然後
 - 3 顆接到 1.1V 的去藕電容，其中一顆是「1uF」，其它是「100nF」。
 - 兩個開關，RESET 開關有上拉電阻。
 
-![RP2040 週邊電路示範](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/29a8ce3f.webp)
+![RP2040 週邊電路示範](./img/diyqmkkeyboard-pcb-layout-sch/29a8ce3f.webp)
 
 這裡我使用網路標籤（Net label）來完成週邊電路的接線。
 
@@ -335,7 +335,7 @@ USB 差分訊號「D+」與「D-」各 2 腳，將相同的接在一起，然後
 
 建議至少為電源「+3V3」與「GND」加上測試焊盤，未來焊接前的短路檢查會比較方便。使用元件符號「TestPoint」，並將其接到要加上測試焊盤的接線上。
 
-![測試焊盤](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-sch/becea10e.webp)
+![測試焊盤](./img/diyqmkkeyboard-pcb-layout-sch/becea10e.webp)
 
 如果你要加入 LED 的話，LED 預設的 Reference 是「D」，為了後續自動擺放方便，我喜歡將其改成「LD」（例如「LD1」），將 LED 和鍵矩陣電路的二極體作區隔。
 

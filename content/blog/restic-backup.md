@@ -236,7 +236,7 @@ resticprofile init
 resticprofile backup
 ```
 
-[restic-browser]: https://bucket.ziteh.dev/blog/restic-backup/2f167993.webp
+[restic-browser]: ./img/restic-backup/2f167993.webp
 
 ---
 

@@ -37,7 +37,7 @@ qmk compile -kb mytetstkb -km default
 
 如果有問題的話會顯示問題出在哪裡。如果都沒問題的話，應該會看到一整排的 `[OK]`，並且會告訴你編譯好的 `.hex` 檔儲存的路徑（Creating load file for flashing: .build/mytestkb\_default.hex，參考路徑：`C:\Users\<USERNAME>\qmk_firmware\.build\mytestkb_default.hex`）。
 
-![▲ 編譯完成並顯示編譯好的檔案](https://bucket.ziteh.dev/blog/diyqmkkeyboard-build-flash-qmk/9091b4b4.webp)
+![▲ 編譯完成並顯示編譯好的檔案](./img/diyqmkkeyboard-build-flash-qmk/9091b4b4.webp)
 
 這樣就完成編譯了。有了這個 `.hex`（或 `.bin`、`.uf2` 等）檔就可以進行燒錄了。
 
@@ -63,7 +63,7 @@ QMK 有個官方的燒錄工具——[QMK Toolbox](https://github.com/qmk/qmk_to
 
 為了方便作業，建議可以裝個按鈕或開關之類的，當然如果你眼明手快也是可以用金屬鑷子之類的來短接。如果你使用的開發板已經有 Reset 按鈕的話，可以直接使用該按鈕。
 
-![▲ 建議裝個開關在 RST 和 GND 腳上](https://bucket.ziteh.dev/blog/diyqmkkeyboard-build-flash-qmk/5f60539c.webp)
+![▲ 建議裝個開關在 RST 和 GND 腳上](./img/diyqmkkeyboard-build-flash-qmk/5f60539c.webp)
 
 #### 進行燒錄
 
@@ -81,7 +81,7 @@ QMK 有個官方的燒錄工具——[QMK Toolbox](https://github.com/qmk/qmk_to
 8. 按下「Program!」，下方的指令列會開始燒錄。
 9. 等待它燒錄完成。
 
-![▲ AVRDUDESS 設定示意](https://bucket.ziteh.dev/blog/diyqmkkeyboard-build-flash-qmk/83eebec7.webp)
+![▲ AVRDUDESS 設定示意](./img/diyqmkkeyboard-build-flash-qmk/83eebec7.webp)
 
 ***請注意***，因為 Pro Micro 的 DFU 模式只會持續 8 秒，所以在上述的步驟 5 進入 DFU 模式後，接下來的步驟 6～8 必須要在這 8 秒內完成，否則失敗。
 
@@ -89,11 +89,11 @@ QMK 有個官方的燒錄工具——[QMK Toolbox](https://github.com/qmk/qmk_to
 
 如果成功燒錄的話應該會看到類似這樣的畫面。如果失敗的話就多試幾次吧。
 
-![▲ 燒錄成功示意](https://bucket.ziteh.dev/blog/diyqmkkeyboard-build-flash-qmk/3e23ae5e.webp)
+![▲ 燒錄成功示意](./img/diyqmkkeyboard-build-flash-qmk/3e23ae5e.webp)
 
 如果出現以下這種畫面的話，你的開發板可能並沒有進入 DFU 模式，或是 COM Port 選錯等錯誤，請再試試。
 
-![▲ 出現此畫面代表燒錄未成功](https://bucket.ziteh.dev/blog/diyqmkkeyboard-build-flash-qmk/56272207.webp)
+![▲ 出現此畫面代表燒錄未成功](./img/diyqmkkeyboard-build-flash-qmk/56272207.webp)
 
 燒錄過程示範影片：
 

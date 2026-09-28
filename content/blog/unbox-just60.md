@@ -14,7 +14,7 @@ draft: false
 # aliases: ["/2020/03/unbox-just60/"]
 ---
 
-![](https://bucket.ziteh.dev/blog/unbox-just60/a44aa991.webp)
+![](./img/unbox-just60/a44aa991.webp)
 
 ## 前言
 
@@ -43,15 +43,15 @@ draft: false
 
 首先Just60的PCB尺寸就是一般的60%鍵盤的大小，其外殼就選GH60的就可以通用了。再來按鍵的部分，它可支援的配列方式有很多種，一般常見的Poker2、Minila或是其它怪異的配列都可以，最多可以一次塞68鍵（就是67鍵的Minila配置再把2U的左Shift變成2個1U的鍵）。
 
-![▲ Just60可以選擇的幾個常見配列例子。](https://bucket.ziteh.dev/blog/unbox-just60/c957b2bd.webp)
+![▲ Just60可以選擇的幾個常見配列例子。](./img/unbox-just60/c957b2bd.webp)
 
-![▲ Just60最多可以一次塞入68鍵。](https://bucket.ziteh.dev/blog/unbox-just60/7c87ee31.webp)
+![▲ Just60最多可以一次塞入68鍵。](./img/unbox-just60/7c87ee31.webp)
 
 它有一個[網站](http://ydkb.io/#)可以去設定鍵盤配列和鍵位，可以很方便地預覽並調整。而它也有藍牙4.0連線的功能，理論上是可以連2台裝置做切換。USB也是Type-C接口。所以Just60完全達到我的要求。
 
-![▲ YDKB 鍵盤設定網站。](https://bucket.ziteh.dev/blog/unbox-just60/7c65e265.webp)
+![▲ YDKB 鍵盤設定網站。](./img/unbox-just60/7c65e265.webp)
 
-![▲ Just60可設定的配列選項。](https://bucket.ziteh.dev/blog/unbox-just60/605795ab.webp)
+![▲ Just60可設定的配列選項。](./img/unbox-just60/605795ab.webp)
 
 至於詳細的介紹可以看它們的[官方說明文件](http://help.ydkb.io/doku.php)，裡面寫得非常仔細。
 
@@ -61,13 +61,13 @@ draft: false
 
 因為我要用獨立方向鍵和Delete鍵，所以選用Minila的配置方式就很適合，但我的只有右下角的地方和Minila一樣使用方向鍵；我左上的Backspace還是維持1個2U的長鍵，而不是Minila的2個1U；空白鍵也是維持標準的6.25U而不是3U空白鍵+2個1.25U；再來就是我把左Shift設成2個1U鍵。詳細效果還請見下圖。
 
-![▲ 鍵盤配列-鍵位：Layer0（預設）。](https://bucket.ziteh.dev/blog/unbox-just60/a8a407e5.webp)
+![▲ 鍵盤配列-鍵位：Layer0（預設）。](./img/unbox-just60/a8a407e5.webp)
 
-![▲ 鍵盤配列-鍵位：Layer1（長壓Fn/L1）。](https://bucket.ziteh.dev/blog/unbox-just60/cb804230.webp)
+![▲ 鍵盤配列-鍵位：Layer1（長壓Fn/L1）。](./img/unbox-just60/cb804230.webp)
 
-![▲ 鍵盤配列-鍵位：Layer2（長壓LT2）。](https://bucket.ziteh.dev/blog/unbox-just60/b7434cac.webp)
+![▲ 鍵盤配列-鍵位：Layer2（長壓LT2）。](./img/unbox-just60/b7434cac.webp)
 
-![▲ 鍵盤配列-鍵帽長度。](https://bucket.ziteh.dev/blog/unbox-just60/9e34c054.webp)
+![▲ 鍵盤配列-鍵帽長度。](./img/unbox-just60/9e34c054.webp)
 
 可以看到我設計了3層的鍵位，其中比較特別的有幾點：
 
@@ -81,7 +81,7 @@ draft: false
 
 再來就是選擇鍵軸了。難得自己組鍵盤，所以將想來試試看混軸（還有靜音紅軸太貴了）。我把最常按的主鍵區和方向鍵都安排成靜音紅軸，其它就是黑軸。
 
-![▲ 鍵盤配列-鍵軸。紅圈為靜音紅軸；黑圈為黑軸。](https://bucket.ziteh.dev/blog/unbox-just60/fa90bdee.webp)
+![▲ 鍵盤配列-鍵軸。紅圈為靜音紅軸；黑圈為黑軸。](./img/unbox-just60/fa90bdee.webp)
 
 確定好此鍵盤確實可以完全勝任我的要求後，就是訂購零件並準備製作了。
 
@@ -93,35 +93,35 @@ PCB的話，除了鍵軸和鍵軸上的LED外，其它零件都焊接好了。�
 
 在USB Type-C（左上角）的地方有一個紅色的LED燈，用來指示充電狀態。背面有一些RGB-LED燈，但我自己沒有要用就是了。
 
-![▲ PCB部分零件：左移碳纖維定位板（左上）、PCB板（左下）、衛星軸（右上）、LED與電線（右下）。](https://bucket.ziteh.dev/blog/unbox-just60/e0c2f777.webp)
+![▲ PCB部分零件：左移碳纖維定位板（左上）、PCB板（左下）、衛星軸（右上）、LED與電線（右下）。](./img/unbox-just60/e0c2f777.webp)
 
-![▲ Just60 v1.0。](https://bucket.ziteh.dev/blog/unbox-just60/c3a2c055.webp)
+![▲ Just60 v1.0。](./img/unbox-just60/c3a2c055.webp)
 
-![▲ 鍵盤的晶片是ATmega32U4。是DIY鍵盤中常見的AVR微控制器。](https://bucket.ziteh.dev/blog/unbox-just60/ee32e17b.webp)
+![▲ 鍵盤的晶片是ATmega32U4。是DIY鍵盤中常見的AVR微控制器。](./img/unbox-just60/ee32e17b.webp)
 
-![▲ 藍牙模組型號為MDBT40。其中的主晶片是nRF51822，為ARM架構之SoC。](https://bucket.ziteh.dev/blog/unbox-just60/bcf9b7b4.webp)
+![▲ 藍牙模組型號為MDBT40。其中的主晶片是nRF51822，為ARM架構之SoC。](./img/unbox-just60/bcf9b7b4.webp)
 
-![▲ USB Type-C。](https://bucket.ziteh.dev/blog/unbox-just60/d3ccea51.webp)
+![▲ USB Type-C。](./img/unbox-just60/d3ccea51.webp)
 
 外殼的部分就隨便找來一個GH60的來用。為了確保藍牙連線的品質，所以和定位板一樣，我選擇非金屬材質的，一方面也比較便宜。
 
-![▲ 外殼零件：GH60黑色塑膠外殼（上）、螺絲（左下）和腳墊貼片（右下）。](https://bucket.ziteh.dev/blog/unbox-just60/85577cd4.webp)
+![▲ 外殼零件：GH60黑色塑膠外殼（上）、螺絲（左下）和腳墊貼片（右下）。](./img/unbox-just60/85577cd4.webp)
 
 鍵軸的部分如同設計的，買了Cherry MX 黑軸和靜音紅軸。這些可是機械鍵盤的靈魂呀～
 
-![▲ 鍵軸：Cherry MX 黑軸20顆（左）、Cherry MX 靜音紅軸50顆（右）。](https://bucket.ziteh.dev/blog/unbox-just60/fbfb2c71.webp)
+![▲ 鍵軸：Cherry MX 黑軸20顆（左）、Cherry MX 靜音紅軸50顆（右）。](./img/unbox-just60/fbfb2c71.webp)
 
 ## 開始製作
 
 零件到齊後就開始進行製作了。
 
-![▲ 首先將衛星軸插上PCB板。注意鋼條的上下位置要去看賣家或官方的說明。](https://bucket.ziteh.dev/blog/unbox-just60/39773ae5.webp)
+![▲ 首先將衛星軸插上PCB板。注意鋼條的上下位置要去看賣家或官方的說明。](./img/unbox-just60/39773ae5.webp)
 
-![▲ 再來就是插上鍵軸，以定位板固定住位置。](https://bucket.ziteh.dev/blog/unbox-just60/1aa938c4.webp)
+![▲ 再來就是插上鍵軸，以定位板固定住位置。](./img/unbox-just60/1aa938c4.webp)
 
-![▲ 確認後鍵軸都有固定好，沒有歪斜或凸起。](https://bucket.ziteh.dev/blog/unbox-just60/916ef8c8.webp)
+![▲ 確認後鍵軸都有固定好，沒有歪斜或凸起。](./img/unbox-just60/916ef8c8.webp)
 
-![▲ 長鍵也可以先裝上鍵帽來試試看衛星軸的手感如何，可以用潤滑劑來調整。（我是沒潤滑）](https://bucket.ziteh.dev/blog/unbox-just60/c5fdb98b.webp)
+![▲ 長鍵也可以先裝上鍵帽來試試看衛星軸的手感如何，可以用潤滑劑來調整。（我是沒潤滑）](./img/unbox-just60/c5fdb98b.webp)
 
 等鍵軸都確定好後就可以來焊接了。全部才65個鍵+1個大寫鎖定的LED指示燈——
 
@@ -129,27 +129,27 @@ PCB的話，除了鍵軸和鍵軸上的LED外，其它零件都焊接好了。�
 
 不過我有段時間沒焊接了，焊點不是非常漂亮。
 
-![▲ 焊接好的焊點。](https://bucket.ziteh.dev/blog/unbox-just60/1a2c95c7.webp)
+![▲ 焊接好的焊點。](./img/unbox-just60/1a2c95c7.webp)
 
 電池的部分我是買鋰聚電池 3.7V 1300mAh，尺寸為5×37×59（mm，厚、寬、長）。要注意的是要在電池會與PCB板接觸的那面加一個絕緣的塑膠片，以確保PCB上尖刺的Pin腳不會刺穿電池而造成危險。
 
-![▲ 將電池黏在外殼上。](https://bucket.ziteh.dev/blog/unbox-just60/f0d37355.webp)
+![▲ 將電池黏在外殼上。](./img/unbox-just60/f0d37355.webp)
 
 此時只剩下將它們組合在一起來，可以先接上電腦進行基本的測試，確定都沒問題後再繼續進行組裝。
 
 它的設定檔燒錄方式非常簡單，只要在[網站](http://ydkb.io/#)上設定好鍵盤，然後按右上的下載，就會下載一個「JUST60.bin」設定檔。而鍵盤只要壓著ESC時插上USB線，電腦就會將Just60辨識為磁碟機（或者說隨身碟、硬碟），再將剛剛的設定檔複製進（並取代原設定檔）Just60裡就好了。接下來重新連接電腦就已經完成了。
 
-![▲ 把PCB板接上電池後放入外殼，再以螺絲固定好。可以看到左上角USB處有充電指示燈。](https://bucket.ziteh.dev/blog/unbox-just60/f3633ac6.webp)
+![▲ 把PCB板接上電池後放入外殼，再以螺絲固定好。可以看到左上角USB處有充電指示燈。](./img/unbox-just60/f3633ac6.webp)
 
 最後就剩下鍵帽了。因為我設計的配列太奇怪了，所以標準104鍵的鍵帽沒辦法完全吻合，至少要有Minila的增補鍵。而我這套太豪的鍵帽沒出任何增補鍵，所以我只好先隨便那個鍵帽來將就一下，等未來再買適合的鍵帽。
 
-![▲ 將鍵帽從舊的RK61上拔下，並裝到Just60上。剩下的是因鍵帽長度不同無法裝上的鍵帽。](https://bucket.ziteh.dev/blog/unbox-just60/d629d895.webp)
+![▲ 將鍵帽從舊的RK61上拔下，並裝到Just60上。剩下的是因鍵帽長度不同無法裝上的鍵帽。](./img/unbox-just60/d629d895.webp)
 
-![▲ 右下的區域。右Alt、Ctrl、Shift與Delete都先隨便插個鍵帽。](https://bucket.ziteh.dev/blog/unbox-just60/e1a1b6fe.webp)
+![▲ 右下的區域。右Alt、Ctrl、Shift與Delete都先隨便插個鍵帽。](./img/unbox-just60/e1a1b6fe.webp)
 
-![▲ 左下的區域。左Shift與Fn/L1先隨便插個鍵帽。](https://bucket.ziteh.dev/blog/unbox-just60/c447b563.webp)
+![▲ 左下的區域。左Shift與Fn/L1先隨便插個鍵帽。](./img/unbox-just60/c447b563.webp)
 
-![▲ 最後完成的樣子。](https://bucket.ziteh.dev/blog/unbox-just60/54f6a82b.webp)
+![▲ 最後完成的樣子。](./img/unbox-just60/54f6a82b.webp)
 
 ## 結語
 
@@ -180,23 +180,23 @@ PCB的話，除了鍵軸和鍵軸上的LED外，其它零件都焊接好了。�
 
 因為在買零件的時候被旁邊的廣告影響，覺得黑胡桃木的空白鍵帽好像不錯，所以就買了一個回來看看。裝上後覺得有點特色也不錯。
 
-![▲ 黑胡桃木空白鍵帽（6.25U）。](https://bucket.ziteh.dev/blog/unbox-just60/d0fa659d.webp)
+![▲ 黑胡桃木空白鍵帽（6.25U）。](./img/unbox-just60/d0fa659d.webp)
 
-![▲ 黑胡桃木鍵帽表面的紋理。](https://bucket.ziteh.dev/blog/unbox-just60/c7bf47a2.webp)
+![▲ 黑胡桃木鍵帽表面的紋理。](./img/unbox-just60/c7bf47a2.webp)
 
-![▲ 後面的固定座是塑膠材質的。](https://bucket.ziteh.dev/blog/unbox-just60/8f053a64.webp)
+![▲ 後面的固定座是塑膠材質的。](./img/unbox-just60/8f053a64.webp)
 
-![▲ 裝上黑胡桃木空白鍵帽的樣子。](https://bucket.ziteh.dev/blog/unbox-just60/3c9302b5.webp)
+![▲ 裝上黑胡桃木空白鍵帽的樣子。](./img/unbox-just60/3c9302b5.webp)
 
-![▲ 黑胡桃木空白鍵帽特寫。](https://bucket.ziteh.dev/blog/unbox-just60/30635c63.webp)
+![▲ 黑胡桃木空白鍵帽特寫。](./img/unbox-just60/30635c63.webp)
 
-![▲ 黑胡桃木空白鍵帽特寫。](https://bucket.ziteh.dev/blog/unbox-just60/2496ebf1.webp)
+![▲ 黑胡桃木空白鍵帽特寫。](./img/unbox-just60/2496ebf1.webp)
 
-![▲ 鍵盤整體。](https://bucket.ziteh.dev/blog/unbox-just60/b1d450ec.webp)
+![▲ 鍵盤整體。](./img/unbox-just60/b1d450ec.webp)
 
-![▲ 鍵盤特寫。](https://bucket.ziteh.dev/blog/unbox-just60/26196171.webp)
+![▲ 鍵盤特寫。](./img/unbox-just60/26196171.webp)
 
-![▲ 鍵盤特寫。](https://bucket.ziteh.dev/blog/unbox-just60/353d1741.webp)
+![▲ 鍵盤特寫。](./img/unbox-just60/353d1741.webp)
 
 ## 相關文章
 

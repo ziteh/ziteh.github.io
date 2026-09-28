@@ -12,7 +12,7 @@ toc: true
 draft: false
 ---
 
-![](https://bucket.ziteh.dev/blog/macbookair-m3/macbook_m3_cover.webp)
+![](./img/macbookair-m3/macbook_m3_cover.webp)
 
 在 2020 年 Apple 推出了 M1 處理器，將 Arm 正式帶入電腦市場（好啦其實 Windows on Arm 更早），到現在已經推出第四代的 M4 了。身為一個 Windows + (微)Linux 使用者我從來沒有用過 mac，自從 M1 上市後就看到各種測試讓我相當驚豔，也常常聽人說 Mac 多好用多方便，所以最近買了一台二手的 MacBook Air M3 來用看看。
 
@@ -38,13 +38,13 @@ draft: false
 
 因為我會跑一些 Docker，所以當初找二手時是以 16+512 的 M3 為主，然後顏色想要最黑的午夜色，但是很多都是 8+512 或 16+256，而且幾乎都是注音鍵盤，所以當我看到這個是英文鍵盤且 RAM 還更大時很開心，而且它二手價格也不會比其他 16+512 的貴。
 
-![英文鍵盤](https://bucket.ziteh.dev/blog/macbookair-m3/macbook_m3_kb.webp)
+![英文鍵盤](./img/macbookair-m3/macbook_m3_kb.webp)
 
 來和我原本的 Framework 13（銀色）比一下尺寸。
 
-![MacBook Air 13 比較寬扁一點](https://bucket.ziteh.dev/blog/macbookair-m3/macbook_m3_vs_fw13_top.webp)
+![MacBook Air 13 比較寬扁一點](./img/macbookair-m3/macbook_m3_vs_fw13_top.webp)
 
-![MacBook Air 13 稍薄。不過它們的重量其實差不多](https://bucket.ziteh.dev/blog/macbookair-m3/macbook_m3_vs_fw13_side.webp)
+![MacBook Air 13 稍薄。不過它們的重量其實差不多](./img/macbookair-m3/macbook_m3_vs_fw13_side.webp)
 
 ## IO
 
@@ -120,7 +120,7 @@ mac 的桌面系統的整體操作邏輯和 Windows 還有 KDE（Kubuntu）很�
 
 再來是 Mission Control，也就是展示目前電腦上開啟了那些視窗，並可以快速切換，在 Windows 上對應的是 Win+Tab。mac 的 Mission Control 的所有視窗會以一種雜亂的方式顯示，而不是像 Windows 那樣所有視窗以相同的高度尺寸等距排列，至於 Kubuntu 的話想要它長什麼樣子都可以自己設定。mac 的這種畫面我還不太習慣，尤其我的工作情景又常常會需要同時開很多視窗，同時開 9 個 KiCad + 3 個 VS code + 2 個瀏覽器 + N 個其它視窗是很常見的情況，總之這邊要再習慣一下。
 
-![Mission Control 各個視窗會不太規則的散開](https://bucket.ziteh.dev/blog/macbookair-m3/mission_control.webp)
+![Mission Control 各個視窗會不太規則的散開](./img/macbookair-m3/mission_control.webp)
 
 mac 似乎沒有內建剪貼簿歷史等等功能，所以我裝了一個第三方工具 [Maccy](https://github.com/p0deje/Maccy)。
 

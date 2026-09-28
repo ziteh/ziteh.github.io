@@ -41,7 +41,7 @@ draft: false
 
 到 Keyboard Layout Editor 並載入你編輯好的鍵盤，複製其 [raw data](/posts/diyqmkkeyboard-kle#輸出) 並貼到 Keyboard Firmware Builder 中間的文字框，按下深藍色的「Import」按鈕。
 
-![▲ 在 Keyboard Firmware Builder 貼上 KLE 的 Raw data](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware/adea4962.webp)
+![▲ 在 Keyboard Firmware Builder 貼上 KLE 的 Raw data](./img/diyqmkkeyboard-firmware/adea4962.webp)
 
 ### 接線（Wiring）
 
@@ -51,9 +51,9 @@ draft: false
 
 在這裡設定鍵盤的接線（或者說鍵盤掃描矩陣）。點選其中一個按鍵可以設定它的鍵盤掃描矩陣的行列，還有設定二極體的方向（一般都是 Column to Row）。
 
-![▲ 編輯接線](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware/e35af54c.webp)
+![▲ 編輯接線](./img/diyqmkkeyboard-firmware/e35af54c.webp)
 
-![▲ 點選一個按鍵後可以編輯該鍵位於掃描矩陣的行列](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware-0-18/a4425f86.webp)
+![▲ 點選一個按鍵後可以編輯該鍵位於掃描矩陣的行列](./img/diyqmkkeyboard-firmware-0-18/a4425f86.webp)
 
 ### 腳位（Pins）
 
@@ -65,7 +65,7 @@ draft: false
 
 當然，如果是使用現成的開發板（像是 Pro Micro）的話，記得要選有引出的接腳（開發板可能不會把微控制器的所有接腳都拉出）。
 
-![▲ 「Pins」標籤頁示意](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware-0-18/919e4fa1.webp)
+![▲ 「Pins」標籤頁示意](./img/diyqmkkeyboard-firmware-0-18/919e4fa1.webp)
 
 要注意的是，這裡顯示的接腳名稱是該微控制器原始的接腳名稱，可能會和開發板上的腳位號碼不同。
 
@@ -77,7 +77,7 @@ draft: false
 > P 後面的英文字為 Port 名，通常由 A 開始。再來的數字是腳位編號，通常由 0 開始。
 > 所以 PB2 就代表 Port-B 的 2 號腳，也就是 Port-B 的第 3 支接腳，因為 Port-B 的第一支腳是 PB0。
 
-![▲ Pro Micro 腳位對應圖(取自SparkFun)](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware/3e97fdee.webp)
+![▲ Pro Micro 腳位對應圖(取自SparkFun)](./img/diyqmkkeyboard-firmware/3e97fdee.webp)
 
 ### 鍵映射（Keymap）
 
@@ -87,7 +87,7 @@ draft: false
 
 而 QMK 也可以設定「層（Layer）」在設定按鍵的上方有個數字就是顯示目前在設定的層，透過按上下來設定不同層的按鍵。
 
-![▲ 「Keymap」標籤頁](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware-0-18/73d93b3c.webp)
+![▲ 「Keymap」標籤頁](./img/diyqmkkeyboard-firmware-0-18/73d93b3c.webp)
 
 如果你在 Keyboard Layout Editor 有設定好各個按鍵的名稱的話，它會自動讀入按鍵的功能，如果沒有的話就需要在此手動編輯。
 
@@ -98,21 +98,21 @@ QMK 可以設定的按鍵請看說明文件：[Keycodes Overview](https://docs.q
 > 歸功於 [Vial](https://get.vial.today/)，QMK 鍵盤可以很方便地隨時編輯 Keymap，甚至連下載軟體都不用，所以在「Keymap」頁面你可以不用真的把它編輯成最終的樣子，可以先用個大概，等之後再用 Vial 修改。
 > 但不建議完全空白，至少預設的第 0 層的每個鍵都要分配按鍵，方便未來測試。
 
-![▲ 其中一種切換層的按鍵設定](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware-0-18/e64c4b24.webp)
+![▲ 其中一種切換層的按鍵設定](./img/diyqmkkeyboard-firmware-0-18/e64c4b24.webp)
 
-![▲ 不同層可以設定不同的按鍵功能更](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware-0-18/42ec0a0c.webp)
+![▲ 不同層可以設定不同的按鍵功能更](./img/diyqmkkeyboard-firmware-0-18/42ec0a0c.webp)
 
 ### 巨集鍵（Macros）
 
 在「Macros」標籤頁裡，你可以設定巨集鍵功能。巨集鍵也可以等之後再用 Vial 設計。
 
-![▲ 「Macros」標籤頁](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware-0-18/50e665e5.webp)
+![▲ 「Macros」標籤頁](./img/diyqmkkeyboard-firmware-0-18/50e665e5.webp)
 
 ### Quantum
 
 在「Quantum」標籤頁裡，可以設定更詳細且複雜的功能。如果你不知道這是什麼的話，請不要編輯它，保持預設即可。
 
-![▲ 「Quantum」標籤頁](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware-0-18/e002f59d.webp)
+![▲ 「Quantum」標籤頁](./img/diyqmkkeyboard-firmware-0-18/e002f59d.webp)
 
 ### 設定（Settings）
 
@@ -120,7 +120,7 @@ QMK 可以設定的按鍵請看說明文件：[Keycodes Overview](https://docs.q
 
 「Save Configuration」按鈕可以下載一個 JSON 檔，裡面儲存了目前為止的各種設定。在[一開始的頁面](#讀入鍵盤)裡，上方有個「Upload」按鈕，將此 JSON 檔傳上後就可以繼續編輯或修改該鍵盤。**建議一定要儲存此 JSON 檔**，且重新命名以避免與 Keyboard Layout Editor 的 JSON 搞混。
 
-![▲ 「Settings」標籤頁](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware-0-18/9822a247.webp)
+![▲ 「Settings」標籤頁](./img/diyqmkkeyboard-firmware-0-18/9822a247.webp)
 
 ### 編譯（Compile）
 
@@ -128,7 +128,7 @@ QMK 可以設定的按鍵請看說明文件：[Keycodes Overview](https://docs.q
 
 但如果你和我一樣是使用 Pro Micro 開發板的話，直接使用它編譯好的檔案可能會有問題，或是你想要修改更豐富的按鍵和其它功能的話，請按下「Download .zip」按鈕，來儲存 QMK 韌體的原始檔，準備對其手動修改與編譯。
 
-![▲ 「Compile」標籤頁](https://bucket.ziteh.dev/blog/diyqmkkeyboard-firmware/0ff41c43.webp)
+![▲ 「Compile」標籤頁](./img/diyqmkkeyboard-firmware/0ff41c43.webp)
 
 ## 手動編輯韌體
 

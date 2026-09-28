@@ -12,7 +12,7 @@ toc: true
 draft: false
 ---
 
-![](https://bucket.ziteh.dev/blog/git-verification/38e753e9.webp)
+![](./img/git-verification/38e753e9.webp)
 
 在 GitHub 看 commit 記錄時，可能會發現有些 commit 被標記為已驗證（Verified），代表這個 commit 可以確認是真的由此使用者提交的。因為 commit 是可以[僞造](https://medium.com/starbugs/how-to-fake-the-author-of-git-commit-f44453b70afc)的，你只要知道某人的 username 和 email 就可以用 `git config --global user.name` 和 `user.email` 設定並假冒 commit 的作者。然而這兩項資訊在現代來說超級公開。
 
@@ -36,11 +36,11 @@ draft: false
 
 安裝好 Gpg4win 後應該會有個軟體 Kleopatra 也被一併安裝，這是一個憑證管理軟體。開啓它並選擇「File > New OpenPGP Key Pair...」（或 Ctrl+N）。
 
-![](https://bucket.ziteh.dev/blog/git-verification/82e829fc.webp)
+![](./img/git-verification/82e829fc.webp)
 
 填入你的名字與 Email。如果你想要使用密碼來進一步保護此金鑰的話，可以勾選下面的「Protext the generated key with a passphrase.」，如果有密碼的話，往後每次要為 commit 簽名時都會要求輸入此密碼。
 
-![](https://bucket.ziteh.dev/blog/git-verification/3c4c72eb.webp)
+![](./img/git-verification/3c4c72eb.webp)
 
 按下「Advanced Settings...」開啓進階設定。
 
@@ -48,11 +48,11 @@ draft: false
 
 如果想要此金鑰對在一段時間後會過期的話，可以設定「Vaild until」的時間。不需要的話（永久有效）就不要勾選即可。
 
-![Advanced Settings](https://bucket.ziteh.dev/blog/git-verification/e7c1cd61.webp)
+![Advanced Settings](./img/git-verification/e7c1cd61.webp)
 
 確認沒問題後按 OK 就會提示成功產生。並且附上一段密碼指紋 Fingerprint。清單上也會多出剛剛產生的證書資訊。
 
-![](https://bucket.ziteh.dev/blog/git-verification/c94a187c.webp)
+![](./img/git-verification/c94a187c.webp)
 
 再來有 2 個資訊需要被使用。一個是 Key ID，另一個是你的公鑰（Public Key）。
 
@@ -110,7 +110,7 @@ gpg --armor --export D54135B170193E40
 
 按下「Add GPG Key」即可。
 
-![新增 GPG Key 示意](https://bucket.ziteh.dev/blog/git-verification/a0941cfd.webp)
+![新增 GPG Key 示意](./img/git-verification/a0941cfd.webp)
 
 > 注意，如果你把某個 GPG Key 刪除的話，原先使用這個金鑰對簽名的 commit 就會失去驗證變成 Unverified（因為 GitHub 失去了這個公鑰當然無法驗證）。
 >
@@ -178,7 +178,7 @@ git config --global commit.gpgsign
 
 如果沒問題的話，現在你就可以嘗試 commit 並 push 到 GitHub 上看看了。
 
-![認證的 commit](https://bucket.ziteh.dev/blog/git-verification/43a41805.webp)
+![認證的 commit](./img/git-verification/43a41805.webp)
 
 > 上圖的 Key ID 和文中的不同是因為文中的是範例用的，不是我真正的金鑰對。
 

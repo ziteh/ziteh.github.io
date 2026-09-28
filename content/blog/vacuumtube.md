@@ -11,7 +11,7 @@ draft: false
 # aliases: ["/2019/03/vacuumtube/"]
 ---
 
-![](https://bucket.ziteh.dev/blog/vacuumtube/139dd489.webp)
+![](./img/vacuumtube/139dd489.webp)
 
 ## 前言
 
@@ -49,7 +49,7 @@ draft: false
 
 為了克服此問題，就研發出來五極管。抑制柵極通常會和陰極接在一起，所以它的電位比屏極低很多，而從屏極因撞擊出來的二次電子就會被抑制柵極因同性相斥的原理排斥回屏極，因此可避免二次電子發射的負面效果。
 
-![▲由左至右依序為旁熱式二、三、四和五極管之電路符號。](https://bucket.ziteh.dev/blog/vacuumtube/7df15f87.webp)
+![▲由左至右依序為旁熱式二、三、四和五極管之電路符號。](./img/vacuumtube/7df15f87.webp)
 
 ## 以加熱方式分類
 
@@ -63,7 +63,7 @@ draft: false
 
 旁熱式就是把加熱燈絲和陰極分開獨立。由於金屬套筒形狀的陰極體積和儲熱量遠遠大於傳統燈絲，所以即使燈絲的溫度不穩定，甚至暫時停止加熱，也不會讓陰極有太大的影響，所以與直熱式相比穩定許多。
 
-![▲直熱式三極管(左)和旁熱式三極管(右)之電路符號。](https://bucket.ziteh.dev/blog/vacuumtube/1be8f97a.webp)
+![▲直熱式三極管(左)和旁熱式三極管(右)之電路符號。](./img/vacuumtube/1be8f97a.webp)
 
 ## 真空管擴大機
 

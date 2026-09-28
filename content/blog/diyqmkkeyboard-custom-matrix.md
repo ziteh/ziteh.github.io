@@ -18,7 +18,7 @@ draft: false
 
 要達成這樣的功能，會需要用到 QMK 的 [Custom Matrix](https://docs.qmk.fm/#/custom_matrix) 和 UART 功能，並且使用 LoRa 無線通訊模組 HC-12 來暫時替代藍牙作為無線通訊。
 
-![](https://bucket.ziteh.dev/blog/diyqmkkeyboard-custom-matrix/d8c7ca5b.webp)
+![](./img/diyqmkkeyboard-custom-matrix/d8c7ca5b.webp)
 
 <!--more-->
 

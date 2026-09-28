@@ -16,7 +16,7 @@ draft: false
 此篇文章沒有聽感心得，還請想知道聲音表現的發燒友另尋文章，謝謝!
 </span></span></h3>
 
-![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/5bbbba3f.webp)
+![](./img/unbox-akgk550mk2/5bbbba3f.webp)
 
 上次開[V90-HPA](/posts/unbox-v90hpa)的時候才說要買K550，不到半個月的時間我就完成了這項預言。
 
@@ -28,36 +28,36 @@ draft: false
 
 然而聲音聽感什麼的還是別為難我這個木耳了，這篇文就當作我的拍照練習好了。
 
-![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/2e19886c.webp)
+![](./img/unbox-akgk550mk2/2e19886c.webp)
 
-![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/80560cc5.webp)
+![](./img/unbox-akgk550mk2/80560cc5.webp)
 
-![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/2736a2cf.webp)
+![](./img/unbox-akgk550mk2/2736a2cf.webp)
 
-![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/216fc2ca.webp)
+![](./img/unbox-akgk550mk2/216fc2ca.webp)
 
-![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/a6c8cd9b.webp)
+![](./img/unbox-akgk550mk2/a6c8cd9b.webp)
 
-![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/0fa27ede.webp)
+![](./img/unbox-akgk550mk2/0fa27ede.webp)
 
-![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/abd06830.webp)
+![](./img/unbox-akgk550mk2/abd06830.webp)
 
-![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/7de25f8f.webp)
+![](./img/unbox-akgk550mk2/7de25f8f.webp)
 
-![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/bf28d387.webp)
+![](./img/unbox-akgk550mk2/bf28d387.webp)
 
-![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/4c917733.webp)
+![](./img/unbox-akgk550mk2/4c917733.webp)
 
-![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/2f84fb1a.webp)
+![](./img/unbox-akgk550mk2/2f84fb1a.webp)
 
-![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/255e247e.webp)
+![](./img/unbox-akgk550mk2/255e247e.webp)
 
-![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/d261b7d1.webp)
+![](./img/unbox-akgk550mk2/d261b7d1.webp)
 
-![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/449819bd.webp)
+![](./img/unbox-akgk550mk2/449819bd.webp)
 
-![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/f6c4f480.webp)
+![](./img/unbox-akgk550mk2/f6c4f480.webp)
 
-![](https://bucket.ziteh.dev/blog/unbox-akgk550mk2/5f54498a.webp)
+![](./img/unbox-akgk550mk2/5f54498a.webp)
 
 如果喜歡這些照片的話還請到我的[Flickr](https://flic.kr/s/aHsm6zhXfp)觀看，謝謝!

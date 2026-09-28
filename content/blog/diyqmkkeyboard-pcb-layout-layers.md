@@ -16,7 +16,7 @@ toc: true
 draft: false
 ---
 
-![](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/0df02e9b.webp)
+![](./img/diyqmkkeyboard-pcb-layout-layers/0df02e9b.webp)
 
 在[上一篇](/posts/diyqmkkeyboard-pcb-layout-sch)中已經介紹了 PCB 的設計步驟及 [KiCad](https://www.kicad.org/) Schematic 的基本用法，接下來要以 KiCad 7 作為示範，繼續介紹[製作步驟](/posts/diyqmkkeyboard-0#製作步驟)的第 5 步的 PCB Layout 的部分。
 
@@ -64,7 +64,7 @@ PCB 上大概會有幾種東西：
 
 > 對於進階的多層板還會有所謂的埋孔（Buried via）和盲孔（Blind via），這裡就不多做介紹了。
 
-![PCB 的組成](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/4462e61d.webp)
+![PCB 的組成](./img/diyqmkkeyboard-pcb-layout-layers/4462e61d.webp)
 
 ### 表面處理
 
@@ -115,7 +115,7 @@ PCB 設計參數是用來規範設計的。每一家 PCB 工廠的製作能力�
 
 如果非必要，或你對 PCB 製作不是很熟悉的話，不太建議將這些數值設定與工廠提供的極限一樣，而是稍微寬容一點，畢竟生產還是有可能出現做壞的。如果你不是很確定要怎麼設定這些值的話，可以參考下圖，這是我用 JLCPCB 時的設定，這邊的參數比較保守、沒有設到極限。
 
-![PCB 設計參數參考](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/7e2230b6.webp)
+![PCB 設計參數參考](./img/diyqmkkeyboard-pcb-layout-layers/7e2230b6.webp)
 
 另外，你可能會想為特定的走線設定特殊的規格，這時可以到「File > Board Setup > Design Rules > Net Classes」中設定。最常見的是把電源單獨設定得走線粗一點、Via 大一點；或設定 USB D+/- 差分訊號走線以符合阻抗匹配。
 
@@ -126,7 +126,7 @@ PCB 設計參數是用來規範設計的。每一家 PCB 工廠的製作能力�
 - 細線：走線 0.15mm 寬/間距；Via Size 0.56mm，Via Hole 0.3mm。
 - USB 訊號差動對（1.6mm 厚 PCB）：DP Width 0.6mm；DP Gap 0.13mm。
 
-![為不同走線網路單獨設定樣式](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/95f1f607.webp)
+![為不同走線網路單獨設定樣式](./img/diyqmkkeyboard-pcb-layout-layers/95f1f607.webp)
 
 如果你想要更詳細地設定 DRC 的話，可以到「File > Board Setup > Design Rules > Custom Rules」中設定。這裡是比較進階的用法，我自己也不是完全熟悉這邊的設定，但是可以大概參考一下我之前使用的設定：[KiCad custom rules for JLCPCB](https://gist.github.com/ziteh/0d88f3ad4d2d7f4b38755af364208a6e)
 
@@ -134,13 +134,13 @@ PCB 設計參數是用來規範設計的。每一家 PCB 工廠的製作能力�
 
 只要 Schematic 完成了，就可以讓 KiCad 根據其內容自動更新 PCB。打開 Schematic，點擊上方工具列「Tools > Update PCB from Schematic」（或快捷鍵 `F8`）即可。KiCad 會自動打開 PCB 編輯器並將各個零件的 Footprint 擺上。
 
-![更新 PCB](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/4b58922e.webp)
+![更新 PCB](./img/diyqmkkeyboard-pcb-layout-layers/4b58922e.webp)
 
-![更新 PCB](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/fade9a11.webp)
+![更新 PCB](./img/diyqmkkeyboard-pcb-layout-layers/fade9a11.webp)
 
 這時候各個零件的 Footprit 是零散擺放的，接下來就要我們把它們排到適合的位置。
 
-![更新完的 PCB](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/1660ced8.webp)
+![更新完的 PCB](./img/diyqmkkeyboard-pcb-layout-layers/1660ced8.webp)
 
 ### 零件擺放
 
@@ -148,29 +148,29 @@ PCB 設計參數是用來規範設計的。每一家 PCB 工廠的製作能力�
 
 在擺放 Footprint 時為了避免自己動到絲印或其它東西，以及保持畫面乾淨，我通常會在右側把「F/B. Silkscreen」和「F/B.Fab」層的顯示關閉，然後右下的「Selection Filter」也會取消「Text」的勾選。
 
-![關閉特定的層與可選性，以保持畫面感覺和避免誤觸](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/8865e741.webp)
+![關閉特定的層與可選性，以保持畫面感覺和避免誤觸](./img/diyqmkkeyboard-pcb-layout-layers/8865e741.webp)
 
 點選零件 Footprint 並按 `R` 可以旋轉，按 `F` 可以將它換到另一面，雙擊可以編輯詳細的屬性。你可能會需要隨時調整網格來協助擺放與對齊，可以在上方工具列調整。
 
-![變更網格](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/6cd20259.webp)
+![變更網格](./img/diyqmkkeyboard-pcb-layout-layers/6cd20259.webp)
 
 > PCB 通常會分別使用公制單位毫米 mm 與英制單位密耳 mil。1mil 為千分之一英寸，也就是約 0.0254mm。
 
 ***請注意***，PCB 分為上下兩面：Front/Top Side 和 Back/Bottom Side，在擺放所有零件的時候都要注意這個 Footprint 應該在 Front 還是 Back？以鍵盤為例，一般來說鍵軸本體會在 Front Side 上，但是它的 Pin 腳或穿過焊盤孔（PTH），所以其焊點其實是在 Back Side。而如果你要用鍵軸熱插拔座的話，它也是焊在 Back Side。所以在使用鍵軸的 Footprint 時一定要確認清楚它要擺在那一面？這個 Footprint 是否已經預先翻面了？如果你還不是很熟悉的話，最好找個照片或拿出實際的鍵軸多檢查幾遍。
 
-![注意 Footprint 所在的面](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/fb95384b.webp)
+![注意 Footprint 所在的面](./img/diyqmkkeyboard-pcb-layout-layers/fb95384b.webp)
 
-![你能分辨 A 和 B 哪一個的 Footprint 放錯面了嗎？答案在文末](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/5e7ec4e6.webp)
+![你能分辨 A 和 B 哪一個的 Footprint 放錯面了嗎？答案在文末](./img/diyqmkkeyboard-pcb-layout-layers/5e7ec4e6.webp)
 
 在擺放零件時要注意各個零件的「Courtyard」不要重疊了。這個代表零件的實體大小，雖然它通常會畫得比真實的零件還大上一圈，但是擺得太近也不方便焊接。
 
-![各零件的 Courtyard 不要重疊](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/ed407041.webp)
+![各零件的 Courtyard 不要重疊](./img/diyqmkkeyboard-pcb-layout-layers/ed407041.webp)
 
 值得注意的是，IC 的各個電源腳（如 VCC、VDD、AVDD）等通常都會有去藕電容（Decoupling capacitor），還有 LDO 穩壓器通常也會有輸出/入電容，有些腳位可能會有上/下拉電阻（Pull up/down resistor）。這些電容和電阻都要儘可能地靠近它所屬的元件腳位，走線越短越好。
 
-![去藕電容要儘量靠近 IC](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/4819ea48.webp)
+![去藕電容要儘量靠近 IC](./img/diyqmkkeyboard-pcb-layout-layers/4819ea48.webp)
 
-![電容要儘量靠近 IC](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/d402a9a1.webp)
+![電容要儘量靠近 IC](./img/diyqmkkeyboard-pcb-layout-layers/d402a9a1.webp)
 
 如果你對這部分毫無頭緒的話，可以看看我畫的 PCB，雖然我也不是專門學 PCB Layout 的，但是這些 PCB 都是實際生產並可以工作的。
 
@@ -192,7 +192,7 @@ PCB 設計參數是用來規範設計的。每一家 PCB 工廠的製作能力�
 
 > 我有試過不修改按鍵文字一樣可以，但作者的說明中表示要做這一步，所以不嫌麻煩的話還是做一下。
 
-![在 KLE 上幫各個按鍵加上順序編號](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/96d80e7f.webp)
+![在 KLE 上幫各個按鍵加上順序編號](./img/diyqmkkeyboard-pcb-layout-layers/96d80e7f.webp)
 
 要使 KiCAD KLE Placer 可以工作的話，Schematic 有一些需要注意的地方。
 
@@ -205,27 +205,27 @@ PCB 設計參數是用來規範設計的。每一家 PCB 工廠的製作能力�
 
 > 在上一篇中我沒有加入衛星軸，現在加上了。我這裡使用的是 [marbastlib](https://github.com/ebastler/marbastlib) 的 Symbol 及鍵軸 Footprint。
 
-![零件代號的順序設定](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/a7c145dc.webp)
+![零件代號的順序設定](./img/diyqmkkeyboard-pcb-layout-layers/a7c145dc.webp)
 
-![編輯完成的鍵矩陣 Schematic](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/f07eed31.webp)
+![編輯完成的鍵矩陣 Schematic](./img/diyqmkkeyboard-pcb-layout-layers/f07eed31.webp)
 
 Schematic 有更新的話記得要再「Update PCB from Schematic」一次。打開 PCB 編輯器，這時請找到你的第一個鍵軸和二極體（`KEY1` 與 `D1`）的 Footprint，把 `KEY1` 拉到編輯器上附加較空曠的地方，然後把 `D1` 也拉到它附近，這時你要思考一下鍵軸和二極體之間要如何擺放才適合，之後所有按鍵的位置都會參考它們的擺放關係。
 
-![先擺好 KEY1 與 D1 的位置](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/432afadb.webp)
+![先擺好 KEY1 與 D1 的位置](./img/diyqmkkeyboard-pcb-layout-layers/432afadb.webp)
 
 在上方工具列「Tools > External Plugins > KLE Placer」打開其頁面。
 
-![開啓 KLE Placer](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/0b422fe0.webp)
+![開啓 KLE Placer](./img/diyqmkkeyboard-pcb-layout-layers/0b422fe0.webp)
 
 在「Select KLE json file」中選擇你在 KLE 上編輯並下載的 JSON 檔，「Key/Stabillizer/Diode Annotation format string」中分別輸入你使用的鍵軸、衛星軸及二極體的代號格式，預設是 `SW{}`、`S{}`、`D{}`，但是我為了把機械鍵軸與一般的按鈕分開，所以鍵軸的代號改成 `KEY{}`。設定好後就按「OK」即可。
 
-![KLE Placer 頁面](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/bf2f54a5.webp)
+![KLE Placer 頁面](./img/diyqmkkeyboard-pcb-layout-layers/bf2f54a5.webp)
 
 如果衛星軸的角度不對的話，可以按 `R` 旋轉。如果你的鍵軸都已經確定擺放到位的話，為了避免後續又不小心動到，你可以將它們鎖定（選取後快捷鍵 `L`）。
 
-![完成自動擺放](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/67862bbd.webp)
+![完成自動擺放](./img/diyqmkkeyboard-pcb-layout-layers/67862bbd.webp)
 
-![鎖定](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/c856c152.webp)
+![鎖定](./img/diyqmkkeyboard-pcb-layout-layers/c856c152.webp)
 
 > 若你不想用 KiCAD KLE Placer，也可以試試[上一篇](/posts/diyqmkkeyboard-pcb-layout-sch#自動生成鍵盤-pcb)介紹過的 [Keyboard PCB Builder](https://kb.xyz.is/)。
 
@@ -233,7 +233,7 @@ Schematic 有更新的話記得要再「Update PCB from Schematic」一次。打
 
 由於現在各個 Footprint 之間的走線還沒完成，所以會顯示預拉線（Ratsnest），它根據 Schematic 的接線連接各個 Footprint 的腳位，讓你可以參考哪些零件的哪個腳會接在一起。擺放 Footprint 時可以參考預拉線，而之後正式佈線時只有把所有的預拉線用正在的走線連接在一起就可以了。這一步通常也需要一些經驗才有辦法走得好，如果發現有幾條線怎麼都走不好的話，可以重新調整一下 Footprint 的擺放。
 
-![各接腳會有預拉線連接](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/df90a55a.webp)
+![各接腳會有預拉線連接](./img/diyqmkkeyboard-pcb-layout-layers/df90a55a.webp)
 
 要進行走線的話，可以按 `X` 來開始進行走線。我通常會先將遊標移到焊盤上，再按 `X` 開始走線。為了避免尖端輻射與避免銅箔脫離等問題，PCB 的走線轉角通常為 135°，而不是 90°。如果要刪除一條走線的話，可以在選取後右鍵按「Unround Selected」。電源的走線可以設定得粗一點。也可以善用在點選一個走線後按 `U` 來選擇。
 
@@ -241,15 +241,15 @@ Schematic 有更新的話記得要再「Update PCB from Schematic」一次。打
 
 在佈線的過程中可能會需要「換面」，這時可以按 `V`，它會換層並自動幫你加一個 Via，並保持走線模式。如果你要單獨增加 Via 的話，可以按右邊工具列的「Add free-standing vias」或快捷鍵 `Ctrl`+`Shift`+`V`。在擺放 Via 時，除非有必要（或是使用[塞孔](https://www.researchmfg.com/2023/05/pcb-vias-plugging/)製程），不然應該避免直接將 Via 放在焊盤上，對於這點請參考 [Via-in-pad](https://www.researchmfg.com/2010/11/vias-in-pad/)。
 
-![使用按鍵 X 和 V 靈活地佈線](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/ada8660b.webp)
+![使用按鍵 X 和 V 靈活地佈線](./img/diyqmkkeyboard-pcb-layout-layers/ada8660b.webp)
 
 如果你想仔細地查看其中一條接線網路的話，可以選擇該網路的焊盤或走線後，按右鍵「Net Inspection Tools > Highlight Net」（或選取後按快捷鍵「\`」）。要解除的話就按「ESC」即可。
 
-![Highlight 特定走線網路](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/9587864b.webp)
+![Highlight 特定走線網路](./img/diyqmkkeyboard-pcb-layout-layers/9587864b.webp)
 
 佈線的過程倒是沒什麼特別的，基本上就是照著預拉線做連連看、把各個零件的接腳連接起來而已。左下角的「Unrouted」會顯示目前還有幾條線沒連接。
 
-![擺放零件並完成佈線（以 Calcite52 為例）](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/649d4b88.webp)
+![擺放零件並完成佈線（以 Calcite52 為例）](./img/diyqmkkeyboard-pcb-layout-layers/649d4b88.webp)
 
 #### 自動佈線
 
@@ -261,13 +261,13 @@ Schematic 有更新的話記得要再「Update PCB from Schematic」一次。打
 
 等走線都完成後就可以畫 PCB 的外框邊緣。在右側的層列表中切換到「Edge.Cuts」層，然後使用右側工具列的「Draw a line」或「Draw a Rectangle」來繪製外框。請注意畫完的外框一定要是封閉的才行。
 
-![畫外框](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/ff2648de.webp)
+![畫外框](./img/diyqmkkeyboard-pcb-layout-layers/ff2648de.webp)
 
 PCB 通常會進行鋪銅將 Footprint 與走線外的空白處保留銅箔，通常敷銅也會連接 GND。切換到「F.Cu」或「B.Cu」層，點選右側工具列的「Add a filled zone」，把「F.Cu」與「B.Cu」層都勾選，「Net」選擇「GND」，OK 後就可以框出要鋪銅的區域，雙擊以結束。放好鋪銅區後按 `B` 就會自動根據設定完成鋪銅。
 
-![鋪銅區域設定](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/b9a82047.webp)
+![鋪銅區域設定](./img/diyqmkkeyboard-pcb-layout-layers/b9a82047.webp)
 
-![完成外框與鋪銅的 PCB（以 Calcite52 為例）](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/b56e8ae1.webp)
+![完成外框與鋪銅的 PCB（以 Calcite52 為例）](./img/diyqmkkeyboard-pcb-layout-layers/b56e8ae1.webp)
 
 ### 編輯絲印
 
@@ -291,15 +291,15 @@ KiCad 的文字支援變數如 `${TITLE}`、`${REVISION}`，或樣式標記例�
 
 在上方工具列按「Show the design rules checker window」以顯示 DRC 視窗，並點擊「Run DRC」，KiCad 就會自動根據你[設定的規則](/posts/diyqmkkeyboard-pcb-layout-layers#pcb-設計參數)進行檢測，並且列出所有的 Error 與 Warning。Error 是一定要處理的問題，Warning 如果比較懶的話基本可以就放著不管。
 
-![顯示 DRC 頁面](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/55f6d817.webp)
+![顯示 DRC 頁面](./img/diyqmkkeyboard-pcb-layout-layers/55f6d817.webp)
 
-![DRC 頁面](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/2e6c7f20.webp)
+![DRC 頁面](./img/diyqmkkeyboard-pcb-layout-layers/2e6c7f20.webp)
 
 ### 3D 檢視器
 
 當你的 PCB 都畫完後，可能會想看看它實際上長什麼樣，這時可以使用 3D 檢視器。在上放工具列「View > 3D Viewer」即可打開。
 
-![3D 檢視器（以 Calcite52 為例）](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/6843db55.webp)
+![3D 檢視器（以 Calcite52 為例）](./img/diyqmkkeyboard-pcb-layout-layers/6843db55.webp)
 
 ### 輸出 Gerber 檔
 
@@ -315,15 +315,15 @@ PCB 全部完成後就可以輸出工廠生產用的 Gerber 檔了。
 
 在上方工具列「File > Fabrication Outputs > Gerbers (.gbr)」
 
-![開啓 Gerber 輸出頁面](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/fa9a6f16.webp)
+![開啓 Gerber 輸出頁面](./img/diyqmkkeyboard-pcb-layout-layers/fa9a6f16.webp)
 
 在跳出的「Plot」頁面依照下圖進行設定。「Output directory」是檔案輸出的路徑，我習慣打上「gerber」，這樣 KiCad 就會自動在專案內新增一個 `gerber` 資料夾，並將檔案都放在裡面。設定好後就按下「Plot」，如果有詢問是否要 Refill，選擇執行 Refill。
 
-![Gerber 檔輸出設定（JLCPCB）](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/df2188b5.webp)
+![Gerber 檔輸出設定（JLCPCB）](./img/diyqmkkeyboard-pcb-layout-layers/df2188b5.webp)
 
 然後還有輸出鑽孔檔。按「Plot」頁面右下的「Gererate Drill Files」，在新跳出的「Generate Drill Files」頁面依照下圖進行設定。完成後按下「Generate Drill File」與「Generate Map File」這兩個按鈕。
 
-![鑽孔資料輸出設定（JLCPCB）](https://bucket.ziteh.dev/blog/diyqmkkeyboard-pcb-layout-layers/46b00732.webp)
+![鑽孔資料輸出設定（JLCPCB）](./img/diyqmkkeyboard-pcb-layout-layers/46b00732.webp)
 
 這樣就完成 Gerber 檔的輸出，可以在 `gerber` 資料夾中看到輸出的檔案。建議使用 Gerber 檢視軟體再次查看生成的 Gerber 檔是否正確。將整個 `gerber` 資料夾壓縮成 `.zip` 壓縮檔。
 

@@ -12,7 +12,7 @@ draft: false
 
 <!--more-->
 
-![我的電路圖](https://bucket.ziteh.dev/blog/esp32-s3-sch/esp32-s3_sch.webp)
+![我的電路圖](./img/esp32-s3-sch/esp32-s3_sch.webp)
 
 我主要是參考官方的[設計指南](https://docs.espressif.com/projects/esp-hardware-design-guidelines/zh_CN/latest/esp32s3/schematic-checklist.html)和 [ESP32-S3-Stick](https://github.com/JosueAGtz/ESP32-S3-Stick) 這兩個資源來畫電路的。
 

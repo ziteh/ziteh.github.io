@@ -11,7 +11,7 @@ draft: false
 # aliases: ["/2020/05/literature-lycoris-radiata/"]
 ---
 
-![](https://bucket.ziteh.dev/blog/literature-lycoris-radiata/a1c89397.webp)
+![](./img/literature-lycoris-radiata/a1c89397.webp)
 
 <!--more-->
 

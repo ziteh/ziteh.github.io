@@ -18,7 +18,7 @@ draft: false
 
 本文將介紹如何啓用 QMK 的藍牙功能。
 
-![](https://bucket.ziteh.dev/blog/diyqmkkeyboard-ble/bbbdc8be.webp)
+![](./img/diyqmkkeyboard-ble/bbbdc8be.webp)
 
 <!--more-->
 
@@ -97,7 +97,7 @@ NKRO_ENABLE = no
 
 > 要注意 nRF51822 本身的 IO 都是 3.3V 的，不是 5V。官方的 Adafruit BLE 上已經有邏輯電平轉換電路。
 
-![▲ 接好線後的樣子](https://bucket.ziteh.dev/blog/diyqmkkeyboard-ble/dfe442ef.webp)
+![▲ 接好線後的樣子](./img/diyqmkkeyboard-ble/dfe442ef.webp)
 
 只有把線接好後上電，它就有藍牙的功能了。在 Windows 10 的「裝置」裡可以搜尋並配對到此藍牙裝置。
 

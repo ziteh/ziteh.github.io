@@ -12,7 +12,7 @@ draft: false
 # aliases: ["/2020/05/unbox-sansunggalaxys6lite/"]
 ---
 
-![](https://bucket.ziteh.dev/blog/unbox-sansunggalaxys6lite/78a24f43.webp)
+![](./img/unbox-sansunggalaxys6lite/78a24f43.webp)
 
 ## 前言
 
@@ -26,27 +26,27 @@ draft: false
 
 雖然說這篇是開箱文，但在買的時候就在店裡開箱了，故開箱的過程就不贅述了。這次購買S6 Lite內附原廠充電器、充電線、S Pen（手寫筆）和Pin針，此外還附贈原廠皮套。
 
-![▲ S6 Lite。S Pen可以磁吸在機身邊，吸力也滿強的。](https://bucket.ziteh.dev/blog/unbox-sansunggalaxys6lite/ab711449.webp)
+![▲ S6 Lite。S Pen可以磁吸在機身邊，吸力也滿強的。](./img/unbox-sansunggalaxys6lite/ab711449.webp)
 
-![▲ S6 Lite。](https://bucket.ziteh.dev/blog/unbox-sansunggalaxys6lite/7ee7fde5.webp)
+![▲ S6 Lite。](./img/unbox-sansunggalaxys6lite/7ee7fde5.webp)
 
-![▲ S6 Lite。](https://bucket.ziteh.dev/blog/unbox-sansunggalaxys6lite/22f3b02e.webp)
+![▲ S6 Lite。](./img/unbox-sansunggalaxys6lite/22f3b02e.webp)
 
-![▲ 後鏡頭是凸出來的。個人不是很喜歡，但現在的平板手機都是這樣。](https://bucket.ziteh.dev/blog/unbox-sansunggalaxys6lite/edba02c8.webp)
+![▲ 後鏡頭是凸出來的。個人不是很喜歡，但現在的平板手機都是這樣。](./img/unbox-sansunggalaxys6lite/edba02c8.webp)
 
-![▲ 電源鍵和音量鍵。](https://bucket.ziteh.dev/blog/unbox-sansunggalaxys6lite/30f35a44.webp)
+![▲ 電源鍵和音量鍵。](./img/unbox-sansunggalaxys6lite/30f35a44.webp)
 
-![▲ 兩側。右側有USB Type-C和喇叭；左側有3.5mm耳機孔和喇叭。](https://bucket.ziteh.dev/blog/unbox-sansunggalaxys6lite/342fa36f.webp)
+![▲ 兩側。右側有USB Type-C和喇叭；左側有3.5mm耳機孔和喇叭。](./img/unbox-sansunggalaxys6lite/342fa36f.webp)
 
-![▲ S Pen可以磁吸在原廠皮套內，更不易弄丟。](https://bucket.ziteh.dev/blog/unbox-sansunggalaxys6lite/c3bc20de.webp)
+![▲ S Pen可以磁吸在原廠皮套內，更不易弄丟。](./img/unbox-sansunggalaxys6lite/c3bc20de.webp)
 
-![▲ S Pen有懸浮指標。](https://bucket.ziteh.dev/blog/unbox-sansunggalaxys6lite/2106ba64.webp)
+![▲ S Pen有懸浮指標。](./img/unbox-sansunggalaxys6lite/2106ba64.webp)
 
-![▲ 畫起來的感覺。](https://bucket.ziteh.dev/blog/unbox-sansunggalaxys6lite/a711ccc6.webp)
+![▲ 畫起來的感覺。](./img/unbox-sansunggalaxys6lite/a711ccc6.webp)
 
-![▲ S Pen上有一實體按鍵。](https://bucket.ziteh.dev/blog/unbox-sansunggalaxys6lite/93a18ce8.webp)
+![▲ S Pen上有一實體按鍵。](./img/unbox-sansunggalaxys6lite/93a18ce8.webp)
 
-![▲ S Pen、Adonit NOTE iPad手寫筆與0.5mm原子筆比較，S Pen的筆頭滿細的。](https://bucket.ziteh.dev/blog/unbox-sansunggalaxys6lite/6d8c8c3e.webp)
+![▲ S Pen、Adonit NOTE iPad手寫筆與0.5mm原子筆比較，S Pen的筆頭滿細的。](./img/unbox-sansunggalaxys6lite/6d8c8c3e.webp)
 
 ## S Pen及其功能
 
@@ -56,13 +56,13 @@ draft: false
 
 而S Pen上的實體按鍵我也覺得很方便，在一般寫筆記的時候可以令按下時是橡皮擦，這樣寫錯時就不用還要再去點橡皮擦了（這需要App的支援，我用OneNote有支援）。
 
-![▲ 書寫時按下按鍵變成橡皮擦。](https://bucket.ziteh.dev/blog/unbox-sansunggalaxys6lite/0a0c33ee.webp)
+![▲ 書寫時按下按鍵變成橡皮擦。](./img/unbox-sansunggalaxys6lite/0a0c33ee.webp)
 
 另外它的截圖功能也非常方便做筆記。有時候要把上課講義的的圖表放到筆記裡，這是就可以直接截圖。
 
-![▲ 截圖及筆記功能。](https://bucket.ziteh.dev/blog/unbox-sansunggalaxys6lite/7bf870d5.webp)
+![▲ 截圖及筆記功能。](./img/unbox-sansunggalaxys6lite/7bf870d5.webp)
 
-![▲ 截圖及去背功能。](https://bucket.ziteh.dev/blog/unbox-sansunggalaxys6lite/8d31a5de.webp)
+![▲ 截圖及去背功能。](./img/unbox-sansunggalaxys6lite/8d31a5de.webp)
 
 ## 結語
 

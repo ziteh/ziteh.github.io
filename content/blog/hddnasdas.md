@@ -11,7 +11,7 @@ draft: false
 # aliases: ["/2019/02/hddnasdas/"]
 ---
 
-![](https://bucket.ziteh.dev/blog/hddnasdas/7cf6bf7e.webp)
+![](./img/hddnasdas/7cf6bf7e.webp)
 
 ## 前言
 

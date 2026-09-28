@@ -47,7 +47,7 @@ void Delay(__IO u32 nCount)
 }
 ```
 
-![▲ 基本輸出-中間的綠色LED會不斷閃爍。](https://bucket.ziteh.dev/blog/learningstm32-03/23d7b033.webp)
+![▲ 基本輸出-中間的綠色LED會不斷閃爍。](./img/learningstm32-03/23d7b033.webp)
 
 ```c
 // 基本輸出
@@ -69,7 +69,7 @@ int main(void)
 }
 ```
 
-![▲ 基本輸入-按下按鈕後中間的綠色LED熄滅，否則亮起。](https://bucket.ziteh.dev/blog/learningstm32-03/b5450ff8.webp)
+![▲ 基本輸入-按下按鈕後中間的綠色LED熄滅，否則亮起。](./img/learningstm32-03/b5450ff8.webp)
 
 基本輸出入除了以上這種直接寫入暫存器的方法外還可以使用函數的方式來達成，而這些函數都在stm32f10x\_rcc.c和stm32f10x\_gpio.c中（參考路徑：Libraries\STM32F10x\_StdPeriph\_Driver\src），有興趣的可以參考研究。
 

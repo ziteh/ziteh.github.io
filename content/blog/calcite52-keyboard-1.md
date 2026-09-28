@@ -14,7 +14,7 @@ draft: false
 
 ## 前言
 
-![](https://bucket.ziteh.dev/blog/calcite52-keyboard-1/e0d61ba2.webp)
+![](./img/calcite52-keyboard-1/e0d61ba2.webp)
 
 前陣子無意間得知 [Home row mods](https://precondition.github.io/home-row-mods) 和 [ARTSEY](https://artsey.io/) 這兩個鍵盤操作系統。
 
@@ -36,13 +36,13 @@ PCB 基本上一下就畫好了。以往比較麻煩的是要把按鍵和二極�
 
 因為這把鍵盤想用矮軸，我選擇的鍵軸種類是 Kailh Choc (PG1350)。正交（Ortholinear）的佈局也是必要的。
 
-![▲ PCB 渲染](https://bucket.ziteh.dev/blog/calcite52-keyboard-1/84494bdb.webp)
+![▲ PCB 渲染](./img/calcite52-keyboard-1/84494bdb.webp)
 
-![▲ PCB Layers](https://bucket.ziteh.dev/blog/calcite52-keyboard-1/eae498ae.webp)
+![▲ PCB Layers](./img/calcite52-keyboard-1/eae498ae.webp)
 
 這把鍵盤取名為「Calcite52」，「52」就代表有 52 鍵，而「Calcite」是方解石/冰州石，方解石結晶時常為方塊狀，感覺和 Kailh Choc 滿合的。
 
-![▲ Keymap](https://bucket.ziteh.dev/blog/calcite52-keyboard-1/e0d61ba2.webp)
+![▲ Keymap](./img/calcite52-keyboard-1/e0d61ba2.webp)
 
 比較特別的是：
 

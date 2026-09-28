@@ -13,7 +13,7 @@ draft: false
 # aliases: ["/2020/12/freenas-build/"]
 ---
 
-![](https://bucket.ziteh.dev/blog/freenas-build/3d476087.webp)
+![](./img/freenas-build/3d476087.webp)
 
 ## 前言
 
@@ -51,19 +51,19 @@ FreeNAS 是基於 FreeBSD 的開源 NAS 系統，作為開源軟體，它也是�
 | PSU  | Corsair CX500 500W                         | 1500      |
 | CASE | acer Veriton 套裝機殼                      | 200       |
 
-![▲ 組裝完成的硬體。](https://bucket.ziteh.dev/blog/freenas-build/492fc0d4.webp)
+![▲ 組裝完成的硬體。](./img/freenas-build/492fc0d4.webp)
 
 ## 安裝 FreeNAS
 
 就和其它作業系統一樣，要安裝 FreeNAS 的話通常會使用開機碟的方式。準備一個隨身碟來將 FreeNAS 燒入，並在組裝好的電腦上以此開機碟開機。成功後就會進入 FreeNAS 的安裝程式。
 
-![▲ FreeNAS 安裝畫面](https://bucket.ziteh.dev/blog/freenas-build/86cb1e1f.webp)
+![▲ FreeNAS 安裝畫面](./img/freenas-build/86cb1e1f.webp)
 
 安裝過程中除了要設定 root 使用者的密碼外，沒有什麼特別要設定的，唯一要注意的就是在選擇要將系統安裝進哪一個（或多個）硬碟時，因為被選擇作為系統硬碟的該硬碟就只能儲存系統資料，也就是它不能用來出處其它的檔案，因此要注意系統碟要與資料碟分開，像是我就是拿了一個 16 GB 的隨身碟來當做系統碟。
 
 安裝完成後就可以將開機碟移除，以系統碟開機。如果你的 FreeNAS 主機有接螢幕與網路的話，在開機完成後它會顯示該 FreeNAS 的網路位置，只要在瀏覽器上輸入該網址就可以進入 FreeNAS 的管理介面，並以 root 帳號密碼登入就可以了。
 
-![▲ FreeNAS 管理介面](https://bucket.ziteh.dev/blog/freenas-build/66d7a2c0.webp)
+![▲ FreeNAS 管理介面](./img/freenas-build/66d7a2c0.webp)
 
 ## 結語
 

@@ -23,9 +23,9 @@ draft: false
 
 我發現加入媒體庫時，如果是檔名連續的圖片會被當成影片檔，如果要把這些圖片檔分開來加入媒體庫的話，只要在【Media Storage】右上角的3個點處將【Show Individual Frames】打勾，它就會獨立顯示每一張圖片，而不是將它們當成一個影片。
 
-![▲ 獨立顯示每一幀](https://bucket.ziteh.dev/blog/davinciresolve15/f8c670df.webp)
+![▲ 獨立顯示每一幀](./img/davinciresolve15/f8c670df.webp)
 
-![▲ 獨立顯示每一幀](https://bucket.ziteh.dev/blog/davinciresolve15/a7e03983.webp)
+![▲ 獨立顯示每一幀](./img/davinciresolve15/a7e03983.webp)
 
 ## 2.直接輸入時間來移動播放頭
 
@@ -34,27 +34,27 @@ draft: false
 和Pr與Ae相同，如果要到達1分25秒00影格的話就是輸入“12500”；如果要到1秒59
 影格的話就是輸入“159”。
 
-![▲ 直接輸入時間來移動播放頭](https://bucket.ziteh.dev/blog/davinciresolve15/84903ab8.webp)
+![▲ 直接輸入時間來移動播放頭](./img/davinciresolve15/84903ab8.webp)
 
 ## 3.開啓關鍵影格時間軸
 
 在Pr中關鍵影格的時間軸在Effect Controls中，而DaVinci Resolve是直接顯示在主要時間軸中。只要按下有加入關鍵影格的素材右下方的按鈕就可以開啓關鍵影格時間軸。
 
-![▲ 開啓關鍵影格時間軸](https://bucket.ziteh.dev/blog/davinciresolve15/282adedb.webp)
+![▲ 開啓關鍵影格時間軸](./img/davinciresolve15/282adedb.webp)
 
 而按鈕有2種，左邊波形樣式的按鈕會以波形的方式顯示；而右邊菱形樣式的按鈕只會顯示關鍵影格的位置。
-![▲ 波形樣式按鈕](https://bucket.ziteh.dev/blog/davinciresolve15/7c2cd386.webp)
+![▲ 波形樣式按鈕](./img/davinciresolve15/7c2cd386.webp)
 
-![▲ 菱形樣式按鈕](https://bucket.ziteh.dev/blog/davinciresolve15/dcb4d256.webp)
+![▲ 菱形樣式按鈕](./img/davinciresolve15/dcb4d256.webp)
 
 而且我們也可以直接在關鍵影格時間軸上編輯關鍵影格，還可以加入不同的轉變方式。
 
-![▲ 在關鍵影格時間軸上編輯關鍵影格](https://bucket.ziteh.dev/blog/davinciresolve15/6846b683.webp)
+![▲ 在關鍵影格時間軸上編輯關鍵影格](./img/davinciresolve15/6846b683.webp)
 
 而波形樣式關鍵影格時間軸最左邊的按鈕可以選擇要顯示的不同特效的關鍵影格波形。
 
-![▲ 顯示選單按鈕](https://bucket.ziteh.dev/blog/davinciresolve15/76492da0.webp)
+![▲ 顯示選單按鈕](./img/davinciresolve15/76492da0.webp)
 
 ## 版本資訊
 
-![▲ Public Beta Version 15.0.0B.073](https://bucket.ziteh.dev/blog/davinciresolve15/2e89711c.webp)
+![▲ Public Beta Version 15.0.0B.073](./img/davinciresolve15/2e89711c.webp)

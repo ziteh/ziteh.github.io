@@ -15,7 +15,7 @@ toc: true
 draft: false
 ---
 
-![](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/51a68173.webp)
+![](./img/ergosnm-v2-1-intro/51a68173.webp)
 
 [ErgoSNM](https://github.com/siderakb/ergo-snm-keyboard) 是我自己設計並製作的分離式人體工學機械式鍵盤（Split ergonomic keyboard），並且有可以取代滑鼠功能的軌跡球，其韌體使用 QMK。
 
@@ -58,13 +58,13 @@ draft: false
 
 所有的 PCB 檔案都在 [GitHub](https://github.com/ziteh/ergo-snm-keyboard) 上。詳細的零件清單請看 [Parts List](https://github.com/ziteh/ergo-snm-keyboard/wiki/Document-for-Rev-2.X#parts-list)。
 
-![左半主 PCB (Bottom View)](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/f0b8591b.webp)
+![左半主 PCB (Bottom View)](./img/ergosnm-v2-1-intro/f0b8591b.webp)
 
-![右半主 PCB (Bottom View)](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/c97454a5.webp)
+![右半主 PCB (Bottom View)](./img/ergosnm-v2-1-intro/c97454a5.webp)
 
-![拇指區子板 (Bottom View)](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/073b3bd1.webp)
+![拇指區子板 (Bottom View)](./img/ergosnm-v2-1-intro/073b3bd1.webp)
 
-![軌跡球子板](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/de3e4a41.webp)
+![軌跡球子板](./img/ergosnm-v2-1-intro/de3e4a41.webp)
 
 ## 組裝
 
@@ -74,27 +74,27 @@ draft: false
 
 將焊接好的 PCB 連接起來。這時就可以先燒錄 QMK 韌體進去，測試功能是否正常了。
 
-![完成 PCB 焊接](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/b45d708c.webp)
+![完成 PCB 焊接](./img/ergosnm-v2-1-intro/b45d708c.webp)
 
 PCB 搞定後，就可以安裝外殼。我的外殼一樣是找 JLCPCB 訂，使用 SLA 黑樹脂 3D 列印，效果還不錯，價格也不會太貴。使用電烙鐵將熱融螺帽嵌入到外殼預留的螺絲孔中，再將 FR4 定位板（一樣是 JLCPCB 製）鎖進外殼。也可以先將定位板與 PCB 組合好再一起鎖進外殼裡，我設計的螺絲孔都沒有遮擋或干涉。
 
-![組裝定位板](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/29119bc0.webp)
+![組裝定位板](./img/ergosnm-v2-1-intro/29119bc0.webp)
 
 先插入一些鍵軸把 PCB 與定位板固定，再將剩餘的鍵軸一一安裝上。我使用的是億光水王軸 v2 55g。
 
-![插入鍵軸](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/cf67ebb8.webp)
+![插入鍵軸](./img/ergosnm-v2-1-intro/cf67ebb8.webp)
 
-![](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/c197d9c9.webp)
+![](./img/ergosnm-v2-1-intro/c197d9c9.webp)
 
-![](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/7ea8f111.webp)
+![](./img/ergosnm-v2-1-intro/7ea8f111.webp)
 
 最後鎖上底蓋和腳架。這裡的腳架是 MFJ 尼龍 3D 列印的。
 
-![鎖上底蓋與腳架](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/f51ad87b.webp)
+![鎖上底蓋與腳架](./img/ergosnm-v2-1-intro/f51ad87b.webp)
 
 完成後就可以正式使用。Vial 軟體可以正常辨識與運作。
 
-![可以使用 Vial](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/34ff9524.webp)
+![可以使用 Vial](./img/ergosnm-v2-1-intro/34ff9524.webp)
 
 ## 使用
 
@@ -119,17 +119,17 @@ SNM 鍵盤計劃是我從 2020 年 6 月開始的，目標是設計並作出整�
 
 但是因為我還有其它東西要做，所以這個鍵盤的進度一直不多，包含我在研究要如何做到完全無線且還有軌跡球的功能。如果只是要全無線的分離式鍵盤其實不會太難，要再加上軌跡球功能的話也還好，但是因為達成方案很多種，包括不使用 QMK 韌體，我想把每一種都實際測試過一次再決定最終方案，所以才會拖這麼久。
 
-![早期設計的軌跡球感測器 PCB](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/40593df1.webp)
+![早期設計的軌跡球感測器 PCB](./img/ergosnm-v2-1-intro/40593df1.webp)
 
 其中包括為了測試方便而自己設計的各種開發板：搭載 [nRF52840](https://www.nordicsemi.com/products/nrf52840) ([MDBT50Q](https://www.raytac.com/product/ins.php?index_id=24)) RF SoC 的 [MDBT Micro](https://github.com/ziteh/mdbt-micro)；搭載 ATmega32U4、取代 Pro Micro 的 [Next Micro](https://github.com/ziteh/next-micro)；搭載 RP2040 的 [RP Micro](https://github.com/ziteh/rp-micro)。
 
 期間還受到了 PCBWay 的贊助，他們免費幫我生成了一批 PCB 與鋼網。人生第一次被贊助。
 
-![MDBT Micro](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/041aec41.webp)
+![MDBT Micro](./img/ergosnm-v2-1-intro/041aec41.webp)
 
-![Next Micro](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/f294e2fb.webp)
+![Next Micro](./img/ergosnm-v2-1-intro/f294e2fb.webp)
 
-![RP Micro](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/bf52e99e.webp)
+![RP Micro](./img/ergosnm-v2-1-intro/bf52e99e.webp)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/CSA7Ih7nAls" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -139,9 +139,9 @@ SNM 鍵盤計劃是我從 2020 年 6 月開始的，目標是設計並作出整�
 
 Rev 1.0 的 PCB 主要是測試鍵盤 Layout 與[我自己畫的鍵軸 Footprint](https://github.com/ziteh/key-switches.pretty) 是否有問題。
 
-![ErgoSNM v1.0 測試用 PCB](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/2b3096a1.webp)
+![ErgoSNM v1.0 測試用 PCB](./img/ergosnm-v2-1-intro/2b3096a1.webp)
 
-![ErgoSNM v1.0](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/f2834788.webp)
+![ErgoSNM v1.0](./img/ergosnm-v2-1-intro/f2834788.webp)
 
 ### Rev 2.0
 
@@ -149,21 +149,21 @@ Rev 2.0 其實和最後的 Rev 2.1 已經幾乎沒有差別了，幾乎只差在
 
 這時主要在確認外殼的設計與可生產性。
 
-![ErgoSNM v2.0](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/08f28faf.webp)
+![ErgoSNM v2.0](./img/ergosnm-v2-1-intro/08f28faf.webp)
 
-![ErgoSNM v2.0](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/0b5de7a1.webp)
+![ErgoSNM v2.0](./img/ergosnm-v2-1-intro/0b5de7a1.webp)
 
-![ErgoSNM v2.0](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/4af0d5e8.webp)
+![ErgoSNM v2.0](./img/ergosnm-v2-1-intro/4af0d5e8.webp)
 
-![ErgoSNM v2.0 試做的外殼，原本還更多](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/c18ad1ab.webp)
+![ErgoSNM v2.0 試做的外殼，原本還更多](./img/ergosnm-v2-1-intro/c18ad1ab.webp)
 
-![設計外殼](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/aef5f50e.webp)
+![設計外殼](./img/ergosnm-v2-1-intro/aef5f50e.webp)
 
-![設計外殼](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/658be095.webp)
+![設計外殼](./img/ergosnm-v2-1-intro/658be095.webp)
 
-![設計外殼](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/b48b3fd6.webp)
+![設計外殼](./img/ergosnm-v2-1-intro/b48b3fd6.webp)
 
-![測試軌跡球的軸承和滾輪](https://bucket.ziteh.dev/blog/ergosnm-v2-1-intro/32a7f62b.webp)
+![測試軌跡球的軸承和滾輪](./img/ergosnm-v2-1-intro/32a7f62b.webp)
 
 ## 結語
 

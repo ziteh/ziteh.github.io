@@ -99,8 +99,8 @@ featured: true
 - [我的 QMK 教學系列文列表](/posts/diyqmkkeyboard-0#教學文列表)
 - [QMK 官網](https://qmk.fm/)
 
-[pcb1]: https://bucket.ziteh.dev/blog/ergosnm-v3-0-1/pcb1.webp
+[pcb1]: ./img/ergosnm-v3-0-1/pcb1.webp
 
-[pcb2]: https://bucket.ziteh.dev/blog/ergosnm-v3-0-1/pcb2.webp
+[pcb2]: ./img/ergosnm-v3-0-1/pcb2.webp
 
-[layout]: https://bucket.ziteh.dev/blog/ergosnm-v3-0-1/layout.webp
+[layout]: ./img/ergosnm-v3-0-1/layout.webp

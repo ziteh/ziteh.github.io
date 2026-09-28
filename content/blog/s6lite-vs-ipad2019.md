@@ -11,7 +11,7 @@ draft: false
 # aliases: ["/2020/05/s6lite-vs-ipad2019/"]
 ---
 
-![](https://bucket.ziteh.dev/blog/s6lite-vs-ipad2019/c565434e.webp)
+![](./img/s6lite-vs-ipad2019/c565434e.webp)
 
 ## 前言
 
@@ -25,19 +25,19 @@ draft: false
 
 雖然看起來S6 Lite好像比較小，但其實它的螢幕比iPad大了o.2吋（iPad為10.2吋；S6 Lite為10.4吋），但因為圓角的關係，實際上也差異不大。而螢幕比例也不同，S6 Lite比較扁長，看16:9的影片比較適合。
 
-![▲ 左iPad；右S6 Lite。](https://bucket.ziteh.dev/blog/s6lite-vs-ipad2019/f630f5db.webp)
+![▲ 左iPad；右S6 Lite。](./img/s6lite-vs-ipad2019/f630f5db.webp)
 
-![▲ iPad無全貼合螢幕，看起來有斷差。](https://bucket.ziteh.dev/blog/s6lite-vs-ipad2019/88298fa6.webp)
+![▲ iPad無全貼合螢幕，看起來有斷差。](./img/s6lite-vs-ipad2019/88298fa6.webp)
 
-![▲ S6 Lite看起來無明顯斷差。](https://bucket.ziteh.dev/blog/s6lite-vs-ipad2019/2a3ee73f.webp)
+![▲ S6 Lite看起來無明顯斷差。](./img/s6lite-vs-ipad2019/2a3ee73f.webp)
 
-![▲ iPad因斷差，故感覺筆頭和畫面有距離。](https://bucket.ziteh.dev/blog/s6lite-vs-ipad2019/485f86d6.webp)
+![▲ iPad因斷差，故感覺筆頭和畫面有距離。](./img/s6lite-vs-ipad2019/485f86d6.webp)
 
-![▲ iPad的斷差。](https://bucket.ziteh.dev/blog/s6lite-vs-ipad2019/2f9436e1.webp)
+![▲ iPad的斷差。](./img/s6lite-vs-ipad2019/2f9436e1.webp)
 
-![▲ S6 Lite無斷差，感覺筆頭是“寫在”畫面上。](https://bucket.ziteh.dev/blog/s6lite-vs-ipad2019/683d795a.webp)
+![▲ S6 Lite無斷差，感覺筆頭是“寫在”畫面上。](./img/s6lite-vs-ipad2019/683d795a.webp)
 
-![▲ S6 Lite無斷差。](https://bucket.ziteh.dev/blog/s6lite-vs-ipad2019/90620274.webp)
+![▲ S6 Lite無斷差。](./img/s6lite-vs-ipad2019/90620274.webp)
 
 ## 比較表
 

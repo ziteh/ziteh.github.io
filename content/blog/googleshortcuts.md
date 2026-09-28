@@ -12,14 +12,14 @@ draft: false
 
 <!--more-->
 
-![▲會有一個清單可以選擇要開啓的網頁](https://bucket.ziteh.dev/blog/googleshortcuts/6c4b8003.webp)
+![▲會有一個清單可以選擇要開啓的網頁](./img/googleshortcuts/6c4b8003.webp)
 
 在設定頁面可以選擇要加入清單的項目，基本上所有Google的服務應該都在左邊的清單内，只要把需要的服務拉進右邊的清單内就可以了。
 
-![▲把左邊的項目拉到右邊就可以在清單中顯示了](https://bucket.ziteh.dev/blog/googleshortcuts/4f5bbc47.webp)
+![▲把左邊的項目拉到右邊就可以在清單中顯示了](./img/googleshortcuts/4f5bbc47.webp)
 
 如果想要的網站沒有在左邊的清單内，也可以按右邊清單下面的「ADD CUSTOM SHORTCUT」來自行輸入網址。
-![▲也可以自己輸入網址](https://bucket.ziteh.dev/blog/googleshortcuts/67b62e3e.webp)
+![▲也可以自己輸入網址](./img/googleshortcuts/67b62e3e.webp)
 
 有3個可以選擇的設定：
 
@@ -29,12 +29,12 @@ draft: false
 
 下面也有4個不同的按鈕圖樣可以選擇。
 
-![▲第三個設定切換後的顯示樣式](https://bucket.ziteh.dev/blog/googleshortcuts/269d3b84.webp)
+![▲第三個設定切換後的顯示樣式](./img/googleshortcuts/269d3b84.webp)
 
 最下面可以重置設定﹑匯出與匯入設定值。因為此擴充套件沒有雲端同步之類的功能，所以如果有多台電腦的話就可以匯出與匯入設定值，這樣就不用每一台電腦都設定一次了。
 \*\*2018/02/10補充：\*\*這個擴充套件好像有雲端同步的功能，但不用另外登入雲端賬號，可能是跟著Firefox的賬號。
 
-![▲可以匯入與匯出設定值](https://bucket.ziteh.dev/blog/googleshortcuts/e741292b.webp)
+![▲可以匯入與匯出設定值](./img/googleshortcuts/e741292b.webp)
 
 ## Google Shortcuts 擴充套件網址
 

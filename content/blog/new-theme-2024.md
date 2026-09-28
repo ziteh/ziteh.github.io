@@ -100,20 +100,20 @@ Fluid 本來就很簡潔了，所以我要調整的東西不會很多。
 
 ![Fluid][footer_fluid]
 
-[home_landscape]: https://bucket.ziteh.dev/blog/new-theme-2024/3bf97df4.webp
+[home_landscape]: ./img/new-theme-2024/3bf97df4.webp
 
-[home_next]: https://bucket.ziteh.dev/blog/new-theme-2024/57dc886f.webp
+[home_next]: ./img/new-theme-2024/57dc886f.webp
 
-[home_fluid]: https://bucket.ziteh.dev/blog/new-theme-2024/9d2e2529.webp
+[home_fluid]: ./img/new-theme-2024/9d2e2529.webp
 
-[title_landscape]: https://bucket.ziteh.dev/blog/new-theme-2024/addf20f9.webp
+[title_landscape]: ./img/new-theme-2024/addf20f9.webp
 
-[title_next]: https://bucket.ziteh.dev/blog/new-theme-2024/2cff0e83.webp
+[title_next]: ./img/new-theme-2024/2cff0e83.webp
 
-[title_fluid]: https://bucket.ziteh.dev/blog/new-theme-2024/70e0b340.webp
+[title_fluid]: ./img/new-theme-2024/70e0b340.webp
 
-[footer_landscape]: https://bucket.ziteh.dev/blog/new-theme-2024/32b89f50.webp
+[footer_landscape]: ./img/new-theme-2024/32b89f50.webp
 
-[footer_next]: https://bucket.ziteh.dev/blog/new-theme-2024/179db425.webp
+[footer_next]: ./img/new-theme-2024/179db425.webp
 
-[footer_fluid]: https://bucket.ziteh.dev/blog/new-theme-2024/d32ed843.webp
+[footer_fluid]: ./img/new-theme-2024/d32ed843.webp

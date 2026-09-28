@@ -8,7 +8,7 @@ draft: false
 # aliases: ["/2019/03/vnote-evernote/"]
 ---
 
-![](https://bucket.ziteh.dev/blog/vnote-evernote/1829a82f.webp)
+![](./img/vnote-evernote/1829a82f.webp)
 
 ## 前言
 
@@ -41,13 +41,13 @@ Markdown是一種自由格式的輕量級標示語言(Lightweight Markup Languag
 至於Markdown的用法和教學可以參考此網頁：[Markdown 基本语法](https://github.com/younghz/Markdown)
 另外介紹一個國產的超優質Markdown線上筆記網站：[HackMD](https://hackmd.io/)
 
-![▲Markdown語法示範(編輯界面)](https://bucket.ziteh.dev/blog/vnote-evernote/aca75914.webp)
+![▲Markdown語法示範(編輯界面)](./img/vnote-evernote/aca75914.webp)
 
-![▲Markdown語法示範(編輯界面)](https://bucket.ziteh.dev/blog/vnote-evernote/0361d00e.webp)
+![▲Markdown語法示範(編輯界面)](./img/vnote-evernote/0361d00e.webp)
 
 ## 界面導覽
 
-![▲主畫面](https://bucket.ziteh.dev/blog/vnote-evernote/5b0736b2.webp)
+![▲主畫面](./img/vnote-evernote/5b0736b2.webp)
 
 這是VNote的基本界面。以下先簡單的介紹各個區域：(因為這些區塊都是可以任意移動位置的，所以我以預設為例)
 
@@ -75,13 +75,13 @@ VNote除了用網址的方式加入圖片外還支援直接按“Ctrl + V”貼�
 
 而且VNote的圖片支援編輯時及時原地預覽功能。
 
-![▲用貼上的方式加入圖片](https://bucket.ziteh.dev/blog/vnote-evernote/2400912e.webp)
+![▲用貼上的方式加入圖片](./img/vnote-evernote/2400912e.webp)
 
 ### 智慧表格
 
 剛開始用Markdown語法時可能會覺得它的表格不是很好打，會弄得很亂，但VNote的表格會自動依照内容長度進行調整，相當方便。
 
-![▲智慧表格](https://bucket.ziteh.dev/blog/vnote-evernote/7ba5e1b7.webp)
+![▲智慧表格](./img/vnote-evernote/7ba5e1b7.webp)
 
 ## 更多功能
 
@@ -101,9 +101,9 @@ V\_N ({1 \\over Z\_0} + {3 \\over Z\_\\phi}) = {{V\_{a'n}+V\_{b'n}+V\_{c'n}} \\o
 $$
 ```
 
-![▲MathJax示範(編輯界面)](https://bucket.ziteh.dev/blog/vnote-evernote/61aae962.webp)
+![▲MathJax示範(編輯界面)](./img/vnote-evernote/61aae962.webp)
 
-![▲MathJax示範(檢視界面)](https://bucket.ziteh.dev/blog/vnote-evernote/6825f9c4.webp)
+![▲MathJax示範(檢視界面)](./img/vnote-evernote/6825f9c4.webp)
 
 ### Flowchart.js
 
@@ -127,7 +127,7 @@ cond(yes)->io->e
 cond(no)->sub1(right)->op1
 ```
 
-![▲Flowchart.js示範](https://bucket.ziteh.dev/blog/vnote-evernote/e442b992.webp)
+![▲Flowchart.js示範](./img/vnote-evernote/e442b992.webp)
 
 ### PlantUML
 
@@ -145,7 +145,7 @@ Alice -> Bob: Another authentication Request
 Alice <-- Bob: another authentication Response
 ```
 
-![▲PlantUML示範](https://bucket.ziteh.dev/blog/vnote-evernote/765bc538.webp)
+![▲PlantUML示範](./img/vnote-evernote/765bc538.webp)
 
 ### Graphviz
 
@@ -163,7 +163,7 @@ digraph G
 }
 ```
 
-![▲Graphviz示範](https://bucket.ziteh.dev/blog/vnote-evernote/33187776.webp)
+![▲Graphviz示範](./img/vnote-evernote/33187776.webp)
 
 ### Mermaid
 
@@ -181,7 +181,7 @@ B-->D;
 C-->D;
 ```
 
-![▲Mermaid示範](https://bucket.ziteh.dev/blog/vnote-evernote/81833ecf.webp)
+![▲Mermaid示範](./img/vnote-evernote/81833ecf.webp)
 
 ### WaveDrom
 
@@ -201,7 +201,7 @@ WaveDrom是一個基於JavaScript的時序圖編寫語法，對於電機電子�
 ]}
 ```
 
-![▲WaveDrom示範](https://bucket.ziteh.dev/blog/vnote-evernote/2b1e746a.webp)
+![▲WaveDrom示範](./img/vnote-evernote/2b1e746a.webp)
 
 ## 結論
 

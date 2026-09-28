@@ -24,15 +24,15 @@ draft: false
 
 目前還在初期開發階段，我連要採用的 MCU 方案都還沒確定要 RP2040 還是 nRF52840、韌體要 QMK 還是 ZMK。MS60 不算是我的主要專案，所以進度大概會很慢。
 
-![目前的佈局設計](https://bucket.ziteh.dev/blog/ms60-keyboard-idea/12859669.webp)
+![目前的佈局設計](./img/ms60-keyboard-idea/12859669.webp)
 
-![Keymap 設計](https://bucket.ziteh.dev/blog/ms60-keyboard-idea/61c9aa28.webp)
+![Keymap 設計](./img/ms60-keyboard-idea/61c9aa28.webp)
 
-![PCB](https://bucket.ziteh.dev/blog/ms60-keyboard-idea/8ef6527f.webp)
+![PCB](./img/ms60-keyboard-idea/8ef6527f.webp)
 
-![PCB 正面渲染](https://bucket.ziteh.dev/blog/ms60-keyboard-idea/998b3170.webp)
+![PCB 正面渲染](./img/ms60-keyboard-idea/998b3170.webp)
 
-![PCB 背面渲染](https://bucket.ziteh.dev/blog/ms60-keyboard-idea/8f4657ca.webp)
+![PCB 背面渲染](./img/ms60-keyboard-idea/8f4657ca.webp)
 
 可以發現目前的 PCB 上還有正面的 RGB LED（SK6812MINI-E），但是因為要支援多重佈局的關係，有些鍵位的 LED 會擺得歪歪的。這時我就重新思考設計理念是什麼？我想要它是一把內在優雅的鍵盤。
 

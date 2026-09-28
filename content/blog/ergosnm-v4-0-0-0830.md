@@ -28,7 +28,7 @@ ErgoSNM 是一把我正在開發的整合軌跡球的無線分離式鍵盤。這
 
 USB ESD 對策改成 USBLC6-2SC6，並且增加 Shield RC filter。
 
-![Core Board](https://bucket.ziteh.dev/blog/ergosnm-4-0-0-0830/core-pcb.webp)
+![Core Board](./img/ergosnm-4-0-0-0830/core-pcb.webp)
 
 左邊有片以 mouse-bites 連接的 T 字形的東西，那個是要拿來焊接 SMD 排針時對位的。
 
@@ -38,7 +38,7 @@ PCB 為了配合 USB 插座零件厚度是 1.0mm。
 
 ### Main PCB
 
-![Main Board](https://bucket.ziteh.dev/blog/ergosnm-4-0-0-0830/main-pcb.webp)
+![Main Board](./img/ergosnm-4-0-0-0830/main-pcb.webp)
 
 雖然原本主 PCB 算是已經 Layout 完成，已經開始在畫外殼，但是我外殼畫著畫著就覺得這個形狀和體積有點不符合預期，所以我也重新 Layout 了。
 
@@ -48,13 +48,13 @@ PCB 為了配合 USB 插座零件厚度是 1.0mm。
 
 PCB 保持支援 MX 和 Choc V2 的 hot swap 支援，加上 reversible 的設計，導致這個 PCB 的 Layout 沒有我想象中容易。
 
-![For Early Supporters 字樣](https://bucket.ziteh.dev/blog/ergosnm-4-0-0-0830/pcb-early.webp)
+![For Early Supporters 字樣](./img/ergosnm-4-0-0-0830/pcb-early.webp)
 
 之前說的預計第一批 4 組的 PCB 上會有類似這樣的 For Early Supporters 字樣。
 
 ### Thumb Cluster
 
-![Thumb Cluster & 2 Key Board](https://bucket.ziteh.dev/blog/ergosnm-4-0-0-0830/pcb-tc-2k.webp)
+![Thumb Cluster & 2 Key Board](./img/ergosnm-4-0-0-0830/pcb-tc-2k.webp)
 
 為了可以支援 MX 和 Choc V2 hot swap，Thumb cluster PCB 也重新 Layou 了，不過這個沒啥特別的。
 
@@ -62,7 +62,7 @@ PCB 保持支援 MX 和 Choc V2 的 hot swap 支援，加上 reversible 的設�
 
 ### PMW3610 PCB
 
-![紫色的 Rev 1，藍色是 Rev 2](https://bucket.ziteh.dev/blog/ergosnm-4-0-0-0830/pcb-pmw3610.webp)
+![紫色的 Rev 1，藍色是 Rev 2](./img/ergosnm-4-0-0-0830/pcb-pmw3610.webp)
 
 這次也順便更新了原本的 PMW3610 滑鼠光學感測器的 PCB。紫色是舊的 v1，藍色是新的 v2。
 
@@ -72,7 +72,7 @@ PCB 保持支援 MX 和 Choc V2 的 hot swap 支援，加上 reversible 的設�
 
 ## 外殼
 
-![外殼](https://bucket.ziteh.dev/blog/ergosnm-4-0-0-0830/case1.webp)
+![外殼](./img/ergosnm-4-0-0-0830/case1.webp)
 
 外殼是用 SLA 3D 列印的，也是我一直以來最不擅長的部分。而且為了貫徹開源硬體 OSHW 的精神，我這次將 CAD 軟體也改成了開源的 FreeCAD，不少小東西要新學。
 
@@ -80,11 +80,11 @@ PCB 保持支援 MX 和 Choc V2 的 hot swap 支援，加上 reversible 的設�
 
 這次測試了 3 種材質，分別是白樹脂，黑樹脂，白樹脂+霧面黑噴漆。我覺得效果都不錯。
 
-![左側。黑樹脂](https://bucket.ziteh.dev/blog/ergosnm-4-0-0-0830/case-left.webp)
+![左側。黑樹脂](./img/ergosnm-4-0-0-0830/case-left.webp)
 
 這是左側，使用黑樹脂成型色。SLA 還是多少有點層紋，但真的要很仔細看才看得到。
 
-![右側。白樹脂噴黑漆](https://bucket.ziteh.dev/blog/ergosnm-4-0-0-0830/case-right.webp)
+![右側。白樹脂噴黑漆](./img/ergosnm-4-0-0-0830/case-right.webp)
 
 這是右側，使用白樹脂噴黑漆。霧面黑也很不錯，比單純的黑樹脂更黑一點，而且噴漆會蓋掉原本的層紋，但是會有點垂流，漆膜不是很平均。
 
@@ -92,11 +92,11 @@ PCB 保持支援 MX 和 Choc V2 的 hot swap 支援，加上 reversible 的設�
 
 然後就是 3D 列印件難免會遇到的翹曲變形問題，因為這次想要支援 Choc V2 所以整個外殼壁變得很薄，也沒空間加肋。
 
-![](https://bucket.ziteh.dev/blog/ergosnm-4-0-0-0830/case-bug.webp)
+![](./img/ergosnm-4-0-0-0830/case-bug.webp)
 
 孔位好像畫偏了。
 
-![](https://bucket.ziteh.dev/blog/ergosnm-4-0-0-0830/case2.webp)
+![](./img/ergosnm-4-0-0-0830/case2.webp)
 
 可以看到 2 key PCB 放不進去外殼，這個是外殼的尺寸畫錯了。
 

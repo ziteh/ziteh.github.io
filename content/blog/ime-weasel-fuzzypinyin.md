@@ -42,7 +42,7 @@ draft: false
    3. `~/Library/Rime`  (Mac OS)
 2. 在電腦上安裝好小狼毫輸入法後，切換輸入法到小狼毫，並在其右下角的圖示按下滑鼠右鍵顯示選單，並點擊「用戶文件夾」。
 
-![▲ 在右鍵選單中點選用戶文件夾。](https://bucket.ziteh.dev/blog/ime-weasel-fuzzypinyin/86b729ee.webp)
+![▲ 在右鍵選單中點選用戶文件夾。](./img/ime-weasel-fuzzypinyin/86b729ee.webp)
 
 ### 二、 取得設定檔
 
@@ -56,7 +56,7 @@ draft: false
 
 另外因為我還有選擇「朙月拼音-臺灣正體」方案，所以我將「luna\_pinyin.custom.yaml」複製一份並修改檔名為「luna\_pinyin\_tw.custom.yaml」。
 
-![▲ 加入設定檔的用戶資料夾。](https://bucket.ziteh.dev/blog/ime-weasel-fuzzypinyin/8e1d5afc.webp)
+![▲ 加入設定檔的用戶資料夾。](./img/ime-weasel-fuzzypinyin/8e1d5afc.webp)
 
 ### 三、 修改設定檔
 
@@ -74,7 +74,7 @@ draft: false
 
 修改完成後儲存該檔案，然後在右下角的圖示按下滑鼠右鍵顯示選單，並點擊「重新部署」。這樣就完成設定了。
 
-![▲ 在右鍵選單中點選重新部署。](https://bucket.ziteh.dev/blog/ime-weasel-fuzzypinyin/9cb93556.webp)
+![▲ 在右鍵選單中點選重新部署。](./img/ime-weasel-fuzzypinyin/9cb93556.webp)
 
 ## 結語
 

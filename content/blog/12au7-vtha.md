@@ -12,7 +12,7 @@ draft: false
 # aliases: ["/2019/02/12au7-vtha/"]
 ---
 
-![](https://bucket.ziteh.dev/blog/12au7-vtha/f75f6344.webp)
+![](./img/12au7-vtha/f75f6344.webp)
 
 ## 前言
 
@@ -30,35 +30,35 @@ draft: false
 
 雖然知道了真空管的運作原理，但要直接設計出完整實際可用的電路對我來説還是有點難，畢竟電路是有很多東西需要考慮的。所以我就上網找了些別人設計好的電路來參考。最後我找到了這篇文章：[NP-100v12：12AU7(ECC82) / IRF510 Headphone Amp](http://diyaudioprojects.com/Solid/12AU7-IRF510-LM317-Headamp/)。然後我就照著它的電路圖來用Altium Designer 17開始繪製電路。
 
-![](https://bucket.ziteh.dev/blog/12au7-vtha/ab8ee615.webp)
+![](./img/12au7-vtha/ab8ee615.webp)
 
 這是系統電路圖(原理圖)的部分，基本上就是照著上述文章中的電路複製重繪一次，只是我把兩聲道的電路都話出來了。
 
 這張圖的可變電阻-開關(VR-SW1)的VR部分**其實是畫反的**，一般來説是順時針轉VR要越大聲，但我這裡畫反了，所以如果有要參考的話要在多注意一下。
 
-![](https://bucket.ziteh.dev/blog/12au7-vtha/b97fd4ec.webp)
+![](./img/12au7-vtha/b97fd4ec.webp)
 
-![](https://bucket.ziteh.dev/blog/12au7-vtha/e4b7f024.webp)
+![](./img/12au7-vtha/e4b7f024.webp)
 
 再來就是PCB電路圖，也就是Layout佈線的部分了。由於我只使用Bottom Layer，但有2條零件面跳線，分別在U1和U2的Pin3。然後U2那邊的跳線會和R7交叉到，是我當初設計的失誤。
 
-![](https://bucket.ziteh.dev/blog/12au7-vtha/2969a6c2.webp)
+![](./img/12au7-vtha/2969a6c2.webp)
 
 然後就是把電路板洗出來然後將零件焊接上去了，做完試聽一下確定有聲音。
 
 ## 照片
 
-![](https://bucket.ziteh.dev/blog/12au7-vtha/c34abe08.webp)
+![](./img/12au7-vtha/c34abe08.webp)
 
-![](https://bucket.ziteh.dev/blog/12au7-vtha/6f05451d.webp)
+![](./img/12au7-vtha/6f05451d.webp)
 
-![](https://bucket.ziteh.dev/blog/12au7-vtha/f8da7ab3.webp)
+![](./img/12au7-vtha/f8da7ab3.webp)
 
-![](https://bucket.ziteh.dev/blog/12au7-vtha/8437af23.webp)
+![](./img/12au7-vtha/8437af23.webp)
 
-![](https://bucket.ziteh.dev/blog/12au7-vtha/6740cac2.webp)
+![](./img/12au7-vtha/6740cac2.webp)
 
-![](https://bucket.ziteh.dev/blog/12au7-vtha/9844ff38.webp)
+![](./img/12au7-vtha/9844ff38.webp)
 
 最後附上此作業我打的結果報告，裡面有很多我找到的真空管相關資料，有需要者可以參考看看。我將此PDF檔放在我的雲端上：[Google雲端硬碟](https://drive.google.com/file/d/1H40-AUMELtlNLMlD_a0G0DIxzHOKnHU3/view?usp=sharing)
 

@@ -27,4 +27,4 @@ toc: true
 
 希望可以儘快找到並接近這個 SEO 的問題，因為我相信原本新的 Blog 的閱讀和瀏覽體驗對讀者來說是更好的。
 
-[google-search-console]: https://bucket.ziteh.dev/blog/astro-blog-seo-issues/google-search-console.webp
+[google-search-console]: ./img/astro-blog-seo-issues/google-search-console.webp

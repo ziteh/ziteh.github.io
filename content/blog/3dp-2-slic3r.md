@@ -20,7 +20,7 @@ draft: false
 
 首先要更改模式為Expert 將\[Mode]中的\[Simple]改為\[Expert]。打開設定選單，點選左上角的\[File] > \[Preferences]
 
-![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/7e4a72a0.webp)
+![](./img/3dp-2-slic3r/7e4a72a0.webp)
 
 ## 列印機設定：點選\[Printer Settings]標簽
 
@@ -43,7 +43,7 @@ draft: false
   - Pressure advance :
   - Vibration limit (deprecated) :
 
-![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/abdb1298.webp)
+![](./img/3dp-2-slic3r/abdb1298.webp)
 
 ### 2.Custom G-code
 
@@ -53,7 +53,7 @@ draft: false
 - After layer change G-code : 換層後時要執行的G-code指令
 - Tool change G-code :
 
-![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/cd27c296.webp)
+![](./img/3dp-2-slic3r/cd27c296.webp)
 
 ### 3.Extruder 1
 
@@ -73,7 +73,7 @@ draft: false
   - Length :
   - Extra length on restart :
 
-![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/72feb606.webp)
+![](./img/3dp-2-slic3r/72feb606.webp)
 
 ## 材料設定: 點選\[Filament Settings]標簽
 
@@ -91,7 +91,7 @@ draft: false
   - First layer : 列印第一層時的熱床溫度。由於第一層需要與列印平面有較好的接觸，所以第一層的溫度可以高一點
   - Other layers : 列印其他層時的熱床溫度
 
-![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/38616f98.webp)
+![](./img/3dp-2-slic3r/38616f98.webp)
 
 ### 2.Cooling
 
@@ -109,7 +109,7 @@ draft: false
   - Slow down if layer print time is below :
   - Min Print speed :
 
-![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/844a7e64.webp)
+![](./img/3dp-2-slic3r/844a7e64.webp)
 
 ## 列印參數設定: 點選\[Print Settings]標簽
 
@@ -134,7 +134,7 @@ draft: false
   - Seam position : 接縫位置。選擇列印兩不相鄰列印件時，每次開始列印不同列印件的位置。通常設定為Aligned來增加列印件美觀或Nearent來減少列印時間
   - External perimeters firs : 印外殼時，先印最外圈。通常不會使用
 
-![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/ba5726e0.webp)
+![](./img/3dp-2-slic3r/ba5726e0.webp)
 
 ### 2.Infill
 
@@ -152,7 +152,7 @@ draft: false
   - Only retract when crossing perimeters :
   - Infill before perimeters : 每一層先印填充，再印外殼，通常不用
 
-![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/e0c4c00c.webp)
+![](./img/3dp-2-slic3r/e0c4c00c.webp)
 
 ### 3.Skirt and brim
 
@@ -164,7 +164,7 @@ draft: false
 - Brim
   - Brim width : 裙邊的寬度。增加裙邊可以讓列印件不容易發生翹曲的狀況，也可以當地基
 
-![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/0c24393f.webp)
+![](./img/3dp-2-slic3r/0c24393f.webp)
 
 ### 4.Support material
 
@@ -183,7 +183,7 @@ draft: false
   - Interface pattern spacing :
   - Don't support bridges : 搭橋的部分不要進行支撐
 
-![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/eaf48b21.webp)
+![](./img/3dp-2-slic3r/eaf48b21.webp)
 
 ### 5.Speed
 
@@ -212,7 +212,7 @@ draft: false
   - Max print speed :
   - Max volumetric speed :
 
-![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/ac3d4244.webp)
+![](./img/3dp-2-slic3r/ac3d4244.webp)
 
 ### 6.Multiple Extruders
 
@@ -228,7 +228,7 @@ draft: false
 - Advanced
   - Interface shells :
 
-![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/f25b9f86.webp)
+![](./img/3dp-2-slic3r/f25b9f86.webp)
 
 ### 7.Advanced
 
@@ -250,7 +250,7 @@ draft: false
   - Threads : 切片時要使用多少個電腦的執行緒進行運算
   - Resolution : 切片前先降低模型的解析度。0為不降低解析度
 
-![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/58fc5b04.webp)
+![](./img/3dp-2-slic3r/58fc5b04.webp)
 
 ### 8.Output options
 
@@ -264,13 +264,13 @@ draft: false
   - Output filename format : 輸出檔案的檔名
 - Post-processing scripts : 後處理腳本
 
-![](https://bucket.ziteh.dev/blog/3dp-2-slic3r/dce83dec.webp)
+![](./img/3dp-2-slic3r/dce83dec.webp)
 
 ### 9.Notes 筆記
 
 - Notes：可以在此做些筆記提醒自己。
 
-![本文使用的Slic3r版本](https://bucket.ziteh.dev/blog/3dp-2-slic3r/dce83dec.webp)
+![本文使用的Slic3r版本](./img/3dp-2-slic3r/dce83dec.webp)
 
 此文章還有些地方沒有完成，未來有空再更新。
 

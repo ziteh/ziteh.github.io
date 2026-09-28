@@ -16,7 +16,7 @@ draft: false
 # aliases: ["/2020/03/learningstm32-04/"]
 ---
 
-![](https://bucket.ziteh.dev/blog/learningstm32-04/4f2b34ab.webp)
+![](./img/learningstm32-04/4f2b34ab.webp)
 
 ## 前言
 
@@ -32,27 +32,27 @@ TrueSTUDIO是一套由意法半導體（STMicroelectronics）公司專門為STM3
 
 首先到其[官網下載](https://atollic.com/resources/download/)軟體（需填寫用戶資料），目前有Windows與Linux版。安裝過程沒什麼特別的，在此就不贅述了。安裝完成後就可以執行了。
 
-![▲ 界面樣式。](https://bucket.ziteh.dev/blog/learningstm32-04/645ad8a3.webp)
+![▲ 界面樣式。](./img/learningstm32-04/645ad8a3.webp)
 
 其實IDE也沒有什麼好特別介紹的，新增專案那些功能每個軟體都大同小異。這裡就簡單介紹一下新增C專案。
 
-![▲ 新增專案：File > New > C Project。](https://bucket.ziteh.dev/blog/learningstm32-04/eac79005.webp)
+![▲ 新增專案：File > New > C Project。](./img/learningstm32-04/eac79005.webp)
 
-![▲ 輸入專案名稱，選擇儲存路徑（圖中選為預設位置），選擇Embedded C Project。](https://bucket.ziteh.dev/blog/learningstm32-04/09fb9bb4.webp)
+![▲ 輸入專案名稱，選擇儲存路徑（圖中選為預設位置），選擇Embedded C Project。](./img/learningstm32-04/09fb9bb4.webp)
 
-![▲ 選擇裝置型號（如我的是STM32F103RB）。](https://bucket.ziteh.dev/blog/learningstm32-04/f9cd53d2.webp)
+![▲ 選擇裝置型號（如我的是STM32F103RB）。](./img/learningstm32-04/f9cd53d2.webp)
 
-![▲ 選擇設定。這裡我通常就用預設值，有些人會勾選Generate system calls file。](https://bucket.ziteh.dev/blog/learningstm32-04/d2a129c6.webp)
+![▲ 選擇設定。這裡我通常就用預設值，有些人會勾選Generate system calls file。](./img/learningstm32-04/d2a129c6.webp)
 
-![▲ 選擇Debugger（如我是板載的ST-LINK）。](https://bucket.ziteh.dev/blog/learningstm32-04/5e197bea.webp)
+![▲ 選擇Debugger（如我是板載的ST-LINK）。](./img/learningstm32-04/5e197bea.webp)
 
-![▲ 完成。](https://bucket.ziteh.dev/blog/learningstm32-04/e96b9ce4.webp)
+![▲ 完成。](./img/learningstm32-04/e96b9ce4.webp)
 
-![▲ 如要新增.c或.h檔，在src右鍵 > New > Source File (或 Header File)。](https://bucket.ziteh.dev/blog/learningstm32-04/364c849f.webp)
+![▲ 如要新增.c或.h檔，在src右鍵 > New > Source File (或 Header File)。](./img/learningstm32-04/364c849f.webp)
 
 由於TrueSTUDIO是建立於Eclipse框架之上，所以它也非常靈活，有很多東西都可以自行設定。而基本的顏色主題當然也可以隨意變化，它當然也可以使用[Eclipse的主題庫](http://eclipsecolorthemes.org/)（目前此網站似乎有問題），直接下載使用他人做好的設定。像是我使用的是William製作的Atom One Dark Syntax Clone。
 
-![▲ 我實際使用的界面樣式。](https://bucket.ziteh.dev/blog/learningstm32-04/c79ed360.webp)
+![▲ 我實際使用的界面樣式。](./img/learningstm32-04/c79ed360.webp)
 
 ## 結語
 
@@ -60,4 +60,4 @@ TrueSTUDIO是一套由意法半導體（STMicroelectronics）公司專門為STM3
 
 TrueSTUDIO有很高的可擴展性、插件可以使用，我自己也有裝一些，未來有機會再來介紹。
 
-![▲ 本文使用之TrueSTUDIO為Version：9.3.0；Build id：20190212-0734。](https://bucket.ziteh.dev/blog/learningstm32-04/20febbbe.webp)
+![▲ 本文使用之TrueSTUDIO為Version：9.3.0；Build id：20190212-0734。](./img/learningstm32-04/20febbbe.webp)

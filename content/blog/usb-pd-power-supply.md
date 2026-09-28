@@ -110,13 +110,13 @@ eFuse 可以用來提供快速的 SCP：
 - 10k / 90k: ratio=10.0，Vout 範圍 ≈ 1.00 \~ 16.380 V
 - 6.2k / 80.6k: ratio=14.0，Vout 範圍 ≈ 1.40 \~ 22.932 V
 
-![Schematic 1](https://bucket.ziteh.dev/blog/usb-pd-power-supply/sch1.webp)
+![Schematic 1](./img/usb-pd-power-supply/sch1.webp)
 
-![Schematic 2](https://bucket.ziteh.dev/blog/usb-pd-power-supply/sch2.webp)
+![Schematic 2](./img/usb-pd-power-supply/sch2.webp)
 
 大功率走線都直接鋪銅，但是這個線寬在 1oz 的 PCB 上跑 3A 其實還是不太夠。
 
-![PCB Layout](https://bucket.ziteh.dev/blog/usb-pd-power-supply/layout1.webp)
+![PCB Layout](./img/usb-pd-power-supply/layout1.webp)
 
 雖然 PCB 是畫好了，但是我暫時沒有生產測試的打算，也不確定現在這個方案是不是真的可以運作，就先做個記錄，如果未來真的要做下去的話再分享。
 

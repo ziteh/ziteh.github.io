@@ -11,7 +11,7 @@ draft: false
 # aliases: ["/2020/04/literature-epiphyllum/"]
 ---
 
-![](https://bucket.ziteh.dev/blog/literature-epiphyllum/85ca4acf.webp)
+![](./img/literature-epiphyllum/85ca4acf.webp)
 
 <!--more-->
 
