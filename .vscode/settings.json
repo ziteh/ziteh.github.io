@@ -1,0 +1,6 @@
+{
+  "markdown.copyFiles.destination": {
+    "/content/blog/*.md": "img/${documentBaseName}/${fileName}"
+  },
+  "vim.disableExtension": true
+}

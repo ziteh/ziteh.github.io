@@ -5,6 +5,7 @@ import sitemap from "@astrojs/sitemap";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import rehypeFigure from "@microflash/rehype-figure";
 import playformCompress from "@playform/compress";
+import rehypeImgSizeCache from "@ziteh/rehype-img-size-cache";
 import { defineConfig, fontProviders } from "astro/config";
 import expressiveCode from "astro-expressive-code";
 import pagefind from "astro-pagefind";
@@ -13,6 +14,13 @@ import rehypeExternalLinks from "rehype-external-links";
 import rehypeKatex from "rehype-katex";
 import rehypeSlug from "rehype-slug";
 import remarkMath from "remark-math";
+import {
+  BREAKPOINTS,
+  CACHE_FILE_PATH,
+  isR2Image,
+  isSvg,
+  variantUrl,
+} from "../scripts/img-config.mjs";
 import { CONTENT_DIR } from "./src/config/content-dir";
 import { SITE } from "./src/config/site";
 
@@ -40,6 +48,19 @@ export default defineConfig({
     processor: unified({
       remarkPlugins: [remarkMath],
       rehypePlugins: [
+        // Add width/height/srcset to R2-hosted images before src is transformed
+        [
+          rehypeImgSizeCache,
+          {
+            cacheFilePath: path.resolve(__dirname, "..", CACHE_FILE_PATH),
+            srcset: {
+              widths: BREAKPOINTS,
+              url: variantUrl,
+              match: (src: string) => isR2Image(src) && !isSvg(src),
+              sizes: `(max-width: ${BREAKPOINTS[0]}px) 100vw, ${BREAKPOINTS[0]}px`,
+            },
+          },
+        ],
         // LaTeX math support
         rehypeKatex,
         // Transform alt text into figure captions
@@ -154,6 +175,14 @@ export default defineConfig({
       styles: ["normal"],
       fallbacks: ["monospace"],
       formats: ["woff2"],
+      provider: fontProviders.fontsource(),
+    },
+    {
+      cssVariable: "--font-og",
+      name: "Noto Sans",
+      weights: [400],
+      styles: ["normal"],
+      formats: ["woff"], // Satori doesn't support woff2
       provider: fontProviders.fontsource(),
     },
   ],

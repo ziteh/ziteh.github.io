@@ -5,12 +5,16 @@
   "scripts": {
     "lint": "markdownlint \"content/**/*.md\"",
     "lint:fix": "markdownlint --fix \"content/**/*.md\"",
+    "img:upload": "node --env-file=.env scripts/img-upload.mjs",
+    "img:backfill": "node --env-file=.env scripts/img-backfill.mjs",
     "prepare": "husky"
   },
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.906.0",
     "husky": "^9.1.7",
     "lint-staged": "^17.5.1",
-    "markdownlint-cli": "^0.49.1"
+    "markdownlint-cli": "^0.49.1",
+    "sharp": "^0.35.4"
   },
   "lint-staged": {
     "*.md": "markdownlint"
