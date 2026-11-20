@@ -16,8 +16,8 @@ import {
 
 const BLOG_DIR = "content/blog";
 // Accepts encoded, raw-space and angle-bracket paths, with an optional title
-const IMG_REF_PATTERN = /!\[[^\]]*\]\(<?(\.\/img\/[^)>"]*?)>?(?:\s+"[^"]*")?\)/g;
-const LOCAL_IMG_MENTION_PATTERN = /\]\(<?\.\/img\//g;
+const IMG_REF_PATTERN = /!\[[^\]]*\]\(<?((?:\.\/)?img\/[^)>"]*?)>?(?:\s+"[^"]*")?\)/g;
+const LOCAL_IMG_MENTION_PATTERN = /\]\(<?(?:\.\/)?img\//g;
 
 const s3 = new S3Client({
   region: "auto",
